@@ -89,7 +89,10 @@ const Home = () => {
                     >
                       <Icon size={30} strokeWidth={2.4} />
                     </div>
-                    <h3 id={`feature-title-${index}`} className="mb-4 font-kalam text-2xl font-bold text-foreground">
+                    <h3
+                      id={`feature-title-${index}`}
+                      className="mb-4 font-kalam text-2xl font-bold text-foreground"
+                    >
                       {item.title}
                     </h3>
                     <p className="font-patrick text-lg leading-relaxed text-foreground">
