@@ -74,8 +74,18 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-secondary-accent);
-    outline-offset: 2px;
+    outline: 3px solid var(--color-secondary-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Enhanced focus for hand-drawn elements */
+  .hand-drawn-button:focus-visible,
+  .hand-drawn-card:focus-visible,
+  .hand-drawn-input:focus-visible {
+    outline: 3px solid var(--color-secondary-accent);
+    outline-offset: 4px;
+    box-shadow: 0 0 0 4px rgba(45, 93, 161, 0.3);
   }
 }
 
@@ -153,5 +163,20 @@
 @media (max-width: 768px) {
   body {
     background-size: 16px 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .jiggle:hover {
+    animation: none !important;
   }
 }
