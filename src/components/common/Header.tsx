@@ -7,6 +7,8 @@ import { NAV_ITEMS, BRAND } from "../../lib/constants";
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const isItemActive = (path: string) =>
+    path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
 
   return (
     <header className="border-b-2 border-border py-6">
@@ -23,7 +25,7 @@ const Header = () => {
 
         <nav className="hidden gap-8 md:flex" aria-label="Main navigation">
           {NAV_ITEMS.map((item) => {
-            const isActive = location.pathname === item.path;
+            const isActive = isItemActive(item.path);
             return (
               <motion.div
                 key={item.path}
@@ -34,6 +36,7 @@ const Header = () => {
               >
                 <Link
                   to={item.path}
+                  aria-current={isActive ? "page" : undefined}
                   className={`font-patrick text-lg underline decoration-wavy decoration-accent decoration-2 ${
                     isActive ? "text-accent font-bold" : "text-foreground"
                   }`}
@@ -67,12 +70,13 @@ const Header = () => {
           >
             <div className="mx-auto max-w-[80rem] px-4 py-4 flex flex-col gap-4">
               {NAV_ITEMS.map((item) => {
-                const isActive = location.pathname === item.path;
+                const isActive = isItemActive(item.path);
                 return (
                   <Link
                     key={item.path}
                     to={item.path}
                     onClick={() => setMobileOpen(false)}
+                    aria-current={isActive ? "page" : undefined}
                     className={`font-patrick text-lg ${
                       isActive ? "text-accent font-bold" : "text-foreground"
                     }`}

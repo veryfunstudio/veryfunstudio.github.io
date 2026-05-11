@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaDiscord, FaEnvelope } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { MailCheck } from "lucide-react";
 
 const CONTACT_INFO = [
   {
@@ -126,10 +127,17 @@ const Contact = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-12 text-center"
                 >
-                  <p className="text-4xl mb-4">🎉</p>
-                  <p className="font-kalam text-xl font-bold text-foreground">Email Draft Opened</p>
+                  <div
+                    className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-wobbly border-2 border-border bg-post-it text-foreground"
+                    aria-hidden="true"
+                  >
+                    <MailCheck size={34} strokeWidth={2.3} />
+                  </div>
+                  <p className="font-kalam text-xl font-bold text-foreground">
+                    Email Draft Requested
+                  </p>
                   <p className="mt-2 font-patrick text-foreground">
-                    Please send it from your email app so we can reply.
+                    If your email app did not open, write to hello@veryfuncompany.com directly.
                   </p>
                 </motion.div>
               ) : (
