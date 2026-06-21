@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cookabc.github.io/sitemap.xml

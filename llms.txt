@@ -1,0 +1,30 @@
+# VeryFun Company
+
+> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play.
+
+## Games
+- [Classic Sudoku 2026](https://cookabc.github.io/projects/classic-sudoku): A clean, calming take on Sudoku with multiple difficulty levels, smart hints, and zero pressure — perfect for daily brain training on the go.
+- [Tile Journey](https://cookabc.github.io/projects/tile-journey): A relaxing 3D tile-matching adventure across hand-crafted themed worlds — match three, plan ahead, and unwind.
+- [Word Search Block](https://cookabc.github.io/projects/word-search-block): A serene word-search puzzle built around clear themes, helpful hints, and a soothing visual style — for relaxed vocabulary training.
+- [Arrow Out](https://cookabc.github.io/projects/arrow-out): A deceptively simple arrow-tile puzzle where every move matters — clear the grid, one direction at a time.
+- [Pearl Coloring](https://cookabc.github.io/projects/pearl-coloring): Sort glowing pearls, reveal pixel-art masterpieces, and slip into a calm world of color, creativity, and gentle puzzles.
+- [Bubble Shoot](https://cookabc.github.io/projects/bubble-shoot): A bright, generous bubble shooter with 200+ levels, daily rewards, and zero paywalls — every stage is fully beatable for free.
+
+## Blog
+- [Challenges and Opportunities in Indie Game Development](https://cookabc.github.io/blog/1): As an indie game developer, we face many challenges but also have many opportunities.
+- [How to Design a Successful Indie Game](https://cookabc.github.io/blog/2): Game design is key to indie game success.
+- [Unity vs Unreal Engine: How to Choose the Right Game Engine](https://cookabc.github.io/blog/3): Unity and Unreal Engine are the most popular game engines today.
+- [Marketing Strategies for Indie Games](https://cookabc.github.io/blog/4): Even if your game is great, without good marketing strategies it's hard to succeed.
+
+## Other pages
+- [About the studio](https://cookabc.github.io/about)
+- [All games](https://cookabc.github.io/projects)
+- [Blog index](https://cookabc.github.io/blog)
+
+## Google Play store pages
+- [Classic Sudoku 2026](https://play.google.com/store/apps/details?id=com.codex.sudokumobilegame)
+- [Tile Journey](https://play.google.com/store/apps/details?id=com.veryfun.tilejourney)
+- [Word Search Block](https://play.google.com/store/apps/details?id=com.cookabc.zenwordsearch)
+- [Arrow Out](https://play.google.com/store/apps/details?id=com.veryfuncompany.kittyescape)
+- [Pearl Coloring](https://play.google.com/store/apps/details?id=com.veryfun.pearlcoloring)
+- [Bubble Shoot](https://play.google.com/store/apps/details?id=com.veryfuncompany.bubble)
