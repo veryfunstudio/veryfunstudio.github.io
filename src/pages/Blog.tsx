@@ -2,10 +2,16 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { formatDate } from "../lib/utils";
 import { BLOG_POSTS } from "../data/blog";
+import { Seo } from "../components/seo/Seo";
 
 const Blog = () => {
   return (
     <div>
+      <Seo
+        title="Blog — Game Dev Insights from VeryFun Company"
+        description="Notes on mobile game design, Unity development, and indie studio life from the team behind Tile Journey, Arrow Out, and the rest of the VeryFun Company lineup."
+        path="/blog"
+      />
       <section className="py-20">
         <div className="mx-auto max-w-[80rem] px-4 text-center">
           <motion.div

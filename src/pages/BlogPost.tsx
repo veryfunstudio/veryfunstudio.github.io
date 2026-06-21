@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { getBlogPostById } from "../data/blog";
 import { formatDate } from "../lib/utils";
+import { Seo } from "../components/seo/Seo";
 
 const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
@@ -35,6 +36,13 @@ const BlogPost = () => {
 
   return (
     <article>
+      <Seo
+        title={post.title}
+        description={post.excerpt}
+        path={`/blog/${post.id}`}
+        type="article"
+        publishedTime={post.date}
+      />
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-4">
           <motion.div
