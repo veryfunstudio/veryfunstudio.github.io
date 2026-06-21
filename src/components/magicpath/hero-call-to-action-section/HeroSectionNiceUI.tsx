@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Gamepad2 } from "lucide-react";
+import { PROJECTS } from "../../../data/projects";
+
+const HERO_GAMES = PROJECTS.slice(0, 6);
+const ROTATIONS = ["-rotate-2", "rotate-1", "rotate-1", "-rotate-1", "-rotate-1", "rotate-2"];
 
 const HeroSectionNiceUI = () => {
   return (
@@ -56,26 +60,22 @@ const HeroSectionNiceUI = () => {
               transition={{ duration: 0.5, delay: 0.8 }}
             >
               <div className="flex gap-1">
-                {[
-                  "/images/Joy Adventure.jpeg",
-                  "/images/Pixel Dungeon.jpeg",
-                  "/images/Space Exploration.jpeg",
-                  "/images/Magic Farm.jpeg",
-                ].map((src, i) => (
+                {HERO_GAMES.map((game, i) => (
                   <motion.img
-                    key={src}
-                    src={src}
-                    alt=""
-                    className="h-10 w-10 rounded-full border-2 border-background object-cover shadow-hand-drawn-light"
+                    key={game.id}
+                    src={game.icon}
+                    alt={`${game.title} icon`}
+                    className="h-10 w-10 rounded-full border-2 border-background bg-white object-cover shadow-hand-drawn-light"
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ delay: 1 + i * 0.1, duration: 0.3 }}
-                    style={{ marginLeft: i > 0 ? "-8px" : 0, zIndex: 4 - i }}
+                    style={{ marginLeft: i > 0 ? "-8px" : 0, zIndex: HERO_GAMES.length - i }}
                   />
                 ))}
               </div>
               <p className="font-patrick text-base text-foreground">
-                <span className="font-bold">4 unique games</span> crafted with love
+                <span className="font-bold">{HERO_GAMES.length} unique games</span> crafted with
+                love
               </p>
             </motion.div>
           </motion.div>
@@ -86,27 +86,25 @@ const HeroSectionNiceUI = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
           >
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { src: "/images/Joy Adventure.jpeg", alt: "Joy Adventure", rot: "-rotate-2" },
-                {
-                  src: "/images/Space Exploration.jpeg",
-                  alt: "Space Exploration",
-                  rot: "rotate-1",
-                },
-                { src: "/images/Pixel Dungeon.jpeg", alt: "Pixel Dungeon", rot: "rotate-1" },
-                { src: "/images/Magic Farm.jpeg", alt: "Magic Farm", rot: "-rotate-1" },
-              ].map((img, i) => (
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+              {HERO_GAMES.map((game, i) => (
                 <motion.figure
-                  key={img.src}
-                  className={`hand-drawn-card jiggle relative overflow-hidden bg-white ${img.rot}`}
+                  key={game.id}
+                  className={`hand-drawn-card jiggle relative overflow-hidden bg-white ${ROTATIONS[i % ROTATIONS.length]}`}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.5 + i * 0.15, duration: 0.4 }}
+                  transition={{ delay: 0.5 + i * 0.12, duration: 0.4 }}
                 >
-                  {i < 2 && <div className="tape" aria-hidden="true" />}
-                  {i >= 2 && <div className="tack" aria-hidden="true" />}
-                  <img src={img.src} alt={img.alt} className="aspect-square w-full object-cover" />
+                  {i % 2 === 0 ? (
+                    <div className="tape" aria-hidden="true" />
+                  ) : (
+                    <div className="tack" aria-hidden="true" />
+                  )}
+                  <img
+                    src={game.icon}
+                    alt={game.title}
+                    className="aspect-square w-full object-cover"
+                  />
                 </motion.figure>
               ))}
             </div>

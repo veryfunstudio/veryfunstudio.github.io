@@ -55,10 +55,17 @@ const ProjectDetail = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="mb-10"
           >
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-              <h1 className="font-kalam text-4xl font-bold text-foreground sm:text-5xl">
-                {project.title}
-              </h1>
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-4">
+                <img
+                  src={project.icon}
+                  alt={`${project.title} icon`}
+                  className="h-16 w-16 flex-shrink-0 rounded-wobbly border-2 border-border bg-white object-cover shadow-hand-drawn-light sm:h-20 sm:w-20"
+                />
+                <h1 className="font-kalam text-4xl font-bold text-foreground sm:text-5xl">
+                  {project.title}
+                </h1>
+              </div>
               <time dateTime={project.releaseDate} className="font-patrick text-sm text-muted">
                 Released {project.releaseDate}
               </time>
@@ -123,14 +130,14 @@ const ProjectDetail = () => {
             className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
           >
             <a
-              href={project.externalLink}
+              href={project.googlePlayUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`View ${project.title} on external site`}
+              aria-label={`Get ${project.title} on Google Play`}
               className="hand-drawn-button inline-flex items-center gap-2 bg-white px-8 py-3 font-patrick text-lg no-underline text-foreground"
             >
               <ExternalLink size={18} />
-              View Live Site
+              Get on Google Play
             </a>
             <Link
               to="/projects"

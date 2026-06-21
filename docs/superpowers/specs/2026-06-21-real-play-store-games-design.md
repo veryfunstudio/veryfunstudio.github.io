@@ -9,14 +9,14 @@ Replace the four fictional games in `src/data/projects.ts`
 (Joy Adventure / Pixel Dungeon / Space Exploration / Magic Farm) with the
 six real Google Play titles published by the studio:
 
-| # | Package ID | Working slug | Play Store URL |
-|---|---|---|---|
-| 1 | `com.codex.sudokumobilegame` | `sudoku-mobile-game` | https://play.google.com/store/apps/details?id=com.codex.sudokumobilegame |
-| 2 | `com.veryfun.tilejourney` | `tile-journey` | https://play.google.com/store/apps/details?id=com.veryfun.tilejourney |
-| 3 | `com.cookabc.zenwordsearch` | `zen-word-search` | https://play.google.com/store/apps/details?id=com.cookabc.zenwordsearch |
-| 4 | `com.veryfuncompany.kittyescape` | `kitty-escape` | https://play.google.com/store/apps/details?id=com.veryfuncompany.kittyescape |
-| 5 | `com.veryfun.pearlcoloring` | `pearl-coloring` | https://play.google.com/store/apps/details?id=com.veryfun.pearlcoloring |
-| 6 | `com.veryfuncompany.bubble` | `bubble-shooter` | https://play.google.com/store/apps/details?id=com.veryfuncompany.bubble |
+| #   | Package ID                       | Working slug         | Play Store URL                                                               |
+| --- | -------------------------------- | -------------------- | ---------------------------------------------------------------------------- |
+| 1   | `com.codex.sudokumobilegame`     | `sudoku-mobile-game` | https://play.google.com/store/apps/details?id=com.codex.sudokumobilegame     |
+| 2   | `com.veryfun.tilejourney`        | `tile-journey`       | https://play.google.com/store/apps/details?id=com.veryfun.tilejourney        |
+| 3   | `com.cookabc.zenwordsearch`      | `zen-word-search`    | https://play.google.com/store/apps/details?id=com.cookabc.zenwordsearch      |
+| 4   | `com.veryfuncompany.kittyescape` | `kitty-escape`       | https://play.google.com/store/apps/details?id=com.veryfuncompany.kittyescape |
+| 5   | `com.veryfun.pearlcoloring`      | `pearl-coloring`     | https://play.google.com/store/apps/details?id=com.veryfun.pearlcoloring      |
+| 6   | `com.veryfuncompany.bubble`      | `bubble-shooter`     | https://play.google.com/store/apps/details?id=com.veryfuncompany.bubble      |
 
 The final slugs will reflect each game's actual Play Store title once fetched
 (the values above are working defaults; concrete decision is made during
@@ -51,18 +51,18 @@ renames one:
 ```ts
 export interface Project {
   id: number;
-  packageId: string;           // NEW — e.g. "com.codex.sudokumobilegame"
+  packageId: string; // NEW — e.g. "com.codex.sudokumobilegame"
   title: string;
-  description: string;         // 1–2 sentences, used on cards
-  fullDescription: string;     // 4–6 sentence paragraph for detail page
-  icon: string;                // NEW — square icon path
-  image: string;               // hero / feature graphic path
-  technologies: string[];      // Semantics shift: tags like ["Android", "Puzzle", "Casual", "Offline"]
-  features: string[];          // 5–6 bullets distilled from Play Store copy
+  description: string; // 1–2 sentences, used on cards
+  fullDescription: string; // 4–6 sentence paragraph for detail page
+  icon: string; // NEW — square icon path
+  image: string; // hero / feature graphic path
+  technologies: string[]; // Semantics shift: tags like ["Android", "Puzzle", "Casual", "Offline"]
+  features: string[]; // 5–6 bullets distilled from Play Store copy
   releaseDate: string;
   slug: string;
-  googlePlayUrl: string;       // RENAMED from externalLink
-  rotation: number;            // existing visual jitter, kept
+  googlePlayUrl: string; // RENAMED from externalLink
+  rotation: number; // existing visual jitter, kept
 }
 ```
 
@@ -81,17 +81,17 @@ Reasoning:
 
 ## 4. File-by-file changes
 
-| File | Change |
-|---|---|
-| `src/data/projects.ts` | Replace interface and PROJECTS array with 6 real entries. |
-| `src/pages/ProjectDetail.tsx` | Use `googlePlayUrl`; CTA text → "Get on Google Play"; render `icon` next to the title; tweak alt text. |
-| `src/pages/Projects.tsx` | No logic change — purely data-driven. Optional polish: show `icon` chip on each card. |
-| `src/components/magicpath/features-section-with-alternating-layout/FeaturesSection.tsx` | Expand `GAME_ICONS` from 4 to 6 lucide icons themed to the new games (Grid3x3, LayoutGrid, BookText, Cat, Palette, Circle). |
-| `src/components/magicpath/hero-call-to-action-section/HeroSectionNiceUI.tsx` | Replace hardcoded 4 image paths in avatar stack and 2×2 grid with 6 real game images; update "4 unique games" → "6 unique games"; lay the right grid out as 2 cols × 3 rows. |
-| `src/components/magicpath/cta-banner-multi-column-footer/CtaFooterSection.tsx` | No change — no hardcoded references. |
-| `public/images/Joy Adventure.jpeg`<br/>`public/images/Pixel Dungeon.jpeg`<br/>`public/images/Space Exploration.jpeg`<br/>`public/images/Magic Farm.jpeg` | Delete. |
-| `public/images/<slug>.webp` × 6 | New — hero screenshots / feature graphics. |
-| `public/images/<slug>-icon.webp` × 6 | New — square icons. |
+| File                                                                                                                                                     | Change                                                                                                                                                                       |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `src/data/projects.ts`                                                                                                                                   | Replace interface and PROJECTS array with 6 real entries.                                                                                                                    |
+| `src/pages/ProjectDetail.tsx`                                                                                                                            | Use `googlePlayUrl`; CTA text → "Get on Google Play"; render `icon` next to the title; tweak alt text.                                                                       |
+| `src/pages/Projects.tsx`                                                                                                                                 | No logic change — purely data-driven. Optional polish: show `icon` chip on each card.                                                                                        |
+| `src/components/magicpath/features-section-with-alternating-layout/FeaturesSection.tsx`                                                                  | Expand `GAME_ICONS` from 4 to 6 lucide icons themed to the new games (Grid3x3, LayoutGrid, BookText, Cat, Palette, Circle).                                                  |
+| `src/components/magicpath/hero-call-to-action-section/HeroSectionNiceUI.tsx`                                                                             | Replace hardcoded 4 image paths in avatar stack and 2×2 grid with 6 real game images; update "4 unique games" → "6 unique games"; lay the right grid out as 2 cols × 3 rows. |
+| `src/components/magicpath/cta-banner-multi-column-footer/CtaFooterSection.tsx`                                                                           | No change — no hardcoded references.                                                                                                                                         |
+| `public/images/Joy Adventure.jpeg`<br/>`public/images/Pixel Dungeon.jpeg`<br/>`public/images/Space Exploration.jpeg`<br/>`public/images/Magic Farm.jpeg` | Delete.                                                                                                                                                                      |
+| `public/images/<slug>.webp` × 6                                                                                                                          | New — hero screenshots / feature graphics.                                                                                                                                   |
+| `public/images/<slug>-icon.webp` × 6                                                                                                                     | New — square icons.                                                                                                                                                          |
 
 Blog content (`src/content/blog`, `public/images/*Strategies*.jpeg` etc.) is
 unaffected.

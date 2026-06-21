@@ -1,10 +1,10 @@
 import { motion, type Variants } from "framer-motion";
-import { Check, Gamepad2, Sparkles, Sword, Leaf } from "lucide-react";
+import { BookText, Check, Circle, Grid3x3, LayoutGrid, MoveRight, Palette } from "lucide-react";
 import { PROJECTS, type Project } from "../../../data/projects";
 import { Link } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
 
-const GAME_ICONS: LucideIcon[] = [Gamepad2, Sword, Sparkles, Leaf];
+const GAME_ICONS: LucideIcon[] = [Grid3x3, LayoutGrid, BookText, MoveRight, Palette, Circle];
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
