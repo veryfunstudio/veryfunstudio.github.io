@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { getProjectBySlug } from "../data/projects";
 import { ExternalLink, ArrowLeft } from "lucide-react";
+import { Seo } from "../components/seo/Seo";
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -35,6 +36,13 @@ const ProjectDetail = () => {
 
   return (
     <article>
+      <Seo
+        title={`${project.title} — Free Mobile Puzzle Game`}
+        description={project.description}
+        path={`/projects/${project.slug}`}
+        image={project.image}
+        type="article"
+      />
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-4">
           <motion.div

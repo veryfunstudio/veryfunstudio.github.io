@@ -1,9 +1,15 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Seo } from "../components/seo/Seo";
 
 const NotFound = () => {
   return (
     <section className="py-20">
+      <Seo
+        title="Page Not Found (404)"
+        description="The page you're looking for doesn't exist on VeryFun Company."
+        noindex
+      />
       <div className="mx-auto max-w-[80rem] px-4 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}

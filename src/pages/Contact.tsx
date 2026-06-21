@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { FaGithub, FaDiscord, FaEnvelope } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { MailCheck } from "lucide-react";
+import { Seo } from "../components/seo/Seo";
 
 const CONTACT_INFO = [
   {
@@ -51,6 +52,12 @@ const Contact = () => {
 
   return (
     <div>
+      <Seo
+        title="Contact Us"
+        description="Get in touch with VeryFun Company — email, X (Twitter), GitHub, or Discord. We'd love to hear from players and partners."
+        path="/contact"
+        noindex
+      />
       <section className="py-20">
         <div className="mx-auto max-w-[80rem] px-4 text-center">
           <motion.div

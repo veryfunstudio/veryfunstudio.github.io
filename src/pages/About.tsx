@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
+import { Seo } from "../components/seo/Seo";
 
 const TECH_STACK = [
   { name: "Unity", icon: "🎮", rotation: -0.5 },
@@ -38,6 +39,11 @@ const About = () => {
 
   return (
     <div>
+      <Seo
+        title="About the Studio"
+        description="VeryFun Company is an independent mobile game studio focused on calming, free-to-play puzzle games. Learn about our mission, values, and the team behind titles like Tile Journey and Pearl Coloring."
+        path="/about"
+      />
       <section className="py-20">
         <div className="mx-auto max-w-[80rem] px-4 text-center">
           <motion.div

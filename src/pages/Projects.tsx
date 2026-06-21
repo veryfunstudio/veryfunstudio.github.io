@@ -1,10 +1,16 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { PROJECTS } from "../data/projects";
+import { Seo } from "../components/seo/Seo";
 
 const Projects = () => {
   return (
     <div>
+      <Seo
+        title="Our Mobile Games"
+        description="Browse all six free-to-play mobile puzzle games from VeryFun Company — Classic Sudoku 2026, Tile Journey, Word Search Block, Arrow Out, Pearl Coloring, and Bubble Shoot. Available on Google Play."
+        path="/projects"
+      />
       <section className="py-20">
         <div className="mx-auto max-w-[80rem] px-4 text-center">
           <motion.div
