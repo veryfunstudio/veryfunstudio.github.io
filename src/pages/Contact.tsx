@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { FaGithub, FaDiscord, FaEnvelope } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { MailCheck } from "lucide-react";
@@ -60,7 +60,7 @@ const Contact = () => {
       />
       <section className="py-20">
         <div className="mx-auto max-w-[80rem] px-4 text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -69,14 +69,14 @@ const Contact = () => {
             <p className="mx-auto max-w-3xl font-patrick text-xl text-foreground">
               If you have any questions or collaboration inquiries, feel free to reach out anytime
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-4">
           <div className="grid gap-12 md:grid-cols-2">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -87,7 +87,7 @@ const Contact = () => {
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Contact Info</h2>
               <div className="flex flex-col gap-6">
                 {CONTACT_INFO.map((item, index) => (
-                  <motion.div
+                  <m.div
                     key={item.title}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -114,12 +114,12 @@ const Contact = () => {
                         {item.value}
                       </a>
                     </div>
-                  </motion.div>
+                  </m.div>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -129,7 +129,7 @@ const Contact = () => {
               <div className="tack" />
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Send a Message</h2>
               {submitted ? (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-12 text-center"
@@ -146,7 +146,7 @@ const Contact = () => {
                   <p className="mt-2 font-patrick text-foreground">
                     If your email app did not open, write to hello@veryfuncompany.com directly.
                   </p>
-                </motion.div>
+                </m.div>
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                   <div>
@@ -205,17 +205,17 @@ const Contact = () => {
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     />
                   </div>
-                  <motion.button
+                  <m.button
                     type="submit"
                     className="hand-drawn-button w-full px-6 py-3 font-patrick text-base font-medium text-foreground"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.96 }}
                   >
                     Send Message
-                  </motion.button>
+                  </m.button>
                 </form>
               )}
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>

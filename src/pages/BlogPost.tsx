@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { getBlogPostById } from "../data/blog";
 import { formatDate } from "../lib/utils";
 import { Seo } from "../components/seo/Seo";
@@ -14,7 +14,7 @@ const BlogPost = () => {
     return (
       <section className="py-20">
         <div className="mx-auto max-w-[80rem] px-4 text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
@@ -30,7 +30,7 @@ const BlogPost = () => {
             >
               ← Back to Blog
             </Link>
-          </motion.div>
+          </m.div>
         </div>
       </section>
     );
@@ -76,7 +76,7 @@ const BlogPost = () => {
       />
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-4">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -93,9 +93,9 @@ const BlogPost = () => {
             <h1 className="mb-6 font-kalam text-4xl font-bold leading-tight text-foreground sm:text-5xl">
               {post.title}
             </h1>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
@@ -110,9 +110,9 @@ const BlogPost = () => {
               decoding="async"
               className="mb-12 h-auto w-full rounded-wobbly-md border-2 border-border outline outline-1 outline-black/10 sm:h-[28rem] sm:object-cover"
             />
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -126,9 +126,9 @@ const BlogPost = () => {
                 {paragraph}
               </p>
             ))}
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.45 }}
@@ -142,7 +142,7 @@ const BlogPost = () => {
                 ← Back to All Posts
               </Link>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
     </article>

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Link } from "react-router-dom";
 import { PROJECTS } from "../data/projects";
 import { Seo } from "../components/seo/Seo";
@@ -13,7 +13,7 @@ const Projects = () => {
       />
       <section className="py-20">
         <div className="mx-auto max-w-[80rem] px-4 text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -23,7 +23,7 @@ const Projects = () => {
               Here are the game projects we&apos;ve developed—each one represents our creativity and
               dedication
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 

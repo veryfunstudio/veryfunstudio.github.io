@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Seo } from "../components/seo/Seo";
 
@@ -11,7 +11,7 @@ const NotFound = () => {
         noindex
       />
       <div className="mx-auto max-w-[80rem] px-4 text-center">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -28,7 +28,7 @@ const NotFound = () => {
           >
             ← Back Home
           </Link>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

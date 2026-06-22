@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 interface HeroSectionProps {
   title: string;
@@ -23,7 +23,7 @@ const HeroSection = ({
   return (
     <section className="overflow-hidden py-16 sm:py-20">
       <div className="mx-auto max-w-[80rem] px-4 text-center">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -35,19 +35,19 @@ const HeroSection = ({
             {subtitle}
           </p>
           {buttonText && buttonLink && (
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 to={buttonLink}
                 className="hand-drawn-button inline-block bg-white px-8 py-3 font-patrick text-lg text-foreground no-underline"
               >
                 {buttonText}
               </Link>
-            </motion.div>
+            </m.div>
           )}
-        </motion.div>
+        </m.div>
 
         {showcaseImages && showcaseImages.length > 0 && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -75,7 +75,7 @@ const HeroSection = ({
                 </figcaption>
               </figure>
             ))}
-          </motion.div>
+          </m.div>
         )}
       </div>
     </section>

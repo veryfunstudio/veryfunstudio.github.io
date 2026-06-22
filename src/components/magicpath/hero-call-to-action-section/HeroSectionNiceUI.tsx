@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Gamepad2 } from "lucide-react";
 import { PROJECTS } from "../../../data/projects";
 
@@ -11,7 +11,7 @@ const HeroSectionNiceUI = () => {
     <section className="overflow-hidden py-16 sm:py-24">
       <div className="mx-auto max-w-[80rem] px-6">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <motion.div
+          <m.div
             className="space-y-8"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -28,13 +28,13 @@ const HeroSectionNiceUI = () => {
               </p>
             </div>
 
-            <motion.div
+            <m.div
               className="flex flex-col gap-4 sm:flex-row"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
             >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/projects"
                   className="hand-drawn-button inline-flex items-center gap-2 bg-white px-6 py-3 font-patrick text-lg text-foreground no-underline"
@@ -42,18 +42,18 @@ const HeroSectionNiceUI = () => {
                   <Gamepad2 size={20} />
                   View Our Games
                 </Link>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              </m.div>
+              <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link
                   to="/about"
                   className="hand-drawn-button inline-block bg-white px-6 py-3 font-patrick text-lg text-foreground no-underline"
                 >
                   About Us
                 </Link>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               className="flex items-center gap-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -61,7 +61,7 @@ const HeroSectionNiceUI = () => {
             >
               <div className="flex gap-1">
                 {HERO_GAMES.map((game, i) => (
-                  <motion.img
+                  <m.img
                     key={game.id}
                     src={game.icon}
                     alt={`${game.title} icon`}
@@ -81,10 +81,10 @@ const HeroSectionNiceUI = () => {
                 <span className="font-bold">{HERO_GAMES.length} unique games</span> crafted with
                 love
               </p>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             className="relative"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -92,7 +92,7 @@ const HeroSectionNiceUI = () => {
           >
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
               {HERO_GAMES.map((game, i) => (
-                <motion.figure
+                <m.figure
                   key={game.id}
                   className={`hand-drawn-card jiggle relative overflow-hidden bg-white ${ROTATIONS[i % ROTATIONS.length]}`}
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -113,10 +113,10 @@ const HeroSectionNiceUI = () => {
                     decoding="async"
                     className="aspect-square w-full object-cover"
                   />
-                </motion.figure>
+                </m.figure>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

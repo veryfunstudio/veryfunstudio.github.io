@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_ITEMS, BRAND } from "../../lib/constants";
 
@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <header className="border-b-2 border-border py-6">
       <div className="mx-auto flex max-w-[80rem] items-center justify-between px-4">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -21,13 +21,13 @@ const Header = () => {
           <Link to="/" className="font-kalam text-3xl font-bold text-foreground no-underline">
             {BRAND.name}
           </Link>
-        </motion.div>
+        </m.div>
 
         <nav className="hidden gap-8 md:flex" aria-label="Main navigation">
           {NAV_ITEMS.map((item) => {
             const isActive = isItemActive(item.path);
             return (
-              <motion.div
+              <m.div
                 key={item.path}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ const Header = () => {
                 >
                   {item.label}
                 </Link>
-              </motion.div>
+              </m.div>
             );
           })}
         </nav>
@@ -60,7 +60,7 @@ const Header = () => {
 
       <AnimatePresence initial={false}>
         {mobileOpen && (
-          <motion.nav
+          <m.nav
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -86,7 +86,7 @@ const Header = () => {
                 );
               })}
             </div>
-          </motion.nav>
+          </m.nav>
         )}
       </AnimatePresence>
     </header>

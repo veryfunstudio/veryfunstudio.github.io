@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Seo } from "../components/seo/Seo";
 
 const TECH_STACK = [
@@ -46,7 +46,7 @@ const About = () => {
       />
       <section className="py-20">
         <div className="mx-auto max-w-[80rem] px-4 text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -55,14 +55,14 @@ const About = () => {
             <p className="mx-auto max-w-3xl font-patrick text-xl text-foreground">
               A passionate indie game development studio
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-4">
           <div className="grid items-center gap-12 md:grid-cols-2">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -80,8 +80,8 @@ const About = () => {
                 className="h-auto w-full rounded-wobbly-md border-2 border-border outline outline-1 outline-black/10"
               />
               <div className="tack" />
-            </motion.div>
-            <motion.div
+            </m.div>
+            <m.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -104,14 +104,14 @@ const About = () => {
                 Now, we focus on developing games that bring joy to people, hoping to create a
                 happier world through our games.
               </p>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
 
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-4">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -122,11 +122,11 @@ const About = () => {
             <p className="font-patrick text-lg text-foreground">
               The main technologies and tools we use
             </p>
-          </motion.div>
+          </m.div>
 
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
             {TECH_STACK.map((tech, index) => (
-              <motion.div
+              <m.div
                 key={tech.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -138,7 +138,7 @@ const About = () => {
                 <div className="tack" />
                 <div className="mb-2 text-4xl">{tech.icon}</div>
                 <h3 className="font-patrick text-base text-foreground">{tech.name}</h3>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -146,7 +146,7 @@ const About = () => {
 
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-4">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -157,11 +157,11 @@ const About = () => {
             <p className="font-patrick text-lg text-foreground">
               Our understanding and beliefs about game development
             </p>
-          </motion.div>
+          </m.div>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {VALUES.map((value, index) => (
-              <motion.div
+              <m.div
                 key={value.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -173,7 +173,7 @@ const About = () => {
                 <div className="tape" />
                 <h3 className="mb-4 font-kalam text-xl font-bold text-foreground">{value.title}</h3>
                 <p className="font-patrick leading-normal text-foreground">{value.description}</p>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>

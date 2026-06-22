@@ -1,4 +1,4 @@
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
 import { BookText, Check, Circle, Grid3x3, LayoutGrid, MoveRight, Palette } from "lucide-react";
 import { PROJECTS, type Project } from "../../../data/projects";
 import { Link } from "react-router-dom";
@@ -27,14 +27,14 @@ const FeaturesSection = () => {
   return (
     <section className="py-16 lg:py-24">
       <div className="mx-auto max-w-[80rem] px-6">
-        <motion.div
+        <m.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="space-y-16 lg:space-y-24"
         >
-          <motion.div variants={itemVariants} className="text-center">
+          <m.div variants={itemVariants} className="text-center">
             <span className="hand-drawn-card inline-block px-4 py-1 font-kalam text-sm font-bold text-foreground">
               Our Games
             </span>
@@ -45,14 +45,14 @@ const FeaturesSection = () => {
               From platformers to space exploration, our games are crafted with passion and
               imagination. Discover worlds waiting to be explored.
             </p>
-          </motion.div>
+          </m.div>
 
           {PROJECTS.map((project: Project, index: number) => {
             const Icon = GAME_ICONS[index % GAME_ICONS.length];
             const isReversed = index % 2 === 1;
 
             return (
-              <motion.div
+              <m.div
                 key={project.id}
                 variants={itemVariants}
                 className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16"
@@ -77,14 +77,14 @@ const FeaturesSection = () => {
                       ))}
                     </ul>
                   </div>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Link
                       to={`/projects/${project.slug}`}
                       className="hand-drawn-button inline-block bg-white px-6 py-2 font-patrick text-base text-foreground no-underline"
                     >
                       Explore {project.title}
                     </Link>
-                  </motion.div>
+                  </m.div>
                 </div>
 
                 <div className={isReversed ? "lg:order-first" : ""}>
@@ -105,10 +105,10 @@ const FeaturesSection = () => {
                     />
                   </figure>
                 </div>
-              </motion.div>
+              </m.div>
             );
           })}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

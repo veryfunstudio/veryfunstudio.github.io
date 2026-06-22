@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { getProjectBySlug } from "../data/projects";
 import { ExternalLink, ArrowLeft } from "lucide-react";
 import { Seo } from "../components/seo/Seo";
@@ -14,7 +14,7 @@ const ProjectDetail = () => {
     return (
       <section className="py-20">
         <div className="mx-auto max-w-[80rem] px-4 text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
@@ -30,7 +30,7 @@ const ProjectDetail = () => {
             >
               ← Back to Projects
             </Link>
-          </motion.div>
+          </m.div>
         </div>
       </section>
     );
@@ -82,7 +82,7 @@ const ProjectDetail = () => {
       />
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-4">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -97,9 +97,9 @@ const ProjectDetail = () => {
               decoding="async"
               className="mb-8 h-auto w-full rounded-wobbly-md border-2 border-border outline outline-1 outline-black/10 sm:h-[28rem] sm:object-cover"
             />
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -124,9 +124,9 @@ const ProjectDetail = () => {
                 Released {project.releaseDate}
               </time>
             </div>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -135,9 +135,9 @@ const ProjectDetail = () => {
             <p className="font-patrick text-xl leading-relaxed text-foreground">
               {project.fullDescription}
             </p>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
@@ -175,9 +175,9 @@ const ProjectDetail = () => {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -200,7 +200,7 @@ const ProjectDetail = () => {
               <ArrowLeft size={18} />
               Back to Projects
             </Link>
-          </motion.div>
+          </m.div>
         </div>
       </section>
     </article>

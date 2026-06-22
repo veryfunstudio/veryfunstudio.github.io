@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Link } from "react-router-dom";
 import { formatDate } from "../lib/utils";
 import { BLOG_POSTS } from "../data/blog";
@@ -14,7 +14,7 @@ const Blog = () => {
       />
       <section className="py-20">
         <div className="mx-auto max-w-[80rem] px-4 text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -23,7 +23,7 @@ const Blog = () => {
             <p className="mx-auto max-w-3xl font-patrick text-xl text-foreground">
               Sharing experiences, tips, and insights from game development
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
