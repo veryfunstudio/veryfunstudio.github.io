@@ -39,11 +39,12 @@ const FeaturesSection = () => {
               Our Games
             </span>
             <h2 className="mt-6 font-kalam text-4xl font-bold text-foreground lg:text-5xl">
-              Adventures Await You
+              Puzzles for Every Mood
             </h2>
             <p className="mx-auto mt-4 max-w-3xl font-patrick text-xl leading-relaxed text-foreground">
-              From platformers to space exploration, our games are crafted with passion and
-              imagination. Discover worlds waiting to be explored.
+              From quick logic grids to dreamy 3D tile-matching, our free mobile puzzle games are
+              crafted to respect your time. No paywalls, no timers — just a calm challenge whenever
+              you want one.
             </p>
           </m.div>
 

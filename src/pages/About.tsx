@@ -1,16 +1,17 @@
 import { useMemo } from "react";
+import { Link } from "react-router-dom";
 import { m } from "framer-motion";
 import { Seo } from "../components/seo/Seo";
 
 const TECH_STACK = [
   { name: "Unity", icon: "🎮", rotation: -0.5 },
-  { name: "Unreal Engine", icon: "⚡", rotation: 0.7 },
-  { name: "C#", icon: "💻", rotation: -0.3 },
-  { name: "C++", icon: "🔧", rotation: 0.9 },
-  { name: "JavaScript", icon: "🌐", rotation: -0.8 },
-  { name: "TypeScript", icon: "✅", rotation: 0.4 },
-  { name: "React", icon: "⚛️", rotation: -0.6 },
-  { name: "Tailwind CSS", icon: "🎨", rotation: 0.2 },
+  { name: "C#", icon: "💻", rotation: 0.7 },
+  { name: "Android SDK", icon: "📱", rotation: -0.3 },
+  { name: "JavaScript", icon: "🌐", rotation: 0.9 },
+  { name: "TypeScript", icon: "✅", rotation: -0.8 },
+  { name: "React", icon: "⚛️", rotation: 0.4 },
+  { name: "Tailwind CSS", icon: "🎨", rotation: -0.6 },
+  { name: "Vite", icon: "⚡", rotation: 0.2 },
 ] as const;
 
 const VALUES = [
@@ -53,7 +54,7 @@ const About = () => {
           >
             <h1 className="mb-6 font-kalam text-4xl font-bold text-foreground">About Us</h1>
             <p className="mx-auto max-w-3xl font-patrick text-xl text-foreground">
-              A passionate indie game development studio
+              An indie studio crafting calming mobile puzzle games for Google Play
             </p>
           </m.div>
         </div>
@@ -91,18 +92,23 @@ const About = () => {
               <div className="tape" />
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Our Story</h2>
               <p className="mb-4 font-patrick text-lg leading-relaxed text-foreground">
-                Since childhood, we have been deeply passionate about games—whether playing them or
-                studying the technology behind them. During college, we began learning programming
-                and game development, embarking on our journey in this field.
+                VeryFun Company started as a shared dream between friends who grew up playing games
+                and stayed up too late figuring out how they worked. We turned that obsession into
+                years of professional game development, then took the leap to build something of our
+                own.
               </p>
               <p className="mb-4 font-patrick text-lg leading-relaxed text-foreground">
-                After graduation, we worked at a game company for several years, gaining valuable
-                experience. But we always dreamed of creating our own games, so we decided to become
-                an independent game studio.
+                Today we ship calming, free-to-play mobile puzzle games on Google Play — titles like
+                Classic Sudoku 2026, Tile Journey, Pearl Coloring, and the rest of our lineup. Every
+                game is built on Unity and designed around one principle: respect the player's time.
+                No paywalls blocking progress, no timers pressuring you, just puzzles that feel good
+                to solve.
               </p>
               <p className="font-patrick text-lg leading-relaxed text-foreground">
-                Now, we focus on developing games that bring joy to people, hoping to create a
-                happier world through our games.
+                We focus on the casual puzzle space because that is where we can do our best work —
+                small, polished experiences that fit into a coffee break or a long evening, equally
+                at home on a commute or beside the couch. Six games in, and we are just getting
+                started.
               </p>
             </m.div>
           </div>
@@ -176,6 +182,31 @@ const About = () => {
               </m.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="mx-auto max-w-[80rem] px-4 text-center">
+          <m.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="mb-4 font-kalam text-3xl font-bold text-foreground">Ready to play?</h2>
+            <p className="mx-auto mb-8 max-w-2xl font-patrick text-lg text-foreground">
+              All six of our games are free on Google Play. Pick one and see what we mean by
+              "respect the player's time."
+            </p>
+            <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                to="/projects"
+                className="hand-drawn-button inline-block bg-white px-8 py-3 font-patrick text-lg text-foreground no-underline"
+              >
+                Explore Our Games
+              </Link>
+            </m.div>
+          </m.div>
         </div>
       </section>
     </div>
