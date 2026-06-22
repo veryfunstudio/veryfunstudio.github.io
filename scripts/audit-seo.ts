@@ -35,13 +35,6 @@ function readHtml(rel: string): string {
   return readFileSync(p, "utf8");
 }
 
-function extractAll(html: string, pattern: RegExp): string[] {
-  const out: string[] = [];
-  let m;
-  while ((m = pattern.exec(html))) out.push(m[1]);
-  return out;
-}
-
 console.log("\n=== A2: route count ===");
 const allHtml: string[] = [];
 function walk(dir: string) {
