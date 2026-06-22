@@ -64,6 +64,10 @@ const HeroSection = ({
                 <img
                   src={image.src}
                   alt={image.alt}
+                  width={1024}
+                  height={768}
+                  loading="lazy"
+                  decoding="async"
                   className="aspect-[4/3] w-full object-cover outline outline-1 outline-black/10"
                 />
                 <figcaption className="px-3 py-2 text-left font-patrick text-base leading-tight text-foreground">

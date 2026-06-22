@@ -103,6 +103,11 @@ const BlogPost = () => {
             <img
               src={post.image}
               alt={`Featured image for: ${post.title}`}
+              width={1024}
+              height={768}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="mb-12 h-auto w-full rounded-wobbly-md border-2 border-border outline outline-1 outline-black/10 sm:h-[28rem] sm:object-cover"
             />
           </motion.div>

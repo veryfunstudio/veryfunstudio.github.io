@@ -65,6 +65,10 @@ const HeroSectionNiceUI = () => {
                     key={game.id}
                     src={game.icon}
                     alt={`${game.title} icon`}
+                    width={40}
+                    height={40}
+                    loading="eager"
+                    decoding="async"
                     className="h-10 w-10 rounded-full border-2 border-background bg-white object-cover shadow-hand-drawn-light"
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
@@ -102,7 +106,11 @@ const HeroSectionNiceUI = () => {
                   )}
                   <img
                     src={game.icon}
-                    alt={game.title}
+                    alt={`${game.title} icon`}
+                    width={512}
+                    height={512}
+                    loading={i < 2 ? "eager" : "lazy"}
+                    decoding="async"
                     className="aspect-square w-full object-cover"
                   />
                 </motion.figure>

@@ -39,6 +39,10 @@ const Projects = () => {
                 <img
                   src={project.image}
                   alt={`Screenshot of ${project.title}`}
+                  width={1200}
+                  height={630}
+                  loading="lazy"
+                  decoding="async"
                   className="h-64 w-full object-cover outline outline-1 outline-black/10"
                 />
                 <div className="p-8">

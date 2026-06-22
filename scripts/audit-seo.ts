@@ -272,5 +272,89 @@ for (const slug of SLUGS) {
 if (a10Fail === 0) ok("A10", `${a10Pass}/6 game pages have FAQPage with >=3 entries`);
 else bad("A10", `${a10Fail}/6 game pages missing or insufficient FAQ`);
 
+// --- A14: every <img> has width + height + alt ---
+
+console.log("\n=== A14: image width/height/alt on all pages ===");
+let imgPass = 0;
+let imgFail = 0;
+for (const p of pages) {
+  const imgRe = /<img\s+[^>]*>/g;
+  let im: RegExpExecArray | null;
+  while ((im = imgRe.exec(p.html))) {
+    const tag = im[0];
+    const hasW = /\swidth=/.test(tag);
+    const hasH = /\sheight=/.test(tag);
+    const hasAlt = /\salt=/.test(tag);
+    if (hasW && hasH && hasAlt) {
+      imgPass++;
+    } else {
+      imgFail++;
+      const missing = [!hasW && "width", !hasH && "height", !hasAlt && "alt"]
+        .filter(Boolean)
+        .join(", ");
+      console.error(`  \u2717 ${p.name}: <img> missing ${missing}`);
+    }
+  }
+}
+if (imgFail === 0) ok("A14", `${imgPass} <img> tags all have width+height+alt`);
+else bad("A14", `${imgFail} <img> tags missing attributes (of ${imgPass + imgFail} total)`);
+
+// --- A15: JSON-LD structural validation ---
+
+console.log("\n=== A15: JSON-LD structural validation ===");
+let schemaFail = 0;
+
+// Organization on home: must have name, url, sameAs array
+if (org) {
+  const o = org as Record<string, unknown>;
+  if (!o.name || !o.url || !Array.isArray(o.sameAs)) {
+    schemaFail++;
+    bad("A15-org", "Organization missing name/url/sameAs");
+  }
+}
+
+// SoftwareApplication: must have name, operatingSystem, applicationCategory
+for (const slug of SLUGS) {
+  const ld = extractJsonLd(readHtml(`projects/${slug}.html`));
+  const app = ld.find((o) => (o as { "@type"?: string })["@type"] === "SoftwareApplication") as
+    | Record<string, unknown>
+    | undefined;
+  if (!app || !app.name || !app.operatingSystem || !app.applicationCategory) {
+    schemaFail++;
+    bad(`A15-app/${slug}`, "SoftwareApplication missing required fields");
+  }
+}
+
+// BlogPosting: must have headline, datePublished, author
+for (const id of BLOG_IDS) {
+  const ld = extractJsonLd(readHtml(`blog/${id}.html`));
+  const post = ld.find((o) => (o as { "@type"?: string })["@type"] === "BlogPosting") as
+    | Record<string, unknown>
+    | undefined;
+  if (!post || !post.headline || !post.datePublished || !post.author) {
+    schemaFail++;
+    bad(`A15-post/${id}`, "BlogPosting missing required fields");
+  }
+}
+
+// FAQPage: each mainEntity must have name + acceptedAnswer.text
+for (const slug of SLUGS) {
+  const ld = extractJsonLd(readHtml(`projects/${slug}.html`));
+  const faq = ld.find((o) => (o as { "@type"?: string })["@type"] === "FAQPage") as
+    | Record<string, unknown>
+    | undefined;
+  const me = (faq?.mainEntity ?? []) as Array<Record<string, unknown>>;
+  const broken = me.filter(
+    (q) => !q.name || !(q.acceptedAnswer as Record<string, unknown> | undefined)?.text,
+  );
+  if (broken.length > 0) {
+    schemaFail++;
+    bad(`A15-faq/${slug}`, `${broken.length} FAQ entries missing name or acceptedAnswer.text`);
+  }
+}
+
+if (schemaFail === 0) ok("A15", "all JSON-LD schemas structurally valid");
+else bad("A15", `${schemaFail} schema validation failures`);
+
 console.log(`\n=== RESULT: ${pass} passed, ${fail} failed ===`);
 process.exit(fail > 0 ? 1 : 0);
