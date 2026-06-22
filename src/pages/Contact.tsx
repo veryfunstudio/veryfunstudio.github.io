@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { m } from "framer-motion";
-import { FaGithub, FaDiscord, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaEnvelope } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { MailCheck } from "lucide-react";
 import { Seo } from "../components/seo/Seo";
@@ -9,26 +9,20 @@ const CONTACT_INFO = [
   {
     icon: <FaEnvelope size={24} />,
     title: "Email",
-    value: "hello@veryfuncompany.com",
-    link: "mailto:hello@veryfuncompany.com",
+    value: "chuangcius@gmail.com",
+    link: "mailto:chuangcius@gmail.com",
   },
   {
     icon: <FaGithub size={24} />,
     title: "GitHub",
-    value: "github.com/veryfuncompany",
-    link: "https://github.com/veryfuncompany",
+    value: "github.com/cookabc",
+    link: "https://github.com/cookabc",
   },
   {
     icon: <FaXTwitter size={24} />,
     title: "X",
-    value: "@veryfuncompany",
-    link: "https://x.com/veryfuncompany",
-  },
-  {
-    icon: <FaDiscord size={24} />,
-    title: "Discord",
-    value: "veryfuncompany#1234",
-    link: "https://discord.gg/veryfuncompany",
+    value: "@chuangcius",
+    link: "https://x.com/chuangcius",
   },
 ] as const;
 
@@ -46,7 +40,7 @@ const Contact = () => {
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`,
     );
-    window.location.href = `mailto:hello@veryfuncompany.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:chuangcius@gmail.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 
@@ -142,7 +136,7 @@ const Contact = () => {
                     Email Draft Requested
                   </p>
                   <p className="mt-2 font-patrick text-foreground">
-                    If your email app did not open, write to hello@veryfuncompany.com directly.
+                    If your email app did not open, write to chuangcius@gmail.com directly.
                   </p>
                 </m.div>
               ) : (
