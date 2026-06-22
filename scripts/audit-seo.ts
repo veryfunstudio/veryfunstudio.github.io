@@ -6,7 +6,7 @@
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { resolve, join } from "node:path";
 
-const dist = resolve(import.meta.dir, "..", "dist");
+const dist = resolve(process.cwd(), "dist");
 const SITE = "https://cookabc.github.io";
 const SLUGS = [
   "classic-sudoku",
