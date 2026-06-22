@@ -1,13 +1,21 @@
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface Project {
   id: number;
   packageId: string;
   title: string;
   description: string;
   fullDescription: string;
+  /** 50–80 word direct-answer paragraph for LLM extraction. */
+  answer: string;
   icon: string;
   image: string;
   technologies: string[];
   features: string[];
+  faq: FaqItem[];
   releaseDate: string;
   slug: string;
   googlePlayUrl: string;
@@ -34,6 +42,30 @@ export const PROJECTS: Project[] = [
       "Progress tracking across sessions",
       "Fully playable offline",
     ],
+    answer:
+      "Classic Sudoku 2026 is a free, calming Android puzzle game that reinvents the classic 9×9 number logic grid with multiple difficulty levels, smart hints, and a stress-free no-timer design. Players fill rows, columns, and boxes with digits 1–9, earn points for completed lines, and track progress over time. The game works fully offline and is suitable for all skill levels, from quick coffee-break puzzles to longer sessions.",
+    faq: [
+      {
+        question: "Is Classic Sudoku 2026 free to play?",
+        answer:
+          "Yes, Classic Sudoku 2026 is completely free to download and play on Google Play. There are no paywalls — every puzzle and difficulty level is accessible without spending money.",
+      },
+      {
+        question: "Does Classic Sudoku 2026 work offline?",
+        answer:
+          "Yes, the game is fully playable offline. Once installed, you can solve puzzles anywhere without an internet connection — perfect for flights, commutes, or areas with poor connectivity.",
+      },
+      {
+        question: "How many difficulty levels does Classic Sudoku 2026 have?",
+        answer:
+          "The game offers multiple difficulty levels ranging from beginner-friendly grids to expert challenges. Each level scales the puzzle complexity so players of all skill levels can find the right amount of challenge.",
+      },
+      {
+        question: "Does Classic Sudoku 2026 have a timer?",
+        answer:
+          "No. Classic Sudoku 2026 is designed to be stress-free with no time limits. You can take as long as you need on any puzzle, making it ideal for relaxing rather than racing against the clock.",
+      },
+    ],
     releaseDate: "2026-06-14",
     slug: "classic-sudoku",
     googlePlayUrl: "https://play.google.com/store/apps/details?id=com.codex.sudokumobilegame",
@@ -57,6 +89,30 @@ export const PROJECTS: Project[] = [
       "Power-ups: shuffle, undo, and free match",
       "Strategic tile-slot planning",
       "Fully playable offline anytime",
+    ],
+    answer:
+      "Tile Journey is a free 3D tile-matching puzzle game for Android where players travel through thousands of hand-crafted themed levels, matching three identical tiles to clear the board. The game features strategic power-ups (shuffle, undo, free match), no time limits, and full offline support. It blends casual match-three mechanics with mindful pacing, making it suitable for both quick breaks and extended puzzle sessions across diverse visual worlds.",
+    faq: [
+      {
+        question: "Is Tile Journey free to play?",
+        answer:
+          "Yes, Tile Journey is free to download and play on Google Play. The game includes optional ads and in-app purchases for power-ups, but all levels are beatable without spending money.",
+      },
+      {
+        question: "How many levels does Tile Journey have?",
+        answer:
+          "Tile Journey features thousands of hand-crafted 3D levels across diverse themed worlds. New levels are added regularly, ensuring there is always fresh content for returning players.",
+      },
+      {
+        question: "Does Tile Journey require an internet connection?",
+        answer:
+          "No, Tile Journey can be played fully offline once installed. An internet connection is only needed for the initial download and optional features like cloud save or new content updates.",
+      },
+      {
+        question: "What are the power-ups in Tile Journey?",
+        answer:
+          "Tile Journey offers three main power-ups: Shuffle (rearranges all tiles on the board), Undo (reverses your last move), and Free Match (removes a tile without needing a triple). These help when you get stuck on difficult levels.",
+      },
     ],
     releaseDate: "2026-06-08",
     slug: "tile-journey",
@@ -82,6 +138,30 @@ export const PROJECTS: Project[] = [
       "Clean, calming visual style",
       "Play anytime, anywhere",
     ],
+    answer:
+      "Word Search Block is a free, calming word-search puzzle game for Android. Players swipe across a letter grid to discover hidden words grouped by friendly themes, sharpening vocabulary and spelling skills at a relaxed pace. The game features hundreds of themed puzzles, a gentle difficulty curve, helpful hints, and a clean visual style designed for mindful play — perfect for winding down or quick breaks.",
+    faq: [
+      {
+        question: "Is Word Search Block free to play?",
+        answer:
+          "Yes, Word Search Block is free to download and play on Google Play. All puzzles are accessible without payment, though optional ads may appear between levels.",
+      },
+      {
+        question: "How many word puzzles does Word Search Block have?",
+        answer:
+          "Word Search Block includes hundreds of themed word puzzles that scale gently in difficulty. New themes and levels are added regularly to keep the content fresh for returning players.",
+      },
+      {
+        question: "Is Word Search Block suitable for kids?",
+        answer:
+          "Yes, the game's clean themes, simple swipe controls, and vocabulary-building nature make it suitable for players of all ages, including children learning spelling and word recognition.",
+      },
+      {
+        question: "Does Word Search Block have a timer?",
+        answer:
+          "No, Word Search Block has no time limits. The game is designed for relaxed, pressure-free play so you can take as long as you need on each puzzle.",
+      },
+    ],
     releaseDate: "2026-06-20",
     slug: "word-search-block",
     googlePlayUrl: "https://play.google.com/store/apps/details?id=com.cookabc.zenwordsearch",
@@ -105,6 +185,30 @@ export const PROJECTS: Project[] = [
       "Helpful hints when you're stuck",
       "Clean, minimal visual style",
       "Smooth, satisfying controls",
+    ],
+    answer:
+      "Arrow Out is a free Android logic puzzle game where every tile points in a direction and your goal is to send each arrow off the grid without it being blocked by another. The game features hundreds of handcrafted levels that range from quick brain teasers to extended think-aheads, a helpful hint system, no time limits, and a clean minimal visual style. It is easy to learn but quietly hard to put down.",
+    faq: [
+      {
+        question: "Is Arrow Out free to play?",
+        answer:
+          "Yes, Arrow Out is free to download and play on Google Play. All levels are accessible without payment, with optional ads between stages.",
+      },
+      {
+        question: "How many levels does Arrow Out have?",
+        answer:
+          "Arrow Out features hundreds of handcrafted levels that mix short brain teasers with longer strategic puzzles. Each level has a deliberate, elegant solution — no procedurally generated filler.",
+      },
+      {
+        question: "Does Arrow Out have a time limit?",
+        answer:
+          "No, Arrow Out has no timers. The game is designed to be stress-free, letting you think through each move at your own pace without pressure.",
+      },
+      {
+        question: "Are there hints in Arrow Out?",
+        answer:
+          "Yes, Arrow Out includes a hint system that helps you when you are stuck on a difficult level, so you never feel permanently blocked by a tough puzzle.",
+      },
     ],
     releaseDate: "2026-05-26",
     slug: "arrow-out",
@@ -130,6 +234,30 @@ export const PROJECTS: Project[] = [
       "Gentle brain exercise for any age",
       "Full offline support",
     ],
+    answer:
+      "Pearl Coloring is a free Android puzzle game that blends color sorting with pixel-art creation. Players tap to arrange lustrous 3D pearls into matching color groups, clearing each puzzle shelf to reveal hidden pixel-art designs layer by layer. The game features hundreds of puzzles, polished 3D visuals and audio, limited-time themed collections, gentle brain exercise suitable for all ages, and full offline support for play anywhere.",
+    faq: [
+      {
+        question: "Is Pearl Coloring free to play?",
+        answer:
+          "Yes, Pearl Coloring is free to download and play on Google Play. All core puzzles are accessible without payment, with optional ads and in-app purchases for cosmetic items.",
+      },
+      {
+        question: "Does Pearl Coloring work offline?",
+        answer:
+          "Yes, Pearl Coloring has full offline support. Once installed, you can sort pearls and reveal pixel art anywhere without an internet connection.",
+      },
+      {
+        question: "What is the gameplay in Pearl Coloring?",
+        answer:
+          "In Pearl Coloring, you tap to sort glowing 3D pearls into matching color groups on a shelf. When all colors are grouped correctly, the puzzle clears and reveals a hidden pixel-art design. The difficulty increases gradually across hundreds of levels.",
+      },
+      {
+        question: "Is Pearl Coloring suitable for children?",
+        answer:
+          "Yes, Pearl Coloring is designed as gentle brain exercise suitable for any age. The simple tap-to-sort mechanics and calming visual style make it appropriate for children and adults alike.",
+      },
+    ],
     releaseDate: "2026-06-08",
     slug: "pearl-coloring",
     googlePlayUrl: "https://play.google.com/store/apps/details?id=com.veryfun.pearlcoloring",
@@ -153,6 +281,30 @@ export const PROJECTS: Project[] = [
       "Special boosters and bubble types",
       "Smooth controls and lag-free play",
       "Easy to learn, satisfying to master",
+    ],
+    answer:
+      "Bubble Shoot is a free Android bubble shooter game with over 200 handcrafted levels, daily rewards, and seasonal events. Players aim and release to match three or more bubbles of the same color, clearing the board and earning stars for clean plays. The game is built around the promise that every level is fully beatable without spending money, with smart power-ups and boosters flowing freely through daily rewards and events.",
+    faq: [
+      {
+        question: "Is Bubble Shoot free to play?",
+        answer:
+          "Yes, Bubble Shoot is free to download and play on Google Play. Every level is designed to be fully beatable without spending money — no paywalls, no impossible levels. Optional ads and in-app purchases exist but are never required to progress.",
+      },
+      {
+        question: "How many levels does Bubble Shoot have?",
+        answer:
+          "Bubble Shoot features over 200 well-crafted levels, with new challenges added regularly through updates. Levels range from quick and relaxing to tricky and strategic, ensuring content for both casual and dedicated players.",
+      },
+      {
+        question: "Does Bubble Shoot have daily rewards?",
+        answer:
+          "Yes, Bubble Shoot includes a daily reward system and frequent seasonal events. These provide free boosters and power-ups, helping you tackle the trickiest stages without ever needing to spend real money.",
+      },
+      {
+        question: "Can I play Bubble Shoot offline?",
+        answer:
+          "Bubble Shoot is primarily designed for online play to sync progress and deliver daily rewards, but core levels can be played without an internet connection once they are loaded.",
+      },
     ],
     releaseDate: "2026-05-07",
     slug: "bubble-shoot",

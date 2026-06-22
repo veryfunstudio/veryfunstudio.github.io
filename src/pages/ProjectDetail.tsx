@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { getProjectBySlug } from "../data/projects";
 import { ExternalLink, ArrowLeft } from "lucide-react";
 import { Seo } from "../components/seo/Seo";
+import { JsonLd } from "../components/seo/JsonLd";
+import { SITE_URL } from "../components/seo/Seo";
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -42,6 +44,41 @@ const ProjectDetail = () => {
         path={`/projects/${project.slug}`}
         image={project.image}
         type="article"
+      />
+      <JsonLd
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          name: project.title,
+          description: project.description,
+          url: `${SITE_URL}/projects/${project.slug}`,
+          image: `${SITE_URL}${project.image}`,
+          applicationCategory: "GameApplication",
+          operatingSystem: "Android",
+          softwareVersion: "1.0",
+          datePublished: project.releaseDate,
+          offers: {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "USD",
+          },
+          downloadUrl: project.googlePlayUrl,
+          featureList: project.features,
+        }}
+      />
+      <JsonLd
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: project.faq.map((f) => ({
+            "@type": "Question",
+            name: f.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: f.answer,
+            },
+          })),
+        }}
       />
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-4">

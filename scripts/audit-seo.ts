@@ -185,5 +185,92 @@ const llmsUrlCount = (llms.match(/https:\/\/cookabc\.github\.io/g) || []).length
 if (llmsUrlCount >= 13) ok("A13", `${llmsUrlCount} site URLs in llms.txt`);
 else bad("A13", `only ${llmsUrlCount} URLs`);
 
+// --- JSON-LD structured data (A7–A10) ---
+
+/** Extract all JSON-LD blocks from a page as parsed objects. */
+function extractJsonLd(html: string): object[] {
+  const out: object[] = [];
+  const re = /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(html))) {
+    try {
+      out.push(JSON.parse(m[1].trim()));
+    } catch {
+      // ignore malformed
+    }
+  }
+  return out;
+}
+
+console.log("\n=== A7: Organization JSON-LD on home ===");
+const homeLd = extractJsonLd(readHtml("index.html"));
+const org = homeLd.find((o) => (o as { "@type"?: string })["@type"] === "Organization");
+if (org) {
+  const sameAs = (org as { sameAs?: unknown }).sameAs;
+  const sameAsCount = Array.isArray(sameAs) ? sameAs.length : 0;
+  if (sameAsCount >= 6) ok("A7", `Organization with sameAs[${sameAsCount}] (need 6)`);
+  else bad("A7", `Organization present but sameAs has ${sameAsCount} entries (need 6)`);
+} else {
+  bad("A7", "home page missing Organization JSON-LD");
+}
+
+console.log("\n=== A8: SoftwareApplication on each game page ===");
+let a8Pass = 0;
+let a8Fail = 0;
+for (const slug of SLUGS) {
+  const ld = extractJsonLd(readHtml(`projects/${slug}.html`));
+  const app = ld.find((o) => (o as { "@type"?: string })["@type"] === "SoftwareApplication");
+  if (app) {
+    a8Pass++;
+    console.log(`  \u2713 projects/${slug}: SoftwareApplication present`);
+  } else {
+    a8Fail++;
+    console.error(`  \u2717 projects/${slug}: SoftwareApplication missing`);
+  }
+}
+if (a8Fail === 0) ok("A8", `${a8Pass}/6 game pages have SoftwareApplication`);
+else bad("A8", `${a8Fail}/6 game pages missing SoftwareApplication`);
+
+console.log("\n=== A9: BlogPosting on each blog page ===");
+let a9Pass = 0;
+let a9Fail = 0;
+for (const id of BLOG_IDS) {
+  const ld = extractJsonLd(readHtml(`blog/${id}.html`));
+  const post = ld.find((o) => (o as { "@type"?: string })["@type"] === "BlogPosting");
+  if (post) {
+    a9Pass++;
+    console.log(`  \u2713 blog/${id}: BlogPosting present`);
+  } else {
+    a9Fail++;
+    console.error(`  \u2717 blog/${id}: BlogPosting missing`);
+  }
+}
+if (a9Fail === 0) ok("A9", `${a9Pass}/4 blog pages have BlogPosting`);
+else bad("A9", `${a9Fail}/4 blog pages missing BlogPosting`);
+
+console.log("\n=== A10: FAQPage with >=3 entries on each game page ===");
+let a10Pass = 0;
+let a10Fail = 0;
+for (const slug of SLUGS) {
+  const ld = extractJsonLd(readHtml(`projects/${slug}.html`));
+  const faq = ld.find((o) => (o as { "@type"?: string })["@type"] === "FAQPage");
+  if (faq) {
+    const me = (faq as { mainEntity?: unknown[] }).mainEntity;
+    const count = Array.isArray(me) ? me.length : 0;
+    if (count >= 3) {
+      a10Pass++;
+      console.log(`  \u2713 projects/${slug}: FAQPage with ${count} entries`);
+    } else {
+      a10Fail++;
+      console.error(`  \u2717 projects/${slug}: FAQPage has only ${count} entries (need 3+)`);
+    }
+  } else {
+    a10Fail++;
+    console.error(`  \u2717 projects/${slug}: FAQPage missing`);
+  }
+}
+if (a10Fail === 0) ok("A10", `${a10Pass}/6 game pages have FAQPage with >=3 entries`);
+else bad("A10", `${a10Fail}/6 game pages missing or insufficient FAQ`);
+
 console.log(`\n=== RESULT: ${pass} passed, ${fail} failed ===`);
 process.exit(fail > 0 ? 1 : 0);
