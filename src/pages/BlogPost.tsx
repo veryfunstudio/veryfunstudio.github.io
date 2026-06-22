@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { getBlogPostById } from "../data/blog";
 import { formatDate } from "../lib/utils";
 import { Seo } from "../components/seo/Seo";
+import { JsonLd } from "../components/seo/JsonLd";
+import { SITE_URL } from "../components/seo/Seo";
 
 const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
@@ -42,6 +44,35 @@ const BlogPost = () => {
         path={`/blog/${post.id}`}
         type="article"
         publishedTime={post.date}
+      />
+      <JsonLd
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: post.title,
+          description: post.excerpt,
+          datePublished: post.date,
+          dateModified: post.date,
+          url: `${SITE_URL}/blog/${post.id}`,
+          author: {
+            "@type": "Organization",
+            name: "VeryFun Company",
+            url: SITE_URL,
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "VeryFun Company",
+            url: SITE_URL,
+            logo: {
+              "@type": "ImageObject",
+              url: `${SITE_URL}/images/about.jpeg`,
+            },
+          },
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `${SITE_URL}/blog/${post.id}`,
+          },
+        }}
       />
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-4">
