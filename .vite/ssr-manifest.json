@@ -62,18 +62,11 @@
   "node_modules/lucide-react/dist/esm/createLucideIcon.mjs": [],
   "node_modules/lucide-react/dist/esm/defaultAttributes.mjs": [],
   "node_modules/lucide-react/dist/esm/icons/arrow-left.mjs": [],
-  "node_modules/lucide-react/dist/esm/icons/book-text.mjs": [],
-  "node_modules/lucide-react/dist/esm/icons/check.mjs": [],
-  "node_modules/lucide-react/dist/esm/icons/circle.mjs": [],
+  "node_modules/lucide-react/dist/esm/icons/arrow-right.mjs": [],
+  "node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs": [],
   "node_modules/lucide-react/dist/esm/icons/external-link.mjs": [],
-  "node_modules/lucide-react/dist/esm/icons/gamepad-2.mjs": [],
-  "node_modules/lucide-react/dist/esm/icons/grid-3x3.mjs": [],
-  "node_modules/lucide-react/dist/esm/icons/layout-grid.mjs": [],
   "node_modules/lucide-react/dist/esm/icons/mail-check.mjs": [],
-  "node_modules/lucide-react/dist/esm/icons/mail.mjs": [],
   "node_modules/lucide-react/dist/esm/icons/menu.mjs": [],
-  "node_modules/lucide-react/dist/esm/icons/move-right.mjs": [],
-  "node_modules/lucide-react/dist/esm/icons/palette.mjs": [],
   "node_modules/lucide-react/dist/esm/icons/x.mjs": [],
   "node_modules/lucide-react/dist/esm/shared/src/utils/hasA11yProp.mjs": [],
   "node_modules/lucide-react/dist/esm/shared/src/utils/mergeClasses.mjs": [],
@@ -263,11 +256,11 @@
   "node_modules/prop-types/index.js": [],
   "node_modules/prop-types/lib/ReactPropTypesSecret.js": [],
   "node_modules/react-dom/cjs/react-dom-client.production.js": [
-    "/assets/client-CqdXE0yy.js"
+    "/assets/client-CpYTqYcu.js"
   ],
   "node_modules/react-dom/cjs/react-dom.production.js": [],
   "node_modules/react-dom/client.js": [
-    "/assets/client-CqdXE0yy.js"
+    "/assets/client-CpYTqYcu.js"
   ],
   "node_modules/react-dom/index.js": [],
   "node_modules/react-fast-compare/index.js": [],
@@ -283,10 +276,10 @@
   "node_modules/react/index.js": [],
   "node_modules/react/jsx-runtime.js": [],
   "node_modules/scheduler/cjs/scheduler.production.js": [
-    "/assets/client-CqdXE0yy.js"
+    "/assets/client-CpYTqYcu.js"
   ],
   "node_modules/scheduler/index.js": [
-    "/assets/client-CqdXE0yy.js"
+    "/assets/client-CpYTqYcu.js"
   ],
   "node_modules/shallowequal/index.js": [],
   "node_modules/vite-react-ssg/dist/index.mjs": [],

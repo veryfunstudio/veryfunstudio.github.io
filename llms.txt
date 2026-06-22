@@ -3,12 +3,12 @@
 > VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play.
 
 ## Games
-- [Classic Sudoku 2026](https://cookabc.github.io/projects/classic-sudoku): A clean, calming take on Sudoku with multiple difficulty levels, smart hints, and zero pressure — perfect for daily brain training on the go.
-- [Tile Journey](https://cookabc.github.io/projects/tile-journey): A relaxing 3D tile-matching adventure across hand-crafted themed worlds — match three, plan ahead, and unwind.
-- [Word Search Block](https://cookabc.github.io/projects/word-search-block): A serene word-search puzzle built around clear themes, helpful hints, and a soothing visual style — for relaxed vocabulary training.
-- [Arrow Out](https://cookabc.github.io/projects/arrow-out): A deceptively simple arrow-tile puzzle where every move matters — clear the grid, one direction at a time.
+- [Classic Sudoku 2026](https://cookabc.github.io/projects/classic-sudoku): A clean, calming take on Sudoku with multiple difficulty levels, smart hints, and zero pressure - perfect for daily brain training on the go.
+- [Tile Journey](https://cookabc.github.io/projects/tile-journey): A relaxing 3D tile-matching adventure across hand-crafted themed worlds - match three, plan ahead, and unwind.
+- [Word Search Block](https://cookabc.github.io/projects/word-search-block): A serene word-search puzzle built around clear themes, helpful hints, and a soothing visual style - for relaxed vocabulary training.
+- [Arrow Out](https://cookabc.github.io/projects/arrow-out): A deceptively simple arrow-tile puzzle where every move matters - clear the grid, one direction at a time.
 - [Pearl Coloring](https://cookabc.github.io/projects/pearl-coloring): Sort glowing pearls, reveal pixel-art masterpieces, and slip into a calm world of color, creativity, and gentle puzzles.
-- [Bubble Shoot](https://cookabc.github.io/projects/bubble-shoot): A bright, generous bubble shooter with 200+ levels, daily rewards, and zero paywalls — every stage is fully beatable for free.
+- [Bubble Shoot](https://cookabc.github.io/projects/bubble-shoot): A bright, generous bubble shooter with 200+ levels, daily rewards, and zero paywalls - every stage is fully beatable for free.
 
 ## Blog
 - [Challenges and Opportunities in Indie Game Development](https://cookabc.github.io/blog/1): As an indie game developer, we face many challenges but also have many opportunities.
