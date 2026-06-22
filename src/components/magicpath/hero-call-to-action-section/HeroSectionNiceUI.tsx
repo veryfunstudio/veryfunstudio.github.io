@@ -107,8 +107,8 @@ const HeroSectionNiceUI = () => {
                   <img
                     src={game.icon}
                     alt={`${game.title} icon`}
-                    width={512}
-                    height={512}
+                    width={256}
+                    height={256}
                     loading={i < 2 ? "eager" : "lazy"}
                     decoding="async"
                     className="aspect-square w-full object-cover"
