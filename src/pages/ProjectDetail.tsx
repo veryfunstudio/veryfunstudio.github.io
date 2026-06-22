@@ -90,6 +90,11 @@ const ProjectDetail = () => {
             <img
               src={project.image}
               alt={`Screenshot of ${project.title}`}
+              width={1200}
+              height={630}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="mb-8 h-auto w-full rounded-wobbly-md border-2 border-border outline outline-1 outline-black/10 sm:h-[28rem] sm:object-cover"
             />
           </motion.div>
@@ -105,6 +110,10 @@ const ProjectDetail = () => {
                 <img
                   src={project.icon}
                   alt={`${project.title} icon`}
+                  width={80}
+                  height={80}
+                  loading="eager"
+                  decoding="async"
                   className="h-16 w-16 flex-shrink-0 rounded-wobbly border-2 border-border bg-white object-cover shadow-hand-drawn-light sm:h-20 sm:w-20"
                 />
                 <h1 className="font-kalam text-4xl font-bold text-foreground sm:text-5xl">

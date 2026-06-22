@@ -97,6 +97,10 @@ const FeaturesSection = () => {
                     <img
                       src={project.image}
                       alt={`Screenshot of ${project.title}`}
+                      width={1200}
+                      height={630}
+                      loading="lazy"
+                      decoding="async"
                       className="aspect-video w-full object-cover"
                     />
                   </figure>

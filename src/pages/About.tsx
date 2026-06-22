@@ -72,6 +72,11 @@ const About = () => {
               <img
                 src="/images/about.jpeg"
                 alt="The VeryFun Company team working together on game development"
+                width={864}
+                height={864}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
                 className="h-auto w-full rounded-wobbly-md border-2 border-border outline outline-1 outline-black/10"
               />
               <div className="tack" />

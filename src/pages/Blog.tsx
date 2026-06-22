@@ -36,6 +36,10 @@ const Blog = () => {
                 <img
                   src={post.image}
                   alt={`Featured image for blog post: ${post.title}`}
+                  width={1024}
+                  height={768}
+                  loading="lazy"
+                  decoding="async"
                   className="h-48 w-full object-cover outline outline-1 outline-black/10"
                 />
                 <div className="p-6">
