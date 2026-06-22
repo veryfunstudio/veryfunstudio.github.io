@@ -48,7 +48,7 @@ const Contact = () => {
     <div>
       <Seo
         title="Contact Us"
-        description="Get in touch with VeryFun Company - email, X (Twitter), GitHub, or Discord. We'd love to hear from players and partners."
+        description="Get in touch with VeryFun Company - email, X (Twitter), or GitHub. We'd love to hear from players and partners."
         path="/contact"
         noindex
       />
