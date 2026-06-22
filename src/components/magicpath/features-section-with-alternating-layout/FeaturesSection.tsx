@@ -95,15 +95,17 @@ const FeaturesSection = () => {
                     }`}
                   >
                     <div className="tape" aria-hidden="true" />
-                    <img
-                      src={project.image}
-                      alt={`Screenshot of ${project.title}`}
-                      width={1200}
-                      height={630}
-                      loading="lazy"
-                      decoding="async"
-                      className="aspect-video w-full object-cover"
-                    />
+                    <div className="bg-gradient-to-br from-post-it to-muted p-4">
+                      <img
+                        src={project.image}
+                        alt={`${project.title} key art`}
+                        width={1200}
+                        height={630}
+                        loading="lazy"
+                        decoding="async"
+                        className="aspect-[1200/630] w-full object-contain"
+                      />
+                    </div>
                   </figure>
                 </div>
               </m.div>

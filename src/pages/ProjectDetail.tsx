@@ -87,16 +87,18 @@ const ProjectDetail = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <img
-              src={project.image}
-              alt={`Screenshot of ${project.title}`}
-              width={1200}
-              height={630}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              className="mb-8 h-auto w-full rounded-wobbly-md border-2 border-border outline outline-1 outline-black/10 sm:h-[28rem] sm:object-cover"
-            />
+            <div className="mb-8 overflow-hidden rounded-wobbly-md border-2 border-border bg-gradient-to-br from-post-it to-muted outline outline-1 outline-black/10">
+              <img
+                src={project.image}
+                alt={`${project.title} key art`}
+                width={1200}
+                height={630}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="mx-auto block aspect-[1200/630] w-full object-contain p-4 sm:p-8"
+              />
+            </div>
           </m.div>
 
           <m.div

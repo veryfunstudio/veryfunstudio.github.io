@@ -36,15 +36,17 @@ const Projects = () => {
                 className="hand-drawn-card overflow-hidden bg-white relative"
               >
                 <div className="tack" />
-                <img
-                  src={project.image}
-                  alt={`Screenshot of ${project.title}`}
-                  width={1200}
-                  height={630}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-64 w-full object-cover outline outline-1 outline-black/10"
-                />
+                <div className="bg-gradient-to-br from-post-it to-muted p-4">
+                  <img
+                    src={project.image}
+                    alt={`${project.title} key art`}
+                    width={1200}
+                    height={630}
+                    loading="lazy"
+                    decoding="async"
+                    className="aspect-[1200/630] w-full object-contain"
+                  />
+                </div>
                 <div className="p-8">
                   <div className="mb-4 flex items-center justify-between">
                     <h2 className="font-kalam text-2xl font-bold text-foreground">
