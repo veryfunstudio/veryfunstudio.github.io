@@ -58,7 +58,7 @@ const HeroSection = ({
               <figure
                 key={image.src}
                 className={`hand-drawn-card relative overflow-hidden bg-white ${
-                  index % 2 === 0 ? "-rotate-1" : "rotate-1"
+                  index % 2 === 0 ? "" : ""
                 }`}
               >
                 <img

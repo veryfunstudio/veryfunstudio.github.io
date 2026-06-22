@@ -39,7 +39,7 @@ const ProjectDetail = () => {
   return (
     <article>
       <Seo
-        title={`${project.title} — Free Mobile Puzzle Game`}
+        title={`${project.title} - Free Mobile Puzzle Game`}
         description={project.description}
         path={`/projects/${project.slug}`}
         image={project.image}
@@ -87,7 +87,7 @@ const ProjectDetail = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="mb-8 overflow-hidden rounded-wobbly-md border-2 border-border bg-gradient-to-br from-post-it to-muted outline outline-1 outline-black/10">
+            <div className="mb-8 overflow-hidden rounded-[4px] border-2 border-border bg-gradient-to-br from-[#f6f1e8] to-muted outline outline-1 outline-black/10">
               <img
                 src={project.image}
                 alt={`${project.title} key art`}
@@ -116,7 +116,7 @@ const ProjectDetail = () => {
                   height={80}
                   loading="eager"
                   decoding="async"
-                  className="h-16 w-16 flex-shrink-0 rounded-wobbly border-2 border-border bg-white object-cover shadow-hand-drawn-light sm:h-20 sm:w-20"
+                  className="h-16 w-16 flex-shrink-0 rounded-[4px] border-2 border-border bg-white object-cover  sm:h-20 sm:w-20"
                 />
                 <h1 className="font-kalam text-4xl font-bold text-foreground sm:text-5xl">
                   {project.title}
@@ -146,7 +146,6 @@ const ProjectDetail = () => {
             className="mb-12 grid gap-8 lg:grid-cols-2"
           >
             <div className="hand-drawn-card relative bg-white p-8">
-              <div className="tape" />
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Key Features</h2>
               <ul className="space-y-4">
                 {project.features.map((feature) => (
@@ -164,7 +163,6 @@ const ProjectDetail = () => {
             </div>
 
             <div className="hand-drawn-card relative bg-white p-8">
-              <div className="tack" />
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Tech Stack</h2>
               <div className="flex flex-wrap gap-3">
                 {project.technologies.map((tech) => (

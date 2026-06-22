@@ -29,7 +29,7 @@ const VALUES = [
   {
     title: "Joy",
     description:
-      "The core of games is bringing joy to players—this is the principle we always adhere to",
+      "The core of games is bringing joy to players-this is the principle we always adhere to",
     rotation: 0.3,
   },
 ] as const;
@@ -68,7 +68,7 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="jiggle relative -rotate-2"
+              className=" relative"
             >
               <img
                 src="/images/about.jpeg"
@@ -78,18 +78,16 @@ const About = () => {
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
-                className="h-auto w-full rounded-wobbly-md border-2 border-border outline outline-1 outline-black/10"
+                className="h-auto w-full rounded-[4px] border-2 border-border outline outline-1 outline-black/10"
               />
-              <div className="tack" />
             </m.div>
             <m.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="rotate-1 rounded-wobbly-md border-2 border-border bg-white p-8 relative"
+              className=" rounded-[4px] border-2 border-border bg-white p-8 relative"
             >
-              <div className="tape" />
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Our Story</h2>
               <p className="mb-4 font-patrick text-lg leading-relaxed text-foreground">
                 VeryFun Company started as a shared dream between friends who grew up playing games
@@ -98,14 +96,14 @@ const About = () => {
                 own.
               </p>
               <p className="mb-4 font-patrick text-lg leading-relaxed text-foreground">
-                Today we ship calming, free-to-play mobile puzzle games on Google Play — titles like
+                Today we ship calming, free-to-play mobile puzzle games on Google Play - titles like
                 Classic Sudoku 2026, Tile Journey, Pearl Coloring, and the rest of our lineup. Every
                 game is built on Unity and designed around one principle: respect the player's time.
                 No paywalls blocking progress, no timers pressuring you, just puzzles that feel good
                 to solve.
               </p>
               <p className="font-patrick text-lg leading-relaxed text-foreground">
-                We focus on the casual puzzle space because that is where we can do our best work —
+                We focus on the casual puzzle space because that is where we can do our best work -
                 small, polished experiences that fit into a coffee break or a long evening, equally
                 at home on a commute or beside the couch. Six games in, and we are just getting
                 started.
@@ -138,10 +136,9 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="hand-drawn-card jiggle relative bg-white p-6 text-center"
+                className="hand-drawn-card relative bg-white p-6 text-center"
                 style={{ transform: `rotate(${techRotations[index]}deg)` }}
               >
-                <div className="tack" />
                 <div className="mb-2 text-4xl">{tech.icon}</div>
                 <h3 className="font-patrick text-base text-foreground">{tech.name}</h3>
               </m.div>
@@ -173,10 +170,9 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="hand-drawn-card jiggle relative bg-white p-8"
+                className="hand-drawn-card relative bg-white p-8"
                 style={{ transform: `rotate(${valueRotations[index]}deg)` }}
               >
-                <div className="tape" />
                 <h3 className="mb-4 font-kalam text-xl font-bold text-foreground">{value.title}</h3>
                 <p className="font-patrick leading-normal text-foreground">{value.description}</p>
               </m.div>
@@ -194,18 +190,16 @@ const About = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="mb-4 font-kalam text-3xl font-bold text-foreground">Ready to play?</h2>
-            <p className="mx-auto mb-8 max-w-2xl font-patrick text-lg text-foreground">
+            <p className="mx-auto mb-8 max-w-2xl font-patrick text-lg text-muted">
               All six of our games are free on Google Play. Pick one and see what we mean by
               "respect the player's time."
             </p>
-            <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                to="/projects"
-                className="hand-drawn-button inline-block bg-white px-8 py-3 font-patrick text-lg text-foreground no-underline"
-              >
-                Explore Our Games
-              </Link>
-            </m.div>
+            <Link
+              to="/projects"
+              className="hand-drawn-button inline-block bg-foreground px-8 py-3 font-patrick text-lg text-background no-underline"
+            >
+              Explore our games
+            </Link>
           </m.div>
         </div>
       </section>

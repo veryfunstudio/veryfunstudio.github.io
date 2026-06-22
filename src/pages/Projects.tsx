@@ -8,7 +8,7 @@ const Projects = () => {
     <div>
       <Seo
         title="Our Mobile Games"
-        description="Browse all six free-to-play mobile puzzle games from VeryFun Company — Classic Sudoku 2026, Tile Journey, Word Search Block, Arrow Out, Pearl Coloring, and Bubble Shoot. Available on Google Play."
+        description="Browse all six free-to-play mobile puzzle games from VeryFun Company - Classic Sudoku 2026, Tile Journey, Word Search Block, Arrow Out, Pearl Coloring, and Bubble Shoot. Available on Google Play."
         path="/projects"
       />
       <section className="py-20">
@@ -20,7 +20,7 @@ const Projects = () => {
           >
             <h1 className="mb-6 font-kalam text-4xl font-bold text-foreground">Our Projects</h1>
             <p className="mx-auto max-w-3xl font-patrick text-xl text-foreground">
-              Here are the game projects we&apos;ve developed—each one represents our creativity and
+              Here are the game projects we&apos;ve developed-each one represents our creativity and
               dedication
             </p>
           </m.div>
@@ -35,8 +35,7 @@ const Projects = () => {
                 key={project.id}
                 className="hand-drawn-card overflow-hidden bg-white relative"
               >
-                <div className="tack" />
-                <div className="bg-gradient-to-br from-post-it to-muted p-4">
+                <div className="bg-gradient-to-br from-[#f6f1e8] to-muted p-4">
                   <img
                     src={project.image}
                     alt={`${project.title} key art`}

@@ -54,7 +54,7 @@ const Contact = () => {
     <div>
       <Seo
         title="Contact Us"
-        description="Get in touch with VeryFun Company — email, X (Twitter), GitHub, or Discord. We'd love to hear from players and partners."
+        description="Get in touch with VeryFun Company - email, X (Twitter), GitHub, or Discord. We'd love to hear from players and partners."
         path="/contact"
         noindex
       />
@@ -81,9 +81,8 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="-rotate-1 rounded-wobbly-md border-2 border-border bg-white p-8 relative"
+              className=" rounded-[4px] border-2 border-border bg-white p-8 relative"
             >
-              <div className="tape" />
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Contact Info</h2>
               <div className="flex flex-col gap-6">
                 {CONTACT_INFO.map((item, index) => (
@@ -96,7 +95,7 @@ const Contact = () => {
                     className="flex items-center gap-4"
                   >
                     <div
-                      className="flex h-12 w-12 items-center justify-center rounded-full bg-muted text-foreground jiggle"
+                      className="flex h-12 w-12 items-center justify-center rounded-full bg-muted text-foreground"
                       aria-hidden="true"
                     >
                       {item.icon}
@@ -124,9 +123,8 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="rotate-1 rounded-wobbly-md border-2 border-border bg-white p-8 relative"
+              className=" rounded-[4px] border-2 border-border bg-white p-8 relative"
             >
-              <div className="tack" />
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Send a Message</h2>
               {submitted ? (
                 <m.div
@@ -135,7 +133,7 @@ const Contact = () => {
                   className="py-12 text-center"
                 >
                   <div
-                    className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-wobbly border-2 border-border bg-post-it text-foreground"
+                    className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-[4px] border-2 border-border bg-[#f6f1e8] text-foreground"
                     aria-hidden="true"
                   >
                     <MailCheck size={34} strokeWidth={2.3} />
@@ -207,9 +205,7 @@ const Contact = () => {
                   </div>
                   <m.button
                     type="submit"
-                    className="hand-drawn-button w-full px-6 py-3 font-patrick text-base font-medium text-foreground"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.96 }}
+                    className="hand-drawn-button w-full bg-foreground px-6 py-3 font-patrick text-base font-medium text-background"
                   >
                     Send Message
                   </m.button>

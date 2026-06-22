@@ -1,117 +1,89 @@
-import { m, type Variants } from "framer-motion";
-import { BookText, Check, Circle, Grid3x3, LayoutGrid, MoveRight, Palette } from "lucide-react";
-import { PROJECTS, type Project } from "../../../data/projects";
+import { m } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { PROJECTS } from "../../../data/projects";
 import { Link } from "react-router-dom";
-import type { LucideIcon } from "lucide-react";
 
-const GAME_ICONS: LucideIcon[] = [Grid3x3, LayoutGrid, BookText, MoveRight, Palette, Circle];
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2, duration: 0.6 },
-  },
+const reveal = {
+  initial: { opacity: 0, y: 16 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.2 },
+  transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
 };
 
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" as const },
-  },
-};
+function GameBlock({
+  project,
+  reverse,
+}: {
+  project: (typeof PROJECTS)[number];
+  reverse?: boolean;
+}) {
+  return (
+    <m.div {...reveal} className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+      <div className={reverse ? "lg:order-last" : ""}>
+        <Link
+          to={`/projects/${project.slug}`}
+          className="hand-drawn-card group block overflow-hidden bg-white transition-shadow hover:shadow-[var(--shadow-soft-hover)]"
+        >
+          <div className="bg-[#f6f1e8] p-6 sm:p-10">
+            <img
+              src={project.image}
+              alt={`${project.title} key art`}
+              width={1200}
+              height={630}
+              loading="lazy"
+              decoding="async"
+              className="aspect-[1200/630] w-full object-contain"
+            />
+          </div>
+        </Link>
+      </div>
+      <div className={`space-y-5 ${reverse ? "lg:order-first" : ""}`}>
+        <div className="flex items-center gap-3">
+          <img
+            src={project.icon}
+            alt=""
+            width={48}
+            height={48}
+            loading="lazy"
+            decoding="async"
+            className="h-12 w-12 rounded-[4px] border border-black/10 bg-white object-cover"
+          />
+          <h3 className="font-kalam text-3xl font-bold tracking-tight text-foreground">
+            {project.title}
+          </h3>
+        </div>
+        <p className="max-w-[52ch] font-patrick text-lg leading-relaxed text-muted">
+          {project.description}
+        </p>
+        <Link
+          to={`/projects/${project.slug}`}
+          className="inline-flex items-center gap-1.5 font-patrick text-base text-accent underline decoration-accent/30 decoration-2 underline-offset-4 transition-colors hover:decoration-accent"
+        >
+          Read more about {project.title}
+          <ArrowUpRight size={16} />
+        </Link>
+      </div>
+    </m.div>
+  );
+}
 
 const FeaturesSection = () => {
   return (
-    <section className="py-16 lg:py-24">
-      <div className="mx-auto max-w-[80rem] px-6">
-        <m.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="space-y-16 lg:space-y-24"
-        >
-          <m.div variants={itemVariants} className="text-center">
-            <span className="hand-drawn-card inline-block px-4 py-1 font-kalam text-sm font-bold text-foreground">
-              Our Games
-            </span>
-            <h2 className="mt-6 font-kalam text-4xl font-bold text-foreground lg:text-5xl">
-              Puzzles for Every Mood
-            </h2>
-            <p className="mx-auto mt-4 max-w-3xl font-patrick text-xl leading-relaxed text-foreground">
-              From quick logic grids to dreamy 3D tile-matching, our free mobile puzzle games are
-              crafted to respect your time. No paywalls, no timers — just a calm challenge whenever
-              you want one.
-            </p>
-          </m.div>
+    <section className="mx-auto max-w-[80rem] px-6 py-24 lg:py-32">
+      <m.div {...reveal} className="mb-20 max-w-3xl">
+        <h2 className="font-kalam text-4xl font-bold tracking-tight text-foreground lg:text-5xl">
+          Six puzzles, one philosophy.
+        </h2>
+        <p className="mt-5 font-patrick text-xl leading-relaxed text-muted">
+          Every game we ship respects your time. No paywalls, no timers, no pressure. Just a calm
+          challenge for whatever mood you're in.
+        </p>
+      </m.div>
 
-          {PROJECTS.map((project: Project, index: number) => {
-            const Icon = GAME_ICONS[index % GAME_ICONS.length];
-            const isReversed = index % 2 === 1;
-
-            return (
-              <m.div
-                key={project.id}
-                variants={itemVariants}
-                className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16"
-              >
-                <div className={`space-y-6 ${isReversed ? "lg:order-last" : ""}`}>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-wobbly border-2 border-border bg-post-it">
-                    <Icon size={24} strokeWidth={2.4} className="text-foreground" />
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="font-kalam text-3xl font-bold text-foreground">
-                      {project.title}
-                    </h3>
-                    <p className="font-patrick text-lg leading-relaxed text-foreground">
-                      {project.description}
-                    </p>
-                    <ul className="space-y-3">
-                      {project.features.slice(0, 3).map((feature) => (
-                        <li key={feature} className="flex items-start gap-3">
-                          <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-secondary-accent" />
-                          <span className="font-patrick text-foreground">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Link
-                      to={`/projects/${project.slug}`}
-                      className="hand-drawn-button inline-block bg-white px-6 py-2 font-patrick text-base text-foreground no-underline"
-                    >
-                      Explore {project.title}
-                    </Link>
-                  </m.div>
-                </div>
-
-                <div className={isReversed ? "lg:order-first" : ""}>
-                  <figure
-                    className={`hand-drawn-card jiggle relative overflow-hidden bg-white ${
-                      project.rotation > 0 ? "rotate-1" : "-rotate-1"
-                    }`}
-                  >
-                    <div className="tape" aria-hidden="true" />
-                    <div className="bg-gradient-to-br from-post-it to-muted p-4">
-                      <img
-                        src={project.image}
-                        alt={`${project.title} key art`}
-                        width={1200}
-                        height={630}
-                        loading="lazy"
-                        decoding="async"
-                        className="aspect-[1200/630] w-full object-contain"
-                      />
-                    </div>
-                  </figure>
-                </div>
-              </m.div>
-            );
-          })}
-        </m.div>
+      <div className="space-y-24 lg:space-y-32">
+        {PROJECTS.map((project, i) => (
+          <GameBlock key={project.id} project={project} reverse={i % 2 === 1} />
+        ))}
       </div>
     </section>
   );

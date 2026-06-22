@@ -21,7 +21,7 @@ const Footer = () => {
               href={BRAND.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground jiggle"
+              className="text-foreground"
               aria-label="Visit our GitHub page"
             >
               <FaGithub size={24} />
@@ -30,7 +30,7 @@ const Footer = () => {
               href={BRAND.social.x}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground jiggle"
+              className="text-foreground"
               aria-label="Visit our X page"
             >
               <FaXTwitter size={24} />
@@ -39,7 +39,7 @@ const Footer = () => {
               href={BRAND.social.discord}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground jiggle"
+              className="text-foreground"
               aria-label="Join our Discord server"
             >
               <FaDiscord size={24} />

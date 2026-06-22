@@ -11,45 +11,35 @@ const Header = () => {
     path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
 
   return (
-    <header className="border-b-2 border-border py-6">
-      <div className="mx-auto flex max-w-[80rem] items-center justify-between px-4">
-        <m.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+    <header className="border-b border-black/10 py-5">
+      <div className="mx-auto flex max-w-[80rem] items-center justify-between px-6">
+        <Link
+          to="/"
+          className="font-kalam text-2xl font-bold tracking-tight text-foreground no-underline"
         >
-          <Link to="/" className="font-kalam text-3xl font-bold text-foreground no-underline">
-            {BRAND.name}
-          </Link>
-        </m.div>
+          {BRAND.name}
+        </Link>
 
         <nav className="hidden gap-8 md:flex" aria-label="Main navigation">
           {NAV_ITEMS.map((item) => {
             const isActive = isItemActive(item.path);
             return (
-              <m.div
+              <Link
                 key={item.path}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="jiggle"
+                to={item.path}
+                aria-current={isActive ? "page" : undefined}
+                className={`font-patrick text-base transition-colors ${
+                  isActive ? "text-accent" : "text-muted hover:text-foreground"
+                }`}
               >
-                <Link
-                  to={item.path}
-                  aria-current={isActive ? "page" : undefined}
-                  className={`font-patrick text-lg underline decoration-wavy decoration-accent decoration-2 ${
-                    isActive ? "text-accent font-bold" : "text-foreground"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              </m.div>
+                {item.label}
+              </Link>
             );
           })}
         </nav>
 
         <button
-          className="md:hidden text-foreground"
+          className="text-foreground md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
@@ -65,10 +55,10 @@ const Header = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="border-t-2 border-border md:hidden"
+            className="border-t border-black/10 md:hidden"
             aria-label="Mobile navigation"
           >
-            <div className="mx-auto max-w-[80rem] px-4 py-4 flex flex-col gap-4">
+            <div className="mx-auto flex max-w-[80rem] flex-col gap-4 px-6 py-4">
               {NAV_ITEMS.map((item) => {
                 const isActive = isItemActive(item.path);
                 return (
@@ -77,8 +67,8 @@ const Header = () => {
                     to={item.path}
                     onClick={() => setMobileOpen(false)}
                     aria-current={isActive ? "page" : undefined}
-                    className={`font-patrick text-lg ${
-                      isActive ? "text-accent font-bold" : "text-foreground"
+                    className={`font-patrick text-base ${
+                      isActive ? "text-accent" : "text-foreground"
                     }`}
                   >
                     {item.label}

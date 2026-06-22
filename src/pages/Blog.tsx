@@ -8,7 +8,7 @@ const Blog = () => {
   return (
     <div>
       <Seo
-        title="Blog — Game Dev Insights from VeryFun Company"
+        title="Blog - Game Dev Insights from VeryFun Company"
         description="Notes on mobile game design, Unity development, and indie studio life from the team behind Tile Journey, Arrow Out, and the rest of the VeryFun Company lineup."
         path="/blog"
       />
@@ -32,7 +32,6 @@ const Blog = () => {
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-2">
             {BLOG_POSTS.map((post) => (
               <article key={post.id} className="hand-drawn-card overflow-hidden bg-white relative">
-                <div className="tack" />
                 <img
                   src={post.image}
                   alt={`Featured image for blog post: ${post.title}`}
