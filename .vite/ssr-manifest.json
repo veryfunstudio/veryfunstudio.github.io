@@ -297,11 +297,11 @@
   "node_modules/prop-types/index.js": [],
   "node_modules/prop-types/lib/ReactPropTypesSecret.js": [],
   "node_modules/react-dom/cjs/react-dom-client.production.js": [
-    "/assets/client-_Xf60w0L.js"
+    "/assets/client-R6V4imkg.js"
   ],
   "node_modules/react-dom/cjs/react-dom.production.js": [],
   "node_modules/react-dom/client.js": [
-    "/assets/client-_Xf60w0L.js"
+    "/assets/client-R6V4imkg.js"
   ],
   "node_modules/react-dom/index.js": [],
   "node_modules/react-fast-compare/index.js": [],
@@ -317,10 +317,10 @@
   "node_modules/react/index.js": [],
   "node_modules/react/jsx-runtime.js": [],
   "node_modules/scheduler/cjs/scheduler.production.js": [
-    "/assets/client-_Xf60w0L.js"
+    "/assets/client-R6V4imkg.js"
   ],
   "node_modules/scheduler/index.js": [
-    "/assets/client-_Xf60w0L.js"
+    "/assets/client-R6V4imkg.js"
   ],
   "node_modules/shallowequal/index.js": [],
   "node_modules/vite-react-ssg/dist/index.mjs": [],
@@ -333,6 +333,7 @@
   "src/components/magicpath/cta-banner-multi-column-footer/CtaFooterSection.tsx": [],
   "src/components/magicpath/features-section-with-alternating-layout/FeaturesSection.tsx": [],
   "src/components/magicpath/hero-call-to-action-section/HeroSectionNiceUI.tsx": [],
+  "src/components/seo/JsonLd.tsx": [],
   "src/components/seo/Seo.tsx": [],
   "src/data/blog.ts": [],
   "src/data/projects.ts": [],
