@@ -95,7 +95,7 @@ const Contact = () => {
                     className="flex items-center gap-4"
                   >
                     <div
-                      className="flex h-12 w-12 items-center justify-center rounded-full bg-muted text-foreground"
+                      className="flex h-12 w-12 items-center justify-center rounded-full bg-black/5 text-foreground"
                       aria-hidden="true"
                     >
                       {item.icon}

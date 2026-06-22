@@ -83,7 +83,7 @@ const BlogPost = () => {
             className="mb-10"
           >
             <div className="mb-6 flex flex-wrap items-center gap-3">
-              <span className="rounded-full bg-muted px-4 py-1.5 font-patrick text-sm text-foreground">
+              <span className="rounded-full bg-black/5 px-4 py-1.5 font-patrick text-sm text-foreground">
                 {post.category}
               </span>
               <time dateTime={post.date} className="font-patrick text-sm text-muted">

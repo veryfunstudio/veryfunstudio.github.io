@@ -168,7 +168,7 @@ const ProjectDetail = () => {
                 {project.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-full bg-muted px-4 py-2 font-patrick text-base text-foreground"
+                    className="rounded-full bg-black/5 px-4 py-2 font-patrick text-base text-foreground"
                   >
                     {tech}
                   </span>
