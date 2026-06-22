@@ -80,10 +80,9 @@ const FeaturesSection = () => {
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Link
                       to={`/projects/${project.slug}`}
-                      aria-label={`Learn more about ${project.title}`}
                       className="hand-drawn-button inline-block bg-white px-6 py-2 font-patrick text-base text-foreground no-underline"
                     >
-                      Learn More
+                      Explore {project.title}
                     </Link>
                   </motion.div>
                 </div>
