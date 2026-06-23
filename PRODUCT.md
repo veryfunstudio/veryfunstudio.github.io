@@ -13,7 +13,9 @@ context that they download.
 
 - Live URL: <https://cookabc.github.io/>
 - Delivery: SSG (vite-react-ssg) → static `dist/` → GitHub Pages
-- Routing: `createHashRouter` (`/#/...`), so every route is one file
+- Routing: `vite-react-ssg` pre-renders every route to its own HTML file
+  under `dist/` (`/about`, `/projects/:slug`, etc.); GitHub Pages serves
+  them directly, with `dist/404.html` as an SPA fallback for unknown paths
 
 ## The product line (6 games, all on Google Play)
 

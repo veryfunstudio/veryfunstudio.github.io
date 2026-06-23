@@ -74,5 +74,9 @@ This bypasses CI by building locally and pushing `dist/` to `main` directly.
 
 ## Routing note
 
-The app uses `createHashRouter`, so all routes live under `/#/...`. This
-keeps GitHub Pages happy without needing a `404.html` SPA fallback.
+The app uses `vite-react-ssg` (static site generation), so every route is
+pre-rendered to its own HTML file under `dist/` (e.g. `dist/about.html`,
+`dist/projects/classic-sudoku.html`). GitHub Pages serves these directly —
+no client-side router boot is needed for first paint. `scripts/generate-seo.ts`
+also copies `dist/index.html` to `dist/404.html` as an SPA fallback so deep
+links to unknown paths still load the app shell.
