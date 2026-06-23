@@ -316,9 +316,10 @@ in `index.css`. Anyone doing a cleanup pass should tackle them:
    promoted; the canonical spelling lives in `index.css` `@theme`.) Until
    the border tokens are promoted too, the Token block above is their
    canonical spelling.
-3. **`src/components/common/HeroSection.tsx`** is an older generic hero
-   not currently routed anywhere. Either delete or align to the new token
-   set before reusing.
+3. ~~**`src/components/common/HeroSection.tsx`** is an older generic hero
+   not currently routed anywhere.~~ **RESOLVED** — deleted; it had zero
+   importers (`Home.tsx` uses `HeroSectionNiceUI` from the magicpath
+   directory, not this file).
 4. **`/projects` page** still uses `bg-gradient-to-br from-[#f6f1e8] to-muted`
    — the `to-muted` half now correctly resolves to the `@theme`
    `--color-muted` (`#6e6960`) since the stale config `muted` was
