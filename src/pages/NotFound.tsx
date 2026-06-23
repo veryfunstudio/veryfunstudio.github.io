@@ -1,5 +1,6 @@
 import { m } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Compass } from "lucide-react";
 import { Seo } from "@/components/seo/Seo";
 
 const NotFound = () => {
@@ -21,7 +22,9 @@ const NotFound = () => {
           <p className="mx-auto mb-10 max-w-lg font-patrick text-xl leading-relaxed text-muted">
             The page you&apos;re looking for seems to have wandered off into another dimension...
           </p>
-          <div className="text-6xl mb-10">🎮🔍🗺️</div>
+          <div className="mb-10 flex justify-center text-muted" aria-hidden="true">
+            <Compass size={64} strokeWidth={1.5} />
+          </div>
           <Link
             to="/"
             className="hand-drawn-button inline-block bg-white px-10 py-4 font-patrick text-xl no-underline text-foreground"

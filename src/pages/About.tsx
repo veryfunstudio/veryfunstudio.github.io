@@ -4,14 +4,14 @@ import { m } from "framer-motion";
 import { Seo } from "@/components/seo/Seo";
 
 const TECH_STACK = [
-  { name: "Unity", icon: "🎮", rotation: -0.5 },
-  { name: "C#", icon: "💻", rotation: 0.7 },
-  { name: "Android SDK", icon: "📱", rotation: -0.3 },
-  { name: "JavaScript", icon: "🌐", rotation: 0.9 },
-  { name: "TypeScript", icon: "✅", rotation: -0.8 },
-  { name: "React", icon: "⚛️", rotation: 0.4 },
-  { name: "Tailwind CSS", icon: "🎨", rotation: -0.6 },
-  { name: "Vite", icon: "⚡", rotation: 0.2 },
+  { name: "Unity", rotation: -0.5 },
+  { name: "C#", rotation: 0.7 },
+  { name: "Android SDK", rotation: -0.3 },
+  { name: "JavaScript", rotation: 0.9 },
+  { name: "TypeScript", rotation: -0.8 },
+  { name: "React", rotation: 0.4 },
+  { name: "Tailwind CSS", rotation: -0.6 },
+  { name: "Vite", rotation: 0.2 },
 ] as const;
 
 const VALUES = [
@@ -136,11 +136,10 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="hand-drawn-card relative bg-white p-6 text-center"
+                className="hand-drawn-card flex items-center justify-center bg-white p-6 text-center"
                 style={{ transform: `rotate(${techRotations[index]}deg)` }}
               >
-                <div className="mb-2 text-4xl">{tech.icon}</div>
-                <h3 className="font-patrick text-base text-foreground">{tech.name}</h3>
+                <h3 className="font-kalam text-lg font-bold text-foreground">{tech.name}</h3>
               </m.div>
             ))}
           </div>
@@ -198,7 +197,7 @@ const About = () => {
               to="/projects"
               className="hand-drawn-button inline-block bg-foreground px-8 py-3 font-patrick text-lg text-background no-underline"
             >
-              Explore our games
+              Explore the games
             </Link>
           </m.div>
         </div>

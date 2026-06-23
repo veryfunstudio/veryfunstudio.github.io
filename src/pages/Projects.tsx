@@ -8,7 +8,7 @@ const Projects = () => {
     <div>
       <Seo
         title="Our Mobile Games"
-        description="Browse all six free mobile puzzle games from VeryFun Company — Sudoku, Tile Journey, Word Search, Arrow Out, Pearl, Bubble."
+        description="Browse all six free mobile puzzle games from VeryFun Company: Sudoku, Tile Journey, Word Search, Arrow Out, Pearl, Bubble."
         path="/projects"
       />
       <section className="py-20">

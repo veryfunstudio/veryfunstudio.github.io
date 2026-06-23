@@ -27,7 +27,7 @@ const Home = () => {
     <div>
       <Seo
         title="Indie Mobile Game Studio"
-        description="Free, calming mobile puzzle games on Google Play. Play Classic Sudoku 2026, Tile Journey, and more — no timers, no paywalls."
+        description="Free, calming mobile puzzle games on Google Play. Play Classic Sudoku 2026, Tile Journey, and more. No timers, no paywalls."
         path="/"
       />
       <JsonLd schema={organizationSchema} />
