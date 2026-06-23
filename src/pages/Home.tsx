@@ -1,6 +1,4 @@
-import HeroSectionNiceUI from "../components/magicpath/hero-call-to-action-section/HeroSectionNiceUI";
-import FeaturesSection from "../components/magicpath/features-section-with-alternating-layout/FeaturesSection";
-import CtaFooterSection from "../components/magicpath/cta-banner-multi-column-footer/CtaFooterSection";
+import { Hero, Features, CtaFooter } from "../components/home";
 import { Seo } from "../components/seo/Seo";
 import { JsonLd } from "../components/seo/JsonLd";
 import { PROJECTS } from "../data/projects";
@@ -34,9 +32,9 @@ const Home = () => {
       />
       <JsonLd schema={organizationSchema} />
       <JsonLd schema={websiteSchema} />
-      <HeroSectionNiceUI />
-      <FeaturesSection />
-      <CtaFooterSection />
+      <Hero />
+      <Features />
+      <CtaFooter />
     </div>
   );
 };
