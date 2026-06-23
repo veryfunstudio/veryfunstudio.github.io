@@ -256,11 +256,11 @@
   "node_modules/prop-types/index.js": [],
   "node_modules/prop-types/lib/ReactPropTypesSecret.js": [],
   "node_modules/react-dom/cjs/react-dom-client.production.js": [
-    "/assets/client-C9t13GC2.js"
+    "/assets/client-Bq5Hk959.js"
   ],
   "node_modules/react-dom/cjs/react-dom.production.js": [],
   "node_modules/react-dom/client.js": [
-    "/assets/client-C9t13GC2.js"
+    "/assets/client-Bq5Hk959.js"
   ],
   "node_modules/react-dom/index.js": [],
   "node_modules/react-fast-compare/index.js": [],
@@ -276,10 +276,10 @@
   "node_modules/react/index.js": [],
   "node_modules/react/jsx-runtime.js": [],
   "node_modules/scheduler/cjs/scheduler.production.js": [
-    "/assets/client-C9t13GC2.js"
+    "/assets/client-Bq5Hk959.js"
   ],
   "node_modules/scheduler/index.js": [
-    "/assets/client-C9t13GC2.js"
+    "/assets/client-Bq5Hk959.js"
   ],
   "node_modules/shallowequal/index.js": [],
   "node_modules/vite-react-ssg/dist/index.mjs": [],
@@ -287,11 +287,13 @@
   "node_modules/vite-react-ssg/dist/shared/vite-react-ssg.C6pK7rvr.mjs": [],
   "node_modules/vite-react-ssg/dist/shared/vite-react-ssg.DTTf7HZy.mjs": [],
   "src/App.tsx": [],
+  "src/components/common/EntityNotFound.tsx": [],
   "src/components/common/Footer.tsx": [],
   "src/components/common/Header.tsx": [],
-  "src/components/magicpath/cta-banner-multi-column-footer/CtaFooterSection.tsx": [],
-  "src/components/magicpath/features-section-with-alternating-layout/FeaturesSection.tsx": [],
-  "src/components/magicpath/hero-call-to-action-section/HeroSectionNiceUI.tsx": [],
+  "src/components/home/CtaFooter.tsx": [],
+  "src/components/home/Features.tsx": [],
+  "src/components/home/Hero.tsx": [],
+  "src/components/home/index.ts": [],
   "src/components/seo/JsonLd.tsx": [],
   "src/components/seo/Seo.tsx": [],
   "src/data/blog.ts": [],

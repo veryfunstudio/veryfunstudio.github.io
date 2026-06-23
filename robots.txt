@@ -1,4 +1,21 @@
+# Search engines
 User-agent: *
+Allow: /
+
+# AI crawlers — explicitly allowed for citation/training
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://cookabc.github.io/sitemap.xml
