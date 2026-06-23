@@ -24,7 +24,7 @@ function GameBlock({
           to={`/projects/${project.slug}`}
           className="hand-drawn-card group block overflow-hidden bg-white transition-shadow hover:shadow-[var(--shadow-soft-hover)]"
         >
-          <div className="bg-[#f6f1e8] p-6 sm:p-10">
+          <div className="bg-surface-warm p-6 sm:p-10">
             <img
               src={project.image}
               alt={`${project.title} key art`}
@@ -46,7 +46,7 @@ function GameBlock({
             height={48}
             loading="lazy"
             decoding="async"
-            className="h-12 w-12 rounded-[4px] border border-black/10 bg-white object-cover"
+            className="h-12 w-12 rounded-[4px] border border-border-soft bg-white object-cover"
           />
           <h3 className="font-kalam text-3xl font-bold tracking-tight text-foreground">
             {project.title}

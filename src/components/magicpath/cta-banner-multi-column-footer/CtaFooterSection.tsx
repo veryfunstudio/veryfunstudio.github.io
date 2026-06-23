@@ -10,7 +10,7 @@ const CtaFooterSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="border-t border-black/10 pt-16"
+        className="border-t border-border-soft pt-16"
       >
         <p className="font-patrick text-base text-muted">Like what you see?</p>
         <h2 className="mt-3 max-w-2xl font-kalam text-4xl font-bold tracking-tight text-foreground lg:text-5xl">

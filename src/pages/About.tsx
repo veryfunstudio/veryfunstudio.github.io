@@ -78,7 +78,7 @@ const About = () => {
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
-                className="h-auto w-full rounded-[4px] border-2 border-border outline outline-1 outline-black/10"
+                className="h-auto w-full rounded-[4px] border-2 border-border-strong outline outline-1 outline-black/10"
               />
             </m.div>
             <m.div
@@ -86,7 +86,7 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className=" rounded-[4px] border-2 border-border bg-white p-8 relative"
+              className=" rounded-[4px] border-2 border-border-strong bg-white p-8 relative"
             >
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Our Story</h2>
               <p className="mb-4 font-patrick text-lg leading-relaxed text-foreground">

@@ -108,7 +108,7 @@ const BlogPost = () => {
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              className="mb-12 h-auto w-full rounded-[4px] border-2 border-border outline outline-1 outline-black/10 sm:h-[28rem] sm:object-cover"
+              className="mb-12 h-auto w-full rounded-[4px] border-2 border-border-strong outline outline-1 outline-black/10 sm:h-[28rem] sm:object-cover"
             />
           </m.div>
 

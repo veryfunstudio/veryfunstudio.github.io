@@ -75,7 +75,7 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className=" rounded-[4px] border-2 border-border bg-white p-8 relative"
+              className=" rounded-[4px] border-2 border-border-strong bg-white p-8 relative"
             >
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Contact Info</h2>
               <div className="flex flex-col gap-6">
@@ -117,7 +117,7 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className=" rounded-[4px] border-2 border-border bg-white p-8 relative"
+              className=" rounded-[4px] border-2 border-border-strong bg-white p-8 relative"
             >
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Send a Message</h2>
               {submitted ? (
@@ -127,7 +127,7 @@ const Contact = () => {
                   className="py-12 text-center"
                 >
                   <div
-                    className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-[4px] border-2 border-border bg-[#f6f1e8] text-foreground"
+                    className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-[4px] border-2 border-border-strong bg-surface-warm text-foreground"
                     aria-hidden="true"
                   >
                     <MailCheck size={34} strokeWidth={2.3} />

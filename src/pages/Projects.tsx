@@ -35,7 +35,7 @@ const Projects = () => {
                 key={project.id}
                 className="hand-drawn-card overflow-hidden bg-white relative"
               >
-                <div className="bg-gradient-to-br from-[#f6f1e8] to-muted p-4">
+                <div className="bg-gradient-to-br from-surface-warm to-muted p-4">
                   <img
                     src={project.image}
                     alt={`${project.title} key art`}

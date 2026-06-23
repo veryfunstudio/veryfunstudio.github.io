@@ -11,7 +11,7 @@ const Header = () => {
     path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
 
   return (
-    <header className="border-b border-black/10 py-5">
+    <header className="border-b border-border-soft py-5">
       <div className="mx-auto flex max-w-[80rem] items-center justify-between px-6">
         <Link
           to="/"
@@ -55,7 +55,7 @@ const Header = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="border-t border-black/10 md:hidden"
+            className="border-t border-border-soft md:hidden"
             aria-label="Mobile navigation"
           >
             <div className="mx-auto flex max-w-[80rem] flex-col gap-4 px-6 py-4">

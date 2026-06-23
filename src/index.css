@@ -16,6 +16,8 @@
   --color-accent-active: #7e371f;
   --color-accent-soft: rgba(182, 85, 58, 0.12);
   --color-border: #2d2d2d;
+  --color-border-soft: rgba(45, 45, 45, 0.1);
+  --color-border-strong: #2d2d2d;
   --color-secondary-accent: #2d5da1;
   --color-secondary-accent-light: rgba(45, 93, 161, 0.2);
 

@@ -49,9 +49,11 @@ colors:
   focus: "#2d5da1" # outline only, never as fill
   focus-soft: "rgba(45, 93, 161, 0.2)" # input focus glow
 
-  # Borders — three steps encode weight
+  # Borders — three steps encode weight. All promoted to @theme so they
+  # resolve as first-class Tailwind utilities (border-soft / border-strong).
+  # border-input stays inside the .hand-drawn-input component class.
   border-soft: "rgba(45, 45, 45, 0.10)" # card edges, dividers (most common)
-  border-input: "rgba(45, 45, 45, 0.20)" # form fields (1.5px)
+  border-input: "rgba(45, 45, 45, 0.20)" # form fields (1.5px) — .hand-drawn-input
   border-strong: "#2d2d2d" # hero images, contact/about panels (2px)
 
 typography:
@@ -308,23 +310,27 @@ in `index.css`. Anyone doing a cleanup pass should tackle them:
    `18px` body base (everything else lives in `@theme`). Verified by
    full build + compiled-CSS audit (`#c9c4b8` zero occurrences in the
    shipped `app-*.css`).
-2. **Promote the border intent tokens to `@theme`** so `border-soft` /
+2. ~~**Promote the border intent tokens to `@theme`** so `border-soft` /
    `border-strong` resolve as first-class Tailwind utilities instead of
-   being written inline as `border-black/10` / `border-2 border-border`.
-   (The accent four-step scale — `accent` / `accent-hover` /
-   `accent-active` / `accent-soft` — and `surface-warm` were already
-   promoted; the canonical spelling lives in `index.css` `@theme`.) Until
-   the border tokens are promoted too, the Token block above is their
-   canonical spelling.
+   being written inline as `border-black/10` / `border-2 border-border`.~~
+   **RESOLVED** — `--color-border-soft` and `--color-border-strong` now
+   live in `@theme`; all 12 inline references across Header, Footer,
+   CtaFooterSection, FeaturesSection, App skip-link, About, BlogPost,
+   Contact, and ProjectDetail migrated to `border-border-soft` /
+   `border-border-strong`. Three decorative `outline-black/10` and one
+   avatar `border-background` were intentionally left inline — they're
+   not border-weight intent tokens.
 3. ~~**`src/components/common/HeroSection.tsx`** is an older generic hero
    not currently routed anywhere.~~ **RESOLVED** — deleted; it had zero
    importers (`Home.tsx` uses `HeroSectionNiceUI` from the magicpath
    directory, not this file).
-4. **`/projects` page** still uses `bg-gradient-to-br from-[#f6f1e8] to-muted`
-   — the `to-muted` half now correctly resolves to the `@theme`
+4. ~~**`/projects` page** still uses `bg-gradient-to-br from-[#f6f1e8] to-muted`
+   — the `to-muted` half resolves to the stale Tailwind
+   `muted` (`#c9c4b8`).~~ **RESOLVED** — the inline `#f6f1e8` hex was
+   replaced with `from-surface-warm` (on both `/projects` and
+   `/projects/:slug`); the `to-muted` half now resolves to the `@theme`
    `--color-muted` (`#6e6960`) since the stale config `muted` was
-   removed in fix #1. Still worth replacing with an explicit token for
-   clarity, but no longer renders incorrectly.
+   removed in fix #1. No inline `#f6f1e8` hexes remain in `src/`.
 
 ---
 

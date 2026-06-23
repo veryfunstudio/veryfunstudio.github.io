@@ -87,7 +87,7 @@ const ProjectDetail = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="mb-8 overflow-hidden rounded-[4px] border-2 border-border bg-gradient-to-br from-[#f6f1e8] to-muted outline outline-1 outline-black/10">
+            <div className="mb-8 overflow-hidden rounded-[4px] border-2 border-border-strong bg-gradient-to-br from-surface-warm to-muted outline outline-1 outline-black/10">
               <img
                 src={project.image}
                 alt={`${project.title} key art`}
@@ -116,7 +116,7 @@ const ProjectDetail = () => {
                   height={80}
                   loading="eager"
                   decoding="async"
-                  className="h-16 w-16 flex-shrink-0 rounded-[4px] border-2 border-border bg-white object-cover  sm:h-20 sm:w-20"
+                  className="h-16 w-16 flex-shrink-0 rounded-[4px] border-2 border-border-strong bg-white object-cover  sm:h-20 sm:w-20"
                 />
                 <h1 className="font-kalam text-4xl font-bold text-foreground sm:text-5xl">
                   {project.title}
