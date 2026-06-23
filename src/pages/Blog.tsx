@@ -8,7 +8,7 @@ const Blog = () => {
   return (
     <div>
       <Seo
-        title="Blog - Game Dev Insights from VeryFun Company"
+        title="Blog - Game Dev Insights"
         description="Notes on mobile game design, Unity development, and indie studio life from the team behind Tile Journey, Arrow Out, and the rest of the VeryFun Company lineup."
         path="/blog"
       />

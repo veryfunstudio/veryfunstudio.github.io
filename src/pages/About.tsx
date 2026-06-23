@@ -42,7 +42,7 @@ const About = () => {
     <div>
       <Seo
         title="About the Studio"
-        description="VeryFun Company is an independent mobile game studio focused on calming, free-to-play puzzle games. Learn about our mission, values, and the team behind titles like Tile Journey and Pearl Coloring."
+        description="Independent mobile game studio crafting calming, free-to-play puzzle games. Meet the team behind Tile Journey, Pearl Coloring, and more."
         path="/about"
       />
       <section className="py-20">

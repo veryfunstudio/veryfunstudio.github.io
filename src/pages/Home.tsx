@@ -27,7 +27,7 @@ const Home = () => {
     <div>
       <Seo
         title="Indie Mobile Game Studio"
-        description="VeryFun Company crafts calming, free-to-play mobile puzzle games on Google Play - Classic Sudoku 2026, Tile Journey, Word Search Block, Arrow Out, Pearl Coloring, and Bubble Shoot."
+        description="Free, calming mobile puzzle games on Google Play. Play Classic Sudoku 2026, Tile Journey, and more — no timers, no paywalls."
         path="/"
       />
       <JsonLd schema={organizationSchema} />

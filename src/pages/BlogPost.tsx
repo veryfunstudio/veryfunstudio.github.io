@@ -22,10 +22,12 @@ const BlogPost = () => {
     );
   }
 
+  const seoTitle = post.title.length > 40 ? post.title.slice(0, 37) + "…" : post.title;
+
   return (
     <article>
       <Seo
-        title={post.title}
+        title={seoTitle}
         description={post.excerpt}
         path={`/blog/${post.id}`}
         image={post.image}

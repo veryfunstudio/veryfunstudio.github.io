@@ -25,7 +25,7 @@ const ProjectDetail = () => {
   return (
     <article>
       <Seo
-        title={`${project.title} - Free Mobile Puzzle Game`}
+        title={`${project.title} - Free Puzzle Game`}
         description={project.description}
         path={`/projects/${project.slug}`}
         image={project.image}

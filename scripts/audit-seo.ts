@@ -120,9 +120,9 @@ else bad("A3", "duplicate titles");
 if (new Set(descVals).size === descVals.length) ok("A4", `${descVals.length} unique descriptions`);
 else bad("A4", "duplicate descriptions");
 
-// description length 100-200 (Google truncates ~155-160; metadata itself has no hard cap)
-const badLen = [...descs.entries()].filter(([, d]) => d.length < 100 || d.length > 200);
-if (badLen.length === 0) ok("A4-len", "all descriptions 100–200 chars");
+// description length 100-160 (Google truncates ~155-160)
+const badLen = [...descs.entries()].filter(([, d]) => d.length < 100 || d.length > 160);
+if (badLen.length === 0) ok("A4-len", "all descriptions 100–160 chars");
 else
   bad(
     "A4-len",
@@ -348,6 +348,121 @@ for (const slug of SLUGS) {
 
 if (schemaFail === 0) ok("A15", "all JSON-LD schemas structurally valid");
 else bad("A15", `${schemaFail} schema validation failures`);
+
+// --- A16: title length ≤ 60 chars (Google truncates ~57-60) ---
+
+console.log("\n=== A16: title length ≤ 60 chars ===");
+const longTitles = [...titles.entries()].filter(([, t]) => t.length > 60);
+if (longTitles.length === 0) ok("A16", `all ${titles.size} titles ≤ 60 chars`);
+else
+  bad(
+    "A16",
+    `${longTitles.length} over limit: ${longTitles.map(([n, t]) => `${n}=${t.length}`).join(", ")}`,
+  );
+
+// --- A18: blog post og:image is not the default about.jpeg ---
+
+console.log("\n=== A18: blog og:image unique per post ===");
+let a18Fail = 0;
+for (const id of BLOG_IDS) {
+  const img = ogImage.get(`blog/${id}`);
+  if (!img || img.includes("about.jpeg")) {
+    a18Fail++;
+    console.error(`  \u2717 blog/${id}: og:image is default or missing`);
+  }
+}
+if (a18Fail === 0) ok("A18", "all blog posts have unique og:image");
+else bad("A18", `${a18Fail}/${BLOG_IDS.length} blog posts use default og:image`);
+
+// --- A19: 404.html contains noindex ---
+
+console.log("\n=== A19: 404.html noindex ===");
+const notFound = readHtml("404.html");
+if (notFound.includes('name="robots"') && notFound.includes("noindex"))
+  ok("A19", "404.html has noindex meta");
+else bad("A19", "404.html missing noindex — duplicate-index risk on GitHub Pages");
+
+// --- A20: BreadcrumbList on nested pages ---
+
+console.log("\n=== A20: BreadcrumbList on nested pages ===");
+let a20Fail = 0;
+for (const slug of SLUGS) {
+  const ld = extractJsonLd(readHtml(`projects/${slug}.html`));
+  if (!ld.some((o) => (o as { "@type"?: string })["@type"] === "BreadcrumbList")) {
+    a20Fail++;
+    console.error(`  \u2717 projects/${slug}: no BreadcrumbList`);
+  }
+}
+for (const id of BLOG_IDS) {
+  const ld = extractJsonLd(readHtml(`blog/${id}.html`));
+  if (!ld.some((o) => (o as { "@type"?: string })["@type"] === "BreadcrumbList")) {
+    a20Fail++;
+    console.error(`  \u2717 blog/${id}: no BreadcrumbList`);
+  }
+}
+if (a20Fail === 0) ok("A20", "all nested pages have BreadcrumbList");
+else bad("A20", `${a20Fail} nested pages missing BreadcrumbList`);
+
+// --- A21: BlogPosting has image field ---
+
+console.log("\n=== A21: BlogPosting image field ===");
+let a21Fail = 0;
+for (const id of BLOG_IDS) {
+  const ld = extractJsonLd(readHtml(`blog/${id}.html`));
+  const post = ld.find((o) => (o as { "@type"?: string })["@type"] === "BlogPosting") as
+    | Record<string, unknown>
+    | undefined;
+  if (!post || !post.image) {
+    a21Fail++;
+    console.error(`  \u2717 blog/${id}: BlogPosting missing image field`);
+  }
+}
+if (a21Fail === 0) ok("A21", "all BlogPosting schemas have image");
+else bad("A21", `${a21Fail}/${BLOG_IDS.length} BlogPosting missing image`);
+
+// --- A22: og:image:width + og:image:height ---
+
+console.log("\n=== A22: og:image dimensions ===");
+let a22Fail = 0;
+for (const p of pages) {
+  const hasW = /og:image:width/.test(p.html);
+  const hasH = /og:image:height/.test(p.html);
+  if (!hasW || !hasH) {
+    a22Fail++;
+    console.error(`  \u2717 ${p.name}: missing og:image dimensions`);
+  }
+}
+if (a22Fail === 0) ok("A22", `all ${pages.length} pages have og:image:width + height`);
+else bad("A22", `${a22Fail} pages missing og:image dimensions`);
+
+// --- A23: twitter:site ---
+
+console.log("\n=== A23: twitter:site meta ===");
+let a23Fail = 0;
+for (const p of pages) {
+  if (!/twitter:site/.test(p.html)) {
+    a23Fail++;
+    console.error(`  \u2717 ${p.name}: missing twitter:site`);
+  }
+}
+if (a23Fail === 0) ok("A23", `all ${pages.length} pages have twitter:site`);
+else bad("A23", `${a23Fail} pages missing twitter:site`);
+
+// --- A24: llms-full.txt exists ---
+
+console.log("\n=== A24: llms-full.txt ===");
+const llmsFull = readHtml("llms-full.txt");
+if (llmsFull && llmsFull.startsWith("# VeryFun Company") && llmsFull.length > 5000)
+  ok("A24", `llms-full.txt present (${llmsFull.length} bytes)`);
+else bad("A24", "llms-full.txt missing or too small");
+
+// --- A25: robots.txt AI crawler policy ---
+
+console.log("\n=== A25: robots.txt AI crawler policy ===");
+const aiBots = ["GPTBot", "ClaudeBot", "Google-Extended", "PerplexityBot", "CCBot"];
+const missingBots = aiBots.filter((b) => !robots.includes(b));
+if (missingBots.length === 0) ok("A25", `robots.txt allows all 5 AI crawlers`);
+else bad("A25", `robots.txt missing: ${missingBots.join(", ")}`);
 
 console.log(`\n=== RESULT: ${pass} passed, ${fail} failed ===`);
 process.exit(fail > 0 ? 1 : 0);

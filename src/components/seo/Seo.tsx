@@ -47,13 +47,18 @@ export function Seo({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={absoluteImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:url" content={url} />
       {publishedTime && <meta property="article:published_time" content={publishedTime} />}
 
       <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@chuangcius" />
+      <meta name="twitter:creator" content="@chuangcius" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={absoluteImage} />
+      <meta name="twitter:image:alt" content={title} />
     </Helmet>
   );
 }
