@@ -151,23 +151,22 @@ revert to the old post-it/yellow/red vocabulary.
 
 ### ⚠️ The rule of one source
 
-**The source of truth for design tokens is [`src/index.css`](./src/index.css),
-not [`tailwind.config.js`](./tailwind.config.js).**
+**The source of truth for design tokens is [`src/index.css`](./src/index.css)
+`@theme`. [`tailwind.config.js`](./tailwind.config.js) is intentionally
+minimal** — it carries only the font-family aliases and the 18px body
+base, because those are awkward to express purely in `@theme`. Every
+color, radius, and shadow lives in `@theme` and resolves as a
+first-class Tailwind utility (`bg-background`, `text-muted`, etc.).
 
-The Tailwind config is **stale** — it still carries the abandoned
-post-it-yellow + bright-red + wobbly-corner palette. It has not been
-deleted only because removing it breaks the Vite/Tailwind v4 toolchain.
-Until it is fully reconciled:
-
-- ✅ **Use** any token in the Token block above (all are in `index.css`
-  `@theme` or are the encoded-intent names this block introduces).
-- ❌ **Don't use** any utility that only exists in `tailwind.config.js`:
-  `bg-post-it`, `tape`, `rounded-wobbly*`, `shadow-hand-drawn*`,
-  `animate-jiggle`, `text-secondary-accent-light`, `bg-chart-*`,
-  the old `primary`/`secondary`/`destructive` hex values.
-- 🧹 **Tech debt (one-off cleanup, not blocking):** delete the stale
-  keys from `tailwind.config.js` and migrate any remaining references.
-  See "Known drift to fix" at the bottom.
+- ✅ **Use** any token in the Token block above. They are all defined in
+  `index.css` `@theme`.
+- ❌ **Don't re-introduce** removed keys (`bg-post-it`, `tape`,
+  `rounded-wobbly*`, `shadow-hand-drawn*`, `animate-jiggle`,
+  `text-secondary-accent-light`, `bg-chart-*`, the old
+  `primary`/`secondary`/`destructive` hex values). They were deleted on
+  purpose — see the changelog comment in `tailwind.config.js` and drift
+  fix #1 below. Re-adding one breaks the single-source contract this
+  file exists to enforce.
 
 ### Color
 
@@ -298,15 +297,17 @@ not just docs. See `PRODUCT.md` › Voice & tone for the do/don't table.
 
 ## Known drift to fix (tech debt, not blocking new work)
 
-These are the live gaps between the stale Tailwind config and the true
-tokens in `index.css`. Anyone doing a cleanup pass should tackle them:
+These are the live gaps between the Tailwind config and the true tokens
+in `index.css`. Anyone doing a cleanup pass should tackle them:
 
-1. **`tailwind.config.js`** still defines: `primary #ff4d4d`,
+1. ~~**`tailwind.config.js`** still defines: `primary #ff4d4d`,
    `accent #ff4d4d`, `destructive #ff4d4d`, `secondary #2d5da1`,
    `post-it #fff9c4`, `tape`, `chart.*`, `rounded-wobbly*`,
-   `shadow-hand-drawn*`, `animate-jiggle`, `fontFamily.sans = Patrick Hand`
-   (redundant — body already uses `--font-patrick`). Either delete these
-   keys or align them to the `@theme` values.
+   `shadow-hand-drawn*`, `animate-jiggle`.~~ **RESOLVED** — all stale
+   keys removed; config now only carries `fontFamily` aliases and the
+   `18px` body base (everything else lives in `@theme`). Verified by
+   full build + compiled-CSS audit (`#c9c4b8` zero occurrences in the
+   shipped `app-*.css`).
 2. **Promote the border intent tokens to `@theme`** so `border-soft` /
    `border-strong` resolve as first-class Tailwind utilities instead of
    being written inline as `border-black/10` / `border-2 border-border`.
@@ -319,9 +320,10 @@ tokens in `index.css`. Anyone doing a cleanup pass should tackle them:
    not currently routed anywhere. Either delete or align to the new token
    set before reusing.
 4. **`/projects` page** still uses `bg-gradient-to-br from-[#f6f1e8] to-muted`
-   — works, but the `to-muted` half resolves to the stale Tailwind
-   `muted` (`#c9c4b8`), not the `@theme` `--color-muted` (`#6e6960`).
-   Replace with an explicit hex or a `@theme` token.
+   — the `to-muted` half now correctly resolves to the `@theme`
+   `--color-muted` (`#6e6960`) since the stale config `muted` was
+   removed in fix #1. Still worth replacing with an explicit token for
+   clarity, but no longer renders incorrectly.
 
 ---
 
