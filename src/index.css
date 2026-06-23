@@ -11,6 +11,7 @@
   --color-foreground: #2d2d2d;
   --color-muted: #6e6960;
   --color-surface-warm: #f6f1e8;
+  --color-surface-tint: rgba(45, 45, 45, 0.05);
   --color-accent: #b6553a;
   --color-accent-hover: #9c4628;
   --color-accent-active: #7e371f;

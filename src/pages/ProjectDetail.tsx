@@ -83,7 +83,7 @@ const ProjectDetail = () => {
         }}
       />
       <section className="py-16">
-        <div className="mx-auto max-w-[80rem] px-4">
+        <div className="mx-auto max-w-[80rem] px-6">
           <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -173,7 +173,7 @@ const ProjectDetail = () => {
                 {project.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-full bg-black/5 px-4 py-2 font-patrick text-base text-foreground"
+                    className="rounded-full bg-surface-tint px-4 py-2 font-patrick text-base text-foreground"
                   >
                     {tech}
                   </span>

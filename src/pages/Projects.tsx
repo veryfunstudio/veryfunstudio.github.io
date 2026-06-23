@@ -12,7 +12,7 @@ const Projects = () => {
         path="/projects"
       />
       <section className="py-20">
-        <div className="mx-auto max-w-[80rem] px-4 text-center">
+        <div className="mx-auto max-w-[80rem] px-6 text-center">
           <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -20,15 +20,15 @@ const Projects = () => {
           >
             <h1 className="mb-6 font-kalam text-4xl font-bold text-foreground">Our Projects</h1>
             <p className="mx-auto max-w-3xl font-patrick text-xl text-foreground">
-              Here are the game projects we&apos;ve developed-each one represents our creativity and
-              dedication
+              Here are the game projects we&apos;ve developed. Each one represents our creativity
+              and dedication.
             </p>
           </m.div>
         </div>
       </section>
 
       <section className="py-16">
-        <div className="mx-auto max-w-[80rem] px-4">
+        <div className="mx-auto max-w-[80rem] px-6">
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-2">
             {PROJECTS.map((project) => (
               <article
@@ -69,7 +69,7 @@ const Projects = () => {
                       {project.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="rounded-full bg-black/5 px-3 py-1 font-patrick text-sm text-foreground"
+                          className="rounded-full bg-surface-tint px-3 py-1 font-patrick text-sm text-foreground"
                         >
                           {tech}
                         </span>

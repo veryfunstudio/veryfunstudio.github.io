@@ -16,7 +16,7 @@ interface EntityNotFoundProps {
 const EntityNotFound = ({ title, message, backTo, backLabel }: EntityNotFoundProps) => {
   return (
     <section className="py-20">
-      <div className="mx-auto max-w-[80rem] px-4 text-center">
+      <div className="mx-auto max-w-[80rem] px-6 text-center">
         <m.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}

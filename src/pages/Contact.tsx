@@ -53,7 +53,7 @@ const Contact = () => {
         noindex
       />
       <section className="py-20">
-        <div className="mx-auto max-w-[80rem] px-4 text-center">
+        <div className="mx-auto max-w-[80rem] px-6 text-center">
           <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ const Contact = () => {
       </section>
 
       <section className="py-16">
-        <div className="mx-auto max-w-[80rem] px-4">
+        <div className="mx-auto max-w-[80rem] px-6">
           <div className="grid gap-12 md:grid-cols-2">
             <m.div
               initial={{ opacity: 0, x: -30 }}
@@ -89,7 +89,7 @@ const Contact = () => {
                     className="flex items-center gap-4"
                   >
                     <div
-                      className="flex h-12 w-12 items-center justify-center rounded-full bg-black/5 text-foreground"
+                      className="flex h-12 w-12 items-center justify-center rounded-full bg-surface-tint text-foreground"
                       aria-hidden="true"
                     >
                       {item.icon}

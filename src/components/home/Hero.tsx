@@ -15,7 +15,7 @@ const HeroSectionNiceUI = () => {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="space-y-8"
         >
-          <h1 className="font-kalam text-5xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+          <h1 className="font-kalam text-5xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
             Calm puzzles,
             <br />
             crafted with care.
@@ -48,7 +48,7 @@ const HeroSectionNiceUI = () => {
                   />
                 ))}
               </div>
-              <span className="font-patrick text-sm text-muted">6 games</span>
+              <span className="font-patrick text-sm text-foreground">6 games</span>
             </div>
           </div>
         </m.div>

@@ -8,7 +8,7 @@ const Footer = () => {
 
   return (
     <footer className="mt-auto border-t-2 border-border-strong py-12">
-      <div className="mx-auto max-w-[80rem] px-4">
+      <div className="mx-auto max-w-[80rem] px-6">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <Link to="/" className="font-kalam text-3xl font-bold text-foreground no-underline">

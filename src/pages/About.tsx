@@ -46,7 +46,7 @@ const About = () => {
         path="/about"
       />
       <section className="py-20">
-        <div className="mx-auto max-w-[80rem] px-4 text-center">
+        <div className="mx-auto max-w-[80rem] px-6 text-center">
           <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ const About = () => {
       </section>
 
       <section className="py-16">
-        <div className="mx-auto max-w-[80rem] px-4">
+        <div className="mx-auto max-w-[80rem] px-6">
           <div className="grid items-stretch gap-12 md:grid-cols-2">
             <m.div
               initial={{ opacity: 0, x: -30 }}
@@ -114,7 +114,7 @@ const About = () => {
       </section>
 
       <section className="py-16">
-        <div className="mx-auto max-w-[80rem] px-4">
+        <div className="mx-auto max-w-[80rem] px-6">
           <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -147,7 +147,7 @@ const About = () => {
       </section>
 
       <section className="py-16">
-        <div className="mx-auto max-w-[80rem] px-4">
+        <div className="mx-auto max-w-[80rem] px-6">
           <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -181,7 +181,7 @@ const About = () => {
       </section>
 
       <section className="py-16">
-        <div className="mx-auto max-w-[80rem] px-4 text-center">
+        <div className="mx-auto max-w-[80rem] px-6 text-center">
           <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

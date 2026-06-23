@@ -11,7 +11,7 @@ const NotFound = () => {
         description="The page you're looking for doesn't exist on VeryFun Company."
         noindex
       />
-      <div className="mx-auto max-w-[80rem] px-4 text-center">
+      <div className="mx-auto max-w-[80rem] px-6 text-center">
         <m.div
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}

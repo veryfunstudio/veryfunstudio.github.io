@@ -81,7 +81,7 @@ const BlogPost = () => {
         }}
       />
       <section className="py-16">
-        <div className="mx-auto max-w-[80rem] px-4">
+        <div className="mx-auto max-w-[80rem] px-6">
           <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -89,7 +89,7 @@ const BlogPost = () => {
             className="mb-10"
           >
             <div className="mb-6 flex flex-wrap items-center gap-3">
-              <span className="rounded-full bg-black/5 px-4 py-1.5 font-patrick text-sm text-foreground">
+              <span className="rounded-full bg-surface-tint px-4 py-1.5 font-patrick text-sm text-foreground">
                 {post.category}
               </span>
               <time dateTime={post.date} className="font-patrick text-sm text-muted">

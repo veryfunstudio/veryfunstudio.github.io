@@ -34,6 +34,7 @@ colors:
   background: "#fdfbf7" # warm paper, page bg
   surface-raised: "bg-white (Tailwind native — not a custom token; cards, panels)"
   surface-warm: "#f6f1e8" # key-art wells, success icon wells
+  surface-tint: "rgba(45, 45, 45, 0.05)" # subtle ink wash — pills, icon circles
   foreground: "#2d2d2d" # ink — body text, hard borders, primary btn bg
 
   # Secondary text

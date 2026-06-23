@@ -13,7 +13,7 @@ const Blog = () => {
         path="/blog"
       />
       <section className="py-20">
-        <div className="mx-auto max-w-[80rem] px-4 text-center">
+        <div className="mx-auto max-w-[80rem] px-6 text-center">
           <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -28,7 +28,7 @@ const Blog = () => {
       </section>
 
       <section className="py-16">
-        <div className="mx-auto max-w-[80rem] px-4">
+        <div className="mx-auto max-w-[80rem] px-6">
           <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-2">
             {BLOG_POSTS.map((post) => (
               <article key={post.id} className="hand-drawn-card overflow-hidden bg-white relative">
@@ -43,7 +43,7 @@ const Blog = () => {
                 />
                 <div className="p-6">
                   <div className="mb-4 flex items-center justify-between">
-                    <span className="rounded-full bg-black/5 px-3 py-1 font-patrick text-sm text-foreground">
+                    <span className="rounded-full bg-surface-tint px-3 py-1 font-patrick text-sm text-foreground">
                       {post.category}
                     </span>
                     <time dateTime={post.date} className="font-patrick text-sm text-foreground">
