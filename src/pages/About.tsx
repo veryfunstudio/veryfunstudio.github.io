@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { m } from "framer-motion";
-import { Seo } from "../components/seo/Seo";
+import { Seo } from "@/components/seo/Seo";
 
 const TECH_STACK = [
   { name: "Unity", icon: "🎮", rotation: -0.5 },

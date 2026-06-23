@@ -1,10 +1,10 @@
 import { useParams, Link } from "react-router-dom";
 import { m } from "framer-motion";
-import { getBlogPostById } from "../data/blog";
-import { formatDate } from "../lib/utils";
-import { Seo } from "../components/seo/Seo";
-import { JsonLd } from "../components/seo/JsonLd";
-import { SITE_URL } from "../components/seo/Seo";
+import { getBlogPostById } from "@/data/blog";
+import { formatDate } from "@/lib/utils";
+import { Seo } from "@/components/seo/Seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { SITE_URL } from "@/components/seo/Seo";
 
 const BlogPost = () => {
   const { id } = useParams<{ id: string }>();

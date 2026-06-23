@@ -1,6 +1,6 @@
 import { m } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { PROJECTS } from "../../data/projects";
+import { PROJECTS } from "@/data/projects";
 import { Link } from "react-router-dom";
 
 const reveal = {

@@ -1,6 +1,6 @@
 import { m } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Seo } from "../components/seo/Seo";
+import { Seo } from "@/components/seo/Seo";
 
 const NotFound = () => {
   return (

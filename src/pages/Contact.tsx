@@ -3,7 +3,7 @@ import { m } from "framer-motion";
 import { FaGithub, FaEnvelope } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { MailCheck } from "lucide-react";
-import { Seo } from "../components/seo/Seo";
+import { Seo } from "@/components/seo/Seo";
 
 const CONTACT_INFO = [
   {

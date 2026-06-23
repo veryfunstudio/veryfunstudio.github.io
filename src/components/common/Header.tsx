@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { m, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { NAV_ITEMS, BRAND } from "../../lib/constants";
+import { NAV_ITEMS, BRAND } from "@/lib/constants";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);

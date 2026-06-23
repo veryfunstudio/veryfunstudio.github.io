@@ -1,8 +1,8 @@
 import { m } from "framer-motion";
 import { Link } from "react-router-dom";
-import { formatDate } from "../lib/utils";
-import { BLOG_POSTS } from "../data/blog";
-import { Seo } from "../components/seo/Seo";
+import { formatDate } from "@/lib/utils";
+import { BLOG_POSTS } from "@/data/blog";
+import { Seo } from "@/components/seo/Seo";
 
 const Blog = () => {
   return (

@@ -1,7 +1,7 @@
 import { m } from "framer-motion";
 import { Link } from "react-router-dom";
-import { PROJECTS } from "../data/projects";
-import { Seo } from "../components/seo/Seo";
+import { PROJECTS } from "@/data/projects";
+import { Seo } from "@/components/seo/Seo";
 
 const Projects = () => {
   return (

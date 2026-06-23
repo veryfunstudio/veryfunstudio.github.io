@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { LazyMotion, MotionConfig, domAnimation } from "framer-motion";
-import Header from "./components/common/Header";
-import Footer from "./components/common/Footer";
+import Header from "@/components/common/Header";
+import Footer from "@/components/common/Footer";
 
 const SITE_URL = "https://cookabc.github.io";
 const DEFAULT_TITLE = "VeryFun Company - Indie Mobile Game Studio";

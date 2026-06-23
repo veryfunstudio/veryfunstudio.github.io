@@ -1,8 +1,8 @@
-import { Hero, Features, CtaFooter } from "../components/home";
-import { Seo } from "../components/seo/Seo";
-import { JsonLd } from "../components/seo/JsonLd";
-import { PROJECTS } from "../data/projects";
-import { SITE_URL } from "../components/seo/Seo";
+import { Hero, Features, CtaFooter } from "@/components/home";
+import { Seo } from "@/components/seo/Seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { PROJECTS } from "@/data/projects";
+import { SITE_URL } from "@/components/seo/Seo";
 
 const organizationSchema = {
   "@context": "https://schema.org",

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { m } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { PROJECTS } from "../../data/projects";
+import { PROJECTS } from "@/data/projects";
 
 const HERO_GAMES = PROJECTS.slice(0, 6);
 

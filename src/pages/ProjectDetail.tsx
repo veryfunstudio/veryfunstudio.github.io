@@ -1,10 +1,10 @@
 import { useParams, Link } from "react-router-dom";
 import { m } from "framer-motion";
-import { getProjectBySlug } from "../data/projects";
+import { getProjectBySlug } from "@/data/projects";
 import { ExternalLink, ArrowLeft } from "lucide-react";
-import { Seo } from "../components/seo/Seo";
-import { JsonLd } from "../components/seo/JsonLd";
-import { SITE_URL } from "../components/seo/Seo";
+import { Seo } from "@/components/seo/Seo";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { SITE_URL } from "@/components/seo/Seo";
 
 const ProjectDetail = () => {
   const { slug } = useParams<{ slug: string }>();
