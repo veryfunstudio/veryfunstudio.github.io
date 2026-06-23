@@ -1,4 +1,4 @@
-import { writeFileSync, mkdirSync, copyFileSync, existsSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync, existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { PROJECTS } from "../src/data/projects";
@@ -50,14 +50,14 @@ ${urls}
 
 function llmsTxt() {
   const gameLines = PROJECTS.map(
-    (p) => `- [${p.title}](${SITE_URL}/projects/${p.slug}): ${p.description.split(".")[0]}.`,
+    (p) => `- [${p.title}](${SITE_URL}/projects/${p.slug}): ${p.answer}`,
   ).join("\n");
   const blogLines = BLOG_POSTS.map(
-    (p) => `- [${p.title}](${SITE_URL}/blog/${p.id}): ${p.excerpt.split(".")[0]}.`,
+    (p) => `- [${p.title}](${SITE_URL}/blog/${p.id}): ${p.excerpt}`,
   ).join("\n");
   return `# VeryFun Company
 
-> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play.
+> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. All games are free, work offline, and have no timers or paywalls.
 
 ## Games
 ${gameLines}
@@ -72,6 +72,8 @@ ${blogLines}
 
 ## Google Play store pages
 ${PROJECTS.map((p) => `- [${p.title}](${p.googlePlayUrl})`).join("\n")}
+
+Last updated: ${today}
 `;
 }
 
@@ -90,10 +92,18 @@ write("llms.txt", llmsTxt());
 // SPA fallback for GitHub Pages: serve the app shell on unmatched paths so
 // client-side routing can take over (e.g. /projects/typoslug). Real routes
 // already have their own .html files; this only fires for true 404s.
+// GitHub Pages always returns HTTP 200 for 404.html, so we inject a
+// noindex meta to prevent every garbage URL (/asdf, /wp-admin, ...) from
+// being indexed as a duplicate of the home page.
 const indexPath = resolve(outDir, "index.html");
 if (existsSync(indexPath)) {
-  copyFileSync(indexPath, resolve(outDir, "404.html"));
-  console.log("  wrote dist/404.html (SPA fallback)");
+  const indexHtml = readFileSync(indexPath, "utf8");
+  const noindexMeta = '<meta name="robots" content="noindex, nofollow">';
+  // Prefer injecting right after <head> to stay valid; fall back to <title>.
+  const injected = indexHtml.includes("<head>")
+    ? indexHtml.replace("<head>", `<head>${noindexMeta}`)
+    : indexHtml.replace("<title>", `${noindexMeta}<title>`);
+  write("404.html", injected);
 }
 
 console.log("[seo] done.");

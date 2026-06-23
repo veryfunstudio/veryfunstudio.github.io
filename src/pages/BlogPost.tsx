@@ -28,6 +28,7 @@ const BlogPost = () => {
         title={post.title}
         description={post.excerpt}
         path={`/blog/${post.id}`}
+        image={post.image}
         type="article"
         publishedTime={post.date}
       />

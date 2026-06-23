@@ -36,7 +36,7 @@ const ProjectDetail = () => {
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
           name: project.title,
-          description: project.description,
+          description: project.answer,
           url: `${SITE_URL}/projects/${project.slug}`,
           image: `${SITE_URL}${project.image}`,
           applicationCategory: "GameApplication",
@@ -120,6 +120,9 @@ const ProjectDetail = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mx-auto mb-12 max-w-3xl"
           >
+            <p className="mb-6 font-patrick text-2xl leading-relaxed text-foreground">
+              {project.answer}
+            </p>
             <p className="font-patrick text-xl leading-relaxed text-foreground">
               {project.fullDescription}
             </p>

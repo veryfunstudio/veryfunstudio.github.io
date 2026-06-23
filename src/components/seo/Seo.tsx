@@ -33,7 +33,7 @@ export function Seo({
   noindex = false,
 }: SeoProps) {
   const url = `${SITE_URL}${path}`;
-  const absoluteImage = image.startsWith("http") ? image : `${SITE_URL}${image}`;
+  const absoluteImage = encodeURI(image.startsWith("http") ? image : `${SITE_URL}${image}`);
 
   return (
     <Helmet>
