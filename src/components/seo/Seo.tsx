@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
-export const SITE_URL = "https://cookabc.github.io";
+import { SITE_URL } from "@/lib/constants";
 const SITE_NAME = "VeryFun Company";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/images/about.jpeg`;
 

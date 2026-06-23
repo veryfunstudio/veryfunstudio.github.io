@@ -3,8 +3,8 @@ import { Helmet } from "react-helmet-async";
 import { LazyMotion, MotionConfig, domAnimation } from "framer-motion";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
+import { SITE_URL } from "@/lib/constants";
 
-const SITE_URL = "https://cookabc.github.io";
 const DEFAULT_TITLE = "VeryFun Company - Indie Mobile Game Studio";
 const DEFAULT_DESCRIPTION =
   "VeryFun Company is an independent studio publishing calming, free-to-play mobile puzzle games on Google Play, including Classic Sudoku 2026, Tile Journey, and Bubble Shoot.";
@@ -36,7 +36,7 @@ function App() {
           <div className="flex min-h-screen flex-col">
             <a
               href="#main-content"
-              className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:rounded-[4px] focus:border-2 focus:border-border-strong focus:bg-white focus:px-4 focus:py-2 focus:font-patrick focus:text-foreground focus: focus:no-underline"
+              className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:rounded-[4px] focus:border-2 focus:border-border-strong focus:bg-white focus:px-4 focus:py-2 focus:font-patrick focus:text-foreground focus:no-underline"
             >
               Skip to main content
             </a>
