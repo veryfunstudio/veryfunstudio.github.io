@@ -10,8 +10,11 @@
   --color-background: #fdfbf7;
   --color-foreground: #2d2d2d;
   --color-muted: #6e6960;
+  --color-surface-warm: #f6f1e8;
   --color-accent: #b6553a;
   --color-accent-hover: #9c4628;
+  --color-accent-active: #7e371f;
+  --color-accent-soft: rgba(182, 85, 58, 0.12);
   --color-border: #2d2d2d;
   --color-secondary-accent: #2d5da1;
   --color-secondary-accent-light: rgba(45, 93, 161, 0.2);
