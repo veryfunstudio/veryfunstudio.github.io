@@ -40,6 +40,7 @@ const BlogPost = () => {
           description: post.excerpt,
           datePublished: post.date,
           dateModified: post.date,
+          image: `${SITE_URL}${post.image}`,
           url: `${SITE_URL}/blog/${post.id}`,
           author: {
             "@type": "Organization",
@@ -59,6 +60,22 @@ const BlogPost = () => {
             "@type": "WebPage",
             "@id": `${SITE_URL}/blog/${post.id}`,
           },
+        }}
+      />
+      <JsonLd
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+            { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+            {
+              "@type": "ListItem",
+              position: 3,
+              name: post.title,
+              item: `${SITE_URL}/blog/${post.id}`,
+            },
+          ],
         }}
       />
       <section className="py-16">

@@ -21,7 +21,24 @@ const staticRoutes: { path: string; lastmod?: string }[] = [
 ];
 
 function robots() {
-  return `User-agent: *
+  return `# Search engines
+User-agent: *
+Allow: /
+
+# AI crawlers — explicitly allowed for citation/training
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
 Allow: /
 
 Sitemap: ${SITE_URL}/sitemap.xml
@@ -31,7 +48,7 @@ Sitemap: ${SITE_URL}/sitemap.xml
 function sitemap() {
   const urls = staticRoutes
     .map((r) => {
-      const loc = `${SITE_URL}${r.path === "/" ? "" : r.path}`;
+      const loc = `${SITE_URL}${r.path}`;
       const lastmod = r.lastmod ?? today;
       return `  <url>
     <loc>${loc}</loc>
@@ -77,6 +94,63 @@ Last updated: ${today}
 `;
 }
 
+function llmsFullTxt() {
+  const gameSections = PROJECTS.map((p) => {
+    const faqLines = p.faq.map((f) => `**Q: ${f.question}**\nA: ${f.answer}`).join("\n\n");
+    return `## ${p.title}
+
+${p.answer}
+
+${p.fullDescription}
+
+- Platform: Android (Google Play)
+- Price: Free
+- Store: ${p.googlePlayUrl}
+- Released: ${p.releaseDate}
+- Technologies: ${p.technologies.join(", ")}
+
+### Features
+${p.features.map((f) => `- ${f}`).join("\n")}
+
+### FAQ
+${faqLines}
+`;
+  }).join("\n---\n\n");
+
+  const blogSections = BLOG_POSTS.map((p) => {
+    return `## ${p.title}
+
+${p.excerpt}
+
+- Published: ${p.date}
+- Category: ${p.category}
+- URL: ${SITE_URL}/blog/${p.id}
+
+${p.content.join("\n\n")}
+`;
+  }).join("\n---\n\n");
+
+  return `# VeryFun Company — Full Content for LLMs
+
+> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. All games are free, work offline, and have no timers or paywalls. The studio has shipped 6 titles including Classic Sudoku 2026, Tile Journey, Word Search Block, Arrow Out, Pearl Coloring, and Bubble Shoot.
+>
+> Site: ${SITE_URL}
+> Last updated: ${today}
+
+---
+
+# Games
+
+${gameSections}
+
+---
+
+# Blog
+
+${blogSections}
+`;
+}
+
 function write(file: string, content: string) {
   const target = resolve(outDir, file);
   mkdirSync(dirname(target), { recursive: true });
@@ -88,6 +162,7 @@ console.log("[seo] generating crawler assets...");
 write("robots.txt", robots());
 write("sitemap.xml", sitemap());
 write("llms.txt", llmsTxt());
+write("llms-full.txt", llmsFullTxt());
 
 // SPA fallback for GitHub Pages: serve the app shell on unmatched paths so
 // client-side routing can take over (e.g. /projects/typoslug). Real routes

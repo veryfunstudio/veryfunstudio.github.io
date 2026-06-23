@@ -66,6 +66,22 @@ const ProjectDetail = () => {
           })),
         }}
       />
+      <JsonLd
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+            { "@type": "ListItem", position: 2, name: "Games", item: `${SITE_URL}/projects` },
+            {
+              "@type": "ListItem",
+              position: 3,
+              name: project.title,
+              item: `${SITE_URL}/projects/${project.slug}`,
+            },
+          ],
+        }}
+      />
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-4">
           <m.div
