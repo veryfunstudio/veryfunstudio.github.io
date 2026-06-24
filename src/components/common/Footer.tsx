@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaGooglePlay } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { BRAND } from "@/lib/constants";
+
+const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/developer?id=songxugang";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -18,10 +20,19 @@ const Footer = () => {
           </div>
           <div className="flex items-center gap-6">
             <a
+              href={GOOGLE_PLAY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground transition-colors hover:text-accent"
+              aria-label="Visit our Google Play developer page"
+            >
+              <FaGooglePlay size={24} />
+            </a>
+            <a
               href={BRAND.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground"
+              className="text-foreground transition-colors hover:text-accent"
               aria-label="Visit our GitHub page"
             >
               <FaGithub size={24} />
@@ -30,7 +41,7 @@ const Footer = () => {
               href={BRAND.social.x}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground"
+              className="text-foreground transition-colors hover:text-accent"
               aria-label="Visit our X page"
             >
               <FaXTwitter size={24} />

@@ -25,12 +25,20 @@ const NotFound = () => {
           <div className="mb-10 flex justify-center text-muted" aria-hidden="true">
             <Compass size={64} strokeWidth={1.5} />
           </div>
-          <Link
-            to="/"
-            className="hand-drawn-button inline-block bg-white px-10 py-4 font-patrick text-xl no-underline text-foreground"
-          >
-            ← Back Home
-          </Link>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              to="/"
+              className="hand-drawn-button inline-block bg-white px-10 py-4 font-patrick text-xl no-underline text-foreground"
+            >
+              ← Back Home
+            </Link>
+            <Link
+              to="/games"
+              className="hand-drawn-button inline-block bg-foreground px-10 py-4 font-patrick text-xl no-underline text-background"
+            >
+              Browse our games
+            </Link>
+          </div>
         </m.div>
       </div>
     </section>
