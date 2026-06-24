@@ -7,7 +7,7 @@ const DEFAULT_OG_IMAGE = `${SITE_URL}/images/about.jpeg`;
 interface SeoProps {
   title: string;
   description: string;
-  /** Path beginning with `/`, e.g. `/projects/classic-sudoku`. Defaults to `/`. */
+  /** Path beginning with `/`, e.g. `/games/classic-sudoku`. Defaults to `/`. */
   path?: string;
   /** Absolute URL or path-relative. Falls back to the default site image. */
   image?: string;

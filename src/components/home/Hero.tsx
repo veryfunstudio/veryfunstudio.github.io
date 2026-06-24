@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { m } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { PROJECTS } from "@/data/projects";
+import { GAMES } from "@/data/games";
 
-const HERO_GAMES = PROJECTS.slice(0, 6);
+const HERO_GAMES = GAMES.slice(0, 6);
 
 const HeroSectionNiceUI = () => {
   return (
@@ -26,7 +26,7 @@ const HeroSectionNiceUI = () => {
           </p>
           <div className="flex items-center gap-4">
             <Link
-              to="/projects"
+              to="/games"
               className="hand-drawn-button inline-flex items-center gap-2 bg-foreground px-6 py-3 font-patrick text-lg text-background no-underline"
             >
               Explore the games
@@ -62,7 +62,7 @@ const HeroSectionNiceUI = () => {
           {HERO_GAMES.map((game) => (
             <Link
               key={game.id}
-              to={`/projects/${game.slug}`}
+              to={`/games/${game.slug}`}
               className="hand-drawn-card group block overflow-hidden bg-white transition-shadow hover:shadow-[var(--shadow-soft-hover)]"
             >
               <img

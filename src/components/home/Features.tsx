@@ -1,6 +1,6 @@
 import { m } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { PROJECTS } from "@/data/projects";
+import { GAMES } from "@/data/games";
 import { Link } from "react-router-dom";
 
 const reveal = {
@@ -10,24 +10,18 @@ const reveal = {
   transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
 };
 
-function GameBlock({
-  project,
-  reverse,
-}: {
-  project: (typeof PROJECTS)[number];
-  reverse?: boolean;
-}) {
+function GameBlock({ game, reverse }: { game: (typeof GAMES)[number]; reverse?: boolean }) {
   return (
     <m.div {...reveal} className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
       <div className={reverse ? "lg:order-last" : ""}>
         <Link
-          to={`/projects/${project.slug}`}
+          to={`/games/${game.slug}`}
           className="hand-drawn-card group block overflow-hidden bg-white transition-shadow hover:shadow-[var(--shadow-soft-hover)]"
         >
           <div className="bg-surface-warm p-6 sm:p-10">
             <img
-              src={project.image}
-              alt={`${project.title} key art`}
+              src={game.image}
+              alt={`${game.title} key art`}
               width={1200}
               height={630}
               loading="lazy"
@@ -40,7 +34,7 @@ function GameBlock({
       <div className={`space-y-5 ${reverse ? "lg:order-first" : ""}`}>
         <div className="flex items-center gap-3">
           <img
-            src={project.icon}
+            src={game.icon}
             alt=""
             width={48}
             height={48}
@@ -49,17 +43,20 @@ function GameBlock({
             className="h-12 w-12 rounded-[4px] border border-border-soft bg-white object-cover"
           />
           <h3 className="font-kalam text-3xl font-bold tracking-tight text-foreground">
-            {project.title}
+            {game.title}
           </h3>
+          <span className="rounded-full bg-accent-soft px-2.5 py-0.5 font-patrick text-xs font-bold text-accent">
+            Free
+          </span>
         </div>
         <p className="max-w-[52ch] font-patrick text-lg leading-relaxed text-muted">
-          {project.description}
+          {game.description}
         </p>
         <Link
-          to={`/projects/${project.slug}`}
-          className="inline-flex items-center gap-1.5 font-patrick text-base text-accent underline decoration-accent/30 decoration-2 underline-offset-4 transition-colors hover:decoration-accent"
+          to={`/games/${game.slug}`}
+          className="link-accent inline-flex items-center gap-1.5 font-patrick text-base"
         >
-          Read more about {project.title}
+          Read more about {game.title}
           <ArrowUpRight size={16} />
         </Link>
       </div>
@@ -81,8 +78,8 @@ const FeaturesSection = () => {
       </m.div>
 
       <div className="space-y-24 lg:space-y-32">
-        {PROJECTS.map((project, i) => (
-          <GameBlock key={project.id} project={project} reverse={i % 2 === 1} />
+        {GAMES.map((game, i) => (
+          <GameBlock key={game.id} game={game} reverse={i % 2 === 1} />
         ))}
       </div>
     </section>

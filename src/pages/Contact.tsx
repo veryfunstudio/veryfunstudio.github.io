@@ -53,29 +53,31 @@ const Contact = () => {
         noindex
       />
       <section className="py-20">
-        <div className="mx-auto max-w-[80rem] px-6 text-center">
+        <div className="mx-auto max-w-[80rem] px-6">
           <m.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
+            className="mb-12"
           >
-            <h1 className="mb-6 font-kalam text-4xl font-bold text-foreground">Get in Touch</h1>
-            <p className="mx-auto max-w-3xl font-patrick text-xl text-foreground">
+            <p className="mb-3 font-patrick text-sm font-bold uppercase tracking-wide text-accent">
+              Say hello
+            </p>
+            <h1 className="mb-4 font-kalam text-4xl font-bold text-foreground sm:text-5xl">
+              Get in Touch
+            </h1>
+            <p className="max-w-2xl font-patrick text-xl text-foreground">
               If you have any questions or collaboration inquiries, feel free to reach out anytime
             </p>
           </m.div>
-        </div>
-      </section>
 
-      <section className="py-16">
-        <div className="mx-auto max-w-[80rem] px-6">
           <div className="grid gap-12 md:grid-cols-2">
             <m.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className=" rounded-[4px] border-2 border-border-strong bg-white p-8 relative"
+              transition={{ duration: 0.6 }}
+              className="rounded-[4px] border-2 border-border-strong bg-white p-8 relative"
             >
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Contact Info</h2>
               <div className="flex flex-col gap-6">
@@ -102,7 +104,7 @@ const Contact = () => {
                         href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-patrick underline decoration-wavy decoration-accent decoration-2 text-foreground"
+                        className="link-accent font-patrick text-base"
                       >
                         {item.value}
                       </a>
@@ -113,10 +115,10 @@ const Contact = () => {
             </m.div>
 
             <m.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
               className=" rounded-[4px] border-2 border-border-strong bg-white p-8 relative"
             >
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Send a Message</h2>

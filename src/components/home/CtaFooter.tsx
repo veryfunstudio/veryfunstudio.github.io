@@ -18,7 +18,7 @@ const CtaFooterSection = () => {
         </h2>
         <div className="mt-8">
           <Link
-            to="/projects"
+            to="/games"
             className="hand-drawn-button inline-flex items-center gap-2 bg-foreground px-6 py-3 font-patrick text-lg text-background no-underline"
           >
             Browse the lineup

@@ -46,29 +46,14 @@ const About = () => {
         path="/about"
       />
       <section className="py-20">
-        <div className="mx-auto max-w-[80rem] px-6 text-center">
-          <m.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="mb-6 font-kalam text-4xl font-bold text-foreground">About Us</h1>
-            <p className="mx-auto max-w-3xl font-patrick text-xl text-foreground">
-              An indie studio crafting calming mobile puzzle games for Google Play
-            </p>
-          </m.div>
-        </div>
-      </section>
-
-      <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-6">
           <div className="grid items-stretch gap-12 md:grid-cols-2">
             <m.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className=" relative"
+              transition={{ duration: 0.6 }}
+              className="relative"
             >
               <img
                 src="/images/about.jpeg"
@@ -78,16 +63,25 @@ const About = () => {
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
-                className="h-full w-full rounded-[4px] border-2 border-border-strong object-cover outline outline-1 outline-black/10"
+                className="h-full w-full rounded-[4px] border-2 border-border-strong object-cover"
               />
             </m.div>
             <m.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
               className="flex flex-col justify-center rounded-[4px] border-2 border-border-strong bg-white p-8 relative"
             >
+              <p className="mb-3 font-patrick text-sm font-bold uppercase tracking-wide text-accent">
+                Indie studio
+              </p>
+              <h1 className="mb-4 font-kalam text-4xl font-bold text-foreground sm:text-5xl">
+                About Us
+              </h1>
+              <p className="mb-6 font-patrick text-xl text-muted">
+                An indie studio crafting calming mobile puzzle games for Google Play
+              </p>
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Our Story</h2>
               <p className="mb-4 font-patrick text-lg leading-relaxed text-foreground">
                 VeryFun Company started as a shared dream between friends who grew up playing games
@@ -116,10 +110,10 @@ const About = () => {
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-6">
           <m.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             className="mx-auto mb-16 max-w-3xl text-center"
           >
             <h2 className="mb-2 font-kalam text-2xl font-bold text-foreground">Tech Stack</h2>
@@ -149,10 +143,10 @@ const About = () => {
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-6">
           <m.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
             className="mx-auto mb-16 max-w-3xl text-center"
           >
             <h2 className="mb-2 font-kalam text-2xl font-bold text-foreground">Our Values</h2>
@@ -173,7 +167,7 @@ const About = () => {
                 style={{ transform: `rotate(${valueRotations[index]}deg)` }}
               >
                 <h3 className="mb-4 font-kalam text-xl font-bold text-foreground">{value.title}</h3>
-                <p className="font-patrick leading-normal text-foreground">{value.description}</p>
+                <p className="font-patrick leading-relaxed text-foreground">{value.description}</p>
               </m.div>
             ))}
           </div>
@@ -183,10 +177,10 @@ const About = () => {
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-6 text-center">
           <m.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
           >
             <h2 className="mb-4 font-kalam text-3xl font-bold text-foreground">Ready to play?</h2>
             <p className="mx-auto mb-8 max-w-2xl font-patrick text-lg text-muted">
@@ -194,7 +188,7 @@ const About = () => {
               "respect the player's time."
             </p>
             <Link
-              to="/projects"
+              to="/games"
               className="hand-drawn-button inline-block bg-foreground px-8 py-3 font-patrick text-lg text-background no-underline"
             >
               Explore the games

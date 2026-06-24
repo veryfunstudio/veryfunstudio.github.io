@@ -1,7 +1,7 @@
 import { Hero, Features, CtaFooter } from "@/components/home";
 import { Seo } from "@/components/seo/Seo";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { PROJECTS } from "@/data/projects";
+import { GAMES } from "@/data/games";
 import { SITE_URL } from "@/lib/constants";
 
 const organizationSchema = {
@@ -12,7 +12,7 @@ const organizationSchema = {
   logo: `${SITE_URL}/images/about.jpeg`,
   description:
     "Independent mobile game studio publishing calming, free-to-play puzzle games on Google Play.",
-  sameAs: PROJECTS.map((p) => p.googlePlayUrl),
+  sameAs: GAMES.map((p) => p.googlePlayUrl),
 };
 
 const websiteSchema = {

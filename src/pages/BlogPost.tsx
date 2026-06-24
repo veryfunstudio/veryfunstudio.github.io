@@ -114,7 +114,7 @@ const BlogPost = () => {
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              className="mb-12 h-auto w-full rounded-[4px] border-2 border-border-strong outline outline-1 outline-black/10 sm:h-[28rem] sm:object-cover"
+              className="mb-12 h-auto w-full rounded-[4px] border-2 border-border-strong sm:h-[28rem] sm:object-cover"
             />
           </m.div>
 
@@ -141,10 +141,7 @@ const BlogPost = () => {
             className="mt-16 text-center"
           >
             <div className="hand-drawn-card inline-block bg-white p-8">
-              <Link
-                to="/blog"
-                className="font-patrick text-lg font-medium underline decoration-wavy decoration-accent decoration-2 text-accent no-underline"
-              >
+              <Link to="/blog" className="link-accent font-patrick text-lg font-medium">
                 ← Back to All Posts
               </Link>
             </div>
