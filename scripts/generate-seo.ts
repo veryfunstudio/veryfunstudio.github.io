@@ -1,7 +1,7 @@
 import { writeFileSync, mkdirSync, readFileSync, existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { PROJECTS } from "../src/data/projects";
+import { GAMES } from "../src/data/games";
 import { BLOG_POSTS } from "../src/data/blog";
 
 const SITE_URL = "https://cookabc.github.io";
@@ -14,9 +14,9 @@ const today = new Date().toISOString().split("T")[0];
 const staticRoutes: { path: string; lastmod?: string }[] = [
   { path: "/" },
   { path: "/about" },
-  { path: "/projects" },
+  { path: "/games" },
   { path: "/blog" },
-  ...PROJECTS.map((p) => ({ path: `/projects/${p.slug}`, lastmod: p.releaseDate })),
+  ...GAMES.map((p) => ({ path: `/games/${p.slug}`, lastmod: p.releaseDate })),
   ...BLOG_POSTS.map((p) => ({ path: `/blog/${p.id}`, lastmod: p.date })),
 ];
 
@@ -54,7 +54,7 @@ function sitemap() {
     <loc>${loc}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>${r.path === "/" ? "weekly" : "monthly"}</changefreq>
-    <priority>${r.path === "/" ? "1.0" : r.path.startsWith("/projects/") ? "0.8" : "0.6"}</priority>
+    <priority>${r.path === "/" ? "1.0" : r.path.startsWith("/games/") ? "0.8" : "0.6"}</priority>
   </url>`;
     })
     .join("\n");
@@ -66,8 +66,8 @@ ${urls}
 }
 
 function llmsTxt() {
-  const gameLines = PROJECTS.map(
-    (p) => `- [${p.title}](${SITE_URL}/projects/${p.slug}): ${p.answer}`,
+  const gameLines = GAMES.map(
+    (p) => `- [${p.title}](${SITE_URL}/games/${p.slug}): ${p.answer}`,
   ).join("\n");
   const blogLines = BLOG_POSTS.map(
     (p) => `- [${p.title}](${SITE_URL}/blog/${p.id}): ${p.excerpt}`,
@@ -84,18 +84,18 @@ ${blogLines}
 
 ## Other pages
 - [About the studio](${SITE_URL}/about)
-- [All games](${SITE_URL}/projects)
+- [All games](${SITE_URL}/games)
 - [Blog index](${SITE_URL}/blog)
 
 ## Google Play store pages
-${PROJECTS.map((p) => `- [${p.title}](${p.googlePlayUrl})`).join("\n")}
+${GAMES.map((p) => `- [${p.title}](${p.googlePlayUrl})`).join("\n")}
 
 Last updated: ${today}
 `;
 }
 
 function llmsFullTxt() {
-  const gameSections = PROJECTS.map((p) => {
+  const gameSections = GAMES.map((p) => {
     const faqLines = p.faq.map((f) => `**Q: ${f.question}**\nA: ${f.answer}`).join("\n\n");
     return `## ${p.title}
 
@@ -165,7 +165,7 @@ write("llms.txt", llmsTxt());
 write("llms-full.txt", llmsFullTxt());
 
 // SPA fallback for GitHub Pages: serve the app shell on unmatched paths so
-// client-side routing can take over (e.g. /projects/typoslug). Real routes
+// client-side routing can take over (e.g. /games/typoslug). Real routes
 // already have their own .html files; this only fires for true 404s.
 // GitHub Pages always returns HTTP 200 for 404.html, so we inject a
 // noindex meta to prevent every garbage URL (/asdf, /wp-admin, ...) from
