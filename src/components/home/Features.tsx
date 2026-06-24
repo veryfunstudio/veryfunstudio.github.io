@@ -16,7 +16,7 @@ function GameBlock({ game, reverse }: { game: (typeof GAMES)[number]; reverse?: 
       <div className={reverse ? "lg:order-last" : ""}>
         <Link
           to={`/games/${game.slug}`}
-          className="hand-drawn-card group block overflow-hidden bg-white transition-shadow hover:shadow-[var(--shadow-soft-hover)]"
+          className="hand-drawn-card group block overflow-hidden bg-surface transition-shadow hover:shadow-[var(--shadow-soft-hover)]"
         >
           <div className="bg-surface-warm p-6 sm:p-10">
             <img
@@ -40,12 +40,12 @@ function GameBlock({ game, reverse }: { game: (typeof GAMES)[number]; reverse?: 
             height={48}
             loading="lazy"
             decoding="async"
-            className="h-12 w-12 rounded-[4px] border border-border-soft bg-white object-cover"
+            className="h-12 w-12 rounded-[4px] border border-border-soft bg-surface object-cover"
           />
           <h3 className="font-kalam text-3xl font-bold tracking-tight text-foreground">
             {game.title}
           </h3>
-          <span className="rounded-full bg-accent-soft px-2.5 py-0.5 font-patrick text-xs font-bold text-accent">
+          <span className="rounded-full bg-accent-soft px-2.5 py-0.5 font-patrick text-sm font-bold text-accent">
             Free
           </span>
         </div>

@@ -140,7 +140,7 @@ const BlogPost = () => {
             transition={{ duration: 0.5, delay: 0.45 }}
             className="mt-16 text-center"
           >
-            <div className="hand-drawn-card inline-block bg-white p-8">
+            <div className="hand-drawn-card inline-block bg-surface p-8">
               <Link to="/blog" className="link-accent font-patrick text-lg font-medium">
                 ← Back to All Posts
               </Link>

@@ -118,7 +118,7 @@ const GameDetail = () => {
                   height={80}
                   loading="eager"
                   decoding="async"
-                  className="h-16 w-16 flex-shrink-0 rounded-[4px] border-2 border-border-strong bg-white object-cover  sm:h-20 sm:w-20"
+                  className="h-16 w-16 flex-shrink-0 rounded-[4px] border-2 border-border-strong bg-surface object-cover  sm:h-20 sm:w-20"
                 />
                 <h1 className="font-kalam text-4xl font-bold text-foreground sm:text-5xl">
                   {game.title}
@@ -150,7 +150,7 @@ const GameDetail = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mb-12 grid gap-8 lg:grid-cols-2"
           >
-            <div className="hand-drawn-card relative bg-white p-8">
+            <div className="hand-drawn-card relative bg-surface p-8">
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Key Features</h2>
               <ul className="space-y-4">
                 {game.features.map((feature) => (
@@ -167,7 +167,7 @@ const GameDetail = () => {
               </ul>
             </div>
 
-            <div className="hand-drawn-card relative bg-white p-8">
+            <div className="hand-drawn-card relative bg-surface p-8">
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Genres & Tags</h2>
               <div className="flex flex-wrap gap-3">
                 {game.technologies.map((tech) => (
@@ -193,7 +193,7 @@ const GameDetail = () => {
             </h2>
             <div className="flex flex-col gap-3">
               {game.faq.map((item, index) => (
-                <details key={index} className="hand-drawn-card group bg-white p-5">
+                <details key={index} className="hand-drawn-card group bg-surface p-5">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-patrick text-lg font-bold text-foreground transition-colors hover:text-accent">
                     <span>{item.question}</span>
                     <span
@@ -222,7 +222,7 @@ const GameDetail = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Get ${game.title} on Google Play`}
-              className="hand-drawn-button inline-flex items-center gap-2 bg-white px-8 py-3 font-patrick text-lg no-underline text-foreground"
+              className="hand-drawn-button inline-flex items-center gap-2 bg-surface px-8 py-3 font-patrick text-lg no-underline text-foreground"
             >
               <ExternalLink size={18} />
               Get on Google Play

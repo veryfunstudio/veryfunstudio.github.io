@@ -43,7 +43,7 @@ const HeroSectionNiceUI = () => {
                     height={32}
                     loading="eager"
                     decoding="async"
-                    className="h-8 w-8 rounded-full border-2 border-background bg-white object-cover"
+                    className="h-8 w-8 rounded-full border-2 border-background bg-surface object-cover"
                     style={{ marginLeft: i > 0 ? "-10px" : 0, zIndex: HERO_GAMES.length - i }}
                   />
                 ))}
@@ -63,7 +63,7 @@ const HeroSectionNiceUI = () => {
             <Link
               key={game.id}
               to={`/games/${game.slug}`}
-              className="hand-drawn-card group block overflow-hidden bg-white transition-shadow hover:shadow-[var(--shadow-soft-hover)]"
+              className="hand-drawn-card group block overflow-hidden bg-surface transition-shadow hover:shadow-[var(--shadow-soft-hover)]"
             >
               <img
                 src={game.icon}

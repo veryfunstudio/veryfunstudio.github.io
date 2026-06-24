@@ -41,7 +41,7 @@ const Games = () => {
             {GAMES.map((game) => (
               <article
                 key={game.id}
-                className="hand-drawn-card relative flex flex-col bg-white p-6"
+                className="hand-drawn-card relative flex flex-col bg-surface p-6"
               >
                 <div className="mb-4 flex items-center gap-4">
                   <img
@@ -56,7 +56,7 @@ const Games = () => {
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
                       <h2 className="font-kalam text-xl font-bold text-foreground">{game.title}</h2>
-                      <span className="rounded-full bg-accent-soft px-2 py-0.5 font-patrick text-xs font-bold text-accent">
+                      <span className="rounded-full bg-accent-soft px-2 py-0.5 font-patrick text-sm font-bold text-accent">
                         Free
                       </span>
                     </div>
@@ -83,7 +83,7 @@ const Games = () => {
                 <div className="mt-auto flex items-center gap-3 pt-2">
                   <Link
                     to={`/games/${game.slug}`}
-                    className="hand-drawn-button inline-block bg-white px-4 py-1.5 font-patrick text-sm no-underline text-foreground"
+                    className="hand-drawn-button inline-block bg-surface px-4 py-2.5 font-patrick text-sm no-underline text-foreground"
                   >
                     Details
                   </Link>

@@ -39,7 +39,7 @@ const Blog = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="hand-drawn-card mb-16 grid overflow-hidden bg-white md:grid-cols-2"
+              className="hand-drawn-card mb-16 grid overflow-hidden bg-surface md:grid-cols-2"
             >
               <div className="overflow-hidden">
                 <img
@@ -73,7 +73,7 @@ const Blog = () => {
                 </p>
                 <Link
                   to={`/blog/${featured.id}`}
-                  className="hand-drawn-button inline-block w-fit bg-white px-6 py-2 font-patrick text-base no-underline text-foreground"
+                  className="hand-drawn-button inline-block w-fit bg-surface px-6 py-2 font-patrick text-base no-underline text-foreground"
                 >
                   Read Featured Post →
                 </Link>
@@ -87,7 +87,7 @@ const Blog = () => {
               {rest.map((post) => (
                 <article
                   key={post.id}
-                  className="hand-drawn-card overflow-hidden bg-white relative"
+                  className="hand-drawn-card overflow-hidden bg-surface relative"
                 >
                   <img
                     src={post.image}

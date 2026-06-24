@@ -37,7 +37,7 @@ const EntityNotFound = ({
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               to={backTo}
-              className="hand-drawn-button inline-block bg-white px-8 py-3 font-patrick text-lg no-underline text-foreground"
+              className="hand-drawn-button inline-block bg-surface px-8 py-3 font-patrick text-lg no-underline text-foreground"
             >
               ← {backLabel}
             </Link>

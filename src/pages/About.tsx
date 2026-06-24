@@ -71,7 +71,7 @@ const About = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="flex flex-col justify-center rounded-[4px] border-2 border-border-strong bg-white p-8 relative"
+              className="flex flex-col justify-center rounded-[4px] border-2 border-border-strong bg-surface p-8 relative"
             >
               <p className="mb-3 font-patrick text-sm font-bold uppercase tracking-wide text-accent">
                 Indie studio
@@ -130,7 +130,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="hand-drawn-card flex items-center justify-center bg-white p-6 text-center"
+                className="hand-drawn-card flex items-center justify-center bg-surface p-6 text-center"
                 style={{ transform: `rotate(${techRotations[index]}deg)` }}
               >
                 <h3 className="font-kalam text-lg font-bold text-foreground">{tech.name}</h3>
@@ -163,7 +163,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="hand-drawn-card relative bg-white p-8"
+                className="hand-drawn-card relative bg-surface p-8"
                 style={{ transform: `rotate(${valueRotations[index]}deg)` }}
               >
                 <h3 className="mb-4 font-kalam text-xl font-bold text-foreground">{value.title}</h3>

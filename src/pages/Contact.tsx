@@ -77,7 +77,7 @@ const Contact = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="rounded-[4px] border-2 border-border-strong bg-white p-8 relative"
+              className="rounded-[4px] border-2 border-border-strong bg-surface p-8 relative"
             >
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Contact Info</h2>
               <div className="flex flex-col gap-6">
@@ -119,7 +119,7 @@ const Contact = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className=" rounded-[4px] border-2 border-border-strong bg-white p-8 relative"
+              className=" rounded-[4px] border-2 border-border-strong bg-surface p-8 relative"
             >
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Send a Message</h2>
               {submitted ? (
