@@ -14,8 +14,8 @@ export const BRAND = {
 
 export const NAV_ITEMS = [
   { path: "/", label: "Home" },
-  { path: "/about", label: "About" },
-  { path: "/projects", label: "Projects" },
+  { path: "/games", label: "Games" },
   { path: "/blog", label: "Blog" },
+  { path: "/about", label: "About" },
   { path: "/contact", label: "Contact" },
 ] as const;

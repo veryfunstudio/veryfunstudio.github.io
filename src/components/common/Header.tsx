@@ -28,8 +28,8 @@ const Header = () => {
                 key={item.path}
                 to={item.path}
                 aria-current={isActive ? "page" : undefined}
-                className={`font-patrick text-base transition-colors ${
-                  isActive ? "text-accent" : "text-muted hover:text-foreground"
+                className={`font-patrick text-base underline-offset-4 transition-colors ${
+                  isActive ? "text-accent" : "text-muted hover:text-foreground hover:underline"
                 }`}
               >
                 {item.label}

@@ -1,23 +1,23 @@
 import { useParams, Link } from "react-router-dom";
 import { m } from "framer-motion";
-import { getProjectBySlug } from "@/data/projects";
+import { getGameBySlug } from "@/data/games";
 import { ExternalLink, ArrowLeft } from "lucide-react";
 import { Seo } from "@/components/seo/Seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE_URL } from "@/lib/constants";
 import EntityNotFound from "@/components/common/EntityNotFound";
 
-const ProjectDetail = () => {
+const GameDetail = () => {
   const { slug } = useParams<{ slug: string }>();
-  const project = getProjectBySlug(slug ?? "");
+  const game = getGameBySlug(slug ?? "");
 
-  if (!project) {
+  if (!game) {
     return (
       <EntityNotFound
-        title="Project Not Found"
-        message="This project seems to have wandered off into another dimension..."
-        backTo="/projects"
-        backLabel="Back to Projects"
+        title="Game Not Found"
+        message="This game seems to have wandered off into another dimension..."
+        backTo="/games"
+        backLabel="Back to Games"
       />
     );
   }
@@ -25,38 +25,38 @@ const ProjectDetail = () => {
   return (
     <article>
       <Seo
-        title={`${project.title} - Free Puzzle Game`}
-        description={project.description}
-        path={`/projects/${project.slug}`}
-        image={project.image}
+        title={`${game.title} - Free Puzzle Game`}
+        description={game.description}
+        path={`/games/${game.slug}`}
+        image={game.image}
         type="article"
       />
       <JsonLd
         schema={{
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
-          name: project.title,
-          description: project.answer,
-          url: `${SITE_URL}/projects/${project.slug}`,
-          image: `${SITE_URL}${project.image}`,
+          name: game.title,
+          description: game.answer,
+          url: `${SITE_URL}/games/${game.slug}`,
+          image: `${SITE_URL}${game.image}`,
           applicationCategory: "GameApplication",
           operatingSystem: "Android",
           softwareVersion: "1.0",
-          datePublished: project.releaseDate,
+          datePublished: game.releaseDate,
           offers: {
             "@type": "Offer",
             price: "0",
             priceCurrency: "USD",
           },
-          downloadUrl: project.googlePlayUrl,
-          featureList: project.features,
+          downloadUrl: game.googlePlayUrl,
+          featureList: game.features,
         }}
       />
       <JsonLd
         schema={{
           "@context": "https://schema.org",
           "@type": "FAQPage",
-          mainEntity: project.faq.map((f) => ({
+          mainEntity: game.faq.map((f) => ({
             "@type": "Question",
             name: f.question,
             acceptedAnswer: {
@@ -72,12 +72,12 @@ const ProjectDetail = () => {
           "@type": "BreadcrumbList",
           itemListElement: [
             { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-            { "@type": "ListItem", position: 2, name: "Games", item: `${SITE_URL}/projects` },
+            { "@type": "ListItem", position: 2, name: "Games", item: `${SITE_URL}/games` },
             {
               "@type": "ListItem",
               position: 3,
-              name: project.title,
-              item: `${SITE_URL}/projects/${project.slug}`,
+              name: game.title,
+              item: `${SITE_URL}/games/${game.slug}`,
             },
           ],
         }}
@@ -89,10 +89,10 @@ const ProjectDetail = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="mb-8 overflow-hidden rounded-[4px] border-2 border-border-strong bg-gradient-to-br from-surface-warm to-muted outline outline-1 outline-black/10">
+            <div className="mb-8 overflow-hidden rounded-[4px] border-2 border-border-strong bg-gradient-to-br from-surface-warm to-muted">
               <img
-                src={project.image}
-                alt={`${project.title} key art`}
+                src={game.image}
+                alt={`${game.title} key art`}
                 width={1200}
                 height={630}
                 loading="eager"
@@ -112,8 +112,8 @@ const ProjectDetail = () => {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-4">
                 <img
-                  src={project.icon}
-                  alt={`${project.title} icon`}
+                  src={game.icon}
+                  alt={`${game.title} icon`}
                   width={80}
                   height={80}
                   loading="eager"
@@ -121,11 +121,11 @@ const ProjectDetail = () => {
                   className="h-16 w-16 flex-shrink-0 rounded-[4px] border-2 border-border-strong bg-white object-cover  sm:h-20 sm:w-20"
                 />
                 <h1 className="font-kalam text-4xl font-bold text-foreground sm:text-5xl">
-                  {project.title}
+                  {game.title}
                 </h1>
               </div>
-              <time dateTime={project.releaseDate} className="font-patrick text-sm text-muted">
-                Released {project.releaseDate}
+              <time dateTime={game.releaseDate} className="font-patrick text-sm text-muted">
+                Released {game.releaseDate}
               </time>
             </div>
           </m.div>
@@ -137,10 +137,10 @@ const ProjectDetail = () => {
             className="mx-auto mb-12 max-w-3xl"
           >
             <p className="mb-6 font-patrick text-2xl leading-relaxed text-foreground">
-              {project.answer}
+              {game.answer}
             </p>
             <p className="font-patrick text-xl leading-relaxed text-foreground">
-              {project.fullDescription}
+              {game.fullDescription}
             </p>
           </m.div>
 
@@ -153,7 +153,7 @@ const ProjectDetail = () => {
             <div className="hand-drawn-card relative bg-white p-8">
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Key Features</h2>
               <ul className="space-y-4">
-                {project.features.map((feature) => (
+                {game.features.map((feature) => (
                   <li
                     key={feature}
                     className="flex items-start gap-3 font-patrick text-lg text-foreground"
@@ -168,9 +168,9 @@ const ProjectDetail = () => {
             </div>
 
             <div className="hand-drawn-card relative bg-white p-8">
-              <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Tech Stack</h2>
+              <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Genres & Tags</h2>
               <div className="flex flex-wrap gap-3">
-                {project.technologies.map((tech) => (
+                {game.technologies.map((tech) => (
                   <span
                     key={tech}
                     className="rounded-full bg-surface-tint px-4 py-2 font-patrick text-base text-foreground"
@@ -185,25 +185,54 @@ const ProjectDetail = () => {
           <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="mb-12"
+          >
+            <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">
+              Frequently Asked Questions
+            </h2>
+            <div className="flex flex-col gap-3">
+              {game.faq.map((item, index) => (
+                <details key={index} className="hand-drawn-card group bg-white p-5">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-patrick text-lg font-bold text-foreground transition-colors hover:text-accent">
+                    <span>{item.question}</span>
+                    <span
+                      className="flex-shrink-0 text-accent transition-transform duration-200 group-open:rotate-45"
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 font-patrick text-base leading-relaxed text-foreground">
+                    {item.answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </m.div>
+
+          <m.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
           >
             <a
-              href={project.googlePlayUrl}
+              href={game.googlePlayUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Get ${project.title} on Google Play`}
+              aria-label={`Get ${game.title} on Google Play`}
               className="hand-drawn-button inline-flex items-center gap-2 bg-white px-8 py-3 font-patrick text-lg no-underline text-foreground"
             >
               <ExternalLink size={18} />
               Get on Google Play
             </a>
             <Link
-              to="/projects"
-              className="inline-flex items-center gap-2 font-patrick text-lg underline decoration-wavy decoration-accent decoration-2 text-accent"
+              to="/games"
+              className="link-accent inline-flex items-center gap-2 font-patrick text-lg"
             >
               <ArrowLeft size={18} />
-              Back to Projects
+              Back to Games
             </Link>
           </m.div>
         </div>
@@ -212,4 +241,4 @@ const ProjectDetail = () => {
   );
 };
 
-export default ProjectDetail;
+export default GameDetail;
