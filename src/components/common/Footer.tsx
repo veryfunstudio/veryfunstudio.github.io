@@ -23,7 +23,7 @@ const Footer = () => {
               href={GOOGLE_PLAY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground transition-colors hover:text-accent"
+              className="flex min-h-[44px] min-w-[44px] items-center justify-center text-foreground transition-colors hover:text-accent"
               aria-label="Visit our Google Play developer page"
             >
               <FaGooglePlay size={24} />
@@ -32,7 +32,7 @@ const Footer = () => {
               href={BRAND.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground transition-colors hover:text-accent"
+              className="flex min-h-[44px] min-w-[44px] items-center justify-center text-foreground transition-colors hover:text-accent"
               aria-label="Visit our GitHub page"
             >
               <FaGithub size={24} />
@@ -41,7 +41,7 @@ const Footer = () => {
               href={BRAND.social.x}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground transition-colors hover:text-accent"
+              className="flex min-h-[44px] min-w-[44px] items-center justify-center text-foreground transition-colors hover:text-accent"
               aria-label="Visit our X page"
             >
               <FaXTwitter size={24} />

@@ -39,7 +39,7 @@ const Header = () => {
         </nav>
 
         <button
-          className="text-foreground md:hidden"
+          className="flex min-h-[44px] min-w-[44px] items-center justify-center text-foreground md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
