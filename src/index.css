@@ -10,12 +10,13 @@
   --color-background: #f5f5f5;
   --color-foreground: #2d2d2d;
   --color-muted: #6e6960;
+  --color-surface: #ffffff;
   --color-surface-warm: #ebebeb;
   --color-surface-tint: rgba(45, 45, 45, 0.05);
-  --color-accent: #b6553a;
-  --color-accent-hover: #9c4628;
-  --color-accent-active: #7e371f;
-  --color-accent-soft: rgba(182, 85, 58, 0.12);
+  --color-accent: #a84e2f;
+  --color-accent-hover: #8f3f24;
+  --color-accent-active: #73331c;
+  --color-accent-soft: rgba(168, 78, 47, 0.12);
   --color-border: #2d2d2d;
   --color-border-soft: rgba(45, 45, 45, 0.1);
   --color-border-strong: #2d2d2d;
@@ -120,7 +121,7 @@
   .link-accent {
     color: var(--color-accent);
     text-decoration: underline;
-    text-decoration-color: rgba(182, 85, 58, 0.3);
+    text-decoration-color: rgba(168, 78, 47, 0.3);
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
     transition: text-decoration-color 0.15s ease;

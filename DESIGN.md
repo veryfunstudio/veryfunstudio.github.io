@@ -32,7 +32,7 @@ description: |
 colors:
   # Surface
   background: "#fdfbf7" # warm paper, page bg
-  surface-raised: "bg-white (Tailwind native — not a custom token; cards, panels)"
+  surface: "#ffffff" # cards, panels, buttons — the raised paper layer
   surface-warm: "#f6f1e8" # key-art wells, success icon wells
   surface-tint: "rgba(45, 45, 45, 0.05)" # subtle ink wash — pills, icon circles
   foreground: "#2d2d2d" # ink — body text, hard borders, primary btn bg
@@ -41,10 +41,10 @@ colors:
   muted: "#6e6960" # subtitles, meta — not for small text (see Why)
 
   # Accent — the ONE brand color. Four steps encode intent.
-  accent: "#b6553a" # default — links, active nav, hover bg
-  accent-hover: "#9c4628" # hover on accent fills
-  accent-active: "#7e371f" # pressed
-  accent-soft: "rgba(182, 85, 58, 0.12)" # subtle highlight bg
+  accent: "#a84e2f" # default — links, active nav, hover bg
+  accent-hover: "#8f3f24" # hover on accent fills
+  accent-active: "#73331c" # pressed
+  accent-soft: "rgba(168, 78, 47, 0.12)" # subtle highlight bg
 
   # Focus — different hue so focus isn't mistaken for brand
   focus: "#2d5da1" # outline only, never as fill
@@ -173,7 +173,7 @@ first-class Tailwind utility (`bg-background`, `text-muted`, etc.).
 
 ### Color
 
-**One accent.** Burnt sienna `#b6553a` is the only "brand" color. The
+**One accent.** Burnt sienna `#a84e2f` is the only "brand" color. The
 four steps (`accent` / `accent-hover` / `accent-active` / `accent-soft`)
 encode interaction state so you don't invent new hexes for hover/press —
 which was previously a vector for drift.
