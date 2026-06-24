@@ -1,6 +1,6 @@
 {
   "index.html": {
-    "file": "assets/app-BKi6dG7L.js",
+    "file": "assets/app-Cfr14qhw.js",
     "name": "app",
     "src": "index.html",
     "isEntry": true,
@@ -8,11 +8,11 @@
       "node_modules/react-dom/client.js"
     ],
     "css": [
-      "assets/app-C3h50MrW.css"
+      "assets/app-DvS5wNPY.css"
     ]
   },
   "node_modules/react-dom/client.js": {
-    "file": "assets/client-oWAguWuT.js",
+    "file": "assets/client-DxW7Utl8.js",
     "name": "client",
     "src": "node_modules/react-dom/client.js",
     "isDynamicEntry": true,
