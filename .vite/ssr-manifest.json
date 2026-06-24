@@ -64,6 +64,7 @@
   "node_modules/lucide-react/dist/esm/icons/arrow-left.mjs": [],
   "node_modules/lucide-react/dist/esm/icons/arrow-right.mjs": [],
   "node_modules/lucide-react/dist/esm/icons/arrow-up-right.mjs": [],
+  "node_modules/lucide-react/dist/esm/icons/compass.mjs": [],
   "node_modules/lucide-react/dist/esm/icons/external-link.mjs": [],
   "node_modules/lucide-react/dist/esm/icons/mail-check.mjs": [],
   "node_modules/lucide-react/dist/esm/icons/menu.mjs": [],
@@ -256,11 +257,11 @@
   "node_modules/prop-types/index.js": [],
   "node_modules/prop-types/lib/ReactPropTypesSecret.js": [],
   "node_modules/react-dom/cjs/react-dom-client.production.js": [
-    "/assets/client-Bj4ajrbP.js"
+    "/assets/client-oWAguWuT.js"
   ],
   "node_modules/react-dom/cjs/react-dom.production.js": [],
   "node_modules/react-dom/client.js": [
-    "/assets/client-Bj4ajrbP.js"
+    "/assets/client-oWAguWuT.js"
   ],
   "node_modules/react-dom/index.js": [],
   "node_modules/react-fast-compare/index.js": [],
@@ -276,10 +277,10 @@
   "node_modules/react/index.js": [],
   "node_modules/react/jsx-runtime.js": [],
   "node_modules/scheduler/cjs/scheduler.production.js": [
-    "/assets/client-Bj4ajrbP.js"
+    "/assets/client-oWAguWuT.js"
   ],
   "node_modules/scheduler/index.js": [
-    "/assets/client-Bj4ajrbP.js"
+    "/assets/client-oWAguWuT.js"
   ],
   "node_modules/shallowequal/index.js": [],
   "node_modules/vite-react-ssg/dist/index.mjs": [],
@@ -297,7 +298,7 @@
   "src/components/seo/JsonLd.tsx": [],
   "src/components/seo/Seo.tsx": [],
   "src/data/blog.ts": [],
-  "src/data/projects.ts": [],
+  "src/data/games.ts": [],
   "src/index.css": [],
   "src/lib/constants.ts": [],
   "src/lib/utils.ts": [],
@@ -306,9 +307,9 @@
   "src/pages/Blog.tsx": [],
   "src/pages/BlogPost.tsx": [],
   "src/pages/Contact.tsx": [],
+  "src/pages/GameDetail.tsx": [],
+  "src/pages/Games.tsx": [],
   "src/pages/Home.tsx": [],
   "src/pages/NotFound.tsx": [],
-  "src/pages/ProjectDetail.tsx": [],
-  "src/pages/Projects.tsx": [],
   "src/routes/index.tsx": []
 }
