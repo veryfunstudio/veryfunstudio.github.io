@@ -7,8 +7,8 @@ interface JsonLdProps {
 
 /**
  * Renders a single `<script type="application/ld+json">` tag with the
- * given schema. React-helmet-async hoists these into the document head
- * during SSG, so structured data lands in the static HTML output.
+ * given schema. React 19 automatically hoists these into the document
+ * head, so structured data lands in the static HTML output.
  *
  * Multiple JsonLd components can be rendered on the same page; each
  * produces its own script tag, which is valid per schema.org spec.

@@ -6,7 +6,7 @@ import { BLOG_POSTS } from "../src/data/blog";
 
 const SITE_URL = "https://cookabc.github.io";
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const outDir = resolve(__dirname, "..", "dist");
+const outDir = resolve(__dirname, "..", "build", "client");
 const today = new Date().toISOString().split("T")[0];
 
 // Canonical public URLs, in priority order. Excludes /contact (noindex)
@@ -155,7 +155,7 @@ function write(file: string, content: string) {
   const target = resolve(outDir, file);
   mkdirSync(dirname(target), { recursive: true });
   writeFileSync(target, content, "utf8");
-  console.log(`  wrote dist/${file} (${content.length} bytes)`);
+  console.log(`  wrote build/client/${file} (${content.length} bytes)`);
 }
 
 console.log("[seo] generating crawler assets...");
@@ -170,14 +170,14 @@ write("llms-full.txt", llmsFullTxt());
 // GitHub Pages always returns HTTP 200 for 404.html, so we inject a
 // noindex meta to prevent every garbage URL (/asdf, /wp-admin, ...) from
 // being indexed as a duplicate of the home page.
-const indexPath = resolve(outDir, "index.html");
-if (existsSync(indexPath)) {
-  const indexHtml = readFileSync(indexPath, "utf8");
+const spaFallbackPath = resolve(outDir, "__spa-fallback.html");
+if (existsSync(spaFallbackPath)) {
+  const fallbackHtml = readFileSync(spaFallbackPath, "utf8");
   const noindexMeta = '<meta name="robots" content="noindex, nofollow">';
   // Prefer injecting right after <head> to stay valid; fall back to <title>.
-  const injected = indexHtml.includes("<head>")
-    ? indexHtml.replace("<head>", `<head>${noindexMeta}`)
-    : indexHtml.replace("<title>", `${noindexMeta}<title>`);
+  const injected = fallbackHtml.includes("<head>")
+    ? fallbackHtml.replace("<head>", `<head>${noindexMeta}`)
+    : fallbackHtml.replace("<title>", `${noindexMeta}<title>`);
   write("404.html", injected);
 }
 

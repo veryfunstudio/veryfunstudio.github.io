@@ -20,11 +20,14 @@
       "@/*": ["./src/*"]
     },
 
+    /* React Router generated types: app/+types/* → .react-router/types/app/+types/* */
+    "rootDirs": [".", "./.react-router/types"],
+
     /* Linting */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": ["src", "app", "react-router.config.ts"]
 }

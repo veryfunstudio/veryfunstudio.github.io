@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { FaGithub, FaGooglePlay } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { BRAND } from "@/lib/constants";

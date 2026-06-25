@@ -1,5 +1,5 @@
 import { m } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { formatDate } from "@/lib/utils";
 import { BLOG_POSTS } from "@/data/blog";
 import { Seo } from "@/components/seo/Seo";

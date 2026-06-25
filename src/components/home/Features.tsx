@@ -1,7 +1,7 @@
 import { m } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { GAMES } from "@/data/games";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 
 const reveal = {
   initial: { opacity: 0, y: 16 },

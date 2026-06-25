@@ -1,6 +1,5 @@
-import { Helmet } from "react-helmet-async";
-
 import { SITE_URL } from "@/lib/constants";
+
 const SITE_NAME = "VeryFun Company";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/images/about.jpeg`;
 
@@ -20,8 +19,8 @@ interface SeoProps {
 }
 
 /**
- * Per-page SEO head tags. Renders into react-helmet-async which
- * vite-react-ssg hoists into the static HTML at build time.
+ * Per-page SEO head tags. Uses React 19's built-in `<meta>`, `<title>`,
+ * and `<link>` elements which are automatically hoisted to `<head>`.
  */
 export function Seo({
   title,
@@ -34,17 +33,18 @@ export function Seo({
 }: SeoProps) {
   const url = `${SITE_URL}${path}`;
   const absoluteImage = encodeURI(image.startsWith("http") ? image : `${SITE_URL}${image}`);
+  const fullTitle = title.includes(SITE_NAME) ? title : `${title} - ${SITE_NAME}`;
 
   return (
-    <Helmet>
-      <title>{title}</title>
+    <>
+      <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
       {noindex && <meta name="robots" content="noindex, nofollow" />}
 
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content={SITE_NAME} />
-      <meta property="og:title" content={title} />
+      <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={absoluteImage} />
       <meta property="og:image:width" content="1200" />
@@ -55,10 +55,10 @@ export function Seo({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@chuangcius" />
       <meta name="twitter:creator" content="@chuangcius" />
-      <meta name="twitter:title" content={title} />
+      <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={absoluteImage} />
-      <meta name="twitter:image:alt" content={title} />
-    </Helmet>
+      <meta name="twitter:image:alt" content={fullTitle} />
+    </>
   );
 }

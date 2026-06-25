@@ -1,5 +1,5 @@
 import { m } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { Compass } from "lucide-react";
 import { Seo } from "@/components/seo/Seo";
 

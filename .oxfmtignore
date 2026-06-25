@@ -1,4 +1,4 @@
 node_modules
-dist
-.vite-react-ssg-temp
+build
+.react-router
 bun.lock
