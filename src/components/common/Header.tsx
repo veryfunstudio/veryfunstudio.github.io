@@ -15,8 +15,16 @@ const Header = () => {
       <div className="mx-auto flex max-w-[80rem] items-center justify-between px-6">
         <Link
           to="/"
-          className="font-kalam text-2xl font-bold tracking-tight text-foreground no-underline"
+          className="flex min-h-[44px] items-center gap-3 font-kalam text-2xl font-bold tracking-tight text-foreground no-underline"
         >
+          <img
+            src="/favicon.png"
+            alt=""
+            width={40}
+            height={40}
+            className="h-10 w-10 shrink-0 rounded-[8px]"
+            decoding="async"
+          />
           {BRAND.name}
         </Link>
 
