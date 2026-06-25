@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link } from "react-router";
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import { Seo } from "@/components/seo/Seo";
 
 const TECH_STACK = [
@@ -48,11 +48,11 @@ const About = () => {
       <section className="py-20">
         <div className="mx-auto max-w-[80rem] px-6">
           <div className="grid items-stretch gap-12 md:grid-cols-2">
-            <m.div
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="relative"
             >
               <img
@@ -65,12 +65,12 @@ const About = () => {
                 decoding="async"
                 className="h-full w-full rounded-[4px] border-2 border-border-strong object-cover"
               />
-            </m.div>
-            <m.div
+            </motion.div>
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col justify-center rounded-[4px] border-2 border-border-strong bg-surface p-8 relative"
             >
               <p className="mb-3 font-patrick text-sm font-bold uppercase tracking-wide text-accent">
@@ -102,39 +102,39 @@ const About = () => {
                 at home on a commute or beside the couch. Six games in, and we are just getting
                 started.
               </p>
-            </m.div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-6">
-          <m.div
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="mx-auto mb-16 max-w-3xl text-center"
           >
             <h2 className="mb-2 font-kalam text-2xl font-bold text-foreground">Tech Stack</h2>
             <p className="font-patrick text-lg text-foreground">
               The main technologies and tools we use
             </p>
-          </m.div>
+          </motion.div>
 
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
             {TECH_STACK.map((tech, index) => (
-              <m.div
+              <motion.div
                 key={tech.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 className="hand-drawn-card flex items-center justify-center bg-surface p-6 text-center"
                 style={{ transform: `rotate(${techRotations[index]}deg)` }}
               >
                 <h3 className="font-kalam text-lg font-bold text-foreground">{tech.name}</h3>
-              </m.div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -142,33 +142,33 @@ const About = () => {
 
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-6">
-          <m.div
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="mx-auto mb-16 max-w-3xl text-center"
           >
             <h2 className="mb-2 font-kalam text-2xl font-bold text-foreground">Our Values</h2>
             <p className="font-patrick text-lg text-foreground">
               Our understanding and beliefs about game development
             </p>
-          </m.div>
+          </motion.div>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {VALUES.map((value, index) => (
-              <m.div
+              <motion.div
                 key={value.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
+                transition={{ duration: 0.5, delay: index * 0.2, ease: [0.16, 1, 0.3, 1] }}
                 className="hand-drawn-card relative bg-surface p-8"
                 style={{ transform: `rotate(${valueRotations[index]}deg)` }}
               >
                 <h3 className="mb-4 font-kalam text-xl font-bold text-foreground">{value.title}</h3>
                 <p className="font-patrick leading-relaxed text-foreground">{value.description}</p>
-              </m.div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -176,11 +176,11 @@ const About = () => {
 
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-6 text-center">
-          <m.div
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             <h2 className="mb-4 font-kalam text-3xl font-bold text-foreground">Ready to play?</h2>
             <p className="mx-auto mb-8 max-w-2xl font-patrick text-lg text-muted">
@@ -193,7 +193,7 @@ const About = () => {
             >
               Explore the games
             </Link>
-          </m.div>
+          </motion.div>
         </div>
       </section>
     </div>

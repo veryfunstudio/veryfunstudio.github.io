@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router";
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import { getBlogPostById } from "@/data/blog";
 import { formatDate } from "@/lib/utils";
 import { Seo } from "@/components/seo/Seo";
@@ -82,10 +82,10 @@ const BlogPost = () => {
       />
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-6">
-          <m.div
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="mb-10"
           >
             <div className="mb-6 flex flex-wrap items-center gap-3">
@@ -99,12 +99,12 @@ const BlogPost = () => {
             <h1 className="mb-6 font-kalam text-4xl font-bold leading-tight text-foreground sm:text-5xl">
               {post.title}
             </h1>
-          </m.div>
+          </motion.div>
 
-          <m.div
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
             <img
               src={post.image}
@@ -116,12 +116,12 @@ const BlogPost = () => {
               decoding="async"
               className="mb-12 h-auto w-full rounded-[4px] border-2 border-border-strong sm:h-[28rem] sm:object-cover"
             />
-          </m.div>
+          </motion.div>
 
-          <m.div
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="mx-auto max-w-3xl"
           >
             {post.content.map((paragraph, index) => (
@@ -132,12 +132,12 @@ const BlogPost = () => {
                 {paragraph}
               </p>
             ))}
-          </m.div>
+          </motion.div>
 
-          <m.div
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.45 }}
+            transition={{ duration: 0.5, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
             className="mt-16 text-center"
           >
             <div className="hand-drawn-card inline-block bg-surface p-8">
@@ -145,7 +145,7 @@ const BlogPost = () => {
                 ← Back to All Posts
               </Link>
             </div>
-          </m.div>
+          </motion.div>
         </div>
       </section>
     </article>

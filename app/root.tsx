@@ -7,7 +7,7 @@ import {
   ScrollRestoration,
 } from "react-router";
 import type { Route } from "./+types/root";
-import { LazyMotion, MotionConfig, domAnimation } from "framer-motion";
+import { MotionConfig } from "framer-motion";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import "@/index.css";
@@ -43,23 +43,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <LazyMotion features={domAnimation} strict>
-      <MotionConfig reducedMotion="user">
-        <div className="flex min-h-[100dvh] flex-col">
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:rounded-[4px] focus:border-2 focus:border-border-strong focus:bg-surface focus:px-4 focus:py-2 focus:font-patrick focus:text-foreground focus:no-underline"
-          >
-            Skip to main content
-          </a>
-          <Header />
-          <main id="main-content" className="flex-1" tabIndex={-1}>
-            <Outlet />
-          </main>
-          <Footer />
-        </div>
-      </MotionConfig>
-    </LazyMotion>
+    <MotionConfig reducedMotion="user">
+      <div className="flex min-h-[100dvh] flex-col">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:rounded-[4px] focus:border-2 focus:border-border-strong focus:bg-surface focus:px-4 focus:py-2 focus:font-patrick focus:text-foreground focus:no-underline"
+        >
+          Skip to main content
+        </a>
+        <Header />
+        <main id="main-content" className="flex-1" tabIndex={-1}>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+    </MotionConfig>
   );
 }
 

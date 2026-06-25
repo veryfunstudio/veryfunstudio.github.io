@@ -1,4 +1,4 @@
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router";
 import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
@@ -13,10 +13,10 @@ const Games = () => {
       />
       <section className="py-20">
         <div className="mx-auto max-w-[80rem] px-6">
-          <m.div
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="mb-4 flex items-center gap-3">
               <span className="rounded-full bg-accent-soft px-3 py-1 font-patrick text-sm font-bold text-accent">
@@ -31,7 +31,7 @@ const Games = () => {
               Each one is built to respect your time — no paywalls, no timers, just puzzles that
               feel good to solve.
             </p>
-          </m.div>
+          </motion.div>
         </div>
       </section>
 
@@ -60,7 +60,10 @@ const Games = () => {
                         Free
                       </span>
                     </div>
-                    <time dateTime={game.releaseDate} className="font-patrick text-sm text-muted">
+                    <time
+                      dateTime={game.releaseDate}
+                      className="font-patrick text-sm text-foreground"
+                    >
                       {game.releaseDate}
                     </time>
                   </div>

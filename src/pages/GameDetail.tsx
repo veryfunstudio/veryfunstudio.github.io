@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router";
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import { getGameBySlug } from "@/data/games";
 import { ExternalLink, ArrowLeft } from "lucide-react";
 import { Seo } from "@/components/seo/Seo";
@@ -84,12 +84,12 @@ const GameDetail = () => {
       />
       <section className="py-16">
         <div className="mx-auto max-w-[80rem] px-6">
-          <m.div
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="mb-8 overflow-hidden rounded-[4px] border-2 border-border-strong bg-gradient-to-br from-surface-warm to-muted">
+            <div className="mb-8 overflow-hidden rounded-[4px] border-2 border-border-strong bg-surface-warm">
               <img
                 src={game.image}
                 alt={`${game.title} key art`}
@@ -101,12 +101,12 @@ const GameDetail = () => {
                 className="mx-auto block aspect-[1200/630] w-full object-contain p-4 sm:p-8"
               />
             </div>
-          </m.div>
+          </motion.div>
 
-          <m.div
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="mb-10"
           >
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -124,16 +124,16 @@ const GameDetail = () => {
                   {game.title}
                 </h1>
               </div>
-              <time dateTime={game.releaseDate} className="font-patrick text-sm text-muted">
+              <time dateTime={game.releaseDate} className="font-patrick text-sm text-foreground">
                 Released {game.releaseDate}
               </time>
             </div>
-          </m.div>
+          </motion.div>
 
-          <m.div
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="mx-auto mb-12 max-w-3xl"
           >
             <p className="mb-6 font-patrick text-2xl leading-relaxed text-foreground">
@@ -142,12 +142,12 @@ const GameDetail = () => {
             <p className="font-patrick text-xl leading-relaxed text-foreground">
               {game.fullDescription}
             </p>
-          </m.div>
+          </motion.div>
 
-          <m.div
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12 grid gap-8 lg:grid-cols-2"
           >
             <div className="hand-drawn-card relative bg-surface p-8">
@@ -180,12 +180,12 @@ const GameDetail = () => {
                 ))}
               </div>
             </div>
-          </m.div>
+          </motion.div>
 
-          <m.div
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.35 }}
+            transition={{ duration: 0.5, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12"
           >
             <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">
@@ -209,12 +209,12 @@ const GameDetail = () => {
                 </details>
               ))}
             </div>
-          </m.div>
+          </motion.div>
 
-          <m.div
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
           >
             <a
@@ -222,7 +222,7 @@ const GameDetail = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Get ${game.title} on Google Play`}
-              className="hand-drawn-button inline-flex items-center gap-2 bg-surface px-8 py-3 font-patrick text-lg no-underline text-foreground"
+              className="hand-drawn-button inline-flex items-center gap-2 bg-foreground px-8 py-3 font-patrick text-lg no-underline text-background"
             >
               <ExternalLink size={18} />
               Get on Google Play
@@ -234,7 +234,7 @@ const GameDetail = () => {
               <ArrowLeft size={18} />
               Back to Games
             </Link>
-          </m.div>
+          </motion.div>
         </div>
       </section>
     </article>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router";
-import { m, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_ITEMS, BRAND } from "@/lib/constants";
 
@@ -50,11 +50,11 @@ const Header = () => {
 
       <AnimatePresence initial={false}>
         {mobileOpen && (
-          <m.nav
+          <motion.nav
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="border-t border-border-soft md:hidden"
             aria-label="Mobile navigation"
           >
@@ -67,7 +67,7 @@ const Header = () => {
                     to={item.path}
                     onClick={() => setMobileOpen(false)}
                     aria-current={isActive ? "page" : undefined}
-                    className={`font-patrick text-base ${
+                    className={`flex min-h-[44px] items-center font-patrick text-base ${
                       isActive ? "text-accent" : "text-foreground"
                     }`}
                   >
@@ -76,7 +76,7 @@ const Header = () => {
                 );
               })}
             </div>
-          </m.nav>
+          </motion.nav>
         )}
       </AnimatePresence>
     </header>

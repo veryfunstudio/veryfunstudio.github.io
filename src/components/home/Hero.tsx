@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { GAMES } from "@/data/games";
 
@@ -9,7 +9,7 @@ const HeroSectionNiceUI = () => {
   return (
     <section className="mx-auto max-w-[80rem] px-6 pt-24 pb-20 lg:pt-32 lg:pb-28">
       <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
-        <m.div
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -51,9 +51,9 @@ const HeroSectionNiceUI = () => {
               <span className="font-patrick text-sm text-foreground">6 games</span>
             </div>
           </div>
-        </m.div>
+        </motion.div>
 
-        <m.div
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
@@ -70,7 +70,7 @@ const HeroSectionNiceUI = () => {
                 alt={`${game.title} icon`}
                 width={256}
                 height={256}
-                loading="lazy"
+                loading="eager"
                 decoding="async"
                 className="aspect-square w-full object-cover"
               />
@@ -79,7 +79,7 @@ const HeroSectionNiceUI = () => {
               </div>
             </Link>
           ))}
-        </m.div>
+        </motion.div>
       </div>
     </section>
   );

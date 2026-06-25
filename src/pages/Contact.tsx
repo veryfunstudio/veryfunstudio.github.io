@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import { FaGithub, FaEnvelope } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { MailCheck } from "lucide-react";
@@ -54,10 +54,10 @@ const Contact = () => {
       />
       <section className="py-20">
         <div className="mx-auto max-w-[80rem] px-6">
-          <m.div
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12"
           >
             <p className="mb-3 font-patrick text-sm font-bold uppercase tracking-wide text-accent">
@@ -69,25 +69,25 @@ const Contact = () => {
             <p className="max-w-2xl font-patrick text-xl text-foreground">
               If you have any questions or collaboration inquiries, feel free to reach out anytime
             </p>
-          </m.div>
+          </motion.div>
 
           <div className="grid gap-12 md:grid-cols-2">
-            <m.div
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="rounded-[4px] border-2 border-border-strong bg-surface p-8 relative"
             >
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Contact Info</h2>
               <div className="flex flex-col gap-6">
                 {CONTACT_INFO.map((item, index) => (
-                  <m.div
+                  <motion.div
                     key={item.title}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                     className="flex items-center gap-4"
                   >
                     <div
@@ -109,21 +109,21 @@ const Contact = () => {
                         {item.value}
                       </a>
                     </div>
-                  </m.div>
+                  </motion.div>
                 ))}
               </div>
-            </m.div>
+            </motion.div>
 
-            <m.div
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className=" rounded-[4px] border-2 border-border-strong bg-surface p-8 relative"
             >
               <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Send a Message</h2>
               {submitted ? (
-                <m.div
+                <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-12 text-center"
@@ -140,7 +140,7 @@ const Contact = () => {
                   <p className="mt-2 font-patrick text-foreground">
                     If your email app did not open, write to chuangcius@gmail.com directly.
                   </p>
-                </m.div>
+                </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                   <div>
@@ -199,15 +199,15 @@ const Contact = () => {
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     />
                   </div>
-                  <m.button
+                  <motion.button
                     type="submit"
                     className="hand-drawn-button w-full bg-foreground px-6 py-3 font-patrick text-base font-medium text-background"
                   >
                     Send Message
-                  </m.button>
+                  </motion.button>
                 </form>
               )}
-            </m.div>
+            </motion.div>
           </div>
         </div>
       </section>

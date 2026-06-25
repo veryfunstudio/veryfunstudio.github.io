@@ -1,4 +1,4 @@
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router";
 import { formatDate } from "@/lib/utils";
 import { BLOG_POSTS } from "@/data/blog";
@@ -16,10 +16,10 @@ const Blog = () => {
       />
       <section className="py-20">
         <div className="mx-auto max-w-[80rem] px-6">
-          <m.div
+          <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="mb-12"
           >
             <p className="mb-3 font-patrick text-sm font-bold uppercase tracking-wide text-accent">
@@ -31,14 +31,14 @@ const Blog = () => {
             <p className="max-w-2xl font-patrick text-xl text-foreground">
               Sharing experiences, tips, and insights from game development
             </p>
-          </m.div>
+          </motion.div>
 
           {/* Featured post hero */}
           {featured && (
-            <m.article
+            <motion.article
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="hand-drawn-card mb-16 grid overflow-hidden bg-surface md:grid-cols-2"
             >
               <div className="overflow-hidden">
@@ -61,7 +61,7 @@ const Blog = () => {
                   <span className="rounded-full bg-surface-tint px-3 py-1 font-patrick text-sm text-foreground">
                     {featured.category}
                   </span>
-                  <time dateTime={featured.date} className="font-patrick text-sm text-muted">
+                  <time dateTime={featured.date} className="font-patrick text-sm text-foreground">
                     {formatDate(featured.date)}
                   </time>
                 </div>
@@ -78,12 +78,12 @@ const Blog = () => {
                   Read Featured Post →
                 </Link>
               </div>
-            </m.article>
+            </motion.article>
           )}
 
           {/* Remaining posts as a list */}
           {rest.length > 0 && (
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {rest.map((post) => (
                 <article
                   key={post.id}

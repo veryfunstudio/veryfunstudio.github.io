@@ -4,34 +4,40 @@
   --font-kalam: "Kalam", cursive;
   --font-patrick: "Patrick Hand", cursive;
 
-  /* Neutral background, ink foreground, one restrained accent (burnt sienna).
-     Warmth is carried by accent + typography + imagery, not by body bg.
-     Avoids the cream/sand AI-default band per taste-skill color guidance. */
-  --color-background: #f5f5f5;
+  /* Warm paper surface, ink foreground, one restrained accent (burnt sienna).
+     The notebook identity lives in the warm paper + hand-lettered type + burnt-sienna accent.
+     Light theme only, per DESIGN.md. */
+  --color-background: #fdfbf7;
   --color-foreground: #2d2d2d;
   --color-muted: #6e6960;
   --color-surface: #ffffff;
-  --color-surface-warm: #ebebeb;
+  --color-surface-warm: #f6f1e8;
   --color-surface-tint: rgba(45, 45, 45, 0.05);
   --color-accent: #a84e2f;
   --color-accent-hover: #8f3f24;
   --color-accent-active: #73331c;
   --color-accent-soft: rgba(168, 78, 47, 0.12);
+
+  /* Borders — three weights encode intent per DESIGN.md. */
   --color-border: #2d2d2d;
   --color-border-soft: rgba(45, 45, 45, 0.1);
+  --color-border-input: rgba(45, 45, 45, 0.2);
   --color-border-strong: #2d2d2d;
-  --color-secondary-accent: #2d5da1;
-  --color-secondary-accent-light: rgba(45, 93, 161, 0.2);
 
-  /* Calm, consistent corner radius (skill §4.4 shape consistency lock).
-     Was wild wobbly multi-radius; now uniform 4px across everything. */
+  /* Focus — separate hue (calm blue) so it reads as system feedback, not brand. */
+  --color-focus: #2d5da1;
+  --color-focus-soft: rgba(45, 93, 161, 0.2);
+
+  /* Calm, consistent corner radius: 4px everywhere per DESIGN.md. */
   --radius-card: 4px;
   --radius-button: 4px;
 
-  /* Tinted soft shadow (skill §4.4 "tint it to the background hue,
-     no pure-black drop shadows on light backgrounds"). */
+  /* Tinted soft shadow — ink-tinted, never pure black on warm paper. */
   --shadow-soft: 0 1px 2px rgba(45, 45, 45, 0.04), 0 4px 12px rgba(45, 45, 45, 0.06);
   --shadow-soft-hover: 0 2px 4px rgba(45, 45, 45, 0.06), 0 8px 20px rgba(45, 45, 45, 0.08);
+
+  /* Brand easing: soft expo-out, used everywhere (CSS + framer-motion). */
+  --ease-brand: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
@@ -68,7 +74,7 @@
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-secondary-accent);
+    outline: 3px solid var(--color-focus);
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -76,14 +82,16 @@
 
 @layer components {
   /* Unified button + card system: same radius, same shadow family.
-     Skill §4.4 "pick one corner-radius scale and stick to it". */
+     One radius scale, one easing curve, one shadow family. */
   .hand-drawn-button {
     border-radius: var(--radius-button);
     border: 1.5px solid var(--color-border);
+    min-height: 44px;
     transition:
-      background-color 0.15s ease,
-      color 0.15s ease,
-      box-shadow 0.15s ease;
+      background-color 0.15s var(--ease-brand),
+      color 0.15s var(--ease-brand),
+      box-shadow 0.15s var(--ease-brand),
+      transform 0.15s var(--ease-brand);
   }
 
   .hand-drawn-button:hover {
@@ -97,34 +105,35 @@
 
   .hand-drawn-card {
     border-radius: var(--radius-card);
-    border: 1px solid rgba(45, 45, 45, 0.12);
+    border: 1px solid var(--color-border-soft);
     box-shadow: var(--shadow-soft);
+    transition: box-shadow 0.15s var(--ease-brand);
   }
 
   .hand-drawn-input {
     border-radius: var(--radius-button);
-    border: 1.5px solid rgba(45, 45, 45, 0.2);
+    border: 1.5px solid var(--color-border-input);
     font-family: var(--font-patrick);
+    min-height: 44px;
     transition:
-      border-color 0.15s ease,
-      box-shadow 0.15s ease;
+      border-color 0.15s var(--ease-brand),
+      box-shadow 0.15s var(--ease-brand);
   }
 
   .hand-drawn-input:focus {
-    border-color: var(--color-secondary-accent);
-    box-shadow: 0 0 0 3px var(--color-secondary-accent-light);
+    border-color: var(--color-focus);
+    box-shadow: 0 0 0 3px var(--color-focus-soft);
     outline: none;
   }
 
-  /* Unified text-link style for all inline links.
-     Replaces the 4+ inline underline variations across pages. */
+  /* Unified text-link style for all inline links. */
   .link-accent {
     color: var(--color-accent);
     text-decoration: underline;
     text-decoration-color: rgba(168, 78, 47, 0.3);
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
-    transition: text-decoration-color 0.15s ease;
+    transition: text-decoration-color 0.15s var(--ease-brand);
   }
 
   .link-accent:hover {

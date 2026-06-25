@@ -1,4 +1,4 @@
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { GAMES } from "@/data/games";
 import { Link } from "react-router";
@@ -12,7 +12,7 @@ const reveal = {
 
 function GameBlock({ game, reverse }: { game: (typeof GAMES)[number]; reverse?: boolean }) {
   return (
-    <m.div {...reveal} className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+    <motion.div {...reveal} className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
       <div className={reverse ? "lg:order-last" : ""}>
         <Link
           to={`/games/${game.slug}`}
@@ -60,14 +60,14 @@ function GameBlock({ game, reverse }: { game: (typeof GAMES)[number]; reverse?: 
           <ArrowUpRight size={16} />
         </Link>
       </div>
-    </m.div>
+    </motion.div>
   );
 }
 
 const FeaturesSection = () => {
   return (
     <section className="mx-auto max-w-[80rem] px-6 py-24 lg:py-32">
-      <m.div {...reveal} className="mb-20 max-w-3xl">
+      <motion.div {...reveal} className="mb-20 max-w-3xl">
         <h2 className="font-kalam text-4xl font-bold tracking-tight text-foreground lg:text-5xl">
           Six puzzles, one philosophy.
         </h2>
@@ -75,7 +75,7 @@ const FeaturesSection = () => {
           Every game we ship respects your time. No paywalls, no timers, no pressure. Just a calm
           challenge for whatever mood you're in.
         </p>
-      </m.div>
+      </motion.div>
 
       <div className="space-y-24 lg:space-y-32">
         {GAMES.map((game, i) => (

@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface EntityNotFoundProps {
   title: string;
@@ -26,10 +26,10 @@ const EntityNotFound = ({
   return (
     <section className="py-20">
       <div className="mx-auto max-w-[80rem] px-6 text-center">
-        <m.div
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
           <h1 className="mb-4 font-kalam text-6xl font-bold text-accent">404</h1>
           <p className="mb-2 font-patrick text-2xl text-foreground">{title}</p>
@@ -50,7 +50,7 @@ const EntityNotFound = ({
               </Link>
             )}
           </div>
-        </m.div>
+        </motion.div>
       </div>
     </section>
   );
