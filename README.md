@@ -23,10 +23,12 @@ bun run build
 bun run deploy   # local-only fallback; see "Deployment" below
 ```
 
-- `bun run dev`: start the Vite dev server
-- `bun run build`: type-check, lint, format-check, and build (runs in CI too)
-- `bun run deploy`: build locally and publish `dist/` to `main`. Only useful
-  when CI is unavailable. Day-to-day, prefer pushing to `source`.
+- `bun run dev`: start the React Router dev server
+- `bun run build`: prerender all routes via `react-router build`, then
+  generate SEO assets (robots.txt, sitemap.xml, llms.txt, 404.html)
+- `bun run deploy`: build locally and publish `build/client/` to `main`.
+  Only useful when CI is unavailable. Day-to-day, prefer pushing to
+  `source`.
 
 ## Deployment
 
@@ -36,11 +38,15 @@ Pushing to `source` triggers the **Deploy GitHub Pages** workflow
 1. `actions/checkout` checks out `source`
 2. `oven-sh/setup-bun` installs Bun
 3. `bun install --frozen-lockfile`
-4. `bun run build` (tsc → oxlint → oxfmt --check → vite build)
-5. `peaceiris/actions-gh-pages` force-pushes `dist/` to `main`
+4. `bun run build` (`react-router build` → `scripts/generate-seo.ts`)
+5. `peaceiris/actions-gh-pages` force-pushes `build/client/` to `main`
 
 GitHub Pages serves `main` at https://cookabc.github.io/. Concurrency is
 limited to one in-flight deploy; newer pushes cancel earlier ones.
+
+Vercel is wired via GitHub integration on the same `source` branch and
+publishes to https://veryfuncompany.vercel.app/ using the same build
+command. Both deployments run from identical source.
 
 ## Update dependencies
 
@@ -70,13 +76,16 @@ If CI is broken or unavailable and you need to ship a hotfix:
 bun run deploy
 ```
 
-This bypasses CI by building locally and pushing `dist/` to `main` directly.
+This bypasses CI by building locally and pushing `build/client/` to `main` directly.
 
 ## Routing note
 
-The app uses `vite-react-ssg` (static site generation), so every route is
-pre-rendered to its own HTML file under `dist/` (e.g. `dist/about.html`,
-`dist/projects/classic-sudoku.html`). GitHub Pages serves these directly —
-no client-side router boot is needed for first paint. `scripts/generate-seo.ts`
-also copies `dist/index.html` to `dist/404.html` as an SPA fallback so deep
-links to unknown paths still load the app shell.
+The app uses React Router v7 Framework mode with static prerendering
+(`ssr: false` + `prerender`), so every route is pre-rendered to its own
+HTML file under `build/client/` (e.g. `build/client/about/index.html`,
+`build/client/games/classic-sudoku/index.html`). GitHub Pages and Vercel
+serve these directly — no client-side router boot is needed for first
+paint. `scripts/generate-seo.ts` also copies the SPA fallback
+(`build/client/__spa-fallback.html`) to `build/client/404.html` with a
+`noindex` meta, so deep links to unknown paths still load the app shell
+without being indexed as duplicates of the home page.

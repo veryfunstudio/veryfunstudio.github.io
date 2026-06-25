@@ -16,10 +16,12 @@ entire job is to send people to **Google Play** with enough trust and
 context that they download.
 
 - Live URL: <https://cookabc.github.io/>
-- Delivery: SSG (vite-react-ssg) → static `dist/` → GitHub Pages
-- Routing: `vite-react-ssg` pre-renders every route to its own HTML file
-  under `dist/` (`/about`, `/projects/:slug`, etc.); GitHub Pages serves
-  them directly, with `dist/404.html` as an SPA fallback for unknown paths
+- Delivery: SSG (React Router v7 Framework mode, `ssr: false` + `prerender`)
+  → static `build/client/` → GitHub Pages + Vercel
+- Routing: React Router pre-renders every route to its own HTML file
+  under `build/client/` (`/about`, `/games/:slug`, etc.); GitHub Pages
+  and Vercel serve them directly, with `build/client/404.html` (a copy of
+  the SPA fallback with `noindex`) as an SPA fallback for unknown paths
 
 ## The product line (6 games, all on Google Play)
 
