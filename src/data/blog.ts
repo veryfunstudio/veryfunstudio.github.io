@@ -16,7 +16,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "As an indie game developer, we face many challenges but also have many opportunities. This article shares our experiences and insights.",
     date: "2026-04-10",
     category: "Dev Thoughts",
-    image: "/images/Challenges and Opportunities in Indie Game Development.jpeg",
+    image: "/images/challenges-opportunities-indie-game-dev.jpeg",
     content: [
       "Indie game development is a journey filled with both exhilarating highs and crushing lows. When we first started VeryFun Company, we had big dreams but little understanding of the road ahead. After several years in the trenches, we've learned that success in indie development isn't just about making a great game - it's about surviving long enough to let people discover it.",
       "The biggest challenge we faced early on was scope management. Our first prototype was a massive open-world RPG with procedural generation, dynamic weather systems, and branching narratives. Sound familiar? It should - it's the same overambitious pitch every indie team makes. We spent eight months building systems that never saw the light of day. The lesson? Start small. Your first game doesn't need to be your magnum opus.",
@@ -32,7 +32,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Game design is key to indie game success. This article explores the core elements and best practices of game design.",
     date: "2026-03-25",
     category: "Game Design",
-    image: "/images/How to Design a Successful Indie Game.jpeg",
+    image: "/images/how-to-design-successful-indie-game.jpeg",
     content: [
       "Great game design starts with one question: 'What feeling do I want the player to experience?' Not 'What mechanics do I want to include?' or 'What genre is trending?' Everything flows from that emotional core. For Tile Journey, we wanted players to feel quiet wonder and a sense of unhurried progress. Every design decision - from the dreamy themed worlds to the no-timer pacing - served that singular emotional goal.",
       "The concept of a 'core loop' is fundamental to good design. A core loop is the cycle of actions a player repeats throughout your game. In our match-three puzzles, it's simple: scan the board → spot a triple → tap to clear → feel satisfaction → see the next arrangement. The best games make this loop so satisfying that players want to repeat it hundreds or thousands of times. If your core loop feels like work, no amount of polish will save it.",
@@ -48,7 +48,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Unity and Unreal Engine are the most popular game engines today. This article compares their pros and cons to help you make a choice.",
     date: "2026-03-10",
     category: "Tech Tutorial",
-    image: "/images/Unity vs Unreal Engine.jpeg",
+    image: "/images/unity-vs-unreal-engine.jpeg",
     content: [
       "The Unity versus Unreal debate is one of the most heated topics in game development, and for good reason - your engine choice affects everything from workflow to performance to hiring. At VeryFun Company, we chose Unity for our entire mobile lineup, and we have never looked back. Here is why that decision made sense for us, and how to think about the trade-offs for your own games.",
       "Unity's greatest strength is accessibility. C# is an incredibly beginner-friendly language, and the Asset Store ecosystem means you can prototype rapidly using existing tools. For 2D and casual 3D mobile games specifically, Unity's toolset is mature and well-documented. We built Tile Journey, Pearl Coloring, and the rest of our puzzle lineup in Unity because the lightweight runtime, mobile-friendly build pipeline, and rich 2D/3D hybrid workflow felt natural for those games. The learning curve is gentle - a motivated developer can ship their first Unity game in 3-6 months.",
@@ -64,7 +64,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Even if your game is great, without good marketing strategies it's hard to succeed. This article shares marketing tips for indie games.",
     date: "2026-02-20",
     category: "Marketing",
-    image: "/images/Marketing Strategies for Indie Games.jpeg",
+    image: "/images/marketing-strategies-indie-games.jpeg",
     content: [
       "'Build it and they will come' is perhaps the most dangerous lie in indie game development. We learned this the hard way with our first release - a solid game that sold exactly 47 copies in its first month. Since then, we've treated marketing as equally important as development, and the difference has been transformative.",
       "Start marketing before your game is finished. Ideally, before it's even playable. Build a wishlist on Steam, or a pre-registration page on the Google Play Store. Share development updates on social media. Post behind-the-scenes content showing your process. The goal is to build an audience that's invested in your journey, not just your product. When we started posting weekly devlogs for Tile Journey, our launch-day install numbers were 12x higher than our previous silent launches.",
