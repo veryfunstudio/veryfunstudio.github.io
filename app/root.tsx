@@ -11,8 +11,6 @@ import type { Route } from "./+types/root";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
-import ScrollSignal from "@/components/common/ScrollSignal";
-import RouteVeil from "@/components/common/RouteVeil";
 import NotFound from "@/pages/NotFound";
 import "@/index.css";
 
@@ -69,8 +67,6 @@ export default function App() {
           Skip to main content
         </a>
         <Header />
-        <ScrollSignal />
-        <RouteVeil />
         <AnimatePresence mode="wait" initial={false}>
           <motion.main
             key={location.pathname}

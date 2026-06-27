@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 import { FaGithub, FaGooglePlay } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { GAMES } from "@/data/games";
 import { BRAND } from "@/lib/constants";
 
 const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/developer?id=songxugang";
@@ -17,13 +16,7 @@ const Footer = () => {
             <Link to="/" className="site-footer__name">
               {BRAND.name}
             </Link>
-            <p>Free mobile puzzles with clear boards, soft pressure, and no timers.</p>
-          </div>
-
-          <div className="site-footer__summary" aria-label="Studio summary">
-            <span>{String(GAMES.length).padStart(2, "0")} games</span>
-            <span>No timers</span>
-            <span>Offline play</span>
+            <p>Free mobile puzzles with clear boards and no timers.</p>
           </div>
 
           <nav className="site-footer__links" aria-label="Footer links">
@@ -47,7 +40,6 @@ const Footer = () => {
           <p>
             &copy; {currentYear} {BRAND.name}. All rights reserved.
           </p>
-          <p>Built with care. No paywalls, no timers.</p>
         </div>
       </div>
     </footer>
