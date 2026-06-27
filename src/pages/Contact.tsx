@@ -8,18 +8,21 @@ const CONTACT_INFO = [
     title: "Email",
     value: "chuangcius@gmail.com",
     link: "mailto:chuangcius@gmail.com",
+    external: false,
   },
   {
     icon: <Code2 size={20} />,
     title: "GitHub",
     value: "github.com/cookabc",
     link: "https://github.com/cookabc",
+    external: true,
   },
   {
     icon: <SquareArrowOutUpRight size={20} />,
     title: "X",
     value: "@chuangcius",
     link: "https://x.com/chuangcius",
+    external: true,
   },
 ] as const;
 
@@ -81,8 +84,8 @@ const Contact = () => {
           <a
             key={item.title}
             href={item.link}
-            target="_blank"
-            rel="noopener noreferrer"
+            target={item.external ? "_blank" : undefined}
+            rel={item.external ? "noopener noreferrer" : undefined}
             className="contact-route"
           >
             <span aria-hidden="true">{item.icon}</span>
