@@ -39,11 +39,15 @@ const About = () => {
           className="about-hero-copy"
         >
           <span className="page-kicker">About</span>
-          <h1>Small team. Calm games. Sharp boards.</h1>
+          <h1>Calm games. Clear boards.</h1>
           <p>
-            VeryFun Company builds free mobile puzzles for people who want a clear challenge without
-            timers, pressure systems, or noisy monetization.
+            VeryFun Company is a small team building free mobile puzzles for people who want a clear
+            challenge without timers, pressure systems, or noisy monetization.
           </p>
+          <div className="about-hero-stats" aria-label="Studio snapshot">
+            <span>{GAMES.length} released games</span>
+            <span>No timers or paywalls</span>
+          </div>
           <div className="flex flex-wrap gap-3">
             <Link to="/games" className="pill-button pill-button--accent">
               See games
@@ -70,46 +74,30 @@ const About = () => {
             fetchPriority="high"
             decoding="async"
           />
-          <div className="about-hero-badge">
-            <span className="status-text">released</span>
-            <strong>{String(GAMES.length).padStart(2, "0")}</strong>
-          </div>
         </motion.div>
       </section>
 
-      <section className="about-story">
-        <div className="dash-line" />
-        <div className="about-story-grid">
-          <div>
-            <h2>Games for spare attention.</h2>
-          </div>
-          <div className="about-story-copy">
-            <p>
-              We started as game makers who loved figuring out why small puzzles stick. The answer
-              was rarely bigger features. It was pace, feedback, readability, and a clean reason to
-              make one more move.
-            </p>
-            <p>
-              Our catalog focuses on casual mobile play because the format asks for discipline. A
-              good puzzle has to load fast, explain itself quickly, work offline, and still feel
-              considered after hundreds of sessions.
-            </p>
-          </div>
+      <section className="about-principles">
+        <div className="about-principles__copy">
+          <span className="status-text">How we make them</span>
+          <h2>Games for spare attention.</h2>
+          <p>
+            We focus on casual mobile play because the format rewards discipline: a good puzzle
+            loads fast, reads instantly, works offline, and still gives players a clean reason to
+            make one more move.
+          </p>
         </div>
-      </section>
-
-      <section className="about-values">
-        <div className="about-values__intro">
-          <span className="status-text">What stays constant</span>
-          <h2>Three rules guide every release.</h2>
+        <div className="about-principles__list">
+          {VALUES.map((value) => (
+            <article key={value.title} className="about-principle">
+              <div aria-hidden="true">{value.icon}</div>
+              <div>
+                <h3>{value.title}</h3>
+                <p>{value.body}</p>
+              </div>
+            </article>
+          ))}
         </div>
-        {VALUES.map((value) => (
-          <article key={value.title} className="about-value-card">
-            <div aria-hidden="true">{value.icon}</div>
-            <h3>{value.title}</h3>
-            <p>{value.body}</p>
-          </article>
-        ))}
       </section>
     </div>
   );
