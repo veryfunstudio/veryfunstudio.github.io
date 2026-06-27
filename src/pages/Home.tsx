@@ -206,24 +206,6 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="marquee-rail">
-          <div className="marquee-track">
-            {[...GAMES, ...GAMES].map((game, index) => (
-              <span key={`${game.id}-${index}`}>
-                <img
-                  src={game.icon}
-                  alt=""
-                  width={22}
-                  height={22}
-                  loading="lazy"
-                  decoding="async"
-                />
-                {game.title}
-              </span>
-            ))}
-          </div>
-        </div>
-
         <section className="relative px-[3.125vw] py-28 lg:py-40">
           <div className="dash-line mb-12" />
           <div className="max-w-[92rem]">

@@ -1181,39 +1181,6 @@
     text-transform: uppercase;
   }
 
-  .marquee-rail {
-    overflow: hidden;
-    border-block: 1px solid var(--color-border-soft);
-    background: rgba(7, 8, 13, 0.58);
-    padding-block: 0.9rem;
-  }
-
-  .marquee-track {
-    display: flex;
-    width: max-content;
-    align-items: center;
-    white-space: nowrap;
-    animation: marquee-drift 28s linear infinite;
-  }
-
-  .marquee-track span {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.65rem;
-    margin-inline: 1.6rem;
-    color: var(--color-muted);
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    text-transform: uppercase;
-  }
-
-  .marquee-track img {
-    width: 22px;
-    height: 22px;
-    border-radius: 6px;
-    object-fit: cover;
-  }
-
   .playtest-section {
     position: relative;
   }
@@ -4549,12 +4516,6 @@
 @keyframes orbit-spin {
   to {
     transform: rotate(360deg);
-  }
-}
-
-@keyframes marquee-drift {
-  to {
-    transform: translateX(-50%);
   }
 }
 
