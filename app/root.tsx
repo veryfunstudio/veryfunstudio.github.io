@@ -5,9 +5,10 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "react-router";
 import type { Route } from "./+types/root";
-import { MotionConfig } from "framer-motion";
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import "@/index.css";
@@ -39,6 +40,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  const location = useLocation();
+
   return (
     <MotionConfig reducedMotion="user">
       <div className="flex min-h-[100dvh] flex-col bg-background text-foreground">
@@ -49,9 +52,20 @@ export default function App() {
           Skip to main content
         </a>
         <Header />
-        <main id="main-content" className="flex-1" tabIndex={-1}>
-          <Outlet />
-        </main>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.main
+            key={location.pathname}
+            id="main-content"
+            className="site-main flex-1"
+            tabIndex={-1}
+            initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -10, filter: "blur(6px)" }}
+            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Outlet />
+          </motion.main>
+        </AnimatePresence>
         <Footer />
       </div>
     </MotionConfig>

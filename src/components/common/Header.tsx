@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -11,6 +11,11 @@ const Header = () => {
   const location = useLocation();
   const isItemActive = (path: string) =>
     path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
+  const activeItem = NAV_ITEMS.find((item) => isItemActive(item.path)) ?? NAV_ITEMS[0];
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
 
   return (
     <header className="site-header fixed top-0 left-0 right-0 z-50">
@@ -30,7 +35,7 @@ const Header = () => {
           {BRAND.name}
         </Link>
 
-        <nav className="hidden gap-8 md:flex" aria-label="Main navigation">
+        <nav className="site-header__nav hidden md:flex" aria-label="Main navigation">
           {NAV_ITEMS.map((item) => {
             const isActive = isItemActive(item.path);
             return (
@@ -38,17 +43,25 @@ const Header = () => {
                 key={item.path}
                 to={item.path}
                 aria-current={isActive ? "page" : undefined}
-                className={`relative py-2 font-sans text-sm font-medium uppercase tracking-wide transition-opacity duration-150 ${
-                  isActive
-                    ? "text-foreground"
-                    : "text-foreground/50 hover:text-foreground"
-                }`}
+                className={`site-header__nav-link ${isActive ? "is-active" : ""}`}
               >
-                {item.label}
+                <span>{item.label}</span>
+                {isActive && (
+                  <motion.span
+                    layoutId="site-header-active"
+                    className="site-header__nav-active"
+                    transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                  />
+                )}
               </Link>
             );
           })}
         </nav>
+
+        <div className="site-header__route hidden xl:flex" aria-hidden="true">
+          <span>{activeItem.label}</span>
+          <i />
+        </div>
 
         <button
           className="flex min-h-[44px] min-w-[44px] items-center justify-center text-foreground md:hidden"
@@ -79,10 +92,8 @@ const Header = () => {
                     to={item.path}
                     onClick={() => setMobileOpen(false)}
                     aria-current={isActive ? "page" : undefined}
-                    className={`flex min-h-[44px] items-center rounded-lg px-3 font-sans text-base uppercase ${
-                      isActive
-                        ? "bg-surface text-foreground"
-                        : "text-muted"
+                    className={`site-header__mobile-link flex min-h-[44px] items-center rounded-lg px-3 font-sans text-base uppercase ${
+                      isActive ? "bg-surface text-foreground" : "text-muted"
                     }`}
                   >
                     {item.label}
