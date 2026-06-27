@@ -2247,7 +2247,7 @@
 
   .game-detail-session {
     display: grid;
-    grid-template-columns: minmax(18rem, 0.7fr) minmax(0, 1.3fr);
+    grid-template-columns: minmax(17rem, 0.58fr) minmax(0, 1fr) minmax(18rem, 0.72fr);
     gap: clamp(1rem, 3vw, 3rem);
     margin-top: 0.8rem;
     padding: clamp(1.25rem, 3vw, 3rem);
@@ -2274,13 +2274,13 @@
   .game-detail-session-board {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.7rem;
   }
 
   .game-detail-session-board::before {
     position: absolute;
-    inset: 50% 3rem auto;
+    inset: 50% -1.5rem auto;
     height: 1px;
     content: "";
     background: linear-gradient(90deg, transparent, rgba(200, 255, 61, 0.42), transparent);
@@ -2289,7 +2289,7 @@
   .game-detail-session-step {
     position: relative;
     display: flex;
-    min-height: 21rem;
+    min-height: 15rem;
     flex-direction: column;
     justify-content: space-between;
     gap: 1.5rem;
@@ -2298,8 +2298,15 @@
     background:
       radial-gradient(circle at 50% 4%, rgba(200, 255, 61, 0.12), transparent 11rem),
       rgba(7, 8, 13, 0.46);
+    color: inherit;
     padding: clamp(1rem, 1.8vw, 1.35rem);
+    text-align: left;
     overflow: hidden;
+    cursor: pointer;
+    transition:
+      border-color 0.28s var(--ease-brand),
+      background 0.28s var(--ease-brand),
+      transform 0.28s var(--ease-brand);
   }
 
   .game-detail-session-step::after {
@@ -2335,6 +2342,103 @@
     top: 1.1rem;
     right: 1rem;
     color: rgba(200, 255, 61, 0.72);
+  }
+
+  .game-detail-session-step:hover,
+  .game-detail-session-step:focus-visible,
+  .game-detail-session-step.is-active {
+    border-color: rgba(200, 255, 61, 0.44);
+    background:
+      radial-gradient(circle at var(--card-x, 50%) 0%, rgba(200, 255, 61, 0.2), transparent 12rem),
+      rgba(15, 20, 22, 0.74);
+    transform: translateY(-2px);
+    outline: none;
+  }
+
+  .game-detail-session-step.is-active {
+    box-shadow:
+      inset 0 1px 0 rgba(244, 247, 232, 0.18),
+      0 18px 48px rgba(0, 0, 0, 0.26);
+  }
+
+  .game-detail-session-preview {
+    position: relative;
+    display: grid;
+    align-content: space-between;
+    min-height: 100%;
+    gap: 1rem;
+    border: 1px solid rgba(244, 247, 232, 0.12);
+    border-radius: 8px;
+    background:
+      linear-gradient(180deg, rgba(244, 247, 232, 0.08), rgba(244, 247, 232, 0.02)),
+      rgba(7, 8, 13, 0.52);
+    padding: 0.7rem;
+    overflow: hidden;
+  }
+
+  .game-detail-session-preview::before {
+    position: absolute;
+    inset: -40% -20% auto;
+    height: 65%;
+    content: "";
+    background: radial-gradient(circle, rgba(200, 255, 61, 0.18), transparent 62%);
+    pointer-events: none;
+  }
+
+  .game-detail-session-preview__media {
+    position: relative;
+    min-height: 15rem;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .game-detail-session-preview__media > img:first-child {
+    width: 100%;
+    height: 100%;
+    min-height: 15rem;
+    display: block;
+    object-fit: cover;
+    filter: saturate(1.08) contrast(1.04) blur(1px);
+    opacity: 0.82;
+    transform: scale(1.02);
+  }
+
+  .game-detail-session-preview__media > img:last-child {
+    position: absolute;
+    right: 0.8rem;
+    bottom: 0.8rem;
+    width: 5.2rem;
+    height: 5.2rem;
+    border: 1px solid rgba(244, 247, 232, 0.34);
+    border-radius: 18px;
+    background: rgba(7, 8, 13, 0.82);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.36);
+    object-fit: cover;
+  }
+
+  .game-detail-session-preview__copy {
+    position: relative;
+    display: grid;
+    gap: 0.7rem;
+    padding: 0.55rem 0.4rem 0.35rem;
+  }
+
+  .game-detail-session-preview__copy span {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+  }
+
+  .game-detail-session-preview__copy strong {
+    color: var(--color-foreground);
+    font-size: clamp(1.7rem, 2.6vw, 3rem);
+    line-height: 0.96;
+  }
+
+  .game-detail-session-preview__copy p {
+    color: var(--color-muted);
+    font-size: 0.94rem;
+    line-height: 1.45;
   }
 
   .game-detail-system {
@@ -3204,6 +3308,10 @@
 
   .game-detail-session-board {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .game-detail-session-preview {
+    min-height: auto;
   }
 
   .game-detail-session-board::before {

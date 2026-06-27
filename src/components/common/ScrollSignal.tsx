@@ -25,7 +25,7 @@ export default function ScrollSignal() {
         <div>
           <motion.i style={{ scaleY: progress }} />
         </div>
-        <em>Scroll</em>
+        <em>Progress</em>
       </div>
     </div>
   );

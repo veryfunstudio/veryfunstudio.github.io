@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams, Link } from "react-router";
 import { motion } from "framer-motion";
 import { ArrowLeft, Download, MoveRight, Sparkles } from "lucide-react";
@@ -10,6 +11,7 @@ import EntityNotFound from "@/components/common/EntityNotFound";
 const GameDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const game = getGameBySlug(slug ?? "");
+  const [activeSession, setActiveSession] = useState(0);
 
   if (!game) {
     return (
@@ -24,11 +26,32 @@ const GameDetail = () => {
 
   const primaryTags = game.technologies.slice(1);
   const sessionSteps = [
-    ["01", "Open", game.features[0] ?? "Start a clean board"],
-    ["02", "Read", game.features[1] ?? "Find the first clear move"],
-    ["03", "Solve", game.features[2] ?? "Use simple tools when stuck"],
-    ["04", "Return", game.features[5] ?? "Come back without pressure"],
+    {
+      code: "01",
+      label: "Open",
+      body: game.features[0] ?? "Start a clean board",
+      signal: "The first screen explains itself before the player has to commit.",
+    },
+    {
+      code: "02",
+      label: "Read",
+      body: game.features[1] ?? "Find the first clear move",
+      signal: "The board gives enough visual information to plan one clean action.",
+    },
+    {
+      code: "03",
+      label: "Solve",
+      body: game.features[2] ?? "Use simple tools when stuck",
+      signal: "Hints and undo exist as guardrails, not pressure systems.",
+    },
+    {
+      code: "04",
+      label: "Return",
+      body: game.features[5] ?? "Come back without pressure",
+      signal: "Progress survives the pause, so a short session still feels complete.",
+    },
   ];
+  const activeStep = sessionSteps[activeSession] ?? sessionSteps[0];
 
   return (
     <article className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -175,17 +198,42 @@ const GameDetail = () => {
         </div>
 
         <div className="game-detail-session-board" aria-label={`${game.title} session flow`}>
-          {sessionSteps.map(([code, label, body], index) => (
-            <article key={label} className="game-detail-session-step">
-              <span>{code}</span>
+          {sessionSteps.map((step, index) => (
+            <button
+              key={step.label}
+              type="button"
+              className={`game-detail-session-step ${activeSession === index ? "is-active" : ""}`}
+              onClick={() => setActiveSession(index)}
+              aria-pressed={activeSession === index}
+            >
+              <span>{step.code}</span>
               <div>
-                <strong>{label}</strong>
-                <p>{body}</p>
+                <strong>{step.label}</strong>
+                <p>{step.body}</p>
               </div>
               {index < sessionSteps.length - 1 && <MoveRight size={18} aria-hidden="true" />}
-            </article>
+            </button>
           ))}
         </div>
+
+        <motion.aside
+          key={activeStep.label}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          className="game-detail-session-preview"
+          aria-live="polite"
+        >
+          <div className="game-detail-session-preview__media">
+            <img src={game.image} alt="" width={640} height={480} loading="lazy" decoding="async" />
+            <img src={game.icon} alt="" width={88} height={88} loading="lazy" decoding="async" />
+          </div>
+          <div className="game-detail-session-preview__copy">
+            <span>{activeStep.code}</span>
+            <strong>{activeStep.label}</strong>
+            <p>{activeStep.signal}</p>
+          </div>
+        </motion.aside>
       </section>
 
       <section className="game-detail-system">

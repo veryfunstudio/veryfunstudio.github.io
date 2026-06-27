@@ -341,7 +341,7 @@ export default function Home() {
         <section className="runway-section">
           <div className="runway-heading px-[3.125vw]">
             <span className="page-kicker">Game runway</span>
-            <p>Scroll the studio shelf.</p>
+            <p>Six releases in one studio shelf.</p>
           </div>
           <div className="runway-track">
             {GAMES.map((game, index) => (
