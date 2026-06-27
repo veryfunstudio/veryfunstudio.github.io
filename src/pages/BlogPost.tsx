@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
-import { getBlogPostById } from "@/data/blog";
+import { ArrowLeft, ArrowRight, BookOpen, Gamepad2 } from "lucide-react";
+import { BLOG_POSTS, getBlogPostById } from "@/data/blog";
 import { formatDate } from "@/lib/utils";
 import { Seo } from "@/components/seo/Seo";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -24,6 +24,8 @@ const BlogPost = () => {
   }
 
   const seoTitle = post.title.length > 40 ? `${post.title.slice(0, 37)}...` : post.title;
+  const relatedPosts = BLOG_POSTS.filter((item) => item.id !== post.id).slice(0, 2);
+  const readingMinutes = Math.max(3, Math.ceil(post.content.join(" ").split(/\s+/).length / 180));
 
   return (
     <article className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -123,11 +125,42 @@ const BlogPost = () => {
         ))}
       </section>
 
-      <section className="article-return">
-        <Link to="/blog" className="pill-button">
-          <ArrowLeft size={16} />
-          Back to blog
-        </Link>
+      <section className="article-console">
+        <div className="article-console__summary">
+          <div>
+            <BookOpen size={22} />
+            <span className="status-text">Field note complete</span>
+          </div>
+          <h2>Keep the studio signal moving.</h2>
+          <p>
+            {readingMinutes} minute read on {post.category.toLowerCase()}, written from the same
+            constraints that shape the games: clarity, pace, and repeatable decisions.
+          </p>
+          <div className="article-console__actions">
+            <Link to="/blog" className="pill-button">
+              <ArrowLeft size={16} />
+              Archive
+            </Link>
+            <Link to="/games" className="pill-button pill-button--accent">
+              <Gamepad2 size={16} />
+              Games
+            </Link>
+          </div>
+        </div>
+
+        <div className="article-related" aria-label="Related studio notes">
+          {relatedPosts.map((item, index) => (
+            <Link key={item.id} to={`/blog/${item.id}`} className="article-related-card">
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <div>
+                <time dateTime={item.date}>{formatDate(item.date)}</time>
+                <strong>{item.title}</strong>
+                <p>{item.excerpt}</p>
+              </div>
+              <ArrowRight size={18} />
+            </Link>
+          ))}
+        </div>
       </section>
     </article>
   );
