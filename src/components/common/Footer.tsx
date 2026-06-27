@@ -19,17 +19,35 @@ const Footer = () => {
 
           <nav className="site-footer__links" aria-label="Footer links">
             <Link to="/games">Games</Link>
-            <a href={GOOGLE_PLAY_DEVELOPER_URL} target="_blank" rel="noopener noreferrer">
+            <a
+              href={GOOGLE_PLAY_DEVELOPER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Google Play"
+              className="site-footer__icon-link"
+            >
               <FaGooglePlay size={15} />
-              Google Play
+              <span className="sr-only">Google Play</span>
             </a>
-            <a href={BRAND.social.github} target="_blank" rel="noopener noreferrer">
+            <a
+              href={BRAND.social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="site-footer__icon-link"
+            >
               <FaGithub size={15} />
-              GitHub
+              <span className="sr-only">GitHub</span>
             </a>
-            <a href={BRAND.social.x} target="_blank" rel="noopener noreferrer">
+            <a
+              href={BRAND.social.x}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X"
+              className="site-footer__icon-link"
+            >
               <FaXTwitter size={15} />
-              Twitter
+              <span className="sr-only">X</span>
             </a>
           </nav>
         </div>
