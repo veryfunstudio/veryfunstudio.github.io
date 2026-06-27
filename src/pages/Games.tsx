@@ -1,39 +1,12 @@
-import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
-import { ArrowUpRight, CalendarDays, Download, Grid3X3, Layers3, Play } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
 import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 
 const Games = () => {
-  const [activeGenre, setActiveGenre] = useState("All");
-  const [activeSlug, setActiveSlug] = useState(GAMES[0]?.slug ?? "");
   const newest =
     [...GAMES].sort((a, b) => b.releaseDate.localeCompare(a.releaseDate))[0] ?? GAMES[0];
-  const genreCounts = useMemo(() => {
-    const counts = new Map<string, number>();
-    for (const game of GAMES) {
-      for (const genre of game.technologies.slice(1)) {
-        counts.set(genre, (counts.get(genre) ?? 0) + 1);
-      }
-    }
-    return counts;
-  }, []);
-  const genres = useMemo(() => ["All", ...genreCounts.keys()], [genreCounts]);
-  const visibleGames = useMemo(
-    () =>
-      activeGenre === "All"
-        ? GAMES
-        : GAMES.filter((game) => game.technologies.slice(1).includes(activeGenre)),
-    [activeGenre],
-  );
-  const activeGame = visibleGames.find((game) => game.slug === activeSlug) ?? visibleGames[0];
-
-  useEffect(() => {
-    if (!visibleGames.some((game) => game.slug === activeSlug)) {
-      setActiveSlug(visibleGames[0]?.slug ?? "");
-    }
-  }, [activeSlug, visibleGames]);
 
   return (
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -105,137 +78,22 @@ const Games = () => {
         </motion.div>
       </section>
 
-      <section className="games-filter-strip" aria-label="Catalog controls">
-        <div className="games-filter-metrics">
-          <div>
-            <Grid3X3 size={18} />
-            <span>{GAMES.length} releases</span>
-          </div>
-          <div>
-            <Layers3 size={18} />
-            <span>{genreCounts.size} genres</span>
-          </div>
-          <div>
-            <Download size={18} />
-            <span>Google Play</span>
-          </div>
-        </div>
-        <div className="games-filter-controls">
-          <div>
-            <span className="status-text">Signal filter</span>
-            <strong>
-              {visibleGames.length} / {GAMES.length} online
-            </strong>
-          </div>
-          <div className="games-filter-buttons" role="list" aria-label="Filter games by genre">
-            {genres.map((genre) => {
-              const isActive = activeGenre === genre;
-              const count = genre === "All" ? GAMES.length : (genreCounts.get(genre) ?? 0);
-
-              return (
-                <button
-                  key={genre}
-                  type="button"
-                  className={isActive ? "is-active" : ""}
-                  onClick={() => setActiveGenre(genre)}
-                  aria-pressed={isActive}
-                >
-                  <span>{genre}</span>
-                  <em>{String(count).padStart(2, "0")}</em>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {activeGame && (
-        <section className="games-spotlight" aria-label="Selected game preview">
-          <div className="games-spotlight-copy">
-            <div className="games-spotlight-copy__top">
-              <span className="status-text">Selected board</span>
-              <span>{String(activeGame.id).padStart(2, "0")}</span>
-            </div>
-            <div className="games-spotlight-copy__title">
-              <img
-                src={activeGame.icon}
-                alt=""
-                width={82}
-                height={82}
-                loading="eager"
-                decoding="async"
-              />
-              <h2>{activeGame.title}</h2>
-            </div>
-            <p>{activeGame.description}</p>
-            <div className="games-spotlight-tags">
-              {activeGame.technologies.slice(1).map((tag) => (
-                <span key={tag}>{tag}</span>
-              ))}
-            </div>
-            <div className="games-spotlight-actions">
-              <Link to={`/games/${activeGame.slug}`} className="pill-button pill-button--accent">
-                <Play size={16} />
-                Open
-              </Link>
-              <a
-                href={activeGame.googlePlayUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pill-button"
-              >
-                <Download size={16} />
-                Google Play
-              </a>
-            </div>
-          </div>
-
-          <div className="games-spotlight-media">
-            <motion.img
-              key={activeGame.slug}
-              src={activeGame.image}
-              alt={`${activeGame.title} key art`}
-              width={980}
-              height={735}
-              loading="lazy"
-              decoding="async"
-              initial={{ opacity: 0, scale: 1.04 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            />
-            <div className="games-spotlight-release">
-              <CalendarDays size={16} />
-              <span>{activeGame.releaseDate}</span>
-            </div>
-          </div>
-        </section>
-      )}
-
       <section className="catalog-index" aria-label="Release index">
         <div className="catalog-index__head">
           <div>
             <span className="status-text">Release index</span>
-            <h2>{activeGenre === "All" ? "All playable boards." : `${activeGenre} boards.`}</h2>
+            <h2>All playable boards.</h2>
           </div>
           <p>
-            Scan the catalog by release, genre, and session shape. Select a row to update the
-            preview, or open the detail page for the full game brief.
+            Scan the catalog by release, genre, and session shape. Open a board for the full brief,
+            or jump straight to Google Play.
           </p>
         </div>
 
-        <motion.div layout className="catalog-index__list">
-          {visibleGames.map((game, index) => (
-            <motion.div
-              key={game.id}
-              layout
-              className={`catalog-index__row${activeGame?.slug === game.slug ? " is-active" : ""}`}
-            >
-              <button
-                type="button"
-                onClick={() => setActiveSlug(game.slug)}
-                aria-pressed={activeGame?.slug === game.slug}
-                aria-label={`Preview ${game.title}`}
-              >
+        <div className="catalog-index__list">
+          {GAMES.map((game, index) => (
+            <div key={game.id} className="catalog-index__row">
+              <Link to={`/games/${game.slug}`} aria-label={`Open ${game.title} details`}>
                 <span className="catalog-index__number">{String(index + 1).padStart(2, "0")}</span>
                 <img
                   src={game.icon}
@@ -255,13 +113,18 @@ const Games = () => {
                   ))}
                 </span>
                 <span className="catalog-index__date">{game.releaseDate}</span>
-              </button>
-              <Link to={`/games/${game.slug}`} aria-label={`Open ${game.title} details`}>
-                <ArrowUpRight size={18} />
               </Link>
-            </motion.div>
+              <a
+                href={game.googlePlayUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Get ${game.title} on Google Play`}
+              >
+                <ArrowUpRight size={18} />
+              </a>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </section>
     </div>
   );

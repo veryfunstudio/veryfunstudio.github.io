@@ -2,7 +2,7 @@
 
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router";
-import { ArrowRight, Download, Gamepad2, Sparkles } from "lucide-react";
+import { ArrowRight, Download, Sparkles } from "lucide-react";
 import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -53,42 +53,11 @@ const METRICS = [
   ["24", "hour offline play"],
 ];
 
-const PLAYTEST_MOVES = [
-  {
-    label: "number lock",
-    note: "Place one clean digit, then breathe before the next.",
-  },
-  {
-    label: "tile triple",
-    note: "Match a small stack and keep the tray from crowding.",
-  },
-  {
-    label: "word path",
-    note: "Trace a quiet line through letters without a clock.",
-  },
-  {
-    label: "arrow clear",
-    note: "Untangle one direction and watch the board open.",
-  },
-  {
-    label: "pearl sort",
-    note: "Group color by color until the hidden picture appears.",
-  },
-  {
-    label: "bubble arc",
-    note: "Aim once, bank softly, clear a pocket of color.",
-  },
-];
-
 export default function Home() {
   const [time, setTime] = useState("");
-  const [activeCell, setActiveCell] = useState(14);
 
   const featured = useMemo(() => GAMES.slice(0, 3), []);
   const launchGame = GAMES[1] ?? GAMES[0];
-  const activeMove = activeCell % GAMES.length;
-  const activeGame = GAMES[activeMove] ?? GAMES[0];
-  const activeMoveMeta = PLAYTEST_MOVES[activeMove] ?? PLAYTEST_MOVES[0];
 
   useEffect(() => {
     const update = () => {
@@ -222,89 +191,20 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="playtest-section px-[3.125vw] py-24 lg:py-36">
-          <div className="playtest-panel">
-            <div className="playtest-copy">
-              <div className="playtest-copy__top">
-                <Gamepad2 size={24} />
-                <span className="status-text">Live playtest</span>
-              </div>
-              <h2>Tap the board. Feel the catalog answer.</h2>
-              <p>
-                A small playable signal for the whole studio: six rhythms, one calm input model, no
-                timer pushing the player around.
-              </p>
-            </div>
-
-            <div className="playtest-board-wrap">
-              <div className="playtest-board" aria-label="Interactive game rhythm selector">
-                {Array.from({ length: 36 }, (_, index) => {
-                  const gameIndex = index % GAMES.length;
-                  const game = GAMES[gameIndex];
-                  const isActive = index === activeCell;
-                  const isSoft = (index + activeMove) % 5 === 0;
-
-                  return (
-                    <button
-                      key={`${game.slug}-${index}`}
-                      type="button"
-                      className={`playtest-cell ${isActive ? "is-active" : ""} ${isSoft ? "is-soft" : ""}`}
-                      onClick={() => setActiveCell(index)}
-                      aria-label={`Preview ${game.title}`}
-                      aria-pressed={isActive}
-                    >
-                      <span>{index % 3 === 0 ? String(game.id) : game.title.slice(0, 1)}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            <aside className="playtest-readout" aria-live="polite">
-              <div className="playtest-readout__hero">
-                <img
-                  src={activeGame.icon}
-                  alt=""
-                  width={96}
-                  height={96}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div>
-                  <span className="status-text">{activeMoveMeta.label}</span>
-                  <h3>{activeGame.title}</h3>
-                </div>
-              </div>
-              <p>{activeMoveMeta.note}</p>
-              <div className="playtest-readout__tags">
-                {activeGame.technologies.slice(1).map((tag) => (
-                  <span key={tag}>{tag}</span>
-                ))}
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <Link to={`/games/${activeGame.slug}`} className="pill-button">
-                  Details
-                  <ArrowRight size={15} />
-                </Link>
-                <a
-                  href={activeGame.googlePlayUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pill-button pill-button--accent"
-                >
-                  <Download size={15} />
-                  Play
-                </a>
-              </div>
-            </aside>
-          </div>
-        </section>
-
         <section className="px-[3.125vw] py-24 lg:py-36">
           <div className="dash-line mb-12" />
           <div className="principle-board">
             <div className="principle-intro">
               <h2>Fun without extraction.</h2>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link to="/games" className="pill-button pill-button--accent">
+                  Browse lineup
+                  <ArrowRight size={16} />
+                </Link>
+                <Link to="/about" className="pill-button">
+                  Studio notes
+                </Link>
+              </div>
             </div>
             {PRINCIPLES.map((item, index) => (
               <article key={item.code} className="principle-cell">
@@ -313,21 +213,6 @@ export default function Home() {
                 <p>{item.body}</p>
               </article>
             ))}
-          </div>
-        </section>
-
-        <section className="closing-stage px-[3.125vw] py-28 lg:py-44">
-          <div className="closing-panel">
-            <h2 className="closing-reveal">Open a puzzle and let the day get quieter.</h2>
-            <div className="closing-reveal flex flex-wrap justify-center gap-3">
-              <Link to="/games" className="pill-button pill-button--accent">
-                Browse lineup
-                <ArrowRight size={16} />
-              </Link>
-              <Link to="/about" className="pill-button">
-                Studio notes
-              </Link>
-            </div>
           </div>
         </section>
       </div>
