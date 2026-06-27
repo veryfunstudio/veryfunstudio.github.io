@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router";
 import { motion } from "framer-motion";
-import { ArrowLeft, Download, Sparkles } from "lucide-react";
+import { ArrowLeft, Download, MoveRight, Sparkles } from "lucide-react";
 import { getGameBySlug } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -23,6 +23,12 @@ const GameDetail = () => {
   }
 
   const primaryTags = game.technologies.slice(1);
+  const sessionSteps = [
+    ["01", "Open", game.features[0] ?? "Start a clean board"],
+    ["02", "Read", game.features[1] ?? "Find the first clear move"],
+    ["03", "Solve", game.features[2] ?? "Use simple tools when stuck"],
+    ["04", "Return", game.features[5] ?? "Come back without pressure"],
+  ];
 
   return (
     <article className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -133,7 +139,15 @@ const GameDetail = () => {
             fetchPriority="high"
             decoding="async"
           />
-          <img className="game-detail-icon" src={game.icon} alt="" width={132} height={132} loading="eager" decoding="async" />
+          <img
+            className="game-detail-icon"
+            src={game.icon}
+            alt=""
+            width={132}
+            height={132}
+            loading="eager"
+            decoding="async"
+          />
           <div className="game-detail-tags">
             {primaryTags.map((tag) => (
               <span key={tag}>{tag}</span>
@@ -148,6 +162,30 @@ const GameDetail = () => {
           <h2>What it feels like</h2>
         </div>
         <p>{game.answer}</p>
+      </section>
+
+      <section className="game-detail-session">
+        <div className="game-detail-session-copy">
+          <span className="status-text">First session</span>
+          <h2>Four calm moves before the game gets deep.</h2>
+          <p>
+            The loop is deliberately legible: understand the board, make one confident move, clear
+            space, and leave with progress still intact.
+          </p>
+        </div>
+
+        <div className="game-detail-session-board" aria-label={`${game.title} session flow`}>
+          {sessionSteps.map(([code, label, body], index) => (
+            <article key={label} className="game-detail-session-step">
+              <span>{code}</span>
+              <div>
+                <strong>{label}</strong>
+                <p>{body}</p>
+              </div>
+              {index < sessionSteps.length - 1 && <MoveRight size={18} aria-hidden="true" />}
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="game-detail-system">
