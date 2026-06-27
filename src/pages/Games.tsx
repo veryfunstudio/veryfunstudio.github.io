@@ -24,7 +24,6 @@ const Games = () => {
           className="games-hero"
         >
           <div className="games-hero-copy">
-            <span className="page-kicker">Playable catalog</span>
             <h1>Pick a board.</h1>
             <p>
               Six quiet mobile puzzles for spare attention: number logic, word grids, tile matching,
@@ -48,10 +47,6 @@ const Games = () => {
           </div>
 
           <div className="games-hero-panel">
-            <div className="games-hero-panel__header">
-              <span className="status-text">Latest release</span>
-              <span className="status-text">{newest.releaseDate}</span>
-            </div>
             <img
               src={newest.image}
               alt={newest.title}
@@ -72,7 +67,6 @@ const Games = () => {
       <section className="catalog-index" aria-label="Game catalog">
         <div className="catalog-index__head">
           <div>
-            <span className="status-text">Choose your board</span>
             <h2>All playable boards.</h2>
           </div>
           <p>

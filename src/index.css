@@ -788,7 +788,7 @@
   .games-hero-panel {
     position: relative;
     display: grid;
-    grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-rows: minmax(0, 1fr) auto;
     overflow: hidden;
     box-shadow: 0 34px 110px rgba(0, 0, 0, 0.32);
   }
