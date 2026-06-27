@@ -3176,6 +3176,7 @@
 
   .article-hero {
     display: grid;
+    min-width: 0;
     gap: 1.4rem;
     padding: clamp(1.25rem, 3vw, 3rem);
   }
@@ -3189,12 +3190,14 @@
   .article-hero h1 {
     max-width: 14ch;
     font-size: clamp(3rem, 7vw, 8rem);
+    overflow-wrap: anywhere;
   }
 
   .article-hero p {
     max-width: 60ch;
     color: var(--color-muted);
     font-size: clamp(1rem, 1.35vw, 1.22rem);
+    overflow-wrap: break-word;
   }
 
   .article-image {
@@ -4290,6 +4293,14 @@
   .game-detail-copy h1,
   .blog-hero-copy h1 {
     font-size: clamp(3rem, 15vw, 5.8rem);
+  }
+
+  .article-hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.35rem, 10.4vw, 3.55rem);
+    line-height: 1;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 }
 
