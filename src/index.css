@@ -1480,8 +1480,15 @@
     z-index: 1;
     content: "";
     background:
-      radial-gradient(circle at 78% 12%, rgba(200, 255, 61, 0.24), transparent 18rem),
-      linear-gradient(180deg, rgba(7, 8, 13, 0.06), rgba(7, 8, 13, 0.16) 46%, rgba(7, 8, 13, 0.72));
+      linear-gradient(90deg, rgba(244, 247, 232, 0.035) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(244, 247, 232, 0.03) 1px, transparent 1px),
+      radial-gradient(circle at 78% 12%, rgba(200, 255, 61, 0.2), transparent 18rem),
+      linear-gradient(180deg, rgba(7, 8, 13, 0.02), rgba(7, 8, 13, 0.1) 52%, rgba(7, 8, 13, 0.58));
+    background-size:
+      4rem 4rem,
+      4rem 4rem,
+      auto,
+      auto;
     pointer-events: none;
   }
 
@@ -1495,9 +1502,9 @@
   }
 
   .games-hero-panel > img:not(.games-hero-icon) {
-    filter: saturate(1.08) contrast(1.02) blur(3px);
-    opacity: 0.78;
-    transform: scale(1.03);
+    filter: saturate(1.12) contrast(1.07) brightness(0.96);
+    opacity: 0.94;
+    transform: scale(1.01);
   }
 
   .games-hero-icon {
@@ -1792,8 +1799,15 @@
     inset: 0;
     content: "";
     background:
-      linear-gradient(180deg, rgba(7, 8, 13, 0.05), rgba(7, 8, 13, 0.52) 72%, rgba(7, 8, 13, 0.74)),
-      radial-gradient(circle at 82% 14%, rgba(200, 255, 61, 0.22), transparent 18rem);
+      linear-gradient(90deg, rgba(244, 247, 232, 0.035) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(244, 247, 232, 0.026) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(7, 8, 13, 0.02), rgba(7, 8, 13, 0.28) 72%, rgba(7, 8, 13, 0.56)),
+      radial-gradient(circle at 82% 14%, rgba(200, 255, 61, 0.18), transparent 18rem);
+    background-size:
+      4rem 4rem,
+      4rem 4rem,
+      auto,
+      auto;
     pointer-events: none;
   }
 
@@ -1803,7 +1817,7 @@
     min-height: inherit;
     display: block;
     object-fit: cover;
-    filter: saturate(1.06) contrast(1.04);
+    filter: saturate(1.12) contrast(1.07) brightness(0.97);
   }
 
   .games-spotlight-release {
@@ -2499,20 +2513,27 @@
     inset: 0;
     content: "";
     background:
-      radial-gradient(circle at 78% 12%, rgba(200, 255, 61, 0.24), transparent 18rem),
-      linear-gradient(180deg, rgba(7, 8, 13, 0.02), rgba(7, 8, 13, 0.18) 52%, rgba(7, 8, 13, 0.72));
+      linear-gradient(90deg, rgba(244, 247, 232, 0.035) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(244, 247, 232, 0.026) 1px, transparent 1px),
+      radial-gradient(circle at 78% 12%, rgba(200, 255, 61, 0.2), transparent 18rem),
+      linear-gradient(180deg, rgba(7, 8, 13, 0.01), rgba(7, 8, 13, 0.1) 52%, rgba(7, 8, 13, 0.56));
+    background-size:
+      4rem 4rem,
+      4rem 4rem,
+      auto,
+      auto;
     pointer-events: none;
   }
 
-  .game-detail-media > img {
+  .game-detail-media > img:not(.game-detail-icon) {
     width: 100%;
     height: 100%;
     min-height: 26rem;
     display: block;
     object-fit: cover;
-    filter: saturate(1.06) contrast(1.02) blur(3px);
-    opacity: 0.8;
-    transform: scale(1.03);
+    filter: saturate(1.12) contrast(1.07) brightness(0.97);
+    opacity: 0.94;
+    transform: scale(1.01);
   }
 
   .game-detail-icon {
@@ -3463,8 +3484,8 @@
     inset: 0;
     content: "";
     background:
-      linear-gradient(180deg, rgba(7, 8, 13, 0.1), rgba(7, 8, 13, 0.58) 42%, rgba(7, 8, 13, 0.94)),
-      radial-gradient(circle at 76% 12%, rgba(200, 255, 61, 0.24), transparent 34%),
+      linear-gradient(180deg, rgba(7, 8, 13, 0.02), rgba(7, 8, 13, 0.42) 46%, rgba(7, 8, 13, 0.9)),
+      radial-gradient(circle at 76% 12%, rgba(200, 255, 61, 0.18), transparent 34%),
       repeating-linear-gradient(90deg, rgba(244, 247, 232, 0.04) 0 1px, transparent 1px 12px);
   }
 
@@ -3473,14 +3494,14 @@
     height: 100%;
     display: block;
     object-fit: cover;
-    filter: saturate(1.1) contrast(1.02) blur(5px);
-    opacity: 0.72;
-    transform: scale(1.04);
+    filter: saturate(1.13) contrast(1.07) brightness(0.96);
+    opacity: 0.9;
+    transform: scale(1.015);
     transition: transform 0.7s var(--ease-brand);
   }
 
   .game-magnetic-card:hover .game-card-media img {
-    transform: scale(1.1);
+    transform: scale(1.055);
   }
 
   .game-card-copy {
@@ -3670,9 +3691,9 @@
     height: 100%;
     display: block;
     object-fit: cover;
-    filter: saturate(1.06) contrast(1.02) blur(5px);
-    opacity: 0.72;
-    transform: scale(1.05);
+    filter: saturate(1.12) contrast(1.07) brightness(0.96);
+    opacity: 0.9;
+    transform: scale(1.015);
   }
 
   .runway-icon {
