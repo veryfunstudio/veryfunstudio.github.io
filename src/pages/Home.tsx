@@ -2,11 +2,12 @@
 
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router";
-import { ArrowRight, ArrowUpRight, CircleDot, Download, Gamepad2, Sparkles } from "lucide-react";
+import { ArrowRight, CircleDot, Download, Gamepad2, Sparkles } from "lucide-react";
 import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE_URL } from "@/lib/constants";
+import GameCard from "@/components/common/GameCard";
 
 const HeroCanvas = lazy(() => import("@/components/home/HeroCanvas"));
 
@@ -332,38 +333,7 @@ export default function Home() {
 
           <div className="game-grid">
             {GAMES.map((game, index) => (
-              <Link key={game.id} to={`/games/${game.slug}`} className="game-magnetic-card">
-                <div className="game-card-media">
-                  <img
-                    src={game.image}
-                    alt={game.title}
-                    width={680}
-                    height={510}
-                    loading={index < 2 ? "eager" : "lazy"}
-                    decoding="async"
-                  />
-                </div>
-                <div className="game-card-copy">
-                  <img
-                    className="game-card-icon"
-                    src={game.icon}
-                    alt=""
-                    width={72}
-                    height={72}
-                    loading={index < 2 ? "eager" : "lazy"}
-                    decoding="async"
-                  />
-                  <span className="status-text">{String(index + 1).padStart(2, "0")}</span>
-                  <h3>{game.title}</h3>
-                  <p>{game.description}</p>
-                  <div>
-                    {game.technologies.slice(1).map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
-                </div>
-                <ArrowUpRight className="game-card-arrow" size={22} />
-              </Link>
+              <GameCard key={game.id} game={game} index={index} />
             ))}
           </div>
         </section>

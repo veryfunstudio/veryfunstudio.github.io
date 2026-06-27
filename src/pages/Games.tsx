@@ -3,9 +3,11 @@ import { Link } from "react-router";
 import { ArrowUpRight, Download, Grid3X3, Layers3 } from "lucide-react";
 import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
+import GameCard from "@/components/common/GameCard";
 
 const Games = () => {
-  const newest = [...GAMES].sort((a, b) => b.releaseDate.localeCompare(a.releaseDate))[0] ?? GAMES[0];
+  const newest =
+    [...GAMES].sort((a, b) => b.releaseDate.localeCompare(a.releaseDate))[0] ?? GAMES[0];
 
   return (
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -26,8 +28,8 @@ const Games = () => {
             <span className="page-kicker">Playable catalog</span>
             <h1>Six boards, one quiet rhythm.</h1>
             <p>
-              Pick the kind of puzzle your brain wants right now. Number logic, word grids,
-              tile matching, sorting, and quick arcade clearing all live here.
+              Pick the kind of puzzle your brain wants right now. Number logic, word grids, tile
+              matching, sorting, and quick arcade clearing all live here.
             </p>
             <div className="games-hero-actions">
               <a
@@ -95,30 +97,7 @@ const Games = () => {
       <section className="pt-14 lg:pt-20">
         <div className="game-grid">
           {GAMES.map((game, index) => (
-            <Link key={game.id} to={`/games/${game.slug}`} className="game-magnetic-card">
-              <div className="game-card-media">
-                <img
-                  src={game.image}
-                  alt={game.title}
-                  width={680}
-                  height={510}
-                  loading={index < 2 ? "eager" : "lazy"}
-                  decoding="async"
-                />
-              </div>
-              <div className="game-card-copy">
-                <img className="game-card-icon" src={game.icon} alt="" width={72} height={72} loading={index < 2 ? "eager" : "lazy"} decoding="async" />
-                <span className="status-text">{String(index + 1).padStart(2, "0")}</span>
-                <h2>{game.title}</h2>
-                <p>{game.description}</p>
-                <div>
-                  {game.technologies.slice(1).map((tech) => (
-                    <span key={tech}>{tech}</span>
-                  ))}
-                </div>
-              </div>
-              <ArrowUpRight className="game-card-arrow" size={22} />
-            </Link>
+            <GameCard key={game.id} game={game} index={index} headingLevel="h2" />
           ))}
         </div>
       </section>
