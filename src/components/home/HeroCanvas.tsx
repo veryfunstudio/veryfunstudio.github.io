@@ -138,11 +138,17 @@ export default function HeroCanvas() {
     const targetPointer = new THREE.Vector2(0.5, 0.5);
     const resolution = new THREE.Vector2(1, 1);
 
-    const renderer = new THREE.WebGLRenderer({
-      antialias: false,
-      alpha: true,
-      powerPreference: "high-performance",
-    });
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        antialias: false,
+        alpha: true,
+        powerPreference: "high-performance",
+      });
+    } catch {
+      container.dataset.webglFallback = "true";
+      return;
+    }
     renderer.setClearColor(0x000000, 0);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
     renderer.domElement.style.width = "100%";
@@ -275,5 +281,11 @@ export default function HeroCanvas() {
     };
   }, []);
 
-  return <div ref={mountRef} className="absolute inset-0" style={{ pointerEvents: "none" }} />;
+  return (
+    <div
+      ref={mountRef}
+      className="hero-canvas-fallback absolute inset-0"
+      style={{ pointerEvents: "none" }}
+    />
+  );
 }
