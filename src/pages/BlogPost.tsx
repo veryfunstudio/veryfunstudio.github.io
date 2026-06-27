@@ -138,9 +138,8 @@ const BlogPost = () => {
         </div>
 
         <div className="article-related" aria-label="Related studio notes">
-          {relatedPosts.map((item, index) => (
+          {relatedPosts.map((item) => (
             <Link key={item.id} to={`/blog/${item.id}`} className="article-related-card">
-              <span>{String(index + 1).padStart(2, "0")}</span>
               <div>
                 <time dateTime={item.date}>{formatDate(item.date)}</time>
                 <strong>{item.title}</strong>

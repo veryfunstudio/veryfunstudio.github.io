@@ -2041,9 +2041,9 @@
     position: relative;
     display: grid;
     min-height: 11rem;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: 1rem;
-    align-items: start;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1.2rem;
+    align-items: center;
     color: inherit;
     padding: clamp(1rem, 2vw, 1.4rem);
     text-decoration: none;
@@ -2059,12 +2059,6 @@
     transform: translateY(-2px);
   }
 
-  .article-related-card > span {
-    color: var(--color-accent);
-    font-family: var(--font-mono);
-    font-size: 0.76rem;
-  }
-
   .article-related-card time {
     color: var(--color-muted);
     font-family: var(--font-mono);
@@ -2074,10 +2068,10 @@
 
   .article-related-card strong {
     display: block;
-    max-width: 24ch;
+    max-width: 30ch;
     margin-top: 0.55rem;
     color: var(--color-foreground);
-    font-size: clamp(1.3rem, 2vw, 2rem);
+    font-size: clamp(1.25rem, 1.7vw, 1.85rem);
     line-height: 1;
   }
 
@@ -2089,7 +2083,12 @@
   }
 
   .article-related-card svg {
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid rgba(200, 255, 61, 0.3);
+    border-radius: 999px;
     color: var(--color-accent);
+    padding: 0.75rem;
   }
 
   .error-stage {
@@ -2433,7 +2432,7 @@
   }
 
   .article-related-card {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 
   .site-footer__bottom {
