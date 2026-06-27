@@ -2438,6 +2438,7 @@
   .game-detail-system,
   .game-detail-faq,
   .blog-hero-copy,
+  .blog-signal-panel,
   .blog-featured,
   .article-hero,
   .article-image,
@@ -2970,6 +2971,165 @@
 
   .blog-featured .pill-button {
     width: fit-content;
+  }
+
+  .blog-signal-panel {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+    gap: 1px;
+    overflow: hidden;
+    background: var(--color-border-soft);
+    box-shadow: 0 34px 110px rgba(0, 0, 0, 0.32);
+  }
+
+  .blog-signal-panel::before {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    content: "";
+    background:
+      linear-gradient(90deg, rgba(244, 247, 232, 0.035) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(244, 247, 232, 0.03) 1px, transparent 1px),
+      radial-gradient(circle at 82% 16%, rgba(200, 255, 61, 0.18), transparent 18rem),
+      radial-gradient(circle at 8% 88%, rgba(74, 128, 255, 0.12), transparent 22rem);
+    background-size:
+      4rem 4rem,
+      4rem 4rem,
+      auto,
+      auto;
+    pointer-events: none;
+  }
+
+  .blog-signal-panel > * {
+    position: relative;
+    z-index: 2;
+    background: rgba(16, 19, 27, 0.76);
+  }
+
+  .blog-signal-panel__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: clamp(1rem, 2vw, 1.25rem);
+  }
+
+  .blog-signal-panel__header strong {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: clamp(2.4rem, 5vw, 5.6rem);
+    line-height: 0.82;
+  }
+
+  .blog-signal-panel__matrix {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--color-border-soft);
+  }
+
+  .blog-signal-panel__matrix div {
+    display: grid;
+    min-height: clamp(10rem, 16vw, 14rem);
+    align-content: space-between;
+    gap: 1rem;
+    background: rgba(7, 8, 13, 0.46);
+    padding: clamp(0.95rem, 1.8vw, 1.25rem);
+  }
+
+  .blog-signal-panel__matrix svg {
+    color: var(--color-accent);
+  }
+
+  .blog-signal-panel__matrix span,
+  .blog-signal-panel__feature span,
+  .blog-signal-panel__feature time {
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+  }
+
+  .blog-signal-panel__matrix strong {
+    color: var(--color-foreground);
+    font-size: clamp(1.35rem, 2vw, 2.25rem);
+    line-height: 0.98;
+  }
+
+  .blog-signal-panel__feature {
+    display: grid;
+    align-content: end;
+    gap: 1rem;
+    padding: clamp(1.1rem, 2.4vw, 2rem);
+  }
+
+  .blog-signal-panel__feature > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .blog-signal-panel__feature-title {
+    display: block;
+    max-width: 13ch;
+    color: var(--color-foreground);
+    font-size: clamp(2.25rem, 4.2vw, 5.4rem);
+    font-weight: 650;
+    line-height: 0.96;
+    text-wrap: balance;
+  }
+
+  .blog-signal-panel__feature p {
+    max-width: 54ch;
+    color: var(--color-muted);
+  }
+
+  .blog-signal-panel__feature .pill-button {
+    width: fit-content;
+  }
+
+  .blog-signal-panel__games {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--color-border-soft);
+  }
+
+  .blog-signal-panel__games a {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 5rem;
+    background: rgba(7, 8, 13, 0.56);
+    color: var(--color-foreground);
+    padding: 0.9rem;
+    text-decoration: none;
+    transition:
+      background 0.24s var(--ease-brand),
+      color 0.24s var(--ease-brand);
+  }
+
+  .blog-signal-panel__games a:hover,
+  .blog-signal-panel__games a:focus-visible {
+    background: rgba(200, 255, 61, 0.1);
+    color: var(--color-accent);
+  }
+
+  .blog-signal-panel__games img {
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid rgba(244, 247, 232, 0.18);
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .blog-signal-panel__games span {
+    overflow-wrap: anywhere;
+    font-size: 0.92rem;
+    font-weight: 650;
+    line-height: 1.05;
   }
 
   .blog-index {
@@ -3846,6 +4006,15 @@
 
   .blog-console__rail {
     align-content: start;
+  }
+
+  .blog-signal-panel__matrix,
+  .blog-signal-panel__games {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-signal-panel__matrix div {
+    min-height: 8.5rem;
   }
 
   .contact-intake-copy {
