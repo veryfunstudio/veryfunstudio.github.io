@@ -4510,6 +4510,32 @@
     font-size: clamp(3rem, 13vw, 5.8rem);
   }
 
+  .contact-routes {
+    gap: 0.55rem;
+  }
+
+  .contact-route {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 0.45rem 0.85rem;
+    min-height: 5.8rem;
+    padding: 0.95rem;
+  }
+
+  .contact-route > span {
+    grid-row: span 2;
+    width: 2.7rem;
+    height: 2.7rem;
+  }
+
+  .contact-route strong {
+    font-size: clamp(1.35rem, 8vw, 2rem);
+  }
+
+  .contact-route em {
+    font-size: 0.68rem;
+  }
+
   .article-console__summary h2 {
     font-size: clamp(3rem, 13vw, 5.8rem);
   }
