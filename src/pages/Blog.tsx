@@ -68,20 +68,40 @@ const Blog = () => {
       <section className="blog-index" aria-label="Studio notes index">
         <div className="blog-index__head">
           <div>
-            <span className="status-text">Reading queue</span>
-            <strong>{String(BLOG_POSTS.length).padStart(2, "0")} notes</strong>
+            <span className="status-text">Latest writing</span>
+            <strong>Notes worth opening.</strong>
           </div>
-          <p>Short notes on puzzles, production, launches, and keeping mobile games calm.</p>
+          <p>
+            Practical notes on puzzle feel, production choices, launch work, and small-team
+            tradeoffs.
+          </p>
         </div>
 
         <div className="blog-index__list">
-          {sortedPosts.map((post, index) => (
+          {sortedPosts.map((post) => (
             <Link key={post.id} to={`/blog/${post.id}`} className="blog-index-card">
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <time dateTime={post.date}>{formatDate(post.date)}</time>
-              <strong>{post.title}</strong>
-              <p>{post.excerpt}</p>
-              <ArrowRight size={18} />
+              <span className="blog-index-card__media">
+                <img
+                  src={post.image}
+                  alt=""
+                  width={520}
+                  height={340}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
+              <span className="blog-index-card__body">
+                <span className="blog-index-card__meta">
+                  <span>{post.category}</span>
+                  <time dateTime={post.date}>{formatDate(post.date)}</time>
+                </span>
+                <strong>{post.title}</strong>
+                <span>{post.excerpt}</span>
+                <span className="blog-index-card__action">
+                  Open note
+                  <ArrowRight size={16} />
+                </span>
+              </span>
             </Link>
           ))}
         </div>
