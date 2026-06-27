@@ -1,9 +1,9 @@
 @import "tailwindcss/index.css";
 
 @theme {
-  --font-sans: "Space Grotesk", system-ui, -apple-system, sans-serif;
-  --font-mono: "DM Mono", ui-monospace, monospace;
-  --font-serif: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --font-sans: "Space Grotesk", "Avenir Next", "Trebuchet MS", system-ui, -apple-system, sans-serif;
+  --font-mono: "DM Mono", "SFMono-Regular", "Cascadia Mono", ui-monospace, monospace;
+  --font-serif: "Space Grotesk", "Avenir Next", "Trebuchet MS", system-ui, -apple-system, sans-serif;
 
   --color-background: #07080d;
   --color-foreground: #f4f7e8;
@@ -313,77 +313,6 @@
     text-transform: uppercase;
   }
 
-  .font-kalam,
-  .font-patrick {
-    font-family: var(--font-sans);
-  }
-
-  .hand-drawn-card {
-    border: 1px solid var(--color-border-soft);
-    border-radius: var(--radius-card);
-    background:
-      linear-gradient(145deg, rgba(244, 247, 232, 0.07), rgba(244, 247, 232, 0.018)),
-      rgba(16, 19, 27, 0.82);
-    box-shadow: var(--shadow-soft);
-    transition:
-      border-color 0.25s var(--ease-brand),
-      box-shadow 0.25s var(--ease-brand),
-      transform 0.25s var(--ease-brand);
-  }
-
-  .hand-drawn-card:hover {
-    border-color: var(--color-border-strong);
-    box-shadow: var(--shadow-soft-hover);
-  }
-
-  .hand-drawn-button {
-    display: inline-flex;
-    min-height: 44px;
-    align-items: center;
-    justify-content: center;
-    gap: 0.55rem;
-    border: 1px solid var(--color-border-strong);
-    border-radius: var(--radius-button);
-    font-family: var(--font-sans);
-    font-weight: 650;
-    line-height: 1;
-    text-transform: uppercase;
-    transition:
-      background-color 0.2s var(--ease-brand),
-      border-color 0.2s var(--ease-brand),
-      color 0.2s var(--ease-brand),
-      transform 0.18s var(--ease-brand),
-      box-shadow 0.24s var(--ease-brand);
-  }
-
-  .hand-drawn-button:hover {
-    border-color: var(--color-accent);
-    box-shadow: 0 0 28px rgba(200, 255, 61, 0.16);
-    transform: translateY(-1px);
-  }
-
-  .hand-drawn-button:active {
-    transform: translateY(0) scale(0.98);
-  }
-
-  .hand-drawn-input {
-    min-height: 48px;
-    border: 1px solid var(--color-border-input);
-    border-radius: 8px;
-    background: rgba(16, 19, 27, 0.88);
-    color: var(--color-foreground);
-    font-family: var(--font-sans);
-    transition:
-      border-color 0.2s var(--ease-brand),
-      box-shadow 0.2s var(--ease-brand);
-  }
-
-  .hand-drawn-input:focus {
-    border-color: var(--color-focus);
-    box-shadow: 0 0 0 3px var(--color-focus-soft);
-    outline: none;
-  }
-
   .bracket-tag::before {
     content: "[ ";
   }
@@ -431,6 +360,22 @@
     padding: clamp(1rem, 2vw, 2rem);
     box-shadow: inset 0 1px 0 rgba(244, 247, 232, 0.1), 0 34px 110px rgba(0, 0, 0, 0.28);
     backdrop-filter: blur(18px);
+  }
+
+  .hero-reveal {
+    animation: reveal-up 0.82s var(--ease-brand) both;
+  }
+
+  .hero-shell > .hero-reveal {
+    animation-delay: 0.08s;
+  }
+
+  .hero-reveal:nth-child(2) {
+    animation-delay: 0.16s;
+  }
+
+  .hero-reveal:nth-child(3) {
+    animation-delay: 0.24s;
   }
 
   .kinetic-title {
@@ -1747,6 +1692,27 @@
     padding-block: 5rem;
   }
 
+  .runway-section::before,
+  .runway-section::after {
+    position: absolute;
+    top: 9rem;
+    bottom: 3rem;
+    z-index: 3;
+    width: min(7vw, 6rem);
+    content: "";
+    pointer-events: none;
+  }
+
+  .runway-section::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--color-background), transparent);
+  }
+
+  .runway-section::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--color-background), transparent);
+  }
+
   .runway-heading {
     position: relative;
     z-index: 2;
@@ -1768,15 +1734,34 @@
 
   .runway-track {
     display: flex;
-    width: max-content;
+    width: 100%;
     align-items: center;
     gap: 1rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
     padding-inline: 3.125vw;
+    padding-bottom: 1.25rem;
+    scroll-padding-inline: 3.125vw;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: rgba(200, 255, 61, 0.72) rgba(244, 247, 232, 0.08);
+  }
+
+  .runway-track::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .runway-track::-webkit-scrollbar-track {
+    background: rgba(244, 247, 232, 0.08);
+  }
+
+  .runway-track::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(200, 255, 61, 0.72);
   }
 
   .runway-card {
     display: grid;
-    width: min(72vw, 55rem);
+    flex: 0 0 min(72vw, 55rem);
     min-height: 34rem;
     grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.72fr);
     overflow: hidden;
@@ -1784,6 +1769,17 @@
     border-radius: 8px;
     background: rgba(16, 19, 27, 0.82);
     box-shadow: 0 28px 90px rgba(0, 0, 0, 0.32);
+    scroll-snap-align: center;
+    transition:
+      border-color 0.28s var(--ease-brand),
+      box-shadow 0.28s var(--ease-brand),
+      transform 0.28s var(--ease-brand);
+  }
+
+  .runway-card:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-soft-hover), 0 0 70px rgba(200, 255, 61, 0.12);
+    transform: translateY(-3px);
   }
 
   .runway-media {
@@ -2008,6 +2004,7 @@
   }
 
   .runway-card {
+    flex: 0 0 auto;
     width: 100%;
     min-height: auto;
     grid-template-columns: 1fr;
@@ -2073,6 +2070,18 @@
 @keyframes marquee-drift {
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
