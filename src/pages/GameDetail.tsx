@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router";
 import { motion } from "framer-motion";
-import { ArrowLeft, Download, Sparkles } from "lucide-react";
+import { ArrowLeft, Download } from "lucide-react";
 import { getGameBySlug } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -138,18 +138,13 @@ const GameDetail = () => {
             fetchPriority="high"
             decoding="async"
           />
-          <div className="game-detail-tags">
-            {primaryTags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-          </div>
         </motion.div>
       </section>
 
       <section className="game-detail-brief">
         <div>
-          <Sparkles size={22} />
-          <h2>What it feels like</h2>
+          <span className="status-text">The loop</span>
+          <h2>Clear rules, calm repeat play.</h2>
         </div>
         <p>{game.answer}</p>
       </section>
@@ -169,9 +164,8 @@ const GameDetail = () => {
         </div>
 
         <div className="game-detail-summary__features">
-          {primaryFeatures.map((feature, index) => (
+          {primaryFeatures.map((feature) => (
             <div key={feature}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
               <strong>{feature}</strong>
             </div>
           ))}

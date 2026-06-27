@@ -1541,29 +1541,6 @@
     transform: scale(1.01);
   }
 
-  .game-detail-tags {
-    position: absolute;
-    right: 1rem;
-    bottom: 1rem;
-    left: 1rem;
-    z-index: 2;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .game-detail-tags span {
-    border: 1px solid rgba(244, 247, 232, 0.18);
-    border-radius: 999px;
-    background: rgba(7, 8, 13, 0.72);
-    color: var(--color-foreground);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    padding: 0.45rem 0.65rem;
-    text-transform: uppercase;
-    backdrop-filter: blur(14px);
-  }
-
   .game-detail-brief {
     display: grid;
     grid-template-columns: minmax(0, 0.62fr) minmax(20rem, 1.38fr);
@@ -1577,10 +1554,6 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 2rem;
-  }
-
-  .game-detail-brief svg {
-    color: var(--color-accent);
   }
 
   .game-detail-brief h2,
@@ -1649,20 +1622,13 @@
   }
 
   .game-detail-summary__features div {
-    display: grid;
-    min-height: clamp(9rem, 16vw, 15rem);
-    align-content: space-between;
-    gap: 1.5rem;
+    display: flex;
+    min-height: clamp(8rem, 13vw, 12rem);
+    align-items: flex-end;
     background:
       radial-gradient(circle at 84% 8%, rgba(200, 255, 61, 0.12), transparent 10rem),
       rgba(16, 19, 27, 0.86);
     padding: clamp(1rem, 2vw, 1.6rem);
-  }
-
-  .game-detail-summary__features span {
-    color: var(--color-accent);
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
   }
 
   .game-detail-summary__features strong {
