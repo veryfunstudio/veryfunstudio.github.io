@@ -6,7 +6,7 @@ import { ArrowRight, Download } from "lucide-react";
 import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { GOOGLE_PLAY_DEVELOPER_URL, SITE_URL } from "@/lib/constants";
+import { BRAND_LOGO_URL, GOOGLE_PLAY_DEVELOPER_URL, SITE_URL } from "@/lib/constants";
 
 const HeroCanvas = lazy(() => import("@/components/home/HeroCanvas"));
 
@@ -15,7 +15,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "VeryFun Company",
   url: SITE_URL,
-  logo: `${SITE_URL}/images/about.jpeg`,
+  logo: BRAND_LOGO_URL,
   description:
     "Independent mobile game studio publishing calming, free-to-play puzzle games on Google Play.",
   sameAs: GAMES.map((p) => p.googlePlayUrl),

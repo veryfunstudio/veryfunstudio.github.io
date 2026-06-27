@@ -5,7 +5,7 @@ import { BLOG_POSTS, getBlogPostById } from "@/data/blog";
 import { formatDate } from "@/lib/utils";
 import { Seo } from "@/components/seo/Seo";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { SITE_URL } from "@/lib/constants";
+import { BRAND_LOGO_URL, SITE_URL } from "@/lib/constants";
 import EntityNotFound from "@/components/common/EntityNotFound";
 
 const BlogPost = () => {
@@ -59,7 +59,9 @@ const BlogPost = () => {
             url: SITE_URL,
             logo: {
               "@type": "ImageObject",
-              url: `${SITE_URL}/images/about.jpeg`,
+              url: BRAND_LOGO_URL,
+              width: 512,
+              height: 512,
             },
           },
           mainEntityOfPage: {

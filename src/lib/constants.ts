@@ -1,5 +1,6 @@
 /** Canonical site origin. Single source of truth: import from here, not from Seo.tsx or App.tsx. */
 export const SITE_URL = "https://cookabc.github.io";
+export const BRAND_LOGO_URL = `${SITE_URL}/favicon.png`;
 export const GOOGLE_PLAY_DEVELOPER_URL =
   "https://play.google.com/store/apps/developer?id=songxugang";
 
