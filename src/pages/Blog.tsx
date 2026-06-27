@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
@@ -6,7 +7,9 @@ import { BLOG_POSTS } from "@/data/blog";
 import { Seo } from "@/components/seo/Seo";
 
 const Blog = () => {
-  const [featured, ...rest] = BLOG_POSTS;
+  const featured = BLOG_POSTS[0];
+  const [activeId, setActiveId] = useState(featured?.id ?? BLOG_POSTS[0]?.id ?? 1);
+  const activePost = BLOG_POSTS.find((post) => post.id === activeId) ?? featured ?? BLOG_POSTS[0];
 
   return (
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -61,28 +64,67 @@ const Blog = () => {
         )}
       </section>
 
-      {rest.length > 0 && (
-        <section className="blog-index">
-          {rest.map((post, index) => (
-            <Link key={post.id} to={`/blog/${post.id}`} className="blog-index-card">
-              <span>{String(index + 2).padStart(2, "0")}</span>
-              <img
-                src={post.image}
-                alt={`Featured image for ${post.title}`}
-                width={480}
-                height={360}
-                loading="lazy"
-                decoding="async"
-              />
-              <div>
-                <time dateTime={post.date}>{formatDate(post.date)}</time>
-                <h2>{post.title}</h2>
-                <p>{post.excerpt}</p>
-              </div>
+      <section className="blog-console" aria-label="Article reading console">
+        <div className="blog-console__rail">
+          <div>
+            <span className="status-text">Reading queue</span>
+            <strong>{String(BLOG_POSTS.length).padStart(2, "0")} notes</strong>
+          </div>
+
+          <div className="blog-console__list">
+            {BLOG_POSTS.map((post, index) => {
+              const isActive = post.id === activePost.id;
+
+              return (
+                <button
+                  key={post.id}
+                  type="button"
+                  className={isActive ? "is-active" : ""}
+                  onClick={() => setActiveId(post.id)}
+                  onFocus={() => setActiveId(post.id)}
+                  onMouseEnter={() => setActiveId(post.id)}
+                  aria-pressed={isActive}
+                >
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{post.category}</strong>
+                  <em>{formatDate(post.date)}</em>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <motion.article
+          key={activePost.id}
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+          className="blog-console__preview"
+        >
+          <div className="blog-console__image">
+            <img
+              src={activePost.image}
+              alt={`Featured image for ${activePost.title}`}
+              width={980}
+              height={680}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div className="blog-console__copy">
+            <div>
+              <span>{activePost.category}</span>
+              <time dateTime={activePost.date}>{formatDate(activePost.date)}</time>
+            </div>
+            <h2>{activePost.title}</h2>
+            <p>{activePost.excerpt}</p>
+            <Link to={`/blog/${activePost.id}`} className="pill-button pill-button--accent">
+              Open note
+              <ArrowRight size={16} />
             </Link>
-          ))}
-        </section>
-      )}
+          </div>
+        </motion.article>
+      </section>
     </div>
   );
 };
