@@ -2,7 +2,7 @@
 
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router";
-import { ArrowRight, ArrowUpRight, CircleDot, Download, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CircleDot, Download, Gamepad2, Sparkles } from "lucide-react";
 import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -16,7 +16,8 @@ const organizationSchema = {
   name: "VeryFun Company",
   url: SITE_URL,
   logo: `${SITE_URL}/images/about.jpeg`,
-  description: "Independent mobile game studio publishing calming, free-to-play puzzle games on Google Play.",
+  description:
+    "Independent mobile game studio publishing calming, free-to-play puzzle games on Google Play.",
   sameAs: GAMES.map((p) => p.googlePlayUrl),
 };
 
@@ -52,11 +53,42 @@ const METRICS = [
   ["24", "hour offline play"],
 ];
 
+const PLAYTEST_MOVES = [
+  {
+    label: "number lock",
+    note: "Place one clean digit, then breathe before the next.",
+  },
+  {
+    label: "tile triple",
+    note: "Match a small stack and keep the tray from crowding.",
+  },
+  {
+    label: "word path",
+    note: "Trace a quiet line through letters without a clock.",
+  },
+  {
+    label: "arrow clear",
+    note: "Untangle one direction and watch the board open.",
+  },
+  {
+    label: "pearl sort",
+    note: "Group color by color until the hidden picture appears.",
+  },
+  {
+    label: "bubble arc",
+    note: "Aim once, bank softly, clear a pocket of color.",
+  },
+];
+
 export default function Home() {
   const [time, setTime] = useState("");
+  const [activeCell, setActiveCell] = useState(14);
 
   const featured = useMemo(() => GAMES.slice(0, 3), []);
   const launchGame = GAMES[1] ?? GAMES[0];
+  const activeMove = activeCell % GAMES.length;
+  const activeGame = GAMES[activeMove] ?? GAMES[0];
+  const activeMoveMeta = PLAYTEST_MOVES[activeMove] ?? PLAYTEST_MOVES[0];
 
   useEffect(() => {
     const update = () => {
@@ -105,7 +137,8 @@ export default function Home() {
                 </div>
 
                 <p className="hero-reveal max-w-[42ch] text-base leading-relaxed text-muted sm:text-lg">
-                  Six mobile puzzles for spare moments: free, readable, offline, and built to leave attention intact.
+                  Six mobile puzzles for spare moments: free, readable, offline, and built to leave
+                  attention intact.
                 </p>
 
                 <div className="hero-reveal flex flex-wrap gap-3">
@@ -129,7 +162,10 @@ export default function Home() {
                 <div className="signal-deck">
                   <div className="signal-orbit" aria-hidden="true">
                     {featured.map((game, index) => (
-                      <span key={game.id} style={{ transform: `rotate(${index * 120}deg) translateY(-45%)` }} />
+                      <span
+                        key={game.id}
+                        style={{ transform: `rotate(${index * 120}deg) translateY(-45%)` }}
+                      />
                     ))}
                   </div>
                   <div className="signal-screen">
@@ -174,7 +210,14 @@ export default function Home() {
           <div className="marquee-track">
             {[...GAMES, ...GAMES].map((game, index) => (
               <span key={`${game.id}-${index}`}>
-                <img src={game.icon} alt="" width={22} height={22} loading="lazy" decoding="async" />
+                <img
+                  src={game.icon}
+                  alt=""
+                  width={22}
+                  height={22}
+                  loading="lazy"
+                  decoding="async"
+                />
                 {game.title}
               </span>
             ))}
@@ -184,13 +227,94 @@ export default function Home() {
         <section className="relative px-[3.125vw] py-28 lg:py-40">
           <div className="dash-line mb-12" />
           <div className="max-w-[92rem]">
-            {["No rush.", "No gatekeeping.", "No noisy loops.", "Just readable puzzles for people with real lives."].map(
-              (line) => (
-                <p key={line} className="manifest-line mega-title">
-                  {line}
-                </p>
-              ),
-            )}
+            {[
+              "No rush.",
+              "No gatekeeping.",
+              "No noisy loops.",
+              "Just readable puzzles for people with real lives.",
+            ].map((line) => (
+              <p key={line} className="manifest-line mega-title">
+                {line}
+              </p>
+            ))}
+          </div>
+        </section>
+
+        <section className="playtest-section px-[3.125vw] py-24 lg:py-36">
+          <div className="playtest-panel">
+            <div className="playtest-copy">
+              <div className="playtest-copy__top">
+                <Gamepad2 size={24} />
+                <span className="status-text">Live playtest</span>
+              </div>
+              <h2>Tap the board. Feel the catalog answer.</h2>
+              <p>
+                A small playable signal for the whole studio: six rhythms, one calm input model, no
+                timer pushing the player around.
+              </p>
+            </div>
+
+            <div className="playtest-board-wrap">
+              <div className="playtest-board" aria-label="Interactive game rhythm selector">
+                {Array.from({ length: 36 }, (_, index) => {
+                  const gameIndex = index % GAMES.length;
+                  const game = GAMES[gameIndex];
+                  const isActive = index === activeCell;
+                  const isSoft = (index + activeMove) % 5 === 0;
+
+                  return (
+                    <button
+                      key={`${game.slug}-${index}`}
+                      type="button"
+                      className={`playtest-cell ${isActive ? "is-active" : ""} ${isSoft ? "is-soft" : ""}`}
+                      onClick={() => setActiveCell(index)}
+                      aria-label={`Preview ${game.title}`}
+                      aria-pressed={isActive}
+                    >
+                      <span>{index % 3 === 0 ? String(game.id) : game.title.slice(0, 1)}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <aside className="playtest-readout" aria-live="polite">
+              <div className="playtest-readout__hero">
+                <img
+                  src={activeGame.icon}
+                  alt=""
+                  width={96}
+                  height={96}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div>
+                  <span className="status-text">{activeMoveMeta.label}</span>
+                  <h3>{activeGame.title}</h3>
+                </div>
+              </div>
+              <p>{activeMoveMeta.note}</p>
+              <div className="playtest-readout__tags">
+                {activeGame.technologies.slice(1).map((tag) => (
+                  <span key={tag}>{tag}</span>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <Link to={`/games/${activeGame.slug}`} className="pill-button">
+                  Details
+                  <ArrowRight size={15} />
+                </Link>
+                <a
+                  href={activeGame.googlePlayUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pill-button pill-button--accent"
+                >
+                  <Download size={15} />
+                  Play
+                </a>
+              </div>
+            </aside>
           </div>
         </section>
 
@@ -201,8 +325,8 @@ export default function Home() {
               <h2 className="mt-4 max-w-[10ch]">Choose a board.</h2>
             </div>
             <p className="max-w-[54ch] text-base leading-relaxed text-muted lg:justify-self-end">
-              Every title has a different rhythm: number logic, tile matching, word search, route planning,
-              coloring, and sharp little board problems.
+              Every title has a different rhythm: number logic, tile matching, word search, route
+              planning, coloring, and sharp little board problems.
             </p>
           </div>
 
@@ -220,7 +344,15 @@ export default function Home() {
                   />
                 </div>
                 <div className="game-card-copy">
-                  <img className="game-card-icon" src={game.icon} alt="" width={72} height={72} loading={index < 2 ? "eager" : "lazy"} decoding="async" />
+                  <img
+                    className="game-card-icon"
+                    src={game.icon}
+                    alt=""
+                    width={72}
+                    height={72}
+                    loading={index < 2 ? "eager" : "lazy"}
+                    decoding="async"
+                  />
                   <span className="status-text">{String(index + 1).padStart(2, "0")}</span>
                   <h3>{game.title}</h3>
                   <p>{game.description}</p>
@@ -245,8 +377,23 @@ export default function Home() {
             {GAMES.map((game, index) => (
               <article key={game.id} className="runway-card">
                 <div className="runway-media">
-                  <img src={game.image} alt={game.title} width={780} height={585} loading="lazy" decoding="async" />
-                  <img className="runway-icon" src={game.icon} alt="" width={118} height={118} loading="lazy" decoding="async" />
+                  <img
+                    src={game.image}
+                    alt={game.title}
+                    width={780}
+                    height={585}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <img
+                    className="runway-icon"
+                    src={game.icon}
+                    alt=""
+                    width={118}
+                    height={118}
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <div className="runway-copy">
                   <div className="flex items-center gap-3">
@@ -258,7 +405,12 @@ export default function Home() {
                   <h3>{game.title}</h3>
                   <p>{game.answer}</p>
                   <div className="flex flex-wrap gap-3">
-                    <a href={game.googlePlayUrl} target="_blank" rel="noopener noreferrer" className="pill-button pill-button--accent">
+                    <a
+                      href={game.googlePlayUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="pill-button pill-button--accent"
+                    >
                       <Download size={15} />
                       Download
                     </a>
