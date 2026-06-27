@@ -1,12 +1,12 @@
 "use client";
 
-import { lazy, Suspense, useMemo } from "react";
+import { lazy, Suspense } from "react";
 import { Link } from "react-router";
-import { ArrowRight, Download, Sparkles } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { SITE_URL } from "@/lib/constants";
+import { GOOGLE_PLAY_DEVELOPER_URL, SITE_URL } from "@/lib/constants";
 
 const HeroCanvas = lazy(() => import("@/components/home/HeroCanvas"));
 
@@ -46,15 +46,7 @@ const PRINCIPLES = [
   },
 ];
 
-const METRICS = [
-  ["06", "released games"],
-  ["00", "timers"],
-  ["100", "percent free"],
-  ["24", "hour offline play"],
-];
-
 export default function Home() {
-  const featured = useMemo(() => GAMES.slice(0, 3), []);
   const launchGame = GAMES[1] ?? GAMES[0];
 
   return (
@@ -76,14 +68,9 @@ export default function Home() {
       <div className="relative z-10">
         <section className="relative min-h-[100svh] px-[3.125vw] pb-8 pt-24">
           <div className="hero-shell">
-            <div className="hero-reveal flex items-center gap-4">
-              <span className="bracket-tag">Indie puzzle lab</span>
-            </div>
-
             <div className="grid flex-1 items-center gap-10 py-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(340px,0.82fr)] lg:py-0">
               <div className="space-y-8">
-                <div className="hero-reveal space-y-2">
-                  <p className="label-tag text-accent">VeryFun Company</p>
+                <div className="hero-reveal">
                   <h1
                     className="kinetic-title max-w-[11ch]"
                     aria-label="Quiet games. Bright logic."
@@ -99,11 +86,11 @@ export default function Home() {
 
                 <div className="hero-reveal flex flex-wrap gap-3">
                   <Link to="/games" className="pill-button pill-button--accent">
-                    <Sparkles size={16} />
                     Explore games
+                    <ArrowRight size={16} />
                   </Link>
                   <a
-                    href={launchGame.googlePlayUrl}
+                    href={GOOGLE_PLAY_DEVELOPER_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="pill-button"
@@ -116,14 +103,6 @@ export default function Home() {
 
               <div className="hero-reveal relative">
                 <div className="signal-deck">
-                  <div className="signal-orbit" aria-hidden="true">
-                    {featured.map((game, index) => (
-                      <span
-                        key={game.id}
-                        style={{ transform: `rotate(${index * 120}deg) translateY(-45%)` }}
-                      />
-                    ))}
-                  </div>
                   <div className="signal-screen">
                     <img
                       src={launchGame.image}
@@ -139,25 +118,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-
-                <div className="hero-chip hero-chip--top">
-                  <span className="status-text">catalog</span>
-                  <strong>{String(GAMES.length).padStart(2, "0")}</strong>
-                </div>
-                <div className="hero-chip hero-chip--bottom">
-                  <span className="status-text">mode</span>
-                  <strong>Offline</strong>
-                </div>
               </div>
-            </div>
-
-            <div className="hero-reveal grid gap-3 border-t border-border-soft pt-5 sm:grid-cols-4">
-              {METRICS.map(([value, label]) => (
-                <div key={label} className="metric-strip">
-                  <strong>{value}</strong>
-                  <span>{label}</span>
-                </div>
-              ))}
             </div>
           </div>
         </section>

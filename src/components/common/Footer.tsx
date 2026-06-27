@@ -1,9 +1,7 @@
 import { Link } from "react-router";
 import { FaGithub, FaGooglePlay } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { BRAND } from "@/lib/constants";
-
-const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/developer?id=songxugang";
+import { BRAND, GOOGLE_PLAY_DEVELOPER_URL } from "@/lib/constants";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -21,7 +19,7 @@ const Footer = () => {
 
           <nav className="site-footer__links" aria-label="Footer links">
             <Link to="/games">Games</Link>
-            <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer">
+            <a href={GOOGLE_PLAY_DEVELOPER_URL} target="_blank" rel="noopener noreferrer">
               <FaGooglePlay size={15} />
               Google Play
             </a>
