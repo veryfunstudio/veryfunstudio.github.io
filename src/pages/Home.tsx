@@ -2,12 +2,11 @@
 
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router";
-import { ArrowRight, CircleDot, Download, Gamepad2, Sparkles } from "lucide-react";
+import { ArrowRight, Download, Gamepad2, Sparkles } from "lucide-react";
 import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE_URL } from "@/lib/constants";
-import GameCard from "@/components/common/GameCard";
 
 const HeroCanvas = lazy(() => import("@/components/home/HeroCanvas"));
 
@@ -316,82 +315,6 @@ export default function Home() {
                 </a>
               </div>
             </aside>
-          </div>
-        </section>
-
-        <section className="px-[3.125vw] py-20 lg:py-32">
-          <div className="mb-10 grid gap-6 lg:grid-cols-[0.7fr_1fr] lg:items-end">
-            <div>
-              <span className="page-kicker">Playable catalog</span>
-              <h2 className="mt-4 max-w-[10ch]">Choose a board.</h2>
-            </div>
-            <p className="max-w-[54ch] text-base leading-relaxed text-muted lg:justify-self-end">
-              Every title has a different rhythm: number logic, tile matching, word search, route
-              planning, coloring, and sharp little board problems.
-            </p>
-          </div>
-
-          <div className="game-grid">
-            {GAMES.map((game, index) => (
-              <GameCard key={game.id} game={game} index={index} />
-            ))}
-          </div>
-        </section>
-
-        <section className="runway-section">
-          <div className="runway-heading px-[3.125vw]">
-            <span className="page-kicker">Game runway</span>
-            <p>Six releases in one studio shelf.</p>
-          </div>
-          <div className="runway-track">
-            {GAMES.map((game, index) => (
-              <article key={game.id} className="runway-card">
-                <div className="runway-media">
-                  <img
-                    src={game.image}
-                    alt={game.title}
-                    width={780}
-                    height={585}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <img
-                    className="runway-icon"
-                    src={game.icon}
-                    alt=""
-                    width={118}
-                    height={118}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div className="runway-copy">
-                  <div className="flex items-center gap-3">
-                    <CircleDot size={16} className="text-accent" />
-                    <span className="status-text">
-                      {String(index + 1).padStart(2, "0")} / {String(GAMES.length).padStart(2, "0")}
-                    </span>
-                  </div>
-                  <h3>{game.title}</h3>
-                  <p>{game.answer}</p>
-                  <div className="flex flex-wrap gap-3">
-                    <a
-                      href={game.googlePlayUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="pill-button pill-button--accent"
-                    >
-                      <Download size={15} />
-                      Download
-                    </a>
-                    <Link to={`/games/${game.slug}`} className="pill-button">
-                      Details
-                      <ArrowRight size={15} />
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
           </div>
         </section>
 

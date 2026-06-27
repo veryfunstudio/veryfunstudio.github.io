@@ -1,126 +1,46 @@
 import { Link } from "react-router";
 import { FaGithub, FaGooglePlay } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { ArrowRight, Download } from "lucide-react";
 import { GAMES } from "@/data/games";
 import { BRAND } from "@/lib/constants";
 
 const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/developer?id=songxugang";
-const GOOGLE_PLAY_DEVELOPER = "songxugang";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const latestGame =
-    [...GAMES].sort((a, b) => b.releaseDate.localeCompare(a.releaseDate))[0] ?? GAMES[0];
 
   return (
     <footer className="site-footer mt-auto">
       <div className="site-footer__shell">
-        <div className="site-footer__signal">
-          <span className="status-text">Studio sign-off</span>
-          <strong>{String(GAMES.length).padStart(2, "0")}</strong>
-          <span className="status-text">released games</span>
-        </div>
-
         <div className="site-footer__main">
           <div className="site-footer__brand">
             <Link to="/" className="site-footer__name">
               {BRAND.name}
             </Link>
-            <h2>Quiet puzzles for loud days.</h2>
-            <p>
-              {BRAND.tagline}. Free mobile games with clear boards, soft pressure, and one more move
-              when the day needs a reset.
-            </p>
-            <div className="site-footer__actions">
-              <a
-                href={latestGame.googlePlayUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pill-button pill-button--accent"
-                aria-label={`Download ${latestGame.title} on Google Play`}
-              >
-                <Download size={16} />
-                Latest game
-              </a>
-              <Link to="/games" className="pill-button">
-                Full catalog
-                <ArrowRight size={16} />
-              </Link>
-            </div>
+            <p>Free mobile puzzles with clear boards, soft pressure, and no timers.</p>
           </div>
 
-          <div className="site-footer__catalog" aria-label="Game catalog shortcuts">
-            {GAMES.map((game, index) => (
-              <Link key={game.id} to={`/games/${game.slug}`} className="site-footer__game">
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <img
-                  src={game.icon}
-                  alt=""
-                  width={44}
-                  height={44}
-                  loading="eager"
-                  decoding="async"
-                />
-                <strong>{game.title}</strong>
-              </Link>
-            ))}
+          <div className="site-footer__summary" aria-label="Studio summary">
+            <span>{String(GAMES.length).padStart(2, "0")} games</span>
+            <span>No timers</span>
+            <span>Offline play</span>
           </div>
 
-          <div className="site-footer__meta">
-            <div className="site-footer__latest">
-              <span className="status-text">Latest release</span>
-              <img
-                src={latestGame.icon}
-                alt=""
-                width={64}
-                height={64}
-                loading="eager"
-                decoding="async"
-              />
-              <strong>{latestGame.title}</strong>
-              <span>{latestGame.releaseDate}</span>
-            </div>
-
-            <nav className="site-footer__links" aria-label="Footer links">
-              <a
-                href={GOOGLE_PLAY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Visit ${GOOGLE_PLAY_DEVELOPER} on Google Play`}
-              >
-                <FaGooglePlay size={16} />
-                <span>
-                  <strong>Google Play</strong>
-                  <em>{GOOGLE_PLAY_DEVELOPER}</em>
-                </span>
-              </a>
-              <a
-                href={BRAND.social.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit cookabc on GitHub"
-              >
-                <FaGithub size={16} />
-                <span>
-                  <strong>GitHub</strong>
-                  <em>cookabc</em>
-                </span>
-              </a>
-              <a
-                href={BRAND.social.x}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit chuangcius on X / Twitter"
-              >
-                <FaXTwitter size={16} />
-                <span>
-                  <strong>X / Twitter</strong>
-                  <em>@chuangcius</em>
-                </span>
-              </a>
-            </nav>
-          </div>
+          <nav className="site-footer__links" aria-label="Footer links">
+            <Link to="/games">Games</Link>
+            <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer">
+              <FaGooglePlay size={15} />
+              Google Play
+            </a>
+            <a href={BRAND.social.github} target="_blank" rel="noopener noreferrer">
+              <FaGithub size={15} />
+              GitHub
+            </a>
+            <a href={BRAND.social.x} target="_blank" rel="noopener noreferrer">
+              <FaXTwitter size={15} />
+              Twitter
+            </a>
+          </nav>
         </div>
 
         <div className="site-footer__bottom">
