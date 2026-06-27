@@ -61,17 +61,18 @@ const Games = () => {
               fetchPriority="high"
               decoding="async"
             />
-            <img
-              className="games-hero-icon"
-              src={newest.icon}
-              alt=""
-              width={118}
-              height={118}
-              loading="eager"
-              decoding="async"
-            />
             <div className="games-hero-panel__footer">
-              <strong>{newest.title}</strong>
+              <span className="games-hero-panel__title">
+                <img
+                  src={newest.icon}
+                  alt=""
+                  width={32}
+                  height={32}
+                  loading="eager"
+                  decoding="async"
+                />
+                <strong>{newest.title}</strong>
+              </span>
               <span>{newest.technologies.slice(1).join(" / ")}</span>
             </div>
           </div>

@@ -99,7 +99,10 @@ const GameDetail = () => {
             Games
           </Link>
           <div>
-            <img src={game.icon} alt="" width={72} height={72} loading="eager" decoding="async" />
+            <span className="game-detail-mark">
+              <img src={game.icon} alt="" width={32} height={32} loading="eager" decoding="async" />
+              <span>{primaryTags.join(" / ")}</span>
+            </span>
             <h1>{game.title}</h1>
           </div>
           <p>{game.description}</p>
@@ -133,15 +136,6 @@ const GameDetail = () => {
             height={900}
             loading="eager"
             fetchPriority="high"
-            decoding="async"
-          />
-          <img
-            className="game-detail-icon"
-            src={game.icon}
-            alt=""
-            width={132}
-            height={132}
-            loading="eager"
             decoding="async"
           />
           <div className="game-detail-tags">
