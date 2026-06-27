@@ -80,10 +80,10 @@ const Header = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="site-header__menu border-t border-border-soft bg-background md:hidden"
+            className="site-header__menu relative min-h-[calc(100dvh-4rem)] overflow-hidden border-t border-border-soft bg-background md:hidden"
             aria-label="Mobile navigation"
           >
-            <div className="mx-auto flex max-w-[80rem] flex-col gap-1 px-6 py-4">
+            <div className="relative z-10 mx-auto flex max-w-[80rem] flex-col gap-2 px-6 py-7">
               {NAV_ITEMS.map((item) => {
                 const isActive = isItemActive(item.path);
                 return (
@@ -92,7 +92,7 @@ const Header = () => {
                     to={item.path}
                     onClick={() => setMobileOpen(false)}
                     aria-current={isActive ? "page" : undefined}
-                    className={`site-header__mobile-link flex min-h-[44px] items-center rounded-lg px-3 font-sans text-base uppercase ${
+                    className={`site-header__mobile-link flex min-h-[58px] items-center rounded-lg px-4 font-sans text-lg uppercase ${
                       isActive ? "bg-surface text-foreground" : "text-muted"
                     }`}
                   >
