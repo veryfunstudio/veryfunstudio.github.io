@@ -4,8 +4,6 @@ import { ArrowRight, Gamepad2, Radar, Sparkles } from "lucide-react";
 import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 
-const TECH_STACK = ["Unity", "C#", "Android SDK", "TypeScript", "React", "Tailwind CSS"] as const;
-
 const VALUES = [
   {
     icon: <Radar size={22} />,
@@ -21,24 +19,6 @@ const VALUES = [
     icon: <Sparkles size={22} />,
     title: "Free should still feel premium",
     body: "No paywalls, no timers, no extraction loop. The experience still deserves care, texture, and rhythm.",
-  },
-] as const;
-
-const PROOF_POINTS = [
-  {
-    label: "Session shape",
-    value: "5-10 min",
-    body: "A game should resolve a small moment, not take over the afternoon.",
-  },
-  {
-    label: "Catalog rule",
-    value: "0 timers",
-    body: "Pressure is removed first. Challenge comes from the board, not from punishment.",
-  },
-  {
-    label: "Release habit",
-    value: `${String(GAMES.length).padStart(2, "0")} shipped`,
-    body: "Every title is scoped around a readable loop before visual polish gets louder.",
   },
 ] as const;
 
@@ -118,20 +98,11 @@ const About = () => {
         </div>
       </section>
 
-      <section className="about-stack">
-        <div className="about-stack-header">
-          <p>Tools stay quiet. The game has to speak first.</p>
-        </div>
-        <div className="about-stack-grid">
-          {TECH_STACK.map((tech) => (
-            <div key={tech} className="about-stack-cell">
-              {tech}
-            </div>
-          ))}
-        </div>
-      </section>
-
       <section className="about-values">
+        <div className="about-values__intro">
+          <span className="status-text">What stays constant</span>
+          <h2>Three rules guide every release.</h2>
+        </div>
         {VALUES.map((value) => (
           <article key={value.title} className="about-value-card">
             <div aria-hidden="true">{value.icon}</div>
@@ -139,25 +110,6 @@ const About = () => {
             <p>{value.body}</p>
           </article>
         ))}
-      </section>
-
-      <section className="about-proof">
-        <div className="about-proof-copy">
-          <span className="status-text">Studio method</span>
-          <h2>How the work stays small enough to finish well.</h2>
-        </div>
-        <div className="about-proof-points">
-          {PROOF_POINTS.map((point, index) => (
-            <article key={point.label} className="about-proof-point">
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <strong>{point.value}</strong>
-              <div>
-                <h3>{point.label}</h3>
-                <p>{point.body}</p>
-              </div>
-            </article>
-          ))}
-        </div>
       </section>
     </div>
   );

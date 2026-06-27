@@ -1492,8 +1492,7 @@
   .about-hero-copy,
   .about-hero-media,
   .contact-hero-copy,
-  .contact-panel,
-  .about-proof {
+  .contact-panel {
     border: 1px solid var(--color-border-soft);
     border-radius: 8px;
     background:
@@ -1600,59 +1599,34 @@
     font-size: clamp(1rem, 1.3vw, 1.2rem);
   }
 
-  .about-stack {
+  .about-values {
     display: grid;
-    grid-template-columns: minmax(0, 0.8fr) minmax(20rem, 1.2fr);
-    gap: 1px;
-    overflow: hidden;
-    border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
-    background: var(--color-border-soft);
+    grid-template-columns: minmax(0, 1.08fr) repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+    padding-block: 0.8rem;
   }
 
-  .about-stack-header,
-  .about-stack-cell {
-    background: rgba(16, 19, 27, 0.78);
+  .about-values__intro,
+  .about-value-card {
+    border: 1px solid var(--color-border-soft);
+    border-radius: 8px;
+    background:
+      linear-gradient(145deg, rgba(244, 247, 232, 0.065), rgba(244, 247, 232, 0.018)),
+      rgba(16, 19, 27, 0.72);
     padding: clamp(1.25rem, 2vw, 2rem);
   }
 
-  .about-stack-header {
+  .about-values__intro {
     display: flex;
-    min-height: 16rem;
+    min-height: 21rem;
     flex-direction: column;
     justify-content: space-between;
+    gap: 2rem;
   }
 
-  .about-stack-header p {
-    max-width: 12rem;
-    color: var(--color-foreground);
-    font-size: clamp(1.35rem, 2.2vw, 2.2rem);
-    font-weight: 650;
-    line-height: 1;
-  }
-
-  .about-stack-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1px;
-  }
-
-  .about-stack-cell {
-    display: grid;
-    min-height: 8rem;
-    place-items: center;
-    color: var(--color-foreground);
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    text-align: center;
-    text-transform: uppercase;
-  }
-
-  .about-values {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.8rem;
-    padding-block: 0.8rem 6rem;
+  .about-values__intro h2 {
+    max-width: 10ch;
+    font-size: clamp(2.4rem, 4.8vw, 5.8rem);
   }
 
   .about-value-card {
@@ -1661,10 +1635,6 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 2rem;
-    border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
-    background: rgba(16, 19, 27, 0.72);
-    padding: clamp(1.25rem, 2vw, 2rem);
   }
 
   .about-value-card > div {
@@ -1683,68 +1653,6 @@
 
   .about-value-card p {
     color: var(--color-muted);
-  }
-
-  .about-proof {
-    display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(20rem, 1.05fr);
-    gap: 1rem;
-    padding: clamp(1.25rem, 3vw, 3rem);
-  }
-
-  .about-proof-copy h2 {
-    max-width: 11ch;
-    margin-top: 1rem;
-    font-size: clamp(2.5rem, 5vw, 6rem);
-  }
-
-  .about-proof-points {
-    display: grid;
-    gap: 0.75rem;
-    align-content: center;
-  }
-
-  .about-proof-point {
-    display: grid;
-    min-height: 8.5rem;
-    grid-template-columns: auto minmax(8rem, 0.42fr) minmax(0, 1fr);
-    align-items: center;
-    gap: clamp(0.85rem, 2vw, 1.4rem);
-    border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
-    background:
-      radial-gradient(circle at 0% 0%, rgba(200, 255, 61, 0.1), transparent 12rem),
-      rgba(244, 247, 232, 0.04);
-    color: var(--color-foreground);
-    padding: clamp(0.9rem, 1.8vw, 1.2rem);
-  }
-
-  .about-proof-point > span {
-    color: var(--color-accent);
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-  }
-
-  .about-proof-point strong {
-    color: var(--color-foreground);
-    font-family: var(--font-mono);
-    font-size: clamp(1.2rem, 2vw, 1.9rem);
-    line-height: 1;
-    text-transform: uppercase;
-  }
-
-  .about-proof-point h3 {
-    color: var(--color-foreground);
-    font-size: clamp(1.25rem, 2vw, 2rem);
-    font-weight: 650;
-    line-height: 1;
-  }
-
-  .about-proof-point p {
-    max-width: 44ch;
-    margin-top: 0.45rem;
-    color: var(--color-muted);
-    font-size: 0.92rem;
   }
 
   .contact-panel {
@@ -3366,30 +3274,18 @@
     gap: 1rem;
   }
 
-  .about-stack {
-    grid-template-columns: 1fr;
-  }
-
-  .about-stack-header {
-    min-height: auto;
-  }
-
-  .about-stack-header p {
-    max-width: 18ch;
-  }
-
-  .about-stack-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .about-stack-cell {
-    min-height: 5.8rem;
-  }
-
   .about-values {
     grid-template-columns: 1fr;
     gap: 0.6rem;
-    padding-block: 0.8rem 4rem;
+    padding-block: 0.8rem;
+  }
+
+  .about-values__intro {
+    min-height: 14rem;
+  }
+
+  .about-values__intro h2 {
+    max-width: 12ch;
   }
 
   .about-value-card {
@@ -3400,19 +3296,6 @@
   .about-value-card h3 {
     max-width: 12ch;
     font-size: clamp(2.2rem, 9vw, 3.6rem);
-  }
-
-  .about-proof {
-    grid-template-columns: 1fr;
-  }
-
-  .about-proof-copy h2 {
-    max-width: 10ch;
-  }
-
-  .about-proof-point {
-    grid-template-columns: 1fr;
-    align-items: start;
   }
 
   .site-footer {
