@@ -133,6 +133,7 @@ const GameDetail = () => {
             fetchPriority="high"
             decoding="async"
           />
+          <img className="game-detail-icon" src={game.icon} alt="" width={132} height={132} loading="eager" decoding="async" />
           <div className="game-detail-tags">
             {primaryTags.map((tag) => (
               <span key={tag}>{tag}</span>

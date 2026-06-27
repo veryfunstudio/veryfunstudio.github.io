@@ -720,6 +720,27 @@
     filter: saturate(1.04) contrast(1.04);
   }
 
+  .games-hero-panel > img:not(.games-hero-icon) {
+    filter: saturate(1.08) contrast(1.02) blur(3px);
+    opacity: 0.78;
+    transform: scale(1.03);
+  }
+
+  .games-hero-icon {
+    position: absolute;
+    right: clamp(1rem, 3vw, 2.4rem);
+    bottom: clamp(5.5rem, 9vw, 7rem);
+    z-index: 2;
+    width: clamp(5.2rem, 9vw, 7.4rem) !important;
+    height: clamp(5.2rem, 9vw, 7.4rem) !important;
+    min-height: 0 !important;
+    border: 1px solid rgba(244, 247, 232, 0.36);
+    border-radius: 24px;
+    background: rgba(7, 8, 13, 0.78);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(200, 255, 61, 0.14);
+    object-fit: cover;
+  }
+
   .games-hero-panel__header,
   .games-hero-panel__footer {
     position: relative;
@@ -1286,6 +1307,24 @@
     min-height: 26rem;
     display: block;
     object-fit: cover;
+    filter: saturate(1.06) contrast(1.02) blur(3px);
+    opacity: 0.8;
+    transform: scale(1.03);
+  }
+
+  .game-detail-icon {
+    position: absolute;
+    right: clamp(1rem, 3vw, 2.5rem);
+    bottom: clamp(4.8rem, 9vw, 7rem);
+    z-index: 3;
+    width: clamp(5.5rem, 10vw, 8.25rem) !important;
+    height: clamp(5.5rem, 10vw, 8.25rem) !important;
+    min-height: 0 !important;
+    border: 1px solid rgba(244, 247, 232, 0.36);
+    border-radius: 26px;
+    background: rgba(7, 8, 13, 0.78);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.44), 0 0 0 1px rgba(200, 255, 61, 0.14);
+    object-fit: cover !important;
   }
 
   .game-detail-tags {
@@ -1857,14 +1896,32 @@
   }
 
   .runway-media {
+    position: relative;
+    display: grid;
+    place-items: center;
     min-height: 100%;
     overflow: hidden;
   }
 
-  .runway-media img {
+  .runway-media > img:not(.runway-icon) {
     width: 100%;
     height: 100%;
     display: block;
+    object-fit: cover;
+    filter: saturate(1.06) contrast(1.02) blur(5px);
+    opacity: 0.72;
+    transform: scale(1.05);
+  }
+
+  .runway-icon {
+    position: absolute;
+    z-index: 2;
+    width: clamp(5.8rem, 9vw, 7.4rem);
+    height: clamp(5.8rem, 9vw, 7.4rem);
+    border: 1px solid rgba(244, 247, 232, 0.36);
+    border-radius: 24px;
+    background: rgba(7, 8, 13, 0.78);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(200, 255, 61, 0.14);
     object-fit: cover;
   }
 

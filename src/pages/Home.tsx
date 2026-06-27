@@ -246,6 +246,7 @@ export default function Home() {
               <article key={game.id} className="runway-card">
                 <div className="runway-media">
                   <img src={game.image} alt={game.title} width={780} height={585} loading="lazy" decoding="async" />
+                  <img className="runway-icon" src={game.icon} alt="" width={118} height={118} loading="lazy" decoding="async" />
                 </div>
                 <div className="runway-copy">
                   <div className="flex items-center gap-3">
