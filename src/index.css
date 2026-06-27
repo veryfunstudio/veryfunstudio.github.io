@@ -1091,24 +1091,6 @@
     width: fit-content;
   }
 
-  .about-hero-stats {
-    display: flex;
-    max-width: 38rem;
-    flex-wrap: wrap;
-    gap: 0.55rem;
-  }
-
-  .about-hero-stats span {
-    border: 1px solid rgba(244, 247, 232, 0.14);
-    border-radius: var(--radius-button);
-    background: rgba(244, 247, 232, 0.045);
-    color: var(--color-muted);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    padding: 0.45rem 0.72rem;
-    text-transform: uppercase;
-  }
-
   .about-hero-media {
     position: relative;
     overflow: hidden;

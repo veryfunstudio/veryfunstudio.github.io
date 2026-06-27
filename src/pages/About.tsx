@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Gamepad2, Radar, Sparkles } from "lucide-react";
-import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 
 const VALUES = [
@@ -38,16 +37,11 @@ const About = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="about-hero-copy"
         >
-          <span className="page-kicker">About</span>
           <h1>Calm games. Clear boards.</h1>
           <p>
             VeryFun Company is a small team building free mobile puzzles for people who want a clear
             challenge without timers, pressure systems, or noisy monetization.
           </p>
-          <div className="about-hero-stats" aria-label="Studio snapshot">
-            <span>{GAMES.length} released games</span>
-            <span>No timers or paywalls</span>
-          </div>
           <div className="flex flex-wrap gap-3">
             <Link to="/games" className="pill-button pill-button--accent">
               See games
@@ -79,7 +73,6 @@ const About = () => {
 
       <section className="about-principles">
         <div className="about-principles__copy">
-          <span className="status-text">How we make them</span>
           <h2>Games for spare attention.</h2>
           <p>
             We focus on casual mobile play because the format rewards discipline: a good puzzle

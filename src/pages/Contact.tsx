@@ -40,7 +40,6 @@ const Contact = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="contact-hero-copy"
         >
-          <span className="page-kicker">Contact</span>
           <h1>Talk to VeryFun Company.</h1>
           <p>
             Send player feedback, partnership context, press questions, or bug reports. Email is the
@@ -61,7 +60,6 @@ const Contact = () => {
           transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           className="contact-panel"
         >
-          <span className="page-kicker">Direct line</span>
           <h2>
             chuangcius@
             <br />
