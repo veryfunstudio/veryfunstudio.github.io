@@ -2534,8 +2534,7 @@
   .game-detail-copy,
   .game-detail-media,
   .game-detail-brief,
-  .game-detail-session,
-  .game-detail-system,
+  .game-detail-summary,
   .game-detail-faq,
   .blog-hero-copy,
   .blog-signal-panel,
@@ -2698,7 +2697,7 @@
   }
 
   .game-detail-brief h2,
-  .game-detail-description h2,
+  .game-detail-summary__copy h2,
   .game-detail-faq h2 {
     max-width: 9ch;
     font-size: clamp(2.2rem, 4vw, 4.8rem);
@@ -2710,257 +2709,80 @@
     line-height: 1.35;
   }
 
-  .game-detail-session {
+  .game-detail-summary {
     display: grid;
-    grid-template-columns: minmax(17rem, 0.58fr) minmax(0, 1fr) minmax(18rem, 0.72fr);
-    gap: clamp(1rem, 3vw, 3rem);
-    align-items: start;
-    margin-top: 0.8rem;
-    padding: clamp(1.25rem, 3vw, 3rem);
-    overflow: hidden;
-  }
-
-  .game-detail-session-copy {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-
-  .game-detail-session-copy h2 {
-    max-width: 10ch;
-    font-size: clamp(2.4rem, 4.8vw, 5.8rem);
-  }
-
-  .game-detail-session-copy p {
-    max-width: 38ch;
-    color: var(--color-muted);
-  }
-
-  .game-detail-session-board {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.7rem;
-  }
-
-  .game-detail-session-board::before {
-    position: absolute;
-    inset: 50% -1.5rem auto;
-    height: 1px;
-    content: "";
-    background: linear-gradient(90deg, transparent, rgba(200, 255, 61, 0.42), transparent);
-  }
-
-  .game-detail-session-step {
-    position: relative;
-    display: flex;
-    min-height: 13.5rem;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1.5rem;
-    border: 1px solid rgba(244, 247, 232, 0.1);
-    border-radius: 8px;
-    background:
-      radial-gradient(circle at 50% 4%, rgba(200, 255, 61, 0.12), transparent 11rem),
-      rgba(7, 8, 13, 0.46);
-    color: inherit;
-    padding: clamp(1rem, 1.8vw, 1.35rem);
-    text-align: left;
-    overflow: hidden;
-    cursor: pointer;
-    transition:
-      border-color 0.28s var(--ease-brand),
-      background 0.28s var(--ease-brand),
-      transform 0.28s var(--ease-brand);
-  }
-
-  .game-detail-session-step::after {
-    position: absolute;
-    inset: auto -20% -22% 38%;
-    height: 9rem;
-    content: "";
-    background: radial-gradient(circle, rgba(82, 140, 255, 0.18), transparent 64%);
-    pointer-events: none;
-  }
-
-  .game-detail-session-step > span {
-    color: var(--color-accent);
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-  }
-
-  .game-detail-session-step strong {
-    display: block;
-    color: var(--color-foreground);
-    font-size: clamp(1.35rem, 2vw, 2.4rem);
-    line-height: 1;
-  }
-
-  .game-detail-session-step p {
-    margin-top: 0.75rem;
-    color: rgba(244, 247, 232, 0.68);
-    font-size: 0.88rem;
-  }
-
-  .game-detail-session-step svg {
-    position: absolute;
-    top: 1.1rem;
-    right: 1rem;
-    color: rgba(200, 255, 61, 0.72);
-  }
-
-  .game-detail-session-step:hover,
-  .game-detail-session-step:focus-visible,
-  .game-detail-session-step.is-active {
-    border-color: rgba(200, 255, 61, 0.44);
-    background:
-      radial-gradient(circle at var(--card-x, 50%) 0%, rgba(200, 255, 61, 0.2), transparent 12rem),
-      rgba(15, 20, 22, 0.74);
-    transform: translateY(-2px);
-    outline: none;
-  }
-
-  .game-detail-session-step.is-active {
-    box-shadow:
-      inset 0 1px 0 rgba(244, 247, 232, 0.18),
-      0 18px 48px rgba(0, 0, 0, 0.26);
-  }
-
-  .game-detail-session-preview {
-    position: relative;
-    height: 36rem;
-    border: 1px solid rgba(244, 247, 232, 0.12);
-    border-radius: 8px;
-    background:
-      linear-gradient(180deg, rgba(244, 247, 232, 0.08), rgba(244, 247, 232, 0.02)),
-      rgba(7, 8, 13, 0.52);
-    overflow: hidden;
-  }
-
-  .game-detail-session-preview::before {
-    position: absolute;
-    inset: -40% -20% auto;
-    height: 65%;
-    content: "";
-    background: radial-gradient(circle, rgba(200, 255, 61, 0.18), transparent 62%);
-    pointer-events: none;
-  }
-
-  .game-detail-session-preview__media {
-    position: absolute;
-    inset: 0;
-  }
-
-  .game-detail-session-preview__media > img:first-child {
-    width: 100%;
-    height: 100%;
-    min-height: 100%;
-    display: block;
-    object-fit: cover;
-    filter: saturate(1.1) contrast(1.05);
-    opacity: 0.9;
-  }
-
-  .game-detail-session-preview__media > img:last-child {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 2;
-    width: clamp(4.4rem, 5vw, 5.8rem);
-    height: clamp(4.4rem, 5vw, 5.8rem);
-    border: 1px solid rgba(244, 247, 232, 0.34);
-    border-radius: 16px;
-    background: rgba(7, 8, 13, 0.82);
-    box-shadow:
-      0 14px 34px rgba(0, 0, 0, 0.34),
-      0 0 0 1px rgba(200, 255, 61, 0.08);
-    object-fit: cover;
-    image-rendering: -webkit-optimize-contrast;
-  }
-
-  .game-detail-session-preview__media::after {
-    position: absolute;
-    inset: 0;
-    content: "";
-    background:
-      linear-gradient(180deg, rgba(7, 8, 13, 0.05), rgba(7, 8, 13, 0.36) 45%, rgba(7, 8, 13, 0.9)),
-      radial-gradient(circle at 78% 12%, rgba(200, 255, 61, 0.2), transparent 16rem);
-    pointer-events: none;
-  }
-
-  .game-detail-session-preview__copy {
-    position: absolute;
-    right: 0.8rem;
-    bottom: 0.8rem;
-    left: 0.8rem;
-    z-index: 2;
-    display: grid;
-    gap: 0.65rem;
-    border: 1px solid rgba(244, 247, 232, 0.16);
-    border-radius: 8px;
-    background: rgba(7, 8, 13, 0.68);
-    padding: 1rem;
-    backdrop-filter: blur(16px);
-  }
-
-  .game-detail-session-preview__copy span {
-    color: var(--color-accent);
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-  }
-
-  .game-detail-session-preview__copy strong {
-    color: var(--color-foreground);
-    font-size: clamp(1.7rem, 2.6vw, 3rem);
-    line-height: 0.96;
-  }
-
-  .game-detail-session-preview__copy p {
-    color: var(--color-muted);
-    font-size: 0.94rem;
-    line-height: 1.45;
-  }
-
-  .game-detail-system {
-    display: grid;
-    grid-template-columns: minmax(20rem, 0.95fr) minmax(0, 1.05fr);
+    grid-template-columns: minmax(20rem, 0.9fr) minmax(0, 1.1fr);
     gap: 1px;
     margin-top: 0.8rem;
     overflow: hidden;
     background: var(--color-border-soft);
   }
 
-  .game-detail-feature-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1px;
-  }
-
-  .game-detail-feature-grid div,
-  .game-detail-description {
+  .game-detail-summary__copy,
+  .game-detail-summary__features {
     background: rgba(16, 19, 27, 0.86);
-    padding: clamp(1rem, 2vw, 1.6rem);
+    padding: clamp(1.25rem, 3vw, 3rem);
   }
 
-  .game-detail-feature-grid div {
-    display: grid;
-    min-height: 8.5rem;
-    align-items: end;
-    color: var(--color-foreground);
-    font-weight: 650;
-  }
-
-  .game-detail-description {
+  .game-detail-summary__copy {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 2rem;
   }
 
-  .game-detail-description p {
+  .game-detail-summary__copy p {
+    max-width: 62ch;
     color: var(--color-muted);
     font-size: 1rem;
+  }
+
+  .game-detail-summary__notes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .game-detail-summary__notes span {
+    border: 1px solid rgba(244, 247, 232, 0.16);
+    border-radius: 999px;
+    background: rgba(244, 247, 232, 0.05);
+    color: var(--color-foreground);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    padding: 0.42rem 0.62rem;
+    text-transform: uppercase;
+  }
+
+  .game-detail-summary__features {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    padding: 0;
+  }
+
+  .game-detail-summary__features div {
+    display: grid;
+    min-height: clamp(9rem, 16vw, 15rem);
+    align-content: space-between;
+    gap: 1.5rem;
+    background:
+      radial-gradient(circle at 84% 8%, rgba(200, 255, 61, 0.12), transparent 10rem),
+      rgba(16, 19, 27, 0.86);
+    padding: clamp(1rem, 2vw, 1.6rem);
+  }
+
+  .game-detail-summary__features span {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+  }
+
+  .game-detail-summary__features strong {
+    color: var(--color-foreground);
+    font-size: clamp(1.25rem, 2vw, 2.35rem);
+    font-weight: 650;
+    line-height: 1.05;
   }
 
   .game-detail-faq {
@@ -4199,27 +4021,13 @@
   }
 
   .game-detail-brief,
-  .game-detail-session,
-  .game-detail-system,
+  .game-detail-summary,
   .game-detail-faq {
     grid-template-columns: 1fr;
   }
 
-  .game-detail-session-board {
+  .game-detail-summary__features {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .game-detail-session-preview {
-    height: auto;
-    min-height: 28rem;
-  }
-
-  .game-detail-session-board::before {
-    display: none;
-  }
-
-  .game-detail-session-step {
-    min-height: 16rem;
   }
 
   .games-hero {
@@ -4673,13 +4481,8 @@
     border-radius: 16px;
   }
 
-  .game-detail-feature-grid,
-  .game-detail-session-board {
+  .game-detail-summary__features {
     grid-template-columns: 1fr;
-  }
-
-  .game-detail-session-step {
-    min-height: 13rem;
   }
 
   .contact-intake-copy h2 {

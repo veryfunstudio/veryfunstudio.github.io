@@ -1,7 +1,6 @@
-import { useState } from "react";
 import { useParams, Link } from "react-router";
 import { motion } from "framer-motion";
-import { ArrowLeft, Download, MoveRight, Sparkles } from "lucide-react";
+import { ArrowLeft, Download, Sparkles } from "lucide-react";
 import { getGameBySlug } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -11,7 +10,6 @@ import EntityNotFound from "@/components/common/EntityNotFound";
 const GameDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const game = getGameBySlug(slug ?? "");
-  const [activeSession, setActiveSession] = useState(0);
 
   if (!game) {
     return (
@@ -25,33 +23,8 @@ const GameDetail = () => {
   }
 
   const primaryTags = game.technologies.slice(1);
-  const sessionSteps = [
-    {
-      code: "01",
-      label: "Open",
-      body: game.features[0] ?? "Start a clean board",
-      signal: "The first screen explains itself before the player has to commit.",
-    },
-    {
-      code: "02",
-      label: "Read",
-      body: game.features[1] ?? "Find the first clear move",
-      signal: "The board gives enough visual information to plan one clean action.",
-    },
-    {
-      code: "03",
-      label: "Solve",
-      body: game.features[2] ?? "Use simple tools when stuck",
-      signal: "Hints and undo exist as guardrails, not pressure systems.",
-    },
-    {
-      code: "04",
-      label: "Return",
-      body: game.features[5] ?? "Come back without pressure",
-      signal: "Progress survives the pause, so a short session still feels complete.",
-    },
-  ];
-  const activeStep = sessionSteps[activeSession] ?? sessionSteps[0];
+  const primaryFeatures = game.features.slice(0, 4);
+  const secondaryFeatures = game.features.slice(4);
 
   return (
     <article className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -187,64 +160,27 @@ const GameDetail = () => {
         <p>{game.answer}</p>
       </section>
 
-      <section className="game-detail-session">
-        <div className="game-detail-session-copy">
-          <span className="status-text">First session</span>
-          <h2>Four calm moves before the game gets deep.</h2>
-          <p>
-            The loop is deliberately legible: understand the board, make one confident move, clear
-            space, and leave with progress still intact.
-          </p>
-        </div>
-
-        <div className="game-detail-session-board" aria-label={`${game.title} session flow`}>
-          {sessionSteps.map((step, index) => (
-            <button
-              key={step.label}
-              type="button"
-              className={`game-detail-session-step ${activeSession === index ? "is-active" : ""}`}
-              onClick={() => setActiveSession(index)}
-              aria-pressed={activeSession === index}
-            >
-              <span>{step.code}</span>
-              <div>
-                <strong>{step.label}</strong>
-                <p>{step.body}</p>
-              </div>
-              {index < sessionSteps.length - 1 && <MoveRight size={18} aria-hidden="true" />}
-            </button>
-          ))}
-        </div>
-
-        <motion.aside
-          key={activeStep.label}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="game-detail-session-preview"
-          aria-live="polite"
-        >
-          <div className="game-detail-session-preview__media">
-            <img src={game.image} alt="" width={640} height={480} loading="lazy" decoding="async" />
-            <img src={game.icon} alt="" width={88} height={88} loading="lazy" decoding="async" />
-          </div>
-          <div className="game-detail-session-preview__copy">
-            <span>{activeStep.code}</span>
-            <strong>{activeStep.label}</strong>
-            <p>{activeStep.signal}</p>
-          </div>
-        </motion.aside>
-      </section>
-
-      <section className="game-detail-system">
-        <div className="game-detail-feature-grid">
-          {game.features.map((feature) => (
-            <div key={feature}>{feature}</div>
-          ))}
-        </div>
-        <div className="game-detail-description">
-          <h2>Designed for repeat play.</h2>
+      <section className="game-detail-summary">
+        <div className="game-detail-summary__copy">
+          <span className="status-text">Why it works</span>
+          <h2>One clear loop, tuned for quiet repeat play.</h2>
           <p>{game.fullDescription}</p>
+          {secondaryFeatures.length > 0 && (
+            <div className="game-detail-summary__notes">
+              {secondaryFeatures.map((feature) => (
+                <span key={feature}>{feature}</span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="game-detail-summary__features">
+          {primaryFeatures.map((feature, index) => (
+            <div key={feature}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{feature}</strong>
+            </div>
+          ))}
         </div>
       </section>
 
