@@ -143,7 +143,6 @@ const GameDetail = () => {
 
       <section className="game-detail-brief">
         <div>
-          <span className="status-text">The loop</span>
           <h2>Clear rules, calm repeat play.</h2>
         </div>
         <p>{game.answer}</p>
@@ -151,7 +150,6 @@ const GameDetail = () => {
 
       <section className="game-detail-summary">
         <div className="game-detail-summary__copy">
-          <span className="status-text">Why it works</span>
           <h2>One clear loop, tuned for quiet repeat play.</h2>
           <p>{game.fullDescription}</p>
           {secondaryFeatures.length > 0 && (
