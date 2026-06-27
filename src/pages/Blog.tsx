@@ -24,7 +24,6 @@ const Blog = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="blog-hero-copy"
         >
-          <span className="page-kicker">Studio notes</span>
           <h1>How we think about small games.</h1>
           <p>
             Notes on mobile puzzle design, Unity production, launch discipline, and the tradeoffs
@@ -68,7 +67,6 @@ const Blog = () => {
       <section className="blog-index" aria-label="Studio notes index">
         <div className="blog-index__head">
           <div>
-            <span className="status-text">Latest writing</span>
             <strong>Notes worth opening.</strong>
           </div>
           <p>
