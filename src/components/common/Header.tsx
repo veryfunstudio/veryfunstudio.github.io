@@ -13,11 +13,11 @@ const Header = () => {
     path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="mx-auto flex h-16 max-w-[80rem] items-center justify-between px-[3.125vw] pt-[3.125vw]">
+    <header className="site-header fixed top-0 left-0 right-0 z-50">
+      <div className="site-header__bar mx-auto flex h-16 max-w-[80rem] items-center justify-between px-[3.125vw]">
         <Link
           to="/"
-          className="flex min-h-[44px] items-center gap-3 font-sans text-xl font-medium tracking-tight text-foreground no-underline uppercase"
+          className="site-header__brand flex min-h-[44px] items-center gap-3 font-sans text-xl font-medium tracking-tight text-foreground no-underline uppercase"
         >
           <img
             src="/favicon.png"
@@ -67,7 +67,7 @@ const Header = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="border-t border-border-soft bg-background md:hidden"
+            className="site-header__menu border-t border-border-soft bg-background md:hidden"
             aria-label="Mobile navigation"
           >
             <div className="mx-auto flex max-w-[80rem] flex-col gap-1 px-6 py-4">
