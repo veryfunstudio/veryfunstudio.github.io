@@ -13,7 +13,22 @@ import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import ScrollSignal from "@/components/common/ScrollSignal";
 import RouteVeil from "@/components/common/RouteVeil";
+import NotFound from "@/pages/NotFound";
 import "@/index.css";
+
+const ROUTED_STATIC_PATHS = new Set(["/", "/about", "/games", "/blog", "/contact"]);
+const DETAIL_ROUTE_PATTERNS = [/^\/games\/[^/]+$/, /^\/blog\/[^/]+$/];
+
+const normalizePathname = (pathname: string) => pathname.replace(/\/+$/, "") || "/";
+
+const hasKnownRouteShape = (pathname: string) => {
+  const normalizedPathname = normalizePathname(pathname);
+
+  return (
+    ROUTED_STATIC_PATHS.has(normalizedPathname) ||
+    DETAIL_ROUTE_PATTERNS.some((pattern) => pattern.test(normalizedPathname))
+  );
+};
 
 export const links: Route.LinksFunction = () => [
   { rel: "icon", type: "image/png", sizes: "512x512", href: "/favicon.png" },
@@ -67,7 +82,7 @@ export default function App() {
             exit={{ opacity: 0, y: -10, filter: "blur(6px)" }}
             transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
           >
-            <Outlet />
+            {hasKnownRouteShape(location.pathname) ? <Outlet /> : <NotFound />}
           </motion.main>
         </AnimatePresence>
         <Footer />

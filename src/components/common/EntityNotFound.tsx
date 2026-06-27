@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { Compass } from "lucide-react";
+import { Seo } from "@/components/seo/Seo";
 
 interface EntityNotFoundProps {
   title: string;
@@ -21,6 +22,7 @@ const EntityNotFound = ({
 }: EntityNotFoundProps) => {
   return (
     <section className="error-stage px-[3.125vw] py-28 lg:py-36">
+      <Seo title={title} description={message} noindex />
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
