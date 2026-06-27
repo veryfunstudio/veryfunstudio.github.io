@@ -28,7 +28,7 @@ const About = () => {
   const featured = GAMES.slice(0, 4);
 
   return (
-    <div className="relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
+    <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
       <Seo
         title="About the Studio"
         description="Independent mobile game studio crafting calming, free-to-play puzzle games. Meet the team behind Tile Journey, Pearl Coloring, and more."
@@ -42,7 +42,7 @@ const About = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="about-hero-copy"
         >
-          <span className="bracket-tag">Studio signal</span>
+          <span className="page-kicker">Studio signal</span>
           <h1>Small team. Calm games. Sharp boards.</h1>
           <p>
             VeryFun Company builds free mobile puzzles for people who want a clear challenge
@@ -85,7 +85,6 @@ const About = () => {
         <div className="dash-line" />
         <div className="about-story-grid">
           <div>
-            <span className="bracket-tag">Why we build</span>
             <h2>Games for spare attention.</h2>
           </div>
           <div className="about-story-copy">
@@ -105,7 +104,6 @@ const About = () => {
 
       <section className="about-stack">
         <div className="about-stack-header">
-          <span className="bracket-tag">Production stack</span>
           <p>Tools stay quiet. The game has to speak first.</p>
         </div>
         <div className="about-stack-grid">
@@ -129,7 +127,6 @@ const About = () => {
 
       <section className="about-proof">
         <div className="about-proof-copy">
-          <span className="bracket-tag">Current shelf</span>
           <h2>Six ways to slow the room down.</h2>
         </div>
         <div className="about-proof-games">

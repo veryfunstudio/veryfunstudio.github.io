@@ -8,7 +8,7 @@ const Games = () => {
   const newest = [...GAMES].sort((a, b) => b.releaseDate.localeCompare(a.releaseDate))[0] ?? GAMES[0];
 
   return (
-    <div className="relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
+    <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
       <Seo
         title="Our Mobile Games"
         description="Browse all six free mobile puzzle games from VeryFun Company: Sudoku, Tile Journey, Word Search, Arrow Out, Pearl, Bubble."
@@ -23,7 +23,7 @@ const Games = () => {
           className="games-hero"
         >
           <div className="games-hero-copy">
-            <span className="bracket-tag">Playable catalog</span>
+            <span className="page-kicker">Playable catalog</span>
             <h1>Six boards, one quiet rhythm.</h1>
             <p>
               Pick the kind of puzzle your brain wants right now. Number logic, word grids,
@@ -98,6 +98,7 @@ const Games = () => {
                 />
               </div>
               <div className="game-card-copy">
+                <img className="game-card-icon" src={game.icon} alt="" width={72} height={72} loading={index < 2 ? "eager" : "lazy"} decoding="async" />
                 <span className="status-text">{String(index + 1).padStart(2, "0")}</span>
                 <h2>{game.title}</h2>
                 <p>{game.description}</p>

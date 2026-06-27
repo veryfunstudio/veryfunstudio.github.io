@@ -25,7 +25,7 @@ const GameDetail = () => {
   const primaryTags = game.technologies.slice(1);
 
   return (
-    <article className="relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
+    <article className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
       <Seo
         title={`${game.title} - Free Puzzle Game`}
         description={game.description}

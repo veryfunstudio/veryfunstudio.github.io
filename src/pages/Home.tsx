@@ -197,7 +197,7 @@ export default function Home() {
         <section className="px-[3.125vw] py-20 lg:py-32">
           <div className="mb-10 grid gap-6 lg:grid-cols-[0.7fr_1fr] lg:items-end">
             <div>
-              <span className="bracket-tag">Playable catalog</span>
+              <span className="page-kicker">Playable catalog</span>
               <h2 className="mt-4 max-w-[10ch]">Choose a board.</h2>
             </div>
             <p className="max-w-[54ch] text-base leading-relaxed text-muted lg:justify-self-end">
@@ -220,6 +220,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="game-card-copy">
+                  <img className="game-card-icon" src={game.icon} alt="" width={72} height={72} loading={index < 2 ? "eager" : "lazy"} decoding="async" />
                   <span className="status-text">{String(index + 1).padStart(2, "0")}</span>
                   <h3>{game.title}</h3>
                   <p>{game.description}</p>
@@ -237,7 +238,7 @@ export default function Home() {
 
         <section className="runway-section">
           <div className="runway-heading px-[3.125vw]">
-            <span className="bracket-tag">Game runway</span>
+            <span className="page-kicker">Game runway</span>
             <p>Scroll the studio shelf.</p>
           </div>
           <div className="runway-track">
@@ -275,7 +276,6 @@ export default function Home() {
           <div className="dash-line mb-12" />
           <div className="principle-board">
             <div className="principle-intro">
-              <span className="bracket-tag">Design protocol</span>
               <h2>Fun without extraction.</h2>
             </div>
             {PRINCIPLES.map((item, index) => (
@@ -290,7 +290,6 @@ export default function Home() {
 
         <section className="closing-stage px-[3.125vw] py-28 lg:py-44">
           <div className="closing-panel">
-            <span className="closing-reveal bracket-tag">Next move</span>
             <h2 className="closing-reveal">Open a puzzle and let the day get quieter.</h2>
             <div className="closing-reveal flex flex-wrap justify-center gap-3">
               <Link to="/games" className="pill-button pill-button--accent">

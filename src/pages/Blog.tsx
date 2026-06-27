@@ -9,7 +9,7 @@ const Blog = () => {
   const [featured, ...rest] = BLOG_POSTS;
 
   return (
-    <div className="relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
+    <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
       <Seo
         title="Blog - Game Dev Insights"
         description="Notes on mobile game design, Unity development, and indie studio life from the team behind Tile Journey, Arrow Out, and the rest of the VeryFun Company lineup."
@@ -23,7 +23,7 @@ const Blog = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="blog-hero-copy"
         >
-          <span className="bracket-tag">Studio notes</span>
+          <span className="page-kicker">Studio notes</span>
           <h1>How we think about small games.</h1>
           <p>
             Notes on mobile puzzle design, Unity production, launch discipline, and the tradeoffs

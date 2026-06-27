@@ -43,7 +43,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
+    <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
       <Seo
         title="Contact Us"
         description="Get in touch with VeryFun Company - email, X (Twitter), or GitHub. We'd love to hear from players and partners."
@@ -58,7 +58,7 @@ const Contact = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="contact-hero-copy"
         >
-          <span className="bracket-tag">Open channel</span>
+          <span className="page-kicker">Open channel</span>
           <h1>Send the studio a signal.</h1>
           <p>
             Player feedback, partnership notes, press questions, and bug reports all land in the
