@@ -590,12 +590,14 @@
   }
 
   .site-footer__game img {
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.5rem;
+    height: 2.5rem;
     justify-self: end;
     border: 1px solid rgba(244, 247, 232, 0.22);
-    border-radius: 12px;
+    border-radius: 10px;
+    background: rgba(7, 8, 13, 0.72);
     object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
   }
 
   .site-footer__game strong {
@@ -1259,13 +1261,14 @@
   }
 
   .playtest-readout__hero img {
-    width: 6rem;
-    height: 6rem;
+    width: 5rem;
+    height: 5rem;
     border: 1px solid rgba(244, 247, 232, 0.26);
-    border-radius: 20px;
+    border-radius: 16px;
     object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
     box-shadow:
-      0 20px 52px rgba(0, 0, 0, 0.35),
+      0 14px 34px rgba(0, 0, 0, 0.34),
       0 0 0 1px rgba(200, 255, 61, 0.1);
   }
 
@@ -1385,16 +1388,17 @@
     right: clamp(1rem, 3vw, 2.4rem);
     bottom: clamp(5.5rem, 9vw, 7rem);
     z-index: 2;
-    width: clamp(5.2rem, 9vw, 7.4rem) !important;
-    height: clamp(5.2rem, 9vw, 7.4rem) !important;
+    width: clamp(4.8rem, 7.2vw, 6rem) !important;
+    height: clamp(4.8rem, 7.2vw, 6rem) !important;
     min-height: 0 !important;
     border: 1px solid rgba(244, 247, 232, 0.36);
-    border-radius: 24px;
-    background: rgba(7, 8, 13, 0.78);
+    border-radius: 20px;
+    background: rgba(7, 8, 13, 0.86);
     box-shadow:
-      0 24px 70px rgba(0, 0, 0, 0.42),
+      0 18px 44px rgba(0, 0, 0, 0.4),
       0 0 0 1px rgba(200, 255, 61, 0.14);
     object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
   }
 
   .games-hero-panel__header,
@@ -1805,10 +1809,13 @@
   }
 
   .about-proof-game img {
-    width: 44px;
-    height: 44px;
-    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(244, 247, 232, 0.18);
+    border-radius: 9px;
+    background: rgba(7, 8, 13, 0.62);
     object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
   }
 
   .about-proof-game span {
@@ -2178,16 +2185,17 @@
     right: clamp(1rem, 3vw, 2.5rem);
     bottom: clamp(4.8rem, 9vw, 7rem);
     z-index: 3;
-    width: clamp(5.5rem, 10vw, 8.25rem) !important;
-    height: clamp(5.5rem, 10vw, 8.25rem) !important;
+    width: clamp(4.8rem, 7.6vw, 6.25rem) !important;
+    height: clamp(4.8rem, 7.6vw, 6.25rem) !important;
     min-height: 0 !important;
     border: 1px solid rgba(244, 247, 232, 0.36);
-    border-radius: 26px;
-    background: rgba(7, 8, 13, 0.78);
+    border-radius: 21px;
+    background: rgba(7, 8, 13, 0.86);
     box-shadow:
-      0 24px 70px rgba(0, 0, 0, 0.44),
+      0 18px 44px rgba(0, 0, 0, 0.4),
       0 0 0 1px rgba(200, 255, 61, 0.14);
     object-fit: cover !important;
+    image-rendering: -webkit-optimize-contrast;
   }
 
   .game-detail-tags {
@@ -2407,13 +2415,14 @@
     position: absolute;
     right: 0.8rem;
     bottom: 0.8rem;
-    width: 5.2rem;
-    height: 5.2rem;
+    width: 4.6rem;
+    height: 4.6rem;
     border: 1px solid rgba(244, 247, 232, 0.34);
-    border-radius: 18px;
+    border-radius: 16px;
     background: rgba(7, 8, 13, 0.82);
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.36);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.34);
     object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
   }
 
   .game-detail-session-preview__copy {
@@ -3132,15 +3141,16 @@
   }
 
   .game-card-icon {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 4rem;
+    height: 4rem;
     border: 1px solid rgba(244, 247, 232, 0.34);
-    border-radius: 18px;
-    background: rgba(7, 8, 13, 0.72);
+    border-radius: 16px;
+    background: rgba(7, 8, 13, 0.84);
     box-shadow:
-      0 18px 46px rgba(0, 0, 0, 0.38),
+      0 14px 34px rgba(0, 0, 0, 0.36),
       0 0 0 1px rgba(200, 255, 61, 0.08);
     object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
   }
 
   .game-card-copy h2,
@@ -3315,15 +3325,16 @@
   .runway-icon {
     position: absolute;
     z-index: 2;
-    width: clamp(5.8rem, 9vw, 7.4rem);
-    height: clamp(5.8rem, 9vw, 7.4rem);
+    width: clamp(4.8rem, 7vw, 6rem);
+    height: clamp(4.8rem, 7vw, 6rem);
     border: 1px solid rgba(244, 247, 232, 0.36);
-    border-radius: 24px;
-    background: rgba(7, 8, 13, 0.78);
+    border-radius: 20px;
+    background: rgba(7, 8, 13, 0.86);
     box-shadow:
-      0 24px 70px rgba(0, 0, 0, 0.42),
+      0 18px 44px rgba(0, 0, 0, 0.4),
       0 0 0 1px rgba(200, 255, 61, 0.14);
     object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
   }
 
   .runway-copy {
