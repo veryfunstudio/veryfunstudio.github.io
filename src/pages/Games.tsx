@@ -4,7 +4,6 @@ import { Link } from "react-router";
 import { ArrowUpRight, CalendarDays, Download, Grid3X3, Layers3, Play } from "lucide-react";
 import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
-import GameCard from "@/components/common/GameCard";
 
 const Games = () => {
   const [activeGenre, setActiveGenre] = useState("All");
@@ -209,33 +208,58 @@ const Games = () => {
               <span>{activeGame.releaseDate}</span>
             </div>
           </div>
-
-          <div className="games-spotlight-selector" aria-label="Choose featured game">
-            {visibleGames.map((game) => {
-              const isActive = game.slug === activeGame.slug;
-
-              return (
-                <button
-                  key={game.slug}
-                  type="button"
-                  className={isActive ? "is-active" : ""}
-                  onClick={() => setActiveSlug(game.slug)}
-                  aria-pressed={isActive}
-                  aria-label={`Preview ${game.title}`}
-                >
-                  <img src={game.icon} alt="" width={54} height={54} loading="eager" />
-                  <span>{game.title}</span>
-                </button>
-              );
-            })}
-          </div>
         </section>
       )}
 
-      <section className="pt-14 lg:pt-20">
-        <motion.div layout className="game-grid">
+      <section className="catalog-index" aria-label="Release index">
+        <div className="catalog-index__head">
+          <div>
+            <span className="status-text">Release index</span>
+            <h2>{activeGenre === "All" ? "All playable boards." : `${activeGenre} boards.`}</h2>
+          </div>
+          <p>
+            Scan the catalog by release, genre, and session shape. Select a row to update the
+            preview, or open the detail page for the full game brief.
+          </p>
+        </div>
+
+        <motion.div layout className="catalog-index__list">
           {visibleGames.map((game, index) => (
-            <GameCard key={game.id} game={game} index={index} headingLevel="h2" />
+            <motion.div
+              key={game.id}
+              layout
+              className={`catalog-index__row${activeGame?.slug === game.slug ? " is-active" : ""}`}
+            >
+              <button
+                type="button"
+                onClick={() => setActiveSlug(game.slug)}
+                aria-pressed={activeGame?.slug === game.slug}
+                aria-label={`Preview ${game.title}`}
+              >
+                <span className="catalog-index__number">{String(index + 1).padStart(2, "0")}</span>
+                <img
+                  src={game.icon}
+                  alt=""
+                  width={58}
+                  height={58}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span className="catalog-index__title">
+                  <strong>{game.title}</strong>
+                  <em>{game.description}</em>
+                </span>
+                <span className="catalog-index__tags">
+                  {game.technologies.slice(1).map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </span>
+                <span className="catalog-index__date">{game.releaseDate}</span>
+              </button>
+              <Link to={`/games/${game.slug}`} aria-label={`Open ${game.title} details`}>
+                <ArrowUpRight size={18} />
+              </Link>
+            </motion.div>
           ))}
         </motion.div>
       </section>
