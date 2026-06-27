@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, BookOpen, Gamepad2 } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { BLOG_POSTS, getBlogPostById } from "@/data/blog";
 import { formatDate } from "@/lib/utils";
 import { Seo } from "@/components/seo/Seo";
@@ -127,27 +127,14 @@ const BlogPost = () => {
         ))}
       </section>
 
-      <section className="article-console">
-        <div className="article-console__summary">
-          <div>
-            <BookOpen size={22} />
-            <span className="status-text">Field note complete</span>
-          </div>
-          <h2>Keep the studio signal moving.</h2>
-          <p>
-            {readingMinutes} minute read on {post.category.toLowerCase()}, written from the same
-            constraints that shape the games: clarity, pace, and repeatable decisions.
-          </p>
-          <div className="article-console__actions">
-            <Link to="/blog" className="pill-button">
-              <ArrowLeft size={16} />
-              Archive
-            </Link>
-            <Link to="/games" className="pill-button pill-button--accent">
-              <Gamepad2 size={16} />
-              Games
-            </Link>
-          </div>
+      <section className="article-next">
+        <div className="article-next__intro">
+          <span className="status-text">{readingMinutes} minute read</span>
+          <h2>More notes from the studio.</h2>
+          <Link to="/blog" className="pill-button">
+            <ArrowLeft size={16} />
+            All notes
+          </Link>
         </div>
 
         <div className="article-related" aria-label="Related studio notes">

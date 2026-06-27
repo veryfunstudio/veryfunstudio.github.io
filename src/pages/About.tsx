@@ -38,7 +38,7 @@ const About = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="about-hero-copy"
         >
-          <span className="page-kicker">Studio signal</span>
+          <span className="page-kicker">About</span>
           <h1>Small team. Calm games. Sharp boards.</h1>
           <p>
             VeryFun Company builds free mobile puzzles for people who want a clear challenge without
