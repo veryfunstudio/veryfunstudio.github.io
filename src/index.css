@@ -365,6 +365,23 @@
     pointer-events: none;
   }
 
+  .site-header__menu-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    min-height: calc(100dvh - 4rem);
+    max-width: 80rem;
+    grid-template-rows: auto 1fr;
+    gap: 1rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+
+  .site-header__mobile-links {
+    display: grid;
+    gap: 0.5rem;
+  }
+
   .site-header__mobile-link {
     border: 1px solid transparent;
     transition:
@@ -378,6 +395,122 @@
     border-color: var(--color-border-soft);
     background: rgba(244, 247, 232, 0.06);
     color: var(--color-foreground);
+  }
+
+  .site-header__mobile-footer {
+    display: grid;
+    align-self: end;
+    gap: 0.7rem;
+  }
+
+  .site-header__mobile-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 0.9rem;
+    overflow: hidden;
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius-card);
+    background:
+      radial-gradient(circle at 100% 0%, rgba(200, 255, 61, 0.15), transparent 9rem),
+      rgba(244, 247, 232, 0.055);
+    padding: 1rem;
+  }
+
+  .site-header__mobile-panel span {
+    display: block;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .site-header__mobile-panel strong {
+    display: block;
+    max-width: 100%;
+    margin-top: 0.35rem;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: clamp(1.2rem, 8vw, 2.2rem);
+    font-weight: 800;
+    line-height: 0.95;
+    overflow-wrap: anywhere;
+    text-transform: uppercase;
+  }
+
+  .site-header__mobile-panel em {
+    display: block;
+    margin-top: 0.75rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-style: normal;
+    letter-spacing: 0.12em;
+  }
+
+  .site-header__mobile-panel img {
+    width: clamp(3.25rem, 18vw, 4.5rem);
+    height: clamp(3.25rem, 18vw, 4.5rem);
+    border: 1px solid rgba(244, 247, 232, 0.24);
+    border-radius: 0.9rem;
+    background: rgba(244, 247, 232, 0.86);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.34);
+    image-rendering: auto;
+    object-fit: cover;
+  }
+
+  .site-header__mobile-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .site-header__mobile-actions a {
+    display: inline-flex;
+    min-width: 0;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-button);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1;
+    padding: 0.85rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .site-header__mobile-actions a:first-child {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: var(--color-background);
+    box-shadow: 0 0 34px rgba(200, 255, 61, 0.28);
+  }
+
+  .site-header__mobile-actions a svg {
+    flex: 0 0 auto;
+  }
+
+  .site-header__mobile-status {
+    display: flex;
+    min-height: 2.35rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 1px dashed rgba(244, 247, 232, 0.18);
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    padding-top: 0.7rem;
+    text-transform: uppercase;
   }
 
   .pill-button {
@@ -4420,6 +4553,27 @@
 }
 
 @media (max-width: 560px) {
+  .site-header__menu-inner {
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .site-header__mobile-link {
+    min-height: 3.25rem;
+  }
+
+  .site-header__mobile-panel {
+    padding: 0.85rem;
+  }
+
+  .site-header__mobile-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header__mobile-actions a {
+    min-height: 2.8rem;
+  }
+
   .signal-screen {
     width: min(100%, 21.5rem);
   }
