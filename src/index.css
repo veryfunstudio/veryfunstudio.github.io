@@ -139,6 +139,80 @@
     will-change: opacity, transform, filter;
   }
 
+  .scroll-signal {
+    position: fixed;
+    inset: 0;
+    z-index: 45;
+    pointer-events: none;
+  }
+
+  .scroll-signal__top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      rgba(200, 255, 61, 0),
+      var(--color-accent),
+      rgba(244, 247, 232, 0.9)
+    );
+    box-shadow: 0 0 24px rgba(200, 255, 61, 0.36);
+    transform-origin: 0 50%;
+  }
+
+  .scroll-signal__side {
+    position: fixed;
+    top: 7rem;
+    right: clamp(0.8rem, 1.2vw, 1.35rem);
+    bottom: 3.5rem;
+    display: grid;
+    width: 1.35rem;
+    grid-template-rows: auto minmax(5rem, 1fr) auto;
+    justify-items: center;
+    gap: 0.85rem;
+    color: rgba(244, 247, 232, 0.46);
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    text-transform: uppercase;
+  }
+
+  .scroll-signal__side > span,
+  .scroll-signal__side > em {
+    writing-mode: vertical-rl;
+  }
+
+  .scroll-signal__side > em {
+    color: rgba(244, 247, 232, 0.28);
+    font-style: normal;
+  }
+
+  .scroll-signal__side > div {
+    position: relative;
+    width: 1px;
+    min-height: 100%;
+    overflow: hidden;
+    background: rgba(244, 247, 232, 0.11);
+  }
+
+  .scroll-signal__side > div::before {
+    position: absolute;
+    inset: 0 -0.55rem;
+    content: "";
+    background: radial-gradient(circle, rgba(200, 255, 61, 0.22), transparent 52%);
+    opacity: 0.42;
+  }
+
+  .scroll-signal__side i {
+    position: absolute;
+    inset: 0;
+    display: block;
+    background: var(--color-accent);
+    box-shadow: 0 0 16px rgba(200, 255, 61, 0.62);
+    transform-origin: 50% 0;
+  }
+
   .site-header {
     background: linear-gradient(
       180deg,
@@ -3202,6 +3276,10 @@
 }
 
 @media (max-width: 899px) {
+  .scroll-signal__side {
+    display: none;
+  }
+
   .site-header__brand {
     font-size: clamp(1.15rem, 5vw, 1.8rem);
   }
