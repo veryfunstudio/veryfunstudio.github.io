@@ -45,8 +45,8 @@ const About = () => {
           <span className="page-kicker">Studio signal</span>
           <h1>Small team. Calm games. Sharp boards.</h1>
           <p>
-            VeryFun Company builds free mobile puzzles for people who want a clear challenge
-            without timers, pressure systems, or noisy monetization.
+            VeryFun Company builds free mobile puzzles for people who want a clear challenge without
+            timers, pressure systems, or noisy monetization.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link to="/games" className="pill-button pill-button--accent">
@@ -94,8 +94,8 @@ const About = () => {
               make one more move.
             </p>
             <p>
-              Our catalog focuses on casual mobile play because the format asks for discipline.
-              A good puzzle has to load fast, explain itself quickly, work offline, and still feel
+              Our catalog focuses on casual mobile play because the format asks for discipline. A
+              good puzzle has to load fast, explain itself quickly, work offline, and still feel
               considered after hundreds of sessions.
             </p>
           </div>
@@ -132,7 +132,7 @@ const About = () => {
         <div className="about-proof-games">
           {featured.map((game) => (
             <Link key={game.id} to={`/games/${game.slug}`} className="about-proof-game">
-              <img src={game.icon} alt="" width={44} height={44} loading="lazy" decoding="async" />
+              <img src={game.icon} alt="" width={44} height={44} loading="eager" decoding="async" />
               <span>{game.title}</span>
             </Link>
           ))}

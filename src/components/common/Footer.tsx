@@ -59,7 +59,7 @@ const Footer = () => {
                   alt=""
                   width={44}
                   height={44}
-                  loading="lazy"
+                  loading="eager"
                   decoding="async"
                 />
                 <strong>{game.title}</strong>
@@ -75,7 +75,7 @@ const Footer = () => {
                 alt=""
                 width={64}
                 height={64}
-                loading="lazy"
+                loading="eager"
                 decoding="async"
               />
               <strong>{latestGame.title}</strong>

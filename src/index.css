@@ -4054,6 +4054,69 @@
     border-bottom: 0;
   }
 
+  .about-story {
+    padding-block: 4.5rem;
+  }
+
+  .about-story-grid {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+    padding-top: 2rem;
+  }
+
+  .about-story-grid h2 {
+    max-width: 10ch;
+    font-size: clamp(3.2rem, 13vw, 5.8rem);
+  }
+
+  .about-story-copy {
+    gap: 1rem;
+  }
+
+  .about-stack {
+    grid-template-columns: 1fr;
+  }
+
+  .about-stack-header {
+    min-height: auto;
+  }
+
+  .about-stack-header p {
+    max-width: 18ch;
+  }
+
+  .about-stack-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-stack-cell {
+    min-height: 5.8rem;
+  }
+
+  .about-values {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    padding-block: 0.8rem 4rem;
+  }
+
+  .about-value-card {
+    min-height: 15rem;
+    gap: 1.5rem;
+  }
+
+  .about-value-card h3 {
+    max-width: 12ch;
+    font-size: clamp(2.2rem, 9vw, 3.6rem);
+  }
+
+  .about-proof {
+    grid-template-columns: 1fr;
+  }
+
+  .about-proof-copy h2 {
+    max-width: 10ch;
+  }
+
   .site-footer {
     padding-inline: 3.125vw;
   }
@@ -4155,8 +4218,7 @@
   }
 
   .game-detail-feature-grid,
-  .game-detail-session-board,
-  .about-stack-grid {
+  .game-detail-session-board {
     grid-template-columns: 1fr;
   }
 

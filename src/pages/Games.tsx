@@ -163,7 +163,7 @@ const Games = () => {
                 alt=""
                 width={82}
                 height={82}
-                loading="lazy"
+                loading="eager"
                 decoding="async"
               />
               <h2>{activeGame.title}</h2>
@@ -223,7 +223,7 @@ const Games = () => {
                   aria-pressed={isActive}
                   aria-label={`Preview ${game.title}`}
                 >
-                  <img src={game.icon} alt="" width={54} height={54} loading="lazy" />
+                  <img src={game.icon} alt="" width={54} height={54} loading="eager" />
                   <span>{game.title}</span>
                 </button>
               );
