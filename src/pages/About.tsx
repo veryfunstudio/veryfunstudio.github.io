@@ -24,9 +24,25 @@ const VALUES = [
   },
 ] as const;
 
-const About = () => {
-  const featured = GAMES.slice(0, 4);
+const PROOF_POINTS = [
+  {
+    label: "Session shape",
+    value: "5-10 min",
+    body: "A game should resolve a small moment, not take over the afternoon.",
+  },
+  {
+    label: "Catalog rule",
+    value: "0 timers",
+    body: "Pressure is removed first. Challenge comes from the board, not from punishment.",
+  },
+  {
+    label: "Release habit",
+    value: `${String(GAMES.length).padStart(2, "0")} shipped`,
+    body: "Every title is scoped around a readable loop before visual polish gets louder.",
+  },
+] as const;
 
+const About = () => {
   return (
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
       <Seo
@@ -127,14 +143,19 @@ const About = () => {
 
       <section className="about-proof">
         <div className="about-proof-copy">
-          <h2>Six ways to slow the room down.</h2>
+          <span className="status-text">Studio method</span>
+          <h2>How the work stays small enough to finish well.</h2>
         </div>
-        <div className="about-proof-games">
-          {featured.map((game) => (
-            <Link key={game.id} to={`/games/${game.slug}`} className="about-proof-game">
-              <img src={game.icon} alt="" width={44} height={44} loading="eager" decoding="async" />
-              <span>{game.title}</span>
-            </Link>
+        <div className="about-proof-points">
+          {PROOF_POINTS.map((point, index) => (
+            <article key={point.label} className="about-proof-point">
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{point.value}</strong>
+              <div>
+                <h3>{point.label}</h3>
+                <p>{point.body}</p>
+              </div>
+            </article>
           ))}
         </div>
       </section>

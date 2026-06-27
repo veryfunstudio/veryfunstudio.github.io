@@ -2122,53 +2122,58 @@
   }
 
   .about-proof-copy h2 {
-    max-width: 9ch;
+    max-width: 11ch;
     margin-top: 1rem;
     font-size: clamp(2.5rem, 5vw, 6rem);
   }
 
-  .about-proof-games {
+  .about-proof-points {
     display: grid;
-    gap: 0.6rem;
+    gap: 0.75rem;
     align-content: center;
   }
 
-  .about-proof-game {
-    display: flex;
+  .about-proof-point {
+    display: grid;
+    min-height: 8.5rem;
+    grid-template-columns: auto minmax(8rem, 0.42fr) minmax(0, 1fr);
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    gap: clamp(0.85rem, 2vw, 1.4rem);
     border: 1px solid var(--color-border-soft);
     border-radius: 8px;
-    background: rgba(244, 247, 232, 0.04);
+    background:
+      radial-gradient(circle at 0% 0%, rgba(200, 255, 61, 0.1), transparent 12rem),
+      rgba(244, 247, 232, 0.04);
     color: var(--color-foreground);
-    padding: 0.75rem;
-    text-decoration: none;
-    transition:
-      border-color 0.2s var(--ease-brand),
-      background-color 0.2s var(--ease-brand),
-      transform 0.2s var(--ease-brand);
+    padding: clamp(0.9rem, 1.8vw, 1.2rem);
   }
 
-  .about-proof-game:hover {
-    border-color: var(--color-border-strong);
-    background: rgba(244, 247, 232, 0.075);
-    transform: translateX(3px);
+  .about-proof-point > span {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
   }
 
-  .about-proof-game img {
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgba(244, 247, 232, 0.18);
-    border-radius: 9px;
-    background: rgba(7, 8, 13, 0.62);
-    object-fit: cover;
-    image-rendering: -webkit-optimize-contrast;
+  .about-proof-point strong {
+    color: var(--color-foreground);
+    font-family: var(--font-mono);
+    font-size: clamp(1.2rem, 2vw, 1.9rem);
+    line-height: 1;
+    text-transform: uppercase;
   }
 
-  .about-proof-game span {
+  .about-proof-point h3 {
+    color: var(--color-foreground);
+    font-size: clamp(1.25rem, 2vw, 2rem);
     font-weight: 650;
-    text-align: right;
+    line-height: 1;
+  }
+
+  .about-proof-point p {
+    max-width: 44ch;
+    margin-top: 0.45rem;
+    color: var(--color-muted);
+    font-size: 0.92rem;
   }
 
   .contact-panel {
@@ -4401,6 +4406,11 @@
 
   .about-proof-copy h2 {
     max-width: 10ch;
+  }
+
+  .about-proof-point {
+    grid-template-columns: 1fr;
+    align-items: start;
   }
 
   .site-footer {
