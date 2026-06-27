@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
-import { ArrowRight, BookOpen, Gamepad2, Layers3 } from "lucide-react";
+import { ArrowRight, BookOpen, CalendarDays, Layers3, NotebookPen } from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import { BLOG_POSTS } from "@/data/blog";
-import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 
 const Blog = () => {
@@ -14,7 +13,9 @@ const Blog = () => {
   const latestPost =
     [...BLOG_POSTS].sort((a, b) => b.date.localeCompare(a.date))[0] ?? activePost ?? featured;
   const categories = [...new Set(BLOG_POSTS.map((post) => post.category))];
-  const linkedGames = GAMES.slice(0, 3);
+  const sortedPosts = [...BLOG_POSTS].sort((a, b) => b.date.localeCompare(a.date));
+  const firstPostDate = sortedPosts[sortedPosts.length - 1]?.date ?? latestPost?.date;
+  const latestPostDate = sortedPosts[0]?.date ?? latestPost?.date;
 
   return (
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -64,9 +65,13 @@ const Blog = () => {
                 <strong>{categories.length} lanes</strong>
               </div>
               <div>
-                <Gamepad2 size={22} />
-                <span>Catalog</span>
-                <strong>{GAMES.length} games</strong>
+                <CalendarDays size={22} />
+                <span>Window</span>
+                <strong>
+                  {firstPostDate && latestPostDate
+                    ? `${formatDate(firstPostDate).split(",")[0]} - ${formatDate(latestPostDate).split(",")[0]}`
+                    : "Active notes"}
+                </strong>
               </div>
             </div>
 
@@ -83,12 +88,20 @@ const Blog = () => {
               </Link>
             </div>
 
-            <div className="blog-signal-panel__games" aria-label="Games referenced by the notes">
-              {linkedGames.map((game) => (
-                <Link key={game.slug} to={`/games/${game.slug}`}>
-                  <img src={game.icon} alt="" width={44} height={44} loading="eager" />
-                  <span>{game.title}</span>
-                </Link>
+            <div className="blog-signal-panel__themes" aria-label="Editorial themes">
+              {categories.map((category, index) => (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => {
+                    const post = BLOG_POSTS.find((item) => item.category === category);
+                    if (post) setActiveId(post.id);
+                  }}
+                >
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{category}</strong>
+                  <NotebookPen size={16} />
+                </button>
               ))}
             </div>
           </motion.aside>
