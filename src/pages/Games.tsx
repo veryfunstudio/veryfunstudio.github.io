@@ -25,10 +25,10 @@ const Games = () => {
         >
           <div className="games-hero-copy">
             <span className="page-kicker">Playable catalog</span>
-            <h1>Six boards, one quiet rhythm.</h1>
+            <h1>Pick a board.</h1>
             <p>
-              Pick the kind of puzzle your brain wants right now. Number logic, word grids, tile
-              matching, sorting, and quick arcade clearing all live here.
+              Six quiet mobile puzzles for spare attention: number logic, word grids, tile matching,
+              sorting, coloring, and quick arcade clearing.
             </p>
             <div className="games-hero-actions">
               <a
@@ -79,51 +79,70 @@ const Games = () => {
         </motion.div>
       </section>
 
-      <section className="catalog-index" aria-label="Release index">
+      <section className="catalog-index" aria-label="Game catalog">
         <div className="catalog-index__head">
           <div>
-            <span className="status-text">Release index</span>
+            <span className="status-text">Choose your board</span>
             <h2>All playable boards.</h2>
           </div>
           <p>
-            Scan the catalog by release, genre, and session shape. Open a board for the full brief,
-            or jump straight to Google Play.
+            Six games, six different kinds of quiet focus. Open the brief when you want the full
+            rules, or go straight to Google Play.
           </p>
         </div>
 
-        <div className="catalog-index__list">
-          {GAMES.map((game, index) => (
-            <div key={game.id} className="catalog-index__row">
-              <Link to={`/games/${game.slug}`} aria-label={`Open ${game.title} details`}>
-                <span className="catalog-index__number">{String(index + 1).padStart(2, "0")}</span>
+        <div className="catalog-index__grid">
+          {GAMES.map((game) => (
+            <article key={game.id} className="catalog-card">
+              <Link
+                to={`/games/${game.slug}`}
+                className="catalog-card__media"
+                aria-label={`Open ${game.title} details`}
+              >
                 <img
-                  src={game.icon}
-                  alt=""
-                  width={58}
-                  height={58}
+                  src={game.image}
+                  alt={`${game.title} key art`}
+                  width={760}
+                  height={560}
                   loading="lazy"
                   decoding="async"
                 />
-                <span className="catalog-index__title">
-                  <strong>{game.title}</strong>
-                  <em>{game.description}</em>
-                </span>
-                <span className="catalog-index__tags">
-                  {game.technologies.slice(1).map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </span>
-                <span className="catalog-index__date">{game.releaseDate}</span>
               </Link>
-              <a
-                href={game.googlePlayUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Get ${game.title} on Google Play`}
-              >
-                <ArrowUpRight size={18} />
-              </a>
-            </div>
+
+              <div className="catalog-card__body">
+                <div className="catalog-card__title">
+                  <img
+                    src={game.icon}
+                    alt=""
+                    width={32}
+                    height={32}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <h3>{game.title}</h3>
+                </div>
+                <p>{game.description}</p>
+                <div className="catalog-card__meta">
+                  <span>{game.technologies.slice(1).join(" / ")}</span>
+                  <span>{game.releaseDate}</span>
+                </div>
+                <div className="catalog-card__actions">
+                  <Link to={`/games/${game.slug}`}>
+                    Open brief
+                    <ArrowUpRight size={16} />
+                  </Link>
+                  <a
+                    href={game.googlePlayUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Get ${game.title} on Google Play`}
+                  >
+                    <Download size={15} />
+                    Google Play
+                  </a>
+                </div>
+              </div>
+            </article>
           ))}
         </div>
       </section>
