@@ -1,13 +1,14 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
-import { ArrowUpRight, Download, Grid3X3, Layers3 } from "lucide-react";
+import { ArrowUpRight, CalendarDays, Download, Grid3X3, Layers3, Play } from "lucide-react";
 import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 import GameCard from "@/components/common/GameCard";
 
 const Games = () => {
   const [activeGenre, setActiveGenre] = useState("All");
+  const [activeSlug, setActiveSlug] = useState(GAMES[0]?.slug ?? "");
   const newest =
     [...GAMES].sort((a, b) => b.releaseDate.localeCompare(a.releaseDate))[0] ?? GAMES[0];
   const genreCounts = useMemo(() => {
@@ -27,6 +28,13 @@ const Games = () => {
         : GAMES.filter((game) => game.technologies.slice(1).includes(activeGenre)),
     [activeGenre],
   );
+  const activeGame = visibleGames.find((game) => game.slug === activeSlug) ?? visibleGames[0];
+
+  useEffect(() => {
+    if (!visibleGames.some((game) => game.slug === activeSlug)) {
+      setActiveSlug(visibleGames[0]?.slug ?? "");
+    }
+  }, [activeSlug, visibleGames]);
 
   return (
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -141,6 +149,88 @@ const Games = () => {
           </div>
         </div>
       </section>
+
+      {activeGame && (
+        <section className="games-spotlight" aria-label="Selected game preview">
+          <div className="games-spotlight-copy">
+            <div className="games-spotlight-copy__top">
+              <span className="status-text">Selected board</span>
+              <span>{String(activeGame.id).padStart(2, "0")}</span>
+            </div>
+            <div className="games-spotlight-copy__title">
+              <img
+                src={activeGame.icon}
+                alt=""
+                width={82}
+                height={82}
+                loading="lazy"
+                decoding="async"
+              />
+              <h2>{activeGame.title}</h2>
+            </div>
+            <p>{activeGame.description}</p>
+            <div className="games-spotlight-tags">
+              {activeGame.technologies.slice(1).map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
+            </div>
+            <div className="games-spotlight-actions">
+              <Link to={`/games/${activeGame.slug}`} className="pill-button pill-button--accent">
+                <Play size={16} />
+                Open
+              </Link>
+              <a
+                href={activeGame.googlePlayUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pill-button"
+              >
+                <Download size={16} />
+                Google Play
+              </a>
+            </div>
+          </div>
+
+          <div className="games-spotlight-media">
+            <motion.img
+              key={activeGame.slug}
+              src={activeGame.image}
+              alt={`${activeGame.title} key art`}
+              width={980}
+              height={735}
+              loading="lazy"
+              decoding="async"
+              initial={{ opacity: 0, scale: 1.04 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            />
+            <div className="games-spotlight-release">
+              <CalendarDays size={16} />
+              <span>{activeGame.releaseDate}</span>
+            </div>
+          </div>
+
+          <div className="games-spotlight-selector" aria-label="Choose featured game">
+            {visibleGames.map((game) => {
+              const isActive = game.slug === activeGame.slug;
+
+              return (
+                <button
+                  key={game.slug}
+                  type="button"
+                  className={isActive ? "is-active" : ""}
+                  onClick={() => setActiveSlug(game.slug)}
+                  aria-pressed={isActive}
+                  aria-label={`Preview ${game.title}`}
+                >
+                  <img src={game.icon} alt="" width={54} height={54} loading="lazy" />
+                  <span>{game.title}</span>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       <section className="pt-14 lg:pt-20">
         <motion.div layout className="game-grid">

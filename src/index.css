@@ -1658,6 +1658,224 @@
     color: var(--color-accent);
   }
 
+  .games-spotlight {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(18rem, 0.42fr) minmax(0, 0.58fr);
+    gap: 1px;
+    margin-top: 0.8rem;
+    overflow: hidden;
+    border: 1px solid var(--color-border-soft);
+    border-radius: 8px;
+    background: var(--color-border-soft);
+  }
+
+  .games-spotlight::before {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    content: "";
+    background:
+      radial-gradient(circle at 18% 18%, rgba(200, 255, 61, 0.14), transparent 20rem),
+      radial-gradient(circle at 82% 72%, rgba(244, 247, 232, 0.08), transparent 18rem),
+      repeating-linear-gradient(90deg, rgba(244, 247, 232, 0.035) 0 1px, transparent 1px 5.5rem),
+      repeating-linear-gradient(0deg, rgba(244, 247, 232, 0.026) 0 1px, transparent 1px 5.5rem);
+    pointer-events: none;
+  }
+
+  .games-spotlight-copy,
+  .games-spotlight-media,
+  .games-spotlight-selector {
+    position: relative;
+    z-index: 2;
+    background: rgba(16, 19, 27, 0.8);
+  }
+
+  .games-spotlight-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: clamp(1.2rem, 2.6vw, 2.4rem);
+    padding: clamp(1.1rem, 2.6vw, 2.2rem);
+  }
+
+  .games-spotlight-copy__top,
+  .games-spotlight-actions,
+  .games-spotlight-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .games-spotlight-copy__top {
+    justify-content: space-between;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+  }
+
+  .games-spotlight-copy__top span:last-child {
+    color: var(--color-accent);
+  }
+
+  .games-spotlight-copy__title {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .games-spotlight-copy__title img {
+    width: clamp(4.25rem, 6vw, 5.5rem);
+    height: clamp(4.25rem, 6vw, 5.5rem);
+    border: 1px solid rgba(244, 247, 232, 0.38);
+    border-radius: 18px;
+    background: rgba(7, 8, 13, 0.88);
+    box-shadow:
+      0 18px 44px rgba(0, 0, 0, 0.36),
+      0 0 0 1px rgba(200, 255, 61, 0.12);
+    object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
+  }
+
+  .games-spotlight-copy h2 {
+    max-width: 9ch;
+    font-size: clamp(2.6rem, 5.4vw, 6.8rem);
+    line-height: 0.9;
+  }
+
+  .games-spotlight-copy p {
+    max-width: 42ch;
+    color: rgba(244, 247, 232, 0.74);
+    font-size: clamp(0.98rem, 1.2vw, 1.12rem);
+  }
+
+  .games-spotlight-tags span {
+    border: 1px solid rgba(244, 247, 232, 0.16);
+    border-radius: 999px;
+    background: rgba(244, 247, 232, 0.06);
+    color: var(--color-foreground);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    padding: 0.38rem 0.58rem;
+    text-transform: uppercase;
+  }
+
+  .games-spotlight-media {
+    position: relative;
+    min-height: clamp(27rem, 46vw, 42rem);
+    overflow: hidden;
+  }
+
+  .games-spotlight-media::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background:
+      linear-gradient(180deg, rgba(7, 8, 13, 0.05), rgba(7, 8, 13, 0.52) 72%, rgba(7, 8, 13, 0.74)),
+      radial-gradient(circle at 82% 14%, rgba(200, 255, 61, 0.22), transparent 18rem);
+    pointer-events: none;
+  }
+
+  .games-spotlight-media > img {
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    display: block;
+    object-fit: cover;
+    filter: saturate(1.06) contrast(1.04);
+  }
+
+  .games-spotlight-release {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    border: 1px solid rgba(244, 247, 232, 0.2);
+    border-radius: 999px;
+    background: rgba(7, 8, 13, 0.68);
+    color: var(--color-foreground);
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    padding: 0.72rem 0.9rem;
+    text-transform: uppercase;
+    backdrop-filter: blur(16px);
+  }
+
+  .games-spotlight-release svg {
+    color: var(--color-accent);
+  }
+
+  .games-spotlight-selector {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--color-border-soft);
+  }
+
+  .games-spotlight-selector button {
+    display: grid;
+    min-width: 0;
+    min-height: 6.6rem;
+    align-content: center;
+    justify-items: center;
+    gap: 0.52rem;
+    border: 0;
+    background: rgba(16, 19, 27, 0.86);
+    color: var(--color-muted);
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    padding: 0.85rem 0.6rem;
+    text-align: center;
+    text-transform: uppercase;
+    transition:
+      background-color 0.24s var(--ease-brand),
+      color 0.24s var(--ease-brand);
+  }
+
+  .games-spotlight-selector button:hover,
+  .games-spotlight-selector button:focus-visible,
+  .games-spotlight-selector button.is-active {
+    background:
+      radial-gradient(circle at 50% 16%, rgba(200, 255, 61, 0.2), transparent 4rem),
+      rgba(24, 28, 35, 0.96);
+    color: var(--color-foreground);
+  }
+
+  .games-spotlight-selector img {
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid rgba(244, 247, 232, 0.28);
+    border-radius: 13px;
+    background: rgba(7, 8, 13, 0.8);
+    object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
+    transition:
+      border-color 0.24s var(--ease-brand),
+      box-shadow 0.24s var(--ease-brand),
+      transform 0.24s var(--ease-brand);
+  }
+
+  .games-spotlight-selector button:hover img,
+  .games-spotlight-selector button:focus-visible img,
+  .games-spotlight-selector button.is-active img {
+    border-color: rgba(200, 255, 61, 0.72);
+    box-shadow: 0 0 24px rgba(200, 255, 61, 0.14);
+    transform: translateY(-2px);
+  }
+
+  .games-spotlight-selector span {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   .about-hero,
   .contact-hero {
     display: grid;
@@ -3720,6 +3938,18 @@
     grid-template-columns: 1fr;
   }
 
+  .games-spotlight {
+    grid-template-columns: 1fr;
+  }
+
+  .games-spotlight-media {
+    min-height: 25rem;
+  }
+
+  .games-spotlight-selector {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .contact-routes,
   .contact-lanes {
     grid-template-columns: 1fr;
@@ -3876,6 +4106,28 @@
 
   .games-filter-buttons button {
     min-height: 2.7rem;
+  }
+
+  .games-spotlight-copy h2 {
+    font-size: clamp(2.6rem, 15vw, 4.8rem);
+  }
+
+  .games-spotlight-media {
+    min-height: 19rem;
+  }
+
+  .games-spotlight-release {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    font-size: 0.68rem;
+  }
+
+  .games-spotlight-selector {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .games-spotlight-selector button {
+    min-height: 5.8rem;
   }
 
   .blog-console__list {
