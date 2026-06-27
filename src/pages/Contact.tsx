@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Code2, Mail, Send, SquareArrowOutUpRight } from "lucide-react";
+import { Bug, Code2, Handshake, Mail, Send, Sparkles, SquareArrowOutUpRight } from "lucide-react";
 import { Seo } from "@/components/seo/Seo";
 
 const CONTACT_INFO = [
@@ -21,6 +21,27 @@ const CONTACT_INFO = [
     title: "X",
     value: "@chuangcius",
     link: "https://x.com/chuangcius",
+  },
+] as const;
+
+const CONTACT_LANES = [
+  {
+    icon: <Bug size={22} />,
+    label: "Player report",
+    response: "Bug, balance, unclear level, device issue",
+    detail: "Include game title, device model, and what happened right before the issue.",
+  },
+  {
+    icon: <Handshake size={22} />,
+    label: "Partnership",
+    response: "Distribution, publishing, promotion, stores",
+    detail: "Send context, timeline, region, and the exact decision you need from us.",
+  },
+  {
+    icon: <Sparkles size={22} />,
+    label: "Press note",
+    response: "Screenshots, studio info, launch questions",
+    detail: "Tell us the outlet, deadline, topic, and which game you are covering.",
   },
 ] as const;
 
@@ -134,12 +155,43 @@ const Contact = () => {
 
       <section className="contact-routes">
         {CONTACT_INFO.map((item) => (
-          <a key={item.title} href={item.link} target="_blank" rel="noopener noreferrer" className="contact-route">
+          <a
+            key={item.title}
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-route"
+          >
             <span aria-hidden="true">{item.icon}</span>
             <strong>{item.title}</strong>
             <em>{item.value}</em>
           </a>
         ))}
+      </section>
+
+      <section className="contact-intake">
+        <div className="contact-intake-copy">
+          <span className="status-text">Routing board</span>
+          <h2>What reaches the right person fastest?</h2>
+          <p>
+            A clear note beats a long one. Pick the nearest lane, include concrete details, and we
+            can answer without making you repeat the setup.
+          </p>
+        </div>
+
+        <div className="contact-lanes">
+          {CONTACT_LANES.map((lane, index) => (
+            <article key={lane.label} className="contact-lane">
+              <div>
+                <span aria-hidden="true">{lane.icon}</span>
+                <em>{String(index + 1).padStart(2, "0")}</em>
+              </div>
+              <strong>{lane.label}</strong>
+              <p>{lane.response}</p>
+              <small>{lane.detail}</small>
+            </article>
+          ))}
+        </div>
       </section>
     </div>
   );

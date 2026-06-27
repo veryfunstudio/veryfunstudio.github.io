@@ -1685,6 +1685,113 @@
     overflow-wrap: anywhere;
   }
 
+  .contact-intake {
+    display: grid;
+    grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.28fr);
+    gap: 0.8rem;
+    padding-top: 0.8rem;
+  }
+
+  .contact-intake-copy,
+  .contact-lane {
+    border: 1px solid var(--color-border-soft);
+    border-radius: 8px;
+    background:
+      linear-gradient(145deg, rgba(244, 247, 232, 0.075), rgba(244, 247, 232, 0.018)),
+      rgba(16, 19, 27, 0.72);
+    backdrop-filter: blur(18px);
+  }
+
+  .contact-intake-copy {
+    display: flex;
+    min-height: 25rem;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: clamp(1.25rem, 2.4vw, 2rem);
+  }
+
+  .contact-intake-copy h2 {
+    max-width: 9ch;
+    font-size: clamp(2.6rem, 4.8vw, 5.8rem);
+  }
+
+  .contact-intake-copy p {
+    max-width: 36ch;
+    color: var(--color-muted);
+  }
+
+  .contact-lanes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+
+  .contact-lane {
+    display: flex;
+    min-height: 25rem;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.4rem;
+    padding: clamp(1.1rem, 2vw, 1.6rem);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .contact-lane::after {
+    position: absolute;
+    right: -30%;
+    bottom: -24%;
+    width: 14rem;
+    height: 14rem;
+    content: "";
+    background: radial-gradient(circle, rgba(200, 255, 61, 0.12), transparent 68%);
+    pointer-events: none;
+  }
+
+  .contact-lane > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .contact-lane > div span {
+    display: grid;
+    width: 3rem;
+    height: 3rem;
+    place-items: center;
+    border: 1px solid rgba(200, 255, 61, 0.34);
+    border-radius: 999px;
+    color: var(--color-accent);
+  }
+
+  .contact-lane em {
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-style: normal;
+  }
+
+  .contact-lane strong {
+    max-width: 8ch;
+    color: var(--color-foreground);
+    font-size: clamp(1.9rem, 3vw, 3.4rem);
+    line-height: 0.96;
+  }
+
+  .contact-lane p {
+    color: var(--color-foreground);
+    font-weight: 650;
+    line-height: 1.25;
+  }
+
+  .contact-lane small {
+    color: var(--color-muted);
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
   .game-detail-hero,
   .blog-hero {
     display: grid;
@@ -2625,6 +2732,14 @@
     max-width: 54ch;
   }
 
+  .contact-intake {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-intake-copy {
+    min-height: auto;
+  }
+
   .game-detail-brief,
   .game-detail-session,
   .game-detail-system,
@@ -2752,6 +2867,15 @@
 
   .games-filter-strip {
     grid-template-columns: 1fr;
+  }
+
+  .contact-routes,
+  .contact-lanes {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-lane {
+    min-height: 17rem;
   }
 
   .blog-index-card {
@@ -2901,6 +3025,10 @@
 
   .game-detail-session-step {
     min-height: 13rem;
+  }
+
+  .contact-intake-copy h2 {
+    font-size: clamp(3rem, 13vw, 5.8rem);
   }
 
   .site-footer__catalog {
