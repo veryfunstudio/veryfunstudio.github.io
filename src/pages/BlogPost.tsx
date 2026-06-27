@@ -25,7 +25,6 @@ const BlogPost = () => {
 
   const seoTitle = post.title.length > 40 ? `${post.title.slice(0, 37)}...` : post.title;
   const relatedPosts = BLOG_POSTS.filter((item) => item.id !== post.id).slice(0, 2);
-  const readingMinutes = Math.max(3, Math.ceil(post.content.join(" ").split(/\s+/).length / 180));
 
   return (
     <article className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -129,8 +128,7 @@ const BlogPost = () => {
 
       <section className="article-next">
         <div className="article-next__intro">
-          <span className="status-text">{readingMinutes} minute read</span>
-          <h2>More notes from the studio.</h2>
+          <h2>More notes.</h2>
           <Link to="/blog" className="pill-button">
             <ArrowLeft size={16} />
             All notes
