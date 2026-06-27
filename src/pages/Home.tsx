@@ -112,10 +112,6 @@ export default function Home() {
                       loading="eager"
                       decoding="async"
                     />
-                    <div className="signal-readout">
-                      <span>{launchGame.technologies[1]}</span>
-                      <strong>{launchGame.title}</strong>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -154,9 +150,8 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            {PRINCIPLES.map((item, index) => (
+            {PRINCIPLES.map((item) => (
               <article key={item.code} className="principle-cell">
-                <span>{String(index + 1).padStart(2, "0")}</span>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
               </article>
