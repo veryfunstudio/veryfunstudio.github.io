@@ -1353,25 +1353,14 @@
     width: fit-content;
     max-width: 100%;
     align-items: center;
-    gap: 0.65rem;
     border: 1px solid rgba(244, 247, 232, 0.14);
     border-radius: var(--radius-button);
     background: rgba(244, 247, 232, 0.045);
     color: var(--color-muted);
     font-family: var(--font-mono);
     font-size: 0.72rem;
-    padding: 0.32rem 0.78rem 0.32rem 0.36rem;
+    padding: 0.48rem 0.78rem;
     text-transform: uppercase;
-  }
-
-  .game-detail-mark img {
-    width: 2rem;
-    height: 2rem;
-    flex: 0 0 auto;
-    border: 1px solid rgba(244, 247, 232, 0.24);
-    border-radius: 8px;
-    background: rgba(244, 247, 232, 0.88);
-    object-fit: cover;
   }
 
   .game-detail-copy p,

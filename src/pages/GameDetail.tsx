@@ -100,7 +100,6 @@ const GameDetail = () => {
           </Link>
           <div>
             <span className="game-detail-mark">
-              <img src={game.icon} alt="" width={32} height={32} loading="eager" decoding="async" />
               <span>{primaryTags.join(" / ")}</span>
             </span>
             <h1>{game.title}</h1>
