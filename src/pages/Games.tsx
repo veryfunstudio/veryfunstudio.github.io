@@ -1,3 +1,4 @@
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
 import { ArrowUpRight, Download, Grid3X3, Layers3 } from "lucide-react";
@@ -6,8 +7,26 @@ import { Seo } from "@/components/seo/Seo";
 import GameCard from "@/components/common/GameCard";
 
 const Games = () => {
+  const [activeGenre, setActiveGenre] = useState("All");
   const newest =
     [...GAMES].sort((a, b) => b.releaseDate.localeCompare(a.releaseDate))[0] ?? GAMES[0];
+  const genreCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const game of GAMES) {
+      for (const genre of game.technologies.slice(1)) {
+        counts.set(genre, (counts.get(genre) ?? 0) + 1);
+      }
+    }
+    return counts;
+  }, []);
+  const genres = useMemo(() => ["All", ...genreCounts.keys()], [genreCounts]);
+  const visibleGames = useMemo(
+    () =>
+      activeGenre === "All"
+        ? GAMES
+        : GAMES.filter((game) => game.technologies.slice(1).includes(activeGenre)),
+    [activeGenre],
+  );
 
   return (
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -79,27 +98,56 @@ const Games = () => {
         </motion.div>
       </section>
 
-      <section className="games-filter-strip" aria-label="Catalog summary">
-        <div>
-          <Grid3X3 size={18} />
-          <span>{GAMES.length} releases</span>
+      <section className="games-filter-strip" aria-label="Catalog controls">
+        <div className="games-filter-metrics">
+          <div>
+            <Grid3X3 size={18} />
+            <span>{GAMES.length} releases</span>
+          </div>
+          <div>
+            <Layers3 size={18} />
+            <span>{genreCounts.size} genres</span>
+          </div>
+          <div>
+            <Download size={18} />
+            <span>Google Play</span>
+          </div>
         </div>
-        <div>
-          <Layers3 size={18} />
-          <span>{new Set(GAMES.flatMap((game) => game.technologies.slice(1))).size} genres</span>
-        </div>
-        <div>
-          <Download size={18} />
-          <span>Google Play</span>
+        <div className="games-filter-controls">
+          <div>
+            <span className="status-text">Signal filter</span>
+            <strong>
+              {visibleGames.length} / {GAMES.length} online
+            </strong>
+          </div>
+          <div className="games-filter-buttons" role="list" aria-label="Filter games by genre">
+            {genres.map((genre) => {
+              const isActive = activeGenre === genre;
+              const count = genre === "All" ? GAMES.length : (genreCounts.get(genre) ?? 0);
+
+              return (
+                <button
+                  key={genre}
+                  type="button"
+                  className={isActive ? "is-active" : ""}
+                  onClick={() => setActiveGenre(genre)}
+                  aria-pressed={isActive}
+                >
+                  <span>{genre}</span>
+                  <em>{String(count).padStart(2, "0")}</em>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </section>
 
       <section className="pt-14 lg:pt-20">
-        <div className="game-grid">
-          {GAMES.map((game, index) => (
+        <motion.div layout className="game-grid">
+          {visibleGames.map((game, index) => (
             <GameCard key={game.id} game={game} index={index} headingLevel="h2" />
           ))}
-        </div>
+        </motion.div>
       </section>
     </div>
   );

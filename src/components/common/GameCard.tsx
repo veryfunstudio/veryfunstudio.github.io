@@ -71,7 +71,7 @@ export default function GameCard({ game, index, headingLevel = "h3" }: GameCardP
           loading={index < 2 ? "eager" : "lazy"}
           decoding="async"
         />
-        <span className="status-text">{String(index + 1).padStart(2, "0")}</span>
+        <span className="status-text">{String(game.id).padStart(2, "0")}</span>
         <Heading>{game.title}</Heading>
         <p>{game.description}</p>
         <div>
