@@ -33,6 +33,8 @@ const BlogPost = () => {
         description={post.excerpt}
         path={`/blog/${post.id}`}
         image={post.image}
+        imageWidth={1024}
+        imageHeight={768}
         type="article"
         publishedTime={post.date}
       />

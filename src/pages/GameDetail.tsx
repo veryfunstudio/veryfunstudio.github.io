@@ -33,6 +33,8 @@ const GameDetail = () => {
         description={game.description}
         path={`/games/${game.slug}`}
         image={game.image}
+        imageWidth={1200}
+        imageHeight={630}
         type="article"
       />
       <JsonLd

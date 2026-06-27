@@ -28,6 +28,9 @@ const About = () => {
         title="About the Studio"
         description="Independent mobile game studio crafting calming, free-to-play puzzle games. Meet the team behind Tile Journey, Pearl Coloring, and more."
         path="/about"
+        image="/images/about.jpeg"
+        imageWidth={864}
+        imageHeight={864}
       />
 
       <section className="about-hero">

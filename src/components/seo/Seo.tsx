@@ -1,7 +1,9 @@
 import { SITE_URL } from "@/lib/constants";
 
 const SITE_NAME = "VeryFun Company";
-const DEFAULT_OG_IMAGE = `${SITE_URL}/images/about.jpeg`;
+const DEFAULT_OG_IMAGE = `${SITE_URL}/images/tile-journey.webp`;
+const DEFAULT_OG_IMAGE_WIDTH = 1200;
+const DEFAULT_OG_IMAGE_HEIGHT = 630;
 
 interface SeoProps {
   title: string;
@@ -10,6 +12,10 @@ interface SeoProps {
   path?: string;
   /** Absolute URL or path-relative. Falls back to the default site image. */
   image?: string;
+  /** Pixel width for the Open Graph image. */
+  imageWidth?: number;
+  /** Pixel height for the Open Graph image. */
+  imageHeight?: number;
   /** og:type. `website` for most pages, `article` for blog posts. */
   type?: "website" | "article";
   /** For articles: ISO date string. */
@@ -27,6 +33,8 @@ export function Seo({
   description,
   path = "/",
   image = DEFAULT_OG_IMAGE,
+  imageWidth = DEFAULT_OG_IMAGE_WIDTH,
+  imageHeight = DEFAULT_OG_IMAGE_HEIGHT,
   type = "website",
   publishedTime,
   noindex = false,
@@ -47,8 +55,8 @@ export function Seo({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={absoluteImage} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
+      <meta property="og:image:width" content={String(imageWidth)} />
+      <meta property="og:image:height" content={String(imageHeight)} />
       <meta property="og:url" content={url} />
       {publishedTime && <meta property="article:published_time" content={publishedTime} />}
 
