@@ -3355,11 +3355,31 @@
     width: fit-content;
   }
 
+  .article-masthead {
+    display: grid;
+    min-height: min(44rem, calc(100svh - 10rem));
+    grid-template-columns: minmax(0, 0.92fr) minmax(22rem, 1.08fr);
+    gap: clamp(0.8rem, 2vw, 1rem);
+    align-items: stretch;
+  }
+
   .article-hero {
+    position: relative;
     display: grid;
     min-width: 0;
+    align-content: end;
     gap: 1.4rem;
+    overflow: hidden;
     padding: clamp(1.25rem, 3vw, 3rem);
+  }
+
+  .article-hero::after {
+    position: absolute;
+    inset: auto -12% -28% 18%;
+    height: 18rem;
+    content: "";
+    background: radial-gradient(circle, rgba(200, 255, 61, 0.14), transparent 66%);
+    pointer-events: none;
   }
 
   .article-hero > div {
@@ -3370,8 +3390,9 @@
 
   .article-hero h1 {
     max-width: 14ch;
-    font-size: clamp(3rem, 7vw, 8rem);
-    overflow-wrap: anywhere;
+    font-size: clamp(3rem, 5.4vw, 6.35rem);
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .article-hero p {
@@ -3382,15 +3403,36 @@
   }
 
   .article-image {
-    margin-top: 0.8rem;
+    position: relative;
     overflow: hidden;
+    box-shadow: 0 34px 110px rgba(0, 0, 0, 0.32);
+  }
+
+  .article-image::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background:
+      linear-gradient(90deg, rgba(244, 247, 232, 0.035) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(244, 247, 232, 0.026) 1px, transparent 1px),
+      radial-gradient(circle at 78% 12%, rgba(200, 255, 61, 0.16), transparent 18rem),
+      linear-gradient(180deg, rgba(7, 8, 13, 0.02), rgba(7, 8, 13, 0.08) 48%, rgba(7, 8, 13, 0.42));
+    background-size:
+      4rem 4rem,
+      4rem 4rem,
+      auto,
+      auto;
+    pointer-events: none;
   }
 
   .article-image img {
     width: 100%;
-    max-height: 34rem;
+    height: 100%;
+    min-height: 100%;
     display: block;
     object-fit: cover;
+    filter: saturate(1.12) contrast(1.07) brightness(0.96);
+    opacity: 0.94;
   }
 
   .article-body {
@@ -3999,6 +4041,15 @@
     grid-template-columns: 1fr;
   }
 
+  .article-masthead {
+    min-height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .article-image {
+    min-height: 26rem;
+  }
+
   .blog-console,
   .blog-console__preview {
     grid-template-columns: 1fr;
@@ -4491,6 +4542,10 @@
     line-height: 1;
     overflow-wrap: normal;
     word-break: normal;
+  }
+
+  .article-image {
+    min-height: 20rem;
   }
 }
 

@@ -84,40 +84,42 @@ const BlogPost = () => {
         }}
       />
 
-      <motion.header
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="article-hero"
-      >
-        <Link to="/blog" className="game-detail-back">
-          <ArrowLeft size={16} />
-          Blog
-        </Link>
-        <div>
-          <span>{post.category}</span>
-          <time dateTime={post.date}>{formatDate(post.date)}</time>
-        </div>
-        <h1>{post.title}</h1>
-        <p>{post.excerpt}</p>
-      </motion.header>
+      <section className="article-masthead">
+        <motion.header
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="article-hero"
+        >
+          <Link to="/blog" className="game-detail-back">
+            <ArrowLeft size={16} />
+            Blog
+          </Link>
+          <div>
+            <span>{post.category}</span>
+            <time dateTime={post.date}>{formatDate(post.date)}</time>
+          </div>
+          <h1>{post.title}</h1>
+          <p>{post.excerpt}</p>
+        </motion.header>
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.97 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-        className="article-image"
-      >
-        <img
-          src={post.image}
-          alt={`Featured image for ${post.title}`}
-          width={1200}
-          height={800}
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-        />
-      </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          className="article-image"
+        >
+          <img
+            src={post.image}
+            alt={`Featured image for ${post.title}`}
+            width={1200}
+            height={800}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+          />
+        </motion.div>
+      </section>
 
       <section className="article-body">
         {post.content.map((paragraph, index) => (
