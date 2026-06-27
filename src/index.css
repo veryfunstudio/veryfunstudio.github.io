@@ -586,6 +586,28 @@
       transform 0.2s var(--ease-brand);
   }
 
+  .site-footer__links a > span {
+    display: grid;
+    gap: 0.12rem;
+    line-height: 1;
+  }
+
+  .site-footer__links strong,
+  .site-footer__links em {
+    font-style: normal;
+  }
+
+  .site-footer__links strong {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+  }
+
+  .site-footer__links em {
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+  }
+
   .site-footer__links a:hover {
     border-color: var(--color-border-strong);
     background: rgba(244, 247, 232, 0.06);

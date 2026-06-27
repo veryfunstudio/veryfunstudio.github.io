@@ -6,6 +6,7 @@ import { GAMES } from "@/data/games";
 import { BRAND } from "@/lib/constants";
 
 const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/developer?id=songxugang";
+const GOOGLE_PLAY_DEVELOPER = "songxugang";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -86,27 +87,37 @@ const Footer = () => {
                 href={GOOGLE_PLAY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Visit our Google Play developer page"
+                aria-label={`Visit ${GOOGLE_PLAY_DEVELOPER} on Google Play`}
               >
                 <FaGooglePlay size={16} />
-                Google Play
+                <span>
+                  <strong>Google Play</strong>
+                  <em>{GOOGLE_PLAY_DEVELOPER}</em>
+                </span>
               </a>
               <a
                 href={BRAND.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Visit our GitHub page"
+                aria-label="Visit cookabc on GitHub"
               >
                 <FaGithub size={16} />
-                GitHub
+                <span>
+                  <strong>GitHub</strong>
+                  <em>cookabc</em>
+                </span>
               </a>
               <a
                 href={BRAND.social.x}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Visit our X page"
+                aria-label="Visit chuangcius on X / Twitter"
               >
-                <FaXTwitter size={16} />X
+                <FaXTwitter size={16} />
+                <span>
+                  <strong>X / Twitter</strong>
+                  <em>@chuangcius</em>
+                </span>
               </a>
             </nav>
           </div>
