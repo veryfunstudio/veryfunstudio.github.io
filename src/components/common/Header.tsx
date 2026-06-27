@@ -15,7 +15,6 @@ const Header = () => {
   const location = useLocation();
   const isItemActive = (path: string) =>
     path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
-  const activeItem = NAV_ITEMS.find((item) => isItemActive(item.path)) ?? NAV_ITEMS[0];
 
   useEffect(() => {
     setMobileOpen(false);
@@ -61,11 +60,6 @@ const Header = () => {
             );
           })}
         </nav>
-
-        <div className="site-header__route hidden xl:flex" aria-hidden="true">
-          <span>{activeItem.label}</span>
-          <i />
-        </div>
 
         <button
           className="flex min-h-[44px] min-w-[44px] items-center justify-center text-foreground md:hidden"

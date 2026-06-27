@@ -1,6 +1,6 @@
 "use client";
 
-import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useMemo } from "react";
 import { Link } from "react-router";
 import { ArrowRight, Download, Sparkles } from "lucide-react";
 import { GAMES } from "@/data/games";
@@ -54,22 +54,8 @@ const METRICS = [
 ];
 
 export default function Home() {
-  const [time, setTime] = useState("");
-
   const featured = useMemo(() => GAMES.slice(0, 3), []);
   const launchGame = GAMES[1] ?? GAMES[0];
-
-  useEffect(() => {
-    const update = () => {
-      const now = new Date();
-      setTime(
-        `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")} GMT+8`,
-      );
-    };
-    update();
-    const id = setInterval(update, 60000);
-    return () => clearInterval(id);
-  }, []);
 
   return (
     <div className="relative overflow-hidden">
@@ -90,18 +76,19 @@ export default function Home() {
       <div className="relative z-10">
         <section className="relative min-h-[100svh] px-[3.125vw] pb-8 pt-24">
           <div className="hero-shell">
-            <div className="hero-reveal flex items-center justify-between gap-4">
+            <div className="hero-reveal flex items-center gap-4">
               <span className="bracket-tag">Indie puzzle lab</span>
-              <span className="status-text hidden sm:inline">{time}</span>
             </div>
 
             <div className="grid flex-1 items-center gap-10 py-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(340px,0.82fr)] lg:py-0">
               <div className="space-y-8">
                 <div className="hero-reveal space-y-2">
                   <p className="label-tag text-accent">VeryFun Company</p>
-                  <h1 className="kinetic-title max-w-[11ch]">
-                    Quiet games.
-                    <span>Bright logic.</span>
+                  <h1
+                    className="kinetic-title max-w-[11ch]"
+                    aria-label="Quiet games. Bright logic."
+                  >
+                    Quiet games. <span aria-hidden="true">Bright logic.</span>
                   </h1>
                 </div>
 
