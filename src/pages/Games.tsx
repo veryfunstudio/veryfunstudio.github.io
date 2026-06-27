@@ -62,17 +62,7 @@ const Games = () => {
               decoding="async"
             />
             <div className="games-hero-panel__footer">
-              <span className="games-hero-panel__title">
-                <img
-                  src={newest.icon}
-                  alt=""
-                  width={32}
-                  height={32}
-                  loading="eager"
-                  decoding="async"
-                />
-                <strong>{newest.title}</strong>
-              </span>
+              <strong>{newest.title}</strong>
               <span>{newest.technologies.slice(1).join(" / ")}</span>
             </div>
           </div>
@@ -111,14 +101,6 @@ const Games = () => {
 
               <div className="catalog-card__body">
                 <div className="catalog-card__title">
-                  <img
-                    src={game.icon}
-                    alt=""
-                    width={32}
-                    height={32}
-                    loading="lazy"
-                    decoding="async"
-                  />
                   <h3>{game.title}</h3>
                 </div>
                 <p>{game.description}</p>

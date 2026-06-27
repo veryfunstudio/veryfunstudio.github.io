@@ -847,24 +847,8 @@
     backdrop-filter: blur(16px);
   }
 
-  .games-hero-panel__title {
-    display: flex;
-    min-width: 0;
-    align-items: center;
-    gap: 0.7rem;
-  }
-
-  .games-hero-panel__title img {
-    width: 2rem;
-    height: 2rem;
-    flex: 0 0 auto;
-    border: 1px solid rgba(244, 247, 232, 0.24);
-    border-radius: 8px;
-    background: rgba(244, 247, 232, 0.88);
-    object-fit: cover;
-  }
-
   .games-hero-panel__footer strong {
+    min-width: 0;
     color: var(--color-foreground);
     font-size: clamp(1.4rem, 2.4vw, 2.5rem);
     line-height: 1;
@@ -976,24 +960,13 @@
   }
 
   .catalog-card__title {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-
-  .catalog-card__title img {
-    width: 2rem;
-    height: 2rem;
-    flex: 0 0 auto;
-    border: 1px solid rgba(244, 247, 232, 0.28);
-    border-radius: 8px;
-    background: rgba(244, 247, 232, 0.88);
-    object-fit: cover;
+    min-width: 0;
   }
 
   .catalog-card__title h3 {
+    max-width: 11ch;
     color: var(--color-foreground);
-    font-size: clamp(1.55rem, 2.1vw, 2.45rem);
+    font-size: clamp(1.8rem, 2.35vw, 2.8rem);
     line-height: 0.98;
   }
 
