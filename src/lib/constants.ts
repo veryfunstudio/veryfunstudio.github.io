@@ -1,4 +1,4 @@
-/** Canonical site origin. Single source of truth — import from here, not from Seo.tsx or App.tsx. */
+/** Canonical site origin. Single source of truth: import from here, not from Seo.tsx or App.tsx. */
 export const SITE_URL = "https://cookabc.github.io";
 
 export const BRAND = {

@@ -1,107 +1,115 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router";
+import { ArrowUpRight, Download, Grid3X3, Layers3 } from "lucide-react";
 import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 
 const Games = () => {
+  const newest = [...GAMES].sort((a, b) => b.releaseDate.localeCompare(a.releaseDate))[0] ?? GAMES[0];
+
   return (
-    <div>
+    <div className="relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
       <Seo
         title="Our Mobile Games"
         description="Browse all six free mobile puzzle games from VeryFun Company: Sudoku, Tile Journey, Word Search, Arrow Out, Pearl, Bubble."
         path="/games"
       />
-      <section className="py-20">
-        <div className="mx-auto max-w-[80rem] px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="mb-4 flex items-center gap-3">
-              <span className="rounded-full bg-accent-soft px-3 py-1 font-patrick text-sm font-bold text-accent">
-                {GAMES.length} free games
-              </span>
-              <span className="h-px flex-1 bg-border-soft" aria-hidden="true" />
-            </div>
-            <h1 className="mb-4 font-kalam text-4xl font-bold text-foreground sm:text-5xl">
-              Our Games
-            </h1>
-            <p className="max-w-2xl font-patrick text-xl text-foreground">
-              Each one is built to respect your time — no paywalls, no timers, just puzzles that
-              feel good to solve.
+
+      <section className="relative">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="games-hero"
+        >
+          <div className="games-hero-copy">
+            <span className="bracket-tag">Playable catalog</span>
+            <h1>Six boards, one quiet rhythm.</h1>
+            <p>
+              Pick the kind of puzzle your brain wants right now. Number logic, word grids,
+              tile matching, sorting, and quick arcade clearing all live here.
             </p>
-          </motion.div>
+            <div className="games-hero-actions">
+              <a
+                href={newest.googlePlayUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pill-button pill-button--accent"
+              >
+                <Download size={16} />
+                Latest game
+              </a>
+              <Link to={`/games/${newest.slug}`} className="pill-button">
+                Details
+                <ArrowUpRight size={16} />
+              </Link>
+            </div>
+          </div>
+
+          <div className="games-hero-panel">
+            <div className="games-hero-panel__header">
+              <span className="status-text">Latest release</span>
+              <span className="status-text">{newest.releaseDate}</span>
+            </div>
+            <img
+              src={newest.image}
+              alt={newest.title}
+              width={840}
+              height={630}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+            />
+            <div className="games-hero-panel__footer">
+              <strong>{newest.title}</strong>
+              <span>{newest.technologies.slice(1).join(" / ")}</span>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      <section className="games-filter-strip" aria-label="Catalog summary">
+        <div>
+          <Grid3X3 size={18} />
+          <span>{GAMES.length} releases</span>
+        </div>
+        <div>
+          <Layers3 size={18} />
+          <span>{new Set(GAMES.flatMap((game) => game.technologies.slice(1))).size} genres</span>
+        </div>
+        <div>
+          <Download size={18} />
+          <span>Google Play</span>
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="mx-auto max-w-[80rem] px-6">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {GAMES.map((game) => (
-              <article
-                key={game.id}
-                className="hand-drawn-card relative flex flex-col bg-surface p-6"
-              >
-                <div className="mb-4 flex items-center gap-4">
-                  <img
-                    src={game.icon}
-                    alt={`${game.title} icon`}
-                    width={80}
-                    height={80}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-16 w-16 flex-shrink-0 rounded-[4px] border border-border-soft bg-surface-warm object-cover"
-                  />
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-2">
-                      <h2 className="font-kalam text-xl font-bold text-foreground">{game.title}</h2>
-                      <span className="rounded-full bg-accent-soft px-2 py-0.5 font-patrick text-sm font-bold text-accent">
-                        Free
-                      </span>
-                    </div>
-                    <time
-                      dateTime={game.releaseDate}
-                      className="font-patrick text-sm text-foreground"
-                    >
-                      {game.releaseDate}
-                    </time>
-                  </div>
+      <section className="pt-14 lg:pt-20">
+        <div className="game-grid">
+          {GAMES.map((game, index) => (
+            <Link key={game.id} to={`/games/${game.slug}`} className="game-magnetic-card">
+              <div className="game-card-media">
+                <img
+                  src={game.image}
+                  alt={game.title}
+                  width={680}
+                  height={510}
+                  loading={index < 2 ? "eager" : "lazy"}
+                  decoding="async"
+                />
+              </div>
+              <div className="game-card-copy">
+                <span className="status-text">{String(index + 1).padStart(2, "0")}</span>
+                <h2>{game.title}</h2>
+                <p>{game.description}</p>
+                <div>
+                  {game.technologies.slice(1).map((tech) => (
+                    <span key={tech}>{tech}</span>
+                  ))}
                 </div>
-                <p className="mb-4 font-patrick text-base leading-relaxed text-foreground">
-                  {game.description}
-                </p>
-                <div className="mb-4">
-                  <div className="flex flex-wrap gap-1.5">
-                    {game.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-full bg-surface-tint px-2.5 py-0.5 font-patrick text-xs text-foreground"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="mt-auto flex items-center gap-3 pt-2">
-                  <Link
-                    to={`/games/${game.slug}`}
-                    className="hand-drawn-button inline-block bg-surface px-4 py-2.5 font-patrick text-sm no-underline text-foreground"
-                  >
-                    Details
-                  </Link>
-                  <a
-                    href={game.googlePlayUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-accent font-patrick text-sm"
-                  >
-                    Google Play
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
+              </div>
+              <ArrowUpRight className="game-card-arrow" size={22} />
+            </Link>
+          ))}
         </div>
       </section>
     </div>

@@ -9,48 +9,66 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto border-t-2 border-border-strong py-12">
-      <div className="mx-auto max-w-[80rem] px-6">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+    <footer className="mt-auto">
+      <div className="dash-line mx-[3.125vw]" />
+      <div className="mx-auto max-w-[80rem] px-[3.125vw] py-16 lg:py-24">
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-end">
           <div>
-            <Link to="/" className="font-kalam text-3xl font-bold text-foreground no-underline">
+            <Link
+              to="/"
+              className="font-sans text-2xl font-medium tracking-tight text-foreground no-underline uppercase"
+            >
               {BRAND.name}
             </Link>
-            <p className="mt-2 font-patrick text-foreground">{BRAND.tagline}</p>
+            <p className="mt-3 max-w-[40ch] font-sans text-base leading-relaxed text-muted">
+              {BRAND.tagline}
+            </p>
           </div>
-          <div className="flex items-center gap-6">
-            <a
-              href={GOOGLE_PLAY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex min-h-[44px] min-w-[44px] items-center justify-center text-foreground transition-colors hover:text-accent"
-              aria-label="Visit our Google Play developer page"
-            >
-              <FaGooglePlay size={24} />
-            </a>
-            <a
-              href={BRAND.social.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex min-h-[44px] min-w-[44px] items-center justify-center text-foreground transition-colors hover:text-accent"
-              aria-label="Visit our GitHub page"
-            >
-              <FaGithub size={24} />
-            </a>
-            <a
-              href={BRAND.social.x}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex min-h-[44px] min-w-[44px] items-center justify-center text-foreground transition-colors hover:text-accent"
-              aria-label="Visit our X page"
-            >
-              <FaXTwitter size={24} />
-            </a>
+
+          <div className="flex flex-col gap-6 lg:items-end">
+            <div className="flex items-center gap-3">
+              <a
+                href={GOOGLE_PLAY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pill-button"
+                aria-label="Visit our Google Play developer page"
+              >
+                <FaGooglePlay size={16} />
+                Google Play
+              </a>
+              <a
+                href={BRAND.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pill-button"
+                aria-label="Visit our GitHub page"
+              >
+                <FaGithub size={16} />
+                GitHub
+              </a>
+              <a
+                href={BRAND.social.x}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pill-button"
+                aria-label="Visit our X page"
+              >
+                <FaXTwitter size={16} />
+                X
+              </a>
+            </div>
           </div>
         </div>
-        <div className="mt-8 border-t-2 border-border-strong pt-8 text-center">
-          <p className="font-patrick text-foreground tabular-nums">
+
+        <div className="dash-line mt-16" />
+
+        <div className="mt-8 flex flex-col items-center justify-between gap-4 sm:flex-row">
+          <p className="font-sans text-sm text-muted uppercase tracking-wide">
             &copy; {currentYear} {BRAND.name}. All rights reserved.
+          </p>
+          <p className="font-sans text-sm text-muted uppercase tracking-wide">
+            Built with care. No paywalls, no timers.
           </p>
         </div>
       </div>

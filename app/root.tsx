@@ -21,7 +21,7 @@ export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Patrick+Hand&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@400&display=swap",
   },
 ];
 
@@ -31,7 +31,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#fdfbf7" />
+        <meta name="theme-color" content="#07080d" />
         <Meta />
         <Links />
       </head>
@@ -47,10 +47,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <div className="flex min-h-[100dvh] flex-col">
+      <div className="flex min-h-[100dvh] flex-col bg-background text-foreground">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:rounded-[4px] focus:border-2 focus:border-border-strong focus:bg-surface focus:px-4 focus:py-2 focus:font-patrick focus:text-foreground focus:no-underline"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:rounded-[4px] focus:border-2 focus:border-border-strong focus:bg-surface focus:px-4 focus:py-2 focus:font-sans focus:text-foreground focus:no-underline"
         >
           Skip to main content
         </a>
@@ -65,7 +65,7 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Oops!";
+  let message = "Error";
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
 

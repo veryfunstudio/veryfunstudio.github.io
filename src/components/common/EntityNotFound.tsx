@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
+import { Compass } from "lucide-react";
 
 interface EntityNotFoundProps {
   title: string;
@@ -10,11 +11,6 @@ interface EntityNotFoundProps {
   secondaryLabel?: string;
 }
 
-/**
- * Inline 404 fallback for detail pages (e.g. /games/:slug, /blog/:id)
- * when the looked-up entity doesn't exist. Distinct from the top-level
- * NotFound page, which handles the catch-all "*" route.
- */
 const EntityNotFound = ({
   title,
   message,
@@ -24,34 +20,28 @@ const EntityNotFound = ({
   secondaryLabel,
 }: EntityNotFoundProps) => {
   return (
-    <section className="py-20">
-      <div className="mx-auto max-w-[80rem] px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <h1 className="mb-4 font-kalam text-6xl font-bold text-accent">404</h1>
-          <p className="mb-2 font-patrick text-2xl text-foreground">{title}</p>
-          <p className="mb-8 font-patrick text-lg text-muted">{message}</p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              to={backTo}
-              className="hand-drawn-button inline-block bg-surface px-8 py-3 font-patrick text-lg no-underline text-foreground"
-            >
-              ← {backLabel}
+    <section className="error-stage px-[3.125vw] py-28 lg:py-36">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="error-panel"
+      >
+        <Compass size={54} strokeWidth={1.5} />
+        <span className="status-text">404</span>
+        <h1>{title}</h1>
+        <p>{message}</p>
+        <div className="flex flex-wrap justify-center gap-3">
+          <Link to={backTo} className="pill-button pill-button--accent">
+            {backLabel}
+          </Link>
+          {secondaryTo && secondaryLabel && (
+            <Link to={secondaryTo} className="pill-button">
+              {secondaryLabel}
             </Link>
-            {secondaryTo && secondaryLabel && (
-              <Link
-                to={secondaryTo}
-                className="hand-drawn-button inline-block bg-foreground px-8 py-3 font-patrick text-lg no-underline text-background"
-              >
-                {secondaryLabel}
-              </Link>
-            )}
-          </div>
-        </motion.div>
-      </div>
+          )}
+        </div>
+      </motion.div>
     </section>
   );
 };

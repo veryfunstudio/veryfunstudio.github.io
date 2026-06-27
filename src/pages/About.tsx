@@ -1,199 +1,144 @@
-import { useMemo } from "react";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
+import { ArrowRight, Gamepad2, Radar, Sparkles } from "lucide-react";
+import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 
-const TECH_STACK = [
-  { name: "Unity", rotation: -0.5 },
-  { name: "C#", rotation: 0.7 },
-  { name: "Android SDK", rotation: -0.3 },
-  { name: "JavaScript", rotation: 0.9 },
-  { name: "TypeScript", rotation: -0.8 },
-  { name: "React", rotation: 0.4 },
-  { name: "Tailwind CSS", rotation: -0.6 },
-  { name: "Vite", rotation: 0.2 },
-] as const;
+const TECH_STACK = ["Unity", "C#", "Android SDK", "TypeScript", "React", "Tailwind CSS"] as const;
 
 const VALUES = [
   {
-    title: "Innovation",
-    description:
-      "Continuously exploring new game mechanics and technologies to create unique gaming experiences",
-    rotation: 0.5,
+    icon: <Radar size={22} />,
+    title: "Attention is the budget",
+    body: "Every game is shaped around short, complete sessions that do not demand a streak or punish a pause.",
   },
   {
-    title: "Quality",
-    description: "Focusing on game quality and details to provide the best experience for players",
-    rotation: -0.7,
+    icon: <Gamepad2 size={22} />,
+    title: "Rules before spectacle",
+    body: "The board has to read instantly. Polish supports the puzzle instead of hiding weak mechanics.",
   },
   {
-    title: "Joy",
-    description:
-      "The core of games is bringing joy to players-this is the principle we always adhere to",
-    rotation: 0.3,
+    icon: <Sparkles size={22} />,
+    title: "Free should still feel premium",
+    body: "No paywalls, no timers, no extraction loop. The experience still deserves care, texture, and rhythm.",
   },
 ] as const;
 
 const About = () => {
-  const techRotations = useMemo(() => TECH_STACK.map((t) => t.rotation), []);
-  const valueRotations = useMemo(() => VALUES.map((v) => v.rotation), []);
+  const featured = GAMES.slice(0, 4);
 
   return (
-    <div>
+    <div className="relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
       <Seo
         title="About the Studio"
         description="Independent mobile game studio crafting calming, free-to-play puzzle games. Meet the team behind Tile Journey, Pearl Coloring, and more."
         path="/about"
       />
-      <section className="py-20">
-        <div className="mx-auto max-w-[80rem] px-6">
-          <div className="grid items-stretch gap-12 md:grid-cols-2">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="relative"
-            >
-              <img
-                src="/images/about.jpeg"
-                alt="The VeryFun Company team working together on game development"
-                width={864}
-                height={864}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                className="h-full w-full rounded-[4px] border-2 border-border-strong object-cover"
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col justify-center rounded-[4px] border-2 border-border-strong bg-surface p-8 relative"
-            >
-              <p className="mb-3 font-patrick text-sm font-bold uppercase tracking-wide text-accent">
-                Indie studio
-              </p>
-              <h1 className="mb-4 font-kalam text-4xl font-bold text-foreground sm:text-5xl">
-                About Us
-              </h1>
-              <p className="mb-6 font-patrick text-xl text-muted">
-                An indie studio crafting calming mobile puzzle games for Google Play
-              </p>
-              <h2 className="mb-6 font-kalam text-2xl font-bold text-foreground">Our Story</h2>
-              <p className="mb-4 font-patrick text-lg leading-relaxed text-foreground">
-                VeryFun Company started as a shared dream between friends who grew up playing games
-                and stayed up too late figuring out how they worked. We turned that obsession into
-                years of professional game development, then took the leap to build something of our
-                own.
-              </p>
-              <p className="mb-4 font-patrick text-lg leading-relaxed text-foreground">
-                Today we ship calming, free-to-play mobile puzzle games on Google Play - titles like
-                Classic Sudoku 2026, Tile Journey, Pearl Coloring, and the rest of our lineup. Every
-                game is built on Unity and designed around one principle: respect the player's time.
-                No paywalls blocking progress, no timers pressuring you, just puzzles that feel good
-                to solve.
-              </p>
-              <p className="font-patrick text-lg leading-relaxed text-foreground">
-                We focus on the casual puzzle space because that is where we can do our best work -
-                small, polished experiences that fit into a coffee break or a long evening, equally
-                at home on a commute or beside the couch. Six games in, and we are just getting
-                started.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
 
-      <section className="py-16">
-        <div className="mx-auto max-w-[80rem] px-6">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mx-auto mb-16 max-w-3xl text-center"
-          >
-            <h2 className="mb-2 font-kalam text-2xl font-bold text-foreground">Tech Stack</h2>
-            <p className="font-patrick text-lg text-foreground">
-              The main technologies and tools we use
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
-            {TECH_STACK.map((tech, index) => (
-              <motion.div
-                key={tech.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="hand-drawn-card flex items-center justify-center bg-surface p-6 text-center"
-                style={{ transform: `rotate(${techRotations[index]}deg)` }}
-              >
-                <h3 className="font-kalam text-lg font-bold text-foreground">{tech.name}</h3>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="mx-auto max-w-[80rem] px-6">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mx-auto mb-16 max-w-3xl text-center"
-          >
-            <h2 className="mb-2 font-kalam text-2xl font-bold text-foreground">Our Values</h2>
-            <p className="font-patrick text-lg text-foreground">
-              Our understanding and beliefs about game development
-            </p>
-          </motion.div>
-
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {VALUES.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="hand-drawn-card relative bg-surface p-8"
-                style={{ transform: `rotate(${valueRotations[index]}deg)` }}
-              >
-                <h3 className="mb-4 font-kalam text-xl font-bold text-foreground">{value.title}</h3>
-                <p className="font-patrick leading-relaxed text-foreground">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="mx-auto max-w-[80rem] px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <h2 className="mb-4 font-kalam text-3xl font-bold text-foreground">Ready to play?</h2>
-            <p className="mx-auto mb-8 max-w-2xl font-patrick text-lg text-muted">
-              All six of our games are free on Google Play. Pick one and see what we mean by
-              "respect the player's time."
-            </p>
-            <Link
-              to="/games"
-              className="hand-drawn-button inline-block bg-foreground px-8 py-3 font-patrick text-lg text-background no-underline"
-            >
-              Explore the games
+      <section className="about-hero">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="about-hero-copy"
+        >
+          <span className="bracket-tag">Studio signal</span>
+          <h1>Small team. Calm games. Sharp boards.</h1>
+          <p>
+            VeryFun Company builds free mobile puzzles for people who want a clear challenge
+            without timers, pressure systems, or noisy monetization.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link to="/games" className="pill-button pill-button--accent">
+              See games
+              <ArrowRight size={16} />
             </Link>
-          </motion.div>
+            <Link to="/contact" className="pill-button">
+              Contact
+            </Link>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          className="about-hero-media"
+        >
+          <img
+            src="/images/about.jpeg"
+            alt="VeryFun Company team workspace"
+            width={900}
+            height={900}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+          />
+          <div className="about-hero-badge">
+            <span className="status-text">released</span>
+            <strong>{String(GAMES.length).padStart(2, "0")}</strong>
+          </div>
+        </motion.div>
+      </section>
+
+      <section className="about-story">
+        <div className="dash-line" />
+        <div className="about-story-grid">
+          <div>
+            <span className="bracket-tag">Why we build</span>
+            <h2>Games for spare attention.</h2>
+          </div>
+          <div className="about-story-copy">
+            <p>
+              We started as game makers who loved figuring out why small puzzles stick. The answer
+              was rarely bigger features. It was pace, feedback, readability, and a clean reason to
+              make one more move.
+            </p>
+            <p>
+              Our catalog focuses on casual mobile play because the format asks for discipline.
+              A good puzzle has to load fast, explain itself quickly, work offline, and still feel
+              considered after hundreds of sessions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="about-stack">
+        <div className="about-stack-header">
+          <span className="bracket-tag">Production stack</span>
+          <p>Tools stay quiet. The game has to speak first.</p>
+        </div>
+        <div className="about-stack-grid">
+          {TECH_STACK.map((tech) => (
+            <div key={tech} className="about-stack-cell">
+              {tech}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="about-values">
+        {VALUES.map((value) => (
+          <article key={value.title} className="about-value-card">
+            <div aria-hidden="true">{value.icon}</div>
+            <h3>{value.title}</h3>
+            <p>{value.body}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="about-proof">
+        <div className="about-proof-copy">
+          <span className="bracket-tag">Current shelf</span>
+          <h2>Six ways to slow the room down.</h2>
+        </div>
+        <div className="about-proof-games">
+          {featured.map((game) => (
+            <Link key={game.id} to={`/games/${game.slug}`} className="about-proof-game">
+              <img src={game.icon} alt="" width={44} height={44} loading="lazy" decoding="async" />
+              <span>{game.title}</span>
+            </Link>
+          ))}
         </div>
       </section>
     </div>

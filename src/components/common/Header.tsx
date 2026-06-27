@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Link, useLocation } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,18 +13,18 @@ const Header = () => {
     path === "/" ? location.pathname === "/" : location.pathname.startsWith(path);
 
   return (
-    <header className="border-b border-border-soft py-5">
-      <div className="mx-auto flex max-w-[80rem] items-center justify-between px-6">
+    <header className="fixed top-0 left-0 right-0 z-50">
+      <div className="mx-auto flex h-16 max-w-[80rem] items-center justify-between px-[3.125vw] pt-[3.125vw]">
         <Link
           to="/"
-          className="flex min-h-[44px] items-center gap-3 font-kalam text-2xl font-bold tracking-tight text-foreground no-underline"
+          className="flex min-h-[44px] items-center gap-3 font-sans text-xl font-medium tracking-tight text-foreground no-underline uppercase"
         >
           <img
             src="/favicon.png"
             alt=""
-            width={40}
-            height={40}
-            className="h-10 w-10 shrink-0 rounded-[8px]"
+            width={28}
+            height={28}
+            className="h-7 w-7 shrink-0 rounded-[6px]"
             decoding="async"
           />
           {BRAND.name}
@@ -36,8 +38,10 @@ const Header = () => {
                 key={item.path}
                 to={item.path}
                 aria-current={isActive ? "page" : undefined}
-                className={`font-patrick text-base underline-offset-4 transition-colors ${
-                  isActive ? "text-accent" : "text-muted hover:text-foreground hover:underline"
+                className={`relative py-2 font-sans text-sm font-medium uppercase tracking-wide transition-opacity duration-150 ${
+                  isActive
+                    ? "text-foreground"
+                    : "text-foreground/50 hover:text-foreground"
                 }`}
               >
                 {item.label}
@@ -52,7 +56,7 @@ const Header = () => {
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
         >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
@@ -63,10 +67,10 @@ const Header = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="border-t border-border-soft md:hidden"
+            className="border-t border-border-soft bg-background md:hidden"
             aria-label="Mobile navigation"
           >
-            <div className="mx-auto flex max-w-[80rem] flex-col gap-4 px-6 py-4">
+            <div className="mx-auto flex max-w-[80rem] flex-col gap-1 px-6 py-4">
               {NAV_ITEMS.map((item) => {
                 const isActive = isItemActive(item.path);
                 return (
@@ -75,8 +79,10 @@ const Header = () => {
                     to={item.path}
                     onClick={() => setMobileOpen(false)}
                     aria-current={isActive ? "page" : undefined}
-                    className={`flex min-h-[44px] items-center font-patrick text-base ${
-                      isActive ? "text-accent" : "text-foreground"
+                    className={`flex min-h-[44px] items-center rounded-lg px-3 font-sans text-base uppercase ${
+                      isActive
+                        ? "bg-surface text-foreground"
+                        : "text-muted"
                     }`}
                   >
                     {item.label}

@@ -5,42 +5,31 @@ import { Seo } from "@/components/seo/Seo";
 
 const NotFound = () => {
   return (
-    <section className="py-20">
+    <section className="error-stage px-[3.125vw] py-28 lg:py-36">
       <Seo
         title="Page Not Found (404)"
         description="The page you're looking for doesn't exist on VeryFun Company."
         noindex
       />
-      <div className="mx-auto max-w-[80rem] px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <h1 className="mb-6 font-kalam text-7xl font-bold text-accent sm:text-8xl">404</h1>
-          <p className="mb-3 font-patrick text-3xl text-foreground">Oops! Page not found</p>
-          <p className="mx-auto mb-10 max-w-lg font-patrick text-xl leading-relaxed text-muted">
-            The page you&apos;re looking for seems to have wandered off into another dimension...
-          </p>
-          <div className="mb-10 flex justify-center text-muted" aria-hidden="true">
-            <Compass size={64} strokeWidth={1.5} />
-          </div>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              to="/"
-              className="hand-drawn-button inline-block bg-surface px-10 py-4 font-patrick text-xl no-underline text-foreground"
-            >
-              ← Back Home
-            </Link>
-            <Link
-              to="/games"
-              className="hand-drawn-button inline-block bg-foreground px-10 py-4 font-patrick text-xl no-underline text-background"
-            >
-              Browse our games
-            </Link>
-          </div>
-        </motion.div>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        className="error-panel"
+      >
+        <Compass size={54} strokeWidth={1.5} />
+        <span className="status-text">404</span>
+        <h1>This route is off the board.</h1>
+        <p>The page you are looking for is not part of the current VeryFun catalog.</p>
+        <div className="flex flex-wrap justify-center gap-3">
+          <Link to="/" className="pill-button">
+            Home
+          </Link>
+          <Link to="/games" className="pill-button pill-button--accent">
+            Browse games
+          </Link>
+        </div>
+      </motion.div>
     </section>
   );
 };

@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router";
 import { motion } from "framer-motion";
+import { ArrowLeft } from "lucide-react";
 import { getBlogPostById } from "@/data/blog";
 import { formatDate } from "@/lib/utils";
 import { Seo } from "@/components/seo/Seo";
@@ -14,18 +15,18 @@ const BlogPost = () => {
   if (!post) {
     return (
       <EntityNotFound
-        title="Post Not Found"
-        message="This blog post seems to have wandered off..."
+        title="Post not found"
+        message="That note is not in the archive."
         backTo="/blog"
-        backLabel="Back to Blog"
+        backLabel="Back to blog"
       />
     );
   }
 
-  const seoTitle = post.title.length > 40 ? post.title.slice(0, 37) + "…" : post.title;
+  const seoTitle = post.title.length > 40 ? `${post.title.slice(0, 37)}...` : post.title;
 
   return (
-    <article>
+    <article className="relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
       <Seo
         title={seoTitle}
         description={post.excerpt}
@@ -80,73 +81,53 @@ const BlogPost = () => {
           ],
         }}
       />
-      <section className="py-16">
-        <div className="mx-auto max-w-[80rem] px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-10"
-          >
-            <div className="mb-6 flex flex-wrap items-center gap-3">
-              <span className="rounded-full bg-surface-tint px-4 py-1.5 font-patrick text-sm text-foreground">
-                {post.category}
-              </span>
-              <time dateTime={post.date} className="font-patrick text-sm text-muted">
-                {formatDate(post.date)}
-              </time>
-            </div>
-            <h1 className="mb-6 font-kalam text-4xl font-bold leading-tight text-foreground sm:text-5xl">
-              {post.title}
-            </h1>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <img
-              src={post.image}
-              alt={`Featured image for: ${post.title}`}
-              width={1024}
-              height={768}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              className="mb-12 h-auto w-full rounded-[4px] border-2 border-border-strong sm:h-[28rem] sm:object-cover"
-            />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="mx-auto max-w-3xl"
-          >
-            {post.content.map((paragraph, index) => (
-              <p
-                key={index}
-                className="mb-6 font-patrick text-lg leading-relaxed text-foreground last:mb-0"
-              >
-                {paragraph}
-              </p>
-            ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-16 text-center"
-          >
-            <div className="hand-drawn-card inline-block bg-surface p-8">
-              <Link to="/blog" className="link-accent font-patrick text-lg font-medium">
-                ← Back to All Posts
-              </Link>
-            </div>
-          </motion.div>
+      <motion.header
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="article-hero"
+      >
+        <Link to="/blog" className="game-detail-back">
+          <ArrowLeft size={16} />
+          Blog
+        </Link>
+        <div>
+          <span>{post.category}</span>
+          <time dateTime={post.date}>{formatDate(post.date)}</time>
         </div>
+        <h1>{post.title}</h1>
+        <p>{post.excerpt}</p>
+      </motion.header>
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.97 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+        className="article-image"
+      >
+        <img
+          src={post.image}
+          alt={`Featured image for ${post.title}`}
+          width={1200}
+          height={800}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+      </motion.div>
+
+      <section className="article-body">
+        {post.content.map((paragraph, index) => (
+          <p key={index}>{paragraph}</p>
+        ))}
+      </section>
+
+      <section className="article-return">
+        <Link to="/blog" className="pill-button">
+          <ArrowLeft size={16} />
+          Back to blog
+        </Link>
       </section>
     </article>
   );
