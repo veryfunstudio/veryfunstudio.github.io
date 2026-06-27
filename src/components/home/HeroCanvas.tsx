@@ -1,5 +1,20 @@
 import { useEffect, useRef } from "react";
-import * as THREE from "three";
+import {
+  AdditiveBlending,
+  BufferAttribute,
+  BufferGeometry,
+  Color,
+  Mesh,
+  NormalBlending,
+  OrthographicCamera,
+  PerspectiveCamera,
+  PlaneGeometry,
+  Points,
+  Scene,
+  ShaderMaterial,
+  Vector2,
+  WebGLRenderer,
+} from "three";
 
 const SURFACE_VERTEX = `
 varying vec2 vUv;
@@ -134,13 +149,13 @@ export default function HeroCanvas() {
     if (!container) return;
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const pointer = new THREE.Vector2(0.5, 0.5);
-    const targetPointer = new THREE.Vector2(0.5, 0.5);
-    const resolution = new THREE.Vector2(1, 1);
+    const pointer = new Vector2(0.5, 0.5);
+    const targetPointer = new Vector2(0.5, 0.5);
+    const resolution = new Vector2(1, 1);
 
-    let renderer: THREE.WebGLRenderer;
+    let renderer: WebGLRenderer;
     try {
-      renderer = new THREE.WebGLRenderer({
+      renderer = new WebGLRenderer({
         antialias: false,
         alpha: true,
         powerPreference: "high-performance",
@@ -156,33 +171,33 @@ export default function HeroCanvas() {
     renderer.domElement.style.display = "block";
     container.appendChild(renderer.domElement);
 
-    const surfaceScene = new THREE.Scene();
-    const surfaceCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const surfaceScene = new Scene();
+    const surfaceCamera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
     const sharedUniforms = {
       uTime: { value: 0 },
       uScroll: { value: 0 },
       uResolution: { value: resolution },
       uPointer: { value: pointer },
-      uInk: { value: new THREE.Color("#07080d") },
-      uAmber: { value: new THREE.Color("#c8ff3d") },
-      uPearl: { value: new THREE.Color("#f4f7e8") },
+      uInk: { value: new Color("#07080d") },
+      uAmber: { value: new Color("#c8ff3d") },
+      uPearl: { value: new Color("#f4f7e8") },
     };
 
-    const surfaceMaterial = new THREE.ShaderMaterial({
+    const surfaceMaterial = new ShaderMaterial({
       uniforms: sharedUniforms,
       vertexShader: SURFACE_VERTEX,
       fragmentShader: SURFACE_FRAGMENT,
       transparent: true,
       depthWrite: false,
       depthTest: false,
-      blending: THREE.NormalBlending,
+      blending: NormalBlending,
     });
-    const surfaceMesh = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), surfaceMaterial);
+    const surfaceMesh = new Mesh(new PlaneGeometry(2, 2), surfaceMaterial);
     surfaceScene.add(surfaceMesh);
 
-    const particleScene = new THREE.Scene();
-    const particleCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 80);
+    const particleScene = new Scene();
+    const particleCamera = new PerspectiveCamera(45, 1, 0.1, 80);
     particleCamera.position.set(0, 0, 10);
 
     const count = reduceMotion ? 900 : 2200;
@@ -201,22 +216,22 @@ export default function HeroCanvas() {
       scales[i] = 0.06 + random() * 0.1;
     }
 
-    const particleGeometry = new THREE.BufferGeometry();
-    particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-    particleGeometry.setAttribute("aSeed", new THREE.BufferAttribute(seeds, 1));
-    particleGeometry.setAttribute("aScale", new THREE.BufferAttribute(scales, 1));
+    const particleGeometry = new BufferGeometry();
+    particleGeometry.setAttribute("position", new BufferAttribute(positions, 3));
+    particleGeometry.setAttribute("aSeed", new BufferAttribute(seeds, 1));
+    particleGeometry.setAttribute("aScale", new BufferAttribute(scales, 1));
 
-    const particleMaterial = new THREE.ShaderMaterial({
+    const particleMaterial = new ShaderMaterial({
       uniforms: sharedUniforms,
       vertexShader: PARTICLE_VERTEX,
       fragmentShader: PARTICLE_FRAGMENT,
       transparent: true,
       depthWrite: false,
       depthTest: false,
-      blending: THREE.AdditiveBlending,
+      blending: AdditiveBlending,
     });
 
-    const particles = new THREE.Points(particleGeometry, particleMaterial);
+    const particles = new Points(particleGeometry, particleMaterial);
     particleScene.add(particles);
 
     const resize = () => {
@@ -240,11 +255,11 @@ export default function HeroCanvas() {
     window.addEventListener("resize", resize);
     window.addEventListener("pointermove", updatePointer, { passive: true });
 
-    const clock = new THREE.Clock();
+    const startedAt = performance.now();
     let raf = 0;
 
     const render = () => {
-      const elapsed = clock.getElapsedTime();
+      const elapsed = (performance.now() - startedAt) / 1000;
       const speed = reduceMotion ? 0.18 : 1;
       pointer.lerp(targetPointer, reduceMotion ? 0.035 : 0.075);
       sharedUniforms.uTime.value = elapsed * speed;
