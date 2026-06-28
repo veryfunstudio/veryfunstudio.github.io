@@ -16,7 +16,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Timers can create urgency, but they often make calm puzzles feel noisy. Here is how we design pressure out of the board.",
     date: "2026-04-10",
     category: "Design Note",
-    image: "/images/challenges-opportunities-indie-game-dev.jpeg",
+    image: "/images/classic-sudoku.webp",
     content: [
       "A timer is one of the fastest ways to make a puzzle feel exciting. It is also one of the fastest ways to make a relaxed player leave. VeryFun Company games are built for spare attention, so we remove the clock unless it is truly part of the mechanic.",
       "Without a timer, the board has to carry the tension. Sudoku uses deduction. Arrow Out uses blocked paths. Tile Journey uses limited slots. The player still has decisions to make, but the pressure comes from the puzzle state instead of a countdown.",
@@ -32,7 +32,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "A mobile puzzle has only a few seconds to explain itself. The board needs to teach before any tutorial appears.",
     date: "2026-03-25",
     category: "Board Craft",
-    image: "/images/how-to-design-successful-indie-game.jpeg",
+    image: "/images/word-search-block.webp",
     content: [
       "Readable boards start with hierarchy. Before we add effects, we decide what the player must see first: the selected tile, the legal move, the blocked path, the completed group, or the next useful hint.",
       "On a phone, every visual choice competes with finger size, glare, motion, and a short session window. That is why our boards use strong silhouettes, generous hit targets, and feedback that appears near the move instead of in a distant status panel.",
@@ -48,7 +48,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Small puzzle games should feel instant. We keep runtime, art, and interaction choices pointed at low-friction play.",
     date: "2026-03-10",
     category: "Production",
-    image: "/images/unity-vs-unreal-engine.jpeg",
+    image: "/images/tile-journey.webp",
     content: [
       "A casual puzzle can lose a player before the first move if the build feels heavy. Long launches, stutters, oversized downloads, and battery drain all contradict the promise of a quick calm session.",
       "We treat performance as part of game design. Tile counts, particle effects, texture sizes, and sound layers are tuned around the phone in the player's hand, not the device on a developer desk.",
@@ -64,7 +64,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "The first promise a puzzle game makes is visual. Screenshots should show the actual board, not a fantasy of the game.",
     date: "2026-02-20",
     category: "Launch",
-    image: "/images/marketing-strategies-indie-games.jpeg",
+    image: "/images/pearl-coloring.webp",
     content: [
       "A store page is not only marketing. For a puzzle game, it is the first usability test. Can a player understand the board from one image? Can they tell what a move does? Can they see why the game might feel good?",
       "We try to make screenshots answer those questions directly. Show the board. Show the interaction. Show the reward state. Avoid scenes that look dramatic but hide the actual play.",
