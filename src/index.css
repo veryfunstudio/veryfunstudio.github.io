@@ -1656,7 +1656,6 @@
 
   .blog-index__list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1px;
     overflow: hidden;
     border: 1px solid var(--color-border-soft);
@@ -1666,8 +1665,8 @@
 
   .blog-index-card {
     display: grid;
-    min-height: 31rem;
-    grid-template-rows: minmax(13rem, 0.82fr) auto;
+    min-height: 13.75rem;
+    grid-template-columns: minmax(9rem, 13rem) minmax(0, 1fr);
     background:
       linear-gradient(145deg, rgba(244, 247, 232, 0.06), rgba(244, 247, 232, 0.018)),
       rgba(16, 19, 27, 0.7);
@@ -1694,7 +1693,7 @@
     position: relative;
     display: block;
     overflow: hidden;
-    border-bottom: 1px solid var(--color-border-soft);
+    border-right: 1px solid var(--color-border-soft);
   }
 
   .blog-index-card__media::after {
@@ -1727,8 +1726,8 @@
 
   .blog-index-card__body {
     display: grid;
-    gap: 0.85rem;
-    align-content: start;
+    gap: 0.75rem;
+    align-content: center;
     padding: clamp(1rem, 2vw, 1.45rem);
   }
 
@@ -1749,10 +1748,10 @@
 
   .blog-index-card strong {
     display: -webkit-box;
-    min-height: 2.1em;
+    min-height: 0;
     overflow: hidden;
     color: var(--color-foreground);
-    font-size: clamp(1.45rem, 2.2vw, 2.65rem);
+    font-size: clamp(1.35rem, 2vw, 2.35rem);
     line-height: 1.04;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -1760,7 +1759,7 @@
 
   .blog-index-card__body > span:not(.blog-index-card__meta):not(.blog-index-card__action) {
     display: -webkit-box;
-    min-height: 4.65em;
+    min-height: 0;
     overflow: hidden;
     color: var(--color-muted);
     font-size: 0.96rem;
@@ -2259,13 +2258,23 @@
   }
 
   .blog-index-card {
-    min-height: 29rem;
-    grid-template-rows: minmax(12rem, 48vw) auto;
+    height: 22.2rem;
+    min-height: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: 11rem minmax(0, 1fr);
+  }
+
+  .blog-index-card__media {
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+
+  .blog-index-card__body {
+    gap: 0.6rem;
   }
 
   .blog-index-card strong {
-    min-height: 3.15em;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
   }
 
   .blog-index-card__body > span:not(.blog-index-card__meta):not(.blog-index-card__action) {

@@ -12,8 +12,8 @@ const Blog = () => {
   return (
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
       <Seo
-        title="Blog - Game Dev Insights"
-        description="Notes on mobile game design, Unity development, and indie studio life from the team behind Tile Journey, Arrow Out, and the rest of the VeryFun Company lineup."
+        title="Studio Notes"
+        description="Short production notes from VeryFun Company on calm puzzle design, readable boards, mobile performance, and honest store pages."
         path="/blog"
       />
 
@@ -26,7 +26,7 @@ const Blog = () => {
         >
           <h1>How we think about small games.</h1>
           <p>
-            Notes on mobile puzzle design, Unity production, launch discipline, and the tradeoffs
+            Notes on calm puzzle design, readable boards, mobile performance, and the tradeoffs
             behind a tiny independent catalog.
           </p>
         </motion.div>
@@ -70,8 +70,7 @@ const Blog = () => {
             <strong>Notes worth opening.</strong>
           </div>
           <p>
-            Practical notes on puzzle feel, production choices, launch work, and small-team
-            tradeoffs.
+            Practical notes on puzzle feel, board clarity, launch choices, and small-team tradeoffs.
           </p>
         </div>
 
