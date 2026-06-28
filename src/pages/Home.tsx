@@ -28,21 +28,18 @@ const websiteSchema = {
   url: SITE_URL,
 };
 
-const PRINCIPLES = [
+const PROMISES = [
   {
-    code: "pace",
-    title: "Soft pressure",
-    body: "No timers, energy gates, or forced streaks. Every session can stay short, calm, and complete.",
+    title: "No rush",
+    body: "Short sessions, no timers, and no forced streaks.",
   },
   {
-    code: "offline",
-    title: "Pocket-ready",
-    body: "Playable anywhere after install, with simple controls built for one hand and quick attention shifts.",
+    title: "No gatekeeping",
+    body: "Free games on Google Play, built to keep playing simple.",
   },
   {
-    code: "clarity",
-    title: "Readable challenge",
-    body: "Rules reveal themselves through clean boards, generous feedback, and puzzles that reward planning.",
+    title: "No noisy loops",
+    body: "Readable boards, calm feedback, and puzzles that respect attention.",
   },
 ];
 
@@ -119,27 +116,16 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative px-[3.125vw] py-28 lg:py-40">
+        <section className="home-promise-section px-[3.125vw] py-20 lg:py-28">
           <div className="dash-line mb-12" />
-          <div className="max-w-[92rem]">
-            {[
-              "No rush.",
-              "No gatekeeping.",
-              "No noisy loops.",
-              "Just readable puzzles for people with real lives.",
-            ].map((line) => (
-              <p key={line} className="manifest-line mega-title">
-                {line}
+          <div className="home-promise">
+            <div className="home-promise__copy">
+              <p className="status-text">Studio promise</p>
+              <h2>Fun without the drain.</h2>
+              <p>
+                VeryFun Company makes pocket-sized puzzle games for spare moments, quiet commutes,
+                and one more move before the day resets.
               </p>
-            ))}
-          </div>
-        </section>
-
-        <section className="px-[3.125vw] py-24 lg:py-36">
-          <div className="dash-line mb-12" />
-          <div className="principle-board">
-            <div className="principle-intro">
-              <h2>Fun without extraction.</h2>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link to="/games" className="pill-button pill-button--accent">
                   Browse lineup
@@ -150,12 +136,17 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            {PRINCIPLES.map((item) => (
-              <article key={item.code} className="principle-cell">
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </article>
-            ))}
+            <div className="home-promise__list">
+              {PROMISES.map((item, index) => (
+                <article key={item.title} className="home-promise__item">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.body}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
       </div>
