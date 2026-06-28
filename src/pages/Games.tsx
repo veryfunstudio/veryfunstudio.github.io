@@ -1,4 +1,7 @@
+"use client";
+
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { Link } from "react-router";
 import { ArrowUpRight, Download } from "lucide-react";
 import { GAMES } from "@/data/games";
@@ -7,6 +10,8 @@ import { Seo } from "@/components/seo/Seo";
 const Games = () => {
   const newest =
     [...GAMES].sort((a, b) => b.releaseDate.localeCompare(a.releaseDate))[0] ?? GAMES[0];
+  const [activeSlug, setActiveSlug] = useState(newest.slug);
+  const activeGame = GAMES.find((game) => game.slug === activeSlug) ?? newest;
 
   return (
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -31,34 +36,61 @@ const Games = () => {
             </p>
             <div className="games-hero-actions">
               <a
-                href={newest.googlePlayUrl}
+                href={activeGame.googlePlayUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="pill-button pill-button--accent"
               >
                 <Download size={16} />
-                Latest game
+                Google Play
               </a>
-              <Link to={`/games/${newest.slug}`} className="pill-button">
+              <Link to={`/games/${activeGame.slug}`} className="pill-button">
                 Details
                 <ArrowUpRight size={16} />
               </Link>
             </div>
+
+            <div className="games-lineup" aria-label="Choose a featured game">
+              {GAMES.map((game, index) => {
+                const isActive = game.slug === activeGame.slug;
+
+                return (
+                  <button
+                    key={game.slug}
+                    type="button"
+                    className={`games-lineup__item ${isActive ? "is-active" : ""}`}
+                    aria-pressed={isActive}
+                    onClick={() => setActiveSlug(game.slug)}
+                    onFocus={() => setActiveSlug(game.slug)}
+                    onMouseEnter={() => setActiveSlug(game.slug)}
+                  >
+                    <img src={game.icon} alt="" width={40} height={40} decoding="async" />
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <strong>{game.title}</strong>
+                    <small>{game.technologies.slice(1).join(" / ")}</small>
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           <div className="games-hero-panel">
-            <img
-              src={newest.image}
-              alt={newest.title}
+            <motion.img
+              key={activeGame.slug}
+              src={activeGame.image}
+              alt={activeGame.title}
               width={840}
               height={630}
               loading="eager"
               fetchPriority="high"
               decoding="async"
+              initial={{ opacity: 0, scale: 1.035 }}
+              animate={{ opacity: 1, scale: 1.01 }}
+              transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
             />
             <div className="games-hero-panel__footer">
-              <strong>{newest.title}</strong>
-              <span>{newest.technologies.slice(1).join(" / ")}</span>
+              <strong>{activeGame.title}</strong>
+              <span>{activeGame.technologies.slice(1).join(" / ")}</span>
             </div>
           </div>
         </motion.div>
