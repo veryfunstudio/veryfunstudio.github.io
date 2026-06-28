@@ -11,10 +11,10 @@
 - [Bubble Shoot](https://cookabc.github.io/games/bubble-shoot): Bubble Shoot is a free Android bubble shooter game with over 200 handcrafted levels, daily rewards, and seasonal events. Players aim and release to match three or more bubbles of the same color, clearing the board and earning stars for clean plays. The game is built around the promise that every level is fully beatable without spending money, with smart power-ups and boosters flowing freely through daily rewards and events.
 
 ## Blog
-- [Challenges and Opportunities in Indie Game Development](https://cookabc.github.io/blog/1): As an indie game developer, we face many challenges but also have many opportunities. This article shares our experiences and insights.
-- [How to Design a Successful Indie Game](https://cookabc.github.io/blog/2): Game design is key to indie game success. This article explores the core elements and best practices of game design.
-- [Unity vs Unreal Engine: How to Choose the Right Game Engine](https://cookabc.github.io/blog/3): Unity and Unreal Engine are the most popular game engines today. This article compares their pros and cons to help you make a choice.
-- [Marketing Strategies for Indie Games](https://cookabc.github.io/blog/4): Even if your game is great, without good marketing strategies it's hard to succeed. This article shares marketing tips for indie games.
+- [Why Our Puzzles Avoid Timers](https://cookabc.github.io/blog/1): Timers can create urgency, but they often make calm puzzles feel noisy. Here is how we design pressure out of the board.
+- [Designing a Readable Board](https://cookabc.github.io/blog/2): A mobile puzzle has only a few seconds to explain itself. The board needs to teach before any tutorial appears.
+- [Keeping Mobile Builds Light](https://cookabc.github.io/blog/3): Small puzzle games should feel instant. We keep runtime, art, and interaction choices pointed at low-friction play.
+- [Store Pages Need Honest Screens](https://cookabc.github.io/blog/4): The first promise a puzzle game makes is visual. Screenshots should show the actual board, not a fantasy of the game.
 
 ## Other pages
 - [About the studio](https://cookabc.github.io/about)
@@ -29,4 +29,4 @@
 - [Pearl Coloring](https://play.google.com/store/apps/details?id=com.veryfun.pearlcoloring)
 - [Bubble Shoot](https://play.google.com/store/apps/details?id=com.veryfuncompany.bubble)
 
-Last updated: 2026-06-25
+Last updated: 2026-06-28
