@@ -7,17 +7,17 @@ const VALUES = [
   {
     icon: <Radar size={22} />,
     title: "Attention is the budget",
-    body: "Every game is shaped around short, complete sessions that do not demand a streak or punish a pause.",
+    body: "Short sessions that never demand a streak or punish a pause.",
   },
   {
     icon: <Gamepad2 size={22} />,
     title: "Rules before spectacle",
-    body: "The board has to read instantly. Polish supports the puzzle instead of hiding weak mechanics.",
+    body: "The board has to read instantly. Polish supports the puzzle.",
   },
   {
     icon: <Sparkles size={22} />,
     title: "Free should still feel premium",
-    body: "No paywalls, no timers, no extraction loop. The experience still deserves care, texture, and rhythm.",
+    body: "No paywalls, no timers, no extraction loop. Still built with care.",
   },
 ] as const;
 

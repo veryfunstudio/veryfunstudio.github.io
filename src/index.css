@@ -1195,8 +1195,12 @@
   }
 
   .about-principle p {
+    display: -webkit-box;
+    overflow: hidden;
     max-width: 58ch;
     color: var(--color-muted);
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
   }
 
   .contact-routes {
@@ -2165,7 +2169,12 @@
   }
 
   .about-principle {
-    min-height: auto;
+    min-height: 9.25rem;
+    align-items: center;
+  }
+
+  .about-principle p {
+    -webkit-line-clamp: 2;
   }
 
   .site-footer {
