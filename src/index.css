@@ -466,65 +466,13 @@
     text-transform: uppercase;
   }
 
-  .reveal-text {
-    clip-path: inset(0 100% 0 0);
-    transition: clip-path 0.8s var(--ease-brand);
-  }
-
-  .reveal-text.revealed {
-    clip-path: inset(0 0% 0 0);
-  }
-
-  .magnetic {
-    transition: transform 0.2s var(--ease-brand);
-  }
-
-  .glow-border {
-    position: relative;
-    border-radius: var(--radius-card);
-  }
-
-  .glow-border::before {
-    position: absolute;
-    inset: 1px;
-    border-radius: inherit;
-    content: "";
-    pointer-events: none;
-    box-shadow: 0 0 18px 3px rgba(200, 255, 61, 0.28);
-    opacity: 0.5;
-    transition:
-      opacity 0.3s ease,
-      filter 0.3s ease;
-  }
-
-  .glow-border:hover::before {
-    opacity: 0.88;
-    filter: saturate(1.1) brightness(1.1);
-  }
-
-  .status-text,
-  .page-kicker {
+  .status-text {
     color: var(--color-muted);
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 400;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-  }
-
-  .page-kicker {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.7rem;
-    color: var(--color-accent);
-  }
-
-  .page-kicker::before {
-    width: 1.9rem;
-    height: 1px;
-    content: "";
-    background: currentColor;
-    opacity: 0.7;
   }
 
   .site-page {
@@ -613,16 +561,6 @@
       linear-gradient(90deg, transparent, rgba(200, 255, 61, 0.08), transparent);
     opacity: 0.72;
     animation: stage-drift 28s linear infinite;
-  }
-
-  .serif-display,
-  .serif-display-italic {
-    font-family: var(--font-sans);
-    font-style: normal;
-    font-weight: 650;
-    letter-spacing: 0;
-    line-height: 0.96;
-    text-transform: none;
   }
 
   .hero-shell {
@@ -896,7 +834,6 @@
     transform: scale(1.01);
   }
 
-  .games-hero-panel__header,
   .games-hero-panel__footer {
     position: relative;
     z-index: 2;
@@ -905,10 +842,6 @@
     justify-content: space-between;
     gap: 1rem;
     padding: 1rem;
-  }
-
-  .games-hero-panel__header {
-    border-bottom: 1px solid var(--color-border-soft);
   }
 
   .games-hero-panel__footer {
@@ -2531,12 +2464,6 @@
 
   .article-image {
     min-height: 20rem;
-  }
-}
-
-@keyframes orbit-spin {
-  to {
-    transform: rotate(360deg);
   }
 }
 
