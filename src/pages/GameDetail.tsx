@@ -25,6 +25,11 @@ const GameDetail = () => {
   const primaryTags = game.technologies.slice(1);
   const primaryFeatures = game.features.slice(0, 4);
   const secondaryFeatures = game.features.slice(4);
+  const heroFacts = [
+    { label: "Platform", value: "Android" },
+    { label: "Price", value: "Free" },
+    { label: "Release", value: game.releaseDate },
+  ];
 
   return (
     <article className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -128,17 +133,37 @@ const GameDetail = () => {
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-          className="game-detail-media"
+          className="game-detail-showcase"
         >
-          <img
-            src={game.image}
-            alt={`${game.title} key art`}
-            width={1200}
-            height={900}
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-          />
+          <div className="game-detail-media">
+            <img
+              src={game.image}
+              alt={`${game.title} key art`}
+              width={1200}
+              height={900}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+            />
+          </div>
+
+          <div className="game-detail-identity">
+            <div className="game-detail-identity__app">
+              <img src={game.icon} alt="" width={56} height={56} decoding="async" />
+              <div>
+                <strong>{game.title}</strong>
+                <span>{primaryTags.join(" / ")}</span>
+              </div>
+            </div>
+            <dl>
+              {heroFacts.map((fact) => (
+                <div key={fact.label}>
+                  <dt>{fact.label}</dt>
+                  <dd>{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </motion.div>
       </section>
 

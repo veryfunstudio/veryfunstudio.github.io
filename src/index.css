@@ -1330,6 +1330,7 @@
   }
 
   .game-detail-copy,
+  .game-detail-identity,
   .game-detail-media,
   .game-detail-brief,
   .game-detail-summary,
@@ -1407,6 +1408,14 @@
     font-size: clamp(1rem, 1.3vw, 1.18rem);
   }
 
+  .game-detail-showcase {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 0.8rem;
+    align-content: start;
+    align-self: stretch;
+  }
+
   .game-detail-media {
     position: relative;
     overflow: hidden;
@@ -1440,6 +1449,72 @@
     filter: saturate(1.12) contrast(1.07) brightness(0.97);
     opacity: 0.94;
     transform: scale(1.01);
+  }
+
+  .game-detail-identity {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: clamp(1rem, 2vw, 1.75rem);
+    align-items: center;
+    padding: clamp(1rem, 2vw, 1.4rem);
+  }
+
+  .game-detail-identity__app {
+    display: grid;
+    min-width: 0;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.9rem;
+    align-items: center;
+  }
+
+  .game-detail-identity__app img {
+    width: 3.5rem;
+    height: 3.5rem;
+    border: 1px solid rgba(244, 247, 232, 0.24);
+    border-radius: 12px;
+    background: rgba(244, 247, 232, 0.9);
+    object-fit: cover;
+  }
+
+  .game-detail-identity__app strong {
+    display: block;
+    overflow: hidden;
+    color: var(--color-foreground);
+    font-size: clamp(1.25rem, 1.8vw, 1.8rem);
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .game-detail-identity__app span {
+    display: block;
+    margin-top: 0.3rem;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+  }
+
+  .game-detail-identity dl {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: clamp(0.7rem, 1.6vw, 1.5rem);
+  }
+
+  .game-detail-identity dt {
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    text-transform: uppercase;
+  }
+
+  .game-detail-identity dd {
+    margin-top: 0.28rem;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .game-detail-brief {
@@ -2170,6 +2245,10 @@
     grid-template-columns: 1fr;
   }
 
+  .game-detail-showcase {
+    align-self: auto;
+  }
+
   .game-detail-summary__features {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2287,6 +2366,18 @@
 
   .catalog-index__head h2 {
     font-size: clamp(2.3rem, 12vw, 4rem);
+  }
+
+  .game-detail-identity {
+    grid-template-columns: 1fr;
+  }
+
+  .game-detail-identity dl {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .game-detail-identity dd {
+    white-space: normal;
   }
 
   .catalog-index__grid {
