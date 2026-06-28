@@ -969,10 +969,15 @@
   }
 
   .catalog-card__title h3 {
+    display: -webkit-box;
     max-width: 11ch;
+    min-height: 0;
+    overflow: hidden;
     color: var(--color-foreground);
     font-size: clamp(1.8rem, 2.35vw, 2.8rem);
     line-height: 0.98;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 
   .catalog-card__body p {
@@ -2204,8 +2209,17 @@
   }
 
   .catalog-card {
-    min-height: auto;
-    grid-template-rows: minmax(12rem, 48vw) auto;
+    height: 26rem;
+    min-height: 0;
+    grid-template-rows: 12rem minmax(0, 1fr);
+  }
+
+  .catalog-card__body {
+    gap: 0.7rem;
+  }
+
+  .catalog-card__title h3 {
+    font-size: clamp(1.65rem, 8.5vw, 2.25rem);
   }
 
   .catalog-card__body p {
