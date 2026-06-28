@@ -1341,6 +1341,25 @@
     font-size: clamp(1rem, 1.3vw, 1.18rem);
   }
 
+  .game-detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem 1rem;
+    align-items: center;
+  }
+
+  .game-detail-release {
+    display: inline-flex;
+    min-height: 2.6rem;
+    align-items: center;
+    border-left: 1px solid rgba(200, 255, 61, 0.45);
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding-left: 1rem;
+    text-transform: uppercase;
+  }
+
   .game-detail-showcase {
     display: grid;
     grid-template-rows: auto auto;

@@ -112,7 +112,7 @@ const GameDetail = () => {
             <h1>{game.title}</h1>
           </div>
           <p>{game.description}</p>
-          <div className="flex flex-wrap gap-3">
+          <div className="game-detail-actions">
             <a
               href={game.googlePlayUrl}
               target="_blank"
@@ -123,9 +123,7 @@ const GameDetail = () => {
               <Download size={16} />
               Google Play
             </a>
-            <span className="pill-button" aria-label={`Released ${game.releaseDate}`}>
-              {game.releaseDate}
-            </span>
+            <span className="game-detail-release">Released {game.releaseDate}</span>
           </div>
         </motion.div>
 
