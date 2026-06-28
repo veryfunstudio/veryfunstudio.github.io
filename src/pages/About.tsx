@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Gamepad2, Radar, Sparkles } from "lucide-react";
 import { Seo } from "@/components/seo/Seo";
+import { GAMES } from "@/data/games";
 
 const VALUES = [
   {
@@ -22,15 +23,19 @@ const VALUES = [
 ] as const;
 
 const About = () => {
+  const featuredGames = [...GAMES]
+    .sort((a, b) => b.releaseDate.localeCompare(a.releaseDate))
+    .slice(0, 4);
+
   return (
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
       <Seo
         title="About the Studio"
         description="Independent mobile game studio crafting calming, free-to-play puzzle games. Meet the team behind Tile Journey, Pearl Coloring, and more."
         path="/about"
-        image="/images/about.jpeg"
-        imageWidth={864}
-        imageHeight={864}
+        image={featuredGames[0]?.image}
+        imageWidth={1200}
+        imageHeight={630}
       />
 
       <section className="about-hero">
@@ -62,15 +67,30 @@ const About = () => {
           transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           className="about-hero-media"
         >
-          <img
-            src="/images/about.jpeg"
-            alt="VeryFun Company team workspace"
-            width={900}
-            height={900}
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-          />
+          <div className="about-product-board" aria-label="VeryFun Company game boards">
+            {featuredGames.map((game, index) => (
+              <Link
+                key={game.slug}
+                to={`/games/${game.slug}`}
+                className="about-product-tile"
+                aria-label={`Open ${game.title}`}
+              >
+                <img
+                  src={game.image}
+                  alt=""
+                  width={760}
+                  height={560}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  fetchPriority={index === 0 ? "high" : undefined}
+                  decoding="async"
+                />
+                <span>
+                  {String(index + 1).padStart(2, "0")}
+                  <strong>{game.title}</strong>
+                </span>
+              </Link>
+            ))}
+          </div>
         </motion.div>
       </section>
 
