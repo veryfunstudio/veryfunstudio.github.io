@@ -155,7 +155,7 @@
   }
 
   .site-header__brand {
-    max-width: min(72vw, 26rem);
+    max-width: min(64vw, 26rem);
     overflow: hidden;
   }
 
@@ -2045,8 +2045,8 @@
     display: grid;
     width: min(100%, 56rem);
     place-items: center;
-    gap: 1.2rem;
-    padding: clamp(1.5rem, 5vw, 5rem);
+    gap: clamp(0.85rem, 2vw, 1.2rem);
+    padding: clamp(1.35rem, 5vw, 4rem);
     text-align: center;
   }
 
@@ -2055,8 +2055,9 @@
   }
 
   .error-panel h1 {
-    max-width: 10ch;
-    font-size: clamp(3rem, 7vw, 8rem);
+    max-width: 14ch;
+    font-size: clamp(2.6rem, 6.4vw, 7rem);
+    overflow-wrap: anywhere;
   }
 
   .error-panel p {
@@ -2217,7 +2218,8 @@
 
 @media (max-width: 899px) {
   .site-header__brand {
-    font-size: clamp(1.15rem, 5vw, 1.8rem);
+    max-width: calc(100vw - 6.75rem);
+    font-size: clamp(1rem, 4.4vw, 1.35rem);
   }
 
   .hero-shell {
@@ -2307,6 +2309,11 @@
 @media (max-width: 560px) {
   .site-header__mobile-link {
     min-height: 3.25rem;
+  }
+
+  .error-panel h1 {
+    max-width: 12ch;
+    font-size: clamp(2.35rem, 12vw, 4rem);
   }
 
   .signal-screen {
