@@ -126,7 +126,10 @@ const BlogPost = () => {
 
       <section className="article-body">
         {post.content.map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
+          <div key={paragraph} className="article-body__row">
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <p>{paragraph}</p>
+          </div>
         ))}
       </section>
 
