@@ -5,21 +5,21 @@ import { Seo } from "@/components/seo/Seo";
 const CONTACT_INFO = [
   {
     icon: <Mail size={20} />,
-    title: "Email",
+    title: "Player feedback",
     value: "chuangcius@gmail.com",
     link: "mailto:chuangcius@gmail.com",
     external: false,
   },
   {
     icon: <Code2 size={20} />,
-    title: "GitHub",
+    title: "Code notes",
     value: "github.com/cookabc",
     link: "https://github.com/cookabc",
     external: true,
   },
   {
     icon: <SquareArrowOutUpRight size={20} />,
-    title: "X",
+    title: "Studio updates",
     value: "@chuangcius",
     link: "https://x.com/chuangcius",
     external: true,
@@ -36,7 +36,7 @@ const Contact = () => {
         noindex
       />
 
-      <section className="contact-hero">
+      <section className="contact-hero contact-hero--simple">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -54,27 +54,6 @@ const Contact = () => {
           >
             <Mail size={16} />
             Email the studio
-          </a>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-          className="contact-panel"
-        >
-          <h2>
-            chuangcius@
-            <br />
-            gmail.com
-          </h2>
-          <p>
-            Include the game name, device, and a short description when reporting bugs. For press or
-            partnership notes, lead with the context and timeline.
-          </p>
-          <a href="mailto:chuangcius@gmail.com" className="contact-panel-link">
-            Open email
-            <SquareArrowOutUpRight size={18} />
           </a>
         </motion.div>
       </section>

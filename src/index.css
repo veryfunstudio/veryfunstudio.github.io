@@ -1051,8 +1051,7 @@
 
   .about-hero-copy,
   .about-hero-media,
-  .contact-hero-copy,
-  .contact-panel {
+  .contact-hero-copy {
     border: 1px solid var(--color-border-soft);
     border-radius: 8px;
     background:
@@ -1068,6 +1067,16 @@
     justify-content: space-between;
     gap: 2rem;
     padding: clamp(1.25rem, 3vw, 3rem);
+  }
+
+  .contact-hero--simple {
+    min-height: min(34rem, calc(100svh - 10rem));
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact-hero--simple .contact-hero-copy {
+    min-height: inherit;
+    max-width: 100%;
   }
 
   .about-hero-copy h1 {
@@ -1185,51 +1194,6 @@
     color: var(--color-muted);
   }
 
-  .contact-panel {
-    display: flex;
-    min-height: 25rem;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 2rem;
-    overflow: hidden;
-    padding: clamp(1.25rem, 3vw, 3rem);
-  }
-
-  .contact-panel h2 {
-    max-width: 12ch;
-    color: var(--color-foreground);
-    font-size: clamp(2.6rem, 5.8vw, 7rem);
-    line-height: 0.95;
-    overflow-wrap: anywhere;
-  }
-
-  .contact-panel p {
-    max-width: 46ch;
-    color: var(--color-muted);
-    font-size: clamp(1rem, 1.25vw, 1.15rem);
-  }
-
-  .contact-panel-link {
-    display: inline-flex;
-    width: fit-content;
-    align-items: center;
-    gap: 0.45rem;
-    color: var(--color-accent);
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    font-weight: 650;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition:
-      color 0.2s var(--ease-brand),
-      transform 0.2s var(--ease-brand);
-  }
-
-  .contact-panel-link:hover {
-    color: var(--color-foreground);
-    transform: translateY(-1px);
-  }
-
   .contact-routes {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1279,7 +1243,6 @@
     font-family: var(--font-mono);
     font-size: 0.78rem;
     font-style: normal;
-    text-transform: uppercase;
     overflow-wrap: anywhere;
   }
 
