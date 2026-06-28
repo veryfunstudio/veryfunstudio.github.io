@@ -33,7 +33,6 @@ const Contact = () => {
         title="Contact Us"
         description="Get in touch with VeryFun Company - email, X (Twitter), or GitHub. We'd love to hear from players and partners."
         path="/contact"
-        noindex
       />
 
       <section className="contact-hero contact-hero--simple">
