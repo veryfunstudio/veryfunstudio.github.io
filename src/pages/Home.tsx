@@ -45,6 +45,8 @@ const PROMISES = [
 
 export default function Home() {
   const launchGame = GAMES[1] ?? GAMES[0];
+  const latestGame =
+    [...GAMES].sort((a, b) => b.releaseDate.localeCompare(a.releaseDate))[0] ?? launchGame;
 
   return (
     <div className="relative overflow-hidden">
@@ -120,23 +122,35 @@ export default function Home() {
           <div className="dash-line mb-12" />
           <div className="home-promise">
             <div className="home-promise__copy">
-              <p className="status-text">Studio promise</p>
-              <h2>Fun without the drain.</h2>
-              <p>
-                VeryFun Company makes pocket-sized puzzle games for spare moments, quiet commutes,
-                and one more move before the day resets.
-              </p>
+              <p className="status-text">Latest release</p>
+              <h2>{latestGame.title}</h2>
+              <p>{latestGame.description}</p>
+              <Link to={`/games/${latestGame.slug}`} className="home-promise__preview">
+                <img
+                  src={latestGame.image}
+                  alt={`${latestGame.title} key art`}
+                  width={760}
+                  height={560}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span>
+                  {latestGame.technologies.slice(1).join(" / ")}
+                  <ArrowRight size={16} />
+                </span>
+              </Link>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link to="/games" className="pill-button pill-button--accent">
-                  Browse lineup
+                <Link to={`/games/${latestGame.slug}`} className="pill-button pill-button--accent">
+                  Open brief
                   <ArrowRight size={16} />
                 </Link>
-                <Link to="/about" className="pill-button">
-                  Studio notes
+                <Link to="/games" className="pill-button">
+                  All games
                 </Link>
               </div>
             </div>
             <div className="home-promise__list">
+              <p className="status-text">Studio promise</p>
               {PROMISES.map((item, index) => (
                 <article key={item.title} className="home-promise__item">
                   <span>{String(index + 1).padStart(2, "0")}</span>
