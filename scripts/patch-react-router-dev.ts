@@ -1,10 +1,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-const file = join(
-  process.cwd(),
-  "node_modules/@react-router/dev/dist/typegen-9e9g0hnu.js",
-);
+const file = join(process.cwd(), "node_modules/@react-router/dev/dist/typegen-9e9g0hnu.js");
 
 const before = `const traverse = _traverse.default;
 const generate = _generate.default;`;
