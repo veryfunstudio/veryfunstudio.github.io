@@ -100,7 +100,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="hero-reveal relative">
+              <div className="hero-reveal hero-reveal--media relative">
                 <div className="signal-deck">
                   <div className="signal-screen">
                     <img

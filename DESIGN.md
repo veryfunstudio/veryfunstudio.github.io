@@ -18,7 +18,7 @@ description: |
 colors:
   background: "#07080d"
   foreground: "#f4f7e8"
-  muted: "#9ca3af"
+  muted: "#a6adb7"
   surface: "#10131b"
   surface-warm: "#151b18"
   surface-tint: "rgba(244, 247, 232, 0.05)"
@@ -45,12 +45,13 @@ typography:
     wrap: balance
   body:
     weight: 400
-    line-height: 1.55 default paragraph rhythm
+    line-height: 1.55 default, 1.62 for paragraphs
     wrap: pretty
   labels:
     family: mono
     casing: uppercase for compact metadata only
-    letter-spacing: 0.14em on `.status-text`
+    size-floor: "0.875rem"
+    letter-spacing: 0.1em on `.status-text`
 
 shape:
   card-radius: 8px
@@ -73,21 +74,21 @@ layout:
 
 shadow:
   soft: "0 0 0 1px rgba(244, 247, 232, 0.06)"
-  soft-hover: "0 18px 70px rgba(0, 0, 0, 0.36), 0 0 0 1px rgba(244, 247, 232, 0.16)"
-  glow: "0 0 48px rgba(200, 255, 61, 0.14)"
-  hero-media: "0 34px 110px rgba(0, 0, 0, 0.32-0.48)"
+  soft-hover: "0 14px 48px rgba(0, 0, 0, 0.30), 0 0 0 1px rgba(244, 247, 232, 0.14)"
+  glow: "0 0 34px rgba(200, 255, 61, 0.11)"
+  hero-media: "0 24px 78px rgba(0, 0, 0, 0.24-0.40)"
 
 motion:
   libraries: "framer-motion, WebGL canvas"
   easing: "cubic-bezier(0.16, 1, 0.3, 1)"
   page-transition: "0.28s opacity/translate/blur"
-  hero-reveal: "0.82s CSS reveal-up"
-  image-hover: "0.28-0.42s transform/filter"
+  hero-reveal: "home-only title focus + media settle choreography, 0.74-1s"
+  image-hover: "0.25-0.42s transform/filter"
   reduced-motion: "MotionConfig reducedMotion=user plus CSS media query; home WebGL falls back to static CSS"
 
 components:
   pill-button: "primary/secondary CTA, uppercase sans, 46px min height"
-  glass-card: "generic dark translucent panel"
+  glass-card: "legacy dark panel; avoid blur unless it frames hero or media overlays"
   dark-input: "rounded field for dark surfaces"
   site-header: "fixed blurred header with active nav pill"
   hero-shell: "home glass viewport around WebGL stage"
@@ -112,7 +113,7 @@ small, careful, and technically polished, not soft-paper nostalgic.
 ## Color
 
 Use the near-black background `#07080d` as the stage. Use `#f4f7e8` for primary
-text and `#9ca3af` for supporting copy. The only brand action color is
+text and `#a6adb7` for supporting copy. The only brand action color is
 `#c8ff3d`; reserve it for CTAs, active navigation, important metadata, focus,
 and small glows.
 
@@ -130,15 +131,13 @@ edge while staying friendly enough for casual puzzles. DM Mono is reserved for
 dates, tags, compact status text, and machine-like metadata.
 
 Display headings are intentionally large and tight, but must not overflow. Keep
-letter spacing at `0`; do not use negative tracking. If a heading breaks badly,
+letter spacing at `0`; do not use negative tracking. Display clamp maximums cap
+at 6rem across the site, including the home hero. If a heading breaks badly,
 reduce the max clamp or rewrite the copy before shrinking the entire layout.
 
+Compact metadata, captions, and mono labels should stay at or above `0.875rem`.
 Use uppercase sparingly for navigation, buttons, and metadata. Do not set body
 copy in all caps.
-
-Most reusable display rules cap at 6rem. The oversized home `.kinetic-title` is
-the deliberate exception because it is the first-viewport brand signal; do not
-copy that scale into ordinary route headings.
 
 ## Layout
 
@@ -174,9 +173,10 @@ Image treatment:
 
 Motion should feel like signal, not spectacle. The WebGL home background is
 ambient and decorative for users who have not requested reduced motion; reduced
-motion uses the static CSS fallback instead. Product images and CTA transitions
-remain clear and fast. Page transitions use opacity, small translation, and blur.
-Interactive selectors update quickly enough to feel responsive.
+motion uses the static CSS fallback instead. The home hero has one signature
+entrance: title focus, copy lift, and a product screenshot settle. Elsewhere,
+motion stays functional: route transitions, selectors, image hover feedback, and
+FAQ affordances.
 
 Do not add bounce, elastic easing, or large layout shifts. Use the existing
 `--ease-brand` curve. Honor reduced-motion support at both React and CSS levels.
@@ -189,7 +189,7 @@ Prefer existing component classes before adding new one-offs:
 | ----------------------------------- | ------------------------------------------------ |
 | `.pill-button`                      | CTAs and compact route actions                   |
 | `.pill-button--accent`              | Primary Google Play / explore actions            |
-| `.glass-card`                       | Reusable dark translucent panel                  |
+| `.glass-card`                       | Legacy dark panel; do not use as default chrome  |
 | `.dark-input`                       | Dark form controls                               |
 | `.site-header*`                     | Fixed navigation and mobile menu                 |
 | `.hero-shell`, `.signal-screen`     | Home hero frame and product screenshot           |
@@ -222,11 +222,9 @@ unless they are part of an explicit future redesign.
 
 Known implementation quirks to watch:
 
-1. `--ease-spring` exists in `@theme`, but the brand should avoid bouncy motion.
-   Prefer `--ease-brand`.
-2. `body::before` uses an inline SVG turbulence texture. Keep it subtle; do not
+1. `body::before` uses an inline SVG turbulence texture. Keep it subtle; do not
    expand it into a hand-drawn or paper-grain motif.
-3. Decorative grid/line materials should remain constrained. Prefer ordinary
+2. Decorative grid/line materials should remain constrained. Prefer ordinary
    borders, overlays, and spacing before adding new stripe or grid effects.
-4. Some route patterns still use large display clamps. Verify mobile screenshots
+3. Some route patterns still use large display clamps. Verify mobile screenshots
    after changing heading copy.
