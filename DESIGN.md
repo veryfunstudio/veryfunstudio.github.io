@@ -26,6 +26,9 @@ colors:
   accent-hover: "#e2ff75"
   accent-active: "#9fd823"
   accent-soft: "rgba(200, 255, 61, 0.12)"
+  atmosphere-blue-rgb: "55 110 255"
+  atmosphere-indigo-rgb: "82 140 255"
+  atmosphere-coral-rgb: "255 103 64"
   border: "rgba(244, 247, 232, 0.14)"
   border-soft: "rgba(244, 247, 232, 0.08)"
   border-input: "rgba(244, 247, 232, 0.16)"
@@ -88,7 +91,6 @@ motion:
 
 components:
   pill-button: "primary/secondary CTA, uppercase sans, 46px min height"
-  glass-card: "legacy dark panel; avoid blur unless it frames hero or media overlays"
   dark-input: "rounded field for dark surfaces"
   site-header: "fixed blurred header with active nav pill"
   hero-shell: "home glass viewport around WebGL stage"
@@ -118,8 +120,8 @@ text and `#a6adb7` for supporting copy. The only brand action color is
 and small glows.
 
 Do not add a second saturated brand color without a full palette decision. Blue
-and orange appear only as ambient background gradients in the current CSS; they
-are atmosphere, not interactive colors.
+and coral are named atmosphere tokens only; they may appear in ambient
+backgrounds and signal glows, never as interactive or semantic colors.
 
 Do not return to the old warm-paper / notebook system unless the project is
 explicitly being redesigned. The live product now uses a dark luminous identity.
@@ -189,7 +191,6 @@ Prefer existing component classes before adding new one-offs:
 | ----------------------------------- | ------------------------------------------------ |
 | `.pill-button`                      | CTAs and compact route actions                   |
 | `.pill-button--accent`              | Primary Google Play / explore actions            |
-| `.glass-card`                       | Legacy dark panel; do not use as default chrome  |
 | `.dark-input`                       | Dark form controls                               |
 | `.site-header*`                     | Fixed navigation and mobile menu                 |
 | `.hero-shell`, `.signal-screen`     | Home hero frame and product screenshot           |

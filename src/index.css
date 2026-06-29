@@ -16,6 +16,9 @@
   --color-accent-hover: #e2ff75;
   --color-accent-active: #9fd823;
   --color-accent-soft: rgba(200, 255, 61, 0.12);
+  --color-atmosphere-blue-rgb: 55 110 255;
+  --color-atmosphere-indigo-rgb: 82 140 255;
+  --color-atmosphere-coral-rgb: 255 103 64;
 
   --color-border: rgba(244, 247, 232, 0.14);
   --color-border-soft: rgba(244, 247, 232, 0.08);
@@ -58,8 +61,16 @@
   body {
     min-width: 320px;
     background:
-      radial-gradient(circle at 15% 10%, rgba(55, 110, 255, 0.13), transparent 34rem),
-      radial-gradient(circle at 86% 18%, rgba(255, 103, 64, 0.09), transparent 30rem),
+      radial-gradient(
+        circle at 15% 10%,
+        rgb(var(--color-atmosphere-blue-rgb) / 0.13),
+        transparent 34rem
+      ),
+      radial-gradient(
+        circle at 86% 18%,
+        rgb(var(--color-atmosphere-coral-rgb) / 0.09),
+        transparent 30rem
+      ),
       var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
@@ -306,25 +317,6 @@
     background: var(--color-surface);
   }
 
-  .glass-card {
-    border: 1px solid var(--color-border-soft);
-    border-radius: var(--radius-card);
-    background:
-      linear-gradient(145deg, rgba(244, 247, 232, 0.08), rgba(244, 247, 232, 0.02)),
-      rgba(16, 19, 27, 0.86);
-    box-shadow: var(--shadow-soft);
-    transition:
-      border-color 0.3s var(--ease-brand),
-      box-shadow 0.3s var(--ease-brand),
-      transform 0.3s var(--ease-brand);
-  }
-
-  .glass-card:hover {
-    border-color: var(--color-border-strong);
-    box-shadow: var(--shadow-soft-hover);
-    transform: translateY(-2px);
-  }
-
   .dark-input {
     min-height: 48px;
     border: 1px solid var(--color-border-input);
@@ -512,8 +504,8 @@
       conic-gradient(
         from 120deg,
         rgba(200, 255, 61, 0.1),
-        rgba(82, 140, 255, 0.08),
-        rgba(255, 103, 64, 0.06),
+        rgb(var(--color-atmosphere-indigo-rgb) / 0.08),
+        rgb(var(--color-atmosphere-coral-rgb) / 0.06),
         rgba(200, 255, 61, 0.1)
       );
     filter: blur(1px);
@@ -656,7 +648,7 @@
     box-shadow:
       0 0 0 1px rgba(200, 255, 61, 0.08),
       0 26px 82px rgba(0, 0, 0, 0.4),
-      0 0 56px rgba(82, 140, 255, 0.1);
+      0 0 56px rgb(var(--color-atmosphere-indigo-rgb) / 0.1);
     transform: rotate(var(--signal-rotation));
     transform-origin: 52% 58%;
     animation: signal-screen-settle 0.96s var(--ease-brand) 0.2s both;

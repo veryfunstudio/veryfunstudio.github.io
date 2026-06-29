@@ -159,6 +159,12 @@ function hexToRgb(hex: string): [number, number, number] {
   return [((value >> 16) & 255) / 255, ((value >> 8) & 255) / 255, (value & 255) / 255];
 }
 
+function colorTokenToRgb(style: CSSStyleDeclaration, token: string, fallback: string) {
+  const value = style.getPropertyValue(token).trim() || fallback;
+  if (!value.startsWith("#")) return hexToRgb(fallback);
+  return hexToRgb(value);
+}
+
 function compileShader(gl: WebGLRenderingContext, type: number, source: string) {
   const shader = gl.createShader(type);
   if (!shader) return null;
@@ -244,9 +250,10 @@ export default function HeroCanvas() {
     const pointer = { x: 0.5, y: 0.5 };
     const targetPointer = { x: 0.5, y: 0.5 };
     const resolution = { width: 1, height: 1, pixelRatio: 1 };
-    const ink = hexToRgb("#07080d");
-    const amber = hexToRgb("#c8ff3d");
-    const pearl = hexToRgb("#f4f7e8");
+    const rootStyle = getComputedStyle(document.documentElement);
+    const ink = colorTokenToRgb(rootStyle, "--color-background", "#07080d");
+    const amber = colorTokenToRgb(rootStyle, "--color-accent", "#c8ff3d");
+    const pearl = colorTokenToRgb(rootStyle, "--color-foreground", "#f4f7e8");
 
     const surfaceBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, surfaceBuffer);
