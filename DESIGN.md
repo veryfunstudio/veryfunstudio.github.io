@@ -1,343 +1,232 @@
 # DESIGN.md
 
-> Single source of truth for **how this site looks and feels**. Read this
-> before building or restyling any component. Pairs with
-> [`PRODUCT.md`](./PRODUCT.md) (the what & who).
->
-> Structure borrowed from Vercel's Geist `design.md`: a machine-readable
-> **Token block** at the top (any agent or script can parse it directly),
-> followed by a **Why block** that explains the trade-offs in prose. The
-> Token block is the contract; the Why block is the rationale. When they
-> disagree, the Token block wins and the Why block needs updating.
+> Single source of truth for how the VeryFun Company site looks and behaves.
+> The implemented token source is [src/index.css](./src/index.css) `@theme`.
+> Keep this document and that file aligned in the same change.
 
----
-
-## Token block
-
-> These mirror the CSS variables in `@theme` of
-> [`src/index.css`](./src/index.css) **plus** a few intent tokens that are
-> currently expressed inline in components. The canonical home is
-> `index.css`; this block is the readable mirror. **When you change one,
-> change the other in the same commit.**
+## Token Block
 
 ```yaml
-version: alpha
-name: VeryFun Notebook
+version: beta
+name: VeryFun Signal Stage
 description: |
-  Warm paper, hand-lettered ink, one restrained burnt-sienna accent.
-  The vibe is a well-kept notebook from a quiet indie studio — not a
-  glossy SaaS landing page. Light theme only (no dark mode planned;
-  see Why › Color).
+  A dark, high-contrast brand surface for a calm mobile-puzzle studio: near-black
+  stage, warm off-white type, acid-green action, product screenshots under a
+  subtle signal-grid atmosphere. The site should feel precise and luminous, not
+  generic SaaS, casino-mobile, or notebook-paper cozy.
 
 colors:
-  # Surface
-  background: "#fdfbf7" # warm paper, page bg
-  surface: "#ffffff" # cards, panels, buttons — the raised paper layer
-  surface-warm: "#f6f1e8" # key-art wells, success icon wells
-  surface-tint: "rgba(45, 45, 45, 0.05)" # subtle ink wash — pills, icon circles
-  foreground: "#2d2d2d" # ink — body text, hard borders, primary btn bg
-
-  # Secondary text
-  muted: "#6e6960" # subtitles, meta — not for small text (see Why)
-
-  # Accent — the ONE brand color. Four steps encode intent.
-  accent: "#a84e2f" # default — links, active nav, hover bg
-  accent-hover: "#8f3f24" # hover on accent fills
-  accent-active: "#73331c" # pressed
-  accent-soft: "rgba(168, 78, 47, 0.12)" # subtle highlight bg
-
-  # Focus — different hue so focus isn't mistaken for brand
-  focus: "#2d5da1" # outline only, never as fill
-  focus-soft: "rgba(45, 93, 161, 0.2)" # input focus glow
-
-  # Borders — three steps encode weight. All promoted to @theme so they
-  # resolve as first-class Tailwind utilities (border-soft / border-strong).
-  # border-input stays inside the .hand-drawn-input component class.
-  border-soft: "rgba(45, 45, 45, 0.10)" # card edges, dividers (most common)
-  border-input: "rgba(45, 45, 45, 0.20)" # form fields (1.5px) — .hand-drawn-input
-  border-strong: "#2d2d2d" # hero images, contact/about panels (2px)
+  background: "#07080d"
+  foreground: "#f4f7e8"
+  muted: "#9ca3af"
+  surface: "#10131b"
+  surface-warm: "#151b18"
+  surface-tint: "rgba(244, 247, 232, 0.05)"
+  accent: "#c8ff3d"
+  accent-hover: "#e2ff75"
+  accent-active: "#9fd823"
+  accent-soft: "rgba(200, 255, 61, 0.12)"
+  border: "rgba(244, 247, 232, 0.14)"
+  border-soft: "rgba(244, 247, 232, 0.08)"
+  border-input: "rgba(244, 247, 232, 0.16)"
+  border-strong: "rgba(244, 247, 232, 0.24)"
+  focus: "#c8ff3d"
+  focus-soft: "rgba(200, 255, 61, 0.18)"
 
 typography:
   families:
-    body: "Patrick Hand" # hand-lettered sans — body, UI, buttons, inputs
-    heading: "Kalam" # hand-lettered weight 700 — headings only
-  base:
-    size: "18px"
-    line-height: "1.6"
-  wrapping:
-    headings: "balance"
-    body: "pretty"
-  smoothing: "antialiased (-webkit + -moz)"
-  scale: # Tailwind utility sizes actually in use; do not invent new steps
-    heading-xl: "text-7xl" # hero h1 (lg)
-    heading-lg: "text-5xl" # hero h1 (base), section h2 (lg)
-    heading-md: "text-4xl" # section h2 (base), page h1
-    heading-sm: "text-3xl" # feature h3, footer brand
-    heading-xs: "text-2xl" # card h2 (Projects, About story)
-    body-lg: "text-xl" # hero subtitle, lead paragraphs
-    body-md: "text-base" # default UI, nav, buttons
-    body-sm: "text-sm" # meta, tech chips, captions
+    sans: "Space Grotesk, Avenir Next, Trebuchet MS, system-ui"
+    mono: "DM Mono, SFMono-Regular, Cascadia Mono, ui-monospace"
+    serif_alias: "Space Grotesk, Avenir Next, Trebuchet MS, system-ui"
+  headings:
+    weight: 650-700
+    line-height: 0.82-0.98 on display, 0.94 default
+    letter-spacing: 0
+    wrap: balance
+  body:
+    weight: 400
+    line-height: 1.55 default paragraph rhythm
+    wrap: pretty
+  labels:
+    family: mono
+    casing: uppercase for compact metadata only
+    letter-spacing: 0.14em on `.status-text`
 
 shape:
-  radius:
-    card: "4px"
-    button: "4px"
-  # One radius scale: 4px everywhere. No wobbly/blobby corners.
+  card-radius: 8px
+  button-radius: 999px
+  app-icon-radius: 9-12px
+  focus-radius: 6px
 
-space:
-  base_unit: "4px"
-  page_max_width: "80rem"
-  page_padding_x: "6" # tailwind units (24px) — prefer for new work
-  page_padding_x_legacy: "4" # older pages use px-4; do not mix within a section
-  section_vertical: "py-24 lg:py-32"
+layout:
+  page-padding-x: "3.125vw"
+  max-header-width: "80rem"
+  hero-min-height: "100svh on home, min(38-44rem, calc(100svh - 10rem)) on pages"
+  primary-grid: "two-panel split with minmax(0, .9fr) / minmax(22rem, 1.1fr)"
+  catalog-grid: "3 columns desktop, responsive collapse in media queries"
+  z-index:
+    decor: 0
+    content: 1
+    media-overlay: 2
+    header: 50
+    skip-link: 70
 
 shadow:
-  soft: "0 1px 2px rgba(45,45,45,.04), 0 4px 12px rgba(45,45,45,.06)"
-  soft-hover: "0 2px 4px rgba(45,45,45,.06), 0 8px 20px rgba(45,45,45,.08)"
-  # Tinted to the ink hue. Never pure-black on warm paper.
+  soft: "0 0 0 1px rgba(244, 247, 232, 0.06)"
+  soft-hover: "0 18px 70px rgba(0, 0, 0, 0.36), 0 0 0 1px rgba(244, 247, 232, 0.16)"
+  glow: "0 0 48px rgba(200, 255, 61, 0.14)"
+  hero-media: "0 34px 110px rgba(0, 0, 0, 0.32-0.48)"
 
 motion:
-  library: "framer-motion (LazyMotion + domAnimation, MotionConfig reducedMotion=user)"
-  easing: "[0.16, 1, 0.3, 1]" # soft expo-out — the only easing allowed
-  durations:
-    hero_reveal: "0.6s"
-    scroll_reveal: "0.5s"
-    micro_hover: "0.15s"
-  stagger_max_delay: "0.2s"
-  reduced_motion: "global kill in index.css (≈0ms)"
-  # Principle: motion only when it clarifies a change. Often 0ms is best.
+  libraries: "framer-motion, WebGL canvas"
+  easing: "cubic-bezier(0.16, 1, 0.3, 1)"
+  page-transition: "0.28s opacity/translate/blur"
+  hero-reveal: "0.82s CSS reveal-up"
+  image-hover: "0.28-0.42s transform/filter"
+  reduced-motion: "MotionConfig reducedMotion=user plus CSS media query; home WebGL falls back to static CSS"
 
 components:
-  button:
-    class: ".hand-drawn-button"
-    radius: "var(--radius-button)"
-    border: "1.5px solid var(--color-border-strong)"
-    hover: "background accent, color paper"
-    active: "translateY(1px)"
-  card:
-    class: ".hand-drawn-card"
-    radius: "var(--radius-card)"
-    border: "1px solid var(--color-border-soft)"
-    shadow: "var(--shadow-soft)"
-    hover_shadow: "var(--shadow-soft-hover)"
-  input:
-    class: ".hand-drawn-input"
-    radius: "var(--radius-button)"
-    border: "1.5px solid var(--color-border-input)"
-    focus: "border focus, glow focus-soft"
+  pill-button: "primary/secondary CTA, uppercase sans, 46px min height"
+  glass-card: "generic dark translucent panel"
+  dark-input: "rounded field for dark surfaces"
+  site-header: "fixed blurred header with active nav pill"
+  hero-shell: "home glass viewport around WebGL stage"
+  signal-screen: "rotated product screenshot frame"
+  games-lineup: "interactive game selector"
+  catalog-card: "image-led game card"
+  game-detail-media: "large product image with signal-grid overlay"
+  contact-route: "large contact action tile"
 
 icons:
   ui: "lucide-react"
-  brand: "react-icons (fa / fa6)"
-  # Do not pull from a third set — breaks visual consistency.
-
-a11y:
-  skip_link: "App.tsx — keep visible-on-focus"
-  focus_ring: "outline 3px solid var(--color-focus), offset 3px"
-  contrast_floor: "WCAG AA. Muted-on-background is the borderline pair — ≥18px only."
+  brand_assets: "public/favicon*.png plus game icons and screenshots"
 ```
 
----
+## Direction
 
-## Why block
+The current site is a dark brand stage for calm puzzle games. The visual paradox
+is intentional: the games are quiet, but the site uses a luminous signal language
+to make the catalog feel alive and modern. The player should read the brand as
+small, careful, and technically polished, not soft-paper nostalgic.
 
-> The intent behind the tokens. If you find yourself disagreeing with one
-> of these, read this section first — the answer is probably here.
+## Color
 
-### Direction in one paragraph
+Use the near-black background `#07080d` as the stage. Use `#f4f7e8` for primary
+text and `#9ca3af` for supporting copy. The only brand action color is
+`#c8ff3d`; reserve it for CTAs, active navigation, important metadata, focus,
+and small glows.
 
-Warm paper, hand-lettered ink, one restrained accent. The vibe is a
-well-kept notebook from a quiet studio — not a glossy SaaS landing page.
-This is what taste-skill §4.2 ("max 1 accent, saturation < 80%") and
-§4.4 ("pick one corner-radius scale and stick to it") gave us; do not
-revert to the old post-it/yellow/red vocabulary.
+Do not add a second saturated brand color without a full palette decision. Blue
+and orange appear only as ambient background gradients in the current CSS; they
+are atmosphere, not interactive colors.
 
-### ⚠️ The rule of one source
+Do not return to the old warm-paper / notebook system unless the project is
+explicitly being redesigned. The live product now uses a dark luminous identity.
 
-**The source of truth for design tokens is [`src/index.css`](./src/index.css)
-`@theme`. [`tailwind.config.js`](./tailwind.config.js) is intentionally
-minimal** — it carries only the font-family aliases and the 18px body
-base, because those are awkward to express purely in `@theme`. Every
-color, radius, and shadow lives in `@theme` and resolves as a
-first-class Tailwind utility (`bg-background`, `text-muted`, etc.).
+## Typography
 
-- ✅ **Use** any token in the Token block above. They are all defined in
-  `index.css` `@theme`.
-- ❌ **Don't re-introduce** removed keys (`bg-post-it`, `tape`,
-  `rounded-wobbly*`, `shadow-hand-drawn*`, `animate-jiggle`,
-  `text-secondary-accent-light`, `bg-chart-*`, the old
-  `primary`/`secondary`/`destructive` hex values). They were deleted on
-  purpose — see the changelog comment in `tailwind.config.js` and drift
-  fix #1 below. Re-adding one breaks the single-source contract this
-  file exists to enforce.
+Space Grotesk is the primary brand voice. It gives the site a precise, game-UI
+edge while staying friendly enough for casual puzzles. DM Mono is reserved for
+dates, tags, compact status text, and machine-like metadata.
 
-### Color
+Display headings are intentionally large and tight, but must not overflow. Keep
+letter spacing at `0`; do not use negative tracking. If a heading breaks badly,
+reduce the max clamp or rewrite the copy before shrinking the entire layout.
 
-**One accent.** Burnt sienna `#a84e2f` is the only "brand" color. The
-four steps (`accent` / `accent-hover` / `accent-active` / `accent-soft`)
-encode interaction state so you don't invent new hexes for hover/press —
-which was previously a vector for drift.
+Use uppercase sparingly for navigation, buttons, and metadata. Do not set body
+copy in all caps.
 
-**Focus is a different hue.** `--color-focus` (`#2d5da1`, a calm blue)
-exists _only_ for outlines and input focus glows. This is deliberate:
-when a user tabs through the site, focus should read as "system
-feedback," not as "brand color." Don't use it as a fill or a link color.
+Most reusable display rules cap at 6rem. The oversized home `.kinetic-title` is
+the deliberate exception because it is the first-viewport brand signal; do not
+copy that scale into ordinary route headings.
 
-**No pure black or pure white.** Ink is `#2d2d2d`, paper is `#fdfbf7`.
-Pure black on warm paper reads as a punched hole; pure white reads as
-printer paper, breaking the warm-notebook metaphor.
+## Layout
 
-**No post-it yellow, no bright red.** If you see `#fff9c4`, `#ff4d4d`,
-or `--color-post-it`, that's the old palette — reject it.
+The dominant page pattern is a two-panel cinematic split: copy and actions on
+one side, product image or interactive catalog on the other. Sections use full
+viewport or near-viewport pacing, then dense image-led grids for browsing.
 
-**`muted` is borderline.** `#6e6960` on `#fdfbf7` passes WCAG AA only at
-≥18px (≈4.5:1). It's fine for subtitles and lead paragraphs (which are
-`text-xl`+), **never for body copy or small meta text** — for those, use
-`text-foreground` directly.
+Cards are allowed when they are acting as product frames, detail panels, or
+contact routes. Avoid generic icon-heading-text card grids. A card should either
+carry product imagery, a route action, or a concrete feature.
 
-**Light theme only — on purpose.** A dark mode would force rethinking
-the warm-paper metaphor (what's "warm paper" in dark — warm black? that
-reads as dingy, not calm). The notebook identity lives in the light
-surface. If a dark mode ever becomes a real requirement, treat it as a
-new design project, not a token swap.
+Keep `px-[3.125vw]` for page gutters unless refactoring an entire page. The
+header max width is `80rem`; page sections are allowed to breathe wider.
 
-**No P3/OKLCH today.** All our colors fit comfortably in sRGB and the
-site doesn't lean on saturated primaries. Adding `oklch()` fallbacks
-would be premature complexity. Revisit only if we add a saturated
-illustration or brand mark that visibly clips on wide-gamut displays.
+## Imagery
 
-### Typography
+Game screenshots and icons are core brand assets. Every game card, detail hero,
+and latest-release area should show the actual product image from
+`public/images/`. Product screenshots are more trustworthy than abstract
+illustration.
 
-Two Google Fonts, loaded in [`index.html`](./index.html). No third font
-— ever.
+Image treatment:
 
-- **Patrick Hand** is the default voice (body, UI, buttons, inputs).
-- **Kalam** weight 700 is for headings only.
+- Use `object-fit: cover` inside fixed aspect frames.
+- Add dark overlays only when they improve legibility. The signal-grid material
+  should be rare and named, not repeated as generic stripes.
+- Keep saturation and contrast enhancements subtle: the CSS currently uses
+  `saturate(1.04-1.12)` and `contrast(1.04-1.07)`.
+- Always provide useful alt text when the image is content. Decorative repeated
+  thumbnails may use empty alt text.
 
-The hand-lettered character of the type _is_ the brand identity. That's
-why we don't reach for blobby corners or jitter animation to fake
-"playful" — the type already does that work, and adding more would make
-it read as try-hard.
+## Motion
 
-Body base `18px` / `1.6` line-height is large for a marketing site. That
-matches our casual-puzzle audience (long sessions, less density needed)
-and the wide hand-lettered shapes (which need more vertical room than a
-condensed grotesque).
+Motion should feel like signal, not spectacle. The WebGL home background is
+ambient and decorative for users who have not requested reduced motion; reduced
+motion uses the static CSS fallback instead. Product images and CTA transitions
+remain clear and fast. Page transitions use opacity, small translation, and blur.
+Interactive selectors update quickly enough to feel responsive.
 
-`text-wrap: balance` on headings and `pretty` on paragraphs is set
-globally — keep it; it prevents the worst orphans without manual
-intervention.
+Do not add bounce, elastic easing, or large layout shifts. Use the existing
+`--ease-brand` curve. Honor reduced-motion support at both React and CSS levels.
 
-### Shape
+## Components
 
-**One radius scale: 4px everywhere** (`card` and `button` are the same).
-Do **not** reintroduce `wobbly`, `255px 15px 225px ...`, or any freehand
-blobby corner. The hand-drawn character now lives in the _lettering_ and
-the _imperfection of rotation_ (see Components), not in blobby shapes.
+Prefer existing component classes before adding new one-offs:
 
-Three border weights encode how loud the edge is:
+| Class                               | Use                                              |
+| ----------------------------------- | ------------------------------------------------ |
+| `.pill-button`                      | CTAs and compact route actions                   |
+| `.pill-button--accent`              | Primary Google Play / explore actions            |
+| `.glass-card`                       | Reusable dark translucent panel                  |
+| `.dark-input`                       | Dark form controls                               |
+| `.site-header*`                     | Fixed navigation and mobile menu                 |
+| `.hero-shell`, `.signal-screen`     | Home hero frame and product screenshot           |
+| `.games-hero*`, `.games-lineup*`    | Catalog hero and interactive selector            |
+| `.catalog-card*`                    | Game grid cards                                  |
+| `.game-detail*`                     | Detail page hero, brief, feature, and FAQ panels |
+| `.about-*`, `.contact-*`, `.blog-*` | Page-specific brand panels                       |
 
-- `border-soft` (`black/10`, 1px) — the default for cards and dividers.
-  The edge should whisper; the content should speak.
-- `border-input` (`black/20`, 1.5px) — form fields only, slightly louder
-  so the affordance is unmissable.
-- `border-strong` (`#2d2d2d`, 2px) — used sparingly for hero images and
-  the contact/about panels, where the page wants a framed-photo feel.
+Avoid pairing wide soft shadows with decorative borders on generic cards. The
+existing system uses borders for structure and shadows mostly for large media or
+hover elevation.
 
-### Motion
+## Accessibility
 
-> Principle, borrowed from Geist: **motion only when it clarifies a
-> change. Often 0ms is the best choice.**
+- Text contrast must meet WCAG AA against the dark background and translucent
+  surfaces.
+- Interactive targets should remain at least 44px high where practical.
+- Keep the skip link in [app/root.tsx](./app/root.tsx).
+- Keep `:focus-visible` visible. Accent focus is acceptable because the accent is
+  used as system signal as well as brand action.
+- Keep WebGL non-essential. The fallback class `.hero-canvas-fallback` must
+  remain visually credible.
+- Do not hide important content behind animation classes that may fail to run.
 
-Easing is always `[0.16, 1, 0.3, 1]` (a soft expo-out). Don't mix in
-`ease-in-out` or bouncy springs — they break the calm tone.
+## Drift Notes
 
-Stagger by `delay`, not by chained animations. Keep delays ≤ `0.2s`.
+This file replaces the previous "VeryFun Notebook" direction. Any references to
+Patrick Hand, Kalam, warm paper, 4px card radii, or burnt-sienna accent are stale
+unless they are part of an explicit future redesign.
 
-`prefers-reduced-motion: reduce` collapses everything to ~0ms — already
-handled globally in `index.css`. Don't override it per-component.
+Known implementation quirks to watch:
 
-**No `jiggle`.** The old `animate-jiggle` (rotate ±1deg loop) is
-retired; it reads as hyperactive, not calm.
-
-### Components
-
-Defined in `@layer components` of `index.css`:
-
-| Class                | Use for                     |
-| -------------------- | --------------------------- |
-| `.hand-drawn-button` | primary & secondary buttons |
-| `.hand-drawn-card`   | project cards, info panels  |
-| `.hand-drawn-input`  | form fields                 |
-
-**Always prefer these classes over re-deriving the same styles.** If you
-need a variant (e.g. a destructive button), extend via `cva` in
-[`src/lib/utils.ts`](./src/lib/utils.ts), don't hand-roll a one-off.
-
-Imperfection-as-character: cards on `/about` use small per-item
-`rotate(-0.8deg … 0.9deg)` via inline `style`. This is the only sanctioned
-"hand-drawn" gesture beyond the type — keep rotations subtle and
-asymmetric.
-
-### Accessibility floor
-
-- Skip-to-content link in [`App.tsx`](./src/App.tsx) — keep it.
-- Focus ring: `outline: 3px solid --color-focus`, `outline-offset: 3px`.
-  Never `outline: none` without replacing it.
-- All non-decorative `<img>` carry alt text; decorative stacks use
-  `alt=""`.
-- Color contrast: foreground/background pairs all clear WCAG AA. The
-  `--color-muted` on `--color-background` pair is the borderline one —
-  fine at ≥18px, avoid for small text.
-
-### Voice parallels
-
-Geist's voice rules ("verb+noun naming", "never say 'successfully'",
-"no marketing words") apply equally to **UI copy and headings** here,
-not just docs. See `PRODUCT.md` › Voice & tone for the do/don't table.
-
----
-
-## Known drift to fix (tech debt, not blocking new work)
-
-These are the live gaps between the Tailwind config and the true tokens
-in `index.css`. Anyone doing a cleanup pass should tackle them:
-
-1. ~~**`tailwind.config.js`** still defines: `primary #ff4d4d`,
-   `accent #ff4d4d`, `destructive #ff4d4d`, `secondary #2d5da1`,
-   `post-it #fff9c4`, `tape`, `chart.*`, `rounded-wobbly*`,
-   `shadow-hand-drawn*`, `animate-jiggle`.~~ **RESOLVED** — all stale
-   keys removed; config now only carries `fontFamily` aliases and the
-   `18px` body base (everything else lives in `@theme`). Verified by
-   full build + compiled-CSS audit (`#c9c4b8` zero occurrences in the
-   shipped `app-*.css`).
-2. ~~**Promote the border intent tokens to `@theme`** so `border-soft` /
-   `border-strong` resolve as first-class Tailwind utilities instead of
-   being written inline as `border-black/10` / `border-2 border-border`.~~
-   **RESOLVED** — `--color-border-soft` and `--color-border-strong` now
-   live in `@theme`; all 12 inline references across Header, Footer,
-   CtaFooterSection, FeaturesSection, App skip-link, About, BlogPost,
-   Contact, and ProjectDetail migrated to `border-border-soft` /
-   `border-border-strong`. Three decorative `outline-black/10` and one
-   avatar `border-background` were intentionally left inline — they're
-   not border-weight intent tokens.
-3. ~~**`src/components/common/HeroSection.tsx`** is an older generic hero
-   not currently routed anywhere.~~ **RESOLVED** — deleted; it had zero
-   importers (`Home.tsx` uses `HeroSectionNiceUI` from the magicpath
-   directory, not this file).
-4. ~~**`/projects` page** still uses `bg-gradient-to-br from-[#f6f1e8] to-muted`
-   — the `to-muted` half resolves to the stale Tailwind
-   `muted` (`#c9c4b8`).~~ **RESOLVED** — the inline `#f6f1e8` hex was
-   replaced with `from-surface-warm` (on both `/projects` and
-   `/projects/:slug`); the `to-muted` half now resolves to the `@theme`
-   `--color-muted` (`#6e6960`) since the stale config `muted` was
-   removed in fix #1. No inline `#f6f1e8` hexes remain in `src/`.
-
----
-
-## When you change this file
-
-Design tokens are constraints, not suggestions. If you add a color,
-radius, or motion pattern here, you are committing the whole site to it —
-update `index.css` in the same change and audit existing components for
-drift. The Token block and `index.css`'s `@theme` must always agree.
+1. `--ease-spring` exists in `@theme`, but the brand should avoid bouncy motion.
+   Prefer `--ease-brand`.
+2. `body::before` uses an inline SVG turbulence texture. Keep it subtle; do not
+   expand it into a hand-drawn or paper-grain motif.
+3. Decorative grid/line materials should remain constrained. Prefer ordinary
+   borders, overlays, and spacing before adding new stripe or grid effects.
+4. Some route patterns still use large display clamps. Verify mobile screenshots
+   after changing heading copy.

@@ -206,6 +206,12 @@ export default function HeroCanvas() {
     const container = mountRef.current;
     if (!container) return;
 
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      container.dataset.webglFallback = "true";
+      return;
+    }
+
     const canvas = document.createElement("canvas");
     const gl = canvas.getContext("webgl", {
       alpha: true,
@@ -235,7 +241,6 @@ export default function HeroCanvas() {
       return;
     }
 
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const pointer = { x: 0.5, y: 0.5 };
     const targetPointer = { x: 0.5, y: 0.5 };
     const resolution = { width: 1, height: 1, pixelRatio: 1 };
@@ -247,7 +252,7 @@ export default function HeroCanvas() {
     gl.bindBuffer(gl.ARRAY_BUFFER, surfaceBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, SURFACE_VERTICES, gl.STATIC_DRAW);
 
-    const count = reduceMotion ? 900 : 2200;
+    const count = 2200;
     const random = createSeededRandom(42);
     const particleData = new Float32Array(count * 5);
 
@@ -315,9 +320,8 @@ export default function HeroCanvas() {
 
     const render = () => {
       const elapsed = (performance.now() - startedAt) / 1000;
-      const speed = reduceMotion ? 0.18 : 1;
-      pointer.x += (targetPointer.x - pointer.x) * (reduceMotion ? 0.035 : 0.075);
-      pointer.y += (targetPointer.y - pointer.y) * (reduceMotion ? 0.035 : 0.075);
+      pointer.x += (targetPointer.x - pointer.x) * 0.075;
+      pointer.y += (targetPointer.y - pointer.y) * 0.075;
 
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
@@ -329,7 +333,7 @@ export default function HeroCanvas() {
       gl.vertexAttribPointer(surfaceLocations.position, 2, gl.FLOAT, false, 16, 0);
       gl.enableVertexAttribArray(surfaceLocations.uv);
       gl.vertexAttribPointer(surfaceLocations.uv, 2, gl.FLOAT, false, 16, 8);
-      gl.uniform1f(surfaceLocations.time, elapsed * speed);
+      gl.uniform1f(surfaceLocations.time, elapsed);
       gl.uniform1f(surfaceLocations.scroll, 0);
       gl.uniform2f(surfaceLocations.resolution, resolution.width, resolution.height);
       gl.uniform2f(surfaceLocations.pointer, pointer.x, pointer.y);
@@ -348,13 +352,13 @@ export default function HeroCanvas() {
       gl.vertexAttribPointer(particleLocations.seed, 1, gl.FLOAT, false, 20, 12);
       gl.enableVertexAttribArray(particleLocations.scale);
       gl.vertexAttribPointer(particleLocations.scale, 1, gl.FLOAT, false, 20, 16);
-      gl.uniform1f(particleLocations.time, elapsed * speed);
+      gl.uniform1f(particleLocations.time, elapsed);
       gl.uniform1f(particleLocations.scroll, 0);
       gl.uniform2f(particleLocations.pointer, pointer.x, pointer.y);
       gl.uniform2f(particleLocations.camera, (pointer.x - 0.5) * 0.55, (pointer.y - 0.5) * 0.35);
       gl.uniform1f(particleLocations.aspect, resolution.width / Math.max(resolution.height, 1));
       gl.uniform1f(particleLocations.rotationX, Math.sin(elapsed * 0.12) * 0.025);
-      gl.uniform1f(particleLocations.rotationY, elapsed * 0.025 * speed);
+      gl.uniform1f(particleLocations.rotationY, elapsed * 0.025);
       setVec3(gl, particleLocations.amber, amber);
       setVec3(gl, particleLocations.pearl, pearl);
       gl.blendFunc(gl.SRC_ALPHA, gl.ONE);

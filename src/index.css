@@ -34,6 +34,12 @@
 
   --ease-brand: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --z-decor: 0;
+  --z-content: 1;
+  --z-media-overlay: 2;
+  --z-header: 50;
+  --z-skip-link: 70;
 }
 
 @layer base {
@@ -52,7 +58,6 @@
 
   body {
     min-width: 320px;
-    overflow-x: hidden;
     background:
       radial-gradient(circle at 15% 10%, rgba(55, 110, 255, 0.2), transparent 34rem),
       radial-gradient(circle at 86% 18%, rgba(255, 103, 64, 0.16), transparent 30rem),
@@ -79,11 +84,11 @@
   }
 
   h1 {
-    font-size: clamp(3.6rem, 10vw, 11rem);
+    font-size: clamp(3.2rem, 8vw, 6rem);
   }
 
   h2 {
-    font-size: clamp(2.6rem, 6.2vw, 7.5rem);
+    font-size: clamp(2.4rem, 5.4vw, 5.5rem);
   }
 
   h3 {
@@ -109,7 +114,7 @@
   body::before {
     position: fixed;
     inset: 0;
-    z-index: 9990;
+    z-index: var(--z-decor);
     pointer-events: none;
     content: "";
     opacity: 0.035;
@@ -121,7 +126,7 @@
   body::after {
     position: fixed;
     inset: 0;
-    z-index: 9989;
+    z-index: var(--z-decor);
     pointer-events: none;
     content: "";
     background:
@@ -135,8 +140,22 @@
 @layer components {
   .site-main {
     position: relative;
-    z-index: 1;
+    z-index: var(--z-content);
     will-change: opacity, transform, filter;
+  }
+
+  .skip-link {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: var(--z-skip-link);
+    border: 2px solid var(--color-border-strong);
+    border-radius: 4px;
+    background: var(--color-surface);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
   }
 
   .site-header {
@@ -167,7 +186,7 @@
   .site-header__nav-link {
     position: relative;
     display: inline-flex;
-    min-height: 2.5rem;
+    min-height: 2.75rem;
     align-items: center;
     justify-content: center;
     overflow: hidden;
@@ -197,7 +216,7 @@
 
   .site-header__nav-link > span:first-child {
     position: relative;
-    z-index: 1;
+    z-index: var(--z-content);
   }
 
   .site-header__nav-active {
@@ -367,12 +386,8 @@
 
   .dash-line {
     height: 1px;
-    background: repeating-linear-gradient(
-      90deg,
-      rgba(244, 247, 232, 0.62) 0 2px,
-      transparent 0 6px
-    );
-    opacity: 0.6;
+    background: linear-gradient(90deg, transparent, rgba(244, 247, 232, 0.42), transparent);
+    opacity: 0.8;
   }
 
   .site-footer {
@@ -398,7 +413,10 @@
   }
 
   .site-footer__name {
+    display: inline-flex;
     width: fit-content;
+    min-height: 2.75rem;
+    align-items: center;
     color: var(--color-foreground);
     font-size: clamp(1rem, 1.6vw, 1.25rem);
     font-weight: 650;
@@ -421,7 +439,8 @@
 
   .site-footer__links a {
     display: inline-flex;
-    min-height: 2.3rem;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
     align-items: center;
     justify-content: center;
     gap: 0.45rem;
@@ -447,7 +466,7 @@
   }
 
   .site-footer__links a.site-footer__icon-link {
-    width: 2.3rem;
+    width: 2.75rem;
     padding-inline: 0;
   }
 
@@ -481,13 +500,13 @@
 
   .site-page > * {
     position: relative;
-    z-index: 1;
+    z-index: var(--z-content);
   }
 
   .site-page::before,
   .site-page::after {
     position: absolute;
-    z-index: 0;
+    z-index: var(--z-decor);
     content: "";
     pointer-events: none;
   }
@@ -520,7 +539,7 @@
     width: min(38vw, 32rem);
     aspect-ratio: 1.4;
     background:
-      repeating-linear-gradient(90deg, rgba(244, 247, 232, 0.1) 0 1px, transparent 1px 18px),
+      radial-gradient(ellipse at 42% 50%, rgba(244, 247, 232, 0.08), transparent 58%),
       linear-gradient(135deg, rgba(200, 255, 61, 0.08), transparent);
     opacity: 0.28;
     transform: rotate(-12deg);
@@ -549,9 +568,9 @@
 
   .hero-canvas-fallback::before {
     background:
-      repeating-linear-gradient(90deg, rgba(244, 247, 232, 0.05) 0 1px, transparent 1px 9vw),
-      repeating-linear-gradient(0deg, rgba(244, 247, 232, 0.035) 0 1px, transparent 1px 7rem);
-    opacity: 0.8;
+      radial-gradient(circle at 48% 32%, rgba(244, 247, 232, 0.08), transparent 34rem),
+      linear-gradient(90deg, transparent, rgba(244, 247, 232, 0.045), transparent);
+    opacity: 0.72;
     mask-image: radial-gradient(circle at 50% 32%, #000, transparent 72%);
   }
 
@@ -649,9 +668,7 @@
     position: absolute;
     inset: 0;
     content: "";
-    background:
-      linear-gradient(180deg, rgba(244, 247, 232, 0.12), transparent 24%),
-      repeating-linear-gradient(180deg, rgba(244, 247, 232, 0.04) 0 1px, transparent 1px 5px);
+    background: linear-gradient(180deg, rgba(244, 247, 232, 0.12), transparent 24%);
     mix-blend-mode: screen;
     pointer-events: none;
   }
@@ -696,7 +713,7 @@
 
   .games-hero-copy h1 {
     max-width: 8ch;
-    font-size: clamp(3.5rem, 7vw, 8rem);
+    font-size: clamp(3.2rem, 6.4vw, 6rem);
   }
 
   .games-hero-copy p {
@@ -804,18 +821,11 @@
   .games-hero-panel::before {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: var(--z-content);
     content: "";
     background:
-      linear-gradient(90deg, rgba(244, 247, 232, 0.035) 1px, transparent 1px),
-      linear-gradient(180deg, rgba(244, 247, 232, 0.03) 1px, transparent 1px),
       radial-gradient(circle at 78% 12%, rgba(200, 255, 61, 0.2), transparent 18rem),
       linear-gradient(180deg, rgba(7, 8, 13, 0.02), rgba(7, 8, 13, 0.1) 52%, rgba(7, 8, 13, 0.58));
-    background-size:
-      4rem 4rem,
-      4rem 4rem,
-      auto,
-      auto;
     pointer-events: none;
   }
 
@@ -836,7 +846,7 @@
 
   .games-hero-panel__footer {
     position: relative;
-    z-index: 2;
+    z-index: var(--z-media-overlay);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -887,7 +897,7 @@
 
   .catalog-index__head h2 {
     margin-top: 0.4rem;
-    font-size: clamp(2.4rem, 5vw, 5.4rem);
+    font-size: clamp(2.35rem, 4.8vw, 5rem);
     line-height: 0.92;
   }
 
@@ -1013,7 +1023,7 @@
 
   .catalog-card__actions a {
     display: inline-flex;
-    min-height: 2.45rem;
+    min-height: 2.75rem;
     align-items: center;
     justify-content: center;
     gap: 0.45rem;
@@ -1084,12 +1094,12 @@
 
   .about-hero-copy h1 {
     max-width: 14ch;
-    font-size: clamp(3.4rem, 5.8vw, 7.2rem);
+    font-size: clamp(3.2rem, 5.5vw, 6rem);
   }
 
   .contact-hero-copy h1 {
     max-width: 9ch;
-    font-size: clamp(3.45rem, 7.5vw, 9rem);
+    font-size: clamp(3.2rem, 6.6vw, 6rem);
   }
 
   .about-hero-copy p,
@@ -1123,7 +1133,7 @@
 
   .about-product-board {
     position: relative;
-    z-index: 1;
+    z-index: var(--z-content);
     display: grid;
     height: 100%;
     min-height: inherit;
@@ -1175,7 +1185,7 @@
 
   .about-product-tile span {
     position: relative;
-    z-index: 1;
+    z-index: var(--z-content);
     display: grid;
     align-self: end;
     gap: 0.35rem;
@@ -1233,7 +1243,7 @@
 
   .about-principles__copy h2 {
     max-width: 9ch;
-    font-size: clamp(2.4rem, 4.8vw, 5.8rem);
+    font-size: clamp(2.35rem, 4.4vw, 5.2rem);
   }
 
   .about-principles__copy p {
@@ -1370,11 +1380,13 @@
   .game-detail-back {
     display: inline-flex;
     width: fit-content;
+    min-height: 2.75rem;
     align-items: center;
     gap: 0.45rem;
     color: var(--color-muted);
     font-family: var(--font-mono);
     font-size: 0.76rem;
+    padding-inline: 0.1rem;
     text-decoration: none;
     text-transform: uppercase;
     transition: color 0.2s var(--ease-brand);
@@ -1392,7 +1404,7 @@
   .game-detail-copy h1,
   .blog-hero-copy h1 {
     max-width: 10ch;
-    font-size: clamp(3.3rem, 7vw, 8.8rem);
+    font-size: clamp(3.2rem, 6.5vw, 6rem);
   }
 
   .game-detail-mark {
@@ -1426,13 +1438,15 @@
 
   .game-detail-release {
     display: inline-flex;
-    min-height: 2.6rem;
+    min-height: 2.75rem;
     align-items: center;
-    border-left: 1px solid rgba(200, 255, 61, 0.45);
+    border: 1px solid rgba(200, 255, 61, 0.28);
+    border-radius: var(--radius-button);
+    background: rgba(200, 255, 61, 0.06);
     color: var(--color-muted);
     font-family: var(--font-mono);
     font-size: 0.72rem;
-    padding-left: 1rem;
+    padding-inline: 0.9rem;
     text-transform: uppercase;
   }
 
@@ -1457,15 +1471,8 @@
     inset: 0;
     content: "";
     background:
-      linear-gradient(90deg, rgba(244, 247, 232, 0.035) 1px, transparent 1px),
-      linear-gradient(180deg, rgba(244, 247, 232, 0.026) 1px, transparent 1px),
       radial-gradient(circle at 78% 12%, rgba(200, 255, 61, 0.2), transparent 18rem),
       linear-gradient(180deg, rgba(7, 8, 13, 0.01), rgba(7, 8, 13, 0.1) 52%, rgba(7, 8, 13, 0.56));
-    background-size:
-      4rem 4rem,
-      4rem 4rem,
-      auto,
-      auto;
     pointer-events: none;
   }
 
@@ -1564,7 +1571,7 @@
   .game-detail-summary__copy h2,
   .game-detail-faq h2 {
     max-width: 9ch;
-    font-size: clamp(2.2rem, 4vw, 4.8rem);
+    font-size: clamp(2.2rem, 3.8vw, 4.5rem);
   }
 
   .game-detail-brief p {
@@ -1664,6 +1671,7 @@
 
   .game-detail-faq summary {
     display: flex;
+    min-height: 2.75rem;
     cursor: pointer;
     list-style: none;
     align-items: center;
@@ -1719,7 +1727,7 @@
 
   .blog-featured > div {
     position: relative;
-    z-index: 2;
+    z-index: var(--z-media-overlay);
     display: grid;
     gap: 0.8rem;
     border-top: 1px solid var(--color-border-soft);
@@ -1745,7 +1753,7 @@
   }
 
   .blog-featured h2 {
-    font-size: clamp(1.8rem, 3vw, 3.6rem);
+    font-size: clamp(1.8rem, 2.8vw, 3.4rem);
   }
 
   .blog-featured p {
@@ -1784,7 +1792,7 @@
 
   .blog-index__head strong {
     color: var(--color-foreground);
-    font-size: clamp(2.2rem, 3.6vw, 4.2rem);
+    font-size: clamp(2.2rem, 3.4vw, 4rem);
     line-height: 0.96;
   }
 
@@ -1955,7 +1963,7 @@
 
   .article-hero h1 {
     max-width: 14ch;
-    font-size: clamp(3rem, 5.4vw, 6.35rem);
+    font-size: clamp(3rem, 5.2vw, 6rem);
     overflow-wrap: normal;
     word-break: normal;
   }
@@ -1978,15 +1986,8 @@
     inset: 0;
     content: "";
     background:
-      linear-gradient(90deg, rgba(244, 247, 232, 0.035) 1px, transparent 1px),
-      linear-gradient(180deg, rgba(244, 247, 232, 0.026) 1px, transparent 1px),
       radial-gradient(circle at 78% 12%, rgba(200, 255, 61, 0.16), transparent 18rem),
       linear-gradient(180deg, rgba(7, 8, 13, 0.02), rgba(7, 8, 13, 0.08) 48%, rgba(7, 8, 13, 0.42));
-    background-size:
-      4rem 4rem,
-      4rem 4rem,
-      auto,
-      auto;
     pointer-events: none;
   }
 
@@ -2151,7 +2152,7 @@
 
   .error-panel h1 {
     max-width: 14ch;
-    font-size: clamp(2.6rem, 6.4vw, 7rem);
+    font-size: clamp(2.6rem, 6vw, 5.8rem);
     overflow-wrap: anywhere;
   }
 
@@ -2180,7 +2181,7 @@
 
   .home-promise__copy h2 {
     max-width: 10ch;
-    font-size: clamp(3rem, 6.2vw, 7rem);
+    font-size: clamp(3rem, 5.8vw, 6rem);
     line-height: 0.92;
   }
 
@@ -2225,7 +2226,7 @@
 
   .home-promise__preview span {
     position: relative;
-    z-index: 1;
+    z-index: var(--z-content);
     display: inline-flex;
     align-self: end;
     align-items: center;
@@ -2291,7 +2292,7 @@
 
   .contact-hero-copy h1 {
     max-width: 12ch;
-    font-size: clamp(3.4rem, 12vw, 7rem);
+    font-size: clamp(3.2rem, 10vw, 6rem);
   }
 
   .contact-hero-copy p {
@@ -2316,7 +2317,7 @@
 
   .about-hero-copy h1 {
     max-width: 10ch;
-    font-size: clamp(3.4rem, 12vw, 7rem);
+    font-size: clamp(3.2rem, 10vw, 6rem);
   }
 
   .about-hero-copy p {

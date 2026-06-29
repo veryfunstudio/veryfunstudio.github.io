@@ -60,10 +60,7 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="flex min-h-[100dvh] flex-col bg-background text-foreground">
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:rounded-[4px] focus:border-2 focus:border-border-strong focus:bg-surface focus:px-4 focus:py-2 focus:font-sans focus:text-foreground focus:no-underline"
-        >
+        <a href="#main-content" className="skip-link sr-only focus:not-sr-only">
           Skip to main content
         </a>
         <Header />
