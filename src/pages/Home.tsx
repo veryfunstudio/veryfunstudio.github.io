@@ -3,7 +3,7 @@
 import { lazy, Suspense } from "react";
 import { Link } from "react-router";
 import { ArrowRight, Download } from "lucide-react";
-import { GAMES } from "@/data/games";
+import { GAMES, getGameBySlug } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { BRAND_LOGO_URL, GOOGLE_PLAY_DEVELOPER_URL, SITE_URL } from "@/lib/constants";
@@ -44,7 +44,7 @@ const PROMISES = [
 ];
 
 export default function Home() {
-  const launchGame = GAMES[1] ?? GAMES[0];
+  const launchGame = getGameBySlug("nova-mahjong") ?? GAMES[0];
   const latestGame =
     [...GAMES].sort((a, b) => b.releaseDate.localeCompare(a.releaseDate))[0] ?? launchGame;
 
@@ -79,8 +79,8 @@ export default function Home() {
                 </div>
 
                 <p className="hero-reveal max-w-[42ch] text-base leading-relaxed text-muted sm:text-lg">
-                  Six mobile puzzles for spare moments: free, readable, offline, and built to leave
-                  attention intact.
+                  Seven mobile puzzles for spare moments: free, readable, offline, and built to
+                  leave attention intact.
                 </p>
 
                 <div className="hero-reveal flex flex-wrap gap-3">

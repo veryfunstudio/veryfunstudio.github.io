@@ -17,7 +17,7 @@ const Games = () => {
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
       <Seo
         title="Our Mobile Games"
-        description="Browse all six free mobile puzzle games from VeryFun Company: Sudoku, Tile Journey, Word Search, Arrow Out, Pearl, Bubble."
+        description="Browse all seven free mobile puzzle games from VeryFun Company: Sudoku, Tile Journey, Word Search, Arrow Out, Pearl, Time Pop, and Nova Mahjong."
         path="/games"
       />
 
@@ -31,8 +31,8 @@ const Games = () => {
           <div className="games-hero-copy">
             <h1>Pick a board.</h1>
             <p>
-              Six quiet mobile puzzles for spare attention: number logic, word grids, tile matching,
-              sorting, coloring, and quick arcade clearing.
+              Seven quiet mobile puzzles for spare attention: number logic, word grids, tile
+              matching, sorting, coloring, time conversion, and classic mahjong.
             </p>
             <div className="games-hero-actions">
               <a
@@ -102,7 +102,7 @@ const Games = () => {
             <h2>All playable boards.</h2>
           </div>
           <p>
-            Six games, six different kinds of quiet focus. Open the brief when you want the full
+            Seven games, seven different kinds of quiet focus. Open the brief when you want the full
             rules, or go straight to Google Play.
           </p>
         </div>
