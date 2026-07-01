@@ -132,7 +132,7 @@ ${p.content.join("\n\n")}
 
   return `# VeryFun Company — Full Content for LLMs
 
-> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. All games are free, work offline, and have no timers or paywalls. The studio has shipped 6 titles including Classic Sudoku 2026, Tile Journey, Word Search Block, Arrow Out, Pearl Coloring, and Bubble Shoot.
+> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. All games are free, work offline, and have no timers or paywalls. The studio has shipped 7 titles including Classic Sudoku 2026, Tile Journey, Word Search Block, Arrow Out, Pearl Coloring, Time Pop Puzzle, and Nova Mahjong For Seniors.
 >
 > Site: ${SITE_URL}
 > Last updated: ${today}
