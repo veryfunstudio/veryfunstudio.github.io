@@ -24,6 +24,55 @@ export interface Game {
 
 export const GAMES: Game[] = [
   {
+    id: 7,
+    packageId: "com.veryfuncompany.mahjongjourney",
+    title: "Nova Mahjong For Seniors",
+    description:
+      "A calm, classic mahjong solitaire with large clear tiles, hundreds of handcrafted puzzles, and no time limits - built for relaxed brain training.",
+    fullDescription:
+      "Enjoy a relaxing tile-matching experience with Nova Mahjong For Seniors — a calm and classic mahjong puzzle game designed for seniors and anyone who loves peaceful brain training. Whether you are new to mahjong or already enjoy classic tile-matching games, Nova Mahjong For Seniors is easy to learn and satisfying to play. Match identical tiles, clear the board, and enjoy a soothing journey through beautifully crafted mahjong puzzles. With classic gameplay, large clear tiles, helpful boosters, and offline support, every level is comfortable, stress-free, and gentle on attention.",
+    icon: "/images/nova-mahjong-icon.webp",
+    image: "/images/nova-mahjong.webp",
+    technologies: ["Android", "Mahjong", "Puzzle"],
+    features: [
+      "Classic mahjong solitaire gameplay",
+      "Large, clear tiles designed for comfort",
+      "Hundreds of handcrafted puzzles",
+      "Helpful boosters: Hint, Undo, Shuffle",
+      "No time limits - play at your pace",
+      "Fully playable offline",
+    ],
+    answer:
+      "Nova Mahjong For Seniors is a free Android mahjong solitaire game designed for relaxed, peaceful brain training. Players match identical free tiles to clear the board across hundreds of handcrafted puzzles with large, clear tiles and helpful boosters. There are no time limits, the game works offline, and the calm visuals make it suitable for seniors and anyone who enjoys classic tile-matching puzzles.",
+    faq: [
+      {
+        question: "Is Nova Mahjong For Seniors free to play?",
+        answer:
+          "Yes, Nova Mahjong For Seniors is free to download and play on Google Play. All core puzzles are accessible without payment.",
+      },
+      {
+        question: "How do you play Nova Mahjong For Seniors?",
+        answer:
+          "Match two identical mahjong tiles to remove them from the board. Only free and unblocked tiles can be matched. Clear every tile to complete the level.",
+      },
+      {
+        question: "Does Nova Mahjong For Seniors have time limits?",
+        answer:
+          "No. The game is designed to be stress-free, so you can take as long as you need on each puzzle.",
+      },
+      {
+        question: "Can I play Nova Mahjong For Seniors offline?",
+        answer:
+          "Yes, Nova Mahjong For Seniors is fully playable offline once installed, so you can enjoy it anywhere without an internet connection.",
+      },
+    ],
+    releaseDate: "2026-06-29",
+    slug: "nova-mahjong",
+    googlePlayUrl:
+      "https://play.google.com/store/apps/details?id=com.veryfuncompany.mahjongjourney",
+    rotation: -0.4,
+  },
+  {
     id: 1,
     packageId: "com.codex.sudokumobilegame",
     title: "Classic Sudoku 2026",
@@ -266,48 +315,48 @@ export const GAMES: Game[] = [
   {
     id: 6,
     packageId: "com.veryfuncompany.bubble",
-    title: "Bubble Shoot",
+    title: "Time Pop Puzzle",
     description:
-      "A bright bubble shooter with 200+ levels, daily rewards, and zero paywalls - every stage fully beatable for free.",
+      "A quick brain-training game about converting AM/PM time to 24-hour format - short rounds, clean style, and instant feedback.",
     fullDescription:
-      "Bubble Shoot is a colorful, satisfying spin on the bubble-pop classic, built around the promise that no level requires real money. Aim, release, and match three or more bubbles of the same color to clear the board, then earn stars based on how cleanly you played. Smart power-ups, daily rewards, and frequent events keep boosters flowing, so you can tackle the trickiest stages without ever hitting a paywall. With over 200 well-crafted levels and new challenges added regularly, it's a relaxing pick-up-and-play for a quick break or a long session.",
-    icon: "/images/bubble-shoot-icon.webp",
-    image: "/images/bubble-shoot.webp",
-    technologies: ["Android", "Bubble Shooter", "Casual"],
+      "Time Pop Puzzle is a casual brain-training game about quick time conversion. Read the AM/PM time, choose the correct 24-hour answer, and keep your streak going. Each round is short, clear, and fast, making it easy to play anytime. With simple tap-based gameplay, streak rewards, and instant feedback, it turns a small everyday skill into a satisfying daily habit.",
+    icon: "/images/time-pop-puzzle-icon.webp",
+    image: "/images/time-pop-puzzle.webp",
+    technologies: ["Android", "Brain Training", "Casual"],
     features: [
-      "200+ well-crafted levels with regular updates",
-      "Every level beatable without paying",
-      "Daily rewards and seasonal events",
-      "Special boosters and bubble types",
-      "Smooth controls and lag-free play",
-      "Easy to learn, satisfying to master",
+      "Simple time-conversion puzzles",
+      "Fast tap-based gameplay",
+      "Streak rewards and instant feedback",
+      "Clean casual puzzle style",
+      "Practice 12-hour and 24-hour formats",
+      "Playable in short sessions anytime",
     ],
     answer:
-      "Bubble Shoot is a free Android bubble shooter game with over 200 handcrafted levels, daily rewards, and seasonal events. Players aim and release to match three or more bubbles of the same color, clearing the board and earning stars for clean plays. The game is built around the promise that every level is fully beatable without spending money, with smart power-ups and boosters flowing freely through daily rewards and events.",
+      "Time Pop Puzzle is a free Android brain-training game that tests quick time conversion. Players read an AM/PM clock and tap the matching 24-hour answer to keep a streak alive. Rounds are short, feedback is instant, and the clean casual style makes it easy to practice 12-hour and 24-hour time formats in spare moments.",
     faq: [
       {
-        question: "Is Bubble Shoot free to play?",
+        question: "Is Time Pop Puzzle free to play?",
         answer:
-          "Yes, Bubble Shoot is free to download and play on Google Play. Every level is designed to be fully beatable without spending money - no paywalls, no impossible levels. Optional ads and in-app purchases exist but are never required to progress.",
+          "Yes, Time Pop Puzzle is free to download and play on Google Play. Core time-conversion rounds are accessible without payment.",
       },
       {
-        question: "How many levels does Bubble Shoot have?",
+        question: "What do you do in Time Pop Puzzle?",
         answer:
-          "Bubble Shoot features over 200 well-crafted levels, with new challenges added regularly through updates. Levels range from quick and relaxing to tricky and strategic, ensuring content for both casual and dedicated players.",
+          "Each round shows a time in AM/PM format. Tap the correct 24-hour equivalent before the timer runs out to keep your streak going. The pace is fast but forgiving, making it ideal for quick practice.",
       },
       {
-        question: "Does Bubble Shoot have daily rewards?",
+        question: "Is Time Pop Puzzle good for learning time formats?",
         answer:
-          "Yes, Bubble Shoot includes a daily reward system and frequent seasonal events. These provide free boosters and power-ups, helping you tackle the trickiest stages without ever needing to spend real money.",
+          "Yes, the game is built around converting between 12-hour and 24-hour time, so repeated play helps make the conversion feel natural.",
       },
       {
-        question: "Can I play Bubble Shoot offline?",
+        question: "Can I play Time Pop Puzzle offline?",
         answer:
-          "Bubble Shoot is primarily designed for online play to sync progress and deliver daily rewards, but core levels can be played without an internet connection once they are loaded.",
+          "Once installed, the core puzzle rounds can be played without an internet connection, so you can practice anytime.",
       },
     ],
-    releaseDate: "2026-05-07",
-    slug: "bubble-shoot",
+    releaseDate: "2026-06-23",
+    slug: "time-pop-puzzle",
     googlePlayUrl: "https://play.google.com/store/apps/details?id=com.veryfuncompany.bubble",
     rotation: 0.5,
   },
