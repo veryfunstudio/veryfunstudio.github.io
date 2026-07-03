@@ -36,6 +36,9 @@ type Pages = {
   "/contact": {
     params: {};
   };
+  "/legal": {
+    params: {};
+  };
   "/*": {
     params: {
       "*": string;
@@ -46,7 +49,16 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/about" | "/games" | "/games/:slug" | "/blog" | "/blog/:id" | "/contact" | "/*";
+    page:
+      | "/"
+      | "/about"
+      | "/games"
+      | "/games/:slug"
+      | "/blog"
+      | "/blog/:id"
+      | "/contact"
+      | "/legal"
+      | "/*";
   };
   "../src/pages/Home.tsx": {
     id: "../src/pages/Home";
@@ -76,6 +88,10 @@ type RouteFiles = {
     id: "../src/pages/Contact";
     page: "/contact";
   };
+  "../src/pages/Legal.tsx": {
+    id: "../src/pages/Legal";
+    page: "/legal";
+  };
   "../src/pages/NotFound.tsx": {
     id: "../src/pages/NotFound";
     page: "/*";
@@ -91,5 +107,6 @@ type RouteModules = {
   "../src/pages/Blog": unknown;
   "../src/pages/BlogPost": unknown;
   "../src/pages/Contact": unknown;
+  "../src/pages/Legal": unknown;
   "../src/pages/NotFound": unknown;
 };

@@ -1,5 +1,6 @@
 import {
   isRouteErrorResponse,
+  Link,
   Links,
   Meta,
   Outlet,
@@ -14,7 +15,7 @@ import Footer from "@/components/common/Footer";
 import NotFound from "@/pages/NotFound";
 import "@/index.css";
 
-const ROUTED_STATIC_PATHS = new Set(["/", "/about", "/games", "/blog", "/contact"]);
+const ROUTED_STATIC_PATHS = new Set(["/", "/about", "/games", "/blog", "/contact", "/legal"]);
 const DETAIL_ROUTE_PATTERNS = [/^\/games\/[^/]+$/, /^\/blog\/[^/]+$/];
 
 const normalizePathname = (pathname: string) => pathname.replace(/\/+$/, "") || "/";
@@ -29,6 +30,12 @@ const hasKnownRouteShape = (pathname: string) => {
 };
 
 export const links: Route.LinksFunction = () => [
+  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap",
+  },
   { rel: "icon", type: "image/png", sizes: "512x512", href: "/favicon.png" },
   { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
   { rel: "shortcut icon", href: "/favicon.ico" },
@@ -85,26 +92,34 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Error";
-  let details = "An unexpected error occurred.";
-  let stack: string | undefined;
+  let status = "Error";
+  let details = "Something went wrong. Please try again.";
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
-    details =
-      error.status === 404 ? "The requested page could not be found." : error.statusText || details;
+    status = String(error.status);
+    details = error.statusText || details;
   } else if (import.meta.env.DEV && error && error instanceof Error) {
     details = error.message;
-    stack = error.stack;
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
+    <main className="error-stage px-[3.125vw] py-28 lg:py-36">
+      <div className="error-panel">
+        <span className="status-text">{status}</span>
+        <h1>Something went wrong.</h1>
+        <p>{details}</p>
+        <div className="flex flex-wrap justify-center gap-3">
+          <Link to="/" className="pill-button">
+            Home
+          </Link>
+          <Link to="/games" className="pill-button pill-button--accent">
+            Browse games
+          </Link>
+        </div>
+      </div>
+      {import.meta.env.DEV && error instanceof Error && error.stack && (
+        <pre className="mx-auto mt-10 max-w-3xl overflow-x-auto rounded-xl border border-border-soft bg-surface p-4 text-xs text-muted">
+          <code>{error.stack}</code>
         </pre>
       )}
     </main>

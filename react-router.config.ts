@@ -13,6 +13,7 @@ export default {
       "/blog",
       ...BLOG_POSTS.map((p) => `/blog/${p.id}`),
       "/contact",
+      "/legal",
     ];
   },
 } satisfies Config;
