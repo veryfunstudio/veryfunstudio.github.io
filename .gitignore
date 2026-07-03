@@ -9,7 +9,7 @@ lerna-debug.log*
 
 node_modules
 build
-.react-router/cache
+.react-router/
 *.local
 
 # Editor directories and files
