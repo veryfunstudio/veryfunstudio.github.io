@@ -56,6 +56,9 @@ const Footer = () => {
           <p>
             &copy; {currentYear} {BRAND.name}. All rights reserved.
           </p>
+          <nav aria-label="Legal links" className="site-footer__legal">
+            <Link to="/legal">Privacy & Terms</Link>
+          </nav>
         </div>
       </div>
     </footer>

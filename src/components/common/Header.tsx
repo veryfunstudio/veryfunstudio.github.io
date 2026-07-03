@@ -21,7 +21,7 @@ const Header = () => {
       <div className="site-header__bar mx-auto flex h-16 max-w-[80rem] items-center justify-between px-[3.125vw]">
         <Link
           to="/"
-          className="site-header__brand flex min-h-[44px] items-center gap-3 font-sans text-xl font-medium tracking-tight text-foreground no-underline uppercase"
+          className="site-header__brand flex min-h-[44px] items-center gap-3 font-sans text-xl font-medium tracking-tight text-foreground no-underline"
         >
           <img
             src="/favicon.png"
@@ -87,7 +87,7 @@ const Header = () => {
                       to={item.path}
                       onClick={() => setMobileOpen(false)}
                       aria-current={isActive ? "page" : undefined}
-                      className={`site-header__mobile-link flex min-h-[58px] items-center rounded-lg px-4 font-sans text-lg uppercase ${
+                      className={`site-header__mobile-link flex min-h-[58px] items-center rounded-lg px-4 font-sans text-lg ${
                         isActive ? "bg-surface text-foreground" : "text-muted"
                       }`}
                     >
