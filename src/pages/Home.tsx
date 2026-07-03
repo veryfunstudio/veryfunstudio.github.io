@@ -59,7 +59,15 @@ export default function Home() {
       <JsonLd schema={websiteSchema} />
 
       <div className="fixed inset-0 z-0">
-        <Suspense fallback={null}>
+        <Suspense
+          fallback={
+            <div
+              className="hero-canvas-suspense absolute inset-0"
+              style={{ pointerEvents: "none" }}
+              aria-hidden="true"
+            />
+          }
+        >
           <HeroCanvas />
         </Suspense>
       </div>

@@ -55,8 +55,15 @@
   html {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 
   body {
@@ -495,6 +502,14 @@
     font-variant-caps: small-caps;
   }
 
+  .legal-section-title {
+    color: var(--color-foreground);
+    font-size: clamp(1.65rem, 3vw, 2.45rem);
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
   .site-page {
     isolation: isolate;
   }
@@ -545,7 +560,8 @@
     transform: rotate(-12deg);
   }
 
-  .hero-canvas-fallback {
+  .hero-canvas-fallback,
+  .hero-canvas-suspense {
     overflow: hidden;
     background:
       radial-gradient(circle at 18% 18%, rgba(200, 255, 61, 0.11), transparent 20rem),
@@ -556,6 +572,20 @@
         rgba(17, 24, 23, 0.76) 44%,
         rgba(7, 8, 13, 0.98)
       );
+  }
+
+  .hero-canvas-suspense {
+    animation: hero-canvas-pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes hero-canvas-pulse {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 0.8;
+    }
   }
 
   .hero-canvas-fallback::before,

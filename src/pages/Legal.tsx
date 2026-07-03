@@ -18,13 +18,13 @@ export default function Legal() {
       </header>
 
       <section aria-labelledby="privacy-heading" className="mx-auto w-full max-w-3xl">
-        <h2 id="privacy-heading" className="text-2xl font-semibold tracking-tight">
+        <h2 id="privacy-heading" className="legal-section-title">
           Privacy policy
         </h2>
         <p className="mt-4 leading-relaxed text-foreground">
-          Cook ABC built the games listed on this site. We do not collect personal information
-          through this website. When you download our games from Google Play, Google may collect
-          data according to its own privacy policy.
+          VeryFun Company built the games listed on this site. We do not collect personal
+          information through this website. When you download our games from Google Play, Google may
+          collect data according to its own privacy policy.
         </p>
         <p className="mt-4 leading-relaxed text-foreground">
           Our games may show ads served by Google AdMob. AdMob uses device identifiers to serve
@@ -38,7 +38,7 @@ export default function Legal() {
       </section>
 
       <section aria-labelledby="terms-heading" className="mx-auto w-full max-w-3xl">
-        <h2 id="terms-heading" className="text-2xl font-semibold tracking-tight">
+        <h2 id="terms-heading" className="legal-section-title">
           Terms of service
         </h2>
         <p className="mt-4 leading-relaxed text-foreground">
