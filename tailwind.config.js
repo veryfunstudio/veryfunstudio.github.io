@@ -19,9 +19,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        kalam: ["Kalam", "cursive"],
-        patrick: ["Patrick Hand", "cursive"],
-        sans: ["Patrick Hand", "cursive"],
+        sans: ["Space Grotesk", "Avenir Next", "Trebuchet MS", "system-ui", "sans-serif"],
+        mono: ["DM Mono", "SFMono-Regular", "Cascadia Mono", "ui-monospace", "monospace"],
       },
       fontSize: {
         base: ["18px", { lineHeight: "1.6" }],
