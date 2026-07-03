@@ -1,22 +1,22 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { ArrowRight, Gamepad2, Radar, Sparkles } from "lucide-react";
+import { ArrowRight, Feather, Grid3x3, Users } from "lucide-react";
 import { Seo } from "@/components/seo/Seo";
 import { GAMES } from "@/data/games";
 
 const VALUES = [
   {
-    icon: <Radar size={22} />,
+    icon: <Users size={22} />,
     title: "Attention is the budget",
     body: "Short sessions that never demand a streak or punish a pause.",
   },
   {
-    icon: <Gamepad2 size={22} />,
+    icon: <Grid3x3 size={22} />,
     title: "Rules before spectacle",
     body: "The board has to read instantly. Polish supports the puzzle.",
   },
   {
-    icon: <Sparkles size={22} />,
+    icon: <Feather size={22} />,
     title: "Free should still feel premium",
     body: "No paywalls, no timers, no extraction loop. Still built with care.",
   },
