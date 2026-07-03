@@ -25,6 +25,7 @@ const BlogPost = () => {
 
   const seoTitle = post.title.length > 40 ? `${post.title.slice(0, 37)}...` : post.title;
   const relatedPosts = BLOG_POSTS.filter((item) => item.id !== post.id).slice(0, 2);
+  const hasFaq = post.faq.length > 0;
 
   return (
     <article className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -86,6 +87,22 @@ const BlogPost = () => {
           ],
         }}
       />
+      {hasFaq && (
+        <JsonLd
+          schema={{
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: post.faq.map((item) => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: item.answer,
+              },
+            })),
+          }}
+        />
+      )}
 
       <section className="article-masthead">
         <motion.header
@@ -124,14 +141,42 @@ const BlogPost = () => {
         </motion.div>
       </section>
 
+      <section className="article-summary">
+        <h2>Key takeaways</h2>
+        <ul>
+          {post.summary.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ul>
+      </section>
+
       <section className="article-body">
-        {post.content.map((paragraph, index) => (
-          <div key={paragraph} className="article-body__row">
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <p>{paragraph}</p>
+        {post.sections.map((section) => (
+          <div key={section.heading} className="article-section">
+            <h2>{section.heading}</h2>
+            {section.paragraphs.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
         ))}
       </section>
+
+      {hasFaq && (
+        <section className="article-faq">
+          <h2>FAQ</h2>
+          <div>
+            {post.faq.map((item, index) => (
+              <details key={index}>
+                <summary>
+                  <span>{item.question}</span>
+                  <span aria-hidden="true">+</span>
+                </summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="article-next">
         <div className="article-next__intro">
