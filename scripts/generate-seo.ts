@@ -118,6 +118,13 @@ ${faqLines}
   }).join("\n---\n\n");
 
   const blogSections = BLOG_POSTS.map((p) => {
+    const sectionBlocks = p.sections
+      .map((s) => `### ${s.heading}\n\n${s.paragraphs.join("\n\n")}`)
+      .join("\n\n");
+    const faqBlock =
+      p.faq.length > 0
+        ? `### FAQ\n\n${p.faq.map((f) => `**Q: ${f.question}**\nA: ${f.answer}`).join("\n\n")}`
+        : "";
     return `## ${p.title}
 
 ${p.excerpt}
@@ -126,7 +133,11 @@ ${p.excerpt}
 - Category: ${p.category}
 - URL: ${SITE_URL}/blog/${p.id}
 
-${p.content.join("\n\n")}
+### Key takeaways
+${p.summary.map((s) => `- ${s}`).join("\n")}
+
+${sectionBlocks}
+${faqBlock ? `\n${faqBlock}` : ""}
 `;
   }).join("\n---\n\n");
 
