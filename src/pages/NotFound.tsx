@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router";
 import { Compass } from "lucide-react";
+import { Link } from "react-router";
 import { Seo } from "@/components/seo/Seo";
 
 const NotFound = () => {

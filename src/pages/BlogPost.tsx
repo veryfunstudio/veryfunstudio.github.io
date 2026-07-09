@@ -1,12 +1,12 @@
-import { useParams, Link } from "react-router";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { BLOG_POSTS, getBlogPostById } from "@/data/blog";
-import { formatDate } from "@/lib/utils";
-import { Seo } from "@/components/seo/Seo";
-import { JsonLd } from "@/components/seo/JsonLd";
-import { BRAND_LOGO_URL, SITE_URL } from "@/lib/constants";
+import { Link, useParams } from "react-router";
 import EntityNotFound from "@/components/common/EntityNotFound";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { Seo } from "@/components/seo/Seo";
+import { BLOG_POSTS, getBlogPostById } from "@/data/blog";
+import { BRAND_LOGO_URL, SITE_URL } from "@/lib/constants";
+import { formatDate } from "@/lib/utils";
 
 const BlogPost = () => {
   const { id } = useParams<{ id: string }>();

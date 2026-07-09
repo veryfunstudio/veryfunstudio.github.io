@@ -1,6 +1,6 @@
-import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { Compass } from "lucide-react";
+import { Link } from "react-router";
 import { Seo } from "@/components/seo/Seo";
 
 interface EntityNotFoundProps {

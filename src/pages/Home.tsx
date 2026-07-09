@@ -1,11 +1,11 @@
 "use client";
 
+import { ArrowRight, Download } from "lucide-react";
 import { lazy, Suspense } from "react";
 import { Link } from "react-router";
-import { ArrowRight, Download } from "lucide-react";
-import { GAMES, getGameBySlug } from "@/data/games";
-import { Seo } from "@/components/seo/Seo";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { Seo } from "@/components/seo/Seo";
+import { GAMES, getGameBySlug } from "@/data/games";
 import { BRAND_LOGO_URL, GOOGLE_PLAY_DEVELOPER_URL, SITE_URL } from "@/lib/constants";
 
 const HeroCanvas = lazy(() => import("@/components/home/HeroCanvas"));

@@ -1,6 +1,6 @@
 import type { Config } from "@react-router/dev/config";
-import { GAMES } from "./src/data/games";
 import { BLOG_POSTS } from "./src/data/blog";
+import { GAMES } from "./src/data/games";
 
 export default {
   ssr: false,

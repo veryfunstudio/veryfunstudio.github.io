@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
-import { formatDate } from "@/lib/utils";
-import { BLOG_POSTS } from "@/data/blog";
+import { Link } from "react-router";
 import { Seo } from "@/components/seo/Seo";
+import { BLOG_POSTS } from "@/data/blog";
+import { formatDate } from "@/lib/utils";
 
 const Blog = () => {
   const sortedPosts = [...BLOG_POSTS].sort((a, b) => b.date.localeCompare(a.date));

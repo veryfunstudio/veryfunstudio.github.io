@@ -1,11 +1,11 @@
-import { useParams, Link } from "react-router";
 import { motion } from "framer-motion";
 import { ArrowLeft, Download } from "lucide-react";
-import { getGameBySlug } from "@/data/games";
-import { Seo } from "@/components/seo/Seo";
-import { JsonLd } from "@/components/seo/JsonLd";
-import { SITE_URL } from "@/lib/constants";
+import { Link, useParams } from "react-router";
 import EntityNotFound from "@/components/common/EntityNotFound";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { Seo } from "@/components/seo/Seo";
+import { getGameBySlug } from "@/data/games";
+import { SITE_URL } from "@/lib/constants";
 
 const GameDetail = () => {
   const { slug } = useParams<{ slug: string }>();

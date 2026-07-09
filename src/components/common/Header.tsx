@@ -1,10 +1,10 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { NAV_ITEMS, BRAND } from "@/lib/constants";
+import { BRAND, NAV_ITEMS } from "@/lib/constants";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);

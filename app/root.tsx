@@ -1,3 +1,4 @@
+import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import {
   isRouteErrorResponse,
   Link,
@@ -8,11 +9,10 @@ import {
   ScrollRestoration,
   useLocation,
 } from "react-router";
-import type { Route } from "./+types/root";
-import { AnimatePresence, motion, MotionConfig } from "framer-motion";
-import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
+import Header from "@/components/common/Header";
 import NotFound from "@/pages/NotFound";
+import type { Route } from "./+types/root";
 import "@/index.css";
 
 const ROUTED_STATIC_PATHS = new Set(["/", "/about", "/games", "/blog", "/contact", "/legal"]);

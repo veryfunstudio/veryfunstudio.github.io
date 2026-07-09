@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowUpRight, Download } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
-import { ArrowUpRight, Download } from "lucide-react";
-import { GAMES } from "@/data/games";
 import { Seo } from "@/components/seo/Seo";
+import { GAMES } from "@/data/games";
 
 const Games = () => {
   const newest =

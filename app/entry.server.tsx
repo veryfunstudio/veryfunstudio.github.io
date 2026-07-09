@@ -1,7 +1,7 @@
-import type { EntryContext, RouterContextProvider } from "react-router";
-import { ServerRouter } from "react-router";
 import { isbot } from "isbot";
 import { renderToReadableStream } from "react-dom/server";
+import type { EntryContext, RouterContextProvider } from "react-router";
+import { ServerRouter } from "react-router";
 
 export const streamTimeout = 5_000;
 

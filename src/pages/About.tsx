@@ -1,6 +1,6 @@
-import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, Feather, Grid3x3, Users } from "lucide-react";
+import { Link } from "react-router";
 import { Seo } from "@/components/seo/Seo";
 import { GAMES } from "@/data/games";
 

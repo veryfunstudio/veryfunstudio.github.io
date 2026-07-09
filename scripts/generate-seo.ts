@@ -1,8 +1,8 @@
-import { writeFileSync, mkdirSync, readFileSync, existsSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { GAMES } from "../src/data/games";
 import { BLOG_POSTS } from "../src/data/blog";
+import { GAMES } from "../src/data/games";
 
 const SITE_URL = "https://cookabc.github.io";
 const __dirname = dirname(fileURLToPath(import.meta.url));

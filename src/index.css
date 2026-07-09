@@ -69,16 +69,8 @@
   body {
     min-width: 320px;
     background:
-      radial-gradient(
-        circle at 15% 10%,
-        rgb(var(--color-atmosphere-rgb) / 0.13),
-        transparent 34rem
-      ),
-      radial-gradient(
-        circle at 86% 18%,
-        rgb(var(--color-atmosphere-rgb) / 0.09),
-        transparent 30rem
-      ),
+      radial-gradient(circle at 15% 10%, rgb(var(--color-atmosphere-rgb) / 0.13), transparent 34rem),
+      radial-gradient(circle at 86% 18%, rgb(var(--color-atmosphere-rgb) / 0.09), transparent 30rem),
       var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
