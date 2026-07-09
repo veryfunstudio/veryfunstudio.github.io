@@ -942,24 +942,6 @@
     background: var(--color-border-soft);
   }
 
-  .catalog-card:first-child {
-    grid-column: 1 / -1;
-    grid-template-columns: minmax(0, 1fr) minmax(22rem, 0.82fr);
-    grid-template-rows: none;
-    min-height: 26rem;
-  }
-
-  .catalog-card:first-child .catalog-card__media {
-    border-right: 1px solid var(--color-border-soft);
-    border-bottom: 0;
-  }
-
-  .catalog-card:first-child .catalog-card__body {
-    align-content: center;
-    border-top: 0;
-    border-left: 1px solid var(--color-border-soft);
-  }
-
   .catalog-card {
     display: grid;
     min-height: 34rem;
@@ -1016,6 +998,24 @@
     gap: 1rem;
     border-top: 1px solid var(--color-border-soft);
     padding: clamp(1rem, 1.8vw, 1.35rem);
+  }
+
+  .catalog-card:first-child {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr) minmax(22rem, 0.82fr);
+    grid-template-rows: none;
+    min-height: 26rem;
+  }
+
+  .catalog-card:first-child .catalog-card__media {
+    border-right: 1px solid var(--color-border-soft);
+    border-bottom: 0;
+  }
+
+  .catalog-card:first-child .catalog-card__body {
+    align-content: center;
+    border-top: 0;
+    border-left: 1px solid var(--color-border-soft);
   }
 
   .catalog-card__title {
@@ -2431,8 +2431,8 @@
 }
 
 @media (max-width: 1100px) {
-  .site-page {
-    padding-top: 9.5rem !important;
+  .site-page[class] {
+    padding-top: 9.5rem;
   }
 
   .game-detail-hero,

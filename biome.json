@@ -31,6 +31,7 @@
       },
       "complexity": {
         "noForEach": "off",
+        "noImportantStyles": "off",
         "noUselessFragments": "off"
       },
       "correctness": {

@@ -144,8 +144,8 @@ const BlogPost = () => {
       <section className="article-summary">
         <h2>Key takeaways</h2>
         <ul>
-          {post.summary.map((item, index) => (
-            <li key={index}>{item}</li>
+          {post.summary.map((item) => (
+            <li key={item}>{item}</li>
           ))}
         </ul>
       </section>
@@ -154,8 +154,8 @@ const BlogPost = () => {
         {post.sections.map((section) => (
           <div key={section.heading} className="article-section">
             <h2>{section.heading}</h2>
-            {section.paragraphs.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
+            {section.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
         ))}
@@ -165,8 +165,8 @@ const BlogPost = () => {
         <section className="article-faq">
           <h2>FAQ</h2>
           <div>
-            {post.faq.map((item, index) => (
-              <details key={index}>
+            {post.faq.map((item) => (
+              <details key={item.question}>
                 <summary>
                   <span>{item.question}</span>
                   <span aria-hidden="true">+</span>
