@@ -14,7 +14,7 @@
     "format": "biome format --write .",
     "format:check": "biome format .",
     "preview": "react-router preview",
-    "typecheck": "tsc -b",
+    "typecheck": "react-router typegen && tsc -b",
     "check": "pnpm run lint && pnpm run typecheck && pnpm run build"
   },
   "dependencies": {
