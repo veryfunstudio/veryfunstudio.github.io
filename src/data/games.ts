@@ -365,3 +365,24 @@ export const GAMES: Game[] = [
 export function getGameBySlug(slug: string): Game | undefined {
   return GAMES.find((game) => game.slug === slug);
 }
+
+/**
+ * Games ordered newest-first by releaseDate. Sorted copy; does not mutate the
+ * source array. Centralized so callers never hand-roll the comparator.
+ */
+export function getGamesByNewest(): Game[] {
+  return [...GAMES].sort((a, b) => b.releaseDate.localeCompare(a.releaseDate));
+}
+
+/** Newest game by releaseDate, falling back to the first catalog entry. */
+export function getNewestGame(): Game {
+  return getGamesByNewest()[0] ?? GAMES[0];
+}
+
+/**
+ * Secondary tag list (platform tag dropped) joined for display, e.g.
+ * `["Android", "Mahjong", "Puzzle"]` -> `"Mahjong / Puzzle"`.
+ */
+export function formatGameTags(game: Game): string {
+  return game.technologies.slice(1).join(" / ");
+}

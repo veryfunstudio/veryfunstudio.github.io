@@ -735,3 +735,13 @@ export const BLOG_POSTS: BlogPost[] = [
 export function getBlogPostById(id: number): BlogPost | undefined {
   return BLOG_POSTS.find((post) => post.id === id);
 }
+
+/** Posts ordered newest-first by date. Sorted copy; does not mutate the source. */
+export function getPostsByNewest(): BlogPost[] {
+  return [...BLOG_POSTS].sort((a, b) => b.date.localeCompare(a.date));
+}
+
+/** Newest post by date, falling back to the first archive entry. */
+export function getNewestPost(): BlogPost {
+  return getPostsByNewest()[0] ?? BLOG_POSTS[0];
+}
