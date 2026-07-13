@@ -1,6 +1,6 @@
 {
-  "installCommand": "bun install",
-  "buildCommand": "react-router build && bun run scripts/generate-seo.ts",
+  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "react-router build && pnpm exec tsx scripts/generate-seo.ts",
   "outputDirectory": "build/client",
   "framework": null,
   "cleanUrls": true,

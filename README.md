@@ -1,6 +1,6 @@
 # cookabc.github.io
 
-This repo uses Bun for local development. Deployment is fully automated via
+This repo uses pnpm for local development. Deployment is fully automated via
 GitHub Actions.
 
 ## Branches
@@ -12,21 +12,21 @@ GitHub Actions.
 ## Setup
 
 ```bash
-bun install
+pnpm install
 ```
 
 ## Commands
 
 ```bash
-bun run dev
-bun run build
-bun run deploy   # local-only fallback; see "Deployment" below
+pnpm run dev
+pnpm run build
+pnpm run deploy   # local-only fallback; see "Deployment" below
 ```
 
-- `bun run dev`: start the React Router dev server
-- `bun run build`: prerender all routes via `react-router build`, then
+- `pnpm run dev`: start the React Router dev server
+- `pnpm run build`: prerender all routes via `react-router build`, then
   generate SEO assets (robots.txt, sitemap.xml, llms.txt, 404.html)
-- `bun run deploy`: build locally and publish `build/client/` to `main`.
+- `pnpm run deploy`: build locally and publish `build/client/` to `main`.
   Only useful when CI is unavailable. Day-to-day, prefer pushing to
   `source`.
 
@@ -36,9 +36,9 @@ Pushing to `source` triggers the **Deploy GitHub Pages** workflow
 (`.github/workflows/deploy.yml`):
 
 1. `actions/checkout` checks out `source`
-2. `oven-sh/setup-bun` installs Bun
-3. `bun install --frozen-lockfile`
-4. `bun run build` (`react-router build` → `scripts/generate-seo.ts`)
+2. `pnpm/action-setup` installs pnpm
+3. `pnpm install --frozen-lockfile`
+4. `pnpm run build` (`react-router build` → `scripts/generate-seo.ts`)
 5. `peaceiris/actions-gh-pages` force-pushes `build/client/` to `main`
 
 GitHub Pages serves `main` at https://cookabc.github.io/. Concurrency is
@@ -51,8 +51,8 @@ command. Both deployments run from identical source.
 ## Update dependencies
 
 ```bash
-bun update
-bun run build
+pnpm update
+pnpm run build
 ```
 
 ## Standard workflow
@@ -73,7 +73,7 @@ git push origin source
 If CI is broken or unavailable and you need to ship a hotfix:
 
 ```bash
-bun run deploy
+pnpm run deploy
 ```
 
 This bypasses CI by building locally and pushing `build/client/` to `main` directly.
