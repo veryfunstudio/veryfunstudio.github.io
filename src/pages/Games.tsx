@@ -1,15 +1,12 @@
-"use client";
-
 import { motion } from "framer-motion";
 import { ArrowUpRight, Download } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
 import { Seo } from "@/components/seo/Seo";
-import { GAMES } from "@/data/games";
+import { formatGameTags, GAMES, getNewestGame } from "@/data/games";
 
 const Games = () => {
-  const newest =
-    [...GAMES].sort((a, b) => b.releaseDate.localeCompare(a.releaseDate))[0] ?? GAMES[0];
+  const newest = getNewestGame();
   const [activeSlug, setActiveSlug] = useState(newest.slug);
   const activeGame = GAMES.find((game) => game.slug === activeSlug) ?? newest;
 
@@ -62,12 +59,11 @@ const Games = () => {
                     aria-pressed={isActive}
                     onClick={() => setActiveSlug(game.slug)}
                     onFocus={() => setActiveSlug(game.slug)}
-                    onMouseEnter={() => setActiveSlug(game.slug)}
                   >
                     <img src={game.icon} alt="" width={40} height={40} decoding="async" />
                     <span>{String(index + 1).padStart(2, "0")}</span>
                     <strong>{game.title}</strong>
-                    <small>{game.technologies.slice(1).join(" / ")}</small>
+                    <small>{formatGameTags(game)}</small>
                   </button>
                 );
               })}
@@ -90,7 +86,7 @@ const Games = () => {
             />
             <div className="games-hero-panel__footer">
               <strong>{activeGame.title}</strong>
-              <span>{activeGame.technologies.slice(1).join(" / ")}</span>
+              <span>{formatGameTags(activeGame)}</span>
             </div>
           </div>
         </motion.div>
@@ -131,7 +127,7 @@ const Games = () => {
                 </div>
                 <p>{game.description}</p>
                 <div className="catalog-card__meta">
-                  <span>{game.technologies.slice(1).join(" / ")}</span>
+                  <span>{formatGameTags(game)}</span>
                   <span>{game.releaseDate}</span>
                 </div>
                 <div className="catalog-card__actions">

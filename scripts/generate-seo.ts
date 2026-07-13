@@ -3,8 +3,8 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { BLOG_POSTS } from "../src/data/blog";
 import { GAMES } from "../src/data/games";
+import { SITE_URL } from "../src/lib/constants";
 
-const SITE_URL = "https://cookabc.github.io";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const outDir = resolve(__dirname, "..", "build", "client");
 const today = new Date().toISOString().split("T")[0];

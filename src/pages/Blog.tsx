@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import { Seo } from "@/components/seo/Seo";
-import { BLOG_POSTS } from "@/data/blog";
+import { getNewestPost, getPostsByNewest } from "@/data/blog";
 import { formatDate } from "@/lib/utils";
 
 const Blog = () => {
-  const sortedPosts = [...BLOG_POSTS].sort((a, b) => b.date.localeCompare(a.date));
-  const latestPost = sortedPosts[0] ?? BLOG_POSTS[0];
+  const sortedPosts = getPostsByNewest();
+  const latestPost = getNewestPost();
 
   return (
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">

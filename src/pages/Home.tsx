@@ -1,19 +1,17 @@
-"use client";
-
 import { ArrowRight, Download } from "lucide-react";
 import { lazy, Suspense } from "react";
 import { Link } from "react-router";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
-import { GAMES, getGameBySlug } from "@/data/games";
-import { BRAND_LOGO_URL, GOOGLE_PLAY_DEVELOPER_URL, SITE_URL } from "@/lib/constants";
+import { formatGameTags, GAMES, getGameBySlug, getNewestGame } from "@/data/games";
+import { BRAND, BRAND_LOGO_URL, GOOGLE_PLAY_DEVELOPER_URL, SITE_URL } from "@/lib/constants";
 
 const HeroCanvas = lazy(() => import("@/components/home/HeroCanvas"));
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "VeryFun Company",
+  name: BRAND.name,
   url: SITE_URL,
   logo: BRAND_LOGO_URL,
   description:
@@ -24,7 +22,7 @@ const organizationSchema = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "VeryFun Company",
+  name: BRAND.name,
   url: SITE_URL,
 };
 
@@ -45,8 +43,7 @@ const PROMISES = [
 
 export default function Home() {
   const launchGame = getGameBySlug("nova-mahjong") ?? GAMES[0];
-  const latestGame =
-    [...GAMES].sort((a, b) => b.releaseDate.localeCompare(a.releaseDate))[0] ?? launchGame;
+  const latestGame = getNewestGame();
 
   return (
     <div className="relative overflow-hidden">
@@ -143,7 +140,7 @@ export default function Home() {
                   decoding="async"
                 />
                 <span>
-                  {latestGame.technologies.slice(1).join(" / ")}
+                  {formatGameTags(latestGame)}
                   <ArrowRight size={16} />
                 </span>
               </Link>

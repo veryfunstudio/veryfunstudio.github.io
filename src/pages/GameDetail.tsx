@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router";
 import EntityNotFound from "@/components/common/EntityNotFound";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
-import { getGameBySlug } from "@/data/games";
+import { formatGameTags, getGameBySlug } from "@/data/games";
 import { SITE_URL } from "@/lib/constants";
 
 const GameDetail = () => {
@@ -22,7 +22,7 @@ const GameDetail = () => {
     );
   }
 
-  const primaryTags = game.technologies.slice(1);
+  const primaryTags = formatGameTags(game);
   const primaryFeatures = game.features.slice(0, 4);
   const secondaryFeatures = game.features.slice(4);
   const heroFacts = [
@@ -107,7 +107,7 @@ const GameDetail = () => {
           </Link>
           <div>
             <span className="game-detail-mark">
-              <span>{primaryTags.join(" / ")}</span>
+              <span>{primaryTags}</span>
             </span>
             <h1>{game.title}</h1>
           </div>
@@ -150,7 +150,7 @@ const GameDetail = () => {
               <img src={game.icon} alt="" width={56} height={56} decoding="async" />
               <div>
                 <strong>{game.title}</strong>
-                <span>{primaryTags.join(" / ")}</span>
+                <span>{primaryTags}</span>
               </div>
             </div>
             <dl>

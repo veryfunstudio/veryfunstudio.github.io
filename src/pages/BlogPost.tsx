@@ -4,13 +4,27 @@ import { Link, useParams } from "react-router";
 import EntityNotFound from "@/components/common/EntityNotFound";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
-import { BLOG_POSTS, getBlogPostById } from "@/data/blog";
-import { BRAND_LOGO_URL, SITE_URL } from "@/lib/constants";
+import { getBlogPostById, getPostsByNewest } from "@/data/blog";
+import { BRAND, BRAND_LOGO_URL, SITE_URL } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
+
+/** Reused as both the BlogPosting author and publisher. */
+const blogPublisher = {
+  "@type": "Organization",
+  name: BRAND.name,
+  url: SITE_URL,
+  logo: {
+    "@type": "ImageObject",
+    url: BRAND_LOGO_URL,
+    width: 512,
+    height: 512,
+  },
+};
 
 const BlogPost = () => {
   const { id } = useParams<{ id: string }>();
-  const post = getBlogPostById(Number(id));
+  const numericId = id ? Number.parseInt(id, 10) : Number.NaN;
+  const post = Number.isFinite(numericId) ? getBlogPostById(numericId) : undefined;
 
   if (!post) {
     return (
@@ -24,7 +38,9 @@ const BlogPost = () => {
   }
 
   const seoTitle = post.title.length > 40 ? `${post.title.slice(0, 37)}...` : post.title;
-  const relatedPosts = BLOG_POSTS.filter((item) => item.id !== post.id).slice(0, 2);
+  const relatedPosts = getPostsByNewest()
+    .filter((item) => item.id !== post.id)
+    .slice(0, 2);
   const hasFaq = post.faq.length > 0;
 
   return (
@@ -49,22 +65,8 @@ const BlogPost = () => {
           dateModified: post.date,
           image: `${SITE_URL}${post.image}`,
           url: `${SITE_URL}/blog/${post.id}`,
-          author: {
-            "@type": "Organization",
-            name: "VeryFun Company",
-            url: SITE_URL,
-          },
-          publisher: {
-            "@type": "Organization",
-            name: "VeryFun Company",
-            url: SITE_URL,
-            logo: {
-              "@type": "ImageObject",
-              url: BRAND_LOGO_URL,
-              width: 512,
-              height: 512,
-            },
-          },
+          author: blogPublisher,
+          publisher: blogPublisher,
           mainEntityOfPage: {
             "@type": "WebPage",
             "@id": `${SITE_URL}/blog/${post.id}`,

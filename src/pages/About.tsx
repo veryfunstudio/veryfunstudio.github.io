@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Feather, Grid3x3, Users } from "lucide-react";
 import { Link } from "react-router";
 import { Seo } from "@/components/seo/Seo";
-import { GAMES } from "@/data/games";
+import { getGamesByNewest } from "@/data/games";
 
 const VALUES = [
   {
@@ -23,9 +23,7 @@ const VALUES = [
 ] as const;
 
 const About = () => {
-  const featuredGames = [...GAMES]
-    .sort((a, b) => b.releaseDate.localeCompare(a.releaseDate))
-    .slice(0, 4);
+  const featuredGames = getGamesByNewest().slice(0, 4);
 
   return (
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
