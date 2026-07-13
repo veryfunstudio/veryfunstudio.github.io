@@ -1,6 +1,5 @@
-import { FaGithub, FaGooglePlay } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router";
+import { GitHubIcon, GooglePlayIcon, XIcon } from "@/components/common/icons/BrandIcons";
 import { BRAND, GOOGLE_PLAY_DEVELOPER_URL } from "@/lib/constants";
 
 const Footer = () => {
@@ -26,7 +25,7 @@ const Footer = () => {
               aria-label="Google Play"
               className="site-footer__icon-link"
             >
-              <FaGooglePlay size={15} />
+              <GooglePlayIcon size={15} />
               <span className="sr-only">Google Play</span>
             </a>
             <a
@@ -36,7 +35,7 @@ const Footer = () => {
               aria-label="GitHub"
               className="site-footer__icon-link"
             >
-              <FaGithub size={15} />
+              <GitHubIcon size={15} />
               <span className="sr-only">GitHub</span>
             </a>
             <a
@@ -46,7 +45,7 @@ const Footer = () => {
               aria-label="X"
               className="site-footer__icon-link"
             >
-              <FaXTwitter size={15} />
+              <XIcon size={15} />
               <span className="sr-only">X</span>
             </a>
           </nav>

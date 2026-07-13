@@ -1,5 +1,3 @@
-"use client";
-
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -58,6 +56,7 @@ const Header = () => {
         </nav>
 
         <button
+          type="button"
           className="flex min-h-[44px] min-w-[44px] items-center justify-center text-foreground md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}

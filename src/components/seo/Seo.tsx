@@ -1,6 +1,6 @@
-import { SITE_URL } from "@/lib/constants";
+import { BRAND, SITE_URL } from "@/lib/constants";
 
-const SITE_NAME = "VeryFun Company";
+const SITE_NAME = BRAND.name;
 const DEFAULT_OG_IMAGE = `${SITE_URL}/images/tile-journey.webp`;
 const DEFAULT_OG_IMAGE_WIDTH = 1200;
 const DEFAULT_OG_IMAGE_HEIGHT = 630;

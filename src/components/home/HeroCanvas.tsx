@@ -15,7 +15,6 @@ const SURFACE_FRAGMENT = `
 precision highp float;
 
 uniform float uTime;
-uniform float uScroll;
 uniform vec2 uResolution;
 uniform vec2 uPointer;
 uniform vec3 uInk;
@@ -59,14 +58,12 @@ void main() {
   float detail = fbm(p * 7.0 - vec2(uTime * 0.09, uTime * 0.04));
   float ring = sin((length(p - pointer) * 22.0) - uTime * 4.0);
   float pointerGlow = smoothstep(0.56, 0.0, length(p - pointer));
-  float scrollBand = smoothstep(0.018, 0.0, abs(fract((uv.y + uScroll * 0.22) * 10.0) - 0.5));
-  float circuit = smoothstep(0.012, 0.0, abs(fract((uv.x + flow * 0.06 + uScroll * 0.1) * 14.0) - 0.5));
+  float circuit = smoothstep(0.012, 0.0, abs(fract((uv.x + flow * 0.06) * 14.0) - 0.5));
   float vignette = smoothstep(0.85, 0.18, length(p));
 
   vec3 color = mix(uInk, uAmber, flow * 0.42 + detail * 0.18);
   color = mix(color, uPearl, pointerGlow * 0.13);
   color += uAmber * max(ring, 0.0) * pointerGlow * 0.09;
-  color += uPearl * scrollBand * 0.02;
   color += uAmber * circuit * 0.018;
   color *= vignette;
 
@@ -80,7 +77,6 @@ attribute vec3 aPosition;
 attribute float aSeed;
 attribute float aScale;
 uniform float uTime;
-uniform float uScroll;
 uniform vec2 uPointer;
 uniform vec2 uCamera;
 uniform float uAspect;
@@ -107,7 +103,6 @@ void main() {
   pos.x += sin(phase + aPosition.y * 0.55) * 0.18;
   pos.y += cos(phase * 0.82 + aPosition.x * 0.32) * 0.12;
   pos.z += sin(phase * 0.7) * 0.24;
-  pos.y += uScroll * 0.55;
 
   vec2 pointer = (uPointer - 0.5) * vec2(8.0, 4.5);
   float repel = smoothstep(1.8, 0.0, distance(pos.xy, pointer));
@@ -281,7 +276,6 @@ export default function HeroCanvas() {
       position: gl.getAttribLocation(surfaceProgram, "aPosition"),
       uv: gl.getAttribLocation(surfaceProgram, "aUv"),
       time: gl.getUniformLocation(surfaceProgram, "uTime"),
-      scroll: gl.getUniformLocation(surfaceProgram, "uScroll"),
       resolution: gl.getUniformLocation(surfaceProgram, "uResolution"),
       pointer: gl.getUniformLocation(surfaceProgram, "uPointer"),
       ink: gl.getUniformLocation(surfaceProgram, "uInk"),
@@ -294,7 +288,6 @@ export default function HeroCanvas() {
       seed: gl.getAttribLocation(particleProgram, "aSeed"),
       scale: gl.getAttribLocation(particleProgram, "aScale"),
       time: gl.getUniformLocation(particleProgram, "uTime"),
-      scroll: gl.getUniformLocation(particleProgram, "uScroll"),
       pointer: gl.getUniformLocation(particleProgram, "uPointer"),
       camera: gl.getUniformLocation(particleProgram, "uCamera"),
       aspect: gl.getUniformLocation(particleProgram, "uAspect"),
@@ -341,7 +334,6 @@ export default function HeroCanvas() {
       gl.enableVertexAttribArray(surfaceLocations.uv);
       gl.vertexAttribPointer(surfaceLocations.uv, 2, gl.FLOAT, false, 16, 8);
       gl.uniform1f(surfaceLocations.time, elapsed);
-      gl.uniform1f(surfaceLocations.scroll, 0);
       gl.uniform2f(surfaceLocations.resolution, resolution.width, resolution.height);
       gl.uniform2f(surfaceLocations.pointer, pointer.x, pointer.y);
       setVec3(gl, surfaceLocations.ink, ink);
@@ -360,7 +352,6 @@ export default function HeroCanvas() {
       gl.enableVertexAttribArray(particleLocations.scale);
       gl.vertexAttribPointer(particleLocations.scale, 1, gl.FLOAT, false, 20, 16);
       gl.uniform1f(particleLocations.time, elapsed);
-      gl.uniform1f(particleLocations.scroll, 0);
       gl.uniform2f(particleLocations.pointer, pointer.x, pointer.y);
       gl.uniform2f(particleLocations.camera, (pointer.x - 0.5) * 0.55, (pointer.y - 0.5) * 0.35);
       gl.uniform1f(particleLocations.aspect, resolution.width / Math.max(resolution.height, 1));
