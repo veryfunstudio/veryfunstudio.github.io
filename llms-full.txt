@@ -3,7 +3,7 @@
 > VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. All games are free, work offline, and have no timers or paywalls. The studio has shipped 7 titles including Classic Sudoku 2026, Tile Journey, Word Search Block, Arrow Out, Pearl Coloring, Time Pop Puzzle, and Nova Mahjong For Seniors.
 >
 > Site: https://cookabc.github.io
-> Last updated: 2026-07-09
+> Last updated: 2026-07-13
 
 ---
 
