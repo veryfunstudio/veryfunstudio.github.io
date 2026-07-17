@@ -221,7 +221,7 @@ A: Yes, Pearl Coloring is designed as gentle brain exercise suitable for any age
 
 ## Time Pop Puzzle
 
-Time Pop Puzzle is a free Android brain-training game that tests quick time conversion. Players read an AM/PM clock and tap the matching 24-hour answer to keep a streak alive. Rounds are short, feedback is instant, and the clean casual style makes it easy to practice 12-hour and 24-hour time formats in spare moments.
+Time Pop Puzzle is a free Android brain-training game that tests quick time conversion. Players read an AM/PM clock and tap the matching 24-hour answer to keep a streak alive. Rounds are short, feedback is instant, and the clean casual style makes it easy to practice 12-hour and 24-hour time formats in spare moments. The timer is part of the core mechanic — not a pressure system bolted onto a calm board game.
 
 Time Pop Puzzle is a casual brain-training game about quick time conversion. Read the AM/PM time, choose the correct 24-hour answer, and keep your streak going. Each round is short, clear, and fast, making it easy to play anytime. With simple tap-based gameplay, streak rewards, and instant feedback, it turns a small everyday skill into a satisfying daily habit.
 
@@ -245,6 +245,9 @@ A: Yes, Time Pop Puzzle is free to download and play on Google Play. Core time-c
 
 **Q: What do you do in Time Pop Puzzle?**
 A: Each round shows a time in AM/PM format. Tap the correct 24-hour equivalent before the timer runs out to keep your streak going. The pace is fast but forgiving, making it ideal for quick practice.
+
+**Q: Why does Time Pop have a timer if other VeryFun games avoid them?**
+A: Here the timer is the puzzle. Learning 12- vs 24-hour conversion is about quick recognition, so the clock is the skill — not a streak stick bolted onto a calm board game.
 
 **Q: Is Time Pop Puzzle good for learning time formats?**
 A: Yes, the game is built around converting between 12-hour and 24-hour time, so repeated play helps make the conversion feel natural.
