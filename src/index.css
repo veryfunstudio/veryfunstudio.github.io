@@ -1776,10 +1776,44 @@
 
   .game-detail-gallery__item {
     scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    min-width: 14rem;
     overflow: hidden;
     border: 1px solid var(--color-border-soft);
     border-radius: 8px;
     background: rgba(7, 8, 13, 0.55);
+  }
+
+  .game-detail-gallery__item--phone {
+    min-width: 11.5rem;
+    max-width: 13.5rem;
+  }
+
+  .game-detail-gallery__item--wide {
+    min-width: min(22rem, 70vw);
+  }
+
+  .game-detail-gallery__item--square {
+    min-width: 11rem;
+    max-width: 12rem;
+  }
+
+  .game-detail-gallery__frame {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    background: rgba(244, 247, 232, 0.03);
+  }
+
+  .game-detail-gallery__item--phone .game-detail-gallery__frame {
+    margin: 0.85rem 0.85rem 0;
+    padding: 0.45rem;
+    border-radius: 1.15rem;
+    border: 1px solid var(--color-border-soft);
+    background: #05060a;
+    box-shadow: inset 0 0 0 1px rgba(244, 247, 232, 0.04);
   }
 
   .game-detail-gallery__item img {
@@ -1790,11 +1824,18 @@
     object-position: center top;
   }
 
-  .game-detail-gallery__item--icon img {
+  .game-detail-gallery__item--phone img {
+    height: 18rem;
+    border-radius: 0.85rem;
+    object-fit: cover;
+  }
+
+  .game-detail-gallery__item--square img {
+    height: 11rem;
+    width: 11rem;
     object-fit: contain;
     object-position: center;
-    padding: 2.5rem;
-    background: rgba(244, 247, 232, 0.03);
+    padding: 1.5rem;
   }
 
   .game-detail-gallery__item figcaption {
@@ -1803,6 +1844,22 @@
     font-family: var(--font-mono);
     font-size: 0.8rem;
     border-top: 1px solid var(--color-border-soft);
+  }
+
+  .game-detail-hook,
+  .catalog-card__hook {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+  }
+
+  .game-detail-hook {
+    margin-top: 0.65rem;
+  }
+
+  .catalog-card__hook {
+    margin: 0.35rem 0 0.5rem;
   }
 
   .related-strip {

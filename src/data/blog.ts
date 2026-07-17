@@ -777,11 +777,26 @@ export function getNewestPost(): BlogPost {
   return getPostsByNewest()[0] ?? BLOG_POSTS[0];
 }
 
-/** Studio notes that mention this game by title, slug, or genre keywords. */
+/**
+ * Studio notes for a game. Prefers hand-picked `relatedPostSlugs`, then falls
+ * back to title/slug/genre keyword match.
+ */
 export function getRelatedPostsForGame(
-  game: { title: string; slug: string; technologies: string[] },
+  game: {
+    title: string;
+    slug: string;
+    technologies: string[];
+    relatedPostSlugs?: string[];
+  },
   limit = 2,
 ): BlogPost[] {
+  if (game.relatedPostSlugs?.length) {
+    const picked = game.relatedPostSlugs
+      .map((slug) => getBlogPostBySlug(slug))
+      .filter((post): post is BlogPost => post != null);
+    if (picked.length > 0) return picked.slice(0, limit);
+  }
+
   const needles = [
     game.title.toLowerCase(),
     game.slug.replace(/-/g, " "),

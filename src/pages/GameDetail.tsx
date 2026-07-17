@@ -114,6 +114,7 @@ const GameDetail = () => {
               <span>{primaryTags}</span>
             </span>
             <h1>{game.title}</h1>
+            <p className="game-detail-hook">{game.hook}</p>
           </div>
           <p>{game.description}</p>
           <div className="game-detail-actions">
@@ -173,34 +174,33 @@ const GameDetail = () => {
         <div className="game-detail-gallery__head">
           <h2>Look closer.</h2>
           <p>
-            {screenshots.some((s) => s.kind === "screen")
-              ? "Store screenshots and key art."
-              : "Key art and app icon — store screenshots ship here as they land."}
+            {game.gallery?.length
+              ? "Key art and board presentation — replace phone frames with real Play shots when ready."
+              : "Key art and app icon — add a gallery pack under public/screenshots/{slug}/ when ready."}
           </p>
         </div>
         <div className="game-detail-gallery__track">
-          {screenshots.map((shot) => (
-            <figure
-              key={`${shot.kind}-${shot.src}`}
-              className={`game-detail-gallery__item game-detail-gallery__item--${shot.kind}`}
-            >
-              <img
-                src={shot.src}
-                alt={shot.alt}
-                width={shot.kind === "icon" ? 256 : 1200}
-                height={shot.kind === "icon" ? 256 : 630}
-                loading="lazy"
-                decoding="async"
-              />
-              <figcaption>
-                {shot.kind === "icon"
-                  ? "App icon"
-                  : shot.kind === "screen"
-                    ? "Screenshot"
-                    : "Key art"}
-              </figcaption>
-            </figure>
-          ))}
+          {screenshots.map((shot) => {
+            const frame = shot.frame ?? (shot.kind === "icon" ? "square" : "wide");
+            return (
+              <figure
+                key={`${shot.kind}-${shot.src}`}
+                className={`game-detail-gallery__item game-detail-gallery__item--${frame}`}
+              >
+                <div className="game-detail-gallery__frame">
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    width={frame === "phone" ? 1080 : frame === "square" ? 256 : 1200}
+                    height={frame === "phone" ? 1920 : frame === "square" ? 256 : 630}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <figcaption>{shot.caption}</figcaption>
+              </figure>
+            );
+          })}
         </div>
       </section>
 

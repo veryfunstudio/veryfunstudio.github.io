@@ -3,6 +3,16 @@ export interface FaqItem {
   answer: string;
 }
 
+export interface GameScreenshot {
+  src: string;
+  /** Short label under the frame, e.g. "Board at rest". */
+  caption: string;
+  alt: string;
+  kind: "key-art" | "icon" | "screen";
+  /** Presentation: phone portrait, wide key art, or square icon. */
+  frame?: "phone" | "wide" | "square";
+}
+
 export interface Game {
   id: number;
   packageId: string;
@@ -11,6 +21,8 @@ export interface Game {
   fullDescription: string;
   /** 50-80 word direct-answer paragraph for LLM extraction. */
   answer: string;
+  /** 6–12 word catalog differentiator shown under the title. */
+  hook: string;
   icon: string;
   image: string;
   technologies: string[];
@@ -19,8 +31,13 @@ export interface Game {
   releaseDate: string;
   slug: string;
   googlePlayUrl: string;
-  /** Optional store screenshots under /public. Falls back to key art + icon. */
-  screenshots?: string[];
+  /** Hand-picked studio notes (blog slugs). */
+  relatedPostSlugs?: string[];
+  /**
+   * Store gallery. Prefer real Play screenshots under
+   * `public/screenshots/{slug}/`. Captions + frame drive the detail UI.
+   */
+  gallery?: GameScreenshot[];
 }
 
 export const GAMES: Game[] = [
@@ -45,6 +62,31 @@ export const GAMES: Game[] = [
     ],
     answer:
       "Nova Mahjong For Seniors is a free Android mahjong solitaire game designed for relaxed, peaceful brain training. Players match identical free tiles to clear the board across hundreds of handcrafted puzzles with large, clear tiles and helpful boosters. There are no time limits, the game works offline, and the calm visuals make it suitable for seniors and anyone who enjoys classic tile-matching puzzles.",
+    hook: "Large tiles. No clocks. Classic solitaire calm.",
+    relatedPostSlugs: ["why-nova-mahjong-uses-large-clear-tiles", "why-our-puzzles-avoid-timers"],
+    gallery: [
+      {
+        src: "/screenshots/nova-mahjong/01-key-art.webp",
+        caption: "Store key art",
+        alt: "Nova Mahjong For Seniors store key art",
+        kind: "key-art",
+        frame: "wide",
+      },
+      {
+        src: "/screenshots/nova-mahjong/02-board.jpg",
+        caption: "Board at rest",
+        alt: "Nova Mahjong board presentation",
+        kind: "screen",
+        frame: "phone",
+      },
+      {
+        src: "/screenshots/nova-mahjong/03-focus.jpg",
+        caption: "Readable tiles up close",
+        alt: "Nova Mahjong tile focus",
+        kind: "screen",
+        frame: "phone",
+      },
+    ],
     faq: [
       {
         question: "Is Nova Mahjong For Seniors free to play?",
@@ -93,6 +135,31 @@ export const GAMES: Game[] = [
     ],
     answer:
       "Classic Sudoku 2026 is a free, calming Android puzzle game that reinvents the classic 9×9 number logic grid with multiple difficulty levels, smart hints, and a stress-free no-timer design. Players fill rows, columns, and boxes with digits 1-9, earn points for completed lines, and track progress over time. The game works fully offline and is suitable for all skill levels, from quick coffee-break puzzles to longer sessions.",
+    hook: "Nine-by-nine logic. Zero countdown pressure.",
+    relatedPostSlugs: ["how-we-balance-difficulty-in-classic-sudoku", "designing-a-readable-board"],
+    gallery: [
+      {
+        src: "/screenshots/classic-sudoku/01-key-art.webp",
+        caption: "Store key art",
+        alt: "Classic Sudoku 2026 store key art",
+        kind: "key-art",
+        frame: "wide",
+      },
+      {
+        src: "/screenshots/classic-sudoku/02-board.jpg",
+        caption: "Grid first, chrome second",
+        alt: "Classic Sudoku board presentation",
+        kind: "screen",
+        frame: "phone",
+      },
+      {
+        src: "/screenshots/classic-sudoku/03-focus.jpg",
+        caption: "Quiet focus mode",
+        alt: "Classic Sudoku focus presentation",
+        kind: "screen",
+        frame: "phone",
+      },
+    ],
     faq: [
       {
         question: "Is Classic Sudoku 2026 free to play?",
@@ -140,6 +207,31 @@ export const GAMES: Game[] = [
     ],
     answer:
       "Tile Journey is a free 3D tile-matching puzzle game for Android where players travel through thousands of hand-crafted themed levels, matching three identical tiles to clear the board. The game features strategic power-ups (shuffle, undo, free match), no time limits, and full offline support. It blends casual match-three mechanics with mindful pacing, making it suitable for both quick breaks and extended puzzle sessions across diverse visual worlds.",
+    hook: "3D match-three. Offline. Thousands of levels.",
+    relatedPostSlugs: ["why-tile-journey-works-offline", "keeping-mobile-builds-light"],
+    gallery: [
+      {
+        src: "/screenshots/tile-journey/01-key-art.webp",
+        caption: "Store key art",
+        alt: "Tile Journey store key art",
+        kind: "key-art",
+        frame: "wide",
+      },
+      {
+        src: "/screenshots/tile-journey/02-board.jpg",
+        caption: "Themed boards",
+        alt: "Tile Journey board presentation",
+        kind: "screen",
+        frame: "phone",
+      },
+      {
+        src: "/screenshots/tile-journey/03-focus.jpg",
+        caption: "Match-three in motion",
+        alt: "Tile Journey focus presentation",
+        kind: "screen",
+        frame: "phone",
+      },
+    ],
     faq: [
       {
         question: "Is Tile Journey free to play?",
@@ -187,6 +279,8 @@ export const GAMES: Game[] = [
     ],
     answer:
       "Word Search Block is a free, calming word-search puzzle game for Android. Players swipe across a letter grid to discover hidden words grouped by friendly themes, sharpening vocabulary and spelling skills at a relaxed pace. The game features hundreds of themed puzzles, a gentle difficulty curve, helpful hints, and a clean visual style designed for mindful play - perfect for winding down or quick breaks.",
+    hook: "Themed word grids for unhurried vocabulary play.",
+    relatedPostSlugs: ["how-themed-puzzles-build-vocabulary"],
     faq: [
       {
         question: "Is Word Search Block free to play?",
@@ -234,6 +328,8 @@ export const GAMES: Game[] = [
     ],
     answer:
       "Arrow Out is a free Android logic puzzle game where every tile points in a direction and your goal is to send each arrow off the grid without it being blocked by another. The game features hundreds of handcrafted levels that range from quick brain teasers to extended think-aheads, a helpful hint system, no time limits, and a clean minimal visual style. It is easy to learn but quietly hard to put down.",
+    hook: "One direction at a time. Handcrafted paths.",
+    relatedPostSlugs: ["the-logic-behind-arrow-outs-handcrafted-levels"],
     faq: [
       {
         question: "Is Arrow Out free to play?",
@@ -281,6 +377,8 @@ export const GAMES: Game[] = [
     ],
     answer:
       "Pearl Coloring is a free Android puzzle game that blends color sorting with pixel-art creation. Players tap to arrange lustrous 3D pearls into matching color groups, clearing each puzzle shelf to reveal hidden pixel-art designs layer by layer. The game features hundreds of puzzles, polished 3D visuals and audio, limited-time themed collections, gentle brain exercise suitable for all ages, and full offline support for play anywhere.",
+    hook: "Sort pearls. Reveal pixel art. Stay soft.",
+    relatedPostSlugs: ["how-pearl-coloring-blends-sorting-and-pixel-art"],
     faq: [
       {
         question: "Is Pearl Coloring free to play?",
@@ -327,7 +425,12 @@ export const GAMES: Game[] = [
       "Playable in short sessions anytime",
     ],
     answer:
-      "Time Pop Puzzle is a free Android brain-training game that tests quick time conversion. Players read an AM/PM clock and tap the matching 24-hour answer to keep a streak alive. Rounds are short, feedback is instant, and the clean casual style makes it easy to practice 12-hour and 24-hour time formats in spare moments.",
+      "Time Pop Puzzle is a free Android brain-training game that tests quick time conversion. Players read an AM/PM clock and tap the matching 24-hour answer to keep a streak alive. Rounds are short, feedback is instant, and the clean casual style makes it easy to practice 12-hour and 24-hour time formats in spare moments. The timer is part of the core mechanic — not a pressure system bolted onto a calm board game.",
+    hook: "AM/PM to 24-hour — the timer is the puzzle.",
+    relatedPostSlugs: [
+      "why-time-pop-puzzle-focuses-on-12-vs-24-hour-conversion",
+      "why-our-puzzles-avoid-timers",
+    ],
     faq: [
       {
         question: "Is Time Pop Puzzle free to play?",
@@ -338,6 +441,11 @@ export const GAMES: Game[] = [
         question: "What do you do in Time Pop Puzzle?",
         answer:
           "Each round shows a time in AM/PM format. Tap the correct 24-hour equivalent before the timer runs out to keep your streak going. The pace is fast but forgiving, making it ideal for quick practice.",
+      },
+      {
+        question: "Why does Time Pop have a timer if other VeryFun games avoid them?",
+        answer:
+          "Here the timer is the puzzle. Learning 12- vs 24-hour conversion is about quick recognition, so the clock is the skill — not a streak stick bolted onto a calm board game.",
       },
       {
         question: "Is Time Pop Puzzle good for learning time formats?",
@@ -381,28 +489,29 @@ export function formatGameTags(game: Game): string {
   return game.technologies.slice(1).join(" / ");
 }
 
-export interface GameScreenshot {
-  src: string;
-  alt: string;
-  kind: "key-art" | "icon" | "screen";
-}
-
 /**
- * Visual assets for the detail gallery. Prefer explicit store screenshots when
- * present; otherwise fall back to key art + app icon (honest studio assets).
+ * Visual assets for the detail gallery. Prefer `game.gallery` (captioned
+ * store shots). Fall back to key art + icon for titles without a pack yet.
  */
-export function getGameScreenshots(game: Game & { screenshots?: string[] }): GameScreenshot[] {
-  const custom = game.screenshots;
-  if (custom && custom.length > 0) {
-    return custom.map((src, index) => ({
-      src,
-      alt: `${game.title} screenshot ${index + 1}`,
-      kind: "screen" as const,
-    }));
+export function getGameScreenshots(game: Game): GameScreenshot[] {
+  if (game.gallery && game.gallery.length > 0) {
+    return game.gallery;
   }
   return [
-    { src: game.image, alt: `${game.title} key art`, kind: "key-art" },
-    { src: game.icon, alt: `${game.title} app icon`, kind: "icon" },
+    {
+      src: game.image,
+      caption: "Key art",
+      alt: `${game.title} key art`,
+      kind: "key-art",
+      frame: "wide",
+    },
+    {
+      src: game.icon,
+      caption: "App icon",
+      alt: `${game.title} app icon`,
+      kind: "icon",
+      frame: "square",
+    },
   ];
 }
 

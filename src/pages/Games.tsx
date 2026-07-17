@@ -148,6 +148,7 @@ const Games = () => {
                 <div className="catalog-card__title">
                   <h3>{game.title}</h3>
                 </div>
+                <p className="catalog-card__hook">{game.hook}</p>
                 <p>{game.description}</p>
                 <div className="catalog-card__meta">
                   <span>{formatGameTags(game)}</span>
