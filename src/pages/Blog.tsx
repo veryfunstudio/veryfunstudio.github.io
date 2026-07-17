@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -11,6 +11,21 @@ const Blog = () => {
   const sortedPosts = getPostsByNewest();
   const latestPost = getNewestPost();
   const indexPosts = sortedPosts.filter((post) => post.id !== latestPost?.id);
+  const shouldReduceMotion = useReducedMotion();
+  const enter = shouldReduceMotion
+    ? { initial: false as const, animate: undefined, transition: undefined }
+    : {
+        initial: { opacity: 0, y: 24 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+      };
+  const enterMedia = shouldReduceMotion
+    ? { initial: false as const, animate: undefined, transition: undefined }
+    : {
+        initial: { opacity: 0, scale: 0.96 },
+        animate: { opacity: 1, scale: 1 },
+        transition: { duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] as const },
+      };
 
   return (
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -36,9 +51,9 @@ const Blog = () => {
 
       <section className="blog-hero">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          initial={enter.initial}
+          animate={enter.animate}
+          transition={enter.transition}
           className="blog-hero-copy"
         >
           <h1>How we think about small games.</h1>
@@ -50,9 +65,9 @@ const Blog = () => {
 
         {latestPost && (
           <motion.aside
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+            initial={enterMedia.initial}
+            animate={enterMedia.animate}
+            transition={enterMedia.transition}
             className="blog-featured"
             aria-label="Latest studio note"
           >

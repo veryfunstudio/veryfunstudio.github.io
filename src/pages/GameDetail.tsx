@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Download } from "lucide-react";
 import { Link, useParams } from "react-router";
 import EntityNotFound from "@/components/common/EntityNotFound";
@@ -12,6 +12,7 @@ import { formatDate } from "@/lib/utils";
 const GameDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const game = getGameBySlug(slug ?? "");
+  const shouldReduceMotion = useReducedMotion();
 
   if (!game) {
     return (
@@ -31,11 +32,27 @@ const GameDetail = () => {
   const screenshots = getGameScreenshots(game);
   const relatedGames = getRelatedGames(game, 3);
   const relatedPosts = getRelatedPostsForGame(game, 2);
+  const releaseLabel = formatDate(game.releaseDate);
   const heroFacts = [
     { label: "Platform", value: "Android" },
     { label: "Price", value: "Free" },
-    { label: "Release", value: game.releaseDate },
+    { label: "Release", value: releaseLabel },
   ];
+  const motionEnter = shouldReduceMotion
+    ? { initial: false as const, animate: undefined, transition: undefined }
+    : {
+        initial: { opacity: 0, y: 24 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+      };
+  const motionMedia = shouldReduceMotion
+    ? { initial: false as const, animate: undefined, transition: undefined }
+    : {
+        initial: { opacity: 0, scale: 0.96 },
+        animate: { opacity: 1, scale: 1 },
+        transition: { duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] as const },
+      };
+  const hasBoardShots = screenshots.some((s) => s.kind === "screen");
 
   return (
     <article className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -100,9 +117,9 @@ const GameDetail = () => {
 
       <section className="game-detail-hero">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          initial={motionEnter.initial}
+          animate={motionEnter.animate}
+          transition={motionEnter.transition}
           className="game-detail-copy"
         >
           <Link to="/games" className="game-detail-back">
@@ -128,14 +145,14 @@ const GameDetail = () => {
               <Download size={16} />
               Google Play
             </a>
-            <span className="game-detail-release">Released {game.releaseDate}</span>
+            <span className="game-detail-release">Released {releaseLabel}</span>
           </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          initial={motionMedia.initial}
+          animate={motionMedia.animate}
+          transition={motionMedia.transition}
           className="game-detail-showcase"
         >
           <div className="game-detail-media">
@@ -174,9 +191,9 @@ const GameDetail = () => {
         <div className="game-detail-gallery__head">
           <h2>Look closer.</h2>
           <p>
-            {game.gallery?.some((s) => s.kind === "screen")
-              ? "Key art and board presentation. Swap phone frames for real Play Console shots anytime."
-              : "Key art and app icon — add a gallery pack under public/screenshots/{slug}/ when ready."}
+            {hasBoardShots
+              ? "Store key art and in-game boards — the same calm presentation players meet on Google Play."
+              : "Key art and app icon from the store listing."}
           </p>
         </div>
         <div className="game-detail-gallery__track">

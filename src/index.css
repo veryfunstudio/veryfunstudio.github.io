@@ -1055,7 +1055,8 @@
     font-size: 0.875rem;
   }
 
-  .catalog-card__meta span:last-child {
+  .catalog-card__meta span:last-child,
+  .catalog-card__meta time {
     color: var(--color-muted);
   }
 
@@ -2650,6 +2651,162 @@
     color: var(--color-muted);
     font-size: 0.95rem;
   }
+
+  .home-promise__hook {
+    color: var(--color-accent) !important;
+    font-family: var(--font-mono);
+    font-size: 0.95rem !important;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  .games-hero-hook {
+    max-width: 42ch;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .games-hero-panel__hook {
+    margin-top: 0.35rem;
+    max-width: 28ch;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.35;
+  }
+
+  .games-hero-panel__footer > div {
+    min-width: 0;
+  }
+
+  .home-catalog-section {
+    padding-inline: max(3.125vw, calc((100vw - 80rem) / 2));
+  }
+
+  .home-catalog {
+    border: 1px solid var(--color-border-soft);
+    border-radius: 8px;
+    background:
+      radial-gradient(circle at 8% 0%, rgba(200, 255, 61, 0.06), transparent 28rem),
+      rgba(16, 19, 27, 0.72);
+    overflow: hidden;
+  }
+
+  .home-catalog__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.55fr);
+    gap: clamp(1rem, 3vw, 3rem);
+    align-items: end;
+    border-bottom: 1px solid var(--color-border-soft);
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+  }
+
+  .home-catalog__head h2 {
+    margin-top: 0.45rem;
+    max-width: 14ch;
+    font-size: clamp(2.2rem, 4.5vw, 4.2rem);
+    line-height: 0.94;
+  }
+
+  .home-catalog__head p {
+    max-width: 40ch;
+    color: var(--color-muted);
+    font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  }
+
+  .home-catalog__list {
+    list-style: none;
+    display: grid;
+    margin: 0;
+    padding: 0;
+  }
+
+  .home-catalog__item {
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr) auto;
+    gap: 0.85rem 1rem;
+    align-items: center;
+    min-height: 4.5rem;
+    border-bottom: 1px solid var(--color-border-soft);
+    color: inherit;
+    padding: 0.9rem clamp(1rem, 2.5vw, 1.75rem);
+    text-decoration: none;
+    transition:
+      background 0.22s var(--ease-brand),
+      border-color 0.22s var(--ease-brand);
+  }
+
+  .home-catalog__list li:last-child .home-catalog__item {
+    border-bottom: 0;
+  }
+
+  .home-catalog__item:hover,
+  .home-catalog__item:focus-visible {
+    background: linear-gradient(90deg, rgba(200, 255, 61, 0.1), transparent 55%);
+    outline: 0;
+  }
+
+  .home-catalog__item img {
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid rgba(244, 247, 232, 0.18);
+    border-radius: var(--radius-inner);
+    background: rgba(244, 247, 232, 0.9);
+    object-fit: cover;
+  }
+
+  .home-catalog__index {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+
+  .home-catalog__copy {
+    min-width: 0;
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .home-catalog__copy strong {
+    overflow: hidden;
+    color: var(--color-foreground);
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-weight: 650;
+    line-height: 1.15;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .home-catalog__copy small {
+    overflow: hidden;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .home-catalog__arrow {
+    color: var(--color-muted);
+    transition:
+      color 0.2s var(--ease-brand),
+      transform 0.2s var(--ease-brand);
+  }
+
+  .home-catalog__item:hover .home-catalog__arrow,
+  .home-catalog__item:focus-visible .home-catalog__arrow {
+    color: var(--color-accent);
+    transform: translateX(3px);
+  }
+
+  .home-catalog__foot {
+    display: flex;
+    justify-content: flex-start;
+    border-top: 1px solid var(--color-border-soft);
+    padding: clamp(1rem, 2.5vw, 1.5rem) clamp(1rem, 2.5vw, 1.75rem);
+  }
 }
 
 @media (max-width: 1200px) {
@@ -2732,6 +2889,10 @@
   }
 
   .home-promise {
+    grid-template-columns: 1fr;
+  }
+
+  .home-catalog__head {
     grid-template-columns: 1fr;
   }
 }

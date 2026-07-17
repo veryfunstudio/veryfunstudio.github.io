@@ -3,7 +3,7 @@ import { lazy, Suspense } from "react";
 import { Link } from "react-router";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
-import { formatGameTags, GAMES, getNewestGame } from "@/data/games";
+import { formatGameTags, GAMES, getGamesByNewest, getNewestGame } from "@/data/games";
 import { BRAND, BRAND_LOGO_URL, GOOGLE_PLAY_DEVELOPER_URL, SITE_URL } from "@/lib/constants";
 
 const HeroCanvas = lazy(() => import("@/components/home/HeroCanvas"));
@@ -42,6 +42,7 @@ const PROMISES = [
 
 export default function Home() {
   const latestGame = getNewestGame();
+  const catalog = getGamesByNewest();
   const gameCount = GAMES.length;
 
   return (
@@ -128,6 +129,7 @@ export default function Home() {
             <div className="home-promise__copy">
               <p className="status-text">Latest release</p>
               <h2>{latestGame.title}</h2>
+              <p className="home-promise__hook">{latestGame.hook}</p>
               <p>{latestGame.description}</p>
               <Link to={`/games/${latestGame.slug}`} className="home-promise__preview">
                 <img
@@ -148,9 +150,16 @@ export default function Home() {
                   Open brief
                   <ArrowRight size={16} />
                 </Link>
-                <Link to="/games" className="pill-button">
-                  All games
-                </Link>
+                <a
+                  href={latestGame.googlePlayUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pill-button"
+                  aria-label={`Get ${latestGame.title} on Google Play`}
+                >
+                  <Download size={16} />
+                  Google Play
+                </a>
               </div>
             </div>
             <div className="home-promise__list">
@@ -164,6 +173,54 @@ export default function Home() {
                   </div>
                 </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          className="home-catalog-section px-[3.125vw] pb-24 lg:pb-32"
+          aria-label="Game catalog"
+        >
+          <div className="home-catalog">
+            <div className="home-catalog__head">
+              <div>
+                <p className="status-text">Full catalog</p>
+                <h2>Every board, one click away.</h2>
+              </div>
+              <p>
+                {gameCount} free Android puzzles: pick a brief for rules and screenshots, or jump
+                straight to Google Play.
+              </p>
+            </div>
+            <ul className="home-catalog__list">
+              {catalog.map((game, index) => (
+                <li key={game.slug}>
+                  <Link to={`/games/${game.slug}`} className="home-catalog__item">
+                    <img
+                      src={game.icon}
+                      alt=""
+                      width={48}
+                      height={48}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span className="home-catalog__index">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="home-catalog__copy">
+                      <strong>{game.title}</strong>
+                      <small>{game.hook}</small>
+                    </span>
+                    <ArrowRight size={18} className="home-catalog__arrow" aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className="home-catalog__foot">
+              <Link to="/games" className="pill-button pill-button--accent">
+                Browse all games
+                <ArrowRight size={16} />
+              </Link>
             </div>
           </div>
         </section>

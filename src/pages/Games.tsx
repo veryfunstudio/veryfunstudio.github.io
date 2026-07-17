@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Download } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
 import { formatGameTags, GAMES, getGamesByNewest, getNewestGame } from "@/data/games";
 import { SITE_URL } from "@/lib/constants";
+import { formatDate } from "@/lib/utils";
 
 const Games = () => {
   const games = getGamesByNewest();
@@ -13,6 +14,21 @@ const Games = () => {
   const [activeSlug, setActiveSlug] = useState(newest.slug);
   const activeGame = games.find((game) => game.slug === activeSlug) ?? newest;
   const gameCount = GAMES.length;
+  const shouldReduceMotion = useReducedMotion();
+  const heroMotion = shouldReduceMotion
+    ? { initial: false as const, animate: undefined, transition: undefined }
+    : {
+        initial: { opacity: 0, y: 24 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+      };
+  const panelMotion = shouldReduceMotion
+    ? { initial: false as const, animate: undefined, transition: undefined }
+    : {
+        initial: { opacity: 0, scale: 1.035 },
+        animate: { opacity: 1, scale: 1.01 },
+        transition: { duration: 0.38, ease: [0.16, 1, 0.3, 1] as const },
+      };
 
   return (
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -43,9 +59,9 @@ const Games = () => {
 
       <section className="relative">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          initial={heroMotion.initial}
+          animate={heroMotion.animate}
+          transition={heroMotion.transition}
           className="games-hero"
         >
           <div className="games-hero-copy">
@@ -54,12 +70,16 @@ const Games = () => {
               {gameCount} quiet mobile puzzles for spare attention: number logic, word grids, tile
               matching, sorting, coloring, time conversion, and classic mahjong.
             </p>
+            <p className="games-hero-hook" key={activeGame.slug}>
+              {activeGame.hook}
+            </p>
             <div className="games-hero-actions">
               <a
                 href={activeGame.googlePlayUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="pill-button pill-button--accent"
+                aria-label={`Get ${activeGame.title} on Google Play`}
               >
                 <Download size={16} />
                 Google Play
@@ -103,12 +123,15 @@ const Games = () => {
               loading="eager"
               fetchPriority="high"
               decoding="async"
-              initial={{ opacity: 0, scale: 1.035 }}
-              animate={{ opacity: 1, scale: 1.01 }}
-              transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+              initial={panelMotion.initial}
+              animate={panelMotion.animate}
+              transition={panelMotion.transition}
             />
             <div className="games-hero-panel__footer">
-              <strong>{activeGame.title}</strong>
+              <div>
+                <strong>{activeGame.title}</strong>
+                <p className="games-hero-panel__hook">{activeGame.hook}</p>
+              </div>
               <span>{formatGameTags(activeGame)}</span>
             </div>
           </div>
@@ -152,7 +175,7 @@ const Games = () => {
                 <p>{game.description}</p>
                 <div className="catalog-card__meta">
                   <span>{formatGameTags(game)}</span>
-                  <span>{game.releaseDate}</span>
+                  <time dateTime={game.releaseDate}>{formatDate(game.releaseDate)}</time>
                 </div>
                 <div className="catalog-card__actions">
                   <Link to={`/games/${game.slug}`}>

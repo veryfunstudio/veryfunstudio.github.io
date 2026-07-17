@@ -70,6 +70,8 @@ describe("games catalog integrity", () => {
       assert.ok(existsSync(`public${game.icon}`), `missing icon ${game.icon}`);
       assert.ok(existsSync(`public${game.image}`), `missing image ${game.image}`);
       assert.ok(game.hook.length > 8, `${game.slug} missing hook`);
+      assert.ok(game.fullDescription.trim().length > 80, `${game.slug} missing fullDescription`);
+      assert.ok(game.features.length >= 4, `${game.slug} should list core features`);
       assert.ok(
         game.gallery && game.gallery.length >= 3,
         `${game.slug} should ship a gallery pack`,
