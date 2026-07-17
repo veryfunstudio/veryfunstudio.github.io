@@ -1,0 +1,1 @@
+function e(e){let t=/^(\d{4})-(\d{2})-(\d{2})$/.exec(e);return(t?new Date(Number(t[1]),Number(t[2])-1,Number(t[3])):new Date(e)).toLocaleDateString(`en-US`,{year:`numeric`,month:`long`,day:`numeric`})}export{e as t};
