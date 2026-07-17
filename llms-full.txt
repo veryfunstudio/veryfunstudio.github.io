@@ -223,7 +223,7 @@ A: Yes, Pearl Coloring is designed as gentle brain exercise suitable for any age
 
 Time Pop Puzzle is a free Android brain-training game that tests quick time conversion. Players read an AM/PM clock and tap the matching 24-hour answer to keep a streak alive. Rounds are short, feedback is instant, and the clean casual style makes it easy to practice 12-hour and 24-hour time formats in spare moments. The timer is part of the core mechanic — not a pressure system bolted onto a calm board game.
 
-Time Pop Puzzle is a casual brain-training game about quick time conversion. Read the AM/PM time, choose the correct 24-hour answer, and keep your streak going. Each round is short, clear, and fast, making it easy to play anytime. With simple tap-based gameplay, streak rewards, and instant feedback, it turns a small everyday skill into a satisfying daily habit.
+Time Pop Puzzle is a casual brain-training game about quick time conversion. Read the AM/PM time, choose the correct 24-hour answer, and keep your streak going. Unlike our calmer boards, the clock here is intentional: recognition speed is the lesson. Each round is short, clear, and fast, with simple taps, streak rewards, and instant feedback so a spare moment becomes useful practice.
 
 - Platform: Android (Google Play)
 - Price: Free

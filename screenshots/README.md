@@ -43,10 +43,14 @@ hook: "Large tiles. No clocks. Classic solitaire calm.",
 
 ## Current packs
 
-Sample presentations (key art padded into phone frames) ship for:
+Sample presentations (key art padded into phone frames) ship for **all seven** titles:
 
 - `nova-mahjong`
 - `classic-sudoku`
 - `tile-journey`
+- `word-search-block`
+- `arrow-out`
+- `pearl-coloring`
+- `time-pop-puzzle`
 
 Replace with real Play Console exports when available — keep paths or update `gallery` entries.
