@@ -174,8 +174,8 @@ const GameDetail = () => {
         <div className="game-detail-gallery__head">
           <h2>Look closer.</h2>
           <p>
-            {game.gallery?.length
-              ? "Key art and board presentation — replace phone frames with real Play shots when ready."
+            {game.gallery?.some((s) => s.kind === "screen")
+              ? "Key art and board presentation. Swap phone frames for real Play Console shots anytime."
               : "Key art and app icon — add a gallery pack under public/screenshots/{slug}/ when ready."}
           </p>
         </div>

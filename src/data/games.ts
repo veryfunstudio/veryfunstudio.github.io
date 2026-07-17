@@ -281,6 +281,29 @@ export const GAMES: Game[] = [
       "Word Search Block is a free, calming word-search puzzle game for Android. Players swipe across a letter grid to discover hidden words grouped by friendly themes, sharpening vocabulary and spelling skills at a relaxed pace. The game features hundreds of themed puzzles, a gentle difficulty curve, helpful hints, and a clean visual style designed for mindful play - perfect for winding down or quick breaks.",
     hook: "Themed word grids for unhurried vocabulary play.",
     relatedPostSlugs: ["how-themed-puzzles-build-vocabulary"],
+    gallery: [
+      {
+        src: "/screenshots/word-search-block/01-key-art.webp",
+        caption: "Store key art",
+        alt: "Word Search Block store key art",
+        kind: "key-art",
+        frame: "wide",
+      },
+      {
+        src: "/screenshots/word-search-block/02-board.jpg",
+        caption: "Themed letter grids",
+        alt: "Word Search Block board presentation",
+        kind: "screen",
+        frame: "phone",
+      },
+      {
+        src: "/screenshots/word-search-block/03-focus.jpg",
+        caption: "Swipe to find words",
+        alt: "Word Search Block focus presentation",
+        kind: "screen",
+        frame: "phone",
+      },
+    ],
     faq: [
       {
         question: "Is Word Search Block free to play?",
@@ -330,6 +353,29 @@ export const GAMES: Game[] = [
       "Arrow Out is a free Android logic puzzle game where every tile points in a direction and your goal is to send each arrow off the grid without it being blocked by another. The game features hundreds of handcrafted levels that range from quick brain teasers to extended think-aheads, a helpful hint system, no time limits, and a clean minimal visual style. It is easy to learn but quietly hard to put down.",
     hook: "One direction at a time. Handcrafted paths.",
     relatedPostSlugs: ["the-logic-behind-arrow-outs-handcrafted-levels"],
+    gallery: [
+      {
+        src: "/screenshots/arrow-out/01-key-art.webp",
+        caption: "Store key art",
+        alt: "Arrow Out store key art",
+        kind: "key-art",
+        frame: "wide",
+      },
+      {
+        src: "/screenshots/arrow-out/02-board.jpg",
+        caption: "Clear the grid",
+        alt: "Arrow Out board presentation",
+        kind: "screen",
+        frame: "phone",
+      },
+      {
+        src: "/screenshots/arrow-out/03-focus.jpg",
+        caption: "Plan the path",
+        alt: "Arrow Out focus presentation",
+        kind: "screen",
+        frame: "phone",
+      },
+    ],
     faq: [
       {
         question: "Is Arrow Out free to play?",
@@ -379,6 +425,29 @@ export const GAMES: Game[] = [
       "Pearl Coloring is a free Android puzzle game that blends color sorting with pixel-art creation. Players tap to arrange lustrous 3D pearls into matching color groups, clearing each puzzle shelf to reveal hidden pixel-art designs layer by layer. The game features hundreds of puzzles, polished 3D visuals and audio, limited-time themed collections, gentle brain exercise suitable for all ages, and full offline support for play anywhere.",
     hook: "Sort pearls. Reveal pixel art. Stay soft.",
     relatedPostSlugs: ["how-pearl-coloring-blends-sorting-and-pixel-art"],
+    gallery: [
+      {
+        src: "/screenshots/pearl-coloring/01-key-art.webp",
+        caption: "Store key art",
+        alt: "Pearl Coloring store key art",
+        kind: "key-art",
+        frame: "wide",
+      },
+      {
+        src: "/screenshots/pearl-coloring/02-board.jpg",
+        caption: "Sort, then reveal",
+        alt: "Pearl Coloring board presentation",
+        kind: "screen",
+        frame: "phone",
+      },
+      {
+        src: "/screenshots/pearl-coloring/03-focus.jpg",
+        caption: "Pixel art payoff",
+        alt: "Pearl Coloring focus presentation",
+        kind: "screen",
+        frame: "phone",
+      },
+    ],
     faq: [
       {
         question: "Is Pearl Coloring free to play?",
@@ -410,9 +479,9 @@ export const GAMES: Game[] = [
     packageId: "com.veryfuncompany.bubble",
     title: "Time Pop Puzzle",
     description:
-      "A quick brain-training game about converting AM/PM time to 24-hour format - short rounds, clean style, and instant feedback.",
+      "Quick AM/PM → 24-hour drills where the timer is the skill — short rounds, clean style, instant feedback.",
     fullDescription:
-      "Time Pop Puzzle is a casual brain-training game about quick time conversion. Read the AM/PM time, choose the correct 24-hour answer, and keep your streak going. Each round is short, clear, and fast, making it easy to play anytime. With simple tap-based gameplay, streak rewards, and instant feedback, it turns a small everyday skill into a satisfying daily habit.",
+      "Time Pop Puzzle is a casual brain-training game about quick time conversion. Read the AM/PM time, choose the correct 24-hour answer, and keep your streak going. Unlike our calmer boards, the clock here is intentional: recognition speed is the lesson. Each round is short, clear, and fast, with simple taps, streak rewards, and instant feedback so a spare moment becomes useful practice.",
     icon: "/images/time-pop-puzzle-icon.webp",
     image: "/images/time-pop-puzzle.webp",
     technologies: ["Android", "Brain Training", "Casual"],
@@ -430,6 +499,29 @@ export const GAMES: Game[] = [
     relatedPostSlugs: [
       "why-time-pop-puzzle-focuses-on-12-vs-24-hour-conversion",
       "why-our-puzzles-avoid-timers",
+    ],
+    gallery: [
+      {
+        src: "/screenshots/time-pop-puzzle/01-key-art.webp",
+        caption: "Store key art",
+        alt: "Time Pop Puzzle store key art",
+        kind: "key-art",
+        frame: "wide",
+      },
+      {
+        src: "/screenshots/time-pop-puzzle/02-board.jpg",
+        caption: "Convert before it pops",
+        alt: "Time Pop Puzzle board presentation",
+        kind: "screen",
+        frame: "phone",
+      },
+      {
+        src: "/screenshots/time-pop-puzzle/03-focus.jpg",
+        caption: "Timer is the skill",
+        alt: "Time Pop Puzzle focus presentation",
+        kind: "screen",
+        frame: "phone",
+      },
     ],
     faq: [
       {

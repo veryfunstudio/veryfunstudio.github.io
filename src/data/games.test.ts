@@ -70,8 +70,12 @@ describe("games catalog integrity", () => {
       assert.ok(existsSync(`public${game.icon}`), `missing icon ${game.icon}`);
       assert.ok(existsSync(`public${game.image}`), `missing image ${game.image}`);
       assert.ok(game.hook.length > 8, `${game.slug} missing hook`);
+      assert.ok(
+        game.gallery && game.gallery.length >= 3,
+        `${game.slug} should ship a gallery pack`,
+      );
       const shots = getGameScreenshots(game);
-      assert.ok(shots.length >= 2, `${game.slug} gallery should have assets`);
+      assert.ok(shots.length >= 3, `${game.slug} gallery should have assets`);
       for (const shot of shots) {
         assert.ok(shot.caption.length > 0, `${game.slug} shot missing caption`);
         assert.ok(existsSync(`public${shot.src}`), `missing screenshot ${shot.src}`);
