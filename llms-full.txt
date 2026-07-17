@@ -1,9 +1,9 @@
 # VeryFun Company — Full Content for LLMs
 
-> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. All games are free, work offline, and have no timers or paywalls. The studio has shipped 7 titles including Classic Sudoku 2026, Tile Journey, Word Search Block, Arrow Out, Pearl Coloring, Time Pop Puzzle, and Nova Mahjong For Seniors.
+> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic. The studio has shipped 7 titles including Classic Sudoku 2026, Tile Journey, Word Search Block, Arrow Out, Pearl Coloring, Time Pop Puzzle, and Nova Mahjong For Seniors.
 >
 > Site: https://cookabc.github.io
-> Last updated: 2026-07-14
+> Last updated: 2026-07-17
 
 ---
 
@@ -263,7 +263,7 @@ Timers create urgency, but they often clash with spare-attention design. Here is
 
 - Published: 2026-04-10
 - Category: Design Note
-- URL: https://cookabc.github.io/blog/1
+- URL: https://cookabc.github.io/blog/why-our-puzzles-avoid-timers
 
 ### Key takeaways
 - VeryFun Company games are built for spare attention, so timers are removed unless they are part of the core mechanic.
@@ -308,7 +308,7 @@ A mobile puzzle has only seconds to explain itself. The board must teach the pla
 
 - Published: 2026-03-25
 - Category: Board Craft
-- URL: https://cookabc.github.io/blog/2
+- URL: https://cookabc.github.io/blog/designing-a-readable-board
 
 ### Key takeaways
 - Readable boards start with visual hierarchy before any effects are added.
@@ -356,7 +356,7 @@ Casual puzzle games should feel instant. We tune runtime, art, and interaction c
 
 - Published: 2026-03-10
 - Category: Production
-- URL: https://cookabc.github.io/blog/3
+- URL: https://cookabc.github.io/blog/keeping-mobile-builds-light
 
 ### Key takeaways
 - Heavy builds with long launches and stutters contradict quick calm sessions.
@@ -404,7 +404,7 @@ A store page is the first usability test for a puzzle game. Screenshots should s
 
 - Published: 2026-02-20
 - Category: Launch
-- URL: https://cookabc.github.io/blog/4
+- URL: https://cookabc.github.io/blog/store-pages-need-honest-screens
 
 ### Key takeaways
 - A store page is the first usability test for a puzzle game.
@@ -452,7 +452,7 @@ Nova Mahjong For Seniors is built around readability first. Large tiles, high co
 
 - Published: 2026-07-03
 - Category: Design Note
-- URL: https://cookabc.github.io/blog/5
+- URL: https://cookabc.github.io/blog/why-nova-mahjong-uses-large-clear-tiles
 
 ### Key takeaways
 - Mahjong solitaire fits relaxed brain training with simple rules and immediate feedback.
@@ -500,7 +500,7 @@ Classic Sudoku 2026 offers multiple difficulty levels, but empty cells alone do 
 
 - Published: 2026-06-30
 - Category: Board Craft
-- URL: https://cookabc.github.io/blog/6
+- URL: https://cookabc.github.io/blog/how-we-balance-difficulty-in-classic-sudoku
 
 ### Key takeaways
 - Difficulty is defined by inference depth, not the number of empty cells.
@@ -548,7 +548,7 @@ Tile Journey has thousands of 3D levels and works fully offline. Here is how we 
 
 - Published: 2026-06-28
 - Category: Production
-- URL: https://cookabc.github.io/blog/7
+- URL: https://cookabc.github.io/blog/why-tile-journey-works-offline
 
 ### Key takeaways
 - Casual games are often played in transit with unreliable signal.
@@ -596,7 +596,7 @@ Word Search Block turns word finding into a calm vocabulary exercise. Grouping w
 
 - Published: 2026-06-26
 - Category: Design Note
-- URL: https://cookabc.github.io/blog/8
+- URL: https://cookabc.github.io/blog/how-themed-puzzles-build-vocabulary
 
 ### Key takeaways
 - Themes turn a list of words into a memory aid with context.
@@ -644,7 +644,7 @@ Arrow Out is easy to learn and quietly hard to put down. Every level is designed
 
 - Published: 2026-06-24
 - Category: Board Craft
-- URL: https://cookabc.github.io/blog/9
+- URL: https://cookabc.github.io/blog/the-logic-behind-arrow-outs-handcrafted-levels
 
 ### Key takeaways
 - A simple rule hides a deep ordering problem.
@@ -692,7 +692,7 @@ Pearl Coloring combines color sorting with pixel-art creation. The result is a c
 
 - Published: 2026-06-22
 - Category: Design Note
-- URL: https://cookabc.github.io/blog/10
+- URL: https://cookabc.github.io/blog/how-pearl-coloring-blends-sorting-and-pixel-art
 
 ### Key takeaways
 - Color sorting becomes a pixel-art reward.
@@ -740,7 +740,7 @@ Time Pop Puzzle turns a small everyday skill into a quick brain-training habit. 
 
 - Published: 2026-06-21
 - Category: Design Note
-- URL: https://cookabc.github.io/blog/11
+- URL: https://cookabc.github.io/blog/why-time-pop-puzzle-focuses-on-12-vs-24-hour-conversion
 
 ### Key takeaways
 - Converting between 12- and 24-hour time is a practical daily skill.
