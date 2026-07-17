@@ -18,7 +18,7 @@ const VALUES = [
   {
     icon: <Feather size={22} />,
     title: "Free should still feel premium",
-    body: "No paywalls, no timers, no extraction loop. Still built with care.",
+    body: "Free to install, no content paywalls, and no extraction loop. Still built with care.",
   },
 ] as const;
 
@@ -29,7 +29,7 @@ const About = () => {
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
       <Seo
         title="About the Studio"
-        description="Independent mobile game studio crafting calming, free-to-play puzzle games. Meet the team behind Tile Journey, Pearl Coloring, and more."
+        description="Independent mobile game studio crafting calming, free-to-play puzzle games with clear boards and quiet pacing."
         path="/about"
         image={featuredGames[0]?.image}
         imageWidth={1200}
@@ -46,7 +46,8 @@ const About = () => {
           <h1>Calm games. Clear boards.</h1>
           <p>
             VeryFun Company is a small team building free mobile puzzles for people who want a clear
-            challenge without timers, pressure systems, or noisy monetization.
+            challenge without pressure systems or noisy monetization. Timers appear only when they
+            are part of the puzzle itself.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link to="/games" className="pill-button pill-button--accent">

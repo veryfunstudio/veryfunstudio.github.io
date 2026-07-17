@@ -1,11 +1,12 @@
 import { Seo } from "@/components/seo/Seo";
+import { BRAND } from "@/lib/constants";
 
 export default function Legal() {
   return (
-    <main className="site-page flex flex-col gap-20 px-[3.125vw] pb-28 pt-40">
+    <div className="site-page flex flex-col gap-20 px-[3.125vw] pb-28 pt-40">
       <Seo
         title="Legal"
-        description="Privacy policy and terms of service for Cook ABC and our mobile puzzle games."
+        description={`Privacy policy and terms of service for ${BRAND.name} and our mobile puzzle games.`}
         path="/legal"
       />
 
@@ -22,18 +23,23 @@ export default function Legal() {
           Privacy policy
         </h2>
         <p className="mt-4 leading-relaxed text-foreground">
-          VeryFun Company built the games listed on this site. We do not collect personal
-          information through this website. When you download our games from Google Play, Google may
-          collect data according to its own privacy policy.
+          {BRAND.name} built the games listed on this site. We do not collect personal information
+          through this website. When you download our games from Google Play, Google may collect
+          data according to its own privacy policy.
         </p>
         <p className="mt-4 leading-relaxed text-foreground">
           Our games may show ads served by Google AdMob. AdMob uses device identifiers to serve
           personalized or non-personalized ads. You can adjust ad preferences in your device
-          settings.
+          settings. Some games may also offer optional in-app purchases; those purchases are
+          processed by Google Play, not by this website.
         </p>
         <p className="mt-4 leading-relaxed text-foreground">
           We do not sell your data. If you contact us by email, we keep your message only long
-          enough to respond.
+          enough to respond. For privacy questions, email{" "}
+          <a href={`mailto:${BRAND.email}`} className="underline underline-offset-2">
+            {BRAND.email}
+          </a>
+          .
         </p>
       </section>
 
@@ -56,8 +62,8 @@ export default function Legal() {
       </section>
 
       <footer className="mx-auto w-full max-w-3xl border-t border-border-soft pt-8">
-        <p className="text-sm text-muted">Last updated: July 2, 2026</p>
+        <p className="text-sm text-muted">Last updated: July 17, 2026</p>
       </footer>
-    </main>
+    </div>
   );
 }

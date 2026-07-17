@@ -1,10 +1,17 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Link, useParams } from "react-router";
+import { useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router";
 import EntityNotFound from "@/components/common/EntityNotFound";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
-import { getBlogPostById, getPostsByNewest } from "@/data/blog";
+import {
+  getBlogPath,
+  getBlogPostByParam,
+  getPostsByNewest,
+  getRelatedGamesForPost,
+} from "@/data/blog";
+import { GAMES } from "@/data/games";
 import { BRAND, BRAND_LOGO_URL, SITE_URL } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
 
@@ -22,33 +29,59 @@ const blogPublisher = {
 };
 
 const BlogPost = () => {
-  const { id } = useParams<{ id: string }>();
-  const numericId = id ? Number.parseInt(id, 10) : Number.NaN;
-  const post = Number.isFinite(numericId) ? getBlogPostById(numericId) : undefined;
+  const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
+  const param = slug ?? "";
+  const post = getBlogPostByParam(param);
+  const isLegacyId = Boolean(post && param !== post.slug && /^\d+$/.test(param));
+
+  // Client-side redirect for legacy /blog/:id (static HTML redirects also written at build).
+  useEffect(() => {
+    if (post && isLegacyId) {
+      navigate(getBlogPath(post), { replace: true });
+    }
+  }, [post, isLegacyId, navigate]);
 
   if (!post) {
     return (
       <EntityNotFound
         title="Post not found"
         message="That note is not in the archive."
+        path={`/blog/${param}`}
         backTo="/blog"
         backLabel="Back to blog"
       />
     );
   }
 
-  const seoTitle = post.title.length > 40 ? `${post.title.slice(0, 37)}...` : post.title;
+  if (isLegacyId) {
+    return (
+      <section className="error-stage px-[3.125vw] py-28 lg:py-36">
+        <Seo title={post.title} description={post.excerpt} path={getBlogPath(post)} noindex />
+        <p className="text-center text-muted">
+          Redirecting to{" "}
+          <Link to={getBlogPath(post)} className="underline underline-offset-2">
+            {post.title}
+          </Link>
+          …
+        </p>
+      </section>
+    );
+  }
+
   const relatedPosts = getPostsByNewest()
     .filter((item) => item.id !== post.id)
     .slice(0, 2);
+  const relatedGames = getRelatedGamesForPost(post, GAMES, 2);
   const hasFaq = post.faq.length > 0;
+  const postPath = getBlogPath(post);
 
   return (
     <article className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
       <Seo
-        title={seoTitle}
+        title={post.title}
         description={post.excerpt}
-        path={`/blog/${post.id}`}
+        path={postPath}
         image={post.image}
         imageWidth={1024}
         imageHeight={768}
@@ -64,12 +97,12 @@ const BlogPost = () => {
           datePublished: post.date,
           dateModified: post.date,
           image: `${SITE_URL}${post.image}`,
-          url: `${SITE_URL}/blog/${post.id}`,
+          url: `${SITE_URL}${postPath}`,
           author: blogPublisher,
           publisher: blogPublisher,
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": `${SITE_URL}/blog/${post.id}`,
+            "@id": `${SITE_URL}${postPath}`,
           },
         }}
       />
@@ -84,7 +117,7 @@ const BlogPost = () => {
               "@type": "ListItem",
               position: 3,
               name: post.title,
-              item: `${SITE_URL}/blog/${post.id}`,
+              item: `${SITE_URL}${postPath}`,
             },
           ],
         }}
@@ -180,6 +213,38 @@ const BlogPost = () => {
         </section>
       )}
 
+      {relatedGames.length > 0 && (
+        <section className="related-strip" aria-label="Related games">
+          <div className="related-strip__head">
+            <h2>Play the idea.</h2>
+            <p>Games connected to this note.</p>
+          </div>
+          <div className="related-strip__grid">
+            {relatedGames.map((game) => {
+              const full = GAMES.find((g) => g.slug === game.slug);
+              if (!full) return null;
+              return (
+                <Link key={game.slug} to={`/games/${game.slug}`} className="related-card">
+                  <img
+                    src={full.image}
+                    alt=""
+                    width={400}
+                    height={210}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div>
+                    <strong>{full.title}</strong>
+                    <span>Open brief</span>
+                  </div>
+                  <ArrowRight size={18} />
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
       <section className="article-next">
         <div className="article-next__intro">
           <h2>More notes.</h2>
@@ -191,7 +256,7 @@ const BlogPost = () => {
 
         <div className="article-related" aria-label="Related studio notes">
           {relatedPosts.map((item) => (
-            <Link key={item.id} to={`/blog/${item.id}`} className="article-related-card">
+            <Link key={item.id} to={getBlogPath(item)} className="article-related-card">
               <div>
                 <time dateTime={item.date}>{formatDate(item.date)}</time>
                 <strong>{item.title}</strong>

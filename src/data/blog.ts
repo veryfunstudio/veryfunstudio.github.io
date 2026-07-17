@@ -10,6 +10,8 @@ export interface BlogPostFaq {
 
 export interface BlogPost {
   id: number;
+  /** URL segment, e.g. why-our-puzzles-avoid-timers */
+  slug: string;
   title: string;
   excerpt: string;
   date: string;
@@ -23,6 +25,7 @@ export interface BlogPost {
 export const BLOG_POSTS: BlogPost[] = [
   {
     id: 1,
+    slug: "why-our-puzzles-avoid-timers",
     title: "Why Our Puzzles Avoid Timers",
     excerpt:
       "Timers create urgency, but they often clash with spare-attention design. Here is how we replace countdown pressure with tension that lives inside the board itself.",
@@ -82,6 +85,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 2,
+    slug: "designing-a-readable-board",
     title: "Designing a Readable Board",
     excerpt:
       "A mobile puzzle has only seconds to explain itself. The board must teach the player before any tutorial appears.",
@@ -147,6 +151,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 3,
+    slug: "keeping-mobile-builds-light",
     title: "Keeping Mobile Builds Light",
     excerpt:
       "Casual puzzle games should feel instant. We tune runtime, art, and interaction choices around low-friction play.",
@@ -212,6 +217,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 4,
+    slug: "store-pages-need-honest-screens",
     title: "Store Pages Need Honest Screens",
     excerpt:
       "A store page is the first usability test for a puzzle game. Screenshots should show the real board, not a fantasy of it.",
@@ -277,6 +283,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 5,
+    slug: "why-nova-mahjong-uses-large-clear-tiles",
     title: "Why Nova Mahjong Uses Large, Clear Tiles",
     excerpt:
       "Nova Mahjong For Seniors is built around readability first. Large tiles, high contrast, and calm pacing make classic mahjong solitaire comfortable for older players and relaxed brain training.",
@@ -342,6 +349,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 6,
+    slug: "how-we-balance-difficulty-in-classic-sudoku",
     title: "How We Balance Difficulty in Classic Sudoku",
     excerpt:
       "Classic Sudoku 2026 offers multiple difficulty levels, but empty cells alone do not define difficulty. Here is how we tune the inference chain from beginner to expert.",
@@ -407,6 +415,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 7,
+    slug: "why-tile-journey-works-offline",
     title: "Why Tile Journey Works Offline",
     excerpt:
       "Tile Journey has thousands of 3D levels and works fully offline. Here is how we package content so the game survives commutes, flights, and dead zones.",
@@ -472,6 +481,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 8,
+    slug: "how-themed-puzzles-build-vocabulary",
     title: "How Themed Puzzles Build Vocabulary",
     excerpt:
       "Word Search Block turns word finding into a calm vocabulary exercise. Grouping words by theme is the design choice that makes it work for all ages.",
@@ -537,6 +547,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 9,
+    slug: "the-logic-behind-arrow-outs-handcrafted-levels",
     title: "The Logic Behind Arrow Out's Handcrafted Levels",
     excerpt:
       "Arrow Out is easy to learn and quietly hard to put down. Every level is designed by hand so the solution path feels intentional, not random.",
@@ -602,6 +613,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 10,
+    slug: "how-pearl-coloring-blends-sorting-and-pixel-art",
     title: "How Pearl Coloring Blends Sorting and Pixel Art",
     excerpt:
       "Pearl Coloring combines color sorting with pixel-art creation. The result is a calm puzzle where every solved shelf reveals a small piece of art.",
@@ -667,6 +679,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: 11,
+    slug: "why-time-pop-puzzle-focuses-on-12-vs-24-hour-conversion",
     title: "Why Time Pop Puzzle Focuses on 12- vs 24-Hour Conversion",
     excerpt:
       "Time Pop Puzzle turns a small everyday skill into a quick brain-training habit. The narrow focus is intentional: repeated practice makes time conversion automatic.",
@@ -736,6 +749,24 @@ export function getBlogPostById(id: number): BlogPost | undefined {
   return BLOG_POSTS.find((post) => post.id === id);
 }
 
+export function getBlogPostBySlug(slug: string): BlogPost | undefined {
+  return BLOG_POSTS.find((post) => post.slug === slug);
+}
+
+/** Resolve by slug, or by numeric id string for legacy URLs. */
+export function getBlogPostByParam(param: string): BlogPost | undefined {
+  const bySlug = getBlogPostBySlug(param);
+  if (bySlug) return bySlug;
+  if (/^\d+$/.test(param)) {
+    return getBlogPostById(Number.parseInt(param, 10));
+  }
+  return undefined;
+}
+
+export function getBlogPath(post: Pick<BlogPost, "slug">): string {
+  return `/blog/${post.slug}`;
+}
+
 /** Posts ordered newest-first by date. Sorted copy; does not mutate the source. */
 export function getPostsByNewest(): BlogPost[] {
   return [...BLOG_POSTS].sort((a, b) => b.date.localeCompare(a.date));
@@ -744,4 +775,39 @@ export function getPostsByNewest(): BlogPost[] {
 /** Newest post by date, falling back to the first archive entry. */
 export function getNewestPost(): BlogPost {
   return getPostsByNewest()[0] ?? BLOG_POSTS[0];
+}
+
+/** Studio notes that mention this game by title, slug, or genre keywords. */
+export function getRelatedPostsForGame(
+  game: { title: string; slug: string; technologies: string[] },
+  limit = 2,
+): BlogPost[] {
+  const needles = [
+    game.title.toLowerCase(),
+    game.slug.replace(/-/g, " "),
+    ...game.technologies.slice(1).map((t) => t.toLowerCase()),
+  ].filter((n) => n.length > 2);
+
+  return getPostsByNewest()
+    .filter((post) => {
+      const hay = `${post.title} ${post.excerpt} ${post.category}`.toLowerCase();
+      return needles.some((needle) => hay.includes(needle));
+    })
+    .slice(0, limit);
+}
+
+/** Games mentioned in a post title/excerpt (for cross-links on blog pages). */
+export function getRelatedGamesForPost(
+  post: BlogPost,
+  games: { title: string; slug: string }[],
+  limit = 2,
+): { title: string; slug: string }[] {
+  const hay = `${post.title} ${post.excerpt}`.toLowerCase();
+  return games
+    .filter((game) => {
+      const title = game.title.toLowerCase();
+      const slugWords = game.slug.replace(/-/g, " ");
+      return hay.includes(title) || hay.includes(slugWords) || hay.includes(game.slug);
+    })
+    .slice(0, limit);
 }

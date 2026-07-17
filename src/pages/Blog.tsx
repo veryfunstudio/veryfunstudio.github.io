@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
-import { getNewestPost, getPostsByNewest } from "@/data/blog";
+import { getBlogPath, getNewestPost, getPostsByNewest } from "@/data/blog";
+import { SITE_URL } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
 
 const Blog = () => {
   const sortedPosts = getPostsByNewest();
   const latestPost = getNewestPost();
+  const indexPosts = sortedPosts.filter((post) => post.id !== latestPost?.id);
 
   return (
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -15,6 +18,20 @@ const Blog = () => {
         title="Studio Notes"
         description="Short production notes from VeryFun Company on calm puzzle design, readable boards, mobile performance, and honest store pages."
         path="/blog"
+      />
+      <JsonLd
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          name: "VeryFun Company Studio Notes",
+          url: `${SITE_URL}/blog`,
+          blogPost: sortedPosts.map((post) => ({
+            "@type": "BlogPosting",
+            headline: post.title,
+            datePublished: post.date,
+            url: `${SITE_URL}${getBlogPath(post)}`,
+          })),
+        }}
       />
 
       <section className="blog-hero">
@@ -55,7 +72,7 @@ const Blog = () => {
               </div>
               <h2>{latestPost.title}</h2>
               <p>{latestPost.excerpt}</p>
-              <Link to={`/blog/${latestPost.id}`} className="pill-button pill-button--accent">
+              <Link to={getBlogPath(latestPost)} className="pill-button pill-button--accent">
                 Latest note
                 <ArrowRight size={16} />
               </Link>
@@ -75,8 +92,8 @@ const Blog = () => {
         </div>
 
         <div className="blog-index__list">
-          {sortedPosts.map((post) => (
-            <Link key={post.id} to={`/blog/${post.id}`} className="blog-index-card">
+          {indexPosts.map((post) => (
+            <Link key={post.id} to={getBlogPath(post)} className="blog-index-card">
               <span className="blog-index-card__media">
                 <img
                   src={post.image}

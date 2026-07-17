@@ -9,9 +9,11 @@ export const BRAND = {
   tagline: "Creating a happier world through games",
   description:
     "VeryFun Company is an independent game studio dedicated to crafting games that bring joy to people.",
+  email: "chuangcius@gmail.com",
   social: {
     github: "https://github.com/cookabc",
     x: "https://x.com/chuangcius",
+    xHandle: "@chuangcius",
   },
 } as const;
 

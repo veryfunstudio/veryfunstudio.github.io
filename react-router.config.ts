@@ -11,7 +11,7 @@ export default {
       "/games",
       ...GAMES.map((g) => `/games/${g.slug}`),
       "/blog",
-      ...BLOG_POSTS.map((p) => `/blog/${p.id}`),
+      ...BLOG_POSTS.map((p) => `/blog/${p.slug}`),
       "/contact",
       "/legal",
     ];

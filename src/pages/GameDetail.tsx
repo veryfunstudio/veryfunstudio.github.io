@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, Download } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download } from "lucide-react";
 import { Link, useParams } from "react-router";
 import EntityNotFound from "@/components/common/EntityNotFound";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
-import { formatGameTags, getGameBySlug } from "@/data/games";
+import { getBlogPath, getRelatedPostsForGame } from "@/data/blog";
+import { formatGameTags, getGameBySlug, getGameScreenshots, getRelatedGames } from "@/data/games";
 import { SITE_URL } from "@/lib/constants";
+import { formatDate } from "@/lib/utils";
 
 const GameDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -16,6 +18,7 @@ const GameDetail = () => {
       <EntityNotFound
         title="Game not found"
         message="That game is not in the current catalog."
+        path={`/games/${slug ?? ""}`}
         backTo="/games"
         backLabel="Back to games"
       />
@@ -25,6 +28,9 @@ const GameDetail = () => {
   const primaryTags = formatGameTags(game);
   const primaryFeatures = game.features.slice(0, 4);
   const secondaryFeatures = game.features.slice(4);
+  const screenshots = getGameScreenshots(game);
+  const relatedGames = getRelatedGames(game, 3);
+  const relatedPosts = getRelatedPostsForGame(game, 2);
   const heroFacts = [
     { label: "Platform", value: "Android" },
     { label: "Price", value: "Free" },
@@ -40,7 +46,6 @@ const GameDetail = () => {
         image={game.image}
         imageWidth={1200}
         imageHeight={630}
-        type="article"
       />
       <JsonLd
         schema={{
@@ -52,7 +57,6 @@ const GameDetail = () => {
           image: `${SITE_URL}${game.image}`,
           applicationCategory: "GameApplication",
           operatingSystem: "Android",
-          softwareVersion: "1.0",
           datePublished: game.releaseDate,
           offers: {
             "@type": "Offer",
@@ -165,6 +169,41 @@ const GameDetail = () => {
         </motion.div>
       </section>
 
+      <section className="game-detail-gallery" aria-label={`${game.title} visuals`}>
+        <div className="game-detail-gallery__head">
+          <h2>Look closer.</h2>
+          <p>
+            {screenshots.some((s) => s.kind === "screen")
+              ? "Store screenshots and key art."
+              : "Key art and app icon — store screenshots ship here as they land."}
+          </p>
+        </div>
+        <div className="game-detail-gallery__track">
+          {screenshots.map((shot) => (
+            <figure
+              key={`${shot.kind}-${shot.src}`}
+              className={`game-detail-gallery__item game-detail-gallery__item--${shot.kind}`}
+            >
+              <img
+                src={shot.src}
+                alt={shot.alt}
+                width={shot.kind === "icon" ? 256 : 1200}
+                height={shot.kind === "icon" ? 256 : 630}
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>
+                {shot.kind === "icon"
+                  ? "App icon"
+                  : shot.kind === "screen"
+                    ? "Screenshot"
+                    : "Key art"}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
       <section className="game-detail-brief">
         <div>
           <h2>Clear rules, calm repeat play.</h2>
@@ -208,6 +247,63 @@ const GameDetail = () => {
           ))}
         </div>
       </section>
+
+      {(relatedGames.length > 0 || relatedPosts.length > 0) && (
+        <section className="related-strip" aria-label="Related content">
+          {relatedGames.length > 0 && (
+            <>
+              <div className="related-strip__head">
+                <h2>More boards.</h2>
+                <p>Same catalog, different kind of quiet focus.</p>
+              </div>
+              <div className="related-strip__grid">
+                {relatedGames.map((item) => (
+                  <Link key={item.slug} to={`/games/${item.slug}`} className="related-card">
+                    <img
+                      src={item.image}
+                      alt=""
+                      width={400}
+                      height={210}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div>
+                      <strong>{item.title}</strong>
+                      <span>{formatGameTags(item)}</span>
+                    </div>
+                    <ArrowRight size={18} />
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
+
+          {relatedPosts.length > 0 && (
+            <>
+              <div className="related-strip__head related-strip__head--secondary">
+                <h2>Studio notes.</h2>
+                <p>How we think about this kind of puzzle.</p>
+              </div>
+              <div className="related-strip__grid related-strip__grid--notes">
+                {relatedPosts.map((post) => (
+                  <Link
+                    key={post.id}
+                    to={getBlogPath(post)}
+                    className="related-card related-card--note"
+                  >
+                    <div>
+                      <time dateTime={post.date}>{formatDate(post.date)}</time>
+                      <strong>{post.title}</strong>
+                      <p>{post.excerpt}</p>
+                    </div>
+                    <ArrowRight size={18} />
+                  </Link>
+                ))}
+              </div>
+            </>
+          )}
+        </section>
+      )}
     </article>
   );
 };

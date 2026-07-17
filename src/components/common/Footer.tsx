@@ -1,9 +1,10 @@
 import { Link } from "react-router";
 import { GitHubIcon, GooglePlayIcon, XIcon } from "@/components/common/icons/BrandIcons";
-import { BRAND, GOOGLE_PLAY_DEVELOPER_URL } from "@/lib/constants";
+import { BRAND, GOOGLE_PLAY_DEVELOPER_URL, NAV_ITEMS } from "@/lib/constants";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const footerNav = NAV_ITEMS.filter((item) => item.path !== "/");
 
   return (
     <footer className="site-footer mt-auto">
@@ -13,11 +14,15 @@ const Footer = () => {
             <Link to="/" className="site-footer__name">
               {BRAND.name}
             </Link>
-            <p>Free mobile puzzles with clear boards and no timers.</p>
+            <p>Free mobile puzzles with clear boards and calm pacing.</p>
           </div>
 
           <nav className="site-footer__links" aria-label="Footer links">
-            <Link to="/games">Games</Link>
+            {footerNav.map((item) => (
+              <Link key={item.path} to={item.path}>
+                {item.label}
+              </Link>
+            ))}
             <a
               href={GOOGLE_PLAY_DEVELOPER_URL}
               target="_blank"

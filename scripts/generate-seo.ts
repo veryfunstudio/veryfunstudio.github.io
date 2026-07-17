@@ -9,15 +9,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const outDir = resolve(__dirname, "..", "build", "client");
 const today = new Date().toISOString().split("T")[0];
 
-// Canonical public URLs, in priority order. Excludes /contact (noindex)
-// and the 404 catch-all.
+// Canonical public URLs, in priority order. Excludes the 404 catch-all.
 const staticRoutes: { path: string; lastmod?: string }[] = [
   { path: "/" },
   { path: "/about" },
   { path: "/games" },
   { path: "/blog" },
+  { path: "/contact" },
+  { path: "/legal" },
   ...GAMES.map((p) => ({ path: `/games/${p.slug}`, lastmod: p.releaseDate })),
-  ...BLOG_POSTS.map((p) => ({ path: `/blog/${p.id}`, lastmod: p.date })),
+  ...BLOG_POSTS.map((p) => ({ path: `/blog/${p.slug}`, lastmod: p.date })),
 ];
 
 function robots() {
@@ -70,11 +71,11 @@ function llmsTxt() {
     (p) => `- [${p.title}](${SITE_URL}/games/${p.slug}): ${p.answer}`,
   ).join("\n");
   const blogLines = BLOG_POSTS.map(
-    (p) => `- [${p.title}](${SITE_URL}/blog/${p.id}): ${p.excerpt}`,
+    (p) => `- [${p.title}](${SITE_URL}/blog/${p.slug}): ${p.excerpt}`,
   ).join("\n");
   return `# VeryFun Company
 
-> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. All games are free, work offline, and have no timers or paywalls.
+> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic.
 
 ## Games
 ${gameLines}
@@ -86,6 +87,8 @@ ${blogLines}
 - [About the studio](${SITE_URL}/about)
 - [All games](${SITE_URL}/games)
 - [Blog index](${SITE_URL}/blog)
+- [Contact](${SITE_URL}/contact)
+- [Privacy and terms](${SITE_URL}/legal)
 
 ## Google Play store pages
 ${GAMES.map((p) => `- [${p.title}](${p.googlePlayUrl})`).join("\n")}
@@ -131,7 +134,7 @@ ${p.excerpt}
 
 - Published: ${p.date}
 - Category: ${p.category}
-- URL: ${SITE_URL}/blog/${p.id}
+- URL: ${SITE_URL}/blog/${p.slug}
 
 ### Key takeaways
 ${p.summary.map((s) => `- ${s}`).join("\n")}
@@ -143,7 +146,7 @@ ${faqBlock ? `\n${faqBlock}` : ""}
 
   return `# VeryFun Company — Full Content for LLMs
 
-> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. All games are free, work offline, and have no timers or paywalls. The studio has shipped 7 titles including Classic Sudoku 2026, Tile Journey, Word Search Block, Arrow Out, Pearl Coloring, Time Pop Puzzle, and Nova Mahjong For Seniors.
+> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic. The studio has shipped ${GAMES.length} titles including Classic Sudoku 2026, Tile Journey, Word Search Block, Arrow Out, Pearl Coloring, Time Pop Puzzle, and Nova Mahjong For Seniors.
 >
 > Site: ${SITE_URL}
 > Last updated: ${today}
@@ -169,11 +172,34 @@ function write(file: string, content: string) {
   console.log(`  wrote build/client/${file} (${content.length} bytes)`);
 }
 
+function legacyBlogRedirects() {
+  for (const post of BLOG_POSTS) {
+    const target = `${SITE_URL}/blog/${post.slug}`;
+    const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting…</title>
+  <meta http-equiv="refresh" content="0;url=${target}">
+  <link rel="canonical" href="${target}">
+  <meta name="robots" content="noindex">
+  <script>location.replace(${JSON.stringify(`/blog/${post.slug}`)})</script>
+</head>
+<body>
+  <p>Moved to <a href="${target}">${post.title}</a>.</p>
+</body>
+</html>
+`;
+    write(`blog/${post.id}/index.html`, html);
+  }
+}
+
 console.log("[seo] generating crawler assets...");
 write("robots.txt", robots());
 write("sitemap.xml", sitemap());
 write("llms.txt", llmsTxt());
 write("llms-full.txt", llmsFullTxt());
+legacyBlogRedirects();
 
 // SPA fallback for GitHub Pages: serve the app shell on unmatched paths so
 // client-side routing can take over (e.g. /games/typoslug). Real routes

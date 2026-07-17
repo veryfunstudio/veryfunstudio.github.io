@@ -19,7 +19,8 @@ export interface Game {
   releaseDate: string;
   slug: string;
   googlePlayUrl: string;
-  rotation: number;
+  /** Optional store screenshots under /public. Falls back to key art + icon. */
+  screenshots?: string[];
 }
 
 export const GAMES: Game[] = [
@@ -70,7 +71,6 @@ export const GAMES: Game[] = [
     slug: "nova-mahjong",
     googlePlayUrl:
       "https://play.google.com/store/apps/details?id=com.veryfuncompany.mahjongjourney",
-    rotation: -0.4,
   },
   {
     id: 1,
@@ -118,7 +118,6 @@ export const GAMES: Game[] = [
     releaseDate: "2026-06-14",
     slug: "classic-sudoku",
     googlePlayUrl: "https://play.google.com/store/apps/details?id=com.codex.sudokumobilegame",
-    rotation: -0.5,
   },
   {
     id: 2,
@@ -166,7 +165,6 @@ export const GAMES: Game[] = [
     releaseDate: "2026-06-08",
     slug: "tile-journey",
     googlePlayUrl: "https://play.google.com/store/apps/details?id=com.veryfun.tilejourney",
-    rotation: 0.7,
   },
   {
     id: 3,
@@ -214,7 +212,6 @@ export const GAMES: Game[] = [
     releaseDate: "2026-06-20",
     slug: "word-search-block",
     googlePlayUrl: "https://play.google.com/store/apps/details?id=com.cookabc.zenwordsearch",
-    rotation: -0.3,
   },
   {
     id: 4,
@@ -262,7 +259,6 @@ export const GAMES: Game[] = [
     releaseDate: "2026-05-26",
     slug: "arrow-out",
     googlePlayUrl: "https://play.google.com/store/apps/details?id=com.veryfuncompany.kittyescape",
-    rotation: 0.4,
   },
   {
     id: 5,
@@ -310,7 +306,6 @@ export const GAMES: Game[] = [
     releaseDate: "2026-06-08",
     slug: "pearl-coloring",
     googlePlayUrl: "https://play.google.com/store/apps/details?id=com.veryfun.pearlcoloring",
-    rotation: -0.6,
   },
   {
     id: 6,
@@ -358,7 +353,6 @@ export const GAMES: Game[] = [
     releaseDate: "2026-06-23",
     slug: "time-pop-puzzle",
     googlePlayUrl: "https://play.google.com/store/apps/details?id=com.veryfuncompany.bubble",
-    rotation: 0.5,
   },
 ];
 
@@ -385,4 +379,48 @@ export function getNewestGame(): Game {
  */
 export function formatGameTags(game: Game): string {
   return game.technologies.slice(1).join(" / ");
+}
+
+export interface GameScreenshot {
+  src: string;
+  alt: string;
+  kind: "key-art" | "icon" | "screen";
+}
+
+/**
+ * Visual assets for the detail gallery. Prefer explicit store screenshots when
+ * present; otherwise fall back to key art + app icon (honest studio assets).
+ */
+export function getGameScreenshots(game: Game & { screenshots?: string[] }): GameScreenshot[] {
+  const custom = game.screenshots;
+  if (custom && custom.length > 0) {
+    return custom.map((src, index) => ({
+      src,
+      alt: `${game.title} screenshot ${index + 1}`,
+      kind: "screen" as const,
+    }));
+  }
+  return [
+    { src: game.image, alt: `${game.title} key art`, kind: "key-art" },
+    { src: game.icon, alt: `${game.title} app icon`, kind: "icon" },
+  ];
+}
+
+/** Other games sharing secondary genre tags, newest first. */
+export function getRelatedGames(game: Game, limit = 3): Game[] {
+  const tags = new Set(game.technologies.slice(1).map((t) => t.toLowerCase()));
+  return getGamesByNewest()
+    .filter((candidate) => candidate.slug !== game.slug)
+    .map((candidate) => {
+      const overlap = candidate.technologies
+        .slice(1)
+        .filter((t) => tags.has(t.toLowerCase())).length;
+      return { candidate, overlap };
+    })
+    .sort(
+      (a, b) =>
+        b.overlap - a.overlap || b.candidate.releaseDate.localeCompare(a.candidate.releaseDate),
+    )
+    .slice(0, limit)
+    .map(({ candidate }) => candidate);
 }

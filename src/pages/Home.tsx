@@ -3,7 +3,7 @@ import { lazy, Suspense } from "react";
 import { Link } from "react-router";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
-import { formatGameTags, GAMES, getGameBySlug, getNewestGame } from "@/data/games";
+import { formatGameTags, GAMES, getNewestGame } from "@/data/games";
 import { BRAND, BRAND_LOGO_URL, GOOGLE_PLAY_DEVELOPER_URL, SITE_URL } from "@/lib/constants";
 
 const HeroCanvas = lazy(() => import("@/components/home/HeroCanvas"));
@@ -14,9 +14,8 @@ const organizationSchema = {
   name: BRAND.name,
   url: SITE_URL,
   logo: BRAND_LOGO_URL,
-  description:
-    "Independent mobile game studio publishing calming, free-to-play puzzle games on Google Play.",
-  sameAs: GAMES.map((p) => p.googlePlayUrl),
+  description: BRAND.description,
+  sameAs: [BRAND.social.github, BRAND.social.x, GOOGLE_PLAY_DEVELOPER_URL],
 };
 
 const websiteSchema = {
@@ -29,11 +28,11 @@ const websiteSchema = {
 const PROMISES = [
   {
     title: "No rush",
-    body: "Short sessions, no timers, and no forced streaks.",
+    body: "Short sessions and calm pacing. Timers only when they are the puzzle.",
   },
   {
     title: "No gatekeeping",
-    body: "Free games on Google Play, built to keep playing simple.",
+    body: "Free to install on Google Play. Core puzzles stay playable without paywalls.",
   },
   {
     title: "No noisy loops",
@@ -42,14 +41,14 @@ const PROMISES = [
 ];
 
 export default function Home() {
-  const launchGame = getGameBySlug("nova-mahjong") ?? GAMES[0];
   const latestGame = getNewestGame();
+  const gameCount = GAMES.length;
 
   return (
     <div className="relative overflow-hidden">
       <Seo
         title="Indie Mobile Game Studio"
-        description="Free, calming mobile puzzle games on Google Play. No timers, no paywalls."
+        description="Free, calming mobile puzzle games on Google Play. Offline-friendly, free to install, and built for spare attention."
         path="/"
       />
       <JsonLd schema={organizationSchema} />
@@ -84,8 +83,8 @@ export default function Home() {
                 </div>
 
                 <p className="hero-reveal max-w-[42ch] text-base leading-relaxed text-muted sm:text-lg">
-                  Seven mobile puzzles for spare moments: free, readable, offline, and built to
-                  leave attention intact.
+                  {gameCount} mobile puzzles for spare moments: free to install, readable, offline,
+                  and built to leave attention intact.
                 </p>
 
                 <div className="hero-reveal flex flex-wrap gap-3">
@@ -109,8 +108,8 @@ export default function Home() {
                 <div className="signal-deck">
                   <div className="signal-screen">
                     <img
-                      src={launchGame.image}
-                      alt={launchGame.title}
+                      src={latestGame.image}
+                      alt={latestGame.title}
                       width={760}
                       height={570}
                       loading="eager"

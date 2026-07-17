@@ -6,7 +6,7 @@ export default [
   route("games", "../src/pages/Games.tsx"),
   route("games/:slug", "../src/pages/GameDetail.tsx"),
   route("blog", "../src/pages/Blog.tsx"),
-  route("blog/:id", "../src/pages/BlogPost.tsx"),
+  route("blog/:slug", "../src/pages/BlogPost.tsx"),
   route("contact", "../src/pages/Contact.tsx"),
   route("legal", "../src/pages/Legal.tsx"),
   route("*", "../src/pages/NotFound.tsx"),
