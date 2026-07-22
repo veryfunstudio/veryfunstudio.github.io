@@ -4,12 +4,8 @@
 
 ## Games
 - [Nova Mahjong For Seniors](https://cookabc.github.io/games/nova-mahjong): Nova Mahjong For Seniors is a free Android mahjong solitaire game designed for relaxed, peaceful brain training. Players match identical free tiles to clear the board across hundreds of handcrafted puzzles with large, clear tiles and helpful boosters. There are no time limits, the game works offline, and the calm visuals make it suitable for seniors and anyone who enjoys classic tile-matching puzzles.
-- [Classic Sudoku 2026](https://cookabc.github.io/games/classic-sudoku): Classic Sudoku 2026 is a free, calming Android puzzle game that reinvents the classic 9×9 number logic grid with multiple difficulty levels, smart hints, and a stress-free no-timer design. Players fill rows, columns, and boxes with digits 1-9, earn points for completed lines, and track progress over time. The game works fully offline and is suitable for all skill levels, from quick coffee-break puzzles to longer sessions.
 - [Tile Journey](https://cookabc.github.io/games/tile-journey): Tile Journey is a free 3D tile-matching puzzle game for Android where players travel through thousands of hand-crafted themed levels, matching three identical tiles to clear the board. The game features strategic power-ups (shuffle, undo, free match), no time limits, and full offline support. It blends casual match-three mechanics with mindful pacing, making it suitable for both quick breaks and extended puzzle sessions across diverse visual worlds.
-- [Word Search Block](https://cookabc.github.io/games/word-search-block): Word Search Block is a free, calming word-search puzzle game for Android. Players swipe across a letter grid to discover hidden words grouped by friendly themes, sharpening vocabulary and spelling skills at a relaxed pace. The game features hundreds of themed puzzles, a gentle difficulty curve, helpful hints, and a clean visual style designed for mindful play - perfect for winding down or quick breaks.
 - [Arrow Out](https://cookabc.github.io/games/arrow-out): Arrow Out is a free Android logic puzzle game where every tile points in a direction and your goal is to send each arrow off the grid without it being blocked by another. The game features hundreds of handcrafted levels that range from quick brain teasers to extended think-aheads, a helpful hint system, no time limits, and a clean minimal visual style. It is easy to learn but quietly hard to put down.
-- [Pearl Coloring](https://cookabc.github.io/games/pearl-coloring): Pearl Coloring is a free Android puzzle game that blends color sorting with pixel-art creation. Players tap to arrange lustrous 3D pearls into matching color groups, clearing each puzzle shelf to reveal hidden pixel-art designs layer by layer. The game features hundreds of puzzles, polished 3D visuals and audio, limited-time themed collections, gentle brain exercise suitable for all ages, and full offline support for play anywhere.
-- [Time Pop Puzzle](https://cookabc.github.io/games/time-pop-puzzle): Time Pop Puzzle is a free Android brain-training game that tests quick time conversion. Players read an AM/PM clock and tap the matching 24-hour answer to keep a streak alive. Rounds are short, feedback is instant, and the clean casual style makes it easy to practice 12-hour and 24-hour time formats in spare moments. The timer is part of the core mechanic — not a pressure system bolted onto a calm board game.
 
 ## Blog
 - [Why Our Puzzles Avoid Timers](https://cookabc.github.io/blog/why-our-puzzles-avoid-timers): Timers create urgency, but they often clash with spare-attention design. Here is how we replace countdown pressure with tension that lives inside the board itself.
@@ -17,12 +13,8 @@
 - [Keeping Mobile Builds Light](https://cookabc.github.io/blog/keeping-mobile-builds-light): Casual puzzle games should feel instant. We tune runtime, art, and interaction choices around low-friction play.
 - [Store Pages Need Honest Screens](https://cookabc.github.io/blog/store-pages-need-honest-screens): A store page is the first usability test for a puzzle game. Screenshots should show the real board, not a fantasy of it.
 - [Why Nova Mahjong Uses Large, Clear Tiles](https://cookabc.github.io/blog/why-nova-mahjong-uses-large-clear-tiles): Nova Mahjong For Seniors is built around readability first. Large tiles, high contrast, and calm pacing make classic mahjong solitaire comfortable for older players and relaxed brain training.
-- [How We Balance Difficulty in Classic Sudoku](https://cookabc.github.io/blog/how-we-balance-difficulty-in-classic-sudoku): Classic Sudoku 2026 offers multiple difficulty levels, but empty cells alone do not define difficulty. Here is how we tune the inference chain from beginner to expert.
 - [Why Tile Journey Works Offline](https://cookabc.github.io/blog/why-tile-journey-works-offline): Tile Journey has thousands of 3D levels and works fully offline. Here is how we package content so the game survives commutes, flights, and dead zones.
-- [How Themed Puzzles Build Vocabulary](https://cookabc.github.io/blog/how-themed-puzzles-build-vocabulary): Word Search Block turns word finding into a calm vocabulary exercise. Grouping words by theme is the design choice that makes it work for all ages.
 - [The Logic Behind Arrow Out's Handcrafted Levels](https://cookabc.github.io/blog/the-logic-behind-arrow-outs-handcrafted-levels): Arrow Out is easy to learn and quietly hard to put down. Every level is designed by hand so the solution path feels intentional, not random.
-- [How Pearl Coloring Blends Sorting and Pixel Art](https://cookabc.github.io/blog/how-pearl-coloring-blends-sorting-and-pixel-art): Pearl Coloring combines color sorting with pixel-art creation. The result is a calm puzzle where every solved shelf reveals a small piece of art.
-- [Why Time Pop Puzzle Focuses on 12- vs 24-Hour Conversion](https://cookabc.github.io/blog/why-time-pop-puzzle-focuses-on-12-vs-24-hour-conversion): Time Pop Puzzle turns a small everyday skill into a quick brain-training habit. The narrow focus is intentional: repeated practice makes time conversion automatic.
 
 ## Other pages
 - [About the studio](https://cookabc.github.io/about)
@@ -33,11 +25,7 @@
 
 ## Google Play store pages
 - [Nova Mahjong For Seniors](https://play.google.com/store/apps/details?id=com.veryfuncompany.mahjongjourney)
-- [Classic Sudoku 2026](https://play.google.com/store/apps/details?id=com.codex.sudokumobilegame)
 - [Tile Journey](https://play.google.com/store/apps/details?id=com.veryfun.tilejourney)
-- [Word Search Block](https://play.google.com/store/apps/details?id=com.cookabc.zenwordsearch)
 - [Arrow Out](https://play.google.com/store/apps/details?id=com.veryfuncompany.kittyescape)
-- [Pearl Coloring](https://play.google.com/store/apps/details?id=com.veryfun.pearlcoloring)
-- [Time Pop Puzzle](https://play.google.com/store/apps/details?id=com.veryfuncompany.bubble)
 
 Last updated: 2026-07-22

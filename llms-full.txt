@@ -1,6 +1,6 @@
 # VeryFun Company — Full Content for LLMs
 
-> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic. The studio has shipped 7 titles including Classic Sudoku 2026, Tile Journey, Word Search Block, Arrow Out, Pearl Coloring, Time Pop Puzzle, and Nova Mahjong For Seniors.
+> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic. The studio has shipped 3 titles including Classic Sudoku 2026, Tile Journey, Word Search Block, Arrow Out, Pearl Coloring, Time Pop Puzzle, and Nova Mahjong For Seniors.
 >
 > Site: https://cookabc.github.io
 > Last updated: 2026-07-22
@@ -44,41 +44,6 @@ A: Yes, Nova Mahjong For Seniors is fully playable offline once installed, so yo
 
 ---
 
-## Classic Sudoku 2026
-
-Classic Sudoku 2026 is a free, calming Android puzzle game that reinvents the classic 9×9 number logic grid with multiple difficulty levels, smart hints, and a stress-free no-timer design. Players fill rows, columns, and boxes with digits 1-9, earn points for completed lines, and track progress over time. The game works fully offline and is suitable for all skill levels, from quick coffee-break puzzles to longer sessions.
-
-Classic Sudoku 2026 is a relaxing, no-pressure spin on the 9×9 logic puzzle that has charmed players for generations. Fill rows, columns, and boxes with numbers 1 through 9, earn points as you complete lines, and watch your skills sharpen across multiple difficulty levels. There are no timers - only smart hints, an undo button, and a clean interface that gets out of your way. Play offline anywhere, track your improvement, and pick the puzzle that fits your mood, whether that's a five-minute coffee break or a long flight.
-
-- Platform: Android (Google Play)
-- Price: Free
-- Store: https://play.google.com/store/apps/details?id=com.codex.sudokumobilegame
-- Released: 2026-06-14
-- Technologies: Android, Puzzle, Logic
-
-### Features
-- Multiple difficulty levels for every skill
-- No time limits - play stress-free
-- Smart hints, undo, and erase tools
-- Score system for an extra challenge
-- Progress tracking across sessions
-- Fully playable offline
-
-### FAQ
-**Q: Is Classic Sudoku 2026 free to play?**
-A: Yes, Classic Sudoku 2026 is completely free to download and play on Google Play. There are no paywalls - every puzzle and difficulty level is accessible without spending money.
-
-**Q: Does Classic Sudoku 2026 work offline?**
-A: Yes, the game is fully playable offline. Once installed, you can solve puzzles anywhere without an internet connection - perfect for flights, commutes, or areas with poor connectivity.
-
-**Q: How many difficulty levels does Classic Sudoku 2026 have?**
-A: The game offers multiple difficulty levels ranging from beginner-friendly grids to expert challenges. Each level scales the puzzle complexity so players of all skill levels can find the right amount of challenge.
-
-**Q: Does Classic Sudoku 2026 have a timer?**
-A: No. Classic Sudoku 2026 is designed to be stress-free with no time limits. You can take as long as you need on any puzzle, making it ideal for relaxing rather than racing against the clock.
-
----
-
 ## Tile Journey
 
 Tile Journey is a free 3D tile-matching puzzle game for Android where players travel through thousands of hand-crafted themed levels, matching three identical tiles to clear the board. The game features strategic power-ups (shuffle, undo, free match), no time limits, and full offline support. It blends casual match-three mechanics with mindful pacing, making it suitable for both quick breaks and extended puzzle sessions across diverse visual worlds.
@@ -114,41 +79,6 @@ A: Tile Journey offers three main power-ups: Shuffle (rearranges all tiles on th
 
 ---
 
-## Word Search Block
-
-Word Search Block is a free, calming word-search puzzle game for Android. Players swipe across a letter grid to discover hidden words grouped by friendly themes, sharpening vocabulary and spelling skills at a relaxed pace. The game features hundreds of themed puzzles, a gentle difficulty curve, helpful hints, and a clean visual style designed for mindful play - perfect for winding down or quick breaks.
-
-Word Search Block is a peaceful word-puzzle escape designed to bring calm and focus into the everyday. Swipe across the letter grid to discover hidden words tied together by clear, friendly themes - perfect for sharpening vocabulary and spelling without the pressure of a timer. Each level scales gently in difficulty as you progress, and a thoughtful hint system keeps you moving when you get stuck. Whether you're winding down before bed or sneaking in a quick break, the soft visual style makes every session feel like a small breather.
-
-- Platform: Android (Google Play)
-- Price: Free
-- Store: https://play.google.com/store/apps/details?id=com.cookabc.zenwordsearch
-- Released: 2026-06-20
-- Technologies: Android, Word, Casual
-
-### Features
-- Hundreds of themed word puzzles
-- Simple swipe-to-select controls
-- Helpful hints when you're stuck
-- Progressive difficulty curve
-- Clean, calming visual style
-- Play anytime, anywhere
-
-### FAQ
-**Q: Is Word Search Block free to play?**
-A: Yes, Word Search Block is free to download and play on Google Play. All puzzles are accessible without payment, though optional ads may appear between levels.
-
-**Q: How many word puzzles does Word Search Block have?**
-A: Word Search Block includes hundreds of themed word puzzles that scale gently in difficulty. New themes and levels are added regularly to keep the content fresh for returning players.
-
-**Q: Is Word Search Block suitable for kids?**
-A: Yes, the game's clean themes, simple swipe controls, and vocabulary-building nature make it suitable for players of all ages, including children learning spelling and word recognition.
-
-**Q: Does Word Search Block have a timer?**
-A: No, Word Search Block has no time limits. The game is designed for relaxed, pressure-free play so you can take as long as you need on each puzzle.
-
----
-
 ## Arrow Out
 
 Arrow Out is a free Android logic puzzle game where every tile points in a direction and your goal is to send each arrow off the grid without it being blocked by another. The game features hundreds of handcrafted levels that range from quick brain teasers to extended think-aheads, a helpful hint system, no time limits, and a clean minimal visual style. It is easy to learn but quietly hard to put down.
@@ -181,79 +111,6 @@ A: No, Arrow Out has no timers. The game is designed to be stress-free, letting 
 
 **Q: Are there hints in Arrow Out?**
 A: Yes, Arrow Out includes a hint system that helps you when you are stuck on a difficult level, so you never feel permanently blocked by a tough puzzle.
-
----
-
-## Pearl Coloring
-
-Pearl Coloring is a free Android puzzle game that blends color sorting with pixel-art creation. Players tap to arrange lustrous 3D pearls into matching color groups, clearing each puzzle shelf to reveal hidden pixel-art designs layer by layer. The game features hundreds of puzzles, polished 3D visuals and audio, limited-time themed collections, gentle brain exercise suitable for all ages, and full offline support for play anywhere.
-
-Pearl Coloring blends color sorting with pixel-art creation into something soft, glowing, and quietly addictive. Tap to arrange lustrous pearls into matching color groups, plan your shelf to clear each puzzle, and watch hidden pixel-art designs reveal themselves layer by layer. Every level is a tiny artistic moment: gentle audio, polished 3D pearls, and a steady drip of new themes and limited-time collections. There's no pressure here - just sorting, planning, and the small satisfaction of a finished picture, with full offline support so you can play whenever the mood strikes.
-
-- Platform: Android (Google Play)
-- Price: Free
-- Store: https://play.google.com/store/apps/details?id=com.veryfun.pearlcoloring
-- Released: 2026-06-08
-- Technologies: Android, Pixel Art, Sorting
-
-### Features
-- Hundreds of pixel-art puzzles
-- Simple tap-to-sort gameplay
-- Polished 3D pearls and audio feedback
-- Limited-time themed collections
-- Gentle brain exercise for any age
-- Full offline support
-
-### FAQ
-**Q: Is Pearl Coloring free to play?**
-A: Yes, Pearl Coloring is free to download and play on Google Play. All core puzzles are accessible without payment, with optional ads and in-app purchases for cosmetic items.
-
-**Q: Does Pearl Coloring work offline?**
-A: Yes, Pearl Coloring has full offline support. Once installed, you can sort pearls and reveal pixel art anywhere without an internet connection.
-
-**Q: What is the gameplay in Pearl Coloring?**
-A: In Pearl Coloring, you tap to sort glowing 3D pearls into matching color groups on a shelf. When all colors are grouped correctly, the puzzle clears and reveals a hidden pixel-art design. The difficulty increases gradually across hundreds of levels.
-
-**Q: Is Pearl Coloring suitable for children?**
-A: Yes, Pearl Coloring is designed as gentle brain exercise suitable for any age. The simple tap-to-sort mechanics and calming visual style make it appropriate for children and adults alike.
-
----
-
-## Time Pop Puzzle
-
-Time Pop Puzzle is a free Android brain-training game that tests quick time conversion. Players read an AM/PM clock and tap the matching 24-hour answer to keep a streak alive. Rounds are short, feedback is instant, and the clean casual style makes it easy to practice 12-hour and 24-hour time formats in spare moments. The timer is part of the core mechanic — not a pressure system bolted onto a calm board game.
-
-Time Pop Puzzle is a casual brain-training game about quick time conversion. Read the AM/PM time, choose the correct 24-hour answer, and keep your streak going. Unlike our calmer boards, the clock here is intentional: recognition speed is the lesson. Each round is short, clear, and fast, with simple taps, streak rewards, and instant feedback so a spare moment becomes useful practice.
-
-- Platform: Android (Google Play)
-- Price: Free
-- Store: https://play.google.com/store/apps/details?id=com.veryfuncompany.bubble
-- Released: 2026-06-23
-- Technologies: Android, Brain Training, Casual
-
-### Features
-- Simple time-conversion puzzles
-- Fast tap-based gameplay
-- Streak rewards and instant feedback
-- Clean casual puzzle style
-- Practice 12-hour and 24-hour formats
-- Playable in short sessions anytime
-
-### FAQ
-**Q: Is Time Pop Puzzle free to play?**
-A: Yes, Time Pop Puzzle is free to download and play on Google Play. Core time-conversion rounds are accessible without payment.
-
-**Q: What do you do in Time Pop Puzzle?**
-A: Each round shows a time in AM/PM format. Tap the correct 24-hour equivalent before the timer runs out to keep your streak going. The pace is fast but forgiving, making it ideal for quick practice.
-
-**Q: Why does Time Pop have a timer if other VeryFun games avoid them?**
-A: Here the timer is the puzzle. Learning 12- vs 24-hour conversion is about quick recognition, so the clock is the skill — not a streak stick bolted onto a calm board game.
-
-**Q: Is Time Pop Puzzle good for learning time formats?**
-A: Yes, the game is built around converting between 12-hour and 24-hour time, so repeated play helps make the conversion feel natural.
-
-**Q: Can I play Time Pop Puzzle offline?**
-A: Once installed, the core puzzle rounds can be played without an internet connection, so you can practice anytime.
 
 
 ---
@@ -497,54 +354,6 @@ A: Yes. The game works offline, so players can enjoy a round on the train, on th
 
 ---
 
-## How We Balance Difficulty in Classic Sudoku
-
-Classic Sudoku 2026 offers multiple difficulty levels, but empty cells alone do not define difficulty. Here is how we tune the inference chain from beginner to expert.
-
-- Published: 2026-06-30
-- Category: Board Craft
-- URL: https://cookabc.github.io/blog/how-we-balance-difficulty-in-classic-sudoku
-
-### Key takeaways
-- Difficulty is defined by inference depth, not the number of empty cells.
-- Beginner, intermediate, and expert grids teach distinct logical techniques.
-- Hints highlight the next logical deduction instead of dropping a random number.
-- Players can choose their cognitive load for different moments.
-- No timer keeps difficulty in the logic rather than the clock.
-
-### Difficulty beyond empty cells
-
-Sudoku difficulty is not simply a count of empty cells. A puzzle becomes harder when the player must follow longer chains of inference to find the next certain number. In Classic Sudoku 2026, we design each level around the depth of that inference chain.
-
-### The inference chain by level
-
-Beginner grids reward simple scanning: a row, column, or box is missing one obvious digit. Intermediate grids introduce candidate marking and hidden singles. Expert grids require advanced patterns such as X-Wing, swordfish, or forcing chains.
-
-### Hints that teach
-
-The hint system is tuned to teach, not just solve. When a player asks for help, the game highlights the next logical deduction rather than dropping a random number onto the board. This keeps the puzzle coherent and the player learning.
-
-### Choosing cognitive load
-
-Multiple difficulty levels let players choose their cognitive load. A five-minute coffee break might call for an easy grid, while a long flight might invite an expert challenge. The no-timer design means the difficulty lives in the logic, not the clock.
-
-### Accessible without being shallow
-
-By separating difficulty from speed, Classic Sudoku 2026 stays accessible without becoming shallow. The same 9x9 grid can offer a gentle warmup or a deep logical workout depending on the level you choose.
-
-### FAQ
-
-**Q: What really makes a Sudoku puzzle harder?**
-A: A puzzle becomes harder when the player must follow longer chains of inference to find the next certain number, not just when more cells are empty.
-
-**Q: How do hints work in Classic Sudoku 2026?**
-A: Hints highlight the next logical deduction rather than dropping a random number onto the board, so the puzzle stays coherent and the player keeps learning.
-
-**Q: Why is there no timer?**
-A: Without a timer, difficulty lives in the logic rather than the clock. A coffee break can be easy and a long flight can be expert without time pressure.
-
----
-
 ## Why Tile Journey Works Offline
 
 Tile Journey has thousands of 3D levels and works fully offline. Here is how we package content so the game survives commutes, flights, and dead zones.
@@ -593,54 +402,6 @@ A: Progress is saved locally and synced when the connection returns. Daily rewar
 
 ---
 
-## How Themed Puzzles Build Vocabulary
-
-Word Search Block turns word finding into a calm vocabulary exercise. Grouping words by theme is the design choice that makes it work for all ages.
-
-- Published: 2026-06-26
-- Category: Design Note
-- URL: https://cookabc.github.io/blog/how-themed-puzzles-build-vocabulary
-
-### Key takeaways
-- Themes turn a list of words into a memory aid with context.
-- Puzzles activate mental categories for low-pressure vocabulary practice.
-- Difficulty scales through word length, grid density, and direction.
-- Hints reveal the first letter to preserve the satisfaction of discovery.
-- Clean themes and short sessions suit spellers, learners, and adults alike.
-
-### Why theme matters
-
-A word search grid without a theme is just a list of letters. Add a theme and the grid becomes a memory aid: animals, colors, countries, or foods give the words context and make them easier to recall.
-
-### Theme as vocabulary exercise
-
-In Word Search Block, every puzzle centers on a clear theme. Players are not only hunting for spelling patterns; they are activating a mental category. This small design choice turns a casual puzzle into a low-pressure vocabulary exercise.
-
-### Three ways difficulty scales
-
-Difficulty scales in three ways: word length, grid density, and the use of diagonal or backward words. A beginner grid might use short horizontal words under a friendly theme. An advanced grid can hide longer words in every direction.
-
-### Hints that protect discovery
-
-The hint system keeps the learning loop intact. When a player is stuck, a hint reveals the first letter of a remaining word rather than the full answer. This preserves the satisfaction of discovery while preventing abandonment.
-
-### Lifelong vocabulary habit
-
-Vocabulary growth is a lifelong habit. By keeping themes clean, controls simple, and sessions short, Word Search Block works for young spellers, language learners, and adults who want a calm mental warm-up.
-
-### FAQ
-
-**Q: How does a theme help players find words?**
-A: A theme gives words context and turns the grid into a memory aid, making it easier to recall and locate related terms.
-
-**Q: How does difficulty scale in Word Search Block?**
-A: Difficulty scales through word length, grid density, and the use of diagonal or backward words.
-
-**Q: Why reveal only the first letter in hints?**
-A: Revealing the first letter preserves the satisfaction of discovery while preventing a stuck player from abandoning the puzzle.
-
----
-
 ## The Logic Behind Arrow Out's Handcrafted Levels
 
 Arrow Out is easy to learn and quietly hard to put down. Every level is designed by hand so the solution path feels intentional, not random.
@@ -686,100 +447,4 @@ A: Handcrafted levels guarantee a deliberate solution path and at least one sati
 
 **Q: How do hints work without spoiling the puzzle?**
 A: Hints point to the next safe arrow to remove, not the entire solution, so players stay engaged with the ordering logic.
-
----
-
-## How Pearl Coloring Blends Sorting and Pixel Art
-
-Pearl Coloring combines color sorting with pixel-art creation. The result is a calm puzzle where every solved shelf reveals a small piece of art.
-
-- Published: 2026-06-22
-- Category: Design Note
-- URL: https://cookabc.github.io/blog/how-pearl-coloring-blends-sorting-and-pixel-art
-
-### Key takeaways
-- Color sorting becomes a pixel-art reward.
-- Pearl shapes and color groups stay distinct so the puzzle remains clear.
-- Reveals happen in stages for ongoing satisfaction.
-- Themed collections keep the art fresh without changing the core loop.
-- The game blends logical structure with creative delight.
-
-### Two reward layers
-
-Color sorting is a satisfying mechanic on its own: move pearls until each shelf holds one color. Pearl Coloring adds a second reward layer by turning those sorted colors into pixel-art images that reveal themselves as you play.
-
-### Balancing sorting and art
-
-The design challenge is balance. The sorting mechanic must remain clear while the emerging art builds anticipation. We keep the pearl shapes consistent and the color groups distinct, so the puzzle state never competes with the picture.
-
-### Staged reveals
-
-Reveals happen in stages rather than all at once. Each completed shelf adds another block of color to the final image. This creates small moments of satisfaction throughout the level and a stronger payoff when the picture is complete.
-
-### Fresh themed collections
-
-Limited-time themed collections keep the art fresh without changing the core loop. Seasonal images and special palettes give returning players something new to look forward to while the sorting mechanic stays familiar.
-
-### Structure plus delight
-
-By blending a logical puzzle with a creative reward, Pearl Coloring appeals to players who want both structure and delight. It is a puzzle and a small art break at the same time.
-
-### FAQ
-
-**Q: How does Pearl Coloring combine sorting and art?**
-A: Players sort pearls by color, and those sorted colors gradually reveal pixel-art images as the level progresses.
-
-**Q: Why do reveals happen in stages?**
-A: Each completed shelf adds another block of color, creating small moments of satisfaction throughout the level and a stronger final payoff.
-
-**Q: How are themed collections handled?**
-A: Limited-time themed collections deliver seasonal images and special palettes as optional content without changing the familiar sorting loop.
-
----
-
-## Why Time Pop Puzzle Focuses on 12- vs 24-Hour Conversion
-
-Time Pop Puzzle turns a small everyday skill into a quick brain-training habit. The narrow focus is intentional: repeated practice makes time conversion automatic.
-
-- Published: 2026-06-21
-- Category: Design Note
-- URL: https://cookabc.github.io/blog/why-time-pop-puzzle-focuses-on-12-vs-24-hour-conversion
-
-### Key takeaways
-- Converting between 12- and 24-hour time is a practical daily skill.
-- Short rounds lower the barrier to repeated practice.
-- Streaks and instant feedback reinforce learning.
-- A narrow scope turns a conscious calculation into an automatic habit.
-- The game becomes a daily mental warm-up rather than a generic distraction.
-
-### A practical, everyday skill
-
-Converting between 12-hour and 24-hour time is a practical skill that appears on schedules, tickets, devices, and travel plans. Time Pop Puzzle isolates that skill and turns it into a fast, repeatable exercise.
-
-### Short rounds by design
-
-Each round is short by design. The player reads an AM or PM time and taps the matching 24-hour answer. The brevity lowers the barrier to entry and makes the game easy to open in a spare minute.
-
-### Streaks and instant feedback
-
-Streaks and instant feedback reinforce learning. A correct answer extends the streak; a wrong answer shows the correct conversion immediately. This tight feedback loop helps the brain build automatic associations between the two formats.
-
-### The value of narrow scope
-
-The narrow scope is the point. Instead of mixing many math or memory tasks, Time Pop Puzzle repeats one conversion pattern across varied values. That repetition is what turns a conscious calculation into an automatic habit.
-
-### From puzzle to daily habit
-
-By focusing on a single useful skill, the game becomes a daily mental warm-up rather than a generic distraction. Players leave with a slightly stronger grasp of a format they will use again tomorrow.
-
-### FAQ
-
-**Q: What skill does Time Pop Puzzle practice?**
-A: It practices converting between 12-hour and 24-hour time, a skill used on schedules, tickets, devices, and travel plans.
-
-**Q: How do streaks help learning?**
-A: Streaks reward correct answers and a tight feedback loop shows the correct conversion immediately, helping the brain build automatic associations.
-
-**Q: Why focus on only one conversion type?**
-A: Repeating one conversion pattern across varied values turns a conscious calculation into an automatic habit.
 

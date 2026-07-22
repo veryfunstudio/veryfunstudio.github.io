@@ -43,38 +43,14 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cookabc.github.io/games/classic-sudoku</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://cookabc.github.io/games/tile-journey</loc>
     <lastmod>2026-06-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cookabc.github.io/games/word-search-block</loc>
-    <lastmod>2026-06-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://cookabc.github.io/games/arrow-out</loc>
     <lastmod>2026-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cookabc.github.io/games/pearl-coloring</loc>
-    <lastmod>2026-06-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cookabc.github.io/games/time-pop-puzzle</loc>
-    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -109,38 +85,14 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://cookabc.github.io/blog/how-we-balance-difficulty-in-classic-sudoku</loc>
-    <lastmod>2026-06-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://cookabc.github.io/blog/why-tile-journey-works-offline</loc>
     <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://cookabc.github.io/blog/how-themed-puzzles-build-vocabulary</loc>
-    <lastmod>2026-06-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://cookabc.github.io/blog/the-logic-behind-arrow-outs-handcrafted-levels</loc>
     <lastmod>2026-06-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://cookabc.github.io/blog/how-pearl-coloring-blends-sorting-and-pixel-art</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://cookabc.github.io/blog/why-time-pop-puzzle-focuses-on-12-vs-24-hour-conversion</loc>
-    <lastmod>2026-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
