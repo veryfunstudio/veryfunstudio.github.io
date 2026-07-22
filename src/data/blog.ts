@@ -31,7 +31,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Timers create urgency, but they often clash with spare-attention design. Here is how we replace countdown pressure with tension that lives inside the board itself.",
     date: "2026-04-10",
     category: "Design Note",
-    image: "/images/classic-sudoku.webp",
+    image: "/images/nova-mahjong.webp",
     summary: [
       "VeryFun Company games are built for spare attention, so timers are removed unless they are part of the core mechanic.",
       "Tension comes from the puzzle state itself: deduction, blocked paths, and limited slots.",
@@ -91,7 +91,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "A mobile puzzle has only seconds to explain itself. The board must teach the player before any tutorial appears.",
     date: "2026-03-25",
     category: "Board Craft",
-    image: "/images/word-search-block.webp",
+    image: "/images/tile-journey.webp",
     summary: [
       "Readable boards start with visual hierarchy before any effects are added.",
       "Phones require strong silhouettes, generous hit targets, and feedback near the move.",
@@ -223,7 +223,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "A store page is the first usability test for a puzzle game. Screenshots should show the real board, not a fantasy of it.",
     date: "2026-02-20",
     category: "Launch",
-    image: "/images/pearl-coloring.webp",
+    image: "/images/arrow-out.webp",
     summary: [
       "A store page is the first usability test for a puzzle game.",
       "Screenshots should show the real board, interaction, and reward state.",
@@ -348,72 +348,6 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
   },
   {
-    id: 6,
-    slug: "how-we-balance-difficulty-in-classic-sudoku",
-    title: "How We Balance Difficulty in Classic Sudoku",
-    excerpt:
-      "Classic Sudoku 2026 offers multiple difficulty levels, but empty cells alone do not define difficulty. Here is how we tune the inference chain from beginner to expert.",
-    date: "2026-06-30",
-    category: "Board Craft",
-    image: "/images/classic-sudoku.webp",
-    summary: [
-      "Difficulty is defined by inference depth, not the number of empty cells.",
-      "Beginner, intermediate, and expert grids teach distinct logical techniques.",
-      "Hints highlight the next logical deduction instead of dropping a random number.",
-      "Players can choose their cognitive load for different moments.",
-      "No timer keeps difficulty in the logic rather than the clock.",
-    ],
-    sections: [
-      {
-        heading: "Difficulty beyond empty cells",
-        paragraphs: [
-          "Sudoku difficulty is not simply a count of empty cells. A puzzle becomes harder when the player must follow longer chains of inference to find the next certain number. In Classic Sudoku 2026, we design each level around the depth of that inference chain.",
-        ],
-      },
-      {
-        heading: "The inference chain by level",
-        paragraphs: [
-          "Beginner grids reward simple scanning: a row, column, or box is missing one obvious digit. Intermediate grids introduce candidate marking and hidden singles. Expert grids require advanced patterns such as X-Wing, swordfish, or forcing chains.",
-        ],
-      },
-      {
-        heading: "Hints that teach",
-        paragraphs: [
-          "The hint system is tuned to teach, not just solve. When a player asks for help, the game highlights the next logical deduction rather than dropping a random number onto the board. This keeps the puzzle coherent and the player learning.",
-        ],
-      },
-      {
-        heading: "Choosing cognitive load",
-        paragraphs: [
-          "Multiple difficulty levels let players choose their cognitive load. A five-minute coffee break might call for an easy grid, while a long flight might invite an expert challenge. The no-timer design means the difficulty lives in the logic, not the clock.",
-        ],
-      },
-      {
-        heading: "Accessible without being shallow",
-        paragraphs: [
-          "By separating difficulty from speed, Classic Sudoku 2026 stays accessible without becoming shallow. The same 9x9 grid can offer a gentle warmup or a deep logical workout depending on the level you choose.",
-        ],
-      },
-    ],
-    faq: [
-      {
-        question: "What really makes a Sudoku puzzle harder?",
-        answer:
-          "A puzzle becomes harder when the player must follow longer chains of inference to find the next certain number, not just when more cells are empty.",
-      },
-      {
-        question: "How do hints work in Classic Sudoku 2026?",
-        answer:
-          "Hints highlight the next logical deduction rather than dropping a random number onto the board, so the puzzle stays coherent and the player keeps learning.",
-      },
-      {
-        question: "Why is there no timer?",
-        answer:
-          "Without a timer, difficulty lives in the logic rather than the clock. A coffee break can be easy and a long flight can be expert without time pressure.",
-      },
-    ],
-  },
-  {
     id: 7,
     slug: "why-tile-journey-works-offline",
     title: "Why Tile Journey Works Offline",
@@ -480,72 +414,6 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
   },
   {
-    id: 8,
-    slug: "how-themed-puzzles-build-vocabulary",
-    title: "How Themed Puzzles Build Vocabulary",
-    excerpt:
-      "Word Search Block turns word finding into a calm vocabulary exercise. Grouping words by theme is the design choice that makes it work for all ages.",
-    date: "2026-06-26",
-    category: "Design Note",
-    image: "/images/word-search-block.webp",
-    summary: [
-      "Themes turn a list of words into a memory aid with context.",
-      "Puzzles activate mental categories for low-pressure vocabulary practice.",
-      "Difficulty scales through word length, grid density, and direction.",
-      "Hints reveal the first letter to preserve the satisfaction of discovery.",
-      "Clean themes and short sessions suit spellers, learners, and adults alike.",
-    ],
-    sections: [
-      {
-        heading: "Why theme matters",
-        paragraphs: [
-          "A word search grid without a theme is just a list of letters. Add a theme and the grid becomes a memory aid: animals, colors, countries, or foods give the words context and make them easier to recall.",
-        ],
-      },
-      {
-        heading: "Theme as vocabulary exercise",
-        paragraphs: [
-          "In Word Search Block, every puzzle centers on a clear theme. Players are not only hunting for spelling patterns; they are activating a mental category. This small design choice turns a casual puzzle into a low-pressure vocabulary exercise.",
-        ],
-      },
-      {
-        heading: "Three ways difficulty scales",
-        paragraphs: [
-          "Difficulty scales in three ways: word length, grid density, and the use of diagonal or backward words. A beginner grid might use short horizontal words under a friendly theme. An advanced grid can hide longer words in every direction.",
-        ],
-      },
-      {
-        heading: "Hints that protect discovery",
-        paragraphs: [
-          "The hint system keeps the learning loop intact. When a player is stuck, a hint reveals the first letter of a remaining word rather than the full answer. This preserves the satisfaction of discovery while preventing abandonment.",
-        ],
-      },
-      {
-        heading: "Lifelong vocabulary habit",
-        paragraphs: [
-          "Vocabulary growth is a lifelong habit. By keeping themes clean, controls simple, and sessions short, Word Search Block works for young spellers, language learners, and adults who want a calm mental warm-up.",
-        ],
-      },
-    ],
-    faq: [
-      {
-        question: "How does a theme help players find words?",
-        answer:
-          "A theme gives words context and turns the grid into a memory aid, making it easier to recall and locate related terms.",
-      },
-      {
-        question: "How does difficulty scale in Word Search Block?",
-        answer:
-          "Difficulty scales through word length, grid density, and the use of diagonal or backward words.",
-      },
-      {
-        question: "Why reveal only the first letter in hints?",
-        answer:
-          "Revealing the first letter preserves the satisfaction of discovery while preventing a stuck player from abandoning the puzzle.",
-      },
-    ],
-  },
-  {
     id: 9,
     slug: "the-logic-behind-arrow-outs-handcrafted-levels",
     title: "The Logic Behind Arrow Out's Handcrafted Levels",
@@ -608,138 +476,6 @@ export const BLOG_POSTS: BlogPost[] = [
         question: "How do hints work without spoiling the puzzle?",
         answer:
           "Hints point to the next safe arrow to remove, not the entire solution, so players stay engaged with the ordering logic.",
-      },
-    ],
-  },
-  {
-    id: 10,
-    slug: "how-pearl-coloring-blends-sorting-and-pixel-art",
-    title: "How Pearl Coloring Blends Sorting and Pixel Art",
-    excerpt:
-      "Pearl Coloring combines color sorting with pixel-art creation. The result is a calm puzzle where every solved shelf reveals a small piece of art.",
-    date: "2026-06-22",
-    category: "Design Note",
-    image: "/images/pearl-coloring.webp",
-    summary: [
-      "Color sorting becomes a pixel-art reward.",
-      "Pearl shapes and color groups stay distinct so the puzzle remains clear.",
-      "Reveals happen in stages for ongoing satisfaction.",
-      "Themed collections keep the art fresh without changing the core loop.",
-      "The game blends logical structure with creative delight.",
-    ],
-    sections: [
-      {
-        heading: "Two reward layers",
-        paragraphs: [
-          "Color sorting is a satisfying mechanic on its own: move pearls until each shelf holds one color. Pearl Coloring adds a second reward layer by turning those sorted colors into pixel-art images that reveal themselves as you play.",
-        ],
-      },
-      {
-        heading: "Balancing sorting and art",
-        paragraphs: [
-          "The design challenge is balance. The sorting mechanic must remain clear while the emerging art builds anticipation. We keep the pearl shapes consistent and the color groups distinct, so the puzzle state never competes with the picture.",
-        ],
-      },
-      {
-        heading: "Staged reveals",
-        paragraphs: [
-          "Reveals happen in stages rather than all at once. Each completed shelf adds another block of color to the final image. This creates small moments of satisfaction throughout the level and a stronger payoff when the picture is complete.",
-        ],
-      },
-      {
-        heading: "Fresh themed collections",
-        paragraphs: [
-          "Limited-time themed collections keep the art fresh without changing the core loop. Seasonal images and special palettes give returning players something new to look forward to while the sorting mechanic stays familiar.",
-        ],
-      },
-      {
-        heading: "Structure plus delight",
-        paragraphs: [
-          "By blending a logical puzzle with a creative reward, Pearl Coloring appeals to players who want both structure and delight. It is a puzzle and a small art break at the same time.",
-        ],
-      },
-    ],
-    faq: [
-      {
-        question: "How does Pearl Coloring combine sorting and art?",
-        answer:
-          "Players sort pearls by color, and those sorted colors gradually reveal pixel-art images as the level progresses.",
-      },
-      {
-        question: "Why do reveals happen in stages?",
-        answer:
-          "Each completed shelf adds another block of color, creating small moments of satisfaction throughout the level and a stronger final payoff.",
-      },
-      {
-        question: "How are themed collections handled?",
-        answer:
-          "Limited-time themed collections deliver seasonal images and special palettes as optional content without changing the familiar sorting loop.",
-      },
-    ],
-  },
-  {
-    id: 11,
-    slug: "why-time-pop-puzzle-focuses-on-12-vs-24-hour-conversion",
-    title: "Why Time Pop Puzzle Focuses on 12- vs 24-Hour Conversion",
-    excerpt:
-      "Time Pop Puzzle turns a small everyday skill into a quick brain-training habit. The narrow focus is intentional: repeated practice makes time conversion automatic.",
-    date: "2026-06-21",
-    category: "Design Note",
-    image: "/images/time-pop-puzzle.webp",
-    summary: [
-      "Converting between 12- and 24-hour time is a practical daily skill.",
-      "Short rounds lower the barrier to repeated practice.",
-      "Streaks and instant feedback reinforce learning.",
-      "A narrow scope turns a conscious calculation into an automatic habit.",
-      "The game becomes a daily mental warm-up rather than a generic distraction.",
-    ],
-    sections: [
-      {
-        heading: "A practical, everyday skill",
-        paragraphs: [
-          "Converting between 12-hour and 24-hour time is a practical skill that appears on schedules, tickets, devices, and travel plans. Time Pop Puzzle isolates that skill and turns it into a fast, repeatable exercise.",
-        ],
-      },
-      {
-        heading: "Short rounds by design",
-        paragraphs: [
-          "Each round is short by design. The player reads an AM or PM time and taps the matching 24-hour answer. The brevity lowers the barrier to entry and makes the game easy to open in a spare minute.",
-        ],
-      },
-      {
-        heading: "Streaks and instant feedback",
-        paragraphs: [
-          "Streaks and instant feedback reinforce learning. A correct answer extends the streak; a wrong answer shows the correct conversion immediately. This tight feedback loop helps the brain build automatic associations between the two formats.",
-        ],
-      },
-      {
-        heading: "The value of narrow scope",
-        paragraphs: [
-          "The narrow scope is the point. Instead of mixing many math or memory tasks, Time Pop Puzzle repeats one conversion pattern across varied values. That repetition is what turns a conscious calculation into an automatic habit.",
-        ],
-      },
-      {
-        heading: "From puzzle to daily habit",
-        paragraphs: [
-          "By focusing on a single useful skill, the game becomes a daily mental warm-up rather than a generic distraction. Players leave with a slightly stronger grasp of a format they will use again tomorrow.",
-        ],
-      },
-    ],
-    faq: [
-      {
-        question: "What skill does Time Pop Puzzle practice?",
-        answer:
-          "It practices converting between 12-hour and 24-hour time, a skill used on schedules, tickets, devices, and travel plans.",
-      },
-      {
-        question: "How do streaks help learning?",
-        answer:
-          "Streaks reward correct answers and a tight feedback loop shows the correct conversion immediately, helping the brain build automatic associations.",
-      },
-      {
-        question: "Why focus on only one conversion type?",
-        answer:
-          "Repeating one conversion pattern across varied values turns a conscious calculation into an automatic habit.",
       },
     ],
   },

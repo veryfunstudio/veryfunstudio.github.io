@@ -34,7 +34,7 @@ const Games = () => {
     <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
       <Seo
         title="Our Mobile Games"
-        description={`Browse all ${gameCount} free mobile puzzle games from VeryFun Company: Sudoku, Tile Journey, Word Search, Arrow Out, Pearl, Time Pop, and Nova Mahjong.`}
+        description={`Browse all ${gameCount} free mobile puzzle games from VeryFun Company: Nova Mahjong, Tile Journey, and Arrow Out.`}
         path="/games"
       />
       <JsonLd

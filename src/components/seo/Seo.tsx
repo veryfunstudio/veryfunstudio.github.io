@@ -8,7 +8,7 @@ const DEFAULT_OG_IMAGE_HEIGHT = 630;
 interface SeoProps {
   title: string;
   description: string;
-  /** Path beginning with `/`, e.g. `/games/classic-sudoku`. Defaults to `/`. */
+  /** Path beginning with `/`, e.g. `/games/nova-mahjong`. Defaults to `/`. */
   path?: string;
   /** Absolute URL or path-relative. Falls back to the default site image. */
   image?: string;

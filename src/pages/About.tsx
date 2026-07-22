@@ -48,8 +48,8 @@ const About = () => {
             VeryFun Company is a small independent studio shipping free mobile puzzles on Google
             Play. We are a tiny team: design, code, and store pages from one desk. We build for
             spare attention — short sessions, readable boards, offline play — and we skip pressure
-            systems unless the timer <em>is</em> the puzzle (see Time Pop). We do not ship
-            dark-pattern streaks, content paywalls, or games that punish a pause.
+            systems unless the timer <em>is</em> the puzzle. We do not ship dark-pattern streaks,
+            content paywalls, or games that punish a pause.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link to="/games" className="pill-button pill-button--accent">
