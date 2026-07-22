@@ -38,11 +38,11 @@ const Header = () => {
       <div className="site-header__bar mx-auto flex h-16 max-w-[80rem] items-center justify-between px-[3.125vw]">
         <Link
           to="/"
-          className="site-header__brand flex min-h-[44px] items-baseline gap-2 text-foreground no-underline"
+          className="site-header__brand flex min-h-[44px] items-center gap-2 text-foreground no-underline"
         >
-          <span className="font-serif text-xl leading-none tracking-tight">{BRAND.name}</span>
-          <span className="site-header__brand-tag hidden sm:inline font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
-            Studio
+          <span className="font-serif text-xl leading-none">{BRAND.name}</span>
+          <span className="site-header__brand-tag hidden sm:inline font-mono text-[0.65rem] uppercase tracking-[0.14em] text-accent">
+            Toybox
           </span>
         </Link>
 
