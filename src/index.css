@@ -1,40 +1,39 @@
 @import "tailwindcss/index.css";
 
 @theme {
-  --font-sans: "Space Grotesk", "Avenir Next", "Trebuchet MS", system-ui, -apple-system, sans-serif;
+  --font-sans: "Inter", "Avenir Next", "Trebuchet MS", system-ui, -apple-system, sans-serif;
   --font-mono: "DM Mono", "SFMono-Regular", "Cascadia Mono", ui-monospace, monospace;
-  --font-serif:
-    "Space Grotesk", "Avenir Next", "Trebuchet MS", system-ui, -apple-system, sans-serif;
+  --font-serif: "Fraunces", "Iowan Old Style", Georgia, serif;
 
-  --color-background: #07080d;
-  --color-foreground: #f4f7e8;
-  --color-muted: #a6adb7;
-  --color-surface: #10131b;
-  --color-surface-warm: #151b18;
-  --color-surface-tint: rgba(244, 247, 232, 0.05);
-  --color-accent: #c8ff3d;
-  --color-accent-hover: #e2ff75;
-  --color-accent-active: #9fd823;
-  --color-accent-soft: rgba(200, 255, 61, 0.12);
-  --color-shadow-rgb: 7 8 13;
-  --color-atmosphere-rgb: 62 110 190;
+  --color-background: #faf9f7;
+  --color-foreground: #1a1a1a;
+  --color-muted: #6b6b6b;
+  --color-surface: #ffffff;
+  --color-surface-warm: #f4f2ee;
+  --color-surface-tint: rgba(26, 26, 26, 0.04);
+  --color-accent: #1a1a1a;
+  --color-accent-hover: #3a3a3a;
+  --color-accent-active: #000000;
+  --color-accent-soft: rgba(26, 26, 26, 0.08);
+  --color-shadow-rgb: 26 26 26;
+  --color-atmosphere-rgb: 140 130 110;
 
-  --color-border: rgba(244, 247, 232, 0.14);
-  --color-border-soft: rgba(244, 247, 232, 0.08);
-  --color-border-input: rgba(244, 247, 232, 0.16);
-  --color-border-strong: rgba(244, 247, 232, 0.24);
+  --color-border: rgba(26, 26, 26, 0.12);
+  --color-border-soft: rgba(26, 26, 26, 0.08);
+  --color-border-input: rgba(26, 26, 26, 0.16);
+  --color-border-strong: rgba(26, 26, 26, 0.22);
 
-  --color-focus: #c8ff3d;
-  --color-focus-soft: rgba(200, 255, 61, 0.18);
+  --color-focus: #1a1a1a;
+  --color-focus-soft: rgba(26, 26, 26, 0.12);
 
-  --radius-card: 12px;
-  --radius-button: 999px;
-  --radius-inner: 6px;
+  --radius-card: 2px;
+  --radius-button: 2px;
+  --radius-inner: 2px;
 
-  --shadow-soft: 0 0 0 1px rgba(244, 247, 232, 0.06);
+  --shadow-soft: 0 0 0 1px rgba(26, 26, 26, 0.06);
   --shadow-soft-hover:
-    0 14px 48px rgb(var(--color-shadow-rgb) / 0.3), 0 0 0 1px rgba(244, 247, 232, 0.14);
-  --shadow-glow: 0 0 34px rgba(200, 255, 61, 0.11);
+    0 14px 48px rgb(var(--color-shadow-rgb) / 0.12), 0 0 0 1px rgba(26, 26, 26, 0.12);
+  --shadow-glow: 0 0 34px rgba(26, 26, 26, 0.08);
 
   --ease-brand: cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -69,8 +68,7 @@
   body {
     min-width: 320px;
     background:
-      radial-gradient(circle at 15% 10%, rgb(var(--color-atmosphere-rgb) / 0.13), transparent 34rem),
-      radial-gradient(circle at 86% 18%, rgb(var(--color-atmosphere-rgb) / 0.09), transparent 30rem),
+      radial-gradient(circle at 15% 10%, rgb(var(--color-atmosphere-rgb) / 0.05), transparent 34rem),
       var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
@@ -85,8 +83,9 @@
   h5,
   h6 {
     color: var(--color-foreground);
-    font-family: var(--font-sans);
-    font-weight: 650;
+    font-family: var(--font-serif);
+    font-optical-sizing: auto;
+    font-weight: 500;
     letter-spacing: 0;
     line-height: 0.94;
     text-wrap: balance;
@@ -127,10 +126,9 @@
     z-index: var(--z-decor);
     pointer-events: none;
     content: "";
-    opacity: 0.035;
+    opacity: 0.02;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 256px 256px;
-    mix-blend-mode: screen;
   }
 
   body::after {
@@ -139,7 +137,7 @@
     z-index: var(--z-decor);
     pointer-events: none;
     content: "";
-    background: radial-gradient(circle at 50% 16%, rgba(244, 247, 232, 0.035), transparent 68%);
+    background: radial-gradient(circle at 50% 16%, rgba(26, 26, 26, 0.02), transparent 68%);
   }
 }
 
