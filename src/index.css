@@ -500,7 +500,7 @@
   }
 
   .status-text {
-    color: var(--color-muted);
+    color: var(--color-accent);
     font-family: var(--font-mono);
     font-size: 0.875rem;
     font-weight: 500;
@@ -619,9 +619,10 @@
     flex-direction: column;
     overflow: hidden;
     border: 1px solid var(--color-border);
-    border-radius: 2px;
+    border-radius: var(--radius-card);
     background: var(--color-surface);
     padding: clamp(1.5rem, 3vw, 3rem);
+    box-shadow: var(--shadow-soft);
   }
 
   .hero-reveal {
@@ -656,15 +657,15 @@
     max-width: 100%;
     color: var(--color-foreground);
     font-size: clamp(3.35rem, 8vw, 6rem);
-    font-weight: 500;
-    line-height: 0.9;
+    font-weight: 400;
+    line-height: 0.92;
     animation: title-focus-in 0.92s var(--ease-brand) both;
   }
 
   .kinetic-title span {
     display: block;
-    font-style: italic;
-    color: var(--color-muted);
+    font-style: normal;
+    color: var(--color-accent);
     animation: title-accent-settle 1s var(--ease-brand) 0.12s both;
   }
 
@@ -684,9 +685,9 @@
     aspect-ratio: 4 / 3;
     overflow: hidden;
     border: 1px solid var(--color-border);
-    border-radius: 2px;
+    border-radius: var(--radius-card);
     background: var(--color-surface-warm);
-    box-shadow: 0 18px 50px rgb(var(--color-shadow-rgb) / 0.12);
+    box-shadow: var(--shadow-soft-hover);
     transform: rotate(var(--signal-rotation));
     transform-origin: 52% 58%;
     animation: signal-screen-settle 0.96s var(--ease-brand) 0.2s both;
@@ -696,7 +697,7 @@
     position: absolute;
     inset: 0;
     content: "";
-    background: linear-gradient(180deg, rgba(250, 249, 247, 0.12), transparent 24%);
+    background: linear-gradient(180deg, rgba(253, 248, 240, 0.15), transparent 24%);
     pointer-events: none;
   }
 
@@ -723,7 +724,7 @@
   .games-hero-copy,
   .games-hero-panel {
     border: 1px solid var(--color-border);
-    border-radius: 2px;
+    border-radius: var(--radius-card);
     background: var(--color-surface);
   }
 
@@ -768,9 +769,9 @@
       "icon index meta";
     gap: 0.1rem 0.7rem;
     align-items: center;
-    border: 1px solid rgba(44, 35, 26, 0.1);
-    border-radius: 8px;
-    background: rgba(250, 249, 247, 0.25);
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius-inner);
+    background: var(--color-surface);
     color: var(--color-muted);
     cursor: pointer;
     padding: 0.55rem 0.65rem;
@@ -785,10 +786,8 @@
   .games-lineup__item:hover,
   .games-lineup__item:focus-visible,
   .games-lineup__item.is-active {
-    border-color: rgba(44, 35, 26, 0.62);
-    background:
-      linear-gradient(90deg, rgba(44, 35, 26, 0.13), rgba(44, 35, 26, 0.025)),
-      rgba(250, 249, 247, 0.55);
+    border-color: var(--color-accent);
+    background: var(--color-accent-soft);
     color: var(--color-foreground);
     outline: 0;
     transform: translateX(2px);
@@ -798,9 +797,9 @@
     width: 2.35rem;
     height: 2.35rem;
     grid-area: icon;
-    border: 1px solid rgba(44, 35, 26, 0.2);
+    border: 1px solid var(--color-border);
     border-radius: var(--radius-inner);
-    background: var(--color-surface);
+    background: var(--color-surface-warm);
     object-fit: cover;
   }
 
@@ -838,7 +837,7 @@
     display: grid;
     grid-template-rows: minmax(0, 1fr) auto;
     overflow: hidden;
-    box-shadow: 0 18px 50px rgb(var(--color-shadow-rgb) / 0.1);
+    box-shadow: var(--shadow-soft-hover);
   }
 
   .games-hero-panel::before {
@@ -900,7 +899,7 @@
   .catalog-index {
     margin-top: 1rem;
     border: 1px solid var(--color-border);
-    border-radius: 2px;
+    border-radius: var(--radius-card);
     background: var(--color-surface);
     overflow: hidden;
   }
@@ -1066,7 +1065,7 @@
     justify-content: center;
     gap: 0.45rem;
     border: 1px solid var(--color-border-strong);
-    border-radius: 2px;
+    border-radius: var(--radius-card);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-size: 0.8rem;
@@ -1101,7 +1100,7 @@
   .about-hero-media,
   .contact-hero-copy {
     border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     background:
       linear-gradient(145deg, rgba(44, 35, 26, 0.052), rgba(44, 35, 26, 0.014)),
       rgba(255, 255, 255, 0.78);
@@ -1152,7 +1151,7 @@
     overflow: hidden;
     min-height: 26rem;
     padding: clamp(0.7rem, 1.4vw, 1rem);
-    box-shadow: 0 24px 78px rgb(var(--color-shadow-rgb) / 0.28);
+    box-shadow: var(--shadow-soft-hover);
   }
 
   .about-hero-media::after {
@@ -1182,7 +1181,7 @@
     overflow: hidden;
     min-height: 0;
     border: 1px solid rgba(44, 35, 26, 0.14);
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     color: var(--color-foreground);
     text-decoration: none;
     background: rgba(250, 249, 247, 0.6);
@@ -1255,7 +1254,7 @@
     margin-top: 0.8rem;
     overflow: hidden;
     border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     background: var(--color-border-soft);
   }
 
@@ -1333,7 +1332,7 @@
     gap: 1rem;
     min-height: 13rem;
     border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     background: rgba(255, 255, 255, 0.78);
     color: var(--color-foreground);
     padding: 1.2rem;
@@ -1395,7 +1394,7 @@
   .article-body,
   .error-panel {
     border: 1px solid var(--color-border);
-    border-radius: 2px;
+    border-radius: var(--radius-card);
     background: var(--color-surface);
   }
 
@@ -1491,7 +1490,7 @@
     overflow: hidden;
     aspect-ratio: 1200 / 630;
     align-self: start;
-    box-shadow: 0 18px 50px rgb(var(--color-shadow-rgb) / 0.1);
+    box-shadow: var(--shadow-soft-hover);
   }
 
   .game-detail-media::after {
@@ -1693,7 +1692,7 @@
 
   .game-detail-faq details {
     border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     background: rgba(44, 35, 26, 0.04);
     padding: 1rem;
   }
@@ -1732,7 +1731,7 @@
     margin-top: 0.8rem;
     padding: clamp(1.25rem, 3vw, 3rem);
     border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     background:
       linear-gradient(145deg, rgba(44, 35, 26, 0.052), rgba(44, 35, 26, 0.014)),
       rgba(255, 255, 255, 0.78);
@@ -1774,7 +1773,7 @@
     min-width: 14rem;
     overflow: hidden;
     border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     background: rgba(250, 249, 247, 0.55);
   }
 
@@ -1869,7 +1868,7 @@
     gap: 1rem;
     padding: clamp(1.25rem, 2.4vw, 2rem);
     border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     background:
       linear-gradient(145deg, rgba(44, 35, 26, 0.052), rgba(44, 35, 26, 0.014)),
       rgba(255, 255, 255, 0.78);
@@ -1905,7 +1904,7 @@
     color: inherit;
     text-decoration: none;
     border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     background:
       linear-gradient(145deg, rgba(44, 35, 26, 0.052), rgba(44, 35, 26, 0.014)),
       rgba(255, 255, 255, 0.78);
@@ -1971,7 +1970,7 @@
     display: grid;
     grid-template-rows: minmax(0, 1fr) auto;
     overflow: hidden;
-    box-shadow: 0 24px 78px rgb(var(--color-shadow-rgb) / 0.28);
+    box-shadow: var(--shadow-soft-hover);
   }
 
   .blog-featured::after {
@@ -2047,7 +2046,7 @@
     gap: clamp(1rem, 3vw, 3rem);
     align-items: end;
     border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     background:
       radial-gradient(circle at 92% 12%, rgba(44, 35, 26, 0.055), transparent 18rem),
       linear-gradient(145deg, rgba(44, 35, 26, 0.045), rgba(44, 35, 26, 0.014)),
@@ -2077,7 +2076,7 @@
     gap: 1px;
     overflow: hidden;
     border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     background: var(--color-border-soft);
   }
 
@@ -2245,7 +2244,7 @@
   .article-image {
     position: relative;
     overflow: hidden;
-    box-shadow: 0 24px 78px rgb(var(--color-shadow-rgb) / 0.28);
+    box-shadow: var(--shadow-soft-hover);
   }
 
   .article-image::after {
@@ -2282,7 +2281,7 @@
 
   .article-summary {
     border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     background:
       linear-gradient(145deg, rgba(44, 35, 26, 0.052), rgba(44, 35, 26, 0.014)),
       rgba(255, 255, 255, 0.78);
@@ -2366,7 +2365,7 @@
 
   .article-faq details {
     border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     background: rgba(255, 255, 255, 0.86);
     overflow: hidden;
   }
@@ -2425,7 +2424,7 @@
   .article-next__intro,
   .article-related-card {
     border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     background:
       linear-gradient(145deg, rgba(44, 35, 26, 0.052), rgba(44, 35, 26, 0.014)),
       rgba(255, 255, 255, 0.78);
@@ -2539,10 +2538,9 @@
     gap: clamp(1.5rem, 4vw, 5rem);
     align-items: start;
     border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
-    background:
-      linear-gradient(135deg, rgba(44, 35, 26, 0.08), rgba(44, 35, 26, 0.045)),
-      rgba(255, 255, 255, 0.58);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-soft);
     padding: clamp(1.25rem, 4vw, 4rem);
   }
 
@@ -2569,7 +2567,7 @@
     min-height: clamp(17rem, 28vw, 24rem);
     overflow: hidden;
     border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
+    border-radius: var(--radius-card);
     background: rgba(250, 249, 247, 0.48);
     color: var(--color-foreground);
     text-decoration: none;
@@ -2689,10 +2687,9 @@
 
   .home-catalog {
     border: 1px solid var(--color-border-soft);
-    border-radius: 8px;
-    background:
-      radial-gradient(circle at 8% 0%, rgba(44, 35, 26, 0.06), transparent 28rem),
-      rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-soft);
     overflow: hidden;
   }
 
