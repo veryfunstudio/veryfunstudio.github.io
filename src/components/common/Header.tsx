@@ -38,17 +38,12 @@ const Header = () => {
       <div className="site-header__bar mx-auto flex h-16 max-w-[80rem] items-center justify-between px-[3.125vw]">
         <Link
           to="/"
-          className="site-header__brand flex min-h-[44px] items-center gap-3 font-sans text-xl font-medium tracking-tight text-foreground no-underline"
+          className="site-header__brand flex min-h-[44px] items-baseline gap-2 text-foreground no-underline"
         >
-          <img
-            src="/favicon.png"
-            alt=""
-            width={28}
-            height={28}
-            className="h-7 w-7 shrink-0 rounded-[6px]"
-            decoding="async"
-          />
-          {BRAND.name}
+          <span className="font-serif text-xl leading-none tracking-tight">{BRAND.name}</span>
+          <span className="site-header__brand-tag hidden sm:inline font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
+            Studio
+          </span>
         </Link>
 
         <nav className="site-header__nav hidden md:flex" aria-label="Main navigation">
