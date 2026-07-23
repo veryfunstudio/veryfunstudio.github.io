@@ -75,6 +75,7 @@ export default function Home() {
             <div className="grid flex-1 items-center gap-10 py-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(340px,0.82fr)] lg:py-0">
               <div className="space-y-8">
                 <div className="hero-reveal">
+                  <p className="status-text mb-4">VeryFun Company</p>
                   <h1
                     className="kinetic-title max-w-[11ch]"
                     aria-label="Quiet games. Bright logic."
@@ -107,7 +108,7 @@ export default function Home() {
 
               <div className="hero-reveal hero-reveal--media relative">
                 <div className="signal-deck">
-                  <div className="signal-screen">
+                  <div className="signal-screen signal-screen--hero">
                     <img
                       src={latestGame.image}
                       alt={latestGame.title}
@@ -117,6 +118,18 @@ export default function Home() {
                       decoding="async"
                     />
                   </div>
+                  <div className="signal-deck__chips">
+                    {catalog.slice(0, 3).map((game) => (
+                      <Link
+                        key={game.slug}
+                        to={`/games/${game.slug}`}
+                        className="signal-deck__chip"
+                      >
+                        <img src={game.icon} alt="" width={32} height={32} decoding="async" />
+                        <span>{game.title}</span>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
@@ -124,7 +137,6 @@ export default function Home() {
         </section>
 
         <section className="home-promise-section px-[3.125vw] py-20 lg:py-28">
-          <div className="dash-line mb-12" />
           <div className="home-promise">
             <div className="home-promise__copy">
               <p className="status-text">Latest release</p>
