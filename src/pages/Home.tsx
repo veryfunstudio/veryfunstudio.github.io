@@ -1,12 +1,9 @@
 import { ArrowRight, Download } from "lucide-react";
-import { lazy, Suspense } from "react";
 import { Link } from "react-router";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
 import { formatGameTags, GAMES, getGamesByNewest, getNewestGame } from "@/data/games";
 import { BRAND, BRAND_LOGO_URL, GOOGLE_PLAY_DEVELOPER_URL, SITE_URL } from "@/lib/constants";
-
-const HeroCanvas = lazy(() => import("@/components/home/HeroCanvas"));
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -55,20 +52,6 @@ export default function Home() {
       <JsonLd schema={organizationSchema} />
       <JsonLd schema={websiteSchema} />
 
-      <div className="fixed inset-0 z-0">
-        <Suspense
-          fallback={
-            <div
-              className="hero-canvas-suspense absolute inset-0"
-              style={{ pointerEvents: "none" }}
-              aria-hidden="true"
-            />
-          }
-        >
-          <HeroCanvas />
-        </Suspense>
-      </div>
-
       <div className="relative z-10">
         <section className="relative min-h-[100svh] px-[3.125vw] pb-8 pt-24">
           <div className="hero-shell">
@@ -107,24 +90,19 @@ export default function Home() {
               </div>
 
               <div className="hero-reveal hero-reveal--media relative">
-                <div className="signal-deck">
-                  <div className="signal-screen signal-screen--hero">
-                    <img
-                      src={latestGame.image}
-                      alt={latestGame.title}
-                      width={760}
-                      height={570}
-                      loading="eager"
-                      decoding="async"
-                    />
-                  </div>
-                  <div className="signal-deck__chips">
+                <div className="hero-media">
+                  <img
+                    src={latestGame.image}
+                    alt={latestGame.title}
+                    width={760}
+                    height={570}
+                    loading="eager"
+                    decoding="async"
+                    className="hero-media__img"
+                  />
+                  <div className="hero-media__chips">
                     {catalog.slice(0, 3).map((game) => (
-                      <Link
-                        key={game.slug}
-                        to={`/games/${game.slug}`}
-                        className="signal-deck__chip"
-                      >
+                      <Link key={game.slug} to={`/games/${game.slug}`} className="hero-media__chip">
                         <img src={game.icon} alt="" width={32} height={32} decoding="async" />
                         <span>{game.title}</span>
                       </Link>
