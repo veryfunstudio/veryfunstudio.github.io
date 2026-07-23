@@ -1,1 +1,0 @@
-import{K as e,Z as t}from"./jsx-runtime-C91vDKTY.js";import{a as n,o as r,s as i}from"./proxy-CQCHloim.js";var a=t(e(),1);function o(){!r.current&&n();let[e]=(0,a.useState)(i.current);return e}export{o as t};
