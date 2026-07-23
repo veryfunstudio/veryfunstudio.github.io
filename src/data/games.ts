@@ -3,7 +3,7 @@ export interface FaqItem {
   answer: string;
 }
 
-export interface GameScreenshot {
+export interface GameVisual {
   src: string;
   /** Short label under the frame, e.g. "Board at rest". */
   caption: string;
@@ -37,7 +37,7 @@ export interface Game {
    * Store gallery. Prefer real Play screenshots under
    * `public/screenshots/{slug}/`. Captions + frame drive the detail UI.
    */
-  gallery?: GameScreenshot[];
+  gallery?: GameVisual[];
 }
 
 export const GAMES: Game[] = [
@@ -73,18 +73,11 @@ export const GAMES: Game[] = [
         frame: "wide",
       },
       {
-        src: "/screenshots/nova-mahjong/02-board.jpg",
-        caption: "Board at rest",
-        alt: "Nova Mahjong board presentation",
-        kind: "screen",
-        frame: "phone",
-      },
-      {
-        src: "/screenshots/nova-mahjong/03-focus.jpg",
-        caption: "Readable tiles up close",
-        alt: "Nova Mahjong tile focus",
-        kind: "screen",
-        frame: "phone",
+        src: "/images/nova-mahjong-icon.webp",
+        caption: "App icon",
+        alt: "Nova Mahjong For Seniors app icon",
+        kind: "icon",
+        frame: "square",
       },
     ],
     faq: [
@@ -146,18 +139,11 @@ export const GAMES: Game[] = [
         frame: "wide",
       },
       {
-        src: "/screenshots/tile-journey/02-board.jpg",
-        caption: "Themed boards",
-        alt: "Tile Journey board presentation",
-        kind: "screen",
-        frame: "phone",
-      },
-      {
-        src: "/screenshots/tile-journey/03-focus.jpg",
-        caption: "Match-three in motion",
-        alt: "Tile Journey focus presentation",
-        kind: "screen",
-        frame: "phone",
+        src: "/images/tile-journey-icon.webp",
+        caption: "App icon",
+        alt: "Tile Journey app icon",
+        kind: "icon",
+        frame: "square",
       },
     ],
     faq: [
@@ -218,18 +204,11 @@ export const GAMES: Game[] = [
         frame: "wide",
       },
       {
-        src: "/screenshots/arrow-out/02-board.jpg",
-        caption: "Clear the grid",
-        alt: "Arrow Out board presentation",
-        kind: "screen",
-        frame: "phone",
-      },
-      {
-        src: "/screenshots/arrow-out/03-focus.jpg",
-        caption: "Plan the path",
-        alt: "Arrow Out focus presentation",
-        kind: "screen",
-        frame: "phone",
+        src: "/images/arrow-out-icon.webp",
+        caption: "App icon",
+        alt: "Arrow Out app icon",
+        kind: "icon",
+        frame: "square",
       },
     ],
     faq: [
@@ -289,7 +268,7 @@ export function formatGameTags(game: Game): string {
  * Visual assets for the detail gallery. Prefer `game.gallery` (captioned
  * store shots). Fall back to key art + icon for titles without a pack yet.
  */
-export function getGameScreenshots(game: Game): GameScreenshot[] {
+export function getGameGallery(game: Game): GameVisual[] {
   if (game.gallery && game.gallery.length > 0) {
     return game.gallery;
   }

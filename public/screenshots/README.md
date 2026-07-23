@@ -1,15 +1,15 @@
-# Game screenshot packs
+# Game gallery assets
 
-Put real Google Play store screenshots here. The site gallery reads from
-`Game.gallery` in `src/data/games.ts`.
+Put verified Google Play artwork and real gameplay screenshots here. The site gallery reads from
+`Game.gallery` in `src/data/games.ts`; never pad key art into a phone frame and label it gameplay.
 
 ## Layout
 
 ```
 public/screenshots/{slug}/
   01-key-art.webp   # optional landscape key art (1200×630)
-  02-board.jpg      # phone portrait board UI (≈1080×1920)
-  03-focus.jpg      # second phone shot
+  02-board.jpg      # optional real phone portrait board UI (≈1080×1920)
+  03-focus.jpg      # optional second real phone shot
 ```
 
 ## Data template (`games.ts`)
@@ -43,14 +43,11 @@ hook: "Large tiles. No clocks. Classic solitaire calm.",
 
 ## Current packs
 
-Sample presentations (key art padded into phone frames) ship for **all seven** titles:
+The current three-title catalog ships verified landscape key art only:
 
 - `nova-mahjong`
-- `classic-sudoku`
 - `tile-journey`
-- `word-search-block`
 - `arrow-out`
-- `pearl-coloring`
-- `time-pop-puzzle`
 
-Replace with real Play Console exports when available — keep paths or update `gallery` entries.
+Their app icons live under `public/images/` and are also shown in the gallery. Add phone-framed
+items only after real Play Console exports are available.

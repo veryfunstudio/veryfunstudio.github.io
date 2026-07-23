@@ -5,7 +5,7 @@ import EntityNotFound from "@/components/common/EntityNotFound";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
 import { getBlogPath, getRelatedPostsForGame } from "@/data/blog";
-import { formatGameTags, getGameBySlug, getGameScreenshots, getRelatedGames } from "@/data/games";
+import { formatGameTags, getGameBySlug, getGameGallery, getRelatedGames } from "@/data/games";
 import { SITE_URL } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
 
@@ -29,7 +29,7 @@ const GameDetail = () => {
   const primaryTags = formatGameTags(game);
   const primaryFeatures = game.features.slice(0, 4);
   const secondaryFeatures = game.features.slice(4);
-  const screenshots = getGameScreenshots(game);
+  const gallery = getGameGallery(game);
   const relatedGames = getRelatedGames(game, 3);
   const relatedPosts = getRelatedPostsForGame(game, 2);
   const releaseLabel = formatDate(game.releaseDate);
@@ -52,7 +52,7 @@ const GameDetail = () => {
         animate: { opacity: 1, scale: 1 },
         transition: { duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] as const },
       };
-  const hasBoardShots = screenshots.some((s) => s.kind === "screen");
+  const hasBoardShots = gallery.some((item) => item.kind === "screen");
 
   return (
     <article className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
@@ -197,7 +197,7 @@ const GameDetail = () => {
           </p>
         </div>
         <div className="game-detail-gallery__track">
-          {screenshots.map((shot) => {
+          {gallery.map((shot) => {
             const frame = shot.frame ?? (shot.kind === "icon" ? "square" : "wide");
             return (
               <figure

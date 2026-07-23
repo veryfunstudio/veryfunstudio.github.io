@@ -5,7 +5,7 @@ import {
   formatGameTags,
   GAMES,
   getGameBySlug,
-  getGameScreenshots,
+  getGameGallery,
   getGamesByNewest,
   getNewestGame,
   getRelatedGames,
@@ -73,14 +73,14 @@ describe("games catalog integrity", () => {
       assert.ok(game.fullDescription.trim().length > 80, `${game.slug} missing fullDescription`);
       assert.ok(game.features.length >= 4, `${game.slug} should list core features`);
       assert.ok(
-        game.gallery && game.gallery.length >= 3,
+        game.gallery && game.gallery.length >= 2,
         `${game.slug} should ship a gallery pack`,
       );
-      const shots = getGameScreenshots(game);
-      assert.ok(shots.length >= 3, `${game.slug} gallery should have assets`);
-      for (const shot of shots) {
-        assert.ok(shot.caption.length > 0, `${game.slug} shot missing caption`);
-        assert.ok(existsSync(`public${shot.src}`), `missing screenshot ${shot.src}`);
+      const gallery = getGameGallery(game);
+      assert.ok(gallery.length >= 2, `${game.slug} gallery should have assets`);
+      for (const item of gallery) {
+        assert.ok(item.caption.length > 0, `${game.slug} gallery item missing caption`);
+        assert.ok(existsSync(`public${item.src}`), `missing gallery asset ${item.src}`);
       }
       const related = getRelatedGames(game, 3);
       assert.ok(!related.some((r) => r.slug === game.slug));
