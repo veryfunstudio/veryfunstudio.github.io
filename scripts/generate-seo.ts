@@ -144,9 +144,11 @@ ${faqBlock ? `\n${faqBlock}` : ""}
 `;
   }).join("\n---\n\n");
 
+  const catalogNames = GAMES.map((game) => game.title).join(", ");
+
   return `# VeryFun Company — Full Content for LLMs
 
-> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic. The studio has shipped ${GAMES.length} titles including Classic Sudoku 2026, Tile Journey, Word Search Block, Arrow Out, Pearl Coloring, Time Pop Puzzle, and Nova Mahjong For Seniors.
+> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic. The current catalog has ${GAMES.length} titles: ${catalogNames}.
 >
 > Site: ${SITE_URL}
 > Last updated: ${today}
