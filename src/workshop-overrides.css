@@ -1,0 +1,355 @@
+@layer components {
+  .site-header {
+    border-bottom: 1px solid #3b2c24;
+    background: rgba(250, 246, 240, 0.96);
+  }
+
+  .site-header__wordmark,
+  .site-footer__name {
+    font-family: "Fredoka", var(--font-sans);
+    font-weight: 650;
+  }
+
+  .site-header__logo {
+    width: 2.25rem;
+    height: 2.25rem;
+    flex: 0 0 auto;
+    object-fit: contain;
+  }
+
+  .site-header__brand-tag {
+    border-left: 1px solid #d1c7bd;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+  }
+
+  .site-header__nav-link {
+    border-radius: 0;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .site-header__nav-link:hover {
+    background: transparent;
+    color: var(--color-accent);
+  }
+
+  .site-header__nav-link.is-active {
+    color: #fffaf2;
+  }
+  .site-header__nav-active {
+    border-radius: 0;
+    background: var(--color-foreground);
+    box-shadow: none;
+  }
+
+  .site-page {
+    width: min(100% - 2rem, 80rem);
+    margin-inline: auto;
+    padding-top: 8rem !important;
+    padding-inline: 0 !important;
+  }
+
+  .workshop-button,
+  .pill-button {
+    border: 1px solid var(--color-foreground);
+    border-radius: 0;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+  }
+
+  .workshop-button--accent,
+  .pill-button--accent {
+    background: var(--color-accent);
+    color: #fffaf2;
+  }
+
+  .game-detail-hero,
+  .article-masthead {
+    border: 1px solid var(--color-foreground);
+    border-radius: 0;
+  }
+
+  .game-detail-hero {
+    min-height: 0;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 0;
+  }
+
+  .game-detail-copy {
+    gap: 1.5rem;
+    padding: clamp(2rem, 4vw, 4rem);
+  }
+
+  .game-detail-copy h1 {
+    max-width: 11ch;
+    font-size: clamp(3.5rem, 5.4vw, 5.2rem);
+    line-height: 0.93;
+  }
+
+  .game-detail-showcase {
+    align-self: start;
+    gap: 0;
+    background: #efe6da;
+  }
+
+  .game-detail-showcase {
+    border-left: 1px solid var(--color-foreground);
+  }
+
+  .game-detail-media,
+  .game-detail-identity,
+  .article-image {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .game-detail-identity {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .game-detail-identity__app strong {
+    overflow: visible;
+    font-size: clamp(1.2rem, 1.7vw, 1.6rem);
+    line-height: 1.08;
+    text-overflow: clip;
+    white-space: normal;
+  }
+
+  .game-detail-identity dl {
+    justify-content: start;
+    border-top: 1px solid #d1c7bd;
+    padding-top: 0.9rem;
+  }
+
+  .article-masthead {
+    min-height: 0;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 0;
+  }
+
+  .article-hero {
+    align-content: center;
+    padding: clamp(2rem, 4vw, 4rem);
+  }
+
+  .article-hero h1 {
+    max-width: 13ch;
+    font-size: clamp(2.8rem, 4.2vw, 4.4rem);
+    line-height: 0.98;
+  }
+
+  .article-image {
+    border-left: 1px solid var(--color-foreground);
+    aspect-ratio: 1 / 1;
+  }
+
+  .article-image img {
+    min-height: 0;
+  }
+
+  .about-hero,
+  .contact-hero {
+    display: block;
+    min-height: 0;
+  }
+
+  .about-hero__grid,
+  .contact-hero__grid {
+    width: min(100% - 2rem, 80rem);
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 0;
+  }
+
+  .about-hero-copy,
+  .contact-hero-copy {
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .contact-hero-copy h1 {
+    max-width: 10ch;
+    font-size: clamp(3.5rem, 5.5vw, 5.25rem);
+    line-height: 0.94;
+  }
+
+  .about-hero-media {
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    padding: 0;
+    box-shadow: 4px 4px 0 var(--color-foreground);
+  }
+
+  .about-hero-media::after {
+    display: none;
+  }
+
+  .about-hero-media img {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 1.15 / 1;
+    object-fit: cover;
+  }
+
+  .contact-routes {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-top: 0;
+  }
+
+  .workshop-game-card__actions a,
+  .site-footer__nav a,
+  .legal-layout nav a,
+  .site-footer__name {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+  }
+
+  .contact-workshop {
+    min-width: 0;
+  }
+
+  .contact-workshop__card img {
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  .legal-page .archive-hero > .workshop-shell {
+    border-inline: 1px solid var(--color-foreground);
+    padding: clamp(6.5rem, 10vw, 9rem) clamp(1.5rem, 6vw, 6rem) clamp(3rem, 5vw, 5rem);
+  }
+
+  .legal-page .archive-hero h1 {
+    max-width: 14ch;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: 0.95;
+  }
+
+  .game-detail-gallery__frame,
+  .related-card,
+  .article-related-card,
+  .article-summary,
+  .error-panel {
+    border-radius: 0;
+    border-color: var(--color-foreground);
+    box-shadow: 4px 4px 0 var(--color-foreground);
+  }
+
+  .site-footer {
+    border-top: 1px solid var(--color-foreground);
+    background: var(--color-foreground);
+    color: #faf6f0;
+    padding: 0;
+  }
+
+  .site-footer__shell {
+    width: min(100% - 2rem, 80rem);
+    margin-inline: auto;
+    border-top: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    padding: 3rem 0 1.5rem;
+  }
+
+  .site-footer__name,
+  .site-footer__nav a,
+  .site-footer__social a {
+    color: #faf6f0;
+  }
+
+  .site-footer__name {
+    gap: 0.65rem;
+  }
+
+  .site-footer__name img {
+    width: 2.625rem;
+    height: 2.625rem;
+    object-fit: contain;
+  }
+
+  .site-footer__bottom {
+    margin-top: 0;
+    border-top: 1px solid #75675f;
+    padding-top: 1.25rem;
+  }
+
+  .site-footer__social {
+    margin-top: 0;
+  }
+
+  .site-footer__social a {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-color: #75675f;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  @media (max-width: 900px) {
+    .about-hero__grid,
+    .contact-hero__grid,
+    .game-detail-hero,
+    .article-masthead {
+      grid-template-columns: 1fr;
+    }
+
+    .game-detail-showcase,
+    .article-image {
+      border-top: 1px solid var(--color-foreground);
+      border-left: 0;
+    }
+
+    .article-image {
+      aspect-ratio: 4 / 3;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .site-page,
+    .site-footer__shell {
+      width: min(100% - 1.25rem, 80rem);
+    }
+
+    .about-hero__grid,
+    .contact-hero__grid {
+      width: min(100% - 1.25rem, 80rem);
+    }
+
+    .game-detail-copy h1 {
+      font-size: clamp(3rem, 15vw, 3.65rem);
+    }
+
+    .game-detail-identity dl {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.5rem;
+    }
+
+    .game-detail-identity dt,
+    .game-detail-identity dd {
+      font-size: 0.68rem;
+    }
+
+    .article-hero h1 {
+      font-size: clamp(2.45rem, 10.4vw, 3.2rem);
+    }
+
+    .contact-hero-copy h1 {
+      font-size: clamp(3rem, 13vw, 3.5rem);
+    }
+
+    .legal-page .archive-hero > .workshop-shell {
+      padding: 7rem 1.25rem 3rem;
+    }
+
+    .legal-page .archive-hero h1 {
+      font-size: clamp(3.2rem, 16vw, 4.2rem);
+    }
+  }
+}

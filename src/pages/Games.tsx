@@ -1,37 +1,17 @@
-import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Download } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, Download } from "lucide-react";
 import { Link } from "react-router";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
-import { formatGameTags, GAMES, getGamesByNewest, getNewestGame } from "@/data/games";
+import { formatGameTags, GAMES, getGamesByNewest } from "@/data/games";
 import { SITE_URL } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
 
 const Games = () => {
   const games = getGamesByNewest();
-  const newest = getNewestGame();
-  const [activeSlug, setActiveSlug] = useState(newest.slug);
-  const activeGame = games.find((game) => game.slug === activeSlug) ?? newest;
   const gameCount = GAMES.length;
-  const shouldReduceMotion = useReducedMotion();
-  const heroMotion = shouldReduceMotion
-    ? { initial: false as const, animate: undefined, transition: undefined }
-    : {
-        initial: { opacity: 0, y: 24 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
-      };
-  const panelMotion = shouldReduceMotion
-    ? { initial: false as const, animate: undefined, transition: undefined }
-    : {
-        initial: { opacity: 0, scale: 1.035 },
-        animate: { opacity: 1, scale: 1.01 },
-        transition: { duration: 0.38, ease: [0.16, 1, 0.3, 1] as const },
-      };
 
   return (
-    <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
+    <div className="workshop-page">
       <Seo
         title="Our Mobile Games"
         description={`Browse all ${gameCount} free mobile puzzle games from VeryFun Company: Nova Mahjong, Tile Journey, and Arrow Out.`}
@@ -57,144 +37,73 @@ const Games = () => {
         }}
       />
 
-      <section className="relative">
-        <motion.div
-          initial={heroMotion.initial}
-          animate={heroMotion.animate}
-          transition={heroMotion.transition}
-          className="games-hero"
-        >
-          <div className="games-hero-copy">
-            <h1>Pick a board.</h1>
+      <section className="archive-hero">
+        <div className="workshop-shell archive-hero__grid">
+          <div>
+            <p className="eyebrow">The collection</p>
+            <h1>
+              Games from
+              <br />
+              the workshop.
+            </h1>
             <p>
-              {gameCount} quiet mobile puzzles for spare attention: number logic, word grids, tile
-              matching, sorting, coloring, time conversion, and classic mahjong.
+              Quiet Android puzzles made for spare attention, clear thinking, and play that can
+              pause when life interrupts.
             </p>
-            <p className="games-hero-hook" key={activeGame.slug}>
-              {activeGame.hook}
-            </p>
-            <div className="games-hero-actions">
-              <a
-                href={activeGame.googlePlayUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pill-button pill-button--accent"
-                aria-label={`Get ${activeGame.title} on Google Play`}
-              >
-                <Download size={16} />
-                Google Play
-              </a>
-              <Link to={`/games/${activeGame.slug}`} className="pill-button">
-                Details
-                <ArrowUpRight size={16} />
-              </Link>
-            </div>
-
-            <div className="games-lineup" aria-label="Choose a featured game">
-              {games.map((game, index) => {
-                const isActive = game.slug === activeGame.slug;
-
-                return (
-                  <button
-                    key={game.slug}
-                    type="button"
-                    className={`games-lineup__item ${isActive ? "is-active" : ""}`}
-                    aria-pressed={isActive}
-                    onClick={() => setActiveSlug(game.slug)}
-                    onFocus={() => setActiveSlug(game.slug)}
-                  >
-                    <img src={game.icon} alt="" width={40} height={40} decoding="async" />
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <strong>{game.title}</strong>
-                    <small>{formatGameTags(game)}</small>
-                  </button>
-                );
-              })}
-            </div>
           </div>
-
-          <div className="games-hero-panel">
-            <motion.img
-              key={activeGame.slug}
-              src={activeGame.image}
-              alt={activeGame.title}
-              width={840}
-              height={630}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-              initial={panelMotion.initial}
-              animate={panelMotion.animate}
-              transition={panelMotion.transition}
-            />
-            <div className="games-hero-panel__footer">
-              <div>
-                <strong>{activeGame.title}</strong>
-                <p className="games-hero-panel__hook">{activeGame.hook}</p>
-              </div>
-              <span>{formatGameTags(activeGame)}</span>
-            </div>
+          <div className="archive-count">
+            <strong>{String(gameCount).padStart(2, "0")}</strong>
+            <span>Playable boards</span>
           </div>
-        </motion.div>
+        </div>
       </section>
 
-      <section className="catalog-index" aria-label="Game catalog">
-        <div className="catalog-index__head">
-          <div>
-            <h2>All playable boards.</h2>
-          </div>
-          <p>
-            {gameCount} games, {gameCount} different kinds of quiet focus. Open the brief when you
-            want the full rules, or go straight to Google Play.
-          </p>
-        </div>
-
-        <div className="catalog-index__grid">
-          {games.map((game) => (
-            <article key={game.id} className="catalog-card">
-              <Link
-                to={`/games/${game.slug}`}
-                className="catalog-card__media"
-                aria-label={`Open ${game.title} details`}
-              >
+      <section className="workshop-section" aria-label="Game catalog">
+        <div className="workshop-shell workshop-card-grid">
+          {games.map((game, index) => (
+            <article key={game.id} className="workshop-game-card tactile-card">
+              <Link to={`/games/${game.slug}`} className="workshop-game-card__media">
                 <img
                   src={game.image}
                   alt={`${game.title} key art`}
                   width={760}
                   height={560}
-                  loading="lazy"
-                  decoding="async"
+                  loading={index === 0 ? "eager" : "lazy"}
                 />
+                <span>{formatGameTags(game)}</span>
               </Link>
-
-              <div className="catalog-card__body">
-                <div className="catalog-card__title">
-                  <h3>{game.title}</h3>
+              <div className="workshop-game-card__body">
+                <div className="numbered-title">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <h2>{game.title}</h2>
                 </div>
-                <p className="catalog-card__hook">{game.hook}</p>
+                <p className="card-hook">{game.hook}</p>
                 <p>{game.description}</p>
-                <div className="catalog-card__meta">
-                  <span>{formatGameTags(game)}</span>
+                <div className="card-meta">
                   <time dateTime={game.releaseDate}>{formatDate(game.releaseDate)}</time>
+                  <span>Free · Android</span>
                 </div>
-                <div className="catalog-card__actions">
-                  <Link to={`/games/${game.slug}`}>
-                    Open brief
-                    <ArrowUpRight size={16} />
-                  </Link>
-                  <a
-                    href={game.googlePlayUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Get ${game.title} on Google Play`}
-                  >
-                    <Download size={15} />
-                    Google Play
-                  </a>
-                </div>
+              </div>
+              <div className="workshop-game-card__actions">
+                <Link to={`/games/${game.slug}`}>
+                  Open brief <ArrowRight size={15} />
+                </Link>
+                <a href={game.googlePlayUrl} target="_blank" rel="noopener noreferrer">
+                  <Download size={15} /> Google Play
+                </a>
               </div>
             </article>
           ))}
+        </div>
+      </section>
+      <section className="principle-band">
+        <div className="workshop-shell">
+          <p className="eyebrow">Built for real life</p>
+          <h2>Start quickly. Read clearly. Stop without penalty.</h2>
+          <p>
+            Every board is tuned around calm repeat play, offline access, and rules that make sense
+            before the effects arrive.
+          </p>
         </div>
       </section>
     </div>

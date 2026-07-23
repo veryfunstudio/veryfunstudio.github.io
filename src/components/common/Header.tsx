@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
-import { BRAND, NAV_ITEMS } from "@/lib/constants";
+import { NAV_ITEMS } from "@/lib/constants";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -40,10 +40,9 @@ const Header = () => {
           to="/"
           className="site-header__brand flex min-h-[44px] items-center gap-2 text-foreground no-underline"
         >
-          <span className="font-serif text-xl leading-none">{BRAND.name}</span>
-          <span className="site-header__brand-tag hidden sm:inline font-mono text-[0.65rem] uppercase tracking-[0.14em] text-accent">
-            Toybox
-          </span>
+          <img src="/logo-mark.png" alt="" width={36} height={36} className="site-header__logo" />
+          <span className="site-header__wordmark">VeryFun Co.</span>
+          <span className="site-header__brand-tag hidden sm:inline">Modern Workshop</span>
         </Link>
 
         <nav className="site-header__nav hidden md:flex" aria-label="Main navigation">
@@ -61,7 +60,7 @@ const Header = () => {
                   <motion.span
                     layoutId="site-header-active"
                     className="site-header__nav-active"
-                    transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                   />
                 )}
               </Link>

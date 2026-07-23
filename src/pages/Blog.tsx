@@ -1,34 +1,16 @@
-import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
-import { getBlogPath, getNewestPost, getPostsByNewest } from "@/data/blog";
+import { getBlogPath, getPostsByNewest } from "@/data/blog";
 import { SITE_URL } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
 
 const Blog = () => {
   const sortedPosts = getPostsByNewest();
-  const latestPost = getNewestPost();
-  const indexPosts = sortedPosts.filter((post) => post.id !== latestPost?.id);
-  const shouldReduceMotion = useReducedMotion();
-  const enter = shouldReduceMotion
-    ? { initial: false as const, animate: undefined, transition: undefined }
-    : {
-        initial: { opacity: 0, y: 24 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
-      };
-  const enterMedia = shouldReduceMotion
-    ? { initial: false as const, animate: undefined, transition: undefined }
-    : {
-        initial: { opacity: 0, scale: 0.96 },
-        animate: { opacity: 1, scale: 1 },
-        transition: { duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] as const },
-      };
 
   return (
-    <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
+    <div className="workshop-page">
       <Seo
         title="Studio Notes"
         description="Short production notes from VeryFun Company on calm puzzle design, readable boards, mobile performance, and honest store pages."
@@ -49,90 +31,47 @@ const Blog = () => {
         }}
       />
 
-      <section className="blog-hero">
-        <motion.div
-          initial={enter.initial}
-          animate={enter.animate}
-          transition={enter.transition}
-          className="blog-hero-copy"
-        >
-          <h1>How we think about small games.</h1>
-          <p>
-            Notes on calm puzzle design, readable boards, mobile performance, and the tradeoffs
-            behind a tiny independent catalog.
-          </p>
-        </motion.div>
-
-        {latestPost && (
-          <motion.aside
-            initial={enterMedia.initial}
-            animate={enterMedia.animate}
-            transition={enterMedia.transition}
-            className="blog-featured"
-            aria-label="Latest studio note"
-          >
-            <img
-              src={latestPost.image}
-              alt={`Featured image for ${latestPost.title}`}
-              width={980}
-              height={680}
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-            />
-            <div>
-              <div>
-                <span>{latestPost.category}</span>
-                <time dateTime={latestPost.date}>{formatDate(latestPost.date)}</time>
-              </div>
-              <h2>{latestPost.title}</h2>
-              <p>{latestPost.excerpt}</p>
-              <Link to={getBlogPath(latestPost)} className="pill-button pill-button--accent">
-                Latest note
-                <ArrowRight size={16} />
-              </Link>
-            </div>
-          </motion.aside>
-        )}
-      </section>
-
-      <section className="blog-index" aria-label="Studio notes index">
-        <div className="blog-index__head">
+      <section className="archive-hero">
+        <div className="workshop-shell archive-hero__grid">
           <div>
-            <strong>Notes worth opening.</strong>
+            <p className="eyebrow">Archives</p>
+            <h1>Studio Notes</h1>
+            <p>
+              Thoughts on craft, the joy of play, and building things that matter. Updated when the
+              coffee is fresh.
+            </p>
           </div>
-          <p>
-            Practical notes on puzzle feel, board clarity, launch choices, and small-team tradeoffs.
-          </p>
+          <div className="archive-count">
+            <strong>{String(sortedPosts.length).padStart(2, "0")}</strong>
+            <span>Published notes</span>
+          </div>
         </div>
-
-        <div className="blog-index__list">
-          {indexPosts.map((post) => (
-            <Link key={post.id} to={getBlogPath(post)} className="blog-index-card">
-              <span className="blog-index-card__media">
-                <img
-                  src={post.image}
-                  alt=""
-                  width={520}
-                  height={340}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </span>
-              <span className="blog-index-card__body">
-                <span className="blog-index-card__meta">
-                  <span>{post.category}</span>
-                  <time dateTime={post.date}>{formatDate(post.date)}</time>
-                </span>
+      </section>
+      <section className="notes-index" aria-label="Studio notes index">
+        <div className="workshop-shell">
+          {sortedPosts.map((post, index) => (
+            <Link key={post.id} to={getBlogPath(post)} className="note-row">
+              <time dateTime={post.date}>{formatDate(post.date)}</time>
+              <span className="note-row__number">{String(index + 1).padStart(2, "0")}</span>
+              <div>
                 <strong>{post.title}</strong>
-                <span>{post.excerpt}</span>
-                <span className="blog-index-card__action">
-                  Open note
-                  <ArrowRight size={16} />
-                </span>
-              </span>
+                <small>{post.category}</small>
+              </div>
+              <ArrowRight size={18} />
             </Link>
           ))}
+        </div>
+      </section>
+      <section className="workshop-cta">
+        <div className="workshop-shell">
+          <div className="workshop-cta__panel tactile-card">
+            <p className="eyebrow">From thought to play</p>
+            <h2>Read the note. Open the board.</h2>
+            <p>Every studio note connects back to a real product decision in our small catalog.</p>
+            <Link to="/games" className="workshop-button workshop-button--accent">
+              Browse games <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </section>
     </div>

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Code2, Mail, SquareArrowOutUpRight } from "lucide-react";
 import { Seo } from "@/components/seo/Seo";
 import { BRAND } from "@/lib/constants";
@@ -29,49 +28,67 @@ const CONTACT_INFO = [
 
 const Contact = () => {
   return (
-    <div className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
+    <div className="workshop-page">
       <Seo
         title="Contact Us"
         description={`Get in touch with ${BRAND.name} - email, X (Twitter), or GitHub. We'd love to hear from players and partners.`}
         path="/contact"
       />
 
-      <section className="contact-hero contact-hero--simple">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="contact-hero-copy"
-        >
-          <h1>Talk to {BRAND.name}.</h1>
+      <section className="contact-hero">
+        <div className="workshop-shell contact-hero__grid">
+          <div className="contact-hero-copy">
+            <p className="eyebrow">Contact</p>
+            <h1>
+              Let's build something <span>fun</span> together.
+            </h1>
+            <p>
+              Send player feedback, partnership context, press questions, or bug reports. Email is
+              the fastest route.
+            </p>
+            <a href={`mailto:${BRAND.email}`} className="workshop-button workshop-button--accent">
+              <Mail size={16} /> Email the studio
+            </a>
+            <div className="contact-routes">
+              {CONTACT_INFO.map((item) => (
+                <a
+                  key={item.title}
+                  href={item.link}
+                  target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
+                >
+                  <span>{item.icon}</span>
+                  <div>
+                    <strong>{item.title}</strong>
+                    <em>{item.value}</em>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+          <div className="contact-workshop">
+            <div className="contact-workshop__card tactile-card">
+              <h2>Visit our workshop</h2>
+              <p>Independent, remote, and always close to the work.</p>
+              <img
+                src="/images/stitch/workshop-article.jpg"
+                alt="A wooden game-design workbench with a puzzle prototype"
+                width={900}
+                height={1000}
+              />
+              <span>Crafted with structural honesty.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="contact-band">
+        <div className="workshop-shell">
+          <strong>Want to work with us?</strong>
           <p>
-            Send player feedback, partnership context, press questions, or bug reports. Email is the
+            Send the context, the constraint, and what a good outcome looks like. Email is the
             fastest route.
           </p>
-          <a
-            href={`mailto:${BRAND.email}`}
-            className="pill-button pill-button--accent contact-primary-link"
-          >
-            <Mail size={16} />
-            Email the studio
-          </a>
-        </motion.div>
-      </section>
-
-      <section className="contact-routes">
-        {CONTACT_INFO.map((item) => (
-          <a
-            key={item.title}
-            href={item.link}
-            target={item.external ? "_blank" : undefined}
-            rel={item.external ? "noopener noreferrer" : undefined}
-            className="contact-route"
-          >
-            <span aria-hidden="true">{item.icon}</span>
-            <strong>{item.title}</strong>
-            <em>{item.value}</em>
-          </a>
-        ))}
+        </div>
       </section>
     </div>
   );

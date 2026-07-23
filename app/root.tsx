@@ -14,6 +14,7 @@ import Header from "@/components/common/Header";
 import NotFound from "@/pages/NotFound";
 import type { Route } from "./+types/root";
 import "@/index.css";
+import "@/workshop-overrides.css";
 
 const ROUTED_STATIC_PATHS = new Set(["/", "/about", "/games", "/blog", "/contact", "/legal"]);
 const DETAIL_ROUTE_PATTERNS = [/^\/games\/[^/]+$/, /^\/blog\/[^/]+$/];
@@ -34,12 +35,13 @@ export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Caprasimo&family=Nunito:wght@400;500;600;700&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fredoka:wght@500;600&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,700&family=Nunito+Sans:wght@400;500;600;700&display=swap",
   },
   { rel: "icon", type: "image/png", sizes: "512x512", href: "/favicon.png" },
   { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
-  { rel: "shortcut icon", href: "/favicon.ico" },
+  { rel: "shortcut icon", href: "/favicon.png" },
   { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
+  { rel: "manifest", href: "/manifest.webmanifest" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -48,7 +50,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#faf9f7" />
+        <meta name="theme-color" content="#d35a3d" />
         <Meta />
         <Links />
       </head>
