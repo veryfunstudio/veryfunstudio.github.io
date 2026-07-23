@@ -69,4 +69,4 @@ download counts, team members, testimonials, or unsupported product claims.
 - Keep mobile navigation, keyboard focus, reduced-motion support, semantic headings, and useful alt
   text intact.
 - Maintain per-page SEO, structured data, sitemap, crawler files, and the GitHub Pages 404 fallback.
-- Deploy from `source`; the generated `main` branch remains CI-owned.
+- Develop and deploy from `main`; the generated `release` branch remains CI-owned.

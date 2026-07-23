@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "react-router dev",
     "build": "react-router build && tsx scripts/generate-seo.ts",
-    "deploy": "pnpm run build && pnpm exec gh-pages -d build/client -b main",
+    "deploy": "pnpm run build && pnpm exec gh-pages -d build/client -b release",
     "postinstall": "tsx scripts/patch-react-router-dev.ts",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",

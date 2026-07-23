@@ -3,7 +3,7 @@ name: Deploy GitHub Pages
 on:
   push:
     branches:
-      - source
+      - main
   workflow_dispatch:
 
 permissions:
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source
+      - name: Checkout main
         uses: actions/checkout@v4
 
       - name: Install pnpm
@@ -36,9 +36,9 @@ jobs:
       - name: Lint, typecheck, test, and build
         run: pnpm run check
 
-      - name: Deploy to main
+      - name: Deploy to release
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: main
+          publish_branch: release
           publish_dir: ./build/client
