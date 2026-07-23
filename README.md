@@ -3,6 +3,9 @@
 This repo uses pnpm for local development. Deployment is fully automated via
 GitHub Actions.
 
+Product positioning, content architecture, and the current visual direction are documented in
+[PRODUCT.md](./PRODUCT.md).
+
 ## Branches
 
 - `source`: application source code. **This is where you commit.**
@@ -83,7 +86,7 @@ This bypasses CI by building locally and pushing `build/client/` to `main` direc
 The app uses React Router v7 Framework mode with static prerendering
 (`ssr: false` + `prerender`), so every route is pre-rendered to its own
 HTML file under `build/client/` (e.g. `build/client/about/index.html`,
-`build/client/games/classic-sudoku/index.html`). GitHub Pages and Vercel
+`build/client/games/nova-mahjong/index.html`). GitHub Pages and Vercel
 serve these directly — no client-side router boot is needed for first
 paint. `scripts/generate-seo.ts` also copies the SPA fallback
 (`build/client/__spa-fallback.html`) to `build/client/404.html` with a
