@@ -145,7 +145,6 @@ const GameDetail = () => {
               <Download size={16} />
               Google Play
             </a>
-            <span className="game-detail-release">Released {releaseLabel}</span>
           </div>
         </motion.div>
 
@@ -187,50 +186,42 @@ const GameDetail = () => {
         </motion.div>
       </section>
 
-      <section className="game-detail-gallery" aria-label={`${game.title} visuals`}>
-        <div className="game-detail-gallery__head">
-          <h2>Look closer.</h2>
-          <p>
-            {hasBoardShots
-              ? "Store key art and in-game boards — the same calm presentation players meet on Google Play."
-              : "Key art and app icon from the store listing."}
-          </p>
-        </div>
-        <div className="game-detail-gallery__track">
-          {gallery.map((shot) => {
-            const frame = shot.frame ?? (shot.kind === "icon" ? "square" : "wide");
-            return (
-              <figure
-                key={`${shot.kind}-${shot.src}`}
-                className={`game-detail-gallery__item game-detail-gallery__item--${frame}`}
-              >
-                <div className="game-detail-gallery__frame">
-                  <img
-                    src={shot.src}
-                    alt={shot.alt}
-                    width={frame === "phone" ? 1080 : frame === "square" ? 256 : 1200}
-                    height={frame === "phone" ? 1920 : frame === "square" ? 256 : 630}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <figcaption>{shot.caption}</figcaption>
-              </figure>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="game-detail-brief">
-        <div>
-          <h2>Clear rules, calm repeat play.</h2>
-        </div>
-        <p>{game.answer}</p>
-      </section>
+      {hasBoardShots && (
+        <section className="game-detail-gallery" aria-label={`${game.title} gameplay screenshots`}>
+          <div className="game-detail-gallery__head">
+            <h2>Inside the game.</h2>
+            <p>Verified gameplay screenshots from the store listing.</p>
+          </div>
+          <div className="game-detail-gallery__track">
+            {gallery.map((shot) => {
+              const frame = shot.frame ?? (shot.kind === "icon" ? "square" : "wide");
+              return (
+                <figure
+                  key={`${shot.kind}-${shot.src}`}
+                  className={`game-detail-gallery__item game-detail-gallery__item--${frame}`}
+                >
+                  <div className="game-detail-gallery__frame">
+                    <img
+                      src={shot.src}
+                      alt={shot.alt}
+                      width={frame === "phone" ? 1080 : frame === "square" ? 256 : 1200}
+                      height={frame === "phone" ? 1920 : frame === "square" ? 256 : 630}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <figcaption>{shot.caption}</figcaption>
+                </figure>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       <section className="game-detail-summary">
         <div className="game-detail-summary__copy">
-          <h2>One clear loop, tuned for quiet repeat play.</h2>
+          <span className="section-kicker">Game overview</span>
+          <h2>How it plays.</h2>
           <p>{game.fullDescription}</p>
           {secondaryFeatures.length > 0 && (
             <div className="game-detail-summary__notes">
@@ -241,17 +232,21 @@ const GameDetail = () => {
           )}
         </div>
 
-        <div className="game-detail-summary__features">
-          {primaryFeatures.map((feature) => (
-            <div key={feature}>
+        <ol className="game-detail-summary__features">
+          {primaryFeatures.map((feature, index) => (
+            <li key={feature}>
+              <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
               <strong>{feature}</strong>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
       <section className="game-detail-faq">
-        <h2>Questions players ask.</h2>
+        <div className="section-heading">
+          <span className="section-kicker">Player guide</span>
+          <h2>Questions players ask.</h2>
+        </div>
         <div>
           {game.faq.map((item) => (
             <details key={item.question}>
@@ -270,20 +265,13 @@ const GameDetail = () => {
           {relatedGames.length > 0 && (
             <>
               <div className="related-strip__head">
+                <span className="section-kicker">Explore the catalog</span>
                 <h2>More boards.</h2>
                 <p>Same catalog, different kind of quiet focus.</p>
               </div>
               <div className="related-strip__grid">
                 {relatedGames.map((item) => (
                   <Link key={item.slug} to={`/games/${item.slug}`} className="related-card">
-                    <img
-                      src={item.image}
-                      alt=""
-                      width={400}
-                      height={210}
-                      loading="lazy"
-                      decoding="async"
-                    />
                     <div>
                       <strong>{item.title}</strong>
                       <span>{formatGameTags(item)}</span>
@@ -298,20 +286,16 @@ const GameDetail = () => {
           {relatedPosts.length > 0 && (
             <>
               <div className="related-strip__head related-strip__head--secondary">
+                <span className="section-kicker">Behind the boards</span>
                 <h2>Studio notes.</h2>
                 <p>How we think about this kind of puzzle.</p>
               </div>
               <div className="related-strip__grid related-strip__grid--notes">
                 {relatedPosts.map((post) => (
-                  <Link
-                    key={post.id}
-                    to={getBlogPath(post)}
-                    className="related-card related-card--note"
-                  >
+                  <Link key={post.id} to={getBlogPath(post)} className="related-card">
                     <div>
                       <time dateTime={post.date}>{formatDate(post.date)}</time>
                       <strong>{post.title}</strong>
-                      <p>{post.excerpt}</p>
                     </div>
                     <ArrowRight size={18} />
                   </Link>

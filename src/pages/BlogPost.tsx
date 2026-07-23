@@ -77,7 +77,7 @@ const BlogPost = () => {
   const postPath = getBlogPath(post);
 
   return (
-    <article className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
+    <article className="article-detail site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
       <Seo
         title={post.title}
         description={post.excerpt}
@@ -177,6 +177,7 @@ const BlogPost = () => {
       </section>
 
       <section className="article-summary">
+        <span className="section-kicker">At a glance</span>
         <h2>Key takeaways</h2>
         <ul>
           {post.summary.map((item) => (
@@ -198,7 +199,10 @@ const BlogPost = () => {
 
       {hasFaq && (
         <section className="article-faq">
-          <h2>FAQ</h2>
+          <div className="section-heading">
+            <span className="section-kicker">Reader questions</span>
+            <h2>FAQ</h2>
+          </div>
           <div>
             {post.faq.map((item) => (
               <details key={item.question}>
@@ -216,6 +220,7 @@ const BlogPost = () => {
       {relatedGames.length > 0 && (
         <section className="related-strip" aria-label="Related games">
           <div className="related-strip__head">
+            <span className="section-kicker">Related game</span>
             <h2>Play the idea.</h2>
             <p>Games connected to this note.</p>
           </div>
@@ -225,17 +230,9 @@ const BlogPost = () => {
               if (!full) return null;
               return (
                 <Link key={game.slug} to={`/games/${game.slug}`} className="related-card">
-                  <img
-                    src={full.image}
-                    alt=""
-                    width={400}
-                    height={210}
-                    loading="lazy"
-                    decoding="async"
-                  />
                   <div>
                     <strong>{full.title}</strong>
-                    <span>Open brief</span>
+                    <span>{full.hook}</span>
                   </div>
                   <ArrowRight size={18} />
                 </Link>
@@ -247,6 +244,7 @@ const BlogPost = () => {
 
       <section className="article-next">
         <div className="article-next__intro">
+          <span className="section-kicker">Continue reading</span>
           <h2>More notes.</h2>
           <Link to="/blog" className="pill-button">
             <ArrowLeft size={16} />
