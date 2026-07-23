@@ -978,7 +978,6 @@
     box-shadow: none;
   }
   .game-detail-mark,
-  .game-detail-release,
   .game-detail-back {
     font-family: var(--font-mono);
     letter-spacing: 0.06em;
@@ -993,7 +992,6 @@
     font-style: italic;
   }
   .game-detail-gallery,
-  .game-detail-brief,
   .game-detail-summary,
   .game-detail-faq,
   .related-strip,
@@ -1015,10 +1013,7 @@
     background: var(--color-surface);
     box-shadow: 3px 3px 0 var(--color-foreground);
   }
-  .game-detail-brief {
-    border-block-color: var(--color-foreground);
-  }
-  .game-detail-summary__features > div,
+  .game-detail-summary__features > li,
   .game-detail-summary__notes span {
     border-radius: 0;
     border-color: var(--color-foreground);
@@ -2602,7 +2597,6 @@
   .game-detail-copy,
   .game-detail-identity,
   .game-detail-media,
-  .game-detail-brief,
   .game-detail-summary,
   .game-detail-faq,
   .blog-hero-copy,
@@ -2683,32 +2677,18 @@
     align-items: center;
   }
 
-  .game-detail-release {
-    display: inline-flex;
-    min-height: 2.75rem;
-    align-items: center;
-    border: 1px solid var(--color-border-soft);
-    border-radius: var(--radius-inner);
-    background: var(--color-surface-warm);
-    color: var(--color-muted);
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    padding-inline: 0.9rem;
-  }
-
   .game-detail-showcase {
     display: grid;
-    grid-template-rows: auto auto;
-    gap: 0.8rem;
-    align-content: start;
+    min-height: 100%;
+    grid-template-rows: minmax(0, 1fr) auto;
     align-self: stretch;
   }
 
   .game-detail-media {
     position: relative;
     overflow: hidden;
-    aspect-ratio: 1200 / 630;
-    align-self: start;
+    min-height: 0;
+    align-self: stretch;
     box-shadow: var(--shadow-soft-hover);
   }
 
@@ -2800,59 +2780,38 @@
     white-space: nowrap;
   }
 
-  .game-detail-brief {
-    display: grid;
-    grid-template-columns: minmax(0, 0.62fr) minmax(20rem, 1.38fr);
-    gap: clamp(1rem, 3vw, 3rem);
-    margin-top: 0.8rem;
-    padding: clamp(1.25rem, 3vw, 3rem);
-  }
-
-  .game-detail-brief > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-
-  .game-detail-brief h2,
   .game-detail-summary__copy h2,
   .game-detail-faq h2 {
     max-width: 9ch;
     font-size: clamp(2.2rem, 3.8vw, 4.5rem);
   }
 
-  .game-detail-brief p {
-    color: var(--color-foreground);
-    font-size: clamp(1.15rem, 1.8vw, 1.8rem);
-    line-height: 1.35;
-  }
-
   .game-detail-summary {
     display: grid;
     grid-template-columns: minmax(20rem, 0.9fr) minmax(0, 1.1fr);
     gap: 1px;
-    margin-top: 0.8rem;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    border-color: var(--color-foreground);
     overflow: hidden;
-    background: var(--color-border-soft);
+    background: var(--color-foreground);
   }
 
   .game-detail-summary__copy,
   .game-detail-summary__features {
-    background: rgba(255, 255, 255, 0.86);
     padding: clamp(1.25rem, 3vw, 3rem);
   }
 
   .game-detail-summary__copy {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 2rem;
+    gap: 1rem;
+    background: #f2c04b;
   }
 
   .game-detail-summary__copy p {
     max-width: 62ch;
-    color: var(--color-muted);
+    margin-top: 0.5rem;
+    color: var(--color-foreground);
     font-size: 1rem;
   }
 
@@ -2860,12 +2819,14 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 1rem;
   }
 
   .game-detail-summary__notes span {
     border: 1px solid rgba(44, 35, 26, 0.16);
     border-radius: var(--radius-inner);
-    background: rgba(44, 35, 26, 0.05);
+    background: rgba(255, 250, 242, 0.48);
     color: var(--color-foreground);
     font-family: var(--font-mono);
     font-size: 0.875rem;
@@ -2874,34 +2835,48 @@
 
   .game-detail-summary__features {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1px;
-    padding: 0;
+    align-content: center;
+    background: var(--color-surface);
+    padding: clamp(1.25rem, 3vw, 3rem);
+    list-style: none;
   }
 
-  .game-detail-summary__features div {
-    display: flex;
-    min-height: clamp(8rem, 13vw, 12rem);
-    align-items: flex-end;
-    background:
-      radial-gradient(circle at 84% 8%, rgba(44, 35, 26, 0.065), transparent 10rem),
-      rgba(255, 255, 255, 0.86);
-    padding: clamp(1rem, 2vw, 1.6rem);
+  .game-detail-summary__features li {
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+    align-items: baseline;
+    border-top: 1px solid var(--color-border-soft);
+    padding: clamp(0.9rem, 1.6vw, 1.25rem) 0;
+  }
+
+  .game-detail-summary__features li:last-child {
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+
+  .game-detail-summary__features span {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
   }
 
   .game-detail-summary__features strong {
     color: var(--color-foreground);
-    font-size: clamp(1.25rem, 2vw, 2.35rem);
+    font-size: clamp(1.05rem, 1.65vw, 1.55rem);
     font-weight: 650;
-    line-height: 1.05;
+    line-height: 1.2;
   }
 
   .game-detail-faq {
     display: grid;
     grid-template-columns: minmax(0, 0.72fr) minmax(20rem, 1.28fr);
     gap: clamp(1rem, 3vw, 3rem);
-    margin-top: 0.8rem;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    border-color: var(--color-foreground);
+    border-radius: 0;
+    background: #efe6da;
     padding: clamp(1.25rem, 3vw, 3rem);
+    box-shadow: none;
   }
 
   .game-detail-faq > div {
@@ -2911,9 +2886,13 @@
 
   .game-detail-faq details {
     border: 1px solid var(--color-border-soft);
-    border-radius: var(--radius-card);
-    background: rgba(44, 35, 26, 0.04);
+    border-radius: 0;
+    background: var(--color-surface);
     padding: 1rem;
+  }
+
+  .game-detail-faq + .related-strip {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
   }
 
   .game-detail-faq summary {
@@ -3084,14 +3063,19 @@
     justify-content: space-between;
     gap: 1rem;
     padding: clamp(1.25rem, 2.4vw, 2rem);
-    border: 1px solid var(--color-border-soft);
-    border-radius: var(--radius-card);
-    background: var(--color-surface);
-    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--color-foreground);
+    border-radius: 0;
+    background: var(--color-surface-warm);
+    box-shadow: none;
   }
 
   .related-strip__head--secondary {
-    margin-top: 0.4rem;
+    margin-top: 1rem;
+  }
+
+  .related-strip__head > .section-kicker {
+    width: 100%;
+    margin-bottom: -0.35rem;
   }
 
   .related-strip__head h2 {
@@ -3135,14 +3119,6 @@
     transform: translateY(-2px);
   }
 
-  .related-card img {
-    grid-column: 1 / -1;
-    width: 100%;
-    height: 8.5rem;
-    border-radius: 6px;
-    object-fit: cover;
-  }
-
   .related-card strong {
     display: block;
     color: var(--color-foreground);
@@ -3156,28 +3132,8 @@
     font-size: 0.8rem;
   }
 
-  .related-card p {
-    margin-top: 0.35rem;
-    color: var(--color-muted);
-    font-size: 0.9rem;
-    line-height: 1.45;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
   .related-card svg {
     color: var(--color-accent);
-  }
-
-  .related-card--note {
-    min-height: 9rem;
-    align-items: start;
-  }
-
-  .related-card--note > div {
-    min-width: 0;
   }
 
   .blog-featured {
@@ -3401,6 +3357,23 @@
     font-weight: 700;
   }
 
+  .section-heading {
+    display: grid;
+    align-content: start;
+    gap: 0.75rem;
+  }
+
+  .section-kicker {
+    display: block;
+    color: var(--color-accent-active);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
   .article-masthead {
     display: grid;
     min-height: min(44rem, calc(100svh - 10rem));
@@ -3483,18 +3456,20 @@
   .article-body,
   .article-faq {
     max-width: 58rem;
-    margin: 0.8rem auto 0;
+    margin-inline: auto;
   }
 
   .article-summary {
-    border: 1px solid var(--color-border-soft);
-    border-radius: var(--radius-card);
-    background: var(--color-surface);
+    margin-top: clamp(1rem, 2vw, 1.5rem);
+    border: 1px solid var(--color-foreground);
+    border-radius: 0;
+    background: #f2c04b;
     padding: clamp(1.25rem, 3vw, 2.25rem);
+    box-shadow: 4px 4px 0 var(--color-foreground);
   }
 
   .article-summary h2 {
-    margin-bottom: 1rem;
+    margin: 0.65rem 0 1rem;
     color: var(--color-foreground);
     font-size: clamp(1.1rem, 1.6vw, 1.4rem);
   }
@@ -3509,7 +3484,7 @@
   .article-summary li {
     position: relative;
     padding-left: 1.35rem;
-    color: var(--color-muted);
+    color: var(--color-foreground);
     font-size: clamp(0.96rem, 1.2vw, 1.08rem);
     line-height: 1.55;
   }
@@ -3527,8 +3502,14 @@
 
   .article-body {
     display: grid;
+    max-width: 48rem;
     gap: clamp(2rem, 4vw, 3rem);
-    padding: clamp(1.25rem, 3vw, 2.25rem) 0;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    padding: 0 clamp(0.75rem, 2vw, 1.25rem);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   .article-section {
@@ -3553,11 +3534,18 @@
     grid-template-columns: minmax(0, 0.72fr) minmax(20rem, 1.28fr);
     gap: 0.8rem;
     align-items: start;
+    margin-top: clamp(3rem, 6vw, 5rem);
+    border: 1px solid var(--color-foreground);
+    background: #efe6da;
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+  }
+
+  .article-faq .section-heading {
+    position: sticky;
+    top: 6rem;
   }
 
   .article-faq h2 {
-    position: sticky;
-    top: 6rem;
     max-width: 9ch;
     font-size: clamp(2.2rem, 3.8vw, 4.5rem);
     line-height: 0.96;
@@ -3569,9 +3557,9 @@
   }
 
   .article-faq details {
-    border: 1px solid var(--color-border-soft);
-    border-radius: var(--radius-card);
-    background: rgba(255, 255, 255, 0.86);
+    border: 1px solid var(--color-foreground);
+    border-radius: 0;
+    background: var(--color-surface);
     overflow: hidden;
   }
 
@@ -3614,7 +3602,7 @@
       grid-template-columns: 1fr;
     }
 
-    .article-faq h2 {
+    .article-faq .section-heading {
       position: static;
     }
   }
@@ -3623,7 +3611,15 @@
     display: grid;
     grid-template-columns: minmax(18rem, 0.58fr) minmax(0, 1.42fr);
     gap: 0.8rem;
-    margin-top: 0.8rem;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .article-faq + .related-strip {
+    margin-top: clamp(3rem, 6vw, 5rem);
+  }
+
+  .article-detail .related-strip + .article-next {
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
   }
 
   .article-next__intro,
@@ -3640,11 +3636,31 @@
     justify-content: space-between;
     gap: 1.4rem;
     padding: clamp(1.25rem, 2.4vw, 2rem);
+    border-color: var(--color-foreground);
+    border-radius: 0;
+    background: var(--color-foreground);
+    color: #faf6f0;
   }
 
   .article-next__intro h2 {
     max-width: 11ch;
+    color: #faf6f0;
     font-size: clamp(2rem, 3vw, 3.6rem);
+  }
+
+  .article-next__intro .section-kicker {
+    color: #f2c04b;
+  }
+
+  .article-next__intro .pill-button {
+    border-color: #faf6f0;
+    background: transparent;
+    color: #faf6f0;
+  }
+
+  .article-next__intro .pill-button:hover {
+    background: #faf6f0;
+    color: var(--color-foreground);
   }
 
   .article-related {
@@ -4065,6 +4081,11 @@
     grid-template-columns: 1fr;
   }
 
+  .article-next__intro {
+    min-height: auto;
+    gap: 1rem;
+  }
+
   .article-masthead {
     min-height: auto;
     grid-template-columns: 1fr;
@@ -4082,7 +4103,6 @@
     grid-template-columns: 1fr;
   }
 
-  .game-detail-brief,
   .game-detail-summary,
   .game-detail-faq {
     grid-template-columns: 1fr;
@@ -4090,10 +4110,16 @@
 
   .game-detail-showcase {
     align-self: auto;
+    min-height: auto;
+    grid-template-rows: auto auto;
+  }
+
+  .game-detail-media {
+    aspect-ratio: 1200 / 630;
   }
 
   .game-detail-summary__features {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: clamp(1.25rem, 3vw, 2rem);
   }
 
   .games-hero {
@@ -4334,10 +4360,6 @@
   .article-body__row {
     grid-template-columns: 2.4rem minmax(0, 1fr);
     gap: 0.7rem;
-  }
-
-  .game-detail-summary__features {
-    grid-template-columns: 1fr;
   }
 
   .contact-routes {
