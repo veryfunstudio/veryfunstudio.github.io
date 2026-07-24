@@ -19,11 +19,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Space Grotesk", "Avenir Next", "Trebuchet MS", "system-ui", "sans-serif"],
+        sans: ["Inter", "Avenir Next", "Trebuchet MS", "system-ui", "sans-serif"],
+        display: ["Fredoka", "Inter", "system-ui", "sans-serif"],
         mono: ["DM Mono", "SFMono-Regular", "Cascadia Mono", "ui-monospace", "monospace"],
       },
       fontSize: {
-        base: ["18px", { lineHeight: "1.6" }],
+        base: ["17px", { lineHeight: "1.65" }],
       },
     },
   },

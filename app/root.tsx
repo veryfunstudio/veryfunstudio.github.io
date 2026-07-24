@@ -35,7 +35,7 @@ export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fredoka:wght@500;600&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,700&family=Nunito+Sans:wght@400;500;600;700&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,700&display=swap",
   },
   { rel: "icon", type: "image/png", sizes: "512x512", href: "/favicon.png" },
   { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
