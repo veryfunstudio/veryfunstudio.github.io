@@ -1,75 +1,92 @@
 @layer components {
   .site-header {
-    border-bottom: 1px solid #3b2c24;
-    background: rgba(250, 246, 240, 0.96);
+    border-bottom: 1px solid var(--color-border);
+    background: rgba(250, 246, 240, 0.85);
+    backdrop-filter: saturate(1.4) blur(14px);
   }
 
   .site-header__wordmark,
   .site-footer__name {
-    font-family: "Fredoka", var(--font-sans);
-    font-weight: 650;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
   }
 
   .site-header__logo {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
     flex: 0 0 auto;
     object-fit: contain;
   }
 
   .site-header__brand-tag {
-    border-left: 1px solid #d1c7bd;
-    color: var(--color-muted);
-    font-family: var(--font-mono);
+    border-left: 1px solid var(--color-border);
+    color: var(--color-foreground-soft);
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
   }
 
   .site-header__nav-link {
-    border-radius: 0;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    border-radius: var(--radius-button);
+    font-family: var(--font-sans);
+    font-size: 0.92rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--color-foreground-soft);
+    transition:
+      color 180ms var(--ease-brand),
+      background 180ms var(--ease-brand);
   }
 
   .site-header__nav-link:hover {
-    background: transparent;
-    color: var(--color-accent);
+    background: var(--color-surface-tint);
+    color: var(--color-foreground);
   }
 
   .site-header__nav-link.is-active {
     color: #fffaf2;
+    font-weight: 600;
   }
   .site-header__nav-active {
-    border-radius: 0;
-    background: var(--color-foreground);
-    box-shadow: none;
+    border-radius: var(--radius-button);
+    background: var(--color-accent);
+    box-shadow: var(--shadow-soft);
   }
 
   .site-page {
     width: min(100% - 2rem, 80rem);
     margin-inline: auto;
-    padding-top: 8rem !important;
+    padding-top: 7rem !important;
     padding-inline: 0 !important;
   }
 
   .workshop-button,
   .pill-button {
-    border: 1px solid var(--color-foreground);
-    border-radius: 0;
-    font-family: var(--font-mono);
-    text-transform: uppercase;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-button);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0;
+    text-transform: none;
   }
 
   .workshop-button--accent,
   .pill-button--accent {
     background: var(--color-accent);
     color: #fffaf2;
+    border-color: transparent;
   }
 
   .game-detail-hero,
   .article-masthead {
-    border: 1px solid var(--color-foreground);
-    border-radius: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
   }
 
   .game-detail-hero {
@@ -85,18 +102,21 @@
 
   .game-detail-copy h1 {
     max-width: 11ch;
-    font-size: clamp(3.5rem, 5.4vw, 5.2rem);
-    line-height: 0.93;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 5vw, 4.8rem);
+    font-weight: 600;
+    line-height: 0.98;
+    letter-spacing: -0.03em;
   }
 
   .game-detail-showcase {
     align-self: start;
     gap: 0;
-    background: #efe6da;
+    background: #f5ede0;
   }
 
   .game-detail-showcase {
-    border-left: 1px solid var(--color-foreground);
+    border-left: 1px solid var(--color-border);
   }
 
   .game-detail-media,
@@ -113,15 +133,17 @@
 
   .game-detail-identity__app strong {
     overflow: visible;
+    font-family: var(--font-display);
     font-size: clamp(1.2rem, 1.7vw, 1.6rem);
-    line-height: 1.08;
+    font-weight: 600;
+    line-height: 1.1;
     text-overflow: clip;
     white-space: normal;
   }
 
   .game-detail-identity dl {
     justify-content: start;
-    border-top: 1px solid #d1c7bd;
+    border-top: 1px solid var(--color-border-soft);
     padding-top: 0.9rem;
   }
 
@@ -172,8 +194,11 @@
 
   .contact-hero-copy h1 {
     max-width: 10ch;
-    font-size: clamp(3.5rem, 5.5vw, 5.25rem);
-    line-height: 0.94;
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 5.5vw, 5rem);
+    font-weight: 600;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
   }
 
   .about-hero-media {
@@ -181,7 +206,8 @@
     min-height: 0;
     overflow: hidden;
     padding: 0;
-    box-shadow: 4px 4px 0 var(--color-foreground);
+    box-shadow: var(--shadow-medium);
+    border-radius: var(--radius-lg);
   }
 
   .about-hero-media::after {
@@ -194,6 +220,7 @@
     min-height: 0;
     aspect-ratio: 1.15 / 1;
     object-fit: cover;
+    border-radius: var(--radius-lg);
   }
 
   .contact-routes {
@@ -221,14 +248,17 @@
   }
 
   .legal-page .archive-hero > .workshop-shell {
-    border-inline: 1px solid var(--color-foreground);
-    padding: clamp(6.5rem, 10vw, 9rem) clamp(1.5rem, 6vw, 6rem) clamp(3rem, 5vw, 5rem);
+    border-inline: 1px solid var(--color-border);
+    padding: clamp(6rem, 9vw, 8rem) clamp(1.5rem, 6vw, 6rem) clamp(3rem, 5vw, 5rem);
   }
 
   .legal-page .archive-hero h1 {
     max-width: 14ch;
-    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-family: var(--font-display);
+    font-size: clamp(3.2rem, 6.5vw, 5.5rem);
+    font-weight: 600;
     line-height: 0.95;
+    letter-spacing: -0.03em;
   }
 
   .game-detail-gallery__frame,
@@ -236,13 +266,13 @@
   .article-related-card,
   .article-summary,
   .error-panel {
-    border-radius: 0;
-    border-color: var(--color-foreground);
-    box-shadow: 4px 4px 0 var(--color-foreground);
+    border-radius: var(--radius-lg);
+    border-color: var(--color-border);
+    box-shadow: var(--shadow-soft);
   }
 
   .site-footer {
-    border-top: 1px solid var(--color-foreground);
+    border-top: 1px solid var(--color-border);
     background: var(--color-foreground);
     color: #faf6f0;
     padding: 0;
@@ -255,7 +285,7 @@
     border-radius: 0;
     background: transparent;
     box-shadow: none;
-    padding: 3rem 0 1.5rem;
+    padding: 3.5rem 0 2rem;
   }
 
   .site-footer__name,
@@ -269,15 +299,15 @@
   }
 
   .site-footer__name img {
-    width: 2.625rem;
-    height: 2.625rem;
+    width: 2.5rem;
+    height: 2.5rem;
     object-fit: contain;
   }
 
   .site-footer__bottom {
     margin-top: 0;
-    border-top: 1px solid #75675f;
-    padding-top: 1.25rem;
+    border-top: 1px solid rgba(250, 246, 240, 0.12);
+    padding-top: 1.5rem;
   }
 
   .site-footer__social {
@@ -285,10 +315,10 @@
   }
 
   .site-footer__social a {
-    width: 2.75rem;
-    height: 2.75rem;
-    border-color: #75675f;
-    border-radius: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-color: rgba(250, 246, 240, 0.15);
+    border-radius: var(--radius-button);
     background: transparent;
   }
 
@@ -302,7 +332,7 @@
 
     .game-detail-showcase,
     .article-image {
-      border-top: 1px solid var(--color-foreground);
+      border-top: 1px solid var(--color-border);
       border-left: 0;
     }
 
@@ -323,7 +353,11 @@
     }
 
     .game-detail-copy h1 {
-      font-size: clamp(3rem, 15vw, 3.65rem);
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 14vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.02em;
     }
 
     .game-detail-identity dl {
@@ -333,15 +367,21 @@
 
     .game-detail-identity dt,
     .game-detail-identity dd {
-      font-size: 0.68rem;
+      font-size: 0.72rem;
     }
 
     .article-hero h1 {
-      font-size: clamp(2.45rem, 10.4vw, 3.2rem);
+      font-family: var(--font-display);
+      font-size: clamp(2.3rem, 10vw, 3rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
     }
 
     .contact-hero-copy h1 {
-      font-size: clamp(3rem, 13vw, 3.5rem);
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 12vw, 3.3rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
     }
 
     .legal-page .archive-hero > .workshop-shell {
@@ -349,7 +389,10 @@
     }
 
     .legal-page .archive-hero h1 {
-      font-size: clamp(3.2rem, 16vw, 4.2rem);
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 15vw, 4rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
     }
   }
 }
