@@ -86,7 +86,7 @@ const Games = () => {
               </div>
               <div className="workshop-game-card__actions">
                 <Link to={`/games/${game.slug}`}>
-                  Open brief <ArrowRight size={15} />
+                  Learn more <ArrowRight size={15} />
                 </Link>
                 <a href={game.googlePlayUrl} target="_blank" rel="noopener noreferrer">
                   <Download size={15} /> Google Play
