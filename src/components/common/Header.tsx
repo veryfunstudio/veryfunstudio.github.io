@@ -38,9 +38,9 @@ const Header = () => {
       <div className="site-header__bar mx-auto flex h-16 max-w-[80rem] items-center justify-between px-[3.125vw]">
         <Link
           to="/"
-          className="site-header__brand flex min-h-[44px] items-center gap-2 text-foreground no-underline"
+          className="site-header__brand flex min-h-[44px] items-center gap-3 text-foreground no-underline"
         >
-          <img src="/logo-mark.png" alt="" width={36} height={36} className="site-header__logo" />
+          <img src="/logo-mark.png" alt="" width={40} height={40} className="site-header__logo" />
           <span className="site-header__wordmark">VeryFun Co.</span>
           <span className="site-header__brand-tag hidden sm:inline">Modern Workshop</span>
         </Link>
@@ -101,8 +101,8 @@ const Header = () => {
                       to={item.path}
                       onClick={() => setMobileOpen(false)}
                       aria-current={isActive ? "page" : undefined}
-                      className={`site-header__mobile-link flex min-h-[58px] items-center rounded-lg px-4 font-sans text-lg ${
-                        isActive ? "bg-surface text-foreground" : "text-muted"
+                      className={`site-header__mobile-link flex min-h-[58px] items-center rounded-xl px-4 font-sans text-lg ${
+                        isActive ? "bg-accent text-white" : "text-foreground-soft"
                       }`}
                     >
                       {item.label}

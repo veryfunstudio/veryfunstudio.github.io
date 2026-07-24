@@ -12,10 +12,10 @@ const Footer = () => {
         <div className="site-footer__top">
           <div>
             <Link to="/" className="site-footer__name">
-              <img src="/logo-mark.png" alt="" width={42} height={42} />
+              <img src="/logo-mark.png" alt="" width={40} height={40} />
               <span>VeryFun Co.</span>
             </Link>
-            <p>Quiet games, bright logic — crafted with structural honesty.</p>
+            <p>Calming puzzles for real life — built to leave your attention intact.</p>
           </div>
           <nav className="site-footer__nav" aria-label="Footer navigation">
             {footerNav.map((item) => (
