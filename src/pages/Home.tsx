@@ -55,19 +55,19 @@ export default function Home() {
       <section className="workshop-hero">
         <div className="workshop-shell workshop-hero__grid">
           <div className="workshop-hero__copy">
-            <p className="eyebrow">VeryFun Company · Independent studio</p>
+            <p className="eyebrow">VeryFun Co. · Independent studio</p>
             <h1>
               Quiet games.
               <br />
               <span>Bright logic.</span>
             </h1>
             <p>
-              {gameCount} tactile mobile puzzles for spare moments. Free to install, easy to read,
-              offline-friendly, and built to leave your attention intact.
+              {gameCount} calming mobile puzzles for spare moments. Free to install, easy on the
+              eyes, fully offline, and built to leave your attention intact.
             </p>
             <div className="button-row">
               <Link to="/games" className="workshop-button workshop-button--accent">
-                Explore the workshop <ArrowRight size={17} />
+                Browse games <ArrowRight size={17} />
               </Link>
               <a
                 href={GOOGLE_PLAY_DEVELOPER_URL}
@@ -75,7 +75,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="workshop-button"
               >
-                <Download size={17} /> Google Play
+                <Download size={17} /> Get on Google Play
               </a>
             </div>
           </div>
@@ -99,7 +99,7 @@ export default function Home() {
               <p className="eyebrow">The collection</p>
               <h2>Featured Games</h2>
             </div>
-            <p>Hand-crafted for modern thinkers.</p>
+            <p>Calm, hand-crafted puzzles for real life.</p>
           </header>
           <div className="workshop-card-grid">
             {catalog.map((game, index) => (
@@ -124,7 +124,7 @@ export default function Home() {
                 <div className="workshop-game-card__actions">
                   <span>Free on Android</span>
                   <Link to={`/games/${game.slug}`} aria-label={`Open ${game.title}`}>
-                    Open brief <ArrowRight size={15} />
+                    Learn more <ArrowRight size={15} />
                   </Link>
                 </div>
               </article>
@@ -136,7 +136,7 @@ export default function Home() {
       <section className="manifesto-band">
         <div className="workshop-shell manifesto-band__grid">
           <blockquote>
-            “Good puzzles create focus without demanding it.”<small>Our craft principle</small>
+            "Good puzzles create focus without demanding it."<small>Our craft principle</small>
           </blockquote>
           <div>
             <h2>Our Craft Manifesto</h2>
@@ -158,18 +158,18 @@ export default function Home() {
             <p className="eyebrow">Latest release</p>
             <h2>{latestGame.title}</h2>
             <p>
-              {latestGame.hook} Read the full game brief, see verified store artwork, or visit
-              Google Play.
+              {latestGame.hook} Learn more about the game, see store artwork, or install from Google
+              Play.
             </p>
             <div className="button-row">
               <Link
                 to={`/games/${latestGame.slug}`}
                 className="workshop-button workshop-button--accent"
               >
-                Open the brief <ArrowRight size={17} />
+                Learn more <ArrowRight size={17} />
               </Link>
               <Link to="/blog" className="workshop-button">
-                Studio notes
+                Studio blog
               </Link>
             </div>
           </div>
