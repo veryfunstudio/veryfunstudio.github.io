@@ -3,7 +3,7 @@
 > VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic. The current catalog has 3 titles: Nova Mahjong For Seniors, Tile Journey, Arrow Out.
 >
 > Site: https://cookabc.github.io
-> Last updated: 2026-07-24
+> Last updated: 2026-07-31
 
 ---
 
@@ -48,7 +48,7 @@ A: Yes, Nova Mahjong For Seniors is fully playable offline once installed, so yo
 
 Tile Journey is a free 3D tile-matching puzzle game for Android where players travel through thousands of hand-crafted themed levels, matching three identical tiles to clear the board. The game features strategic power-ups (shuffle, undo, free match), no time limits, and full offline support. It blends casual match-three mechanics with mindful pacing, making it suitable for both quick breaks and extended puzzle sessions across diverse visual worlds.
 
-Tile Journey turns the classic match-three puzzle into a mindful 3D expedition. Travel through dreamy clouds, vibrant landscapes, and richly themed levels, each demanding sharp observation and a little forward planning to keep your tile slots clear. Strategic power-ups - shuffle, undo, and free-match - keep frustration at bay, while the no-timer pacing lets you settle in for one quick level or a long evening of puzzles. With thousands of stages to conquer and offline play anywhere, it's a daily companion for casual players and puzzle veterans alike.
+Enjoy a relaxing 3D tile-matching adventure with Tile Journey — a calm match-three puzzle game across hand-crafted themed worlds. Match three identical tiles to clear the stacked layers, plan ahead to keep your tile slots open, and travel through thousands of levels with no time limits. Use shuffle, undo, and free match when you need help, and play fully offline anywhere.
 
 - Platform: Android (Google Play)
 - Price: Free
@@ -83,7 +83,7 @@ A: Tile Journey offers three main power-ups: Shuffle (rearranges all tiles on th
 
 Arrow Out is a free Android logic puzzle game where every tile points in a direction and your goal is to send each arrow off the grid without it being blocked by another. The game features hundreds of handcrafted levels that range from quick brain teasers to extended think-aheads, a helpful hint system, no time limits, and a clean minimal visual style. It is easy to learn but quietly hard to put down.
 
-Arrow Out is the kind of puzzle that's easy to learn and quietly impossible to put down. Every tile points somewhere, and your job is to send it off the grid without letting another arrow block its path. Plan a few moves ahead, untangle the chain, and watch the board open up. Hundreds of handcrafted levels mix short brain teasers with longer think-aheads, and the minimal, relaxing visual style keeps things calm even when the logic gets thorny. No timers, no pressure - just a sharp puzzle waiting on every screen.
+Challenge your brain with Arrow Out — a relaxing yet surprisingly tricky arrow-tile puzzle game. Every tile points in a direction, and your goal is to send each arrow off the grid without it being blocked by another. Plan a few moves ahead, untangle the chain, and clear the board. With hundreds of handcrafted levels, no time limits, helpful hints, and a clean minimal visual style, Arrow Out is easy to learn and satisfying to solve.
 
 - Platform: Android (Google Play)
 - Price: Free
