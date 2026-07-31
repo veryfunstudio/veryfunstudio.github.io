@@ -114,7 +114,7 @@ export const GAMES: Game[] = [
     description:
       "A relaxing 3D tile-matching adventure across hand-crafted themed worlds - match three, plan ahead, and unwind at your own pace.",
     fullDescription:
-      "Tile Journey turns the classic match-three puzzle into a mindful 3D expedition. Travel through dreamy clouds, vibrant landscapes, and richly themed levels, each demanding sharp observation and a little forward planning to keep your tile slots clear. Strategic power-ups - shuffle, undo, and free-match - keep frustration at bay, while the no-timer pacing lets you settle in for one quick level or a long evening of puzzles. With thousands of stages to conquer and offline play anywhere, it's a daily companion for casual players and puzzle veterans alike.",
+      "Enjoy a relaxing 3D tile-matching adventure with Tile Journey — a calm match-three puzzle game across hand-crafted themed worlds. Match three identical tiles to clear the stacked layers, plan ahead to keep your tile slots open, and travel through thousands of levels with no time limits. Use shuffle, undo, and free match when you need help, and play fully offline anywhere.",
     icon: "/images/tile-journey-icon.webp",
     image: "/images/tile-journey.webp",
     technologies: ["Android", "Match-3", "3D"],
@@ -179,7 +179,7 @@ export const GAMES: Game[] = [
     description:
       "A deceptively simple arrow-tile puzzle where every move matters - clear the grid, one direction at a time.",
     fullDescription:
-      "Arrow Out is the kind of puzzle that's easy to learn and quietly impossible to put down. Every tile points somewhere, and your job is to send it off the grid without letting another arrow block its path. Plan a few moves ahead, untangle the chain, and watch the board open up. Hundreds of handcrafted levels mix short brain teasers with longer think-aheads, and the minimal, relaxing visual style keeps things calm even when the logic gets thorny. No timers, no pressure - just a sharp puzzle waiting on every screen.",
+      "Challenge your brain with Arrow Out — a relaxing yet surprisingly tricky arrow-tile puzzle game. Every tile points in a direction, and your goal is to send each arrow off the grid without it being blocked by another. Plan a few moves ahead, untangle the chain, and clear the board. With hundreds of handcrafted levels, no time limits, helpful hints, and a clean minimal visual style, Arrow Out is easy to learn and satisfying to solve.",
     icon: "/images/arrow-out-icon.webp",
     image: "/images/arrow-out.webp",
     technologies: ["Android", "Puzzle", "Logic"],
