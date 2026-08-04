@@ -13,7 +13,7 @@ const CONTACT_INFO = [
   {
     icon: <Code2 size={20} />,
     title: "Code notes",
-    value: "github.com/cookabc",
+    value: "github.com/veryfunstudio",
     link: BRAND.social.github,
     external: true,
   },

@@ -13,14 +13,14 @@ const Blog = () => {
     <div className="workshop-page">
       <Seo
         title="Studio Notes"
-        description="Short production notes from VeryFun Company on calm puzzle design, readable boards, mobile performance, and honest store pages."
+        description="Short production notes from VeryFun Studio on calm puzzle design, readable boards, mobile performance, and honest store pages."
         path="/blog"
       />
       <JsonLd
         schema={{
           "@context": "https://schema.org",
           "@type": "Blog",
-          name: "VeryFun Company Studio Notes",
+          name: "VeryFun Studio Notes",
           url: `${SITE_URL}/blog`,
           blogPost: sortedPosts.map((post) => ({
             "@type": "BlogPosting",

@@ -8,7 +8,7 @@ const NotFound = () => {
     <section className="error-stage px-[3.125vw] py-28 lg:py-36">
       <Seo
         title="Page Not Found (404)"
-        description="The page you're looking for doesn't exist on VeryFun Company."
+        description="The page you're looking for doesn't exist on VeryFun Studio."
         noindex
       />
       <motion.div

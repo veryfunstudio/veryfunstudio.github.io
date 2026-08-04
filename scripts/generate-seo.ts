@@ -73,9 +73,9 @@ function llmsTxt() {
   const blogLines = BLOG_POSTS.map(
     (p) => `- [${p.title}](${SITE_URL}/blog/${p.slug}): ${p.excerpt}`,
   ).join("\n");
-  return `# VeryFun Company
+  return `# VeryFun Studio
 
-> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic.
+> VeryFun Studio is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic.
 
 ## Games
 ${gameLines}
@@ -146,9 +146,9 @@ ${faqBlock ? `\n${faqBlock}` : ""}
 
   const catalogNames = GAMES.map((game) => game.title).join(", ");
 
-  return `# VeryFun Company — Full Content for LLMs
+  return `# VeryFun Studio — Full Content for LLMs
 
-> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic. The current catalog has ${GAMES.length} titles: ${catalogNames}.
+> VeryFun Studio is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic. The current catalog has ${GAMES.length} titles: ${catalogNames}.
 >
 > Site: ${SITE_URL}
 > Last updated: ${today}

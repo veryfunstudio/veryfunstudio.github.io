@@ -13,7 +13,7 @@ const Footer = () => {
           <div>
             <Link to="/" className="site-footer__name">
               <img src="/logo-mark.png" alt="" width={40} height={40} />
-              <span>VeryFun Co.</span>
+              <span>VeryFun Studio</span>
             </Link>
             <p>Calming puzzles for real life — built to leave your attention intact.</p>
           </div>

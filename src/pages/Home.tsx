@@ -55,7 +55,7 @@ export default function Home() {
       <section className="workshop-hero">
         <div className="workshop-shell workshop-hero__grid">
           <div className="workshop-hero__copy">
-            <p className="eyebrow">VeryFun Co. · Independent studio</p>
+            <p className="eyebrow">VeryFun Studio · Independent studio</p>
             <h1>
               Quiet games.
               <br />

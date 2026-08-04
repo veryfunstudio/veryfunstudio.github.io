@@ -1,8 +1,8 @@
-# VeryFun Company — Product Positioning
+# VeryFun Studio — Product Positioning
 
 ## What this site is
 
-VeryFun Company is the official catalog and editorial home of a small independent mobile game
+VeryFun Studio is the official catalog and editorial home of a small independent mobile game
 studio. It presents the studio’s real Android puzzle games, explains the thinking behind them, and
 gives players, press, and potential partners a direct route to the studio.
 
@@ -13,7 +13,7 @@ credible, considered, and easy to explore.
 
 **Quiet games. Bright logic.**
 
-VeryFun Company makes tactile mobile puzzles for spare attention. The products are free to install,
+VeryFun Studio makes tactile mobile puzzles for spare attention. The products are free to install,
 easy to read, offline-friendly, and designed to let players stop without penalty.
 
 The core promises are:

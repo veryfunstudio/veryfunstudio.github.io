@@ -1,4 +1,4 @@
-# cookabc.github.io
+# veryfunstudio.github.io
 
 This repo uses pnpm for local development. Deployment is fully automated via
 GitHub Actions.
@@ -43,12 +43,12 @@ Pushing to `main` triggers the **Deploy GitHub Pages** workflow
 4. `pnpm run build` (`react-router build` → `scripts/generate-seo.ts`)
 5. `peaceiris/actions-gh-pages` force-pushes `build/client/` to `release`
 
-GitHub Pages serves `release` at https://cookabc.github.io/. Concurrency is
+GitHub Pages serves `release` at https://veryfunstudio.github.io/. Concurrency is
 limited to one in-flight deploy; newer pushes cancel earlier ones.
 
-Vercel is wired via GitHub integration on the same `main` branch and
-publishes to https://veryfuncompany.vercel.app/ using the same build
-command. Both deployments run from identical source.
+Vercel is wired via GitHub integration on the same `main` branch and remains a
+non-canonical verification deployment using the same build command. Both deployments run from
+identical source.
 
 ## Update dependencies
 

@@ -14,14 +14,14 @@ const Games = () => {
     <div className="workshop-page">
       <Seo
         title="Our Mobile Games"
-        description={`Browse all ${gameCount} free mobile puzzle games from VeryFun Company: Nova Mahjong, Tile Journey, and Arrow Out.`}
+        description={`Browse all ${gameCount} free mobile puzzle games from VeryFun Studio: Nova Mahjong, Tile Journey, and Arrow Out.`}
         path="/games"
       />
       <JsonLd
         schema={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "VeryFun Company Games",
+          name: "VeryFun Studio Games",
           description: `Catalog of ${gameCount} free mobile puzzle games.`,
           url: `${SITE_URL}/games`,
           mainEntity: {

@@ -33,7 +33,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Design Note",
     image: "/images/nova-mahjong.webp",
     summary: [
-      "VeryFun Company games are built for spare attention, so timers are removed unless they are part of the core mechanic.",
+      "VeryFun Studio games are built for spare attention, so timers are removed unless they are part of the core mechanic.",
       "Tension comes from the puzzle state itself: deduction, blocked paths, and limited slots.",
       "Hints, undo, and readable feedback protect short mobile sessions from turning into frustration.",
       "Clear rules and readable boards come before visual polish and monetization.",
@@ -42,7 +42,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "The problem with timers in casual puzzles",
         paragraphs: [
-          "Timers are one of the fastest ways to make a puzzle feel exciting. They are also one of the fastest ways to make a relaxed player leave. VeryFun Company games are built for spare attention, so we remove the clock unless it is truly part of the mechanic.",
+          "Timers are one of the fastest ways to make a puzzle feel exciting. They are also one of the fastest ways to make a relaxed player leave. VeryFun Studio games are built for spare attention, so we remove the clock unless it is truly part of the mechanic.",
           "That principle guides the whole catalog: clear rules first, visual polish second, monetization last. If a feature makes the board harder to read or the session harder to leave, it usually does not belong.",
         ],
       },
