@@ -7,7 +7,7 @@
   "background_color": "#faf6f0",
   "theme_color": "#d35a3d",
   "icons": [
-    { "src": "/favicon.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+    { "src": "/favicon.png?v=20260804-v2", "sizes": "512x512", "type": "image/png" },
+    { "src": "/apple-touch-icon.png?v=20260804-v2", "sizes": "180x180", "type": "image/png" }
   ]
 }

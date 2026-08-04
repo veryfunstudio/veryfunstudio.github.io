@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
-import { NAV_ITEMS } from "@/lib/constants";
+import { BRAND_ASSET_VERSION, NAV_ITEMS } from "@/lib/constants";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -40,7 +40,13 @@ const Header = () => {
           to="/"
           className="site-header__brand flex min-h-[44px] items-center gap-3 text-foreground no-underline"
         >
-          <img src="/logo-mark.png" alt="" width={40} height={40} className="site-header__logo" />
+          <img
+            src={`/logo-mark.png?v=${BRAND_ASSET_VERSION}`}
+            alt=""
+            width={40}
+            height={40}
+            className="site-header__logo"
+          />
           <span className="site-header__wordmark">VeryFun Studio</span>
           <span className="site-header__brand-tag hidden sm:inline">Puzzle workshop</span>
         </Link>

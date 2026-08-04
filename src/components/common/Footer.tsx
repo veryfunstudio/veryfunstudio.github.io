@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { GitHubIcon, GooglePlayIcon, XIcon } from "@/components/common/icons/BrandIcons";
-import { BRAND, GOOGLE_PLAY_DEVELOPER_URL, NAV_ITEMS } from "@/lib/constants";
+import { BRAND, BRAND_ASSET_VERSION, GOOGLE_PLAY_DEVELOPER_URL, NAV_ITEMS } from "@/lib/constants";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="site-footer__top">
           <div>
             <Link to="/" className="site-footer__name">
-              <img src="/logo-mark.png" alt="" width={40} height={40} />
+              <img src={`/logo-mark.png?v=${BRAND_ASSET_VERSION}`} alt="" width={40} height={40} />
               <span>VeryFun Studio</span>
             </Link>
             <p>Calming puzzles for real life — built to leave your attention intact.</p>
