@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">VeryFun Studio</title>
+  <desc id="desc">VeryFun Studio's VF puzzle-tile monogram on a warm, tactile game-board background.</desc>
+  <defs>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0v42" fill="none" stroke="#e6d9c6" stroke-width="1.5"/>
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#2e231c" flood-opacity=".18"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="#faf6f0"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity=".75"/>
+  <path d="M0 0h226v74c0 39 57 39 57 0V0h250v112h-54c-39 0-39 57 0 57h54v184H370v-52c0-39-57-39-57 0v52H0z" fill="#f2c04b" opacity=".95"/>
+  <path d="M1200 630H970v-74c0-39-57-39-57 0v74H666V518h54c39 0 39-57 0-57h-54V277h163v52c0 39 57 39 57 0v-52h314z" fill="#4a6b53" opacity=".95"/>
+  <g transform="translate(429 3) scale(.61)" filter="url(#shadow)">
+    <image href="veryfun-studio-monogram.svg" width="1024" height="1024"/>
+  </g>
+  <g fill="#d35a3d" opacity=".22">
+    <circle cx="378" cy="125" r="18"/>
+    <circle cx="824" cy="508" r="18"/>
+    <circle cx="852" cy="122" r="10"/>
+    <circle cx="350" cy="506" r="10"/>
+  </g>
+</svg>

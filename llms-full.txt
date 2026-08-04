@@ -1,8 +1,8 @@
-# VeryFun Company — Full Content for LLMs
+# VeryFun Studio — Full Content for LLMs
 
-> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic. The current catalog has 3 titles: Nova Mahjong For Seniors, Tile Journey, Arrow Out.
+> VeryFun Studio is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic. The current catalog has 3 titles: Nova Mahjong For Seniors, Tile Journey, Arrow Out.
 >
-> Site: https://cookabc.github.io
+> Site: https://veryfunstudio.github.io
 > Last updated: 2026-08-04
 
 ---
@@ -123,17 +123,17 @@ Timers create urgency, but they often clash with spare-attention design. Here is
 
 - Published: 2026-04-10
 - Category: Design Note
-- URL: https://cookabc.github.io/blog/why-our-puzzles-avoid-timers
+- URL: https://veryfunstudio.github.io/blog/why-our-puzzles-avoid-timers
 
 ### Key takeaways
-- VeryFun Company games are built for spare attention, so timers are removed unless they are part of the core mechanic.
+- VeryFun Studio games are built for spare attention, so timers are removed unless they are part of the core mechanic.
 - Tension comes from the puzzle state itself: deduction, blocked paths, and limited slots.
 - Hints, undo, and readable feedback protect short mobile sessions from turning into frustration.
 - Clear rules and readable boards come before visual polish and monetization.
 
 ### The problem with timers in casual puzzles
 
-Timers are one of the fastest ways to make a puzzle feel exciting. They are also one of the fastest ways to make a relaxed player leave. VeryFun Company games are built for spare attention, so we remove the clock unless it is truly part of the mechanic.
+Timers are one of the fastest ways to make a puzzle feel exciting. They are also one of the fastest ways to make a relaxed player leave. VeryFun Studio games are built for spare attention, so we remove the clock unless it is truly part of the mechanic.
 
 That principle guides the whole catalog: clear rules first, visual polish second, monetization last. If a feature makes the board harder to read or the session harder to leave, it usually does not belong.
 
@@ -168,7 +168,7 @@ A mobile puzzle has only seconds to explain itself. The board must teach the pla
 
 - Published: 2026-03-25
 - Category: Board Craft
-- URL: https://cookabc.github.io/blog/designing-a-readable-board
+- URL: https://veryfunstudio.github.io/blog/designing-a-readable-board
 
 ### Key takeaways
 - Readable boards start with visual hierarchy before any effects are added.
@@ -216,7 +216,7 @@ Casual puzzle games should feel instant. We tune runtime, art, and interaction c
 
 - Published: 2026-03-10
 - Category: Production
-- URL: https://cookabc.github.io/blog/keeping-mobile-builds-light
+- URL: https://veryfunstudio.github.io/blog/keeping-mobile-builds-light
 
 ### Key takeaways
 - Heavy builds with long launches and stutters contradict quick calm sessions.
@@ -264,7 +264,7 @@ A store page is the first usability test for a puzzle game. Screenshots should s
 
 - Published: 2026-02-20
 - Category: Launch
-- URL: https://cookabc.github.io/blog/store-pages-need-honest-screens
+- URL: https://veryfunstudio.github.io/blog/store-pages-need-honest-screens
 
 ### Key takeaways
 - A store page is the first usability test for a puzzle game.
@@ -312,7 +312,7 @@ Nova Mahjong For Seniors is built around readability first. Large tiles, high co
 
 - Published: 2026-07-03
 - Category: Design Note
-- URL: https://cookabc.github.io/blog/why-nova-mahjong-uses-large-clear-tiles
+- URL: https://veryfunstudio.github.io/blog/why-nova-mahjong-uses-large-clear-tiles
 
 ### Key takeaways
 - Mahjong solitaire fits relaxed brain training with simple rules and immediate feedback.
@@ -360,7 +360,7 @@ Tile Journey has thousands of 3D levels and works fully offline. Here is how we 
 
 - Published: 2026-06-28
 - Category: Production
-- URL: https://cookabc.github.io/blog/why-tile-journey-works-offline
+- URL: https://veryfunstudio.github.io/blog/why-tile-journey-works-offline
 
 ### Key takeaways
 - Casual games are often played in transit with unreliable signal.
@@ -408,7 +408,7 @@ Arrow Out is easy to learn and quietly hard to put down. Every level is designed
 
 - Published: 2026-06-24
 - Category: Board Craft
-- URL: https://cookabc.github.io/blog/the-logic-behind-arrow-outs-handcrafted-levels
+- URL: https://veryfunstudio.github.io/blog/the-logic-behind-arrow-outs-handcrafted-levels
 
 ### Key takeaways
 - A simple rule hides a deep ordering problem.

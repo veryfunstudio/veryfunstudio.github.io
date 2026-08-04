@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">VeryFun Studio VF puzzle tile</title>
+  <desc id="desc">An orange V and dark F set in a warm white jigsaw puzzle tile with yellow and green accents.</desc>
+  <defs>
+    <g id="veryfun-vf-puzzle-mark">
+      <rect width="1024" height="1024" rx="184" fill="#faf6f0"/>
+      <path d="M224 142h190v-18c0-66 96-66 96 0v18h290v272h18c66 0 66 96 0 96h-18v290H570v18c0 66-96 66-96 0v-18H224V570h-18c-66 0-66-96 0-96h18z" fill="#fffaf2" stroke="#2e231c" stroke-width="44" stroke-linejoin="round"/>
+      <path d="M302 302 512 742 722 302" fill="none" stroke="#d35a3d" stroke-width="112" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M526 272h218v104H632v82h98v100h-98v196H526z" fill="#2e231c"/>
+      <circle cx="732" cy="670" r="40" fill="#4a6b53" stroke="#2e231c" stroke-width="20"/>
+      <circle cx="294" cy="706" r="40" fill="#f2c04b" stroke="#2e231c" stroke-width="20"/>
+    </g>
+  </defs>
+  <use href="#veryfun-vf-puzzle-mark"/>
+</svg>

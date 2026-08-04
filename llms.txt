@@ -1,27 +1,27 @@
-# VeryFun Company
+# VeryFun Studio
 
-> VeryFun Company is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic.
+> VeryFun Studio is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic.
 
 ## Games
-- [Nova Mahjong For Seniors](https://cookabc.github.io/games/nova-mahjong): Nova Mahjong For Seniors is a free Android mahjong solitaire game designed for relaxed, peaceful brain training. Players match identical free tiles to clear the board across hundreds of handcrafted puzzles with large, clear tiles and helpful boosters. There are no time limits, the game works offline, and the calm visuals make it suitable for seniors and anyone who enjoys classic tile-matching puzzles.
-- [Tile Journey](https://cookabc.github.io/games/tile-journey): Tile Journey is a free 3D tile-matching puzzle game for Android where players travel through thousands of hand-crafted themed levels, matching three identical tiles to clear the board. The game features strategic power-ups (shuffle, undo, free match), no time limits, and full offline support. It blends casual match-three mechanics with mindful pacing, making it suitable for both quick breaks and extended puzzle sessions across diverse visual worlds.
-- [Arrow Out](https://cookabc.github.io/games/arrow-out): Arrow Out is a free Android logic puzzle game where every tile points in a direction and your goal is to send each arrow off the grid without it being blocked by another. The game features hundreds of handcrafted levels that range from quick brain teasers to extended think-aheads, a helpful hint system, no time limits, and a clean minimal visual style. It is easy to learn but quietly hard to put down.
+- [Nova Mahjong For Seniors](https://veryfunstudio.github.io/games/nova-mahjong): Nova Mahjong For Seniors is a free Android mahjong solitaire game designed for relaxed, peaceful brain training. Players match identical free tiles to clear the board across hundreds of handcrafted puzzles with large, clear tiles and helpful boosters. There are no time limits, the game works offline, and the calm visuals make it suitable for seniors and anyone who enjoys classic tile-matching puzzles.
+- [Tile Journey](https://veryfunstudio.github.io/games/tile-journey): Tile Journey is a free 3D tile-matching puzzle game for Android where players travel through thousands of hand-crafted themed levels, matching three identical tiles to clear the board. The game features strategic power-ups (shuffle, undo, free match), no time limits, and full offline support. It blends casual match-three mechanics with mindful pacing, making it suitable for both quick breaks and extended puzzle sessions across diverse visual worlds.
+- [Arrow Out](https://veryfunstudio.github.io/games/arrow-out): Arrow Out is a free Android logic puzzle game where every tile points in a direction and your goal is to send each arrow off the grid without it being blocked by another. The game features hundreds of handcrafted levels that range from quick brain teasers to extended think-aheads, a helpful hint system, no time limits, and a clean minimal visual style. It is easy to learn but quietly hard to put down.
 
 ## Blog
-- [Why Our Puzzles Avoid Timers](https://cookabc.github.io/blog/why-our-puzzles-avoid-timers): Timers create urgency, but they often clash with spare-attention design. Here is how we replace countdown pressure with tension that lives inside the board itself.
-- [Designing a Readable Board](https://cookabc.github.io/blog/designing-a-readable-board): A mobile puzzle has only seconds to explain itself. The board must teach the player before any tutorial appears.
-- [Keeping Mobile Builds Light](https://cookabc.github.io/blog/keeping-mobile-builds-light): Casual puzzle games should feel instant. We tune runtime, art, and interaction choices around low-friction play.
-- [Store Pages Need Honest Screens](https://cookabc.github.io/blog/store-pages-need-honest-screens): A store page is the first usability test for a puzzle game. Screenshots should show the real board, not a fantasy of it.
-- [Why Nova Mahjong Uses Large, Clear Tiles](https://cookabc.github.io/blog/why-nova-mahjong-uses-large-clear-tiles): Nova Mahjong For Seniors is built around readability first. Large tiles, high contrast, and calm pacing make classic mahjong solitaire comfortable for older players and relaxed brain training.
-- [Why Tile Journey Works Offline](https://cookabc.github.io/blog/why-tile-journey-works-offline): Tile Journey has thousands of 3D levels and works fully offline. Here is how we package content so the game survives commutes, flights, and dead zones.
-- [The Logic Behind Arrow Out's Handcrafted Levels](https://cookabc.github.io/blog/the-logic-behind-arrow-outs-handcrafted-levels): Arrow Out is easy to learn and quietly hard to put down. Every level is designed by hand so the solution path feels intentional, not random.
+- [Why Our Puzzles Avoid Timers](https://veryfunstudio.github.io/blog/why-our-puzzles-avoid-timers): Timers create urgency, but they often clash with spare-attention design. Here is how we replace countdown pressure with tension that lives inside the board itself.
+- [Designing a Readable Board](https://veryfunstudio.github.io/blog/designing-a-readable-board): A mobile puzzle has only seconds to explain itself. The board must teach the player before any tutorial appears.
+- [Keeping Mobile Builds Light](https://veryfunstudio.github.io/blog/keeping-mobile-builds-light): Casual puzzle games should feel instant. We tune runtime, art, and interaction choices around low-friction play.
+- [Store Pages Need Honest Screens](https://veryfunstudio.github.io/blog/store-pages-need-honest-screens): A store page is the first usability test for a puzzle game. Screenshots should show the real board, not a fantasy of it.
+- [Why Nova Mahjong Uses Large, Clear Tiles](https://veryfunstudio.github.io/blog/why-nova-mahjong-uses-large-clear-tiles): Nova Mahjong For Seniors is built around readability first. Large tiles, high contrast, and calm pacing make classic mahjong solitaire comfortable for older players and relaxed brain training.
+- [Why Tile Journey Works Offline](https://veryfunstudio.github.io/blog/why-tile-journey-works-offline): Tile Journey has thousands of 3D levels and works fully offline. Here is how we package content so the game survives commutes, flights, and dead zones.
+- [The Logic Behind Arrow Out's Handcrafted Levels](https://veryfunstudio.github.io/blog/the-logic-behind-arrow-outs-handcrafted-levels): Arrow Out is easy to learn and quietly hard to put down. Every level is designed by hand so the solution path feels intentional, not random.
 
 ## Other pages
-- [About the studio](https://cookabc.github.io/about)
-- [All games](https://cookabc.github.io/games)
-- [Blog index](https://cookabc.github.io/blog)
-- [Contact](https://cookabc.github.io/contact)
-- [Privacy and terms](https://cookabc.github.io/legal)
+- [About the studio](https://veryfunstudio.github.io/about)
+- [All games](https://veryfunstudio.github.io/games)
+- [Blog index](https://veryfunstudio.github.io/blog)
+- [Contact](https://veryfunstudio.github.io/contact)
+- [Privacy and terms](https://veryfunstudio.github.io/legal)
 
 ## Google Play store pages
 - [Nova Mahjong For Seniors](https://play.google.com/store/apps/details?id=com.veryfuncompany.mahjongjourney)
