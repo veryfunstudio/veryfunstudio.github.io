@@ -13,8 +13,8 @@ export const BRAND = {
   email: "chuangcius@gmail.com",
   social: {
     github: "https://github.com/veryfunstudio",
-    x: "https://x.com/chuangcius",
-    xHandle: "@chuangcius",
+    x: "https://x.com/veryfunstudio",
+    xHandle: "@veryfunstudio",
   },
 } as const;
 
