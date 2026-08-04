@@ -3,8 +3,8 @@
 This repo uses pnpm for local development. Deployment is fully automated via
 GitHub Actions.
 
-Product positioning, content architecture, and the current visual direction are documented in
-[PRODUCT.md](./PRODUCT.md).
+The live catalog and editorial content are defined in `src/data/games.ts` and
+`src/data/blog.ts`.
 
 ## Branches
 

@@ -6,7 +6,7 @@ export default function Legal() {
     <div className="workshop-page legal-page">
       <Seo
         title="Legal"
-        description="Privacy policy and terms of service for VeryFun Company and our mobile puzzle games."
+        description={`Privacy policy and terms of service for ${LEGAL_ENTITY_NAME} and our mobile puzzle games.`}
         path="/legal"
       />
 

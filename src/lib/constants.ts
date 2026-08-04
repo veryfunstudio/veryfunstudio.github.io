@@ -4,7 +4,7 @@ export const BRAND_ASSET_VERSION = "20260804-v2";
 export const BRAND_LOGO_URL = `${SITE_URL}/favicon.png?v=${BRAND_ASSET_VERSION}`;
 export const GOOGLE_PLAY_DEVELOPER_URL =
   "https://play.google.com/store/apps/developer?id=songxugang";
-export const LEGAL_ENTITY_NAME = "VeryFun Company";
+export const LEGAL_ENTITY_NAME = "VeryFun Studio";
 
 export const BRAND = {
   name: "VeryFun Studio",
