@@ -10,7 +10,7 @@ export const BRAND = {
   name: "VeryFun Studio",
   tagline: "Quiet games. Bright logic.",
   description: "VeryFun Studio makes calm, tactile mobile puzzle games for spare attention.",
-  email: "chuangcius@gmail.com",
+  email: "veryfunstudios@gmail.com",
   social: {
     github: "https://github.com/veryfunstudio",
     x: "https://x.com/veryfunstudio",
