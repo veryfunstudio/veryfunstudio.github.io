@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X } from "lucide";
+import { MorphIcon } from "morphicons/react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
 import { BRAND_ASSET_VERSION, NAV_ITEMS } from "@/lib/constants";
@@ -82,7 +83,7 @@ const Header = () => {
           aria-expanded={mobileOpen}
           aria-controls="mobile-navigation"
         >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          <MorphIcon icon={mobileOpen ? X : Menu} size={20} strokeWidth={2} spring="smooth" />
         </button>
       </div>
 
