@@ -28,4 +28,4 @@
 - [Tile Journey](https://play.google.com/store/apps/details?id=com.veryfun.tilejourney)
 - [Arrow Out](https://play.google.com/store/apps/details?id=com.veryfuncompany.kittyescape)
 
-Last updated: 2026-08-20
+Last updated: 2026-08-21
