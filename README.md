@@ -28,7 +28,8 @@ pnpm run deploy   # local-only fallback; see "Deployment" below
 
 - `pnpm run dev`: start the React Router dev server
 - `pnpm run build`: prerender all routes via `react-router build`, then
-  generate SEO assets (robots.txt, sitemap.xml, llms.txt, 404.html)
+  generate SEO/agent assets (robots.txt, sitemap.xml, llms.txt, llms-full.txt,
+  a `.md` markdown variant per page, 404.html)
 - `pnpm run deploy`: build locally and publish `build/client/` to `release`.
   Only useful when CI is unavailable. Day-to-day, prefer pushing to `main`.
 
@@ -89,5 +90,23 @@ HTML file under `build/client/` (e.g. `build/client/about/index.html`,
 serve these directly — no client-side router boot is needed for first
 paint. `scripts/generate-seo.ts` also copies the SPA fallback
 (`build/client/__spa-fallback.html`) to `build/client/404.html` with a
-`noindex` meta, so deep links to unknown paths still load the app shell
-without being indexed as duplicates of the home page.
+`noindex` meta and a static markdown recovery body (links to llms.txt,
+llms-full.txt, sitemap.xml, and the main sections). GitHub Pages serves it
+with a real HTTP 404 status; agents and no-JS clients get the markdown site
+map, and React removes the static block on hydration so deep links to unknown
+paths still load the app shell.
+
+## Agent-facing files
+
+`src/lib/seo-content.ts` generates the machine-readable surface at build time:
+
+- `robots.txt`, `sitemap.xml`
+- `llms.txt` (site overview + "when to use this site" guidance) and
+  `llms-full.txt` (complete catalog and blog in one file)
+- a markdown variant per canonical page, served as `text/markdown` — append
+  `.md` to any page path (home page: `/index.md`). Pages advertise their
+  variant via `<link rel="alternate" type="text/markdown">` (see
+  `src/components/seo/Seo.tsx`)
+
+Keep page copy that feeds these files (`src/data/*`, `src/lib/constants.ts`)
+accurate when editing; the generators are covered by `src/lib/seo-content.test.ts`.

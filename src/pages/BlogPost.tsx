@@ -12,21 +12,12 @@ import {
   getRelatedGamesForPost,
 } from "@/data/blog";
 import { GAMES } from "@/data/games";
-import { BRAND, BRAND_LOGO_URL, SITE_URL } from "@/lib/constants";
+import { SITE_URL } from "@/lib/constants";
+import { ORGANIZATION_REFERENCE } from "@/lib/schema";
 import { formatDate } from "@/lib/utils";
 
 /** Reused as both the BlogPosting author and publisher. */
-const blogPublisher = {
-  "@type": "Organization",
-  name: BRAND.name,
-  url: SITE_URL,
-  logo: {
-    "@type": "ImageObject",
-    url: BRAND_LOGO_URL,
-    width: 512,
-    height: 512,
-  },
-};
+const blogPublisher = ORGANIZATION_REFERENCE;
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();

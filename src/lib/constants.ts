@@ -6,6 +6,13 @@ export const GOOGLE_PLAY_DEVELOPER_URL =
   "https://play.google.com/store/apps/developer?id=songxugang";
 export const LEGAL_ENTITY_NAME = "VeryFun Studio";
 
+/**
+ * DOM id of the static recovery block embedded in 404.html by
+ * scripts/generate-seo.ts and removed by app/entry.client.tsx once the SPA
+ * boots. Shared so the two sides cannot drift apart.
+ */
+export const AGENT_404_RECOVERY_ID = "agent-404-recovery";
+
 export const BRAND = {
   name: "VeryFun Studio",
   tagline: "Quiet games. Bright logic.",

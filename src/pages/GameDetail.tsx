@@ -7,6 +7,7 @@ import { Seo } from "@/components/seo/Seo";
 import { getBlogPath, getRelatedPostsForGame } from "@/data/blog";
 import { formatGameTags, getGameBySlug, getGameGallery, getRelatedGames } from "@/data/games";
 import { SITE_URL } from "@/lib/constants";
+import { ORGANIZATION_REFERENCE } from "@/lib/schema";
 import { formatDate } from "@/lib/utils";
 
 const GameDetail = () => {
@@ -75,6 +76,7 @@ const GameDetail = () => {
           applicationCategory: "GameApplication",
           operatingSystem: "Android",
           datePublished: game.releaseDate,
+          author: ORGANIZATION_REFERENCE,
           offers: {
             "@type": "Offer",
             price: "0",

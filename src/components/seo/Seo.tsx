@@ -42,12 +42,17 @@ export function Seo({
   const url = `${SITE_URL}${path}`;
   const absoluteImage = encodeURI(image.startsWith("http") ? image : `${SITE_URL}${image}`);
   const fullTitle = title.includes(SITE_NAME) ? title : `${title} - ${SITE_NAME}`;
+  // Every canonical page ships a markdown variant (home: /index.md) written by
+  // scripts/generate-seo.ts; advertise it so agents can negotiate by URL even
+  // though GitHub Pages cannot negotiate on the Accept header.
+  const markdownUrl = `${SITE_URL}${path === "/" ? "/index.md" : `${path}.md`}`;
 
   return (
     <>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       {!noindex && <link rel="canonical" href={url} />}
+      {!noindex && <link rel="alternate" type="text/markdown" href={markdownUrl} />}
       {noindex && <meta name="robots" content="noindex, nofollow" />}
 
       <meta property="og:type" content={type} />

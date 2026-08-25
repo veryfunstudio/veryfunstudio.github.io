@@ -3,24 +3,8 @@ import { Link } from "react-router";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
 import { formatGameTags, GAMES, getGamesByNewest, getNewestGame } from "@/data/games";
-import { BRAND, BRAND_LOGO_URL, GOOGLE_PLAY_DEVELOPER_URL, SITE_URL } from "@/lib/constants";
-
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: BRAND.name,
-  url: SITE_URL,
-  logo: BRAND_LOGO_URL,
-  description: BRAND.description,
-  sameAs: [BRAND.social.github, BRAND.social.x, GOOGLE_PLAY_DEVELOPER_URL],
-};
-
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: BRAND.name,
-  url: SITE_URL,
-};
+import { GOOGLE_PLAY_DEVELOPER_URL } from "@/lib/constants";
+import { ORGANIZATION_SCHEMA, WEBSITE_SCHEMA } from "@/lib/schema";
 
 const PROMISES = [
   {
@@ -49,8 +33,8 @@ export default function Home() {
         description="Free, calming mobile puzzle games on Google Play. Offline-friendly, free to install, and built for spare attention."
         path="/"
       />
-      <JsonLd schema={organizationSchema} />
-      <JsonLd schema={websiteSchema} />
+      <JsonLd schema={ORGANIZATION_SCHEMA} />
+      <JsonLd schema={WEBSITE_SCHEMA} />
 
       <section className="workshop-hero">
         <div className="workshop-shell workshop-hero__grid">
