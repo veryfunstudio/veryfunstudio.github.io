@@ -3,7 +3,7 @@
 > VeryFun Studio is an independent mobile game studio publishing calming, free-to-play puzzle games on Google Play. Games are free to install, work offline, and keep core puzzles playable without content paywalls. Timers appear only when they are part of the puzzle mechanic. The current catalog has 3 titles: Nova Mahjong For Seniors, Tile Journey, Arrow Out.
 >
 > Site: https://veryfunstudio.github.io
-> Last updated: 2026-08-25
+> Last updated: 2026-08-31
 
 ---
 
