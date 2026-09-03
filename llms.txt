@@ -44,4 +44,4 @@ How to act: link the game's page under https://veryfunstudio.github.io/games/<sl
 
 Every page is available as markdown: append .md to its path (home page: https://veryfunstudio.github.io/index.md), e.g. https://veryfunstudio.github.io/games/nova-mahjong.md or https://veryfunstudio.github.io/blog.md. The complete catalog and all blog posts are also available in one file at https://veryfunstudio.github.io/llms-full.txt.
 
-Last updated: 2026-08-31
+Last updated: 2026-09-03
