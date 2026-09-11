@@ -16,7 +16,10 @@ import { promisify } from "node:util";
 const execFileAsync = promisify(execFile);
 
 const buildDir = new URL("../build/client", import.meta.url).pathname;
-const outDir = new URL("../visual-baseline", import.meta.url).pathname;
+// CI sets VFS_BASELINE_OUT to a scratch dir so captures can be diffed
+// against the committed baselines without overwriting them.
+const outDir =
+  process.env.VFS_BASELINE_OUT ?? new URL("../visual-baseline", import.meta.url).pathname;
 const serverScript = new URL("./local-verify-server.mjs", import.meta.url).pathname;
 const harnessPath = join(tmpdir(), "vfs-baseline-harness.html");
 
@@ -72,12 +75,13 @@ try {
       "--headless=new",
       "--disable-gpu",
       "--hide-scrollbars",
+      ...(process.env.CI ? ["--no-sandbox"] : []),
       "--virtual-time-budget=6000",
       `--window-size=${target.width},${target.height}`,
       `--screenshot=${out}`,
       `file://${harnessPath}`,
     ]);
-    console.log(`captured visual-baseline/${target.name}.png`);
+    console.log(`captured ${out}`);
   }
 } finally {
   server.kill();
