@@ -8,7 +8,7 @@
 // into frame since the CLI cannot scroll.
 // Usage: pnpm build && pnpm baseline
 import { execFile, spawn } from "node:child_process";
-import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { promisify } from "node:util";
@@ -71,16 +71,27 @@ try {
       harnessPath,
       `<!doctype html><html><body style="margin:0"><iframe src="http://localhost:4321${target.path}" style="width:${target.width}px;height:${target.height}px;border:0;display:block"></iframe></body></html>`,
     );
-    await execFileAsync(chrome, [
-      "--headless=new",
-      "--disable-gpu",
-      "--hide-scrollbars",
-      ...(process.env.CI ? ["--no-sandbox"] : []),
-      "--virtual-time-budget=6000",
-      `--window-size=${target.width},${target.height}`,
-      `--screenshot=${out}`,
-      `file://${harnessPath}`,
-    ]);
+    // Headless CLI screenshots can flake and come out blank (virtual time
+    // expiring before the iframe paints). Guard by file size: every real
+    // page here compresses to far more than 30KB of PNG.
+    for (let attempt = 1; attempt <= 3; attempt++) {
+      await execFileAsync(chrome, [
+        "--headless=new",
+        "--disable-gpu",
+        "--hide-scrollbars",
+        ...(process.env.CI ? ["--no-sandbox"] : []),
+        "--virtual-time-budget=6000",
+        `--window-size=${target.width},${target.height}`,
+        `--screenshot=${out}`,
+        `file://${harnessPath}`,
+      ]);
+      const size = statSync(out).size;
+      if (size >= 30_000) break;
+      if (attempt === 3) {
+        throw new Error(`${target.name}.png looks blank (${size}B after 3 attempts)`);
+      }
+      console.warn(`${target.name}.png suspiciously small (${size}B), retrying`);
+    }
     console.log(`captured ${out}`);
   }
 } finally {
