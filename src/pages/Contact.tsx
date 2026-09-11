@@ -1,6 +1,8 @@
+import { motion } from "framer-motion";
 import { Code2, Mail, SquareArrowOutUpRight } from "lucide-react";
 import { Seo } from "@/components/seo/Seo";
 import { BRAND } from "@/lib/constants";
+import { REVEAL } from "@/lib/reveal";
 
 const CONTACT_INFO = [
   {
@@ -82,13 +84,13 @@ const Contact = () => {
         </div>
       </section>
       <section className="contact-band">
-        <div className="workshop-shell">
+        <motion.div className="workshop-shell" {...REVEAL}>
           <strong>Want to work with us?</strong>
           <p>
             Send the context, the constraint, and what a good outcome looks like. Email is the
             fastest route.
           </p>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

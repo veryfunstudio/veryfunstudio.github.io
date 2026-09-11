@@ -1,9 +1,11 @@
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
 import { getBlogPath, getPostsByNewest } from "@/data/blog";
 import { SITE_URL } from "@/lib/constants";
+import { REVEAL, REVEAL_FADE } from "@/lib/reveal";
 import { formatDate } from "@/lib/utils";
 
 const Blog = () => {
@@ -48,7 +50,7 @@ const Blog = () => {
         </div>
       </section>
       <section className="notes-index" aria-label="Studio notes index">
-        <div className="workshop-shell">
+        <motion.div className="workshop-shell" {...REVEAL}>
           {sortedPosts.map((post, index) => (
             <Link key={post.id} to={getBlogPath(post)} className="note-row">
               <time dateTime={post.date}>{formatDate(post.date)}</time>
@@ -60,18 +62,18 @@ const Blog = () => {
               <ArrowRight size={18} />
             </Link>
           ))}
-        </div>
+        </motion.div>
       </section>
       <section className="workshop-cta">
         <div className="workshop-shell">
-          <div className="workshop-cta__panel tactile-card">
+          <motion.div className="workshop-cta__panel tactile-card" {...REVEAL_FADE}>
             <p className="eyebrow">From thought to play</p>
             <h2>Read the note. Open the board.</h2>
             <p>Every studio note connects back to a real product decision in our small catalog.</p>
             <Link to="/games" className="workshop-button workshop-button--accent">
               Browse games <ArrowRight size={16} />
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
