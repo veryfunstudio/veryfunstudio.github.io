@@ -4,6 +4,7 @@ import { describe, it } from "node:test";
 import {
   formatGameTags,
   GAMES,
+  getCollageSatellites,
   getGameBySlug,
   getGameGallery,
   getGamesByNewest,
@@ -47,6 +48,37 @@ describe("games data helpers", () => {
   it("formatGameTags returns an empty string when only the platform tag is present", () => {
     const game = { ...GAMES[0], technologies: ["Android"] };
     assert.strictEqual(formatGameTags(game), "");
+  });
+
+  it("getCollageSatellites excludes the main piece and stays newest-first", () => {
+    const main = getNewestGame();
+    const satellites = getCollageSatellites(main);
+
+    assert.ok(!satellites.some((g) => g.slug === main.slug));
+    assert.deepStrictEqual(
+      satellites.map((g) => g.releaseDate),
+      [...satellites]
+        .sort((a, b) => b.releaseDate.localeCompare(a.releaseDate))
+        .map((g) => g.releaseDate),
+    );
+  });
+
+  it("getCollageSatellites works when the main piece is not the newest", () => {
+    const oldest = getGamesByNewest().at(-1);
+    assert.ok(oldest);
+    const satellites = getCollageSatellites(oldest);
+
+    assert.strictEqual(satellites.length, GAMES.length - 1);
+    assert.ok(!satellites.some((g) => g.slug === oldest.slug));
+    assert.strictEqual(satellites[0], getNewestGame());
+  });
+
+  it("getCollageSatellites respects the limit cap", () => {
+    const main = getNewestGame();
+    const capped = getCollageSatellites(main, 1);
+
+    assert.strictEqual(capped.length, 1);
+    assert.deepStrictEqual(capped, getCollageSatellites(main).slice(0, 1));
   });
 });
 

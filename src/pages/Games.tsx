@@ -1,9 +1,11 @@
+import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { Link } from "react-router";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
 import { formatGameTags, GAMES, getGamesByNewest } from "@/data/games";
 import { SITE_URL } from "@/lib/constants";
+import { REVEAL } from "@/lib/reveal";
 import { formatDate } from "@/lib/utils";
 
 const Games = () => {
@@ -59,7 +61,7 @@ const Games = () => {
       </section>
 
       <section className="workshop-section" aria-label="Game catalog">
-        <div className="workshop-shell workshop-card-grid">
+        <motion.div className="workshop-shell workshop-card-grid" {...REVEAL}>
           {games.map((game, index) => (
             <article key={game.id} className="workshop-game-card tactile-card">
               <Link to={`/games/${game.slug}`} className="workshop-game-card__media">
@@ -94,17 +96,17 @@ const Games = () => {
               </div>
             </article>
           ))}
-        </div>
+        </motion.div>
       </section>
       <section className="principle-band">
-        <div className="workshop-shell">
+        <motion.div className="workshop-shell" {...REVEAL}>
           <p className="eyebrow">Built for real life</p>
           <h2>Start quickly. Read clearly. Stop without penalty.</h2>
           <p>
             Every board is tuned around calm repeat play, offline access, and rules that make sense
             before the effects arrive.
           </p>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

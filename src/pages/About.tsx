@@ -1,7 +1,9 @@
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import { Seo } from "@/components/seo/Seo";
 import { getGamesByNewest } from "@/data/games";
+import { REVEAL, REVEAL_FADE } from "@/lib/reveal";
 
 const VALUES = [
   {
@@ -71,14 +73,14 @@ const About = () => {
       </section>
       <section className="workshop-section">
         <div className="workshop-shell">
-          <header className="section-heading">
+          <motion.header className="section-heading" {...REVEAL}>
             <div>
               <p className="eyebrow">The manifesto</p>
               <h2>Play with structural honesty.</h2>
             </div>
             <p>Rules first, calm feedback, and no systems that punish a pause.</p>
-          </header>
-          <div className="manifesto-grid">
+          </motion.header>
+          <motion.div className="manifesto-grid" {...REVEAL}>
             <article>
               <h3>Quiet gaming</h3>
               <p>Timers disappear unless the clock is the puzzle. Sessions fit around life.</p>
@@ -97,11 +99,11 @@ const About = () => {
                 Small-team decisions stay close to the game, the store page, and player feedback.
               </p>
             </article>
-          </div>
+          </motion.div>
         </div>
       </section>
       <section className="workshop-section workshop-section--ruled">
-        <div className="workshop-shell values-layout">
+        <motion.div className="workshop-shell values-layout" {...REVEAL}>
           <div>
             <p className="eyebrow">Our core values</p>
             <h2>Games for spare attention.</h2>
@@ -117,17 +119,17 @@ const About = () => {
               </article>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
       <section className="workshop-section">
         <div className="workshop-shell">
-          <header className="section-heading">
+          <motion.header className="section-heading" {...REVEAL}>
             <div>
               <p className="eyebrow">The catalog</p>
               <h2>What leaves the workshop.</h2>
             </div>
-          </header>
-          <div className="about-catalog">
+          </motion.header>
+          <motion.div className="about-catalog" {...REVEAL}>
             {featuredGames.map((game, index) => (
               <Link key={game.slug} to={`/games/${game.slug}`}>
                 <img src={game.icon} alt="" width={64} height={64} />
@@ -136,12 +138,12 @@ const About = () => {
                 <ArrowRight size={18} />
               </Link>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
       <section className="workshop-cta">
         <div className="workshop-shell">
-          <div className="workshop-cta__panel tactile-card">
+          <motion.div className="workshop-cta__panel tactile-card" {...REVEAL_FADE}>
             <h2>Want to work with us?</h2>
             <p>
               We are always listening to players, partners, and people who care about thoughtful
@@ -150,7 +152,7 @@ const About = () => {
             <Link to="/contact" className="workshop-button workshop-button--accent">
               Say hello <ArrowRight size={16} />
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

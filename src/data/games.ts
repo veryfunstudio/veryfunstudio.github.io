@@ -257,6 +257,16 @@ export function getNewestGame(): Game {
 }
 
 /**
+ * Home hero collage satellites: the catalog minus the main piece, newest
+ * first, capped at the number of positioned slots in the collage CSS.
+ */
+export function getCollageSatellites(main: Game, limit = 4): Game[] {
+  return getGamesByNewest()
+    .filter((game) => game.slug !== main.slug)
+    .slice(0, limit);
+}
+
+/**
  * Secondary tag list (platform tag dropped) joined for display, e.g.
  * `["Android", "Mahjong", "Puzzle"]` -> `"Mahjong / Puzzle"`.
  */

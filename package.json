@@ -14,6 +14,7 @@
     "format": "biome format --write .",
     "format:check": "biome format .",
     "preview": "react-router preview",
+    "baseline": "node scripts/capture-visual-baseline.mjs",
     "typecheck": "react-router typegen && tsc -b",
     "test": "node --import tsx --test \"src/**/*.test.ts\"",
     "check": "pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build"

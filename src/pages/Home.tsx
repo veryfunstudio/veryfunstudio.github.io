@@ -1,9 +1,17 @@
+import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Download } from "lucide-react";
 import { Link } from "react-router";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
-import { formatGameTags, GAMES, getGamesByNewest, getNewestGame } from "@/data/games";
+import {
+  formatGameTags,
+  GAMES,
+  getCollageSatellites,
+  getGamesByNewest,
+  getNewestGame,
+} from "@/data/games";
 import { GOOGLE_PLAY_DEVELOPER_URL } from "@/lib/constants";
+import { REVEAL, REVEAL_FADE } from "@/lib/reveal";
 import { ORGANIZATION_SCHEMA, WEBSITE_SCHEMA } from "@/lib/schema";
 
 const PROMISES = [
@@ -24,6 +32,7 @@ const PROMISES = [
 export default function Home() {
   const latestGame = getNewestGame();
   const catalog = getGamesByNewest();
+  const satellites = getCollageSatellites(latestGame);
   const gameCount = GAMES.length;
 
   return (
@@ -64,28 +73,45 @@ export default function Home() {
             </div>
           </div>
           <div className="workshop-hero__media grid-paper">
-            <img
-              src="/images/stitch/workshop-hero.jpg"
-              alt="Wooden puzzle pieces arranged on a workshop table"
-              width={900}
-              height={900}
-              loading="eager"
-              fetchPriority="high"
-            />
+            <div className="hero-collage">
+              <figure className="hero-collage__piece hero-collage__piece--main">
+                <div className="hero-collage__float">
+                  <img
+                    src={latestGame.image}
+                    alt={`${latestGame.title} key art`}
+                    width={760}
+                    height={560}
+                    loading="eager"
+                    fetchPriority="high"
+                  />
+                </div>
+                <figcaption>N°01 — {latestGame.title}</figcaption>
+              </figure>
+              {satellites.map((game, index) => (
+                <figure
+                  key={game.slug}
+                  className={`hero-collage__piece hero-collage__piece--sat${index + 1}`}
+                >
+                  <div className="hero-collage__float">
+                    <img src={game.icon} alt="" width={240} height={240} loading="lazy" />
+                  </div>
+                </figure>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       <section className="workshop-section" aria-label="Featured games">
         <div className="workshop-shell">
-          <header className="section-heading">
+          <motion.header className="section-heading" {...REVEAL}>
             <div>
               <p className="eyebrow">The collection</p>
               <h2>Featured Games</h2>
             </div>
             <p>Calm, hand-crafted puzzles for real life.</p>
-          </header>
-          <div className="workshop-card-grid">
+          </motion.header>
+          <motion.div className="workshop-card-grid" {...REVEAL}>
             {catalog.map((game, index) => (
               <article key={game.slug} className="workshop-game-card tactile-card">
                 <Link to={`/games/${game.slug}`} className="workshop-game-card__media">
@@ -113,16 +139,25 @@ export default function Home() {
                 </div>
               </article>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       <section className="manifesto-band">
         <div className="workshop-shell manifesto-band__grid">
-          <blockquote>
-            "Good puzzles create focus without demanding it."<small>Our craft principle</small>
-          </blockquote>
-          <div>
+          <motion.blockquote {...REVEAL}>
+            <span className="manifesto-band__mark" aria-hidden="true">
+              &ldquo;
+            </span>
+            <p>
+              Good puzzles create <em>focus</em> without demanding it.
+            </p>
+            <footer>
+              <small>Our craft principle</small>
+              <small>VeryFun Studio</small>
+            </footer>
+          </motion.blockquote>
+          <motion.div {...REVEAL}>
             <h2>Our Craft Manifesto</h2>
             {PROMISES.map((item) => (
               <div key={item.title} className="manifesto-point">
@@ -132,13 +167,13 @@ export default function Home() {
                 </p>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       <section className="workshop-cta">
         <div className="workshop-shell">
-          <div className="workshop-cta__panel tactile-card">
+          <motion.div className="workshop-cta__panel tactile-card" {...REVEAL_FADE}>
             <p className="eyebrow">Latest release</p>
             <h2>{latestGame.title}</h2>
             <p>
@@ -156,7 +191,7 @@ export default function Home() {
                 Studio blog
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
