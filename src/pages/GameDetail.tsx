@@ -7,6 +7,7 @@ import { Seo } from "@/components/seo/Seo";
 import { getBlogPath, getRelatedPostsForGame } from "@/data/blog";
 import { formatGameTags, getGameBySlug, getGameGallery, getRelatedGames } from "@/data/games";
 import { SITE_URL } from "@/lib/constants";
+import { REVEAL } from "@/lib/reveal";
 import { ORGANIZATION_REFERENCE } from "@/lib/schema";
 import { formatDate } from "@/lib/utils";
 
@@ -61,7 +62,7 @@ const GameDetail = () => {
         title={`${game.title} - Free Puzzle Game`}
         description={game.description}
         path={`/games/${game.slug}`}
-        image={game.image}
+        image={`/og/${game.slug}.png`}
         imageWidth={1200}
         imageHeight={630}
       />
@@ -189,7 +190,11 @@ const GameDetail = () => {
       </section>
 
       {hasBoardShots && (
-        <section className="game-detail-gallery" aria-label={`${game.title} gameplay screenshots`}>
+        <motion.section
+          className="game-detail-gallery"
+          aria-label={`${game.title} gameplay screenshots`}
+          {...REVEAL}
+        >
           <div className="game-detail-gallery__head">
             <h2>Inside the game.</h2>
             <p>Verified gameplay screenshots from the store listing.</p>
@@ -217,10 +222,10 @@ const GameDetail = () => {
               );
             })}
           </div>
-        </section>
+        </motion.section>
       )}
 
-      <section className="game-detail-summary">
+      <motion.section className="game-detail-summary" {...REVEAL}>
         <div className="game-detail-summary__copy">
           <span className="section-kicker">Game overview</span>
           <h2>How it plays.</h2>
@@ -242,9 +247,9 @@ const GameDetail = () => {
             </li>
           ))}
         </ol>
-      </section>
+      </motion.section>
 
-      <section className="game-detail-faq">
+      <motion.section className="game-detail-faq" {...REVEAL}>
         <div className="section-heading">
           <span className="section-kicker">Player guide</span>
           <h2>Questions players ask.</h2>
@@ -260,10 +265,10 @@ const GameDetail = () => {
             </details>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {(relatedGames.length > 0 || relatedPosts.length > 0) && (
-        <section className="related-strip" aria-label="Related content">
+        <motion.section className="related-strip" aria-label="Related content" {...REVEAL}>
           {relatedGames.length > 0 && (
             <>
               <div className="related-strip__head">
@@ -305,7 +310,7 @@ const GameDetail = () => {
               </div>
             </>
           )}
-        </section>
+        </motion.section>
       )}
     </article>
   );

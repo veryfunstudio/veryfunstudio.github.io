@@ -101,6 +101,10 @@ describe("games catalog integrity", () => {
       assert.ok(game.answer.length > 40, `${game.slug} answer is too short`);
       assert.ok(existsSync(`public${game.icon}`), `missing icon ${game.icon}`);
       assert.ok(existsSync(`public${game.image}`), `missing image ${game.image}`);
+      assert.ok(
+        existsSync(`public/og/${game.slug}.png`),
+        `missing OG card public/og/${game.slug}.png (run pnpm og)`,
+      );
       assert.ok(game.hook.length > 8, `${game.slug} missing hook`);
       assert.ok(game.fullDescription.trim().length > 80, `${game.slug} missing fullDescription`);
       assert.ok(game.features.length >= 4, `${game.slug} should list core features`);

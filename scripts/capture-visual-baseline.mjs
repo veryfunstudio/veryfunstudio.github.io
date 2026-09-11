@@ -36,6 +36,7 @@ const TARGETS = [
   { name: "about-tall-1440", path: "/about", width: 1440, height: 2800 },
   { name: "blog-tall-1440", path: "/blog", width: 1440, height: 2200 },
   { name: "contact-tall-1440", path: "/contact", width: 1440, height: 1600 },
+  { name: "game-detail-tall-1440", path: "/games/nova-mahjong", width: 1440, height: 2800 },
 ];
 
 const chrome = CHROME_CANDIDATES.find((candidate) => existsSync(candidate));
