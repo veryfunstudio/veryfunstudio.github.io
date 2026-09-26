@@ -1,24 +1,33 @@
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
 import { GitHubIcon, GooglePlayIcon, XIcon } from "@/components/common/icons/BrandIcons";
 import { BRAND, BRAND_ASSET_VERSION, GOOGLE_PLAY_DEVELOPER_URL, NAV_ITEMS } from "@/lib/constants";
 
-const Footer = () => {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const footerNav = NAV_ITEMS.filter((item) => item.path !== "/");
 
   return (
     <footer className="site-footer mt-auto">
       <div className="site-footer__shell">
-        <div className="site-footer__top">
+        <div className="studio-footer__invitation">
           <div>
-            <Link to="/" className="site-footer__name">
-              <img src={`/logo-mark.png?v=${BRAND_ASSET_VERSION}`} alt="" width={40} height={40} />
-              <span>VeryFun Studio</span>
-            </Link>
-            <p>Calming puzzles for real life — built to leave your attention intact.</p>
+            <p className="studio-kicker">Keep the good ideas moving</p>
+            <h2>
+              Let’s make room <em>for play.</em>
+            </h2>
           </div>
+          <Link to="/contact" className="studio-footer__contact">
+            Get in touch <ArrowUpRight size={22} aria-hidden="true" />
+          </Link>
+        </div>
+        <div className="studio-footer__middle">
+          <Link to="/" className="site-footer__name">
+            <img src={`/logo-mark.png?v=${BRAND_ASSET_VERSION}`} alt="" width={48} height={48} />
+            <span>VeryFun Studio</span>
+          </Link>
+          <p>Small puzzle games with a little more heart and a lot more room to breathe.</p>
           <nav className="site-footer__nav" aria-label="Footer navigation">
-            {footerNav.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <Link key={item.path} to={item.path}>
                 {item.label}
               </Link>
@@ -28,7 +37,7 @@ const Footer = () => {
         </div>
         <div className="site-footer__bottom">
           <p>
-            &copy; {currentYear} {BRAND.name}. Built in the modern workshop.
+            © {currentYear} {BRAND.name}. Designed for the in-between.
           </p>
           <div className="site-footer__social">
             <a
@@ -37,7 +46,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               aria-label="Google Play"
             >
-              <GooglePlayIcon size={15} />
+              <GooglePlayIcon size={17} />
             </a>
             <a
               href={BRAND.social.github}
@@ -45,16 +54,14 @@ const Footer = () => {
               rel="noopener noreferrer"
               aria-label="GitHub"
             >
-              <GitHubIcon size={15} />
+              <GitHubIcon size={17} />
             </a>
             <a href={BRAND.social.x} target="_blank" rel="noopener noreferrer" aria-label="X">
-              <XIcon size={15} />
+              <XIcon size={17} />
             </a>
           </div>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

@@ -49,7 +49,7 @@ const Header = () => {
             className="site-header__logo"
           />
           <span className="site-header__wordmark">VeryFun Studio</span>
-          <span className="site-header__brand-tag hidden sm:inline">Puzzle workshop</span>
+          <span className="site-header__brand-tag hidden sm:inline">Small games, good breaks.</span>
         </Link>
 
         <nav className="site-header__nav hidden md:flex" aria-label="Main navigation">

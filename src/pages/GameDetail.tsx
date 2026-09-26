@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Download } from "lucide-react";
 import { Link, useParams } from "react-router";
 import EntityNotFound from "@/components/common/EntityNotFound";
@@ -14,7 +14,6 @@ import { formatDate } from "@/lib/utils";
 const GameDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const game = getGameBySlug(slug ?? "");
-  const shouldReduceMotion = useReducedMotion();
 
   if (!game) {
     return (
@@ -40,20 +39,6 @@ const GameDetail = () => {
     { label: "Price", value: "Free" },
     { label: "Release", value: releaseLabel },
   ];
-  const motionEnter = shouldReduceMotion
-    ? { initial: false as const, animate: undefined, transition: undefined }
-    : {
-        initial: { opacity: 0, y: 24 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
-      };
-  const motionMedia = shouldReduceMotion
-    ? { initial: false as const, animate: undefined, transition: undefined }
-    : {
-        initial: { opacity: 0, scale: 0.96 },
-        animate: { opacity: 1, scale: 1 },
-        transition: { duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] as const },
-      };
   const hasBoardShots = gallery.some((item) => item.kind === "screen");
 
   return (
@@ -62,7 +47,7 @@ const GameDetail = () => {
         title={`${game.title} - Free Puzzle Game`}
         description={game.description}
         path={`/games/${game.slug}`}
-        image={`/og/${game.slug}.png`}
+        image={`/og/${game.slug}.png?v=20260926`}
         imageWidth={1200}
         imageHeight={630}
       />
@@ -119,12 +104,7 @@ const GameDetail = () => {
       />
 
       <section className="game-detail-hero">
-        <motion.div
-          initial={motionEnter.initial}
-          animate={motionEnter.animate}
-          transition={motionEnter.transition}
-          className="game-detail-copy"
-        >
+        <div className="game-detail-copy">
           <Link to="/games" className="game-detail-back">
             <ArrowLeft size={16} />
             Games
@@ -149,14 +129,9 @@ const GameDetail = () => {
               Google Play
             </a>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={motionMedia.initial}
-          animate={motionMedia.animate}
-          transition={motionMedia.transition}
-          className="game-detail-showcase"
-        >
+        <div className="game-detail-showcase">
           <div className="game-detail-media">
             <img
               src={game.image}
@@ -186,7 +161,7 @@ const GameDetail = () => {
               ))}
             </dl>
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {hasBoardShots && (

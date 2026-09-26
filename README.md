@@ -23,6 +23,9 @@ pnpm install
 ```bash
 pnpm run dev
 pnpm run build
+pnpm run check
+pnpm og
+pnpm baseline
 pnpm run deploy   # local-only fallback; see "Deployment" below
 ```
 
@@ -30,8 +33,26 @@ pnpm run deploy   # local-only fallback; see "Deployment" below
 - `pnpm run build`: prerender all routes via `react-router build`, then
   generate SEO/agent assets (robots.txt, sitemap.xml, llms.txt, llms-full.txt,
   a `.md` markdown variant per page, 404.html)
+- `pnpm run check`: lint, typecheck, test, and build
+- `pnpm og`: regenerate the home and per-game social cards when the art direction
+  or game catalog changes
+- `pnpm baseline`: refresh the desktop and mobile visual references after a build
 - `pnpm run deploy`: build locally and publish `build/client/` to `release`.
   Only useful when CI is unavailable. Day-to-day, prefer pushing to `main`.
+
+## Visual direction
+
+The 2026 site uses a **Play Index**: a switchable game object on the home page,
+large numbered game entries, and an editorial studio journal. The visual system
+uses warm paper, deep ink, citrus green, and a small orange signal. Layout and
+components live in `src/studio-relaunch.css`, `src/pages/Home.tsx`,
+`src/pages/Games.tsx`, and `src/components/common/GameFeatureRow.tsx`.
+
+The design pass stops when the main pages work at desktop and 390px mobile,
+the selector, navigation, links, and FAQ work, no page overflows horizontally,
+and `pnpm run check` passes. The social cards and visual baselines are updated
+with the same release. Production performance and third-party store listings
+remain separate live-environment checks.
 
 ## Deployment
 

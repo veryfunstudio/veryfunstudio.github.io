@@ -39,8 +39,8 @@ const Blog = () => {
             <p className="eyebrow">Archives</p>
             <h1>Studio Notes</h1>
             <p>
-              Thoughts on craft, the joy of play, and building things that matter. Updated when the
-              coffee is fresh.
+              Design notes from behind the board, on clarity, pacing, and the small decisions that
+              make a puzzle feel good.
             </p>
           </div>
           <div className="archive-count">

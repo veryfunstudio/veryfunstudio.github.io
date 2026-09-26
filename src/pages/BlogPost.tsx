@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router";
@@ -131,12 +130,7 @@ const BlogPost = () => {
       )}
 
       <section className="article-masthead">
-        <motion.header
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="article-hero"
-        >
+        <header className="article-hero">
           <Link to="/blog" className="game-detail-back">
             <ArrowLeft size={16} />
             Blog
@@ -147,14 +141,9 @@ const BlogPost = () => {
           </div>
           <h1>{post.title}</h1>
           <p>{post.excerpt}</p>
-        </motion.header>
+        </header>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-          className="article-image"
-        >
+        <div className="article-image">
           <img
             src={post.image}
             alt={`Featured image for ${post.title}`}
@@ -164,7 +153,7 @@ const BlogPost = () => {
             fetchPriority="high"
             decoding="async"
           />
-        </motion.div>
+        </div>
       </section>
 
       <section className="article-summary">

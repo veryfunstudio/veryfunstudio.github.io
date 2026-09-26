@@ -1,4 +1,4 @@
-import { AnimatePresence, MotionConfig, motion } from "framer-motion";
+import { MotionConfig } from "framer-motion";
 import {
   isRouteErrorResponse,
   Link,
@@ -7,35 +7,20 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLocation,
 } from "react-router";
 import Footer from "@/components/common/Footer";
 import Header from "@/components/common/Header";
-import NotFound from "@/pages/NotFound";
 import type { Route } from "./+types/root";
 import "@/index.css";
 import "@/workshop-overrides.css";
-
-const ROUTED_STATIC_PATHS = new Set(["/", "/about", "/games", "/blog", "/contact", "/legal"]);
-const DETAIL_ROUTE_PATTERNS = [/^\/games\/[^/]+$/, /^\/blog\/[^/]+$/];
-
-const normalizePathname = (pathname: string) => pathname.replace(/\/+$/, "") || "/";
-
-const hasKnownRouteShape = (pathname: string) => {
-  const normalizedPathname = normalizePathname(pathname);
-
-  return (
-    ROUTED_STATIC_PATHS.has(normalizedPathname) ||
-    DETAIL_ROUTE_PATTERNS.some((pattern) => pattern.test(normalizedPathname))
-  );
-};
+import "@/studio-relaunch.css";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,700&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap",
   },
   { rel: "icon", type: "image/png", sizes: "512x512", href: "/favicon.png" },
   { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
@@ -50,7 +35,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#d35a3d" />
+        <meta name="theme-color" content="#f6f4ed" />
         <Meta />
         <Links />
       </head>
@@ -64,8 +49,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  const location = useLocation();
-
   return (
     <MotionConfig reducedMotion="user">
       <div className="flex min-h-[100dvh] flex-col bg-background text-foreground">
@@ -73,20 +56,9 @@ export default function App() {
           Skip to main content
         </a>
         <Header />
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.main
-            key={location.pathname}
-            id="main-content"
-            className="site-main flex-1"
-            tabIndex={-1}
-            initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -10, filter: "blur(6px)" }}
-            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-          >
-            {hasKnownRouteShape(location.pathname) ? <Outlet /> : <NotFound />}
-          </motion.main>
-        </AnimatePresence>
+        <main id="main-content" className="site-main flex-1" tabIndex={-1}>
+          <Outlet />
+        </main>
         <Footer />
       </div>
     </MotionConfig>

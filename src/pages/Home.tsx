@@ -1,42 +1,31 @@
-import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, Download } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router";
+import { GameFeatureRow } from "@/components/common/GameFeatureRow";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
-import {
-  formatGameTags,
-  GAMES,
-  getCollageSatellites,
-  getGamesByNewest,
-  getNewestGame,
-} from "@/data/games";
-import { GOOGLE_PLAY_DEVELOPER_URL } from "@/lib/constants";
-import { REVEAL, REVEAL_FADE } from "@/lib/reveal";
+import { getBlogPath, getPostsByNewest } from "@/data/blog";
+import { GAMES, getGamesByNewest } from "@/data/games";
+import { REVEAL } from "@/lib/reveal";
 import { ORGANIZATION_SCHEMA, WEBSITE_SCHEMA } from "@/lib/schema";
+import { formatDate } from "@/lib/utils";
 
-const PROMISES = [
-  {
-    title: "No dark patterns",
-    body: "No manipulative streaks, pressure loops, or content paywalls.",
-  },
-  {
-    title: "Offline friendly",
-    body: "Your games stay available when the connection does not.",
-  },
-  {
-    title: "Clear by design",
-    body: "Large targets, readable boards, and feedback that respects attention.",
-  },
-];
+const TONES: Record<string, string> = {
+  "nova-mahjong": "mahjong",
+  "tile-journey": "tile",
+  "arrow-out": "arrow",
+};
 
 export default function Home() {
-  const latestGame = getNewestGame();
-  const catalog = getGamesByNewest();
-  const satellites = getCollageSatellites(latestGame);
-  const gameCount = GAMES.length;
+  const games = getGamesByNewest();
+  const featuredGames = games.slice(0, 3);
+  const notes = getPostsByNewest().slice(0, 2);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeGame = featuredGames[activeIndex] ?? featuredGames[0];
 
   return (
-    <div className="workshop-page">
+    <div className="studio-page">
       <Seo
         title="Indie Mobile Game Studio"
         description="Free, calming mobile puzzle games on Google Play. Offline-friendly, free to install, and built for spare attention."
@@ -45,153 +34,186 @@ export default function Home() {
       <JsonLd schema={ORGANIZATION_SCHEMA} />
       <JsonLd schema={WEBSITE_SCHEMA} />
 
-      <section className="workshop-hero">
-        <div className="workshop-shell workshop-hero__grid">
-          <div className="workshop-hero__copy">
-            <p className="eyebrow">VeryFun Studio · Independent studio</p>
-            <h1>
-              Quiet games.
+      <section className="studio-hero" aria-labelledby="studio-hero-title">
+        <div className="studio-shell studio-hero__topline">
+          <span>Independent puzzle studio</span>
+          <span>Made for the in-between</span>
+          <span>Est. in play / {String(GAMES.length).padStart(2, "0")} games</span>
+        </div>
+        <div className="studio-shell studio-hero__grid">
+          <div className="studio-hero__copy">
+            <p className="studio-kicker">
+              <span className="studio-kicker__dot" /> A softer kind of screen time
+            </p>
+            <h1 id="studio-hero-title">
+              Make room
               <br />
-              <span>Bright logic.</span>
+              for <em>play.</em>
             </h1>
-            <p>
-              {gameCount} calming mobile puzzles for spare moments. Free to install, easy on the
-              eyes, fully offline, and built to leave your attention intact.
+            <p className="studio-hero__intro">
+              Small, satisfying puzzle games for the moments between everything else. Clear to pick
+              up, easy to put down, and made with care.
             </p>
-            <div className="button-row">
-              <Link to="/games" className="workshop-button workshop-button--accent">
-                Browse games <ArrowRight size={17} />
+            <div className="studio-hero__actions">
+              <Link to="/games" className="studio-action studio-action--dark">
+                Explore the games <ArrowUpRight size={19} aria-hidden="true" />
               </Link>
-              <a
-                href={GOOGLE_PLAY_DEVELOPER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="workshop-button"
+              <Link to="/about" className="studio-text-link">
+                Meet the studio <ArrowRight size={17} aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+
+          <div
+            className={`studio-hero__stage studio-hero__stage--${TONES[activeGame.slug] ?? "mahjong"}`}
+          >
+            <div className="studio-hero__orbit studio-hero__orbit--one" aria-hidden="true" />
+            <div className="studio-hero__orbit studio-hero__orbit--two" aria-hidden="true" />
+            <span className="studio-hero__stage-label">PLAY OBJECT / 0{activeIndex + 1}</span>
+            <AnimatePresence mode="sync" initial={false}>
+              <motion.div
+                key={activeGame.slug}
+                className="studio-hero__artwork"
+                initial={{ opacity: 0, y: 26, rotate: -5, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, rotate: -3, scale: 1 }}
+                exit={{ opacity: 0, y: -18, rotate: 3, scale: 0.96 }}
+                transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
               >
-                <Download size={17} /> Get on Google Play
-              </a>
-            </div>
-          </div>
-          <div className="workshop-hero__media grid-paper">
-            <div className="hero-collage">
-              <figure className="hero-collage__piece hero-collage__piece--main">
-                <div className="hero-collage__float">
-                  <img
-                    src={latestGame.image}
-                    alt={`${latestGame.title} key art`}
-                    width={760}
-                    height={560}
-                    loading="eager"
-                    fetchPriority="high"
-                  />
+                <img
+                  src={activeGame.image}
+                  alt={`${activeGame.title} key art`}
+                  width={1200}
+                  height={630}
+                  fetchPriority={activeIndex === 0 ? "high" : "auto"}
+                />
+                <div className="studio-hero__artwork-foot">
+                  <span>VeryFun Studio</span>
+                  <span>001 — 00{activeIndex + 1}</span>
                 </div>
-                <figcaption>N°01 — {latestGame.title}</figcaption>
-              </figure>
-              {satellites.map((game, index) => (
-                <figure
-                  key={game.slug}
-                  className={`hero-collage__piece hero-collage__piece--sat${index + 1}`}
-                >
-                  <div className="hero-collage__float">
-                    <img src={game.icon} alt="" width={240} height={240} loading="lazy" />
-                  </div>
-                </figure>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="workshop-section" aria-label="Featured games">
-        <div className="workshop-shell">
-          <motion.header className="section-heading" {...REVEAL}>
-            <div>
-              <p className="eyebrow">The collection</p>
-              <h2>Featured Games</h2>
-            </div>
-            <p>Calm, hand-crafted puzzles for real life.</p>
-          </motion.header>
-          <motion.div className="workshop-card-grid" {...REVEAL}>
-            {catalog.map((game, index) => (
-              <article key={game.slug} className="workshop-game-card tactile-card">
-                <Link to={`/games/${game.slug}`} className="workshop-game-card__media">
-                  <img
-                    src={game.image}
-                    alt={`${game.title} key art`}
-                    width={760}
-                    height={560}
-                    loading={index === 0 ? "eager" : "lazy"}
-                  />
-                  <span>{formatGameTags(game)}</span>
-                </Link>
-                <div className="workshop-game-card__body">
-                  <div className="numbered-title">
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <h3>{game.title}</h3>
-                  </div>
-                  <p>{game.description}</p>
-                </div>
-                <div className="workshop-game-card__actions">
-                  <span>Free on Android</span>
-                  <Link to={`/games/${game.slug}`} aria-label={`Open ${game.title}`}>
-                    Learn more <ArrowRight size={15} />
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="manifesto-band">
-        <div className="workshop-shell manifesto-band__grid">
-          <motion.blockquote {...REVEAL}>
-            <span className="manifesto-band__mark" aria-hidden="true">
-              &ldquo;
+              </motion.div>
+            </AnimatePresence>
+            <span className="studio-hero__spark studio-hero__spark--one" aria-hidden="true">
+              ✳
             </span>
-            <p>
-              Good puzzles create <em>focus</em> without demanding it.
-            </p>
-            <footer>
-              <small>Our craft principle</small>
-              <small>VeryFun Studio</small>
-            </footer>
-          </motion.blockquote>
-          <motion.div {...REVEAL}>
-            <h2>Our Craft Manifesto</h2>
-            {PROMISES.map((item) => (
-              <div key={item.title} className="manifesto-point">
-                <CheckCircle2 size={18} />
-                <p>
-                  <strong>{item.title}:</strong> {item.body}
-                </p>
+            <span className="studio-hero__spark studio-hero__spark--two" aria-hidden="true">
+              ✦
+            </span>
+            <div className="studio-hero__stage-bottom" aria-live="polite">
+              <div>
+                <span>Now showing</span>
+                <strong>{activeGame.title}</strong>
               </div>
+              <Link to={`/games/${activeGame.slug}`} aria-label={`Explore ${activeGame.title}`}>
+                <ArrowUpRight size={22} aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="studio-shell studio-hero__rail">
+          <div className="studio-hero__selectors" aria-label="Choose a featured game">
+            {featuredGames.map((game, index) => (
+              <button
+                key={game.slug}
+                type="button"
+                className={index === activeIndex ? "is-current" : ""}
+                aria-pressed={index === activeIndex}
+                onClick={() => setActiveIndex(index)}
+              >
+                <span>0{index + 1}</span>
+                <span>{game.title}</span>
+                <ArrowUpRight size={15} aria-hidden="true" />
+              </button>
             ))}
-          </motion.div>
+          </div>
+          <a href="#studio-collection" className="studio-hero__scroll">
+            Scroll to explore <ArrowDown size={16} aria-hidden="true" />
+          </a>
         </div>
       </section>
 
-      <section className="workshop-cta">
-        <div className="workshop-shell">
-          <motion.div className="workshop-cta__panel tactile-card" {...REVEAL_FADE}>
-            <p className="eyebrow">Latest release</p>
-            <h2>{latestGame.title}</h2>
-            <p>
-              {latestGame.hook} Learn more about the game, see store artwork, or install from Google
-              Play.
-            </p>
-            <div className="button-row">
-              <Link
-                to={`/games/${latestGame.slug}`}
-                className="workshop-button workshop-button--accent"
-              >
-                Learn more <ArrowRight size={17} />
-              </Link>
-              <Link to="/blog" className="workshop-button">
-                Studio blog
-              </Link>
+      <section
+        id="studio-collection"
+        className="studio-collection"
+        aria-labelledby="studio-collection-title"
+      >
+        <div className="studio-shell">
+          <motion.div className="studio-section-heading" {...REVEAL}>
+            <div>
+              <p className="studio-kicker">01 / The collection</p>
+              <h2 id="studio-collection-title">
+                Pick your <em>puzzle.</em>
+              </h2>
             </div>
+            <p>
+              Three different ways to find your focus. One shared idea: the player sets the pace.
+            </p>
           </motion.div>
+          <div className="studio-game-list">
+            {games.map((game, index) => (
+              <GameFeatureRow key={game.slug} game={game} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="studio-principles" aria-labelledby="studio-principles-title">
+        <div className="studio-shell studio-principles__inner">
+          <div>
+            <p className="studio-kicker">02 / A little philosophy</p>
+            <h2 id="studio-principles-title">
+              The fun part is <em>thinking.</em>
+            </h2>
+          </div>
+          <div className="studio-principles__list">
+            <article>
+              <span>01</span>
+              <h3>Room to pause.</h3>
+              <p>No streaks to protect. No timer unless it is the puzzle.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Clarity first.</h3>
+              <p>Readable boards and honest feedback make every move feel good.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Play anywhere.</h3>
+              <p>Our games are designed to be enjoyed offline, at your own pace.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="studio-notes" aria-labelledby="studio-notes-title">
+        <div className="studio-shell">
+          <div className="studio-section-heading">
+            <div>
+              <p className="studio-kicker">03 / From the studio</p>
+              <h2 id="studio-notes-title">
+                Notes from <em>behind the board.</em>
+              </h2>
+            </div>
+            <Link to="/blog" className="studio-text-link">
+              All studio notes <ArrowUpRight size={18} aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="studio-notes__grid">
+            {notes.map((note, index) => (
+              <Link key={note.slug} to={getBlogPath(note)} className="studio-note-card">
+                <span className="studio-note-card__meta">
+                  <span>
+                    0{index + 1} / {note.category}
+                  </span>
+                  <time dateTime={note.date}>{formatDate(note.date)}</time>
+                </span>
+                <h3>{note.title}</h3>
+                <p>{note.excerpt}</p>
+                <span className="studio-note-card__arrow">
+                  <ArrowUpRight size={22} aria-hidden="true" />
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </div>
