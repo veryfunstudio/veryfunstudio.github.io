@@ -79,6 +79,7 @@ try {
         "--headless=new",
         "--disable-gpu",
         "--hide-scrollbars",
+        "--force-prefers-reduced-motion=reduce",
         ...(process.env.CI ? ["--no-sandbox"] : []),
         "--virtual-time-budget=6000",
         `--window-size=${target.width},${target.height}`,
