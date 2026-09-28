@@ -104,7 +104,7 @@ This bypasses CI by building locally and pushing `build/client/` to `release` di
 
 ## Routing note
 
-The app uses React Router v7 Framework mode with static prerendering
+The app uses React Router v8 Framework mode with static prerendering
 (`ssr: false` + `prerender`), so every route is pre-rendered to its own
 HTML file under `build/client/` (e.g. `build/client/about/index.html`,
 `build/client/games/nova-mahjong/index.html`). GitHub Pages and Vercel
