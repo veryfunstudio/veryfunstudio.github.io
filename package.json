@@ -23,7 +23,7 @@
     "@react-router/dev": "^8.4.0",
     "@react-router/node": "^8.4.0",
     "@tailwindcss/postcss": "^4.3.3",
-    "framer-motion": "^13.5.1",
+    "framer-motion": "^14.0.0",
     "isbot": "^5.2.2",
     "lucide": "^1.52.0",
     "lucide-react": "^1.52.0",
