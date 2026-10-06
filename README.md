@@ -40,19 +40,47 @@ pnpm run deploy   # local-only fallback; see "Deployment" below
 - `pnpm run deploy`: build locally and publish `build/client/` to `release`.
   Only useful when CI is unavailable. Day-to-day, prefer pushing to `main`.
 
-## Visual direction
+## Visual system
 
-The 2026 site uses a **Play Index**: a switchable game object on the home page,
-large numbered game entries, and an editorial studio journal. The visual system
-uses warm paper, deep ink, citrus green, and a small orange signal. Layout and
-components live in `src/studio-relaunch.css`, `src/pages/Home.tsx`,
-`src/pages/Games.tsx`, and `src/components/common/GameFeatureRow.tsx`.
+The entire site uses one studio system: warm ivory surfaces, deep green ink,
+muted green game stages, and a restrained orange accent. Space Grotesk sets
+headings, DM Sans handles reading text, Instrument Serif provides short title
+accents, and DM Mono is reserved for small metadata.
 
-The design pass stops when the main pages work at desktop and 390px mobile,
-the selector, navigation, links, and FAQ work, no page overflows horizontally,
-and `pnpm run check` passes. The social cards and visual baselines are updated
-with the same release. Production performance and third-party store listings
-remain separate live-environment checks.
+- `src/index.css`: design tokens, type, buttons, focus states, and global layout.
+- `src/studio-relaunch.css`: component layouts and the shared responsive rules.
+- `PageIntro`, `NoteCard`, and `StudioCTA`: shared titles, journal cards, and calls
+  to action across the home, catalog, journal, about, contact, and legal pages.
+- Game and article detail pages use the same masthead, reading widths, FAQ rows,
+  related cards, header, and footer. Retired workshop styles are no longer loaded.
+
+Use the existing game imagery throughout the site. Do not add invented workplace
+photography or redraw game pieces as generic decorative shapes. Asset origins
+and SHA-256 checksums are recorded in `docs/game-asset-provenance.json`.
+
+### Interactive home display
+
+`HeroPlayObject.tsx` lazily loads `src/lib/play-object-scene.ts`. Nova Mahjong uses
+six original `CompositeCropped` PNGs copied unchanged from the sibling
+`021_MahjongJourney/H5` game client. Three.js adds depth and lighting around those
+actual faces. Clicking, tapping, or pressing Enter/Space rearranges the display.
+
+Tile Journey and Arrow Out currently use their existing verified key art on a
+3D presentation card. These are labelled **Game artwork**, not gameplay. Replace
+this mode only when verified game-specific source assets are available.
+
+Animation stops after each interaction and while offscreen or the tab is hidden.
+Reduced-motion mode applies changes immediately. Key art remains visible while
+loading and after asset, WebGL, or context failures. GPU resources are disposed
+when navigating away from the home page.
+
+### Visual verification
+
+Run `pnpm run check` for lint, types, existing tests, and production prerendering.
+Review all main routes at 1440px and 390px, including the mobile menu, journal
+links, game FAQs, and missing-resource states. Check actual game texture loading,
+mouse/keyboard/touch interactions, and static fallbacks separately from layout.
+Update `visual-baseline/` and social cards when the visual system changes.
 
 ## Deployment
 
