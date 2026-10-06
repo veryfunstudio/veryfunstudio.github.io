@@ -1,162 +1,124 @@
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
+import { PageIntro } from "@/components/common/PageIntro";
+import { StudioCTA } from "@/components/common/StudioCTA";
 import { Seo } from "@/components/seo/Seo";
 import { getGamesByNewest } from "@/data/games";
-import { REVEAL, REVEAL_FADE } from "@/lib/reveal";
 
 const VALUES = [
   {
     number: "01",
-    title: "Attention is the budget",
-    body: "Short sessions that never demand a streak or punish a pause.",
+    title: "Clarity comes first.",
+    body: "Readable boards, comfortable targets, and rules you can understand at a glance. Every detail should help you find your next move.",
   },
   {
     number: "02",
-    title: "Rules before spectacle",
-    body: "The board has to read instantly. Polish supports the puzzle.",
+    title: "Room for real life.",
+    body: "Short sessions, offline play, and no pressure to keep a streak. Take a break whenever you need one; the puzzle will wait.",
   },
   {
     number: "03",
-    title: "Free should still feel premium",
-    body: "Free to install, no content paywalls, and no extraction loop. Still built with care.",
+    title: "Small, on purpose.",
+    body: "A tiny team keeps design, code, and player feedback close together. We focus on a few puzzles and the details that make them feel good.",
   },
-] as const;
+];
+const MARKS = [
+  "tile_dot_6",
+  "tile_bamboo_3",
+  "tile_dragon_red",
+  "tile_character_5",
+  "tile_flower_orchid",
+  "tile_flower_chrysanthemum",
+];
 
-const About = () => {
-  const featuredGames = getGamesByNewest().slice(0, 4);
-
+export default function About() {
+  const games = getGamesByNewest();
   return (
-    <div className="workshop-page">
+    <div className="studio-page">
       <Seo
         title="About the Studio"
         description="Independent mobile game studio crafting calming, free-to-play puzzle games with clear boards and quiet pacing."
         path="/about"
-        image={featuredGames[0]?.image}
-        imageWidth={1200}
-        imageHeight={630}
       />
-
-      <section className="about-hero">
-        <div className="workshop-shell about-hero__grid">
-          <div className="about-hero-copy">
-            <p className="eyebrow">Independent by design</p>
-            <h1>
-              Built for the <span>quiet moments.</span>
-            </h1>
-            <p>
-              VeryFun Studio is a small independent studio shipping free mobile puzzles on Google
-              Play. We are a tiny team: design, code, and store pages from one desk. We build for
-              spare attention — short sessions, readable boards, offline play — and we skip pressure
-              systems unless the timer <em>is</em> the puzzle. We do not ship dark-pattern streaks,
-              content paywalls, or games that punish a pause.
-            </p>
-            <div className="button-row">
-              <Link to="/games" className="workshop-button workshop-button--accent">
-                See the games <ArrowRight size={16} />
-              </Link>
-              <Link to="/contact" className="workshop-button">
-                Contact
-              </Link>
-            </div>
+      <PageIntro
+        eyebrow="03 / About the studio"
+        title="Small studio."
+        accent="Room to play."
+        description="We make thoughtful mobile puzzles for the quiet moments in an otherwise busy day."
+        meta="Independent by design"
+      />
+      <section className="studio-shell studio-story">
+        <div className="studio-story__art">
+          <div className="asset-board">
+            {MARKS.map((mark) => (
+              <div key={mark}>
+                <img
+                  src={`/game-assets/nova-mahjong/${mark}.png`}
+                  alt=""
+                  width={198}
+                  height={241}
+                />
+              </div>
+            ))}
           </div>
-          <div className="about-hero-media tactile-card">
-            <img
-              src="/images/stitch/workshop-bench.jpg"
-              alt="A warm, organized independent game design workbench"
-              width={1000}
-              height={800}
-            />
-            <span>One small studio. Every detail considered.</span>
-          </div>
+          <p className="studio-kicker">On the board / Nova Mahjong</p>
+        </div>
+        <div className="studio-story__copy">
+          <p className="studio-kicker">A note from the studio</p>
+          <h2>
+            A little less rush.
+            <br />A little more <em>play.</em>
+          </h2>
+          <p>
+            VeryFun Studio is a small independent team making free mobile puzzles on Google Play.
+            Design, code, and store pages come from one desk.
+          </p>
+          <p>
+            We build for spare attention: short sessions, readable boards, and offline play. Our
+            games leave room to think, and room to put the phone down.
+          </p>
+          <Link to="/games" className="studio-text-link">
+            Meet the games <ArrowUpRight size={18} />
+          </Link>
         </div>
       </section>
-      <section className="workshop-section">
-        <div className="workshop-shell">
-          <motion.header className="section-heading" {...REVEAL}>
-            <div>
-              <p className="eyebrow">The manifesto</p>
-              <h2>Play with structural honesty.</h2>
-            </div>
-            <p>Rules first, calm feedback, and no systems that punish a pause.</p>
-          </motion.header>
-          <motion.div className="manifesto-grid" {...REVEAL}>
-            <article>
-              <h3>Quiet gaming</h3>
-              <p>Timers disappear unless the clock is the puzzle. Sessions fit around life.</p>
-            </article>
-            <article>
-              <h3>Structural honesty</h3>
-              <p>Interfaces reveal the state of play clearly. Decoration never hides a rule.</p>
-            </article>
-            <article>
-              <h3>Deep accessibility</h3>
-              <p>High contrast, comfortable targets, and readable boards welcome more players.</p>
-            </article>
-            <article>
-              <h3>Indie soul</h3>
-              <p>
-                Small-team decisions stay close to the game, the store page, and player feedback.
-              </p>
-            </article>
-          </motion.div>
-        </div>
-      </section>
-      <section className="workshop-section workshop-section--ruled">
-        <motion.div className="workshop-shell values-layout" {...REVEAL}>
+      <section className="studio-shell studio-values">
+        <div className="studio-section-heading">
           <div>
-            <p className="eyebrow">Our core values</p>
-            <h2>Games for spare attention.</h2>
+            <p className="studio-kicker">What we care about</p>
+            <h2>
+              Good play starts <em>here.</em>
+            </h2>
           </div>
-          <div className="values-list">
-            {VALUES.map((value) => (
-              <article key={value.title}>
-                <span>{value.number}</span>
-                <div>
-                  <h3>{value.title}</h3>
-                  <p>{value.body}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </motion.div>
-      </section>
-      <section className="workshop-section">
-        <div className="workshop-shell">
-          <motion.header className="section-heading" {...REVEAL}>
-            <div>
-              <p className="eyebrow">The catalog</p>
-              <h2>What leaves the workshop.</h2>
-            </div>
-          </motion.header>
-          <motion.div className="about-catalog" {...REVEAL}>
-            {featuredGames.map((game, index) => (
-              <Link key={game.slug} to={`/games/${game.slug}`}>
-                <img src={game.icon} alt="" width={64} height={64} />
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{game.title}</strong>
-                <ArrowRight size={18} />
-              </Link>
-            ))}
-          </motion.div>
+        </div>
+        <div className="studio-values__grid">
+          {VALUES.map((value) => (
+            <article key={value.number}>
+              <span className="studio-kicker">{value.number}</span>
+              <h3>{value.title}</h3>
+              <p>{value.body}</p>
+            </article>
+          ))}
         </div>
       </section>
-      <section className="workshop-cta">
-        <div className="workshop-shell">
-          <motion.div className="workshop-cta__panel tactile-card" {...REVEAL_FADE}>
-            <h2>Want to work with us?</h2>
-            <p>
-              We are always listening to players, partners, and people who care about thoughtful
-              games.
-            </p>
-            <Link to="/contact" className="workshop-button workshop-button--accent">
-              Say hello <ArrowRight size={16} />
+      <section className="studio-shell studio-shelf" aria-label="Our games">
+        <p className="studio-kicker">Made by VeryFun Studio</p>
+        <div>
+          {games.map((game) => (
+            <Link key={game.slug} to={`/games/${game.slug}`}>
+              <img src={game.icon} alt="" width={64} height={64} loading="lazy" />
+              <strong>{game.title}</strong>
+              <ArrowUpRight size={18} />
             </Link>
-          </motion.div>
+          ))}
         </div>
       </section>
+      <StudioCTA
+        title="Good ideas start with a conversation."
+        description="Player feedback, thoughtful partnerships, or a simple hello — we are listening."
+        to="/contact"
+        label="Get in touch"
+      />
     </div>
   );
-};
-
-export default About;
+}

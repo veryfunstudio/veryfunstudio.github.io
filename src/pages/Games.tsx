@@ -1,5 +1,6 @@
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { GameFeatureRow } from "@/components/common/GameFeatureRow";
+import { PageIntro } from "@/components/common/PageIntro";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
 import { GAMES, getGamesByNewest } from "@/data/games";
@@ -35,35 +36,23 @@ export default function Games() {
         }}
       />
 
-      <section className="studio-catalog__intro" aria-labelledby="catalog-title">
-        <div className="studio-shell">
-          <div className="studio-catalog__eyebrow">
-            <span>THE GAME INDEX</span>
-            <span>VOL. 001 — {String(games.length).padStart(2, "0")} TITLES</span>
-          </div>
-          <h1 id="catalog-title">
-            Find your <em>next move.</em>
-          </h1>
-          <div className="studio-catalog__intro-bottom">
-            <p>
-              One small studio. Three very different puzzles. All built around clear rules,
-              thoughtful pauses, and the pleasure of figuring it out.
-            </p>
-            <a href="#game-nova-mahjong" className="studio-action studio-action--dark">
-              Explore the index <ArrowDown size={19} aria-hidden="true" />
+      <PageIntro
+        eyebrow="01 / The games"
+        title="Find your"
+        accent="next move."
+        description="Three different puzzles. One shared idea: clear rules, thoughtful pauses, and the pleasure of figuring it out."
+        meta={`${String(games.length).padStart(2, "0")} games / Free to install / Android`}
+      >
+        <nav className="studio-catalog__quicklinks" aria-label="Jump to a game">
+          {games.map((game, index) => (
+            <a key={game.slug} href={`#game-${game.slug}`}>
+              <span>0{index + 1}</span>
+              {game.title}
+              <ArrowUpRight size={16} aria-hidden="true" />
             </a>
-          </div>
-          <nav className="studio-catalog__quicklinks" aria-label="Jump to a game">
-            {games.map((game, index) => (
-              <a key={game.slug} href={`#game-${game.slug}`}>
-                <span>0{index + 1}</span>
-                {game.title}
-                <ArrowUpRight size={16} aria-hidden="true" />
-              </a>
-            ))}
-          </nav>
-        </div>
-      </section>
+          ))}
+        </nav>
+      </PageIntro>
       <section className="studio-collection studio-collection--catalog" aria-label="Game catalog">
         <div className="studio-shell studio-game-list">
           {games.map((game, index) => (

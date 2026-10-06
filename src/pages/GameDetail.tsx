@@ -42,7 +42,7 @@ const GameDetail = () => {
   const hasBoardShots = gallery.some((item) => item.kind === "screen");
 
   return (
-    <article className="site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
+    <article className="site-page studio-shell">
       <Seo
         title={`${game.title} - Free Puzzle Game`}
         description={game.description}

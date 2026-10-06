@@ -1,15 +1,16 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
 import { GameFeatureRow } from "@/components/common/GameFeatureRow";
+import { HeroPlayObject } from "@/components/common/HeroPlayObject";
+import { NoteCard } from "@/components/common/NoteCard";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
-import { getBlogPath, getPostsByNewest } from "@/data/blog";
+import { getPostsByNewest } from "@/data/blog";
 import { GAMES, getGamesByNewest } from "@/data/games";
 import { REVEAL } from "@/lib/reveal";
 import { ORGANIZATION_SCHEMA, WEBSITE_SCHEMA } from "@/lib/schema";
-import { formatDate } from "@/lib/utils";
 
 const TONES: Record<string, string> = {
   "nova-mahjong": "mahjong",
@@ -69,35 +70,15 @@ export default function Home() {
           >
             <div className="studio-hero__orbit studio-hero__orbit--one" aria-hidden="true" />
             <div className="studio-hero__orbit studio-hero__orbit--two" aria-hidden="true" />
-            <span className="studio-hero__stage-label">PLAY OBJECT / 0{activeIndex + 1}</span>
-            <AnimatePresence mode="sync" initial={false}>
-              <motion.div
-                key={activeGame.slug}
-                className="studio-hero__artwork"
-                initial={{ opacity: 0, y: 26, rotate: -5, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, rotate: -3, scale: 1 }}
-                exit={{ opacity: 0, y: -18, rotate: 3, scale: 0.96 }}
-                transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <img
-                  src={activeGame.image}
-                  alt={`${activeGame.title} key art`}
-                  width={1200}
-                  height={630}
-                  fetchPriority={activeIndex === 0 ? "high" : "auto"}
-                />
-                <div className="studio-hero__artwork-foot">
-                  <span>VeryFun Studio</span>
-                  <span>001 — 00{activeIndex + 1}</span>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-            <span className="studio-hero__spark studio-hero__spark--one" aria-hidden="true">
-              ✳
+            <span className="studio-hero__stage-label">
+              {activeGame.slug === "nova-mahjong" ? "ON THE BOARD" : "GAME ARTWORK"} / 0
+              {activeIndex + 1}
             </span>
-            <span className="studio-hero__spark studio-hero__spark--two" aria-hidden="true">
-              ✦
-            </span>
+            <HeroPlayObject
+              slug={activeGame.slug}
+              title={activeGame.title}
+              image={activeGame.image}
+            />
             <div className="studio-hero__stage-bottom" aria-live="polite">
               <div>
                 <span>Now showing</span>
@@ -198,20 +179,8 @@ export default function Home() {
             </Link>
           </div>
           <div className="studio-notes__grid">
-            {notes.map((note, index) => (
-              <Link key={note.slug} to={getBlogPath(note)} className="studio-note-card">
-                <span className="studio-note-card__meta">
-                  <span>
-                    0{index + 1} / {note.category}
-                  </span>
-                  <time dateTime={note.date}>{formatDate(note.date)}</time>
-                </span>
-                <h3>{note.title}</h3>
-                <p>{note.excerpt}</p>
-                <span className="studio-note-card__arrow">
-                  <ArrowUpRight size={22} aria-hidden="true" />
-                </span>
-              </Link>
+            {notes.map((note) => (
+              <NoteCard key={note.id} post={note} />
             ))}
           </div>
         </div>

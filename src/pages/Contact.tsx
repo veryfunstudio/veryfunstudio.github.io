@@ -1,99 +1,91 @@
-import { motion } from "framer-motion";
-import { Code2, Mail, SquareArrowOutUpRight } from "lucide-react";
+import { ArrowUpRight, Code2, Mail } from "lucide-react";
+import { PageIntro } from "@/components/common/PageIntro";
 import { Seo } from "@/components/seo/Seo";
 import { BRAND } from "@/lib/constants";
-import { REVEAL } from "@/lib/reveal";
 
-const CONTACT_INFO = [
+const CONTACTS = [
   {
-    icon: <Mail size={20} />,
-    title: "Player feedback",
+    label: "Email the studio",
     value: BRAND.email,
-    link: `mailto:${BRAND.email}`,
+    href: `mailto:${BRAND.email}`,
+    icon: Mail,
     external: false,
   },
   {
-    icon: <Code2 size={20} />,
-    title: "Code notes",
+    label: "Code & projects",
     value: "github.com/veryfunstudio",
-    link: BRAND.social.github,
+    href: BRAND.social.github,
+    icon: Code2,
     external: true,
   },
   {
-    icon: <SquareArrowOutUpRight size={20} />,
-    title: "Studio updates",
+    label: "Studio updates",
     value: BRAND.social.xHandle,
-    link: BRAND.social.x,
+    href: BRAND.social.x,
+    icon: ArrowUpRight,
     external: true,
   },
-] as const;
-
-const Contact = () => {
+];
+export default function Contact() {
   return (
-    <div className="workshop-page">
+    <div className="studio-page">
       <Seo
         title="Contact Us"
-        description={`Get in touch with ${BRAND.name} - email, X (Twitter), or GitHub. We'd love to hear from players and partners.`}
+        description={`Get in touch with ${BRAND.name} — feedback, partnerships, and questions from players.`}
         path="/contact"
       />
-
-      <section className="contact-hero">
-        <div className="workshop-shell contact-hero__grid">
-          <div className="contact-hero-copy">
-            <p className="eyebrow">Contact</p>
-            <h1>
-              Let's build something <span>fun</span> together.
-            </h1>
-            <p>
-              Send player feedback, partnership context, press questions, or bug reports. Email is
-              the fastest route.
-            </p>
-            <a href={`mailto:${BRAND.email}`} className="workshop-button workshop-button--accent">
-              <Mail size={16} /> Email the studio
+      <PageIntro
+        eyebrow="04 / Get in touch"
+        title="Your next move?"
+        accent="Say hello."
+        description="A puzzle you love, a detail we could improve, or an idea for working together. We would like to hear it."
+        meta="Players & partners welcome"
+      />
+      <section className="studio-shell contact-layout">
+        <div className="contact-channels">
+          {CONTACTS.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noopener noreferrer" : undefined}
+            >
+              <span className="contact-channels__icon">
+                <item.icon size={22} />
+              </span>
+              <div>
+                <span className="studio-kicker">{item.label}</span>
+                <strong>{item.value}</strong>
+              </div>
+              <ArrowUpRight size={20} />
             </a>
-            <div className="contact-routes">
-              {CONTACT_INFO.map((item) => (
-                <a
-                  key={item.title}
-                  href={item.link}
-                  target={item.external ? "_blank" : undefined}
-                  rel={item.external ? "noopener noreferrer" : undefined}
-                >
-                  <span>{item.icon}</span>
-                  <div>
-                    <strong>{item.title}</strong>
-                    <em>{item.value}</em>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-          <div className="contact-workshop">
-            <div className="contact-workshop__card tactile-card">
-              <h2>Visit our workshop</h2>
-              <p>Independent, remote, and always close to the work.</p>
-              <img
-                src="/images/stitch/workshop-article.jpg"
-                alt="A wooden game-design workbench with a puzzle prototype"
-                width={900}
-                height={1000}
-              />
-              <span>Crafted with structural honesty.</span>
-            </div>
-          </div>
+          ))}
         </div>
-      </section>
-      <section className="contact-band">
-        <motion.div className="workshop-shell" {...REVEAL}>
-          <strong>Want to work with us?</strong>
+        <aside className="contact-note">
+          <span className="studio-kicker">A good place to start</span>
+          <h2>
+            Help us see
+            <br />
+            <em>what you see.</em>
+          </h2>
           <p>
-            Send the context, the constraint, and what a good outcome looks like. Email is the
-            fastest route.
+            For a game issue, include the game name, your device, and what happened. A screenshot
+            helps us understand the board.
           </p>
-        </motion.div>
+          <p>For a partnership, tell us the idea and what you would like to build together.</p>
+          <div className="contact-note__tiles" aria-hidden="true">
+            {["tile_bamboo_3", "tile_flower_orchid", "tile_dragon_red"].map((mark) => (
+              <img
+                key={mark}
+                src={`/game-assets/nova-mahjong/${mark}.png`}
+                alt=""
+                width={198}
+                height={241}
+              />
+            ))}
+          </div>
+        </aside>
       </section>
     </div>
   );
-};
-
-export default Contact;
+}

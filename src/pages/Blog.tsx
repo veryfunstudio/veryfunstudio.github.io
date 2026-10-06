@@ -1,18 +1,18 @@
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
+import { NoteCard } from "@/components/common/NoteCard";
+import { PageIntro } from "@/components/common/PageIntro";
+import { StudioCTA } from "@/components/common/StudioCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
 import { getBlogPath, getPostsByNewest } from "@/data/blog";
 import { SITE_URL } from "@/lib/constants";
-import { REVEAL, REVEAL_FADE } from "@/lib/reveal";
 import { formatDate } from "@/lib/utils";
 
-const Blog = () => {
-  const sortedPosts = getPostsByNewest();
-
+export default function Blog() {
+  const [featured, ...posts] = getPostsByNewest();
   return (
-    <div className="workshop-page">
+    <div className="studio-page">
       <Seo
         title="Studio Notes"
         description="Short production notes from VeryFun Studio on calm puzzle design, readable boards, mobile performance, and honest store pages."
@@ -24,7 +24,7 @@ const Blog = () => {
           "@type": "Blog",
           name: "VeryFun Studio Notes",
           url: `${SITE_URL}/blog`,
-          blogPost: sortedPosts.map((post) => ({
+          blogPost: [featured, ...posts].map((post) => ({
             "@type": "BlogPosting",
             headline: post.title,
             datePublished: post.date,
@@ -32,52 +32,57 @@ const Blog = () => {
           })),
         }}
       />
-
-      <section className="archive-hero">
-        <div className="workshop-shell archive-hero__grid">
+      <PageIntro
+        eyebrow="02 / Studio notes"
+        title="Behind"
+        accent="the board."
+        description="Thoughts on clear rules, quiet moments, and the small decisions that make a puzzle feel good."
+        meta={`${String(posts.length + 1).padStart(2, "0")} notes / From the studio`}
+      />
+      <section className="studio-shell journal-feature" aria-label="Latest studio note">
+        <Link
+          to={getBlogPath(featured)}
+          className="journal-feature__image"
+          aria-label={`Read ${featured.title}`}
+        >
+          <img src={featured.image} alt="" width={1200} height={630} fetchPriority="high" />
+        </Link>
+        <div className="journal-feature__copy">
+          <p className="studio-kicker">Latest note / {featured.category}</p>
+          <h2>
+            <Link to={getBlogPath(featured)}>{featured.title}</Link>
+          </h2>
+          <p>{featured.excerpt}</p>
           <div>
-            <p className="eyebrow">Archives</p>
-            <h1>Studio Notes</h1>
-            <p>
-              Design notes from behind the board, on clarity, pacing, and the small decisions that
-              make a puzzle feel good.
-            </p>
-          </div>
-          <div className="archive-count">
-            <strong>{String(sortedPosts.length).padStart(2, "0")}</strong>
-            <span>Published notes</span>
+            <time dateTime={featured.date}>{formatDate(featured.date)}</time>
+            <Link to={getBlogPath(featured)} className="studio-text-link">
+              Read the note <ArrowUpRight size={18} />
+            </Link>
           </div>
         </div>
       </section>
-      <section className="notes-index" aria-label="Studio notes index">
-        <motion.div className="workshop-shell" {...REVEAL}>
-          {sortedPosts.map((post, index) => (
-            <Link key={post.id} to={getBlogPath(post)} className="note-row">
-              <time dateTime={post.date}>{formatDate(post.date)}</time>
-              <span className="note-row__number">{String(index + 1).padStart(2, "0")}</span>
-              <div>
-                <strong>{post.title}</strong>
-                <small>{post.category}</small>
-              </div>
-              <ArrowRight size={18} />
-            </Link>
+      <section className="studio-shell journal-index" aria-label="Studio notes index">
+        <div className="studio-section-heading">
+          <div>
+            <p className="studio-kicker">The archive</p>
+            <h2>
+              More from <em>the studio.</em>
+            </h2>
+          </div>
+          <span className="studio-kicker">{String(posts.length).padStart(2, "0")} stories</span>
+        </div>
+        <div className="journal-grid">
+          {posts.map((post) => (
+            <NoteCard key={post.id} post={post} />
           ))}
-        </motion.div>
-      </section>
-      <section className="workshop-cta">
-        <div className="workshop-shell">
-          <motion.div className="workshop-cta__panel tactile-card" {...REVEAL_FADE}>
-            <p className="eyebrow">From thought to play</p>
-            <h2>Read the note. Open the board.</h2>
-            <p>Every studio note connects back to a real product decision in our small catalog.</p>
-            <Link to="/games" className="workshop-button workshop-button--accent">
-              Browse games <ArrowRight size={16} />
-            </Link>
-          </motion.div>
         </div>
       </section>
+      <StudioCTA
+        title="Read the note. Open the board."
+        description="The ideas behind our games make more sense with a puzzle in your hands."
+        to="/games"
+        label="Explore the games"
+      />
     </div>
   );
-};
-
-export default Blog;
+}

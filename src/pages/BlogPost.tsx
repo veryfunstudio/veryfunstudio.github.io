@@ -67,7 +67,7 @@ const BlogPost = () => {
   const postPath = getBlogPath(post);
 
   return (
-    <article className="article-detail site-page relative overflow-hidden px-[3.125vw] pt-28 pb-24 lg:pt-32">
+    <article className="article-detail site-page studio-shell">
       <Seo
         title={post.title}
         description={post.excerpt}

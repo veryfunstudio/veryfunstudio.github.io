@@ -1,30 +1,31 @@
+import { PageIntro } from "@/components/common/PageIntro";
 import { Seo } from "@/components/seo/Seo";
 import { BRAND, LEGAL_ENTITY_NAME } from "@/lib/constants";
 
 export default function Legal() {
   return (
-    <div className="workshop-page legal-page">
+    <div className="studio-page legal-page">
       <Seo
         title="Legal"
         description={`Privacy policy and terms of service for ${LEGAL_ENTITY_NAME} and our mobile puzzle games.`}
         path="/legal"
       />
 
-      <header className="archive-hero">
-        <div className="workshop-shell">
-          <p className="eyebrow">Legal</p>
-          <h1>Privacy and terms</h1>
-          <p>We keep our games simple. Our legal language tries to be simple too.</p>
-        </div>
-      </header>
+      <PageIntro
+        eyebrow="The small print"
+        title="Privacy"
+        accent="& terms."
+        description="We keep our games simple. Our legal language tries to be simple too."
+        meta="Updated July 17, 2026"
+      />
 
-      <div className="workshop-shell legal-layout">
+      <div className="studio-shell legal-layout">
         <nav aria-label="Legal sections">
           <a href="#privacy-heading">Privacy policy</a>
           <a href="#terms-heading">Terms of service</a>
           <span>Updated July 17, 2026</span>
         </nav>
-        <main>
+        <div className="legal-copy">
           <section aria-labelledby="privacy-heading">
             <h2 id="privacy-heading">Privacy policy</h2>
             <p>
@@ -60,7 +61,7 @@ export default function Legal() {
               here with an updated date.
             </p>
           </section>
-        </main>
+        </div>
       </div>
     </div>
   );
