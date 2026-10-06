@@ -37,7 +37,16 @@ const TARGETS = [
   { name: "home-mobile-tall-390", path: "/", width: 390, height: 2600 },
   { name: "games-tall-1440", path: "/games", width: 1440, height: 2200 },
   { name: "about-tall-1440", path: "/about", width: 1440, height: 2800 },
+  { name: "blog-desktop-1440", path: "/blog", width: 1440, height: 900 },
   { name: "blog-tall-1440", path: "/blog", width: 1440, height: 2200 },
+  { name: "blog-mobile-390", path: "/blog", width: 390, height: 1800 },
+  { name: "legal-tall-1440", path: "/legal", width: 1440, height: 2000 },
+  {
+    name: "article-tall-1440",
+    path: "/blog/why-nova-mahjong-uses-large-clear-tiles",
+    width: 1440,
+    height: 3000,
+  },
   { name: "contact-tall-1440", path: "/contact", width: 1440, height: 1600 },
   { name: "game-detail-tall-1440", path: "/games/nova-mahjong", width: 1440, height: 2800 },
 ];
@@ -77,7 +86,10 @@ try {
     for (let attempt = 1; attempt <= 3; attempt++) {
       await execFileAsync(chrome, [
         "--headless=new",
-        "--disable-gpu",
+        // Deterministic software WebGL includes the real 3D scene in the baseline.
+        "--use-gl=angle",
+        "--use-angle=swiftshader",
+        "--enable-unsafe-swiftshader",
         "--hide-scrollbars",
         "--force-prefers-reduced-motion=reduce",
         ...(process.env.CI ? ["--no-sandbox"] : []),

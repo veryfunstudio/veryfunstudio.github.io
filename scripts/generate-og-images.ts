@@ -39,23 +39,23 @@ const styles = `
   @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@600;700&display=swap');
   * { box-sizing: border-box; }
   html, body { width: 1200px; height: 630px; margin: 0; overflow: hidden; }
-  body { background: #f6f4ed; color: #172333; font-family: 'Space Grotesk', Arial, sans-serif; }
+  body { background: #f7f5ef; color: #203b33; font-family: 'Space Grotesk', Arial, sans-serif; }
   .card { position: relative; display: grid; grid-template-columns: 1fr 0.88fr; width: 100%; height: 100%; overflow: hidden; }
   .copy { display: flex; flex-direction: column; justify-content: center; padding: 70px 56px 70px 68px; }
   .kicker, .bottom, .stage-label, .stage-foot { font-family: 'DM Mono', monospace; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; }
   .kicker { display: flex; align-items: center; gap: 12px; margin: 0 0 38px; font-size: 15px; }
-  .kicker::before { width: 10px; height: 10px; border-radius: 50%; background: #e76843; content: ''; }
+  .kicker::before { width: 10px; height: 10px; border-radius: 50%; background: #ca5837; content: ''; }
   h1 { max-width: 610px; margin: 0; font-size: 86px; font-weight: 700; letter-spacing: -0.085em; line-height: 0.91; }
-  h1 em { color: #e76843; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; letter-spacing: -0.05em; }
+  h1 em { color: #ca5837; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; letter-spacing: -0.05em; }
   .card.game h1 { font-size: 68px; line-height: 0.96; }
-  .description { max-width: 450px; margin: 34px 0 0; color: #3e4b55; font-size: 23px; line-height: 1.35; }
-  .bottom { position: absolute; right: 0; bottom: 0; left: 0; display: flex; justify-content: space-between; align-items: center; height: 58px; padding: 0 68px; border-top: 1px solid rgba(23,35,51,.18); background: #f6f4ed; font-size: 13px; }
+  .description { max-width: 450px; margin: 34px 0 0; color: #4d6259; font-size: 23px; line-height: 1.35; }
+  .bottom { position: absolute; right: 0; bottom: 0; left: 0; display: flex; justify-content: space-between; align-items: center; height: 58px; padding: 0 68px; border-top: 1px solid rgba(32,59,51,.18); background: #f7f5ef; font-size: 13px; }
   .bottom strong { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 19px; letter-spacing: -0.05em; text-transform: none; }
-  .stage { position: relative; display: grid; place-items: center; overflow: hidden; border-left: 1px solid rgba(23,35,51,.16); background: var(--tone); }
-  .stage::before { position: absolute; inset: 0; background-image: linear-gradient(rgba(23,35,51,.08) 1px, transparent 1px),linear-gradient(90deg, rgba(23,35,51,.08) 1px, transparent 1px); background-size: 48px 48px; content: ''; }
-  .stage::after { position: absolute; width: 85%; aspect-ratio: 1; border: 1px solid rgba(23,35,51,.2); border-radius: 50%; content: ''; }
+  .stage { position: relative; display: grid; place-items: center; overflow: hidden; border-left: 1px solid rgba(32,59,51,.16); background: var(--tone); }
+  .stage::before { position: absolute; inset: 0; background-image: linear-gradient(rgba(32,59,51,.08) 1px, transparent 1px),linear-gradient(90deg, rgba(32,59,51,.08) 1px, transparent 1px); background-size: 48px 48px; content: ''; }
+  .stage::after { position: absolute; width: 85%; aspect-ratio: 1; border: 1px solid rgba(32,59,51,.2); border-radius: 50%; content: ''; }
   .stage-label { position: absolute; z-index: 2; top: 36px; left: 36px; font-size: 13px; }
-  figure { position: relative; z-index: 1; width: 76%; margin: -30px 0 0; padding: 9px 9px 36px; border-radius: 4px; background: #fffefa; box-shadow: 0 28px 35px rgba(23,35,51,.25); transform: rotate(-4deg); }
+  figure { position: relative; z-index: 1; width: 76%; margin: -30px 0 0; padding: 9px 9px 36px; border-radius: 4px; background: #fffefa; box-shadow: 0 28px 35px rgba(32,59,51,.25); transform: rotate(-4deg); }
   figure img { display: block; width: 100%; aspect-ratio: 1.25; object-fit: cover; }
   figcaption { display: flex; justify-content: space-between; margin-top: 11px; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.07em; text-transform: uppercase; }
   .stage-foot { position: absolute; z-index: 2; right: 34px; bottom: 77px; left: 34px; font-size: 12px; }
@@ -114,17 +114,17 @@ await capture(
     title: "Make room for play.",
     description: "Small, satisfying puzzle games for the moments between everything else.",
     imageFileUrl: `file://${join(publicDir, newest.image)}`,
-    tone: "#dce8d9",
-    label: "Play object",
+    tone: "#e0e9d8",
+    label: "Our games",
     number: "01",
     home: true,
   }),
 );
 
 const tones: Record<string, string> = {
-  "nova-mahjong": "#dce8d9",
-  "tile-journey": "#e6ebb6",
-  "arrow-out": "#eecac1",
+  "nova-mahjong": "#e0e9d8",
+  "tile-journey": "#eee8ce",
+  "arrow-out": "#eee0d7",
 };
 for (const [index, game] of GAMES.entries()) {
   await capture(
@@ -133,7 +133,7 @@ for (const [index, game] of GAMES.entries()) {
       title: game.title,
       description: game.hook,
       imageFileUrl: `file://${join(publicDir, game.image)}`,
-      tone: tones[game.slug] ?? "#dce8d9",
+      tone: tones[game.slug] ?? "#e0e9d8",
       label: "Game",
       number: String(index + 1).padStart(2, "0"),
     }),
