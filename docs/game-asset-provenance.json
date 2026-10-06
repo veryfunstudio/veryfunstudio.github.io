@@ -1,0 +1,38 @@
+{
+  "novaMahjong": [
+    {
+      "file": "public/game-assets/nova-mahjong/tile_bamboo_3.png",
+      "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_bamboo_3.png",
+      "sha256": "5837d5af781a84c55c34a1a890deda9c31e50e18e4222ddf69087a7a4962f7c0"
+    },
+    {
+      "file": "public/game-assets/nova-mahjong/tile_character_5.png",
+      "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_character_5.png",
+      "sha256": "af7d370e733029b892d884e13d21e2912d46990efd48ee2e57e53577ed3a40e2"
+    },
+    {
+      "file": "public/game-assets/nova-mahjong/tile_dot_6.png",
+      "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_dot_6.png",
+      "sha256": "3fd9a624a62149c4a4b7b57ee36e57644631397802088d9726cc26ab60acd1b8"
+    },
+    {
+      "file": "public/game-assets/nova-mahjong/tile_dragon_red.png",
+      "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_dragon_red.png",
+      "sha256": "6ec200c15153dce41c0144b924f450a9d7b9e758a4df0618ab5fa99e48b1ba7a"
+    },
+    {
+      "file": "public/game-assets/nova-mahjong/tile_flower_chrysanthemum.png",
+      "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_flower_chrysanthemum.png",
+      "sha256": "d45faf6d3e432a961927873c1ff46bb8dd2898c45f37db37f51add7bc63ae177"
+    },
+    {
+      "file": "public/game-assets/nova-mahjong/tile_flower_orchid.png",
+      "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_flower_orchid.png",
+      "sha256": "5d2cc1dfa356d9a4ff90bf1cfb6b81042fb5ea1861197c44ee0923767229e322"
+    }
+  ],
+  "otherTitles": {
+    "tile-journey": "Existing public/images/tile-journey.webp key art; no source gameplay textures found in this workspace.",
+    "arrow-out": "Existing public/images/arrow-out.webp key art; no source gameplay textures found in this workspace."
+  }
+}
