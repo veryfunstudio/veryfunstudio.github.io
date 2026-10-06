@@ -1,8 +1,8 @@
 export const REVEAL = {
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 16 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-60px" },
-  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+  viewport: { once: true, margin: "-24px" },
+  transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
 } as const;
 
 /**
@@ -13,6 +13,6 @@ export const REVEAL = {
 export const REVEAL_FADE = {
   initial: { opacity: 0 },
   whileInView: { opacity: 1 },
-  viewport: { once: true, margin: "-60px" },
-  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+  viewport: { once: true, margin: "-24px" },
+  transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
 } as const;
