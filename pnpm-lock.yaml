@@ -188,8 +188,8 @@ importers:
         specifier: ^1.58.0
         version: 1.58.0(@types/react@19.3.0)(react@19.3.1)
       morphicons:
-        specifier: ^1.7.1
-        version: 1.7.1(react@19.3.1)
+        specifier: ^2.0.0
+        version: 2.0.0(react@19.3.1)
       react:
         specifier: ^19.3.1
         version: 19.3.1
@@ -1375,8 +1375,8 @@ packages:
     resolution: {integrity: sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==}
     engines: {node: '>=8.6'}
 
-  morphicons@1.7.1:
-    resolution: {integrity: sha512-q5ylxy5/d7vBg0OAzanlooXf05PekovMYDuuQVpr6vAQZxl99lrJbaIi+jJ32PXQf9WEEaDO2pbNBsx1ZhEnFQ==}
+  morphicons@2.0.0:
+    resolution: {integrity: sha512-/pyqQjUhq8FUKz2SjJ6sXe4KjAa0QEmEbtzG13158/pl+G6bCJGvo1zIEDGNQ+Hagl69hIu4Mn9kJgTvvTf8Ew==}
     peerDependencies:
       react: '>=18'
       react-native: '>=0.71'
@@ -2498,7 +2498,7 @@ snapshots:
       braces: 3.0.3
       picomatch: 2.3.2
 
-  morphicons@1.7.1(react@19.3.1):
+  morphicons@2.0.0(react@19.3.1):
     optionalDependencies:
       react: 19.3.1
 
