@@ -1,1 +1,0 @@
-import{rt as e,t,tt as n}from"./jsx-runtime-B44YIOY1.js";var r=e(n(),1),i=t(),a=(0,r.memo)(({schema:e})=>(0,i.jsx)(`script`,{type:`application/ld+json`,children:JSON.stringify(e)}));export{a as t};
