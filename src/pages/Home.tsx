@@ -3,7 +3,7 @@ import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
 import { GameFeatureRow } from "@/components/common/GameFeatureRow";
-import { HeroPlayObject } from "@/components/common/HeroPlayObject";
+import { MahjongBoard } from "@/components/common/MahjongBoard";
 import { NoteCard } from "@/components/common/NoteCard";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
@@ -24,6 +24,11 @@ export default function Home() {
   const notes = getPostsByNewest().slice(0, 2);
   const [activeIndex, setActiveIndex] = useState(0);
   const activeGame = featuredGames[activeIndex] ?? featuredGames[0];
+  // The board is Nova Mahjong's, so it only appears while that game is
+  // selected. The other two titles have verified key art but no source
+  // gameplay assets, so they keep the poster treatment rather than
+  // borrowing a board that is not theirs.
+  const showBoard = activeGame.slug === "nova-mahjong";
 
   return (
     <div className="studio-page">
@@ -71,14 +76,15 @@ export default function Home() {
             <div className="studio-hero__orbit studio-hero__orbit--one" aria-hidden="true" />
             <div className="studio-hero__orbit studio-hero__orbit--two" aria-hidden="true" />
             <span className="studio-hero__stage-label">
-              {activeGame.slug === "nova-mahjong" ? "ON THE BOARD" : "GAME ARTWORK"} / 0
-              {activeIndex + 1}
+              {showBoard ? "PLAY IT HERE" : "GAME ARTWORK"} / 0{activeIndex + 1}
             </span>
-            <HeroPlayObject
-              slug={activeGame.slug}
-              title={activeGame.title}
-              image={activeGame.image}
-            />
+            {showBoard ? (
+              <MahjongBoard />
+            ) : (
+              <div className="studio-hero__poster">
+                <img src={activeGame.image} alt={`${activeGame.title} key art`} />
+              </div>
+            )}
             <div className="studio-hero__stage-bottom" aria-live="polite">
               <div>
                 <span>Now showing</span>
