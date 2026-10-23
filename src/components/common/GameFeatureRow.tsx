@@ -29,12 +29,11 @@ export function GameFeatureRow({ game, index }: GameFeatureRowProps) {
       </div>
       <div className="studio-game-row__content">
         <div className="studio-game-row__top">
-          <span>GAME / {number}</span>
           <span>{formatGameTags(game)}</span>
         </div>
         <div className="studio-game-row__identity">
           <img src={game.icon} alt="" width={56} height={56} loading="lazy" />
-          <span>Free to install · Android</span>
+          <span>Free on Android</span>
         </div>
         <h3>{game.title}</h3>
         <p className="studio-game-row__hook">{game.hook}</p>

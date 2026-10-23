@@ -115,9 +115,6 @@ export function GameLoupe({ src, alt, naturalWidth, naturalHeight }: Props) {
           }}
         />
       )}
-      <span className="studio-loupe__hint" aria-hidden="true">
-        Look closer
-      </span>
     </button>
   );
 }

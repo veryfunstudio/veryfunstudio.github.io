@@ -1,30 +1,92 @@
 @import "tailwindcss/index.css";
 
+/* Palette: Radix Colors.
+ *
+ * The scales are named for what they are, not for where they sit on a
+ * wheel — Radix's own convention, and the reason its ramps can be swapped
+ * without re-tuning contrast. The mapping here:
+ *
+ *   sand     the paper the site is printed on
+ *   sage     the board the games are played on
+ *   tomato   the one action colour (links, the current item)
+ *   gray     neutral text and rules
+ *
+ * Every step below is a Radix value. Nothing here is a hand-mixed hex. */
 @theme {
   --font-sans: "DM Sans", "Avenir Next", system-ui, sans-serif;
   --font-display: "Space Grotesk", "Avenir Next", system-ui, sans-serif;
   --font-serif: "Instrument Serif", Georgia, serif;
   --font-mono: "DM Mono", ui-monospace, monospace;
-  --color-background: #f7f5ef;
-  --color-foreground: #203b33;
-  --color-foreground-soft: #4d6259;
-  --color-muted: #5d6c65;
-  --color-surface: #fffefa;
-  --color-surface-warm: #eeece3;
-  --color-surface-soft: #faf9f4;
-  --color-surface-tint: #e7eee3;
-  --color-accent: #ca5837;
-  --color-accent-hover: #ac4629;
-  --color-accent-strong: #ac4629;
-  --color-secondary: #244f41;
-  --color-highlight: #dae8cb;
-  --color-highlight-soft: #eef3e6;
-  --color-border: #d4d9ce;
-  --color-border-soft: #e3e6dd;
-  --color-border-strong: #9cafa1;
-  --color-focus: #ac4629;
-  --radius-card: 1.25rem;
-  --radius-button: 0.65rem;
+
+  /* Radix sand — the paper */
+  --color-sand-1: #fdfdfc;
+  --color-sand-2: #f9f9f8;
+  --color-sand-3: #f1f0ef;
+  --color-sand-4: #e9e8e6;
+  --color-sand-5: #e2e1de;
+  --color-sand-6: #dad9d6;
+  --color-sand-7: #cfceca;
+  --color-sand-8: #bcbbb5;
+  --color-sand-9: #8d8d86;
+  --color-sand-10: #82827c;
+  --color-sand-11: #63635e;
+  --color-sand-12: #21201c;
+
+  /* Radix sage — the board */
+  --color-sage-1: #fbfdfc;
+  --color-sage-2: #f7f9f8;
+  --color-sage-3: #eef1f0;
+  --color-sage-4: #e6e9e8;
+  --color-sage-5: #dfe2e0;
+  --color-sage-6: #d7dad9;
+  --color-sage-7: #cbcfcd;
+  --color-sage-8: #b8bcba;
+  --color-sage-9: #868e8b;
+  --color-sage-10: #7c8481;
+  --color-sage-11: #5f6563;
+  --color-sage-12: #1a211e;
+
+  /* Radix tomato — the action colour */
+  --color-tomato-3: #feebe7;
+  --color-tomato-5: #ffcdc2;
+  --color-tomato-9: #e54d2e;
+  --color-tomato-10: #dd4425;
+  --color-tomato-11: #d13415;
+
+  /* Radix gray — neutrals */
+  --color-gray-3: #f0f0f0;
+  --color-gray-5: #e0e0e0;
+  --color-gray-6: #d9d9d9;
+  --color-gray-9: #8d8d8d;
+  --color-gray-10: #838383;
+  --color-gray-11: #646464;
+  --color-gray-12: #202020;
+
+  /* The site's semantic roles, all pointing at the ramps above.
+     Muted is sage-11 rather than sage-9: sage-9 only reaches 3.3:1 on
+     the paper surfaces, which is below AA for body text, and this token
+     carries small print. */
+  --color-background: #f9f9f8;
+  --color-foreground: #21201c;
+  --color-foreground-soft: #63635e;
+  --color-muted: #5f6563;
+  --color-surface: #fdfdfc;
+  --color-surface-warm: #f1f0ef;
+  --color-surface-soft: #f7f9f8;
+  --color-surface-tint: #eef1f0;
+  --color-accent: #d13415;
+  --color-accent-hover: #dd4425;
+  --color-accent-strong: #d13415;
+  --color-secondary: #1a211e;
+  --color-highlight: #e6e9e8;
+  --color-highlight-soft: #f7f9f8;
+  --color-border: #e2e1de;
+  --color-border-soft: #e9e8e6;
+  --color-border-strong: #b8bcba;
+  --color-focus: #dd4425;
+
+  --radius-card: 0.5rem;
+  --radius-button: 0.375rem;
 }
 
 :root {
@@ -32,6 +94,9 @@
   --site-gutter: clamp(1.25rem, 4vw, 4rem);
   --header-height: 5rem;
   --space-section: clamp(4rem, 7vw, 7rem);
+  /* One motion setting for the whole site. */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration: 250ms;
 }
 html {
   scroll-behavior: smooth;
@@ -70,7 +135,7 @@ h2 {
   font-size: clamp(2.2rem, 4vw, 4rem);
 }
 h3 {
-  font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+  font-size: 1.125rem;
 }
 h1 em,
 h2 em {
@@ -125,7 +190,7 @@ h2[id] {
 .eyebrow {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: 0.75rem;
   font-weight: 400;
   letter-spacing: 0.08em;
   line-height: 1.5;
@@ -150,14 +215,14 @@ h2[id] {
   justify-content: center;
   gap: 1.1rem;
   padding: 0.8rem 1.2rem;
-  border: 1px solid var(--color-border-strong);
+  border: 0.5px solid var(--color-border-strong);
   border-radius: var(--radius-button);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.4;
   transition:
-    background 180ms ease,
-    transform 180ms ease;
+    background var(--duration) var(--ease-out),
+    transform var(--duration) var(--ease-out);
 }
 .studio-action--dark,
 .pill-button--accent {
@@ -177,8 +242,8 @@ h2[id] {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  border-bottom: 1px solid var(--color-border-strong);
-  font-size: 0.9rem;
+  border-bottom: 0.5px solid var(--color-border-strong);
+  font-size: 0.875rem;
   font-weight: 600;
 }
 .studio-text-link:hover {

@@ -46,7 +46,7 @@ export const GAMES: Game[] = [
     packageId: "com.veryfuncompany.mahjongjourney",
     title: "Nova Mahjong For Seniors",
     description:
-      "A calm, classic mahjong solitaire with large clear tiles, hundreds of handcrafted puzzles, and no time limits - built for relaxed brain training.",
+      "A calm, classic mahjong solitaire with large clear tiles, hundreds of handcrafted puzzles, and no time limits, built for relaxed brain training.",
     fullDescription:
       "Enjoy a relaxing tile-matching experience with Nova Mahjong For Seniors — a calm and classic mahjong puzzle game designed for seniors and anyone who loves peaceful brain training. Whether you are new to mahjong or already enjoy classic tile-matching games, Nova Mahjong For Seniors is easy to learn and satisfying to play. Match identical tiles, clear the board, and enjoy a soothing journey through beautifully crafted mahjong puzzles. With classic gameplay, large clear tiles, helpful boosters, and offline support, every level is comfortable, stress-free, and gentle on attention.",
     icon: "/images/nova-mahjong-icon.webp",
@@ -112,7 +112,7 @@ export const GAMES: Game[] = [
     packageId: "com.veryfun.tilejourney",
     title: "Tile Journey",
     description:
-      "A relaxing 3D tile-matching adventure across hand-crafted themed worlds - match three, plan ahead, and unwind at your own pace.",
+      "A relaxing 3D tile-matching adventure across hand-crafted themed worlds. Match three, plan ahead, and unwind at your own pace.",
     fullDescription:
       "Enjoy a relaxing 3D tile-matching adventure with Tile Journey — a calm match-three puzzle game across hand-crafted themed worlds. Match three identical tiles to clear the stacked layers, plan ahead to keep your tile slots open, and travel through thousands of levels with no time limits. Use shuffle, undo, and free match when you need help, and play fully offline anywhere.",
     icon: "/images/tile-journey-icon.webp",
@@ -177,7 +177,7 @@ export const GAMES: Game[] = [
     packageId: "com.veryfuncompany.kittyescape",
     title: "Arrow Out",
     description:
-      "A deceptively simple arrow-tile puzzle where every move matters - clear the grid, one direction at a time.",
+      "A deceptively simple arrow-tile puzzle where every move matters. Clear the grid, one direction at a time.",
     fullDescription:
       "Challenge your brain with Arrow Out — a relaxing yet surprisingly tricky arrow-tile puzzle game. Every tile points in a direction, and your goal is to send each arrow off the grid without it being blocked by another. Plan a few moves ahead, untangle the chain, and clear the board. With hundreds of handcrafted levels, no time limits, helpful hints, and a clean minimal visual style, Arrow Out is easy to learn and satisfying to solve.",
     icon: "/images/arrow-out-icon.webp",

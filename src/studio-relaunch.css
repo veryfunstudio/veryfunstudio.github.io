@@ -1,8 +1,8 @@
 /* biome-ignore-all lint/style/noDescendingSpecificity: Component-scoped descendants target disjoint markup; responsive rules follow base components. */
 /* One component system for the complete studio site. Tokens live in index.css. */
 .site-header {
-  border-bottom: 1px solid var(--color-border);
-  background: rgb(247 245 239 / 96%);
+  border-bottom: 0.5px solid var(--color-border);
+  background: rgb(249 249 248 / 96%);
   backdrop-filter: blur(14px);
 }
 .site-header__bar {
@@ -21,16 +21,16 @@
 }
 .site-header__wordmark {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.055em;
 }
 .site-header__brand-tag {
   margin-left: 0.6rem;
   padding-left: 1rem;
-  border-left: 1px solid var(--color-border);
+  border-left: 0.5px solid var(--color-border);
   color: var(--color-muted);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
 }
 .site-header__nav {
   align-items: center;
@@ -43,7 +43,7 @@
   align-items: center;
   padding: 0.5rem 0.85rem;
   color: var(--color-foreground-soft);
-  font-size: 0.83rem;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 .site-header__nav-link:hover {
@@ -58,7 +58,7 @@
   bottom: 0;
   left: 0.85rem;
   height: 3px;
-  border-radius: 3px;
+  border-radius: var(--radius-button);
   background: var(--color-accent);
 }
 .site-header__menu {
@@ -71,11 +71,11 @@
   display: grid;
 }
 .site-header__mobile-link {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
   border-radius: 0;
   padding: 1rem 0;
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 2.25rem;
   letter-spacing: -0.045em;
 }
 .site-header__mobile-link[aria-current="page"] {
@@ -92,12 +92,12 @@
   justify-content: space-between;
   gap: 1rem;
   padding-bottom: 1.3rem;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
 }
 .page-intro__meta > span:last-child {
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -109,7 +109,7 @@
   max-width: 47ch;
   margin-top: 1.7rem;
   color: var(--color-foreground-soft);
-  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  font-size: 1.125rem;
   line-height: 1.65;
 }
 .studio-section-heading {
@@ -134,14 +134,14 @@
   margin-top: 4rem;
   margin-bottom: var(--space-section);
   padding: 3rem;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-highlight-soft);
 }
 .studio-cta h2 {
   max-width: 21ch;
   margin: 0.8rem 0 1rem;
-  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-size: 2.25rem;
 }
 .studio-cta p:not(.studio-kicker) {
   max-width: 53ch;
@@ -153,16 +153,16 @@
 
 /* Home: the game's own objects on a quiet studio stage. */
 .studio-hero {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
 }
 .studio-hero__topline {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   padding-block: 1.2rem;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
   font-family: var(--font-mono);
-  font-size: 0.61rem;
+  font-size: 0.75rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -187,7 +187,7 @@
   max-width: 36ch;
   margin-top: 2rem;
   color: var(--color-foreground-soft);
-  font-size: 1.06rem;
+  font-size: 1rem;
 }
 .studio-hero__actions {
   display: flex;
@@ -197,25 +197,25 @@
   margin-top: 2rem;
 }
 .studio-hero__stage {
-  --stage: #e0e9d8;
+  --stage: #eef1f0;
   position: relative;
   isolation: isolate;
   min-height: 620px;
   overflow: hidden;
   border-inline: 1px solid var(--color-border);
   background: var(--stage);
-  transition: background 300ms ease;
+  transition: background var(--duration) var(--ease-out);
 }
 .studio-hero__stage--tile {
-  --stage: #eee8ce;
+  --stage: #f1f0ef;
 }
 .studio-hero__stage--arrow {
-  --stage: #eee0d7;
+  --stage: #feebe7;
 }
 /* The board brings its own dark felt; the pale stage behind it would only
    fight with the tiles. */
 .studio-hero__stage--mahjong {
-  background: #0f2b20;
+  background: #1a211e;
 }
 /* With a playable board in the stage, the stage stops being a poster frame
    and becomes a column: the board takes the room, and the caption sits under
@@ -226,7 +226,7 @@
   padding: 4rem 1.5rem 1.5rem;
 }
 .studio-hero__stage--mahjong .studio-hero__stage-label {
-  color: rgb(232 240 227 / 72%);
+  color: #b8bcba;
 }
 .studio-hero__stage--mahjong .studio-hero__stage-bottom {
   position: static;
@@ -234,16 +234,16 @@
   padding: 0;
 }
 .studio-hero__stage--mahjong .studio-hero__stage-bottom span {
-  color: rgb(232 240 227 / 58%);
+  color: #868e8b;
 }
 .studio-hero__stage--mahjong .studio-hero__stage-bottom strong {
-  color: #f2f6ec;
+  color: #f7f9f8;
 }
 .studio-hero__stage--mahjong .studio-hero__stage-bottom a {
-  border-color: rgb(232 240 227 / 45%);
+  border-color: #5f6563;
 }
 .studio-hero__stage--mahjong .studio-hero__stage-bottom a:hover {
-  background: rgb(232 240 227 / 12%);
+  background: #2a211e;
 }
 /* The poster treatment for the titles that have key art but no verified
    gameplay assets. */
@@ -256,10 +256,10 @@
 }
 .studio-hero__poster img {
   width: 100%;
-  border-radius: 0.65rem;
-  box-shadow: 0 1rem 2rem rgb(32 59 51 / 12%);
+  border-radius: var(--radius-button);
+  box-shadow: 0 1rem 2rem rgb(33 32 28 / 12%);
   transform: rotate(-3deg);
-  transition: transform 250ms ease;
+  transition: transform var(--duration) var(--ease-out);
 }
 .studio-hero__poster:hover img {
   transform: rotate(0) scale(1.02);
@@ -270,8 +270,8 @@
   inset: 0;
   content: "";
   background-image:
-    linear-gradient(rgb(32 59 51 / 4%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(32 59 51 / 4%) 1px, transparent 1px);
+    linear-gradient(rgb(33 32 28 / 4%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(33 32 28 / 4%) 1px, transparent 1px);
   background-size: 3rem 3rem;
 }
 .studio-hero__orbit {
@@ -281,7 +281,7 @@
   left: 50%;
   width: 83%;
   aspect-ratio: 1;
-  border: 1px solid rgb(32 59 51 / 10%);
+  border: 0.5px solid rgb(33 32 28 / 10%);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
@@ -294,7 +294,7 @@
   top: 1.5rem;
   left: 1.5rem;
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
 }
 .studio-hero__stage-bottom {
@@ -314,14 +314,14 @@
   display: block;
   margin-bottom: 0.4rem;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 .studio-hero__stage-bottom strong {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+  font-size: 1.125rem;
   letter-spacing: -0.055em;
   line-height: 1.2;
 }
@@ -331,9 +331,9 @@
   height: 44px;
   flex-shrink: 0;
   place-items: center;
-  border: 1px solid var(--color-foreground);
+  border: 0.5px solid var(--color-foreground);
   border-radius: 50%;
-  transition: background 180ms ease;
+  transition: background var(--duration) var(--ease-out);
 }
 .studio-hero__stage-bottom a:hover {
   background: var(--color-surface);
@@ -343,7 +343,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 0.5px solid var(--color-border);
 }
 .studio-hero__selectors {
   display: flex;
@@ -356,17 +356,17 @@
   align-items: center;
   gap: 0.65rem;
   padding: 1rem 1.3rem;
-  border-right: 1px solid var(--color-border);
-  font-size: 0.8rem;
+  border-right: 0.5px solid var(--color-border);
+  font-size: 0.875rem;
   font-weight: 600;
   text-align: left;
-  transition: background 180ms ease;
+  transition: background var(--duration) var(--ease-out);
 }
 .studio-hero__selectors button > span:first-child {
   align-self: start;
   color: var(--color-accent-strong);
   font-family: var(--font-mono);
-  font-size: 0.59rem;
+  font-size: 0.75rem;
 }
 .studio-hero__selectors button svg {
   flex-shrink: 0;
@@ -380,7 +380,7 @@
   gap: 0.6rem;
   align-items: center;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
 }
 /* Game catalog and reusable product rows. */
@@ -395,7 +395,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-surface);
 }
@@ -406,13 +406,13 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: #e0e9d8;
+  background: #eef1f0;
 }
 .studio-game-row--1 .studio-game-row__image {
-  background: #eee8ce;
+  background: #f1f0ef;
 }
 .studio-game-row--2 .studio-game-row__image {
-  background: #eee0d7;
+  background: #feebe7;
 }
 /* The loupe fills the panel and crops the key art to fill it, so the
    artwork reads at the size of the panel rather than as a small picture
@@ -423,7 +423,7 @@
   height: 100%;
   min-height: 360px;
   overflow: hidden;
-  border-radius: 0.65rem;
+  border-radius: var(--radius-button);
   cursor: crosshair;
 }
 .studio-loupe:focus-visible {
@@ -435,7 +435,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform var(--duration) var(--ease-out);
 }
 .studio-loupe:hover > img {
   transform: scale(1.03);
@@ -448,34 +448,22 @@
   box-shadow:
     0 0 0 3px var(--color-surface),
     0 0 0 5px var(--color-foreground),
-    0 1.2rem 2rem rgb(32 59 51 / 28%);
+    0 1.2rem 2rem rgb(33 32 28 / 28%);
   pointer-events: none;
 }
-.studio-loupe__hint {
-  position: absolute;
-  z-index: 3;
-  right: 0.9rem;
-  bottom: 0.9rem;
-  padding: 0.35rem 0.6rem;
-  border-radius: 2rem;
-  background: rgb(255 254 250 / 78%);
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transition: opacity 200ms ease;
-}
-.studio-loupe:hover .studio-loupe__hint,
-.studio-loupe:focus-visible .studio-loupe__hint {
-  opacity: 0;
-}
+/* The number sits on the artwork, so it needs a ground to read against
+   rather than a floating label. */
 .studio-game-row__image > span {
   position: absolute;
   z-index: 4;
-  top: 1.3rem;
-  left: 1.5rem;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.25rem 0.45rem;
+  border-radius: var(--radius-button);
+  background: rgb(26 33 30 / 72%);
+  color: #f7f9f8;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
 }
 .studio-game-row__content {
@@ -486,7 +474,7 @@
   justify-content: space-between;
   gap: 1rem;
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
 }
 .studio-game-row__identity {
@@ -498,17 +486,17 @@
 .studio-game-row__identity img {
   width: 44px;
   height: 44px;
-  border: 1px solid var(--color-border);
-  border-radius: 0.65rem;
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-button);
 }
 .studio-game-row__identity span {
   color: var(--color-muted);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
 }
 .studio-game-row h3 {
   max-width: 15ch;
   margin-top: 1rem;
-  font-size: clamp(2.1rem, 3.1vw, 3.2rem);
+  font-size: 2.25rem;
 }
 .studio-game-row__hook {
   margin-top: 1rem;
@@ -518,7 +506,7 @@
   max-width: 48ch;
   margin-top: 0.75rem;
   color: var(--color-foreground-soft);
-  font-size: 0.93rem;
+  font-size: 0.875rem;
 }
 .studio-game-row__links {
   display: flex;
@@ -531,8 +519,8 @@
   min-height: 44px;
   align-items: center;
   gap: 0.75rem;
-  border-bottom: 1px solid var(--color-border-strong);
-  font-size: 0.85rem;
+  border-bottom: 0.5px solid var(--color-border-strong);
+  font-size: 0.875rem;
   font-weight: 600;
 }
 .studio-game-row__links a:hover {
@@ -550,9 +538,9 @@
   min-height: 48px;
   gap: 0.75rem;
   padding: 0.75rem 1rem;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-button);
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   background: var(--color-surface);
 }
 .studio-catalog__quicklinks a:hover {
@@ -561,20 +549,20 @@
 .studio-catalog__quicklinks span {
   color: var(--color-accent-strong);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.75rem;
 }
 .studio-collection--catalog {
   padding-top: 0;
 }
 .studio-catalog__closing {
   padding: 2.5rem 0;
-  border-top: 1px solid var(--color-border);
+  border-top: 0.5px solid var(--color-border);
 }
 .studio-catalog__closing .studio-shell {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
 }
 
 /* Studio principles and journal cards use the same type and surface rules. */
@@ -593,27 +581,27 @@
   margin-top: 1.2rem;
 }
 .studio-principles__list {
-  border-top: 1px solid var(--color-border-strong);
+  border-top: 0.5px solid var(--color-border-strong);
 }
 .studio-principles__list article {
   display: grid;
   grid-template-columns: 2rem 1fr;
   gap: 0.5rem 1rem;
   padding: 1.7rem 0;
-  border-bottom: 1px solid var(--color-border-strong);
+  border-bottom: 0.5px solid var(--color-border-strong);
 }
 .studio-principles__list span {
   grid-row: span 2;
   color: var(--color-accent-strong);
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
 }
 .studio-principles__list h3 {
-  font-size: 1.5rem;
+  font-size: 1.125rem;
 }
 .studio-principles__list p {
   color: var(--color-foreground-soft);
-  font-size: 0.93rem;
+  font-size: 0.875rem;
 }
 .studio-notes,
 .journal-index {
@@ -629,12 +617,12 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-surface);
   transition:
-    transform 200ms ease,
-    border-color 200ms ease;
+    transform var(--duration) var(--ease-out),
+    border-color var(--duration) var(--ease-out);
 }
 .note-card:hover {
   border-color: var(--color-border-strong);
@@ -644,13 +632,13 @@
   overflow: hidden;
   padding: 1.5rem 2rem;
   background: var(--color-highlight-soft);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
 }
 .note-card__image img {
   width: 100%;
   height: 220px;
   object-fit: contain;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-button);
 }
 .note-card__body {
   display: flex;
@@ -666,18 +654,18 @@
   gap: 0.5rem;
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.59rem;
+  font-size: 0.75rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 .note-card h3 {
   margin-top: 1.3rem;
-  font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+  font-size: 1.125rem;
 }
 .note-card p {
   margin: 1rem 0 1.8rem;
   color: var(--color-foreground-soft);
-  font-size: 0.93rem;
+  font-size: 0.875rem;
 }
 .note-card__link {
   display: flex;
@@ -686,15 +674,15 @@
   justify-content: space-between;
   margin-top: auto;
   padding-top: 1rem;
-  border-top: 1px solid var(--color-border);
-  font-size: 0.85rem;
+  border-top: 0.5px solid var(--color-border);
+  font-size: 0.875rem;
   font-weight: 600;
 }
 .journal-feature {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-surface);
 }
@@ -706,14 +694,14 @@
 }
 .journal-feature__image img {
   width: 100%;
-  border-radius: 0.6rem;
+  border-radius: var(--radius-button);
 }
 .journal-feature__copy {
   padding: clamp(2rem, 3.5vw, 3.5rem);
 }
 .journal-feature__copy h2 {
   margin-top: 1.4rem;
-  font-size: clamp(2rem, 3.2vw, 3.1rem);
+  font-size: 2.25rem;
 }
 .journal-feature__copy h2 a:hover {
   color: var(--color-accent-strong);
@@ -733,7 +721,7 @@
 .journal-feature time {
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
 }
 
 /* About and contact are built from the actual game artwork. */
@@ -746,7 +734,7 @@
 }
 .studio-story__art {
   padding: 3rem;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-highlight);
 }
@@ -759,11 +747,11 @@
 }
 .asset-board > div {
   padding: 0.5rem;
-  border-radius: 0.8rem;
-  background: #fffefa;
+  border-radius: var(--radius-card);
+  background: #fdfdfc;
   box-shadow:
-    0 6px 0 #507259,
-    0 10px 15px rgb(32 59 51 / 10%);
+    0 6px 0 #5f6563,
+    0 10px 15px rgb(33 32 28 / 10%);
 }
 .asset-board img {
   width: 100%;
@@ -785,7 +773,7 @@
 }
 .studio-values {
   padding-block: var(--space-section);
-  border-top: 1px solid var(--color-border);
+  border-top: 0.5px solid var(--color-border);
 }
 .studio-values__grid {
   display: grid;
@@ -794,18 +782,18 @@
 }
 .studio-values__grid article {
   padding-top: 1.5rem;
-  border-top: 1px solid var(--color-border-strong);
+  border-top: 0.5px solid var(--color-border-strong);
 }
 .studio-values__grid article > span {
   color: var(--color-accent-strong);
 }
 .studio-values__grid h3 {
   margin: 1.5rem 0 1rem;
-  font-size: 1.8rem;
+  font-size: 1.125rem;
 }
 .studio-values__grid p {
   color: var(--color-foreground-soft);
-  font-size: 0.96rem;
+  font-size: 0.875rem;
 }
 .studio-shelf {
   padding-bottom: 2rem;
@@ -821,7 +809,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1.2rem;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-button);
   background: var(--color-surface);
 }
@@ -831,11 +819,11 @@
 .studio-shelf img {
   width: 48px;
   height: 48px;
-  border-radius: 0.7rem;
+  border-radius: var(--radius-card);
 }
 .studio-shelf strong {
   flex: 1;
-  font-size: 0.82rem;
+  font-size: 0.875rem;
   line-height: 1.4;
 }
 .studio-shelf svg {
@@ -848,7 +836,7 @@
   padding-bottom: var(--space-section);
 }
 .contact-channels {
-  border-top: 1px solid var(--color-border-strong);
+  border-top: 0.5px solid var(--color-border-strong);
 }
 .contact-channels > a {
   display: flex;
@@ -856,7 +844,7 @@
   gap: 1.2rem;
   min-height: 140px;
   padding: 1.8rem 0;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
 }
 .contact-channels > a:hover {
   color: var(--color-accent-strong);
@@ -867,7 +855,7 @@
   height: 48px;
   flex-shrink: 0;
   place-items: center;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: 50%;
 }
 .contact-channels > a > div {
@@ -878,7 +866,7 @@
   display: block;
   margin-top: 0.5rem;
   font-family: var(--font-display);
-  font-size: clamp(0.9rem, 1.5vw, 1.35rem);
+  font-size: 0.875rem;
   letter-spacing: -0.035em;
   overflow-wrap: anywhere;
 }
@@ -888,18 +876,18 @@
 .contact-note {
   overflow: hidden;
   padding: 2.5rem;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-highlight-soft);
 }
 .contact-note h2 {
   margin-top: 1.1rem;
-  font-size: 2.7rem;
+  font-size: 2.25rem;
 }
 .contact-note p {
   margin-top: 1.2rem;
   color: var(--color-foreground-soft);
-  font-size: 0.95rem;
+  font-size: 0.875rem;
 }
 .contact-note__tiles {
   display: flex;
@@ -911,9 +899,9 @@
   width: 25%;
   height: auto;
   padding: 0.4rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-button);
   background: var(--color-surface);
-  box-shadow: 0 5px 0 #507259;
+  box-shadow: 0 5px 0 #5f6563;
   transform: rotate(-8deg);
 }
 .contact-note__tiles img:nth-child(2) {
@@ -930,7 +918,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-surface);
 }
@@ -945,30 +933,30 @@
   gap: 0.7rem;
   margin-bottom: 2rem;
   color: var(--color-foreground-soft);
-  font-size: 0.8rem;
+  font-size: 0.875rem;
 }
 .game-detail-back:hover {
   color: var(--color-accent-strong);
 }
 .game-detail-mark {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 .game-detail-copy h1 {
   margin-top: 1rem;
-  font-size: clamp(2.7rem, 4.5vw, 4.7rem);
+  font-size: 2.25rem;
 }
 .game-detail-hook {
   margin-top: 1.5rem;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 .game-detail-copy > p {
   margin-top: 1.2rem;
   color: var(--color-foreground-soft);
-  font-size: 0.95rem;
+  font-size: 0.875rem;
 }
 .game-detail-actions {
   margin-top: 2rem;
@@ -988,11 +976,11 @@
 .game-detail-media img {
   width: 100%;
   height: auto;
-  border-radius: 0.6rem;
+  border-radius: var(--radius-button);
 }
 .game-detail-identity {
   padding: 1.5rem 2rem;
-  border-top: 1px solid var(--color-border-strong);
+  border-top: 0.5px solid var(--color-border-strong);
 }
 .game-detail-identity__app {
   display: flex;
@@ -1002,16 +990,16 @@
 .game-detail-identity__app img {
   width: 44px;
   height: 44px;
-  border-radius: 0.6rem;
+  border-radius: var(--radius-button);
 }
 .game-detail-identity__app strong,
 .game-detail-identity__app span {
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
 }
 .game-detail-identity__app span {
   color: var(--color-foreground-soft);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
 }
 .game-detail-identity dl {
   display: grid;
@@ -1022,12 +1010,12 @@
 .game-detail-identity dt {
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.57rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
 }
 .game-detail-identity dd {
   margin-top: 0.3rem;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
 }
 .game-detail-summary {
   display: grid;
@@ -1050,27 +1038,27 @@
 }
 .game-detail-summary__notes span {
   padding: 0.4rem 0.8rem;
-  border: 1px solid var(--color-border);
-  border-radius: 2rem;
-  font-size: 0.7rem;
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-card);
+  font-size: 0.75rem;
 }
 .game-detail-summary__features {
   align-self: center;
-  border-top: 1px solid var(--color-border-strong);
+  border-top: 0.5px solid var(--color-border-strong);
 }
 .game-detail-summary__features li {
   display: flex;
   gap: 1.5rem;
   padding: 1.6rem 0;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
 }
 .game-detail-summary__features span {
   color: var(--color-accent-strong);
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
 }
 .game-detail-summary__features strong {
-  font-size: 1.1rem;
+  font-size: 1.125rem;
   font-weight: 500;
 }
 .game-detail-faq,
@@ -1079,13 +1067,13 @@
   grid-template-columns: 0.8fr 1.2fr;
   gap: 4rem;
   padding-block: 3rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 0.5px solid var(--color-border);
 }
 .section-heading h2 {
   margin-top: 1rem;
 }
 details {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
 }
 summary {
   display: flex;
@@ -1103,7 +1091,7 @@ summary::-webkit-details-marker {
 summary > span:last-child {
   flex-shrink: 0;
   color: var(--color-accent-strong);
-  font-size: 1.3rem;
+  font-size: 1.125rem;
 }
 details[open] summary > span:last-child {
   transform: rotate(45deg);
@@ -1111,16 +1099,16 @@ details[open] summary > span:last-child {
 details p {
   padding: 0 2rem 1.5rem 0;
   color: var(--color-foreground-soft);
-  font-size: 0.95rem;
+  font-size: 0.875rem;
 }
 .related-strip {
   margin-top: 4rem;
   padding-top: 3rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 0.5px solid var(--color-border);
 }
 .related-strip__head h2 {
   margin-top: 0.8rem;
-  font-size: 2.2rem;
+  font-size: 2.25rem;
 }
 .related-strip__head p {
   margin-top: 0.8rem;
@@ -1141,7 +1129,7 @@ details p {
   justify-content: space-between;
   gap: 1rem;
   padding: 1.5rem;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-button);
   background: var(--color-surface);
 }
@@ -1155,14 +1143,14 @@ details p {
 }
 .related-card strong {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   letter-spacing: -0.03em;
 }
 .related-card span,
 .related-card time {
   margin-top: 0.4rem;
   color: var(--color-muted);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
 }
 .related-card time {
   margin: 0 0 0.6rem;
@@ -1192,7 +1180,7 @@ details p {
 }
 .game-detail-gallery__frame {
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
 }
 .game-detail-gallery__frame img {
@@ -1202,7 +1190,7 @@ details p {
 .game-detail-gallery figcaption {
   margin-top: 0.7rem;
   color: var(--color-muted);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
 }
 .article-hero > div {
   display: flex;
@@ -1210,12 +1198,12 @@ details p {
   gap: 1rem;
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
 }
 .article-hero h1 {
   margin-top: 1.5rem;
-  font-size: clamp(2.6rem, 4vw, 4.3rem);
+  font-size: 2.25rem;
 }
 .article-hero > p {
   margin-top: 1.5rem;
@@ -1231,7 +1219,7 @@ details p {
 .article-image img {
   width: 100%;
   height: auto;
-  border-radius: 0.6rem;
+  border-radius: var(--radius-button);
 }
 .article-summary,
 .article-body {
@@ -1241,13 +1229,13 @@ details p {
 .article-summary {
   margin-top: 4rem;
   padding: 2rem;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-highlight-soft);
 }
 .article-summary h2 {
   margin-top: 0.6rem;
-  font-size: 1.6rem;
+  font-size: 1.125rem;
 }
 .article-summary ul {
   display: grid;
@@ -1265,18 +1253,18 @@ details p {
 }
 .article-section h2 {
   margin-bottom: 1.4rem;
-  font-size: 2rem;
+  font-size: 2.25rem;
 }
 .article-section p {
   margin-top: 1rem;
   color: var(--color-foreground-soft);
-  font-size: 1.06rem;
+  font-size: 1rem;
   line-height: 1.9;
 }
 .article-next {
   padding-top: 3rem;
   margin-top: 3rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 0.5px solid var(--color-border);
 }
 .article-next__intro {
   display: flex;
@@ -1300,7 +1288,7 @@ details p {
   display: flex;
   gap: 1rem;
   padding: 1.5rem;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-surface);
 }
@@ -1311,20 +1299,20 @@ details p {
   display: block;
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
 }
 .article-related-card strong {
   display: block;
   margin-top: 0.8rem;
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.125rem;
   letter-spacing: -0.04em;
   line-height: 1.3;
 }
 .article-related-card p {
   margin-top: 1rem;
   color: var(--color-foreground-soft);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
 }
 .article-related-card > svg {
   flex-shrink: 0;
@@ -1347,15 +1335,15 @@ details p {
 }
 .legal-layout nav a {
   padding: 0.75rem 0;
-  border-bottom: 1px solid var(--color-border);
-  font-size: 0.9rem;
+  border-bottom: 0.5px solid var(--color-border);
+  font-size: 0.875rem;
 }
 .legal-layout nav a:hover {
   color: var(--color-accent-strong);
 }
 .legal-layout nav span {
   color: var(--color-muted);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
 }
 .legal-copy {
   max-width: 760px;
@@ -1364,7 +1352,7 @@ details p {
   margin-top: 4rem;
 }
 .legal-copy h2 {
-  font-size: 2.4rem;
+  font-size: 2.25rem;
 }
 .legal-copy p {
   margin-top: 1.4rem;
@@ -1390,7 +1378,7 @@ details p {
   text-align: center;
 }
 .error-panel h1 {
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-size: 2.25rem;
 }
 .error-panel p {
   color: var(--color-foreground-soft);
@@ -1398,14 +1386,14 @@ details p {
 .status-text {
   color: var(--color-accent-strong);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.875rem;
 }
 
 /* A consistent final chapter on every route. */
 .site-footer {
-  border-top: 1px solid var(--color-border);
+  border-top: 0.5px solid var(--color-border);
   background: var(--color-foreground);
-  color: #f7f5ef;
+  color: #f9f9f8;
 }
 .site-footer__shell {
   width: min(calc(100% - var(--site-gutter) * 2), var(--site-width));
@@ -1417,18 +1405,18 @@ details p {
   justify-content: space-between;
   gap: 3rem;
   padding-block: 4.5rem;
-  border-bottom: 1px solid rgb(247 245 239 / 20%);
+  border-bottom: 0.5px solid rgb(249 249 248 / 20%);
 }
 .studio-footer__invitation .studio-kicker {
-  color: #c0d0b8;
+  color: #b8bcba;
 }
 .studio-footer__invitation h2 {
   max-width: 16ch;
   margin-top: 1.3rem;
-  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-size: 2.25rem;
 }
 .studio-footer__invitation h2 em {
-  color: #d4e5b6;
+  color: #cbcfcd;
 }
 .studio-footer__contact {
   display: flex;
@@ -1437,15 +1425,15 @@ details p {
   align-items: center;
   gap: 2rem;
   padding: 0.8rem 1.2rem;
-  border: 1px solid #bdcdb0;
+  border: 0.5px solid #b8bcba;
   border-radius: var(--radius-button);
-  background: #d4e5b6;
+  background: #cbcfcd;
   color: var(--color-foreground);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 .studio-footer__contact:hover {
-  background: #edf5de;
+  background: #f7f9f8;
 }
 .studio-footer__middle {
   display: grid;
@@ -1459,7 +1447,7 @@ details p {
   align-items: center;
   gap: 0.75rem;
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: -0.04em;
 }
@@ -1469,8 +1457,8 @@ details p {
 }
 .studio-footer__middle > p {
   max-width: 30ch;
-  color: #c0cdc5;
-  font-size: 0.9rem;
+  color: #b8bcba;
+  font-size: 0.875rem;
 }
 .site-footer__nav {
   display: grid;
@@ -1481,10 +1469,10 @@ details p {
   display: flex;
   min-height: 36px;
   align-items: center;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
 }
 .site-footer__nav a:hover {
-  color: #d4e5b6;
+  color: #cbcfcd;
 }
 .site-footer__bottom {
   display: flex;
@@ -1492,11 +1480,11 @@ details p {
   align-items: center;
   gap: 2rem;
   padding-block: 1.5rem;
-  border-top: 1px solid rgb(247 245 239 / 20%);
+  border-top: 0.5px solid rgb(249 249 248 / 20%);
 }
 .site-footer__bottom > p {
-  color: #c0cdc5;
-  font-size: 0.7rem;
+  color: #b8bcba;
+  font-size: 0.75rem;
 }
 .site-footer__social {
   display: flex;
@@ -1507,11 +1495,11 @@ details p {
   width: 44px;
   height: 44px;
   place-items: center;
-  border: 1px solid rgb(247 245 239 / 25%);
+  border: 0.5px solid rgb(249 249 248 / 25%);
   border-radius: 50%;
 }
 .site-footer__social a:hover {
-  background: rgb(247 245 239 / 10%);
+  background: rgb(249 249 248 / 10%);
 }
 
 /* The same breakpoints apply to every page and component. */
@@ -1552,7 +1540,7 @@ details p {
   }
   .studio-hero__stage {
     min-height: 530px;
-    border-top: 1px solid var(--color-border);
+    border-top: 0.5px solid var(--color-border);
   }
   .studio-hero__selectors {
     width: 100%;
@@ -1580,7 +1568,7 @@ details p {
 }
 @media (max-width: 700px) {
   h1 {
-    font-size: clamp(2.8rem, 10vw, 4.2rem);
+    font-size: 2.25rem;
   }
   .page-intro {
     padding: 1.5rem 0 2.5rem;
@@ -1604,7 +1592,7 @@ details p {
     display: none;
   }
   .studio-hero__topline {
-    font-size: 0.51rem;
+    font-size: 0.75rem;
   }
   .studio-hero__copy {
     padding: 3rem 0;
@@ -1619,11 +1607,11 @@ details p {
     gap: 0.8rem;
   }
   .studio-hero__actions .studio-action {
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     padding-inline: 0.85rem;
   }
   .studio-hero__actions .studio-text-link {
-    font-size: 0.8rem;
+    font-size: 0.875rem;
   }
   .studio-hero__stage {
     min-height: 440px;
@@ -1641,7 +1629,7 @@ details p {
   }
   .studio-hero__stage-bottom strong {
     max-width: 24ch;
-    font-size: 1.18rem;
+    font-size: 1.125rem;
   }
   .studio-hero__rail {
     width: 100%;
@@ -1653,7 +1641,7 @@ details p {
     gap: 0.4rem;
     min-height: 88px;
     padding: 0.9rem 0.65rem;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
   .studio-hero__selectors button svg {
     display: none;
@@ -1682,7 +1670,7 @@ details p {
   }
   .studio-game-row h3 {
     max-width: 20ch;
-    font-size: 2.2rem;
+    font-size: 2.25rem;
   }
   .studio-notes__grid,
   .journal-grid,
@@ -1752,13 +1740,13 @@ details p {
     height: 40px;
   }
   .contact-channels strong {
-    font-size: 0.92rem;
+    font-size: 0.875rem;
   }
   .contact-note {
     padding: 1.5rem;
   }
   .contact-note h2 {
-    font-size: 2.3rem;
+    font-size: 2.25rem;
   }
   .site-page {
     padding-top: 1.5rem;
@@ -1768,7 +1756,7 @@ details p {
     padding: 1.5rem;
   }
   .game-detail-copy h1 {
-    font-size: 2.8rem;
+    font-size: 2.25rem;
   }
   .game-detail-back {
     margin-bottom: 1.5rem;
@@ -1793,16 +1781,16 @@ details p {
     margin-top: 2.5rem;
   }
   .article-hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
   .article-section h2 {
-    font-size: 1.75rem;
+    font-size: 1.125rem;
   }
   .article-section p {
     font-size: 1rem;
   }
   .article-next__intro h2 {
-    font-size: 2.2rem;
+    font-size: 2.25rem;
   }
   .legal-layout {
     grid-template-columns: 1fr;
@@ -1812,7 +1800,7 @@ details p {
     position: static;
   }
   .legal-copy h2 {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
   .studio-footer__invitation {
     align-items: start;
@@ -1821,7 +1809,7 @@ details p {
     padding-block: 3.5rem;
   }
   .studio-footer__invitation h2 {
-    font-size: 3rem;
+    font-size: 2.25rem;
   }
   .studio-footer__middle {
     grid-template-columns: 1fr;
@@ -1869,8 +1857,8 @@ details p {
   min-height: 0;
   aspect-ratio: 9 / 7;
   padding: 1.1rem;
-  border-radius: 1.5rem;
-  background: radial-gradient(ellipse 80% 70% at 50% 12%, #1d4a3c 0%, #123227 58%, #0c2419 100%);
+  border-radius: var(--radius-card);
+  background: #1a211e;
   box-shadow:
     inset 0 0 0 1px rgb(0 0 0 / 24%),
     inset 0 2rem 3rem rgb(0 0 0 / 32%);
@@ -1902,17 +1890,17 @@ details p {
   position: absolute;
   padding: 0;
   border: 0;
-  border-radius: 0.55rem;
-  background: linear-gradient(175deg, #fffdf4 0%, #f2ead6 68%, #e6dcc4 100%);
+  border-radius: var(--radius-button);
+  background: linear-gradient(175deg, #fdfdfc 0%, #f1f0ef 68%, #e2e1de 100%);
   box-shadow:
-    0 0.22rem 0 #cdc0a4,
+    0 0.22rem 0 #cfceca,
     0 0.5rem 0.9rem rgb(0 0 0 / 34%);
   cursor: pointer;
   transition:
-    transform 160ms cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 160ms ease,
-    opacity 240ms ease,
-    filter 200ms ease;
+    transform var(--duration) var(--ease-out),
+    box-shadow var(--duration) var(--ease-out),
+    opacity var(--duration) var(--ease-out),
+    filter var(--duration) var(--ease-out);
 }
 .mahjong__tile img {
   width: 100%;
@@ -1926,7 +1914,7 @@ details p {
 .mahjong__tile:not(.is-free) {
   transform: translateY(0.18rem) scale(0.94);
   box-shadow:
-    0 0.12rem 0 #b6a988,
+    0 0.12rem 0 #bcbbb5,
     0 0.2rem 0.5rem rgb(0 0 0 / 26%);
   filter: brightness(0.9) saturate(0.86);
 }
@@ -1936,7 +1924,7 @@ details p {
 .mahjong__tile.is-free:hover {
   transform: translateY(-0.32rem);
   box-shadow:
-    0 0.34rem 0 #cdc0a4,
+    0 0.34rem 0 #cfceca,
     0 0.9rem 1.3rem rgb(0 0 0 / 40%);
 }
 .mahjong__tile.is-free:focus-visible {
@@ -1946,7 +1934,7 @@ details p {
 .mahjong__tile.is-held {
   transform: translateY(-0.4rem) scale(1.03);
   box-shadow:
-    0 0.34rem 0 #cdc0a4,
+    0 0.34rem 0 #cfceca,
     0 0.9rem 1.4rem rgb(0 0 0 / 44%);
 }
 .mahjong__tile.is-hinted {
@@ -2007,13 +1995,13 @@ details p {
   gap: 0.75rem;
   margin-top: 0.9rem;
   padding: 0.55rem 0.85rem;
-  border: 1px solid var(--color-border);
-  border-radius: 0.9rem;
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-card);
   background: var(--color-surface);
 }
 .mahjong__hand-label {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-muted);
@@ -2024,7 +2012,7 @@ details p {
   height: 3.8rem;
   place-items: center;
   border: 1px dashed var(--color-border-strong);
-  border-radius: 0.55rem;
+  border-radius: var(--radius-button);
   background: var(--color-surface-soft);
 }
 .mahjong__hand-slot img {
@@ -2035,7 +2023,7 @@ details p {
 }
 .mahjong__hand-empty {
   color: var(--color-muted);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
 }
 .mahjong__bar {
   display: flex;
@@ -2047,8 +2035,8 @@ details p {
 .mahjong__status {
   min-height: 1.4em;
   margin: 0;
-  color: var(--color-foreground-soft);
-  font-size: 0.82rem;
+  color: #868e8b;
+  font-size: 0.875rem;
 }
 .mahjong__actions {
   display: flex;
@@ -2060,16 +2048,16 @@ details p {
   align-items: center;
   gap: 0.4rem;
   padding: 0.45rem 0.85rem;
-  border: 1px solid var(--color-border-strong);
-  border-radius: 0.6rem;
+  border: 0.5px solid var(--color-border-strong);
+  border-radius: var(--radius-button);
   background: var(--color-surface);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   transition:
-    background 180ms ease,
-    transform 180ms ease;
+    background var(--duration) var(--ease-out),
+    transform var(--duration) var(--ease-out);
 }
 .mahjong__btn:hover {
   background: var(--color-highlight);
