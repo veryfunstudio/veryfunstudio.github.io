@@ -1,0 +1,1 @@
+var e={initial:{opacity:0,y:12},whileInView:{opacity:1,y:0},viewport:{once:!0,margin:`-24px`},transition:{duration:.25,ease:[.16,1,.3,1]}};export{e as t};
