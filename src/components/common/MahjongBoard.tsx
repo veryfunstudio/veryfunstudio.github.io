@@ -52,7 +52,6 @@ export function MahjongBoard() {
 
   const say = useCallback((text: string) => {
     setMessage(text);
-    if (clearTimer.current) window.clearTimeout(clearTimer.current);
   }, []);
 
   const handleTap = useCallback(
@@ -73,7 +72,7 @@ export function MahjongBoard() {
         // Let the pair flash before it leaves the board.
         clearTimer.current = window.setTimeout(() => {
           setState((current) => commitMatch(current));
-        }, 420);
+        }, 250);
         return;
       }
 
@@ -177,12 +176,12 @@ export function MahjongBoard() {
         {/* The held tile sits outside the board, so the player sees what they
             picked up before choosing its twin. */}
         <div className="mahjong__hand" aria-live="polite">
-          <span className="mahjong__hand-label">In hand</span>
+          <span className="mahjong__hand-label">Selected</span>
           <div className="mahjong__hand-slot">
             {held ? (
               <img src={faceAsset(held)} alt={FACE_LABELS[held]} />
             ) : (
-              <span className="mahjong__hand-empty">nothing yet</span>
+              <span className="mahjong__hand-empty">Choose a tile</span>
             )}
           </div>
         </div>
@@ -191,7 +190,7 @@ export function MahjongBoard() {
       <div className="mahjong__bar">
         <p className="mahjong__status" role="status">
           {finished
-            ? "Board cleared. That is the whole game."
+            ? "Board cleared. Play again?"
             : message || `${left} tiles left. Pick two matching free tiles.`}
         </p>
         <div className="mahjong__actions">

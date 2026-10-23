@@ -107,7 +107,7 @@ body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -129,13 +129,13 @@ h4 {
   text-wrap: balance;
 }
 h1 {
-  font-size: clamp(3.2rem, 6.5vw, 6.5rem);
+  font-size: 48px;
 }
 h2 {
-  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-size: 48px;
 }
 h3 {
-  font-size: 1.125rem;
+  font-size: 16px;
 }
 h1 em,
 h2 em {
@@ -190,7 +190,7 @@ h2[id] {
 .eyebrow {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.08em;
   line-height: 1.5;
@@ -217,7 +217,7 @@ h2[id] {
   padding: 0.8rem 1.2rem;
   border: 0.5px solid var(--color-border-strong);
   border-radius: var(--radius-button);
-  font-size: 0.875rem;
+  font-size: 12px;
   font-weight: 600;
   line-height: 1.4;
   transition:
@@ -243,7 +243,7 @@ h2[id] {
   justify-content: space-between;
   gap: 1rem;
   border-bottom: 0.5px solid var(--color-border-strong);
-  font-size: 0.875rem;
+  font-size: 12px;
   font-weight: 600;
 }
 .studio-text-link:hover {

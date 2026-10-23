@@ -234,7 +234,7 @@ Every page also has a markdown variant: append .md to its path (home page: /inde
  * map. React removes it when the SPA hydrates, so the designed NotFound page
  * is unchanged for regular visitors.
  */
-const AGENT_404_BODY = `<div id="${AGENT_404_RECOVERY_ID}" style="max-width:42rem;margin:4rem auto;padding:0 1.25rem;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;line-height:1.65;color:#24292f"><h1 style="font-size:1.5rem;margin:0 0 .75rem">404 — Page not found</h1><p style="margin:.5rem 0">The requested path does not exist on VeryFun Studio (${SITE_URL}). Use the markdown site map below to continue.</p><pre style="white-space:pre-wrap;background:#f6f8fa;border:1px solid #e5e7eb;border-radius:8px;padding:1rem;margin:1rem 0">${AGENT_404_MARKDOWN}</pre></div>`;
+const AGENT_404_BODY = `<div id="${AGENT_404_RECOVERY_ID}" style="max-width:42rem;margin:4rem auto;padding:0 1.25rem;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;line-height:1.65;color:#272a2d"><h1 style="font-size:1.5rem;margin:0 0 .75rem">404 — Page not found</h1><p style="margin:.5rem 0">The requested path does not exist on VeryFun Studio (${SITE_URL}). Use the markdown site map below to continue.</p><pre style="white-space:pre-wrap;background:#f7f9f8;border:1px solid #e8e8ec;border-radius:8px;padding:1rem;margin:1rem 0">${AGENT_404_MARKDOWN}</pre></div>`;
 
 /**
  * Turn the React Router SPA fallback into an agent-friendly 404 page:

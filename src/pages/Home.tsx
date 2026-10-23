@@ -1,195 +1,116 @@
-import { motion } from "framer-motion";
-import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
-import { GameFeatureRow } from "@/components/common/GameFeatureRow";
 import { MahjongBoard } from "@/components/common/MahjongBoard";
-import { NoteCard } from "@/components/common/NoteCard";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
 import { getPostsByNewest } from "@/data/blog";
-import { GAMES, getGamesByNewest } from "@/data/games";
-import { REVEAL } from "@/lib/reveal";
+import { GAMES } from "@/data/games";
 import { ORGANIZATION_SCHEMA, WEBSITE_SCHEMA } from "@/lib/schema";
 
-const TONES: Record<string, string> = {
-  "nova-mahjong": "mahjong",
-  "tile-journey": "tile",
-  "arrow-out": "arrow",
-};
-
 export default function Home() {
-  const games = getGamesByNewest();
-  const featuredGames = games.slice(0, 3);
-  const notes = getPostsByNewest().slice(0, 2);
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeGame = featuredGames[activeIndex] ?? featuredGames[0];
-  // The board is Nova Mahjong's, so it only appears while that game is
-  // selected. The other two titles have verified key art but no source
-  // gameplay assets, so they keep the poster treatment rather than
-  // borrowing a board that is not theirs.
-  const showBoard = activeGame.slug === "nova-mahjong";
-
+  const active = GAMES[activeIndex];
+  const notes = getPostsByNewest().slice(0, 2);
   return (
-    <div className="studio-page">
+    <div className="studio-page playroom">
       <Seo
         title="Indie Mobile Game Studio"
-        description="Free, calming mobile puzzle games on Google Play. Offline-friendly, free to install, and built for spare attention."
+        description="Small puzzle games for a good break. Try a Mahjong board, then discover VeryFun Studio's Android games."
         path="/"
       />
       <JsonLd schema={ORGANIZATION_SCHEMA} />
       <JsonLd schema={WEBSITE_SCHEMA} />
-
-      <section className="studio-hero" aria-labelledby="studio-hero-title">
-        <div className="studio-shell studio-hero__topline">
-          <span>Independent puzzle studio</span>
-          <span>Made for the in-between</span>
-          <span>Est. in play / {String(GAMES.length).padStart(2, "0")} games</span>
+      <section className="playroom-main" aria-labelledby="playroom-title">
+        <div className="playroom-heading">
+          <h1 id="playroom-title">A little room for play.</h1>
+          <Link to="/about">
+            Meet the studio <ArrowUpRight size={16} />
+          </Link>
         </div>
-        <div className="studio-shell studio-hero__grid">
-          <div className="studio-hero__copy">
-            <p className="studio-kicker">
-              <span className="studio-kicker__dot" /> A softer kind of screen time
-            </p>
-            <h1 id="studio-hero-title">
-              Make room
-              <br />
-              for <em>play.</em>
-            </h1>
-            <p className="studio-hero__intro">
-              Small, satisfying puzzle games for the moments between everything else. Clear to pick
-              up, easy to put down, and made with care.
-            </p>
-            <div className="studio-hero__actions">
-              <Link to="/games" className="studio-action studio-action--dark">
-                Explore the games <ArrowUpRight size={19} aria-hidden="true" />
-              </Link>
-              <Link to="/about" className="studio-text-link">
-                Meet the studio <ArrowRight size={17} aria-hidden="true" />
-              </Link>
+        <div className="playroom-table">
+          <div className="playroom-shelf">
+            <div className="playroom-shelf-title">
+              <h2>Pick a puzzle</h2>
+              <span>{GAMES.length} games</span>
             </div>
-          </div>
-
-          <div
-            className={`studio-hero__stage studio-hero__stage--${TONES[activeGame.slug] ?? "mahjong"}`}
-          >
-            <div className="studio-hero__orbit studio-hero__orbit--one" aria-hidden="true" />
-            <div className="studio-hero__orbit studio-hero__orbit--two" aria-hidden="true" />
-            <span className="studio-hero__stage-label">
-              {showBoard ? "PLAY IT HERE" : "GAME ARTWORK"} / 0{activeIndex + 1}
-            </span>
-            {showBoard ? (
-              <MahjongBoard />
-            ) : (
-              <div className="studio-hero__poster">
-                <img src={activeGame.image} alt={`${activeGame.title} key art`} />
-              </div>
-            )}
-            <div className="studio-hero__stage-bottom" aria-live="polite">
-              <div>
-                <span>Now showing</span>
-                <strong>{activeGame.title}</strong>
-              </div>
-              <Link to={`/games/${activeGame.slug}`} aria-label={`Explore ${activeGame.title}`}>
-                <ArrowUpRight size={22} aria-hidden="true" />
-              </Link>
+            <div className="playroom-games" role="group" aria-label="Choose a game">
+              {GAMES.map((game, index) => (
+                <button
+                  type="button"
+                  key={game.slug}
+                  onClick={() => setActiveIndex(index)}
+                  aria-pressed={activeIndex === index}
+                >
+                  <img src={game.icon} alt="" width={56} height={56} />
+                  <span>
+                    <strong>{game.title}</strong>
+                    <small>
+                      {game.technologies.filter((value) => value !== "Android").join(" / ")}
+                    </small>
+                  </span>
+                  <ArrowRight size={18} aria-hidden="true" />
+                </button>
+              ))}
             </div>
-          </div>
-        </div>
-        <div className="studio-shell studio-hero__rail">
-          <div className="studio-hero__selectors" aria-label="Choose a featured game">
-            {featuredGames.map((game, index) => (
-              <button
-                key={game.slug}
-                type="button"
-                className={index === activeIndex ? "is-current" : ""}
-                aria-pressed={index === activeIndex}
-                onClick={() => setActiveIndex(index)}
+            <div className="playroom-game-info" aria-live="polite">
+              <h2>{active.title}</h2>
+              <p>{active.hook}</p>
+              <a
+                className="playroom-install"
+                href={active.googlePlayUrl}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <span>0{index + 1}</span>
-                <span>{game.title}</span>
-                <ArrowUpRight size={15} aria-hidden="true" />
-              </button>
-            ))}
-          </div>
-          <a href="#studio-collection" className="studio-hero__scroll">
-            Scroll to explore <ArrowDown size={16} aria-hidden="true" />
-          </a>
-        </div>
-      </section>
-
-      <section
-        id="studio-collection"
-        className="studio-collection"
-        aria-labelledby="studio-collection-title"
-      >
-        <div className="studio-shell">
-          <motion.div className="studio-section-heading" {...REVEAL}>
-            <div>
-              <p className="studio-kicker">01 / The collection</p>
-              <h2 id="studio-collection-title">
-                Pick your <em>puzzle.</em>
-              </h2>
+                Get it on Google Play <ArrowUpRight size={16} />
+              </a>
+              <Link className="playroom-details" to={`/games/${active.slug}`}>
+                Game details <ArrowRight size={16} />
+              </Link>
             </div>
-            <p>
-              Three different ways to find your focus. One shared idea: the player sets the pace.
-            </p>
-          </motion.div>
-          <div className="studio-game-list">
-            {games.map((game, index) => (
-              <GameFeatureRow key={game.slug} game={game} index={index} />
-            ))}
+          </div>
+          <div
+            className={`playroom-surface ${active.slug === "nova-mahjong" ? "playroom-surface--board" : ""}`}
+          >
+            {active.slug === "nova-mahjong" ? (
+              <>
+                <div className="playroom-surface-head">
+                  <span>Try a board</span>
+                  <span>No timer</span>
+                </div>
+                <MahjongBoard />
+              </>
+            ) : (
+              <>
+                <div className="playroom-surface-head">
+                  <span>{active.title}</span>
+                  <span>Game artwork</span>
+                </div>
+                <Link className="playroom-art" to={`/games/${active.slug}`}>
+                  <img src={active.image} alt={`${active.title} game artwork`} />
+                  <span>
+                    Explore {active.title} <ArrowUpRight size={18} />
+                  </span>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </section>
-
-      <section className="studio-principles" aria-labelledby="studio-principles-title">
-        <div className="studio-shell studio-principles__inner">
-          <div>
-            <p className="studio-kicker">02 / A little philosophy</p>
-            <h2 id="studio-principles-title">
-              The fun part is <em>thinking.</em>
-            </h2>
-          </div>
-          <div className="studio-principles__list">
-            <article>
-              <span>01</span>
-              <h3>Room to pause.</h3>
-              <p>No streaks to protect. No timer unless it is the puzzle.</p>
-            </article>
-            <article>
-              <span>02</span>
-              <h3>Clarity first.</h3>
-              <p>Readable boards and honest feedback make every move feel good.</p>
-            </article>
-            <article>
-              <span>03</span>
-              <h3>Play anywhere.</h3>
-              <p>Our games are designed to be enjoyed offline, at your own pace.</p>
-            </article>
-          </div>
+      <section className="playroom-notes" aria-labelledby="playroom-notes-title">
+        <div>
+          <h2 id="playroom-notes-title">Behind the games</h2>
+          <Link to="/blog">
+            All notes <ArrowUpRight size={16} />
+          </Link>
         </div>
-      </section>
-
-      <section className="studio-notes" aria-labelledby="studio-notes-title">
-        <div className="studio-shell">
-          <div className="studio-section-heading">
-            <div>
-              <p className="studio-kicker">03 / From the studio</p>
-              <h2 id="studio-notes-title">
-                Notes from <em>behind the board.</em>
-              </h2>
-            </div>
-            <Link to="/blog" className="studio-text-link">
-              All studio notes <ArrowUpRight size={18} aria-hidden="true" />
-            </Link>
-          </div>
-          <div className="studio-notes__grid">
-            {notes.map((note) => (
-              <NoteCard key={note.id} post={note} />
-            ))}
-          </div>
-        </div>
+        {notes.map((note) => (
+          <Link key={note.id} to={`/blog/${note.slug}`}>
+            <span>{note.category}</span>
+            <h3>{note.title}</h3>
+            <ArrowUpRight size={20} />
+          </Link>
+        ))}
       </section>
     </div>
   );
