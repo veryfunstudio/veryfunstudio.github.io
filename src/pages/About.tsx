@@ -1,7 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
 import { PageIntro } from "@/components/common/PageIntro";
-import { StudioCTA } from "@/components/common/StudioCTA";
 import { Seo } from "@/components/seo/Seo";
 import { getGamesByNewest } from "@/data/games";
 
@@ -113,12 +112,6 @@ export default function About() {
           ))}
         </div>
       </section>
-      <StudioCTA
-        title="Good ideas start with a conversation."
-        description="Player feedback, thoughtful partnerships, or a simple hello — we are listening."
-        to="/contact"
-        label="Get in touch"
-      />
     </div>
   );
 }
