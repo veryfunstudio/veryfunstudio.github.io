@@ -202,6 +202,7 @@ const GameDetail = () => {
 
       <motion.section className="game-detail-summary" {...REVEAL}>
         <div className="game-detail-summary__copy">
+          <span className="section-kicker">Game overview</span>
           <h2>How it plays.</h2>
           <p>{game.fullDescription}</p>
           {secondaryFeatures.length > 0 && (
@@ -225,6 +226,7 @@ const GameDetail = () => {
 
       <motion.section className="game-detail-faq" {...REVEAL}>
         <div className="section-heading">
+          <span className="section-kicker">Player guide</span>
           <h2>Questions players ask.</h2>
         </div>
         <div>
@@ -245,6 +247,7 @@ const GameDetail = () => {
           {relatedGames.length > 0 && (
             <>
               <div className="related-strip__head">
+                <span className="section-kicker">Explore the catalog</span>
                 <h2>More boards.</h2>
                 <p>Same catalog, different kind of quiet focus.</p>
               </div>
@@ -265,6 +268,7 @@ const GameDetail = () => {
           {relatedPosts.length > 0 && (
             <>
               <div className="related-strip__head related-strip__head--secondary">
+                <span className="section-kicker">Behind the boards</span>
                 <h2>Studio notes.</h2>
                 <p>How we think about this kind of puzzle.</p>
               </div>
