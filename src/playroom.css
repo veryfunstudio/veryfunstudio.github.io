@@ -1,0 +1,456 @@
+:root {
+  color-scheme: light;
+  --color-background: var(--sand-1);
+  --color-foreground: var(--slate-12);
+  --color-foreground-soft: var(--slate-11);
+  --color-muted: var(--slate-11);
+  --color-surface: var(--sand-2);
+  --color-surface-warm: var(--sand-3);
+  --color-surface-soft: var(--grass-2);
+  --color-surface-tint: var(--grass-3);
+  --color-accent: var(--grass-11);
+  --color-accent-hover: var(--grass-10);
+  --color-accent-strong: var(--grass-11);
+  --color-secondary: var(--grass-12);
+  --color-highlight: var(--grass-4);
+  --color-highlight-soft: var(--grass-2);
+  --color-border: var(--slate-6);
+  --color-border-soft: var(--slate-6);
+  --color-border-strong: var(--slate-8);
+  --color-focus: var(--grass-8);
+  --header-height: 72px;
+  --site-gutter: 32px;
+}
+html {
+  scroll-behavior: auto;
+  scrollbar-color: var(--slate-7) var(--sand-2);
+}
+body {
+  background: var(--sand-1);
+}
+::selection {
+  background: var(--grass-5);
+  color: var(--grass-12);
+}
+input,
+textarea {
+  caret-color: var(--grass-11);
+}
+.site-header {
+  background: var(--sand-1);
+  backdrop-filter: none;
+}
+.site-header__nav-active {
+  height: 0.5px;
+}
+.site-header__wordmark {
+  letter-spacing: -0.03em;
+}
+.site-header__brand img {
+  width: 32px;
+  height: 32px;
+}
+.studio-kicker {
+  display: none;
+}
+.studio-page h1 {
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.studio-page h2 {
+  font-size: 24px;
+}
+.studio-page h3 {
+  font-size: 16px;
+}
+.studio-page em {
+  font-family: inherit;
+  font-style: normal;
+}
+.playroom {
+  padding-top: 24px;
+}
+.playroom-main,
+.playroom-notes {
+  width: min(1320px, calc(100% - 64px));
+  margin-inline: auto;
+}
+.playroom-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  margin: 20px 0 32px;
+}
+
+.playroom-table {
+  display: grid;
+  grid-template-columns: 310px minmax(0, 1fr);
+  border-block: 0.5px solid var(--slate-6);
+}
+.playroom-shelf {
+  padding: 28px 28px 28px 0;
+  border-right: 0.5px solid var(--slate-6);
+}
+.playroom-shelf-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.playroom-shelf-title h2 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.playroom-shelf-title span {
+  font-size: 12px;
+  color: var(--slate-11);
+}
+.playroom-games {
+  display: grid;
+}
+.playroom-games button {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 94px;
+  padding: 16px 10px;
+  text-align: left;
+  border: 0;
+  border-bottom: 0.5px solid var(--slate-6);
+  background: transparent;
+  cursor: pointer;
+}
+.playroom-games button:hover {
+  background: var(--grass-3);
+}
+.playroom-games button[aria-pressed="true"] {
+  background: var(--grass-4);
+}
+.playroom-games img {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+}
+
+.playroom-games strong {
+  display: block;
+  font-size: 16px;
+  line-height: 1.3;
+}
+.playroom-games small {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--slate-11);
+}
+.playroom-games svg {
+  flex-shrink: 0;
+}
+.playroom-game-info {
+  padding-top: 48px;
+}
+.playroom-game-info h2 {
+  font-size: 24px;
+  line-height: 1.25;
+}
+.playroom-game-info p {
+  color: var(--slate-11);
+  font-size: 16px;
+  margin: 16px 0 24px;
+  line-height: 1.6;
+}
+.playroom-install,
+.playroom-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  gap: 12px;
+  font-size: 12px;
+}
+.playroom-install {
+  padding: 12px 16px;
+  background: var(--grass-9);
+  color: var(--grass-1);
+  border-radius: 4px;
+}
+.playroom-details {
+  margin-top: 8px;
+  color: var(--grass-11);
+}
+.playroom-surface {
+  background: var(--grass-3);
+  padding: 24px 32px;
+  min-width: 0;
+}
+.playroom-surface-head {
+  display: flex;
+  justify-content: space-between;
+  color: var(--grass-11);
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+.playroom-art {
+  position: relative;
+  display: block;
+}
+.playroom-art img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+}
+.playroom-art > span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  color: var(--grass-12);
+  font-size: 16px;
+}
+.playroom .mahjong {
+  width: 100%;
+}
+.playroom .mahjong__stage {
+  display: block;
+}
+.playroom .mahjong__board {
+  width: 100%;
+  max-width: 570px;
+  margin: 0 auto;
+  padding: 20px;
+  background: var(--grass-4);
+  border: 0;
+  border-radius: 0;
+  aspect-ratio: auto;
+}
+.playroom .mahjong__board::before {
+  display: none;
+}
+.playroom .mahjong__field {
+  max-width: 440px;
+  margin: auto;
+}
+.playroom .mahjong__tile {
+  background: var(--sand-1);
+  border: 0.5px solid var(--slate-7);
+  box-shadow: none;
+  border-radius: 6px;
+  transition: background-color 250ms ease-out;
+}
+.playroom .mahjong__tile:not(.is-free) {
+  background: var(--sand-5);
+  opacity: 1;
+}
+.playroom .mahjong__tile.is-held,
+.playroom .mahjong__tile.is-hinted {
+  background: var(--amber-4);
+  border-color: var(--amber-8);
+  outline: 2px solid var(--amber-8);
+  animation: none;
+}
+.playroom .mahjong__tile img {
+  width: 60%;
+  height: 65%;
+  object-fit: contain;
+  margin: auto;
+}
+.playroom .mahjong__tile.is-free:hover {
+  transform: none;
+  background: var(--grass-2);
+}
+.playroom .mahjong__hand {
+  display: none;
+}
+.playroom .mahjong__bar {
+  margin-top: 18px;
+  gap: 16px;
+  align-items: center;
+}
+.playroom .mahjong__status {
+  color: var(--grass-12);
+  font-size: 12px;
+}
+.playroom .mahjong__btn {
+  color: var(--grass-12);
+  background: var(--grass-2);
+  border: 0.5px solid var(--grass-7);
+  border-radius: 4px;
+  min-height: 44px;
+  font-size: 12px;
+}
+.playroom-notes {
+  padding-block: 48px;
+}
+.playroom-notes > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.playroom-notes > a {
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  gap: 24px;
+  padding: 24px 0;
+  align-items: center;
+  border-top: 0.5px solid var(--slate-6);
+}
+.playroom-notes > a > span {
+  color: var(--slate-11);
+  font-size: 12px;
+}
+.playroom-notes h3 {
+  font-size: 16px;
+  font-weight: 500;
+}
+.site-footer {
+  background: var(--sand-2);
+  color: var(--slate-12);
+  border-top: 0.5px solid var(--slate-6);
+}
+.studio-footer__middle {
+  padding-block: 32px;
+}
+.studio-footer__middle > p {
+  color: var(--slate-11);
+  font-size: 12px;
+}
+.site-footer__bottom {
+  border-color: var(--slate-6);
+  color: var(--slate-11);
+}
+.site-footer a {
+  color: var(--slate-12);
+}
+.site-footer__nav {
+  font-size: 12px;
+}
+.playroom-games button > span {
+  flex: 1;
+}
+.playroom-heading a,
+.playroom-notes > div a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: var(--grass-11);
+  font-size: 12px;
+}
+@media (max-width: 900px) {
+  .playroom-table {
+    grid-template-columns: 250px minmax(0, 1fr);
+  }
+  .playroom-surface {
+    padding: 20px;
+  }
+  .playroom .mahjong__bar {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 640px) {
+  :root {
+    --site-gutter: 20px;
+    --header-height: 64px;
+  }
+  .playroom-main,
+  .playroom-notes {
+    width: calc(100% - 40px);
+  }
+  .playroom-heading {
+    display: block;
+    margin-top: 8px;
+  }
+  .studio-page h1 {
+    font-size: 24px;
+  }
+  .playroom-heading a {
+    margin-top: 12px;
+  }
+  .playroom-table {
+    display: flex;
+    flex-direction: column;
+  }
+  .playroom-shelf {
+    display: contents;
+  }
+  .playroom-shelf-title {
+    display: none;
+  }
+  .playroom-games {
+    order: 0;
+    display: flex;
+    overflow: auto;
+    padding: 12px 0;
+  }
+  .playroom-games button {
+    flex: 0 0 190px;
+    padding: 12px;
+    min-height: 80px;
+    border: 0;
+  }
+  .playroom-games img {
+    width: 40px;
+    height: 40px;
+  }
+  .playroom-games button > svg {
+    display: none;
+  }
+  .playroom-surface {
+    order: 1;
+    padding: 20px 12px;
+  }
+  .playroom-game-info {
+    order: 2;
+    padding: 24px 0;
+  }
+  .playroom .mahjong__board {
+    padding: 8px;
+  }
+  .playroom .mahjong__bar {
+    padding-inline: 8px;
+  }
+  .playroom-notes > a {
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+  }
+  .playroom-notes > a > span {
+    grid-column: 1 / -1;
+  }
+  .playroom-notes h2 {
+    font-size: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none;
+    transition: none !important;
+  }
+}
+.playroom .mahjong__tile img {
+  width: 100%;
+  height: 100%;
+  padding: 6%;
+}
+.playroom .mahjong__tile:not(.is-free) {
+  filter: none;
+  background: var(--sand-4);
+}
+.playroom .mahjong__tile:not(.is-free):hover {
+  filter: none;
+}
+.playroom .mahjong__field {
+  max-width: 500px;
+}
+.playroom-install {
+  background: var(--grass-11);
+  color: #fbfefb;
+}
+.site-footer__bottom p {
+  color: var(--slate-11);
+}

@@ -1,0 +1,301 @@
+{
+  "version": 1,
+  "policy": "Original repository raster content preserved. No AI-generated raster assets added. This record documents source identity, not independent rights clearance.",
+  "rasterAssets": [
+    {
+      "path": "public/apple-touch-icon.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/apple-touch-icon.png",
+      "sha256": "bb0227b4177062cc35567d4b5e9953303503a03006b36077f50a080e12cf73ff",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/brand/veryfun-studio-avatar-v2.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/brand/veryfun-studio-avatar-v2.png",
+      "sha256": "907c965ebed52f2b97226a8d0d8abe0c412f63f82951154e6e39811bc5267626",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/favicon-32x32.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/favicon-32x32.png",
+      "sha256": "d3941f1f5fcaab6373fd5a8e4044924eb369ed5ed4b68b380be8e879fbe078d1",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/favicon.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/favicon.png",
+      "sha256": "c885ac2626d68699b8559bdc2b078340ca37e2ccba2f9b500676223bede7e92b",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/game-assets/nova-mahjong/tile_bamboo_3.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/game-assets/nova-mahjong/tile_bamboo_3.png",
+      "sha256": "5837d5af781a84c55c34a1a890deda9c31e50e18e4222ddf69087a7a4962f7c0",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/game-assets/nova-mahjong/tile_character_5.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/game-assets/nova-mahjong/tile_character_5.png",
+      "sha256": "af7d370e733029b892d884e13d21e2912d46990efd48ee2e57e53577ed3a40e2",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/game-assets/nova-mahjong/tile_dot_6.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/game-assets/nova-mahjong/tile_dot_6.png",
+      "sha256": "3fd9a624a62149c4a4b7b57ee36e57644631397802088d9726cc26ab60acd1b8",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/game-assets/nova-mahjong/tile_dragon_red.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/game-assets/nova-mahjong/tile_dragon_red.png",
+      "sha256": "6ec200c15153dce41c0144b924f450a9d7b9e758a4df0618ab5fa99e48b1ba7a",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/game-assets/nova-mahjong/tile_flower_chrysanthemum.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/game-assets/nova-mahjong/tile_flower_chrysanthemum.png",
+      "sha256": "d45faf6d3e432a961927873c1ff46bb8dd2898c45f37db37f51add7bc63ae177",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/game-assets/nova-mahjong/tile_flower_orchid.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/game-assets/nova-mahjong/tile_flower_orchid.png",
+      "sha256": "5d2cc1dfa356d9a4ff90bf1cfb6b81042fb5ea1861197c44ee0923767229e322",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/arrow-out-icon.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/arrow-out-icon.webp",
+      "sha256": "fc831369ac391463e2cef7325bf81881fd0ef9483d3d915edede275418424471",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/arrow-out.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/arrow-out.webp",
+      "sha256": "217d97ec5da8087133a6632f45068ba917d6192df4e13af1479bebf566f68ace",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/classic-sudoku-icon.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/classic-sudoku-icon.webp",
+      "sha256": "d24a63bb858e3355042a9c8cdf47a41e639958daf25db840b3dedd61edbbd24f",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/classic-sudoku.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/classic-sudoku.webp",
+      "sha256": "a36cd25593b7d5c0265055eb878905063b32cc340c8bf0f7b2a5144d7ff42471",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/nova-mahjong-icon.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/nova-mahjong-icon.webp",
+      "sha256": "fc6e81441d8036039f1f5e8e6863c5b55dba49e617224690bd3ac9d940310bff",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/nova-mahjong.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/nova-mahjong.webp",
+      "sha256": "821eca2c6589fc91f548f6dc8c0fe51acf1b6011009f73f9c3338f96e9a7ed80",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/pearl-coloring-icon.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/pearl-coloring-icon.webp",
+      "sha256": "3d57d93f3829df13750c14111620b51233a93f5065039250d2b20239df6d2364",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/pearl-coloring.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/pearl-coloring.webp",
+      "sha256": "1bc7011c176474d60c86bf8eaee76f288f7ff6c874f6b07321b21003d7ed9fbb",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/stitch/workshop-article.jpg",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/stitch/workshop-article.jpg",
+      "sha256": "f6eb56c803803644d7805edde71d0ba682b65da70d9a96fac2798fd80abf03a1",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/stitch/workshop-bench.jpg",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/stitch/workshop-bench.jpg",
+      "sha256": "aa6132ef992d1a7ccaaec9777fa1ea6d3358258c217ba3598b5140ce49bde56b",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/stitch/workshop-hero.jpg",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/stitch/workshop-hero.jpg",
+      "sha256": "4c89dd3b938a24d843745413a08f1afeef093db7dba453a6f8e7cfad7339988e",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/tile-journey-icon.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/tile-journey-icon.webp",
+      "sha256": "a5ed58944f4d9425c5d6ba4d8b5499ae94e69661dafe3637d4848dd2b70157c2",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/tile-journey.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/tile-journey.webp",
+      "sha256": "cdc1226880ca93b88e5e485c514b61989a06c70f4fa9cce4565473493f755a0a",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/time-pop-puzzle-icon.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/time-pop-puzzle-icon.webp",
+      "sha256": "103c7cb09565b590d4193e4e9e5853ecae6578c5744cf8155d1b490fe0aa1784",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/time-pop-puzzle.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/time-pop-puzzle.webp",
+      "sha256": "6e23fb05f4023b30024827087c60e5ee10fb8139ccc29f5acf8c4a9ab03d673b",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/word-search-block-icon.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/word-search-block-icon.webp",
+      "sha256": "8d6b3493481f33c036aeb378cbeb15156e50f35419007dcb32a3e2367f545eec",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/images/word-search-block.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/images/word-search-block.webp",
+      "sha256": "9902956e000c3d367e10848e0d3a01db0ecf58873fc123a540a41b2907644877",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/logo-mark.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/logo-mark.png",
+      "sha256": "7b482972016cc45a45fea4e66eb35d4704c3e1d0a97c789df47ffd54c35797d8",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/og-modern-workshop.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/og-modern-workshop.png",
+      "sha256": "1e90a424f6ea4dbea087faf6b69ef8e23dae0ac213aaafe8034e0714bae5f071",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/og-studio-relaunch.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/og-studio-relaunch.png",
+      "sha256": "04c660cf6fcab5eeb790970566ef07caa1a18b3c1e7486d5605731026b63aaec",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/og/arrow-out.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/og/arrow-out.png",
+      "sha256": "28069927ea61df156acf2f6bc0a146993122df968517d483c5c4cacf7a4ab157",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/og/nova-mahjong.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/og/nova-mahjong.png",
+      "sha256": "aedbc4d1d191b216d8878b23ff57184d0e729a7793da0294a76742ce731b9d0f",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/og/tile-journey.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/og/tile-journey.png",
+      "sha256": "3a518ee01d540b3870e12c3af12b094739f76b72dba4011acbdd8ec8e038d567",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/screenshots/arrow-out/01-key-art.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/screenshots/arrow-out/01-key-art.webp",
+      "sha256": "217d97ec5da8087133a6632f45068ba917d6192df4e13af1479bebf566f68ace",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/screenshots/nova-mahjong/01-key-art.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/screenshots/nova-mahjong/01-key-art.webp",
+      "sha256": "821eca2c6589fc91f548f6dc8c0fe51acf1b6011009f73f9c3338f96e9a7ed80",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "public/screenshots/tile-journey/01-key-art.webp",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:public/screenshots/tile-journey/01-key-art.webp",
+      "sha256": "cdc1226880ca93b88e5e485c514b61989a06c70f4fa9cce4565473493f755a0a",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "visual-baseline/about-tall-1440.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:visual-baseline/about-tall-1440.png",
+      "sha256": "e91dd12708dd25eaebbd2fc6fb8913e8a21db65252777d1740d5046607a6c3eb",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "visual-baseline/article-tall-1440.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:visual-baseline/article-tall-1440.png",
+      "sha256": "2dcb656047dc893c0ebf75504a789d400c3ca40400368a32f8976705d0bcbfbf",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "visual-baseline/blog-desktop-1440.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:visual-baseline/blog-desktop-1440.png",
+      "sha256": "bbc5912a41471010fb0106d5f56c7ce58fa15a1206c882f22cb65d2552fe5e89",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "visual-baseline/blog-mobile-390.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:visual-baseline/blog-mobile-390.png",
+      "sha256": "1404a1f1ca50e115f469a8fef88f117db8523a735a88b818402cc5476da3b12e",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "visual-baseline/blog-tall-1440.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:visual-baseline/blog-tall-1440.png",
+      "sha256": "9fe317f2d976570251f9307a2ac931e9877ce1d2c5aa2f1e66bf44fb2dacaea8",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "visual-baseline/contact-tall-1440.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:visual-baseline/contact-tall-1440.png",
+      "sha256": "ab5f6665740c340c6badfb56376f1066b4fc40ba5ba4a47d3ec8aa1bd069efd5",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "visual-baseline/game-detail-tall-1440.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:visual-baseline/game-detail-tall-1440.png",
+      "sha256": "350365c3b71439d217f6b3846ce54af1c0b5365c1e8f5392cabe2552e1f4872d",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "visual-baseline/games-tall-1440.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:visual-baseline/games-tall-1440.png",
+      "sha256": "f40d8d975bb3c12726d775be8b1a2334d4ad0d8958b92f5b40ddef6145074b09",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "visual-baseline/home-desktop-1440.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:visual-baseline/home-desktop-1440.png",
+      "sha256": "0adda8c347f2cc7ad80994c03ab88f87d899f9aa8bacd7d6b81a1f30a0603e0b",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "visual-baseline/home-mobile-390.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:visual-baseline/home-mobile-390.png",
+      "sha256": "abce3835c8e1aedf9643eb3b70b876461c8431fa7566f5212078452937ffb46b",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "visual-baseline/home-mobile-tall-390.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:visual-baseline/home-mobile-tall-390.png",
+      "sha256": "6c2e7b99fa195f44e293eae36d25fef038609673b0279c1abeb78396e68c60d0",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "visual-baseline/home-tall-1440.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:visual-baseline/home-tall-1440.png",
+      "sha256": "368a164349c532f18d64c244158ac2a83735645c47d691390517de0b5331cc60",
+      "unchangedFromOrigin": true
+    },
+    {
+      "path": "visual-baseline/legal-tall-1440.png",
+      "origin": "git:ef21c61e29af66ecc42aa8cf634bbd3ab1a9abdd:visual-baseline/legal-tall-1440.png",
+      "sha256": "3341af8784343e74b9cb6c12fa09df4839b27675892da63b9e892a2d07c9be04",
+      "unchangedFromOrigin": true
+    }
+  ],
+  "remoteImages": []
+}

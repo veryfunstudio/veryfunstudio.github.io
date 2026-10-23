@@ -25,7 +25,15 @@ build
 *.sw?
 
 skills-lock.json
-.impeccable/
+.impeccable/*
+!.impeccable/surface.md
+!.impeccable/design.json
 .claude/
 .vercel
 .web-shader-extractor/
+
+.impeccable/review/
+.impeccable/questions/
+.impeccable/direction-seed.txt
+
+!.impeccable/asset-provenance.json

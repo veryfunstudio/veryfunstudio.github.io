@@ -1,5 +1,6 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
+import { GameLoupe } from "@/components/common/GameLoupe";
 import type { Game } from "@/data/games";
 import { formatGameTags } from "@/data/games";
 
@@ -13,28 +14,26 @@ export function GameFeatureRow({ game, index }: GameFeatureRowProps) {
 
   return (
     <article id={`game-${game.slug}`} className={`studio-game-row studio-game-row--${index % 3}`}>
-      <Link
-        to={`/games/${game.slug}`}
-        className="studio-game-row__image"
-        aria-label={`Explore ${game.title}`}
-      >
-        <img
+      {/* The artwork holds a loupe, so the panel is not a link any more —
+          a button inside a link is invalid, and nesting them would give
+          the screen reader two conflicting destinations. The title and the
+          "Meet the game" link carry the navigation. */}
+      <div className="studio-game-row__image">
+        <GameLoupe
           src={game.image}
           alt={`${game.title} key art`}
-          width={1200}
-          height={630}
-          loading="lazy"
+          naturalWidth={1200}
+          naturalHeight={630}
         />
         <span>VFS / GAME {number}</span>
-      </Link>
+      </div>
       <div className="studio-game-row__content">
         <div className="studio-game-row__top">
-          <span>GAME / {number}</span>
           <span>{formatGameTags(game)}</span>
         </div>
         <div className="studio-game-row__identity">
           <img src={game.icon} alt="" width={56} height={56} loading="lazy" />
-          <span>Free to install · Android</span>
+          <span>Free on Android</span>
         </div>
         <h3>{game.title}</h3>
         <p className="studio-game-row__hook">{game.hook}</p>

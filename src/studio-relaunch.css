@@ -1,8 +1,8 @@
 /* biome-ignore-all lint/style/noDescendingSpecificity: Component-scoped descendants target disjoint markup; responsive rules follow base components. */
 /* One component system for the complete studio site. Tokens live in index.css. */
 .site-header {
-  border-bottom: 1px solid var(--color-border);
-  background: rgb(247 245 239 / 96%);
+  border-bottom: 0.5px solid var(--color-border);
+  background: #f9f9f8;
   backdrop-filter: blur(14px);
 }
 .site-header__bar {
@@ -21,16 +21,16 @@
 }
 .site-header__wordmark {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: -0.055em;
 }
 .site-header__brand-tag {
   margin-left: 0.6rem;
   padding-left: 1rem;
-  border-left: 1px solid var(--color-border);
+  border-left: 0.5px solid var(--color-border);
   color: var(--color-muted);
-  font-size: 0.65rem;
+  font-size: 12px;
 }
 .site-header__nav {
   align-items: center;
@@ -43,7 +43,7 @@
   align-items: center;
   padding: 0.5rem 0.85rem;
   color: var(--color-foreground-soft);
-  font-size: 0.83rem;
+  font-size: 12px;
   font-weight: 600;
 }
 .site-header__nav-link:hover {
@@ -58,7 +58,7 @@
   bottom: 0;
   left: 0.85rem;
   height: 3px;
-  border-radius: 3px;
+  border-radius: var(--radius-button);
   background: var(--color-accent);
 }
 .site-header__menu {
@@ -71,11 +71,11 @@
   display: grid;
 }
 .site-header__mobile-link {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
   border-radius: 0;
   padding: 1rem 0;
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 24px;
   letter-spacing: -0.045em;
 }
 .site-header__mobile-link[aria-current="page"] {
@@ -92,12 +92,12 @@
   justify-content: space-between;
   gap: 1rem;
   padding-bottom: 1.3rem;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
 }
 .page-intro__meta > span:last-child {
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 12px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -109,7 +109,7 @@
   max-width: 47ch;
   margin-top: 1.7rem;
   color: var(--color-foreground-soft);
-  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  font-size: 16px;
   line-height: 1.65;
 }
 .studio-section-heading {
@@ -134,14 +134,14 @@
   margin-top: 4rem;
   margin-bottom: var(--space-section);
   padding: 3rem;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-highlight-soft);
 }
 .studio-cta h2 {
   max-width: 21ch;
   margin: 0.8rem 0 1rem;
-  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-size: 24px;
 }
 .studio-cta p:not(.studio-kicker) {
   max-width: 53ch;
@@ -152,284 +152,14 @@
 }
 
 /* Home: the game's own objects on a quiet studio stage. */
-.studio-hero {
-  border-bottom: 1px solid var(--color-border);
-}
-.studio-hero__topline {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-block: 1.2rem;
-  border-bottom: 1px solid var(--color-border);
-  font-family: var(--font-mono);
-  font-size: 0.61rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-.studio-hero__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.studio-hero__copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  padding: 4.5rem 3rem 5rem 0;
-}
-.studio-hero h1 {
-  margin-top: 2rem;
-  font-size: clamp(4rem, 7vw, 7rem);
-  line-height: 0.97;
-  letter-spacing: -0.075em;
-}
-.studio-hero__intro {
-  max-width: 36ch;
-  margin-top: 2rem;
-  color: var(--color-foreground-soft);
-  font-size: 1.06rem;
-}
-.studio-hero__actions {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem 1.5rem;
-  margin-top: 2rem;
-}
-.studio-hero__stage {
-  --stage: #e0e9d8;
-  position: relative;
-  isolation: isolate;
-  min-height: 620px;
-  overflow: hidden;
-  border-inline: 1px solid var(--color-border);
-  background: var(--stage);
-  transition: background 300ms ease;
-}
-.studio-hero__stage--tile {
-  --stage: #eee8ce;
-}
-.studio-hero__stage--arrow {
-  --stage: #eee0d7;
-}
-.studio-hero__stage::before {
-  position: absolute;
-  z-index: -2;
-  inset: 0;
-  content: "";
-  background-image:
-    linear-gradient(rgb(32 59 51 / 4%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(32 59 51 / 4%) 1px, transparent 1px);
-  background-size: 3rem 3rem;
-}
-.studio-hero__orbit {
-  position: absolute;
-  z-index: -1;
-  top: 50%;
-  left: 50%;
-  width: 83%;
-  aspect-ratio: 1;
-  border: 1px solid rgb(32 59 51 / 10%);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-.studio-hero__orbit--two {
-  width: 58%;
-}
-.studio-hero__stage-label {
-  position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.64rem;
-  letter-spacing: 0.08em;
-}
-.studio-hero__stage-bottom {
-  position: absolute;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 1rem;
-}
-.studio-hero__stage-bottom div {
-  min-width: 0;
-}
-.studio-hero__stage-bottom span {
-  display: block;
-  margin-bottom: 0.4rem;
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.studio-hero__stage-bottom strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: clamp(1.1rem, 1.8vw, 1.6rem);
-  letter-spacing: -0.055em;
-  line-height: 1.2;
-}
-.studio-hero__stage-bottom a {
-  display: grid;
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  place-items: center;
-  border: 1px solid var(--color-foreground);
-  border-radius: 50%;
-  transition: background 180ms ease;
-}
-.studio-hero__stage-bottom a:hover {
-  background: var(--color-surface);
-}
-.studio-hero__rail {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  border-top: 1px solid var(--color-border);
-}
-.studio-hero__selectors {
-  display: flex;
-  flex: 1;
-}
-.studio-hero__selectors button {
-  display: flex;
-  min-width: 0;
-  min-height: 5rem;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 1rem 1.3rem;
-  border-right: 1px solid var(--color-border);
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-align: left;
-  transition: background 180ms ease;
-}
-.studio-hero__selectors button > span:first-child {
-  align-self: start;
-  color: var(--color-accent-strong);
-  font-family: var(--font-mono);
-  font-size: 0.59rem;
-}
-.studio-hero__selectors button svg {
-  flex-shrink: 0;
-}
-.studio-hero__selectors button:hover,
-.studio-hero__selectors button.is-current {
-  background: var(--color-highlight);
-}
-.studio-hero__scroll {
-  display: flex;
-  gap: 0.6rem;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  text-transform: uppercase;
-}
-.play-object {
-  position: absolute;
-  inset: 3.5rem 0 6.5rem;
-}
-.play-object__canvas,
-.play-object__interaction {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-.play-object__canvas {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 300ms ease;
-}
-.play-object__canvas canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-.play-object.is-ready .play-object__canvas {
-  opacity: 1;
-}
-.play-object__interaction {
-  border: 0;
-  border-radius: 1rem;
-  background: transparent;
-  cursor: pointer;
-  touch-action: pan-y;
-}
-.play-object__interaction:focus-visible {
-  outline-offset: -10px;
-}
-.play-object__fallback {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 78%;
-  padding: 0.6rem;
-  border-radius: 0.65rem;
-  background: var(--color-surface);
-  box-shadow: 0 1rem 2rem rgb(32 59 51 / 12%);
-  transform: translate(-50%, -50%) rotate(-4deg);
-  transition: opacity 300ms ease;
-}
-.play-object__fallback img {
-  width: 100%;
-  aspect-ratio: 1.5;
-  object-fit: contain;
-}
-.play-object__fallback > span {
-  display: block;
-  padding: 0.75rem 0.1rem 0.2rem;
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  text-transform: uppercase;
-}
-.play-object.is-ready .play-object__fallback {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-}
-.play-object__hint {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  display: flex;
-  width: max-content;
-  max-width: calc(100% - 2rem);
-  align-items: center;
-  gap: 0.7rem;
-  padding: 0.5rem 0.8rem;
-  border: 1px solid var(--color-border-strong);
-  border-radius: 2rem;
-  background: rgb(255 254 250 / 72%);
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-.play-object__hint-touch {
-  display: none;
-}
-@media (hover: none) {
-  .play-object__hint-desktop {
-    display: none;
-  }
-  .play-object__hint-touch {
-    display: inline;
-  }
-}
-
+/* The board brings its own dark felt; the pale stage behind it would only
+   fight with the tiles. */
+/* With a playable board in the stage, the stage stops being a poster frame
+   and becomes a column: the board takes the room, and the caption sits under
+   it instead of floating over it. */
+/* The poster treatment for the titles that have key art but no verified
+   gameplay assets. */
 /* Game catalog and reusable product rows. */
-.studio-collection {
-  padding: var(--space-section) 0;
-}
 .studio-game-list {
   display: grid;
   gap: 2rem;
@@ -438,7 +168,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-surface);
 }
@@ -449,28 +179,61 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: #e0e9d8;
+  background: #eef1f0;
 }
 .studio-game-row--1 .studio-game-row__image {
-  background: #eee8ce;
+  background: #f1f0ef;
 }
 .studio-game-row--2 .studio-game-row__image {
-  background: #eee0d7;
+  background: #feebe7;
 }
-.studio-game-row__image img {
+/* The loupe fills the panel and crops the key art to fill it, so the
+   artwork reads at the size of the panel rather than as a small picture
+   floating in it. */
+.studio-loupe {
+  position: relative;
   width: 100%;
-  border-radius: 0.65rem;
-  transition: transform 250ms ease;
+  height: 100%;
+  min-height: 360px;
+  overflow: hidden;
+  border-radius: var(--radius-button);
+  cursor: crosshair;
 }
-.studio-game-row__image:hover img {
-  transform: scale(1.025);
+.studio-loupe:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
 }
+.studio-loupe > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--duration) var(--ease-out);
+}
+.studio-loupe:hover > img {
+  transform: scale(1.03);
+}
+.studio-loupe__lens {
+  position: absolute;
+  z-index: 2;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  box-shadow: none;
+  pointer-events: none;
+}
+/* The number sits on the artwork, so it needs a ground to read against
+   rather than a floating label. */
 .studio-game-row__image > span {
   position: absolute;
-  top: 1.3rem;
-  left: 1.5rem;
+  z-index: 4;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.25rem 0.45rem;
+  border-radius: var(--radius-button);
+  background: var(--black-a9);
+  color: #f7f9f8;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 12px;
   letter-spacing: 0.08em;
 }
 .studio-game-row__content {
@@ -481,7 +244,7 @@
   justify-content: space-between;
   gap: 1rem;
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: 12px;
   text-transform: uppercase;
 }
 .studio-game-row__identity {
@@ -493,17 +256,17 @@
 .studio-game-row__identity img {
   width: 44px;
   height: 44px;
-  border: 1px solid var(--color-border);
-  border-radius: 0.65rem;
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-button);
 }
 .studio-game-row__identity span {
   color: var(--color-muted);
-  font-size: 0.72rem;
+  font-size: 12px;
 }
 .studio-game-row h3 {
   max-width: 15ch;
   margin-top: 1rem;
-  font-size: clamp(2.1rem, 3.1vw, 3.2rem);
+  font-size: 24px;
 }
 .studio-game-row__hook {
   margin-top: 1rem;
@@ -513,7 +276,7 @@
   max-width: 48ch;
   margin-top: 0.75rem;
   color: var(--color-foreground-soft);
-  font-size: 0.93rem;
+  font-size: 12px;
 }
 .studio-game-row__links {
   display: flex;
@@ -526,8 +289,8 @@
   min-height: 44px;
   align-items: center;
   gap: 0.75rem;
-  border-bottom: 1px solid var(--color-border-strong);
-  font-size: 0.85rem;
+  border-bottom: 0.5px solid var(--color-border-strong);
+  font-size: 12px;
   font-weight: 600;
 }
 .studio-game-row__links a:hover {
@@ -545,9 +308,9 @@
   min-height: 48px;
   gap: 0.75rem;
   padding: 0.75rem 1rem;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-button);
-  font-size: 0.8rem;
+  font-size: 12px;
   background: var(--color-surface);
 }
 .studio-catalog__quicklinks a:hover {
@@ -556,60 +319,20 @@
 .studio-catalog__quicklinks span {
   color: var(--color-accent-strong);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
-}
-.studio-collection--catalog {
-  padding-top: 0;
+  font-size: 12px;
 }
 .studio-catalog__closing {
   padding: 2.5rem 0;
-  border-top: 1px solid var(--color-border);
+  border-top: 0.5px solid var(--color-border);
 }
 .studio-catalog__closing .studio-shell {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  font-size: 0.9rem;
+  font-size: 12px;
 }
 
 /* Studio principles and journal cards use the same type and surface rules. */
-.studio-principles {
-  padding: var(--space-section) 0;
-  background: var(--color-highlight-soft);
-  border-block: 1px solid var(--color-border);
-}
-.studio-principles__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-}
-.studio-principles h2 {
-  max-width: 13ch;
-  margin-top: 1.2rem;
-}
-.studio-principles__list {
-  border-top: 1px solid var(--color-border-strong);
-}
-.studio-principles__list article {
-  display: grid;
-  grid-template-columns: 2rem 1fr;
-  gap: 0.5rem 1rem;
-  padding: 1.7rem 0;
-  border-bottom: 1px solid var(--color-border-strong);
-}
-.studio-principles__list span {
-  grid-row: span 2;
-  color: var(--color-accent-strong);
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-}
-.studio-principles__list h3 {
-  font-size: 1.5rem;
-}
-.studio-principles__list p {
-  color: var(--color-foreground-soft);
-  font-size: 0.93rem;
-}
 .studio-notes,
 .journal-index {
   padding-block: var(--space-section);
@@ -624,12 +347,12 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-surface);
   transition:
-    transform 200ms ease,
-    border-color 200ms ease;
+    transform var(--duration) var(--ease-out),
+    border-color var(--duration) var(--ease-out);
 }
 .note-card:hover {
   border-color: var(--color-border-strong);
@@ -639,13 +362,13 @@
   overflow: hidden;
   padding: 1.5rem 2rem;
   background: var(--color-highlight-soft);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
 }
 .note-card__image img {
   width: 100%;
   height: 220px;
   object-fit: contain;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-button);
 }
 .note-card__body {
   display: flex;
@@ -661,18 +384,18 @@
   gap: 0.5rem;
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.59rem;
+  font-size: 12px;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 .note-card h3 {
   margin-top: 1.3rem;
-  font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+  font-size: 16px;
 }
 .note-card p {
   margin: 1rem 0 1.8rem;
   color: var(--color-foreground-soft);
-  font-size: 0.93rem;
+  font-size: 12px;
 }
 .note-card__link {
   display: flex;
@@ -681,15 +404,15 @@
   justify-content: space-between;
   margin-top: auto;
   padding-top: 1rem;
-  border-top: 1px solid var(--color-border);
-  font-size: 0.85rem;
+  border-top: 0.5px solid var(--color-border);
+  font-size: 12px;
   font-weight: 600;
 }
 .journal-feature {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-surface);
 }
@@ -701,14 +424,14 @@
 }
 .journal-feature__image img {
   width: 100%;
-  border-radius: 0.6rem;
+  border-radius: var(--radius-button);
 }
 .journal-feature__copy {
   padding: clamp(2rem, 3.5vw, 3.5rem);
 }
 .journal-feature__copy h2 {
   margin-top: 1.4rem;
-  font-size: clamp(2rem, 3.2vw, 3.1rem);
+  font-size: 24px;
 }
 .journal-feature__copy h2 a:hover {
   color: var(--color-accent-strong);
@@ -728,7 +451,7 @@
 .journal-feature time {
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 12px;
 }
 
 /* About and contact are built from the actual game artwork. */
@@ -741,7 +464,7 @@
 }
 .studio-story__art {
   padding: 3rem;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-highlight);
 }
@@ -754,11 +477,9 @@
 }
 .asset-board > div {
   padding: 0.5rem;
-  border-radius: 0.8rem;
-  background: #fffefa;
-  box-shadow:
-    0 6px 0 #507259,
-    0 10px 15px rgb(32 59 51 / 10%);
+  border-radius: var(--radius-card);
+  background: #fdfdfc;
+  box-shadow: none;
 }
 .asset-board img {
   width: 100%;
@@ -780,7 +501,7 @@
 }
 .studio-values {
   padding-block: var(--space-section);
-  border-top: 1px solid var(--color-border);
+  border-top: 0.5px solid var(--color-border);
 }
 .studio-values__grid {
   display: grid;
@@ -789,18 +510,18 @@
 }
 .studio-values__grid article {
   padding-top: 1.5rem;
-  border-top: 1px solid var(--color-border-strong);
+  border-top: 0.5px solid var(--color-border-strong);
 }
 .studio-values__grid article > span {
   color: var(--color-accent-strong);
 }
 .studio-values__grid h3 {
   margin: 1.5rem 0 1rem;
-  font-size: 1.8rem;
+  font-size: 16px;
 }
 .studio-values__grid p {
   color: var(--color-foreground-soft);
-  font-size: 0.96rem;
+  font-size: 12px;
 }
 .studio-shelf {
   padding-bottom: 2rem;
@@ -816,7 +537,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1.2rem;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-button);
   background: var(--color-surface);
 }
@@ -826,11 +547,11 @@
 .studio-shelf img {
   width: 48px;
   height: 48px;
-  border-radius: 0.7rem;
+  border-radius: var(--radius-card);
 }
 .studio-shelf strong {
   flex: 1;
-  font-size: 0.82rem;
+  font-size: 12px;
   line-height: 1.4;
 }
 .studio-shelf svg {
@@ -843,7 +564,7 @@
   padding-bottom: var(--space-section);
 }
 .contact-channels {
-  border-top: 1px solid var(--color-border-strong);
+  border-top: 0.5px solid var(--color-border-strong);
 }
 .contact-channels > a {
   display: flex;
@@ -851,7 +572,7 @@
   gap: 1.2rem;
   min-height: 140px;
   padding: 1.8rem 0;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
 }
 .contact-channels > a:hover {
   color: var(--color-accent-strong);
@@ -862,7 +583,7 @@
   height: 48px;
   flex-shrink: 0;
   place-items: center;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: 50%;
 }
 .contact-channels > a > div {
@@ -873,7 +594,7 @@
   display: block;
   margin-top: 0.5rem;
   font-family: var(--font-display);
-  font-size: clamp(0.9rem, 1.5vw, 1.35rem);
+  font-size: 12px;
   letter-spacing: -0.035em;
   overflow-wrap: anywhere;
 }
@@ -883,18 +604,18 @@
 .contact-note {
   overflow: hidden;
   padding: 2.5rem;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-highlight-soft);
 }
 .contact-note h2 {
   margin-top: 1.1rem;
-  font-size: 2.7rem;
+  font-size: 24px;
 }
 .contact-note p {
   margin-top: 1.2rem;
   color: var(--color-foreground-soft);
-  font-size: 0.95rem;
+  font-size: 12px;
 }
 .contact-note__tiles {
   display: flex;
@@ -906,9 +627,9 @@
   width: 25%;
   height: auto;
   padding: 0.4rem;
-  border-radius: 0.5rem;
+  border-radius: var(--radius-button);
   background: var(--color-surface);
-  box-shadow: 0 5px 0 #507259;
+  box-shadow: none;
   transform: rotate(-8deg);
 }
 .contact-note__tiles img:nth-child(2) {
@@ -925,7 +646,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-surface);
 }
@@ -940,30 +661,30 @@
   gap: 0.7rem;
   margin-bottom: 2rem;
   color: var(--color-foreground-soft);
-  font-size: 0.8rem;
+  font-size: 12px;
 }
 .game-detail-back:hover {
   color: var(--color-accent-strong);
 }
 .game-detail-mark {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 12px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 .game-detail-copy h1 {
   margin-top: 1rem;
-  font-size: clamp(2.7rem, 4.5vw, 4.7rem);
+  font-size: 24px;
 }
 .game-detail-hook {
   margin-top: 1.5rem;
-  font-size: 1.05rem;
+  font-size: 16px;
   font-weight: 600;
 }
 .game-detail-copy > p {
   margin-top: 1.2rem;
   color: var(--color-foreground-soft);
-  font-size: 0.95rem;
+  font-size: 12px;
 }
 .game-detail-actions {
   margin-top: 2rem;
@@ -983,11 +704,11 @@
 .game-detail-media img {
   width: 100%;
   height: auto;
-  border-radius: 0.6rem;
+  border-radius: var(--radius-button);
 }
 .game-detail-identity {
   padding: 1.5rem 2rem;
-  border-top: 1px solid var(--color-border-strong);
+  border-top: 0.5px solid var(--color-border-strong);
 }
 .game-detail-identity__app {
   display: flex;
@@ -997,16 +718,16 @@
 .game-detail-identity__app img {
   width: 44px;
   height: 44px;
-  border-radius: 0.6rem;
+  border-radius: var(--radius-button);
 }
 .game-detail-identity__app strong,
 .game-detail-identity__app span {
   display: block;
-  font-size: 0.8rem;
+  font-size: 12px;
 }
 .game-detail-identity__app span {
   color: var(--color-foreground-soft);
-  font-size: 0.7rem;
+  font-size: 12px;
 }
 .game-detail-identity dl {
   display: grid;
@@ -1017,12 +738,12 @@
 .game-detail-identity dt {
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.57rem;
+  font-size: 12px;
   text-transform: uppercase;
 }
 .game-detail-identity dd {
   margin-top: 0.3rem;
-  font-size: 0.8rem;
+  font-size: 12px;
 }
 .game-detail-summary {
   display: grid;
@@ -1045,27 +766,27 @@
 }
 .game-detail-summary__notes span {
   padding: 0.4rem 0.8rem;
-  border: 1px solid var(--color-border);
-  border-radius: 2rem;
-  font-size: 0.7rem;
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-card);
+  font-size: 12px;
 }
 .game-detail-summary__features {
   align-self: center;
-  border-top: 1px solid var(--color-border-strong);
+  border-top: 0.5px solid var(--color-border-strong);
 }
 .game-detail-summary__features li {
   display: flex;
   gap: 1.5rem;
   padding: 1.6rem 0;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
 }
 .game-detail-summary__features span {
   color: var(--color-accent-strong);
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 12px;
 }
 .game-detail-summary__features strong {
-  font-size: 1.1rem;
+  font-size: 16px;
   font-weight: 500;
 }
 .game-detail-faq,
@@ -1074,13 +795,13 @@
   grid-template-columns: 0.8fr 1.2fr;
   gap: 4rem;
   padding-block: 3rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 0.5px solid var(--color-border);
 }
 .section-heading h2 {
   margin-top: 1rem;
 }
 details {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 0.5px solid var(--color-border);
 }
 summary {
   display: flex;
@@ -1098,7 +819,7 @@ summary::-webkit-details-marker {
 summary > span:last-child {
   flex-shrink: 0;
   color: var(--color-accent-strong);
-  font-size: 1.3rem;
+  font-size: 16px;
 }
 details[open] summary > span:last-child {
   transform: rotate(45deg);
@@ -1106,16 +827,16 @@ details[open] summary > span:last-child {
 details p {
   padding: 0 2rem 1.5rem 0;
   color: var(--color-foreground-soft);
-  font-size: 0.95rem;
+  font-size: 12px;
 }
 .related-strip {
   margin-top: 4rem;
   padding-top: 3rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 0.5px solid var(--color-border);
 }
 .related-strip__head h2 {
   margin-top: 0.8rem;
-  font-size: 2.2rem;
+  font-size: 24px;
 }
 .related-strip__head p {
   margin-top: 0.8rem;
@@ -1136,7 +857,7 @@ details p {
   justify-content: space-between;
   gap: 1rem;
   padding: 1.5rem;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-button);
   background: var(--color-surface);
 }
@@ -1150,14 +871,14 @@ details p {
 }
 .related-card strong {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 16px;
   letter-spacing: -0.03em;
 }
 .related-card span,
 .related-card time {
   margin-top: 0.4rem;
   color: var(--color-muted);
-  font-size: 0.7rem;
+  font-size: 12px;
 }
 .related-card time {
   margin: 0 0 0.6rem;
@@ -1187,7 +908,7 @@ details p {
 }
 .game-detail-gallery__frame {
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
 }
 .game-detail-gallery__frame img {
@@ -1197,7 +918,7 @@ details p {
 .game-detail-gallery figcaption {
   margin-top: 0.7rem;
   color: var(--color-muted);
-  font-size: 0.7rem;
+  font-size: 12px;
 }
 .article-hero > div {
   display: flex;
@@ -1205,17 +926,17 @@ details p {
   gap: 1rem;
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 12px;
   text-transform: uppercase;
 }
 .article-hero h1 {
   margin-top: 1.5rem;
-  font-size: clamp(2.6rem, 4vw, 4.3rem);
+  font-size: 24px;
 }
 .article-hero > p {
   margin-top: 1.5rem;
   color: var(--color-foreground-soft);
-  font-size: 1rem;
+  font-size: 16px;
 }
 .article-image {
   display: flex;
@@ -1226,7 +947,7 @@ details p {
 .article-image img {
   width: 100%;
   height: auto;
-  border-radius: 0.6rem;
+  border-radius: var(--radius-button);
 }
 .article-summary,
 .article-body {
@@ -1236,13 +957,13 @@ details p {
 .article-summary {
   margin-top: 4rem;
   padding: 2rem;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-highlight-soft);
 }
 .article-summary h2 {
   margin-top: 0.6rem;
-  font-size: 1.6rem;
+  font-size: 16px;
 }
 .article-summary ul {
   display: grid;
@@ -1260,18 +981,18 @@ details p {
 }
 .article-section h2 {
   margin-bottom: 1.4rem;
-  font-size: 2rem;
+  font-size: 24px;
 }
 .article-section p {
   margin-top: 1rem;
   color: var(--color-foreground-soft);
-  font-size: 1.06rem;
+  font-size: 16px;
   line-height: 1.9;
 }
 .article-next {
   padding-top: 3rem;
   margin-top: 3rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 0.5px solid var(--color-border);
 }
 .article-next__intro {
   display: flex;
@@ -1295,7 +1016,7 @@ details p {
   display: flex;
   gap: 1rem;
   padding: 1.5rem;
-  border: 1px solid var(--color-border);
+  border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
   background: var(--color-surface);
 }
@@ -1306,20 +1027,20 @@ details p {
   display: block;
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 12px;
 }
 .article-related-card strong {
   display: block;
   margin-top: 0.8rem;
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 16px;
   letter-spacing: -0.04em;
   line-height: 1.3;
 }
 .article-related-card p {
   margin-top: 1rem;
   color: var(--color-foreground-soft);
-  font-size: 0.9rem;
+  font-size: 12px;
 }
 .article-related-card > svg {
   flex-shrink: 0;
@@ -1342,15 +1063,15 @@ details p {
 }
 .legal-layout nav a {
   padding: 0.75rem 0;
-  border-bottom: 1px solid var(--color-border);
-  font-size: 0.9rem;
+  border-bottom: 0.5px solid var(--color-border);
+  font-size: 12px;
 }
 .legal-layout nav a:hover {
   color: var(--color-accent-strong);
 }
 .legal-layout nav span {
   color: var(--color-muted);
-  font-size: 0.72rem;
+  font-size: 12px;
 }
 .legal-copy {
   max-width: 760px;
@@ -1359,7 +1080,7 @@ details p {
   margin-top: 4rem;
 }
 .legal-copy h2 {
-  font-size: 2.4rem;
+  font-size: 24px;
 }
 .legal-copy p {
   margin-top: 1.4rem;
@@ -1385,7 +1106,7 @@ details p {
   text-align: center;
 }
 .error-panel h1 {
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-size: 24px;
 }
 .error-panel p {
   color: var(--color-foreground-soft);
@@ -1393,14 +1114,14 @@ details p {
 .status-text {
   color: var(--color-accent-strong);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 12px;
 }
 
 /* A consistent final chapter on every route. */
 .site-footer {
-  border-top: 1px solid var(--color-border);
+  border-top: 0.5px solid var(--color-border);
   background: var(--color-foreground);
-  color: #f7f5ef;
+  color: #f9f9f8;
 }
 .site-footer__shell {
   width: min(calc(100% - var(--site-gutter) * 2), var(--site-width));
@@ -1412,18 +1133,18 @@ details p {
   justify-content: space-between;
   gap: 3rem;
   padding-block: 4.5rem;
-  border-bottom: 1px solid rgb(247 245 239 / 20%);
+  border-bottom: 0.5px solid var(--black-a4);
 }
 .studio-footer__invitation .studio-kicker {
-  color: #c0d0b8;
+  color: #b8bcba;
 }
 .studio-footer__invitation h2 {
   max-width: 16ch;
   margin-top: 1.3rem;
-  font-size: clamp(2.8rem, 5vw, 5rem);
+  font-size: 24px;
 }
 .studio-footer__invitation h2 em {
-  color: #d4e5b6;
+  color: #cbcfcd;
 }
 .studio-footer__contact {
   display: flex;
@@ -1432,15 +1153,15 @@ details p {
   align-items: center;
   gap: 2rem;
   padding: 0.8rem 1.2rem;
-  border: 1px solid #bdcdb0;
+  border: 0.5px solid #b8bcba;
   border-radius: var(--radius-button);
-  background: #d4e5b6;
+  background: #cbcfcd;
   color: var(--color-foreground);
-  font-size: 0.9rem;
+  font-size: 12px;
   font-weight: 600;
 }
 .studio-footer__contact:hover {
-  background: #edf5de;
+  background: #f7f9f8;
 }
 .studio-footer__middle {
   display: grid;
@@ -1454,7 +1175,7 @@ details p {
   align-items: center;
   gap: 0.75rem;
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.04em;
 }
@@ -1464,8 +1185,8 @@ details p {
 }
 .studio-footer__middle > p {
   max-width: 30ch;
-  color: #c0cdc5;
-  font-size: 0.9rem;
+  color: #b8bcba;
+  font-size: 12px;
 }
 .site-footer__nav {
   display: grid;
@@ -1476,10 +1197,10 @@ details p {
   display: flex;
   min-height: 36px;
   align-items: center;
-  font-size: 0.85rem;
+  font-size: 12px;
 }
 .site-footer__nav a:hover {
-  color: #d4e5b6;
+  color: #cbcfcd;
 }
 .site-footer__bottom {
   display: flex;
@@ -1487,11 +1208,11 @@ details p {
   align-items: center;
   gap: 2rem;
   padding-block: 1.5rem;
-  border-top: 1px solid rgb(247 245 239 / 20%);
+  border-top: 0.5px solid var(--black-a4);
 }
 .site-footer__bottom > p {
-  color: #c0cdc5;
-  font-size: 0.7rem;
+  color: #b8bcba;
+  font-size: 12px;
 }
 .site-footer__social {
   display: flex;
@@ -1502,25 +1223,16 @@ details p {
   width: 44px;
   height: 44px;
   place-items: center;
-  border: 1px solid rgb(247 245 239 / 25%);
+  border: 0.5px solid var(--black-a4);
   border-radius: 50%;
 }
 .site-footer__social a:hover {
-  background: rgb(247 245 239 / 10%);
+  background: var(--black-a2);
 }
 
 /* The same breakpoints apply to every page and component. */
 @media (max-width: 1050px) {
   .site-header__brand-tag {
-    display: none;
-  }
-  .studio-hero__copy {
-    padding-right: 1.5rem;
-  }
-  .studio-hero__stage {
-    min-height: 560px;
-  }
-  .studio-hero__scroll {
     display: none;
   }
   .studio-story,
@@ -1536,31 +1248,9 @@ details p {
   }
 }
 @media (max-width: 900px) {
-  .studio-hero__grid {
-    grid-template-columns: 1fr;
-  }
-  .studio-hero__copy {
-    padding: 3.5rem 0;
-  }
-  .studio-hero h1 {
-    font-size: clamp(4rem, 12vw, 6.5rem);
-  }
-  .studio-hero__stage {
-    min-height: 530px;
-    border-top: 1px solid var(--color-border);
-  }
-  .studio-hero__selectors {
-    width: 100%;
-  }
-  .studio-hero__selectors button {
-    flex: 1;
-  }
   .studio-game-row__image {
     min-height: 350px;
     padding: 1.5rem;
-  }
-  .studio-principles__inner {
-    gap: 2rem;
   }
   .studio-footer__middle {
     grid-template-columns: 1fr 1fr;
@@ -1575,7 +1265,7 @@ details p {
 }
 @media (max-width: 700px) {
   h1 {
-    font-size: clamp(2.8rem, 10vw, 4.2rem);
+    font-size: 24px;
   }
   .page-intro {
     padding: 1.5rem 0 2.5rem;
@@ -1588,76 +1278,14 @@ details p {
   }
   .page-intro__description {
     margin-top: 1.3rem;
-    font-size: 1rem;
+    font-size: 16px;
   }
   .studio-section-heading {
     align-items: start;
     flex-direction: column;
     gap: 1rem;
   }
-  .studio-hero__topline span:nth-child(2) {
-    display: none;
-  }
-  .studio-hero__topline {
-    font-size: 0.51rem;
-  }
-  .studio-hero__copy {
-    padding: 3rem 0;
-  }
-  .studio-hero h1 {
-    font-size: clamp(3.5rem, 14vw, 5rem);
-  }
-  .studio-hero__intro {
-    font-size: 1rem;
-  }
-  .studio-hero__actions {
-    gap: 0.8rem;
-  }
-  .studio-hero__actions .studio-action {
-    font-size: 0.8rem;
-    padding-inline: 0.85rem;
-  }
-  .studio-hero__actions .studio-text-link {
-    font-size: 0.8rem;
-  }
-  .studio-hero__stage {
-    min-height: 440px;
-    margin-inline: calc(var(--site-gutter) * -1);
-    border-inline: 0;
-  }
-  .studio-hero__stage-label {
-    top: 1.2rem;
-    left: var(--site-gutter);
-  }
-  .studio-hero__stage-bottom {
-    right: var(--site-gutter);
-    bottom: 1.3rem;
-    left: var(--site-gutter);
-  }
-  .studio-hero__stage-bottom strong {
-    max-width: 24ch;
-    font-size: 1.18rem;
-  }
-  .play-object {
-    inset: 3rem 0 6.2rem;
-  }
-  .studio-hero__rail {
-    width: 100%;
-  }
-  .studio-hero__selectors button {
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    gap: 0.4rem;
-    min-height: 88px;
-    padding: 0.9rem 0.65rem;
-    font-size: 0.7rem;
-  }
-  .studio-hero__selectors button svg {
-    display: none;
-  }
   .studio-game-row,
-  .studio-principles__inner,
   .studio-story,
   .contact-layout,
   .journal-feature,
@@ -1680,7 +1308,7 @@ details p {
   }
   .studio-game-row h3 {
     max-width: 20ch;
-    font-size: 2.2rem;
+    font-size: 24px;
   }
   .studio-notes__grid,
   .journal-grid,
@@ -1688,9 +1316,6 @@ details p {
   .related-strip__grid,
   .article-related {
     grid-template-columns: 1fr;
-  }
-  .studio-principles h2 {
-    max-width: none;
   }
   .studio-catalog__quicklinks {
     gap: 0.5rem;
@@ -1750,13 +1375,13 @@ details p {
     height: 40px;
   }
   .contact-channels strong {
-    font-size: 0.92rem;
+    font-size: 12px;
   }
   .contact-note {
     padding: 1.5rem;
   }
   .contact-note h2 {
-    font-size: 2.3rem;
+    font-size: 24px;
   }
   .site-page {
     padding-top: 1.5rem;
@@ -1766,7 +1391,7 @@ details p {
     padding: 1.5rem;
   }
   .game-detail-copy h1 {
-    font-size: 2.8rem;
+    font-size: 24px;
   }
   .game-detail-back {
     margin-bottom: 1.5rem;
@@ -1791,16 +1416,16 @@ details p {
     margin-top: 2.5rem;
   }
   .article-hero h1 {
-    font-size: 2.5rem;
+    font-size: 24px;
   }
   .article-section h2 {
-    font-size: 1.75rem;
+    font-size: 16px;
   }
   .article-section p {
-    font-size: 1rem;
+    font-size: 16px;
   }
   .article-next__intro h2 {
-    font-size: 2.2rem;
+    font-size: 24px;
   }
   .legal-layout {
     grid-template-columns: 1fr;
@@ -1810,7 +1435,7 @@ details p {
     position: static;
   }
   .legal-copy h2 {
-    font-size: 2rem;
+    font-size: 24px;
   }
   .studio-footer__invitation {
     align-items: start;
@@ -1819,7 +1444,7 @@ details p {
     padding-block: 3.5rem;
   }
   .studio-footer__invitation h2 {
-    font-size: 3rem;
+    font-size: 24px;
   }
   .studio-footer__middle {
     grid-template-columns: 1fr;
@@ -1834,5 +1459,242 @@ details p {
     align-items: start;
     flex-direction: column;
     gap: 1rem;
+  }
+}
+
+/* ── The playable board ─────────────────────────────────────
+   The site used to show a 3D display object. It now shows the
+   actual game: a real mahjong board the visitor can play in the
+   browser. The board is the product, so it gets the room.
+
+   The tile faces are the shipped game assets (cut-out PNGs with
+   alpha), so each tile is drawn as an ivory tile face with the
+   real artwork on it — not a coloured rectangle standing in for one. */
+.mahjong {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  flex: 1;
+  min-height: 0;
+}
+.mahjong__stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+.mahjong__board {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 1;
+  min-height: 0;
+  aspect-ratio: 9 / 7;
+  padding: 1.1rem;
+  border-radius: var(--radius-card);
+  background: #1a211e;
+  box-shadow: none;
+  /* The felt is the same green as the game's own board. */
+}
+/* The field holds the tiles at the exact proportions the rules use; the
+   board around it is just the felt they sit on. Its aspect ratio comes from
+   the board's own units, so a tile is always square — a stretched tile would
+   distort the artwork that was cut for a square face. */
+.mahjong__field {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  aspect-ratio: var(--mahjong-width) / var(--mahjong-height);
+  margin-inline: auto;
+}
+.mahjong__board::before {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image: radial-gradient(circle, var(--black-a1) 1px, transparent 1px);
+  background-size: 22px 22px;
+  content: "";
+  pointer-events: none;
+}
+.mahjong__tile {
+  position: absolute;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-button);
+  background: linear-gradient(175deg, #fdfdfc 0%, #f1f0ef 68%, #e2e1de 100%);
+  box-shadow: none;
+  cursor: pointer;
+  transition:
+    transform var(--duration) var(--ease-out),
+    box-shadow var(--duration) var(--ease-out),
+    opacity var(--duration) var(--ease-out),
+    filter var(--duration) var(--ease-out);
+}
+.mahjong__tile img {
+  width: 100%;
+  height: 100%;
+  padding: 12%;
+  object-fit: contain;
+  pointer-events: none;
+}
+/* A covered tile sits back in the felt and loses its shadow edge, so the
+   player can read the board without being told which tiles are free. */
+.mahjong__tile:not(.is-free) {
+  transform: translateY(0.18rem) scale(0.94);
+  box-shadow: none;
+  filter: brightness(0.9) saturate(0.86);
+}
+.mahjong__tile:not(.is-free):hover {
+  filter: brightness(0.96) saturate(0.92);
+}
+.mahjong__tile.is-free:hover {
+  transform: translateY(-0.32rem);
+  box-shadow: none;
+}
+.mahjong__tile.is-free:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+.mahjong__tile.is-held {
+  transform: translateY(-0.4rem) scale(1.03);
+  box-shadow: none;
+}
+.mahjong__tile.is-hinted {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  animation: none;
+}
+@keyframes mahjong-hint {
+  0%,
+  100% {
+    outline-color: var(--color-accent);
+  }
+  50% {
+    outline-color: var(--black-a5);
+  }
+}
+.mahjong__tile.is-blocked {
+  animation: none;
+}
+@keyframes mahjong-refuse {
+  0%,
+  100% {
+    transform: translateY(0.18rem) scale(0.94);
+  }
+  30% {
+    transform: translateY(0.18rem) scale(0.9) translateX(-0.12rem);
+  }
+  70% {
+    transform: translateY(0.18rem) scale(0.9) translateX(0.12rem);
+  }
+}
+.mahjong__tile.is-matched {
+  animation: none;
+}
+@keyframes mahjong-match {
+  0% {
+    transform: translateY(-0.4rem) scale(1.03);
+    opacity: 1;
+  }
+  55% {
+    transform: translateY(-1.1rem) scale(0.9);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-1.4rem) scale(0.6);
+    opacity: 0;
+  }
+}
+.mahjong__tile.is-gone {
+  opacity: 0;
+  pointer-events: none;
+}
+/* The hand sits beside the board on wide screens and under it on narrow
+   ones, so the held tile is always near the one the player is about to tap. */
+.mahjong__hand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.9rem;
+  padding: 0.55rem 0.85rem;
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+}
+.mahjong__hand-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.mahjong__hand-slot {
+  display: grid;
+  width: 3.1rem;
+  height: 3.8rem;
+  place-items: center;
+  border: 0.5px dashed var(--color-border-strong);
+  border-radius: var(--radius-button);
+  background: var(--color-surface-soft);
+}
+.mahjong__hand-slot img {
+  width: 100%;
+  height: 100%;
+  padding: 9%;
+  object-fit: contain;
+}
+.mahjong__hand-empty {
+  color: var(--color-muted);
+  font-size: 12px;
+}
+.mahjong__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+.mahjong__status {
+  min-height: 1.4em;
+  margin: 0;
+  color: #868e8b;
+  font-size: 12px;
+}
+.mahjong__actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.mahjong__btn {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border: 0.5px solid var(--color-border-strong);
+  border-radius: var(--radius-button);
+  background: var(--color-surface);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition:
+    background var(--duration) var(--ease-out),
+    transform var(--duration) var(--ease-out);
+}
+.mahjong__btn:hover {
+  background: var(--color-highlight);
+  transform: translateY(-1px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .mahjong__tile.is-hinted,
+  .mahjong__tile.is-blocked,
+  .mahjong__tile.is-matched {
+    animation: none;
+  }
+  .mahjong__tile.is-matched {
+    opacity: 0;
   }
 }

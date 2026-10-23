@@ -49,7 +49,6 @@ const Header = () => {
             className="site-header__logo"
           />
           <span className="site-header__wordmark">VeryFun Studio</span>
-          <span className="site-header__brand-tag hidden sm:inline">Small games, good breaks.</span>
         </Link>
 
         <nav className="site-header__nav hidden md:flex" aria-label="Main navigation">
@@ -67,7 +66,7 @@ const Header = () => {
                   <motion.span
                     layoutId="site-header-active"
                     className="site-header__nav-active"
-                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                   />
                 )}
               </Link>
@@ -94,7 +93,7 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="site-header__menu relative min-h-[calc(100dvh-4rem)] overflow-hidden border-t border-border-soft bg-background md:hidden"
             aria-label="Mobile navigation"
           >
