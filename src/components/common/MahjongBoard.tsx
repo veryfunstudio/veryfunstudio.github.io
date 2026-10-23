@@ -179,11 +179,7 @@ export function MahjongBoard() {
         <div className="mahjong__hand" aria-live="polite">
           <span className="mahjong__hand-label">In hand</span>
           <div className="mahjong__hand-slot">
-            {held ? (
-              <img src={faceAsset(held)} alt={FACE_LABELS[held]} />
-            ) : (
-              <span className="mahjong__hand-empty">nothing yet</span>
-            )}
+            {held ? <img src={faceAsset(held)} alt={FACE_LABELS[held]} /> : null}
           </div>
         </div>
       </div>

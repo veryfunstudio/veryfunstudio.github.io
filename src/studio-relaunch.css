@@ -241,9 +241,10 @@
 }
 .studio-hero__stage--mahjong .studio-hero__stage-bottom a {
   border-color: #5f6563;
+  color: #f7f9f8;
 }
 .studio-hero__stage--mahjong .studio-hero__stage-bottom a:hover {
-  background: #2a211e;
+  background: #1a211e;
 }
 /* The poster treatment for the titles that have key art but no verified
    gameplay assets. */
@@ -1952,7 +1953,7 @@ details p {
   }
 }
 .mahjong__tile.is-blocked {
-  animation: mahjong-refuse 320ms ease;
+  animation: mahjong-refuse var(--duration) var(--ease-out);
 }
 @keyframes mahjong-refuse {
   0%,
