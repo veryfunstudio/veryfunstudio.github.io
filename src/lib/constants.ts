@@ -3,7 +3,7 @@ export const SITE_URL = "https://veryfunstudio.github.io";
 export const BRAND_ASSET_VERSION = "20260804-v2";
 export const BRAND_LOGO_URL = `${SITE_URL}/favicon.png?v=${BRAND_ASSET_VERSION}`;
 export const GOOGLE_PLAY_DEVELOPER_URL =
-  "https://play.google.com/store/apps/developer?id=songxugang";
+  "https://play.google.com/store/apps/developer?id=Veryfun+Studio";
 export const LEGAL_ENTITY_NAME = "VeryFun Studio";
 
 /**
