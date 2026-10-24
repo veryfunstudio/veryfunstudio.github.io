@@ -1718,7 +1718,7 @@ details p {
     font-size: 0.875rem;
   }
   .studio-hero__stage {
-    min-height: 440px;
+    min-height: 460px;
     margin-inline: calc(var(--site-gutter) * -1);
     border-inline: 0;
   }
@@ -1726,10 +1726,27 @@ details p {
     top: 1.2rem;
     left: var(--site-gutter);
   }
+  /* At 390px the stage is only 440px tall, so an absolutely positioned bottom
+     bar would sit on the key art and swallow the title. Stack the stage
+     instead: artwork flexes into the space above, the bar keeps its own row. */
+  .studio-hero__stage {
+    display: flex;
+    flex-direction: column;
+  }
+  .studio-hero__poster {
+    position: relative;
+    inset: auto;
+    flex: 1;
+    min-height: 220px;
+    margin: 3.2rem 1.1rem 0;
+    padding: 0;
+  }
   .studio-hero__stage-bottom {
-    right: var(--site-gutter);
-    bottom: 1.3rem;
-    left: var(--site-gutter);
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    padding: 1rem var(--site-gutter) 1.3rem;
   }
   .studio-hero__stage-bottom strong {
     max-width: 24ch;
