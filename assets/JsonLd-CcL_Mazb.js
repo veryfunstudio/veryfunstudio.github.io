@@ -1,0 +1,1 @@
+import{ht as e,pt as t,t as n}from"./jsx-runtime-zJGcP4xB.js";var r=e(t(),1),i=n(),a=(0,r.memo)(({schema:e})=>(0,i.jsx)(`script`,{type:`application/ld+json`,children:JSON.stringify(e)}));export{a as t};
