@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
 import { PageIntro } from "@/components/common/PageIntro";
 import { Seo } from "@/components/seo/Seo";
-import { getGamesByNewest } from "@/data/games";
+import { ALSO_ON_PLAY, getGamesByNewest } from "@/data/games";
 
 const VALUES = [
   {
@@ -109,6 +109,21 @@ export default function About() {
               <strong>{game.title}</strong>
               <ArrowUpRight size={18} />
             </Link>
+          ))}
+        </div>
+      </section>
+      <section className="studio-shell studio-shelf" aria-label="Also on Google Play">
+        <p className="studio-kicker">Also on Google Play</p>
+        <div>
+          {ALSO_ON_PLAY.map((app) => (
+            <a key={app.packageId} href={app.url} target="_blank" rel="noopener noreferrer">
+              <img src={app.icon} alt="" width={64} height={64} loading="lazy" />
+              <div className="studio-shelf__text">
+                <strong>{app.title}</strong>
+                <span>{app.blurb}</span>
+              </div>
+              <ArrowUpRight size={18} />
+            </a>
           ))}
         </div>
       </section>

@@ -2,7 +2,7 @@
 /* One component system for the complete studio site. Tokens live in index.css. */
 .site-header {
   border-bottom: 0.5px solid var(--color-border);
-  background: rgb(249 249 248 / 96%);
+  background: rgb(11 15 14 / 88%);
   backdrop-filter: blur(14px);
 }
 .site-header__bar {
@@ -154,6 +154,9 @@
 /* Home: the game's own objects on a quiet studio stage. */
 .studio-hero {
   border-bottom: 0.5px solid var(--color-border);
+  background:
+    radial-gradient(120% 90% at 78% 30%, rgb(92 225 240 / 5%), transparent 55%),
+    var(--color-background);
 }
 .studio-hero__topline {
   display: flex;
@@ -197,7 +200,8 @@
   margin-top: 2rem;
 }
 .studio-hero__stage {
-  --stage: #eef1f0;
+  --stage: #101614;
+  --stage-glow: rgb(92 225 240 / 7%);
   position: relative;
   isolation: isolate;
   min-height: 620px;
@@ -207,15 +211,17 @@
   transition: background var(--duration) var(--ease-out);
 }
 .studio-hero__stage--tile {
-  --stage: #f1f0ef;
+  --stage: #101720;
+  --stage-glow: rgb(109 205 255 / 7%);
 }
 .studio-hero__stage--arrow {
-  --stage: #feebe7;
+  --stage: #1b1210;
+  --stage-glow: rgb(255 122 82 / 8%);
 }
 /* The board brings its own dark felt; the pale stage behind it would only
    fight with the tiles. */
 .studio-hero__stage--mahjong {
-  background: #1a211e;
+  background: var(--stage);
 }
 /* With a playable board in the stage, the stage stops being a poster frame
    and becomes a column: the board takes the room, and the caption sits under
@@ -224,6 +230,15 @@
   display: flex;
   flex-direction: column;
   padding: 4rem 1.5rem 1.5rem;
+}
+/* 聚光灯：牌桌是首屏的主角，光只打在它身上 */
+.studio-hero__stage::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  background: radial-gradient(60% 46% at 50% 44%, var(--stage-glow), transparent 72%);
+  pointer-events: none;
 }
 .studio-hero__stage--mahjong .studio-hero__stage-label {
   color: #b8bcba;
@@ -234,10 +249,10 @@
   padding: 0;
 }
 .studio-hero__stage--mahjong .studio-hero__stage-bottom span {
-  color: #868e8b;
+  color: #98a29a;
 }
 .studio-hero__stage--mahjong .studio-hero__stage-bottom strong {
-  color: #f7f9f8;
+  color: #eef1ee;
 }
 .studio-hero__stage--mahjong .studio-hero__stage-bottom a {
   border-color: #5f6563;
@@ -258,7 +273,7 @@
 .studio-hero__poster img {
   width: 100%;
   border-radius: var(--radius-button);
-  box-shadow: 0 1rem 2rem rgb(33 32 28 / 12%);
+  box-shadow: 0 1rem 2rem rgb(0 0 0 / 45%);
   transform: rotate(-3deg);
   transition: transform var(--duration) var(--ease-out);
 }
@@ -271,8 +286,8 @@
   inset: 0;
   content: "";
   background-image:
-    linear-gradient(rgb(33 32 28 / 4%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(33 32 28 / 4%) 1px, transparent 1px);
+    linear-gradient(rgb(238 241 238 / 3%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(238 241 238 / 3%) 1px, transparent 1px);
   background-size: 3rem 3rem;
 }
 .studio-hero__orbit {
@@ -282,7 +297,7 @@
   left: 50%;
   width: 83%;
   aspect-ratio: 1;
-  border: 0.5px solid rgb(33 32 28 / 10%);
+  border: 0.5px solid rgb(238 241 238 / 7%);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
@@ -407,13 +422,13 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: #eef1f0;
+  background: radial-gradient(90% 100% at 30% 40%, rgb(92 225 240 / 5%), transparent 70%), #101714;
 }
 .studio-game-row--1 .studio-game-row__image {
-  background: #f1f0ef;
+  background: radial-gradient(90% 100% at 30% 40%, rgb(109 205 255 / 5%), transparent 70%), #101720;
 }
 .studio-game-row--2 .studio-game-row__image {
-  background: #feebe7;
+  background: radial-gradient(90% 100% at 30% 40%, rgb(255 122 82 / 6%), transparent 70%), #1b1210;
 }
 /* The loupe fills the panel and crops the key art to fill it, so the
    artwork reads at the size of the panel rather than as a small picture
@@ -749,10 +764,10 @@
 .asset-board > div {
   padding: 0.5rem;
   border-radius: var(--radius-card);
-  background: #fdfdfc;
+  background: #131917;
   box-shadow:
-    0 6px 0 #5f6563,
-    0 10px 15px rgb(33 32 28 / 10%);
+    0 6px 0 #39443d,
+    0 10px 15px rgb(0 0 0 / 35%);
 }
 .asset-board img {
   width: 100%;
@@ -826,6 +841,19 @@
   flex: 1;
   font-size: 0.875rem;
   line-height: 1.4;
+}
+.studio-shelf__text {
+  flex: 1;
+  display: grid;
+  gap: 0.2rem;
+}
+.studio-shelf__text strong {
+  flex: none;
+}
+.studio-shelf__text span {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  line-height: 1.45;
 }
 .studio-shelf svg {
   flex-shrink: 0;
@@ -1393,7 +1421,7 @@ details p {
 /* A consistent final chapter on every route. */
 .site-footer {
   border-top: 0.5px solid var(--color-border);
-  background: var(--color-foreground);
+  background: var(--color-surface-soft);
   color: #f9f9f8;
 }
 .site-footer__shell {
@@ -1428,13 +1456,13 @@ details p {
   padding: 0.8rem 1.2rem;
   border: 0.5px solid #b8bcba;
   border-radius: var(--radius-button);
-  background: #cbcfcd;
-  color: var(--color-foreground);
+  background: var(--color-accent);
+  color: #fff;
   font-size: 0.875rem;
   font-weight: 600;
 }
 .studio-footer__contact:hover {
-  background: #f7f9f8;
+  background: var(--color-accent-hover);
 }
 .studio-footer__middle {
   display: grid;

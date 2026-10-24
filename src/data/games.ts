@@ -13,6 +13,15 @@ export interface GameVisual {
   frame?: "phone" | "wide" | "square";
 }
 
+/**
+ * Facts read off the public Google Play listing (October 2026). `rating` is
+ * omitted while a title has too few reviews to display one, like Arrow Out.
+ */
+export interface GameStoreFacts {
+  rating?: number;
+  downloads: string;
+}
+
 export interface Game {
   id: number;
   packageId: string;
@@ -38,6 +47,8 @@ export interface Game {
    * `public/screenshots/{slug}/`. Captions + frame drive the detail UI.
    */
   gallery?: GameVisual[];
+  /** Live listing facts shown next to the install button. */
+  store?: GameStoreFacts;
 }
 
 export const GAMES: Game[] = [
@@ -73,13 +84,35 @@ export const GAMES: Game[] = [
         frame: "wide",
       },
       {
-        src: "/images/nova-mahjong-icon.webp",
-        caption: "App icon",
-        alt: "Nova Mahjong For Seniors app icon",
-        kind: "icon",
-        frame: "square",
+        src: "/screenshots/nova-mahjong/02-felt-board.jpg",
+        caption: "Classic green felt",
+        alt: "Nova Mahjong tile layout on the classic green felt board",
+        kind: "screen",
+        frame: "phone",
+      },
+      {
+        src: "/screenshots/nova-mahjong/03-large-tiles.jpg",
+        caption: "Large-tile layout",
+        alt: "Nova Mahjong board showing oversized tiles on a dark bamboo background",
+        kind: "screen",
+        frame: "phone",
+      },
+      {
+        src: "/screenshots/nova-mahjong/04-heart-board.jpg",
+        caption: "Heart-shaped board",
+        alt: "Nova Mahjong heart-shaped tile layout with flower tiles",
+        kind: "screen",
+        frame: "phone",
+      },
+      {
+        src: "/screenshots/nova-mahjong/05-late-levels.jpg",
+        caption: "Late-game layout",
+        alt: "A dense Nova Mahjong board from a later level",
+        kind: "screen",
+        frame: "phone",
       },
     ],
+    store: { rating: 4.3, downloads: "1K+" },
     faq: [
       {
         question: "Is Nova Mahjong For Seniors free to play?",
@@ -139,13 +172,35 @@ export const GAMES: Game[] = [
         frame: "wide",
       },
       {
-        src: "/images/tile-journey-icon.webp",
-        caption: "App icon",
-        alt: "Tile Journey app icon",
-        kind: "icon",
-        frame: "square",
+        src: "/screenshots/tile-journey/02-fruit-valley.jpg",
+        caption: "Level 1, fruit tiles",
+        alt: "Tile Journey level 1 with fruit tiles over a sunny valley",
+        kind: "screen",
+        frame: "phone",
+      },
+      {
+        src: "/screenshots/tile-journey/03-sweet-terrace.jpg",
+        caption: "Sweets on the terrace",
+        alt: "Tile Journey level 28 with dessert tiles over terraced fields",
+        kind: "screen",
+        frame: "phone",
+      },
+      {
+        src: "/screenshots/tile-journey/04-animal-mill.jpg",
+        caption: "Animal tiles by the mill",
+        alt: "Tile Journey level 46 with animal tiles beside a watermill",
+        kind: "screen",
+        frame: "phone",
+      },
+      {
+        src: "/screenshots/tile-journey/05-night-spa.jpg",
+        caption: "Night board",
+        alt: "Tile Journey level 99 under a night sky with spa tiles",
+        kind: "screen",
+        frame: "phone",
       },
     ],
+    store: { rating: 4.3, downloads: "500+" },
     faq: [
       {
         question: "Is Tile Journey free to play?",
@@ -204,13 +259,35 @@ export const GAMES: Game[] = [
         frame: "wide",
       },
       {
-        src: "/images/arrow-out-icon.webp",
-        caption: "App icon",
-        alt: "Arrow Out app icon",
-        kind: "icon",
-        frame: "square",
+        src: "/screenshots/arrow-out/02-sailboat.jpg",
+        caption: "Sailboat of arrows",
+        alt: "Arrow Out level 12, arrows arranged into a sailboat",
+        kind: "screen",
+        frame: "phone",
+      },
+      {
+        src: "/screenshots/arrow-out/03-hidden-cat.jpg",
+        caption: "The hidden cat",
+        alt: "Arrow Out level 24, arrows forming the outline of a sitting cat",
+        kind: "screen",
+        frame: "phone",
+      },
+      {
+        src: "/screenshots/arrow-out/04-full-maze.jpg",
+        caption: "Full-grid maze",
+        alt: "Arrow Out level 25, a full grid of crossing arrows",
+        kind: "screen",
+        frame: "phone",
+      },
+      {
+        src: "/screenshots/arrow-out/05-orange-tangle.jpg",
+        caption: "The orange tangle",
+        alt: "Arrow Out level 18, a dense orange arrow tangle",
+        kind: "screen",
+        frame: "phone",
       },
     ],
+    store: { downloads: "100+" },
     faq: [
       {
         question: "Is Arrow Out free to play?",
@@ -242,6 +319,48 @@ export const GAMES: Game[] = [
 export function getGameBySlug(slug: string): Game | undefined {
   return GAMES.find((game) => game.slug === slug);
 }
+
+/**
+ * Additional public VeryFun listings on Google Play. These sit outside the
+ * featured puzzle catalog but ship the same calm-first brief. Blurbs and
+ * download classes are quoted from the store pages (October 2026); Time Pop
+ * Puzzle is absent because its public listing was unavailable.
+ */
+export interface AlsoOnPlay {
+  title: string;
+  packageId: string;
+  url: string;
+  icon: string;
+  blurb: string;
+  downloads: string;
+}
+
+export const ALSO_ON_PLAY: AlsoOnPlay[] = [
+  {
+    title: "ClassicSudoku2026",
+    packageId: "com.codex.sudokumobilegame",
+    url: "https://play.google.com/store/apps/details?id=com.codex.sudokumobilegame",
+    icon: "/images/classic-sudoku-icon.webp",
+    blurb: "Relaxing Sudoku with hints, scoring, and endless challenges.",
+    downloads: "5K+",
+  },
+  {
+    title: "Word Search Block",
+    packageId: "com.cookabc.zenwordsearch",
+    url: "https://play.google.com/store/apps/details?id=com.cookabc.zenwordsearch",
+    icon: "/images/word-search-block-icon.webp",
+    blurb: "A peaceful word search journey, anytime, anywhere.",
+    downloads: "100+",
+  },
+  {
+    title: "Pearl Coloring",
+    packageId: "com.veryfun.pearlcoloring",
+    url: "https://play.google.com/store/apps/details?id=com.veryfun.pearlcoloring",
+    icon: "/images/pearl-coloring-icon.webp",
+    blurb: "Relaxing pearl-sorting pixel art puzzles.",
+    downloads: "50+",
+  },
+];
 
 /**
  * Games ordered newest-first by releaseDate. Sorted copy; does not mutate the

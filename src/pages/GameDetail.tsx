@@ -37,6 +37,10 @@ const GameDetail = () => {
   const heroFacts = [
     { label: "Platform", value: "Android" },
     { label: "Price", value: "Free" },
+    ...(game.store?.rating
+      ? [{ label: "Play rating", value: `${game.store.rating.toFixed(1)} / 5` }]
+      : []),
+    ...(game.store ? [{ label: "Downloads", value: game.store.downloads }] : []),
     { label: "Release", value: releaseLabel },
   ];
   const hasBoardShots = gallery.some((item) => item.kind === "screen");

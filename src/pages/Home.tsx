@@ -57,8 +57,8 @@ export default function Home() {
               for <em>play.</em>
             </h1>
             <p className="studio-hero__intro">
-              Small, satisfying puzzle games for the moments between everything else. Clear to pick
-              up, easy to put down, and made with care.
+              Tactile puzzle games for Android — clear rules, readable boards, and levels made by
+              hand. Free to install, playable offline, and calm by design.
             </p>
             <div className="studio-hero__actions">
               <Link to="/games" className="studio-action studio-action--dark">
