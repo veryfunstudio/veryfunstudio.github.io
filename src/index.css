@@ -226,24 +226,26 @@ h2[id] {
     background var(--duration) var(--ease-out),
     transform var(--duration) var(--ease-out);
 }
-/* 主行动键：番茄填充。暗世界里它是最响的一块颜色，只给最重要的那个动作。 */
+/* 主行动键：番茄填充。暗世界里它是最响的一块颜色，只给最重要的那个动作。
+   文字用近黑而非白：tomato-9 上白字只有 3.87:1（低于 AA 的 4.5），
+   近黑 4.99:1 达标，也符合 Radix 深色主题 step 9 配深前景的用法。 */
 .studio-action--dark,
 .pill-button--accent {
   border-color: var(--color-accent);
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-background);
 }
 .studio-action:hover,
 .pill-button:hover {
   background: var(--color-accent-hover);
   border-color: var(--color-accent-hover);
-  color: #fff;
+  color: var(--color-background);
   transform: translateY(-2px);
 }
 .studio-action--dark:hover,
 .pill-button--accent:hover {
   background: var(--color-accent-hover);
-  color: #fff;
+  color: var(--color-background);
 }
 .studio-text-link {
   display: inline-flex;
