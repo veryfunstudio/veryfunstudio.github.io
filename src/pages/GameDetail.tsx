@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Download } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download, Play } from "lucide-react";
 import { Link, useParams } from "react-router";
 import EntityNotFound from "@/components/common/EntityNotFound";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -257,13 +257,25 @@ const GameDetail = () => {
               </div>
               <div className="related-strip__grid">
                 {relatedGames.map((item) => (
-                  <Link key={item.slug} to={`/games/${item.slug}`} className="related-card">
-                    <div>
-                      <strong>{item.title}</strong>
-                      <span>{formatGameTags(item)}</span>
-                    </div>
-                    <ArrowRight size={18} />
-                  </Link>
+                  <div key={item.slug} className="related-card">
+                    <Link to={`/games/${item.slug}`} className="related-card__main">
+                      <div>
+                        <strong>{item.title}</strong>
+                        <span>{formatGameTags(item)}</span>
+                      </div>
+                      <ArrowRight size={18} aria-hidden="true" />
+                    </Link>
+                    <a
+                      className="related-card__play"
+                      href={item.googlePlayUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Get ${item.title} on Google Play`}
+                    >
+                      <Play size={17} aria-hidden="true" />
+                      Google Play
+                    </a>
+                  </div>
                 ))}
               </div>
             </>

@@ -150,6 +150,20 @@
 .studio-cta > a {
   flex-shrink: 0;
 }
+.studio-cta__actions {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+.studio-action--store {
+  border: 0.5px solid var(--color-border-strong);
+  background: transparent;
+  color: var(--color-foreground);
+}
+.studio-action--store:hover {
+  background: var(--color-surface);
+}
 
 /* Home: the game's own objects on a quiet studio stage. */
 .studio-hero {
@@ -353,6 +367,11 @@
 }
 .studio-hero__stage-bottom a:hover {
   background: var(--color-surface);
+}
+.studio-hero__stage-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.6rem;
 }
 .studio-hero__rail {
   display: flex;
@@ -821,16 +840,40 @@
   margin-top: 1.3rem;
 }
 .studio-shelf a {
+  color: inherit;
+}
+.studio-shelf__row {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.1rem;
   padding: 1.2rem;
   border: 0.5px solid var(--color-border);
   border-radius: var(--radius-button);
   background: var(--color-surface);
 }
-.studio-shelf a:hover {
+.studio-shelf__row:hover {
   background: var(--color-highlight-soft);
+}
+.studio-shelf__main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+.studio-shelf__play {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-foreground-soft);
+}
+.studio-shelf__play:hover {
+  color: var(--color-foreground);
 }
 .studio-shelf img {
   width: 48px;
@@ -838,7 +881,6 @@
   border-radius: var(--radius-card);
 }
 .studio-shelf strong {
-  flex: 1;
   font-size: 0.875rem;
   line-height: 1.4;
 }
@@ -1184,8 +1226,41 @@ details p {
 .related-card time {
   margin: 0 0 0.6rem;
 }
-.related-card > svg {
+.related-card > svg,
+.related-card__main > svg {
   flex-shrink: 0;
+}
+.related-card__main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 0;
+  color: inherit;
+}
+.related-card__play {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.8rem;
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-button);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-foreground-soft);
+  transition:
+    color var(--duration) var(--ease-out),
+    border-color var(--duration) var(--ease-out),
+    background var(--duration) var(--ease-out);
+}
+.related-card__play:hover {
+  border-color: var(--color-border-strong);
+  background: var(--color-highlight-soft);
+  color: var(--color-foreground);
 }
 .game-detail-gallery {
   padding-top: 3rem;

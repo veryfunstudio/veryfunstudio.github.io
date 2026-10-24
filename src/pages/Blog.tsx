@@ -6,7 +6,7 @@ import { StudioCTA } from "@/components/common/StudioCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
 import { getBlogPath, getPostsByNewest } from "@/data/blog";
-import { SITE_URL } from "@/lib/constants";
+import { GOOGLE_PLAY_DEVELOPER_URL, SITE_URL } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
 
 export default function Blog() {
@@ -82,6 +82,7 @@ export default function Blog() {
         description="The ideas behind our games make more sense with a puzzle in your hands."
         to="/games"
         label="Explore the games"
+        storeUrl={GOOGLE_PLAY_DEVELOPER_URL}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, Play } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
 import { GameFeatureRow } from "@/components/common/GameFeatureRow";
@@ -78,9 +78,19 @@ export default function Home() {
                 <span>Now showing</span>
                 <strong>{activeGame.title}</strong>
               </div>
-              <Link to={`/games/${activeGame.slug}`} aria-label={`Explore ${activeGame.title}`}>
-                <ArrowUpRight size={22} aria-hidden="true" />
-              </Link>
+              <div className="studio-hero__stage-actions">
+                <a
+                  href={activeGame.googlePlayUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Get ${activeGame.title} on Google Play`}
+                >
+                  <Play size={20} aria-hidden="true" />
+                </a>
+                <Link to={`/games/${activeGame.slug}`} aria-label={`Explore ${activeGame.title}`}>
+                  <ArrowUpRight size={22} aria-hidden="true" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>

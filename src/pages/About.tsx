@@ -104,11 +104,20 @@ export default function About() {
         <p className="studio-kicker">Made by VeryFun Studio</p>
         <div>
           {games.map((game) => (
-            <Link key={game.slug} to={`/games/${game.slug}`}>
-              <img src={game.icon} alt="" width={64} height={64} loading="lazy" />
-              <strong>{game.title}</strong>
-              <ArrowUpRight size={18} />
-            </Link>
+            <div key={game.slug} className="studio-shelf__row">
+              <Link to={`/games/${game.slug}`} className="studio-shelf__main">
+                <img src={game.icon} alt="" width={64} height={64} loading="lazy" />
+                <strong>{game.title}</strong>
+              </Link>
+              <a
+                className="studio-shelf__play"
+                href={game.googlePlayUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Play <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+            </div>
           ))}
         </div>
       </section>
@@ -116,14 +125,28 @@ export default function About() {
         <p className="studio-kicker">Also on Google Play</p>
         <div>
           {ALSO_ON_PLAY.map((app) => (
-            <a key={app.packageId} href={app.url} target="_blank" rel="noopener noreferrer">
-              <img src={app.icon} alt="" width={64} height={64} loading="lazy" />
-              <div className="studio-shelf__text">
-                <strong>{app.title}</strong>
-                <span>{app.blurb}</span>
-              </div>
-              <ArrowUpRight size={18} />
-            </a>
+            <div key={app.packageId} className="studio-shelf__row">
+              <a
+                className="studio-shelf__main"
+                href={app.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={app.icon} alt="" width={64} height={64} loading="lazy" />
+                <div className="studio-shelf__text">
+                  <strong>{app.title}</strong>
+                  <span>{app.blurb}</span>
+                </div>
+              </a>
+              <a
+                className="studio-shelf__play"
+                href={app.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Play <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+            </div>
           ))}
         </div>
       </section>
