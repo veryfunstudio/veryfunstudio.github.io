@@ -43,11 +43,12 @@ hook: "Large tiles. No clocks. Classic solitaire calm.",
 
 ## Current packs
 
-The current three-title catalog ships verified landscape key art only:
+All three featured titles ship verified landscape key art plus four real phone
+screenshots pulled from the public Google Play listing (October 2026):
 
-- `nova-mahjong`
-- `tile-journey`
-- `arrow-out`
+- `nova-mahjong` — felt board, large-tile layout, heart board, late-game layout
+- `tile-journey` — fruit valley, sweet terrace, animal mill, night board
+- `arrow-out` — sailboat, hidden cat, full-grid maze, orange tangle
 
-Their app icons live under `public/images/` and are also shown in the gallery. Add phone-framed
-items only after real Play Console exports are available.
+Their app icons live under `public/images/` and are also shown in the gallery.
+When a store listing updates, re-export the shots and keep captions concrete.
