@@ -15,14 +15,14 @@ import {
 } from "./mahjong-board.ts";
 
 describe("the board", () => {
-  test("has twelve tiles in six matching pairs", () => {
+  test("has thirty tiles in fifteen matching pairs", () => {
     const tiles = buildBoard();
-    assert.equal(tiles.length, 12);
+    assert.equal(tiles.length, 30);
     const counts = new Map<string, number>();
     for (const tile of tiles) {
       counts.set(tile.face, (counts.get(tile.face) ?? 0) + 1);
     }
-    assert.equal(counts.size, 6);
+    assert.equal(counts.size, 15);
     for (const face of TILE_FACES) {
       assert.equal(counts.get(face), 2, `${face} should appear exactly twice`);
     }
@@ -48,10 +48,10 @@ describe("the board", () => {
   test("the board can actually be finished", () => {
     const solution = solveBoard(createBoardState());
     assert.ok(solution, "the starting board must have a solution");
-    assert.equal(solution.length, 6);
-    // Every tile is used exactly once across the six pairs.
+    assert.equal(solution.length, 15);
+    // Every tile is used exactly once across the fifteen pairs.
     const used = solution.flat();
-    assert.equal(new Set(used).size, 12);
+    assert.equal(new Set(used).size, 30);
   });
 
   test("the board starts with only its corner tiles free", () => {
@@ -69,7 +69,8 @@ describe("the board", () => {
   test("most of the board starts covered", () => {
     const state = createBoardState();
     const freeCount = freeTiles(state).length;
-    assert.ok(freeCount < 12, "a board where everything is free teaches nothing");
+    assert.ok(freeCount < 30, "a board where everything is free teaches nothing");
+    assert.ok(freeCount >= 2, "the board must open with at least one move");
   });
 });
 
@@ -112,7 +113,7 @@ describe("taking tiles", () => {
     assert.deepEqual(second.state.matched.slice().sort(), [a, b].sort());
 
     const cleared = commitMatch(second.state);
-    assert.equal(remaining(cleared), 10);
+    assert.equal(remaining(cleared), 28);
   });
 
   test("tapping a different face swaps the held tile", () => {

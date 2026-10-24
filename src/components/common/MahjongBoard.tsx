@@ -116,16 +116,17 @@ export function MahjongBoard() {
   return (
     <div className="mahjong">
       <div className="mahjong__stage">
-        <div className="mahjong__board">
-          <div
-            className="mahjong__field"
-            style={{
-              // The board's extent in half-units drives the tile positions, so
-              // the layout and the rules share one set of numbers.
-              ["--mahjong-width" as string]: `${extent.width}`,
-              ["--mahjong-height" as string]: `${extent.height}`,
-            }}
-          >
+        <div
+          className="mahjong__board"
+          style={{
+            // The board's extent in half-units drives both the felt's aspect
+            // and the tile positions, so the layout and the rules share one
+            // set of numbers (the field inherits the variables).
+            ["--mahjong-width" as string]: `${extent.width}`,
+            ["--mahjong-height" as string]: `${extent.height}`,
+          }}
+        >
+          <div className="mahjong__field">
             {state.tiles.map((tile) => {
               const gone = state.removed.includes(tile.id);
               const isMatched = state.matched.includes(tile.id);

@@ -1884,7 +1884,7 @@ details p {
   place-items: center;
   flex: 1;
   min-height: 0;
-  aspect-ratio: 9 / 7;
+  aspect-ratio: var(--mahjong-width) / var(--mahjong-height);
   padding: 1.1rem;
   border-radius: var(--radius-card);
   background: #1a211e;

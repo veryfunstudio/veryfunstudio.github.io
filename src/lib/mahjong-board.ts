@@ -5,9 +5,9 @@
  * play", and the one thing a puzzle site can show that a static image cannot
  * is the actual verb. These are the shipped Nova Mahjong face assets
  * (public/game-assets/nova-mahjong/*.png, copied unchanged from the game
- * client — see docs/game-asset-provenance.json). Six faces, each appearing
- * twice, is a twelve-tile board: small enough to finish, real enough to teach
- * the rule.
+ * client — see docs/game-asset-provenance.json). Fifteen faces, each appearing
+ * twice, is a thirty-tile board: dense enough to look like the store
+ * screenshots, small enough to finish in a sitting.
  *
  * The rules are solitaire's, not mahjong's: a tile may be taken when it is
  * free — nothing on top of it, and at least one of its side edges is open —
@@ -18,10 +18,12 @@
  * down. The result is a shingled deck — the way a mahjong board actually
  * looks — rather than a flat grid.
  *
- *   row 3 (top)      ▢ ▢ ▢
- *   row 2            ▢ ▢ ▢
- *   row 1          ▢ ▢ ▢
- *   row 0 (base)  ▢ ▢ ▢
+ *   row 5 (top)        ▢ ▢ ▢ ▢ ▢
+ *   row 4             ▢ ▢ ▢ ▢ ▢
+ *   row 3            ▢ ▢ ▢ ▢ ▢
+ *   row 2           ▢ ▢ ▢ ▢ ▢
+ *   row 1          ▢ ▢ ▢ ▢ ▢
+ *   row 0 (base)  ▢ ▢ ▢ ▢ ▢
  *
  * Each row covers the row below it, so "free" and "covered" are properties
  * the player can see on the board, not rules they have to take on faith.
@@ -30,13 +32,22 @@
  * DOM. Rendering lives in the component.
  */
 
-/** The six faces used on the board, in the order they appear in the assets. */
+/** The fifteen faces used on the board, in the order they appear in the assets. */
 export const TILE_FACES = [
   "tile_dot_6",
+  "tile_dot_9",
+  "tile_bamboo_1",
   "tile_bamboo_3",
+  "tile_bamboo_7",
+  "tile_character_1",
   "tile_character_5",
+  "tile_character_9",
   "tile_dragon_red",
+  "tile_dragon_green",
+  "tile_dragon_white",
+  "tile_wind_south",
   "tile_flower_orchid",
+  "tile_flower_plum",
   "tile_flower_chrysanthemum",
 ] as const;
 
@@ -48,10 +59,19 @@ export const faceAsset = (face: TileFace): string => `/game-assets/nova-mahjong/
 /** Human-readable label for a face, used for screen-reader text. */
 export const FACE_LABELS: Record<TileFace, string> = {
   tile_dot_6: "six of dots",
+  tile_dot_9: "nine of dots",
+  tile_bamboo_1: "one of bamboo",
   tile_bamboo_3: "three of bamboo",
+  tile_bamboo_7: "seven of bamboo",
+  tile_character_1: "one of characters",
   tile_character_5: "five of characters",
+  tile_character_9: "nine of characters",
   tile_dragon_red: "red dragon",
+  tile_dragon_green: "green dragon",
+  tile_dragon_white: "white dragon",
+  tile_wind_south: "south wind",
   tile_flower_orchid: "orchid",
+  tile_flower_plum: "plum blossom",
   tile_flower_chrysanthemum: "chrysanthemum",
 };
 
@@ -64,8 +84,8 @@ export const ROW_STEP = 1.55;
 /** Each row of the cascade steps this far right. */
 export const ROW_SHIFT = 1;
 /** Tiles per row, and rows in the cascade. */
-export const ROWS = 4;
-export const COLUMNS = 3;
+export const ROWS = 6;
+export const COLUMNS = 5;
 
 export interface Tile {
   id: number;
@@ -179,7 +199,7 @@ export function remaining(state: BoardState): number {
 /**
  * Find a full solution, if there is one.
  *
- * Depth-first over free pairs. Twelve tiles is six pairs, so the search is
+ * Depth-first over free pairs. Thirty tiles is fifteen pairs, so the search is
  * trivial — but it is a search rather than a guess, which is what lets the
  * hint button promise a move that actually works.
  *
@@ -219,7 +239,7 @@ export function solveBoard(state: BoardState): Array<[number, number]> | null {
 /**
  * Build a board that is solvable by construction.
  *
- * Instead of assigning six faces and then hoping the result can be solved,
+ * Instead of assigning fifteen faces and then hoping the result can be solved,
  * this plays a legal game backwards: it repeatedly picks two tiles that are
  * free *right now* and gives them the next unused face. If the search runs
  * all the way down, the faces it assigned describe a board with a known
