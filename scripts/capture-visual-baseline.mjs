@@ -83,6 +83,12 @@ try {
     // Headless CLI screenshots can flake and come out blank (virtual time
     // expiring before the iframe paints). Guard by file size: every real
     // page here compresses to far more than 30KB of PNG.
+    //
+    // The tall variants (2000–3000px) pull in every image on the page; a flat
+    // 6s budget sometimes expired with a few images still undecoded, and the
+    // same commit then scored RMSE 0 and RMSE 0.18 on consecutive runs.
+    // Scale the budget with viewport height so tall captures get the time.
+    const budget = Math.max(6000, Math.round((target.height / 900) * 6000));
     for (let attempt = 1; attempt <= 3; attempt++) {
       await execFileAsync(chrome, [
         "--headless=new",
@@ -93,7 +99,7 @@ try {
         "--hide-scrollbars",
         "--force-prefers-reduced-motion=reduce",
         ...(process.env.CI ? ["--no-sandbox"] : []),
-        "--virtual-time-budget=6000",
+        `--virtual-time-budget=${budget}`,
         `--window-size=${target.width},${target.height}`,
         `--screenshot=${out}`,
         `file://${harnessPath}`,
