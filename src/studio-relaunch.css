@@ -2,7 +2,7 @@
 /* One component system for the complete studio site. Tokens live in index.css. */
 .site-header {
   border-bottom: 0.5px solid var(--color-border);
-  background: #f9f9f8;
+  background: rgb(11 15 14 / 88%);
   backdrop-filter: blur(14px);
 }
 .site-header__bar {
@@ -21,7 +21,7 @@
 }
 .site-header__wordmark {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.055em;
 }
@@ -30,7 +30,7 @@
   padding-left: 1rem;
   border-left: 0.5px solid var(--color-border);
   color: var(--color-muted);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .site-header__nav {
   align-items: center;
@@ -43,7 +43,7 @@
   align-items: center;
   padding: 0.5rem 0.85rem;
   color: var(--color-foreground-soft);
-  font-size: 12px;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 .site-header__nav-link:hover {
@@ -75,7 +75,7 @@
   border-radius: 0;
   padding: 1rem 0;
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 2.25rem;
   letter-spacing: -0.045em;
 }
 .site-header__mobile-link[aria-current="page"] {
@@ -97,7 +97,7 @@
 .page-intro__meta > span:last-child {
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -109,7 +109,7 @@
   max-width: 47ch;
   margin-top: 1.7rem;
   color: var(--color-foreground-soft);
-  font-size: 16px;
+  font-size: 1.125rem;
   line-height: 1.65;
 }
 .studio-section-heading {
@@ -141,7 +141,7 @@
 .studio-cta h2 {
   max-width: 21ch;
   margin: 0.8rem 0 1rem;
-  font-size: 24px;
+  font-size: 2.25rem;
 }
 .studio-cta p:not(.studio-kicker) {
   max-width: 53ch;
@@ -150,16 +150,278 @@
 .studio-cta > a {
   flex-shrink: 0;
 }
+.studio-cta__actions {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+.studio-action--store {
+  border: 0.5px solid var(--color-border-strong);
+  background: transparent;
+  color: var(--color-foreground);
+}
+.studio-action--store:hover {
+  background: var(--color-surface);
+}
 
 /* Home: the game's own objects on a quiet studio stage. */
+.studio-hero {
+  border-bottom: 0.5px solid var(--color-border);
+  background:
+    radial-gradient(120% 90% at 78% 30%, rgb(92 225 240 / 5%), transparent 55%),
+    var(--color-background);
+}
+.studio-hero__topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.2rem;
+  border-bottom: 0.5px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.studio-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.studio-hero__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 4.5rem 3rem 5rem 0;
+}
+.studio-hero h1 {
+  margin-top: 2rem;
+  font-size: clamp(4rem, 7vw, 7rem);
+  line-height: 0.97;
+  letter-spacing: -0.075em;
+}
+.studio-hero__intro {
+  max-width: 36ch;
+  margin-top: 2rem;
+  color: var(--color-foreground-soft);
+  font-size: 1rem;
+}
+.studio-hero__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin-top: 2rem;
+}
+.studio-hero__stage {
+  --stage: #101614;
+  --stage-glow: rgb(92 225 240 / 7%);
+  position: relative;
+  isolation: isolate;
+  min-height: 620px;
+  overflow: hidden;
+  border-inline: 0.5px solid var(--color-border);
+  background: var(--stage);
+  transition: background var(--duration) var(--ease-out);
+}
+.studio-hero__stage--tile {
+  --stage: #101720;
+  --stage-glow: rgb(109 205 255 / 7%);
+}
+.studio-hero__stage--arrow {
+  --stage: #1b1210;
+  --stage-glow: rgb(255 122 82 / 8%);
+}
 /* The board brings its own dark felt; the pale stage behind it would only
    fight with the tiles. */
+.studio-hero__stage--mahjong {
+  background: var(--stage);
+}
 /* With a playable board in the stage, the stage stops being a poster frame
    and becomes a column: the board takes the room, and the caption sits under
    it instead of floating over it. */
+.studio-hero__stage--mahjong {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 1.5rem 1.5rem;
+}
+/* 聚光灯：牌桌是首屏的主角，光只打在它身上 */
+.studio-hero__stage::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  background: radial-gradient(60% 46% at 50% 44%, var(--stage-glow), transparent 72%);
+  pointer-events: none;
+}
+.studio-hero__stage--mahjong .studio-hero__stage-label {
+  color: #b8bcba;
+}
+.studio-hero__stage--mahjong .studio-hero__stage-bottom {
+  position: static;
+  margin-top: 1rem;
+  padding: 0;
+}
+.studio-hero__stage--mahjong .studio-hero__stage-bottom span {
+  color: #98a29a;
+}
+.studio-hero__stage--mahjong .studio-hero__stage-bottom strong {
+  color: #eef1ee;
+}
+.studio-hero__stage--mahjong .studio-hero__stage-bottom a {
+  border-color: #5f6563;
+  color: #f7f9f8;
+}
+.studio-hero__stage--mahjong .studio-hero__stage-bottom a:hover {
+  background: #1a211e;
+}
 /* The poster treatment for the titles that have key art but no verified
    gameplay assets. */
+.studio-hero__poster {
+  position: absolute;
+  inset: 3.5rem 0 6.5rem;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+.studio-hero__poster img {
+  width: 100%;
+  border-radius: var(--radius-button);
+  box-shadow: 0 1rem 2rem rgb(0 0 0 / 45%);
+  transform: rotate(-3deg);
+  transition: transform var(--duration) var(--ease-out);
+}
+.studio-hero__poster:hover img {
+  transform: rotate(0) scale(1.02);
+}
+.studio-hero__stage::before {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  content: "";
+  background-image:
+    linear-gradient(rgb(238 241 238 / 3%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(238 241 238 / 3%) 1px, transparent 1px);
+  background-size: 3rem 3rem;
+}
+.studio-hero__orbit {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 83%;
+  aspect-ratio: 1;
+  border: 0.5px solid rgb(238 241 238 / 7%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.studio-hero__orbit--two {
+  width: 58%;
+}
+.studio-hero__stage-label {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+.studio-hero__stage-bottom {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.studio-hero__stage-bottom div {
+  min-width: 0;
+}
+.studio-hero__stage-bottom span {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.studio-hero__stage-bottom strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  letter-spacing: -0.055em;
+  line-height: 1.2;
+}
+.studio-hero__stage-bottom a {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 0.5px solid var(--color-foreground);
+  border-radius: 50%;
+  transition: background var(--duration) var(--ease-out);
+}
+.studio-hero__stage-bottom a:hover {
+  background: var(--color-surface);
+}
+.studio-hero__stage-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.6rem;
+}
+.studio-hero__rail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-top: 0.5px solid var(--color-border);
+}
+.studio-hero__selectors {
+  display: flex;
+  flex: 1;
+}
+.studio-hero__selectors button {
+  display: flex;
+  min-width: 0;
+  min-height: 5rem;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1rem 1.3rem;
+  border-right: 0.5px solid var(--color-border);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: left;
+  transition: background var(--duration) var(--ease-out);
+}
+.studio-hero__selectors button > span:first-child {
+  align-self: start;
+  color: var(--color-accent-strong);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+.studio-hero__selectors button svg {
+  flex-shrink: 0;
+}
+.studio-hero__selectors button:hover,
+.studio-hero__selectors button.is-current {
+  background: var(--color-highlight);
+}
+.studio-hero__scroll {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
 /* Game catalog and reusable product rows. */
+.studio-collection {
+  padding: var(--space-section) 0;
+}
 .studio-game-list {
   display: grid;
   gap: 2rem;
@@ -179,13 +441,13 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: #eef1f0;
+  background: radial-gradient(90% 100% at 30% 40%, rgb(92 225 240 / 5%), transparent 70%), #101714;
 }
 .studio-game-row--1 .studio-game-row__image {
-  background: #f1f0ef;
+  background: radial-gradient(90% 100% at 30% 40%, rgb(109 205 255 / 5%), transparent 70%), #101720;
 }
 .studio-game-row--2 .studio-game-row__image {
-  background: #feebe7;
+  background: radial-gradient(90% 100% at 30% 40%, rgb(255 122 82 / 6%), transparent 70%), #1b1210;
 }
 /* The loupe fills the panel and crops the key art to fill it, so the
    artwork reads at the size of the panel rather than as a small picture
@@ -218,7 +480,10 @@
   z-index: 2;
   border-radius: 50%;
   background-repeat: no-repeat;
-  box-shadow: none;
+  box-shadow:
+    0 0 0 3px var(--color-surface),
+    0 0 0 5px var(--color-foreground),
+    0 1.2rem 2rem rgb(33 32 28 / 28%);
   pointer-events: none;
 }
 /* The number sits on the artwork, so it needs a ground to read against
@@ -230,10 +495,10 @@
   left: 1rem;
   padding: 0.25rem 0.45rem;
   border-radius: var(--radius-button);
-  background: var(--black-a9);
+  background: rgb(26 33 30 / 72%);
   color: #f7f9f8;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
 }
 .studio-game-row__content {
@@ -244,7 +509,7 @@
   justify-content: space-between;
   gap: 1rem;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   text-transform: uppercase;
 }
 .studio-game-row__identity {
@@ -261,12 +526,12 @@
 }
 .studio-game-row__identity span {
   color: var(--color-muted);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .studio-game-row h3 {
   max-width: 15ch;
   margin-top: 1rem;
-  font-size: 24px;
+  font-size: 2.25rem;
 }
 .studio-game-row__hook {
   margin-top: 1rem;
@@ -276,7 +541,7 @@
   max-width: 48ch;
   margin-top: 0.75rem;
   color: var(--color-foreground-soft);
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 .studio-game-row__links {
   display: flex;
@@ -290,7 +555,7 @@
   align-items: center;
   gap: 0.75rem;
   border-bottom: 0.5px solid var(--color-border-strong);
-  font-size: 12px;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 .studio-game-row__links a:hover {
@@ -310,7 +575,7 @@
   padding: 0.75rem 1rem;
   border: 0.5px solid var(--color-border);
   border-radius: var(--radius-button);
-  font-size: 12px;
+  font-size: 0.875rem;
   background: var(--color-surface);
 }
 .studio-catalog__quicklinks a:hover {
@@ -319,7 +584,10 @@
 .studio-catalog__quicklinks span {
   color: var(--color-accent-strong);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
+}
+.studio-collection--catalog {
+  padding-top: 0;
 }
 .studio-catalog__closing {
   padding: 2.5rem 0;
@@ -329,10 +597,47 @@
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 
 /* Studio principles and journal cards use the same type and surface rules. */
+.studio-principles {
+  padding: var(--space-section) 0;
+  background: var(--color-highlight-soft);
+  border-block: 0.5px solid var(--color-border);
+}
+.studio-principles__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+}
+.studio-principles h2 {
+  max-width: 13ch;
+  margin-top: 1.2rem;
+}
+.studio-principles__list {
+  border-top: 0.5px solid var(--color-border-strong);
+}
+.studio-principles__list article {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.5rem 1rem;
+  padding: 1.7rem 0;
+  border-bottom: 0.5px solid var(--color-border-strong);
+}
+.studio-principles__list span {
+  grid-row: span 2;
+  color: var(--color-accent-strong);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+.studio-principles__list h3 {
+  font-size: 1.125rem;
+}
+.studio-principles__list p {
+  color: var(--color-foreground-soft);
+  font-size: 0.875rem;
+}
 .studio-notes,
 .journal-index {
   padding-block: var(--space-section);
@@ -384,18 +689,18 @@
   gap: 0.5rem;
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 .note-card h3 {
   margin-top: 1.3rem;
-  font-size: 16px;
+  font-size: 1.125rem;
 }
 .note-card p {
   margin: 1rem 0 1.8rem;
   color: var(--color-foreground-soft);
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 .note-card__link {
   display: flex;
@@ -405,7 +710,7 @@
   margin-top: auto;
   padding-top: 1rem;
   border-top: 0.5px solid var(--color-border);
-  font-size: 12px;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 .journal-feature {
@@ -431,7 +736,7 @@
 }
 .journal-feature__copy h2 {
   margin-top: 1.4rem;
-  font-size: 24px;
+  font-size: 2.25rem;
 }
 .journal-feature__copy h2 a:hover {
   color: var(--color-accent-strong);
@@ -451,7 +756,7 @@
 .journal-feature time {
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 /* About and contact are built from the actual game artwork. */
@@ -478,8 +783,10 @@
 .asset-board > div {
   padding: 0.5rem;
   border-radius: var(--radius-card);
-  background: #fdfdfc;
-  box-shadow: none;
+  background: #131917;
+  box-shadow:
+    0 6px 0 #39443d,
+    0 10px 15px rgb(0 0 0 / 35%);
 }
 .asset-board img {
   width: 100%;
@@ -517,11 +824,11 @@
 }
 .studio-values__grid h3 {
   margin: 1.5rem 0 1rem;
-  font-size: 16px;
+  font-size: 1.125rem;
 }
 .studio-values__grid p {
   color: var(--color-foreground-soft);
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 .studio-shelf {
   padding-bottom: 2rem;
@@ -533,16 +840,40 @@
   margin-top: 1.3rem;
 }
 .studio-shelf a {
+  color: inherit;
+}
+.studio-shelf__row {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.1rem;
   padding: 1.2rem;
   border: 0.5px solid var(--color-border);
   border-radius: var(--radius-button);
   background: var(--color-surface);
 }
-.studio-shelf a:hover {
+.studio-shelf__row:hover {
   background: var(--color-highlight-soft);
+}
+.studio-shelf__main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+.studio-shelf__play {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-foreground-soft);
+}
+.studio-shelf__play:hover {
+  color: var(--color-foreground);
 }
 .studio-shelf img {
   width: 48px;
@@ -550,9 +881,21 @@
   border-radius: var(--radius-card);
 }
 .studio-shelf strong {
-  flex: 1;
-  font-size: 12px;
+  font-size: 0.875rem;
   line-height: 1.4;
+}
+.studio-shelf__text {
+  flex: 1;
+  display: grid;
+  gap: 0.2rem;
+}
+.studio-shelf__text strong {
+  flex: none;
+}
+.studio-shelf__text span {
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+  line-height: 1.45;
 }
 .studio-shelf svg {
   flex-shrink: 0;
@@ -594,7 +937,7 @@
   display: block;
   margin-top: 0.5rem;
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 0.875rem;
   letter-spacing: -0.035em;
   overflow-wrap: anywhere;
 }
@@ -610,12 +953,12 @@
 }
 .contact-note h2 {
   margin-top: 1.1rem;
-  font-size: 24px;
+  font-size: 2.25rem;
 }
 .contact-note p {
   margin-top: 1.2rem;
   color: var(--color-foreground-soft);
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 .contact-note__tiles {
   display: flex;
@@ -629,7 +972,7 @@
   padding: 0.4rem;
   border-radius: var(--radius-button);
   background: var(--color-surface);
-  box-shadow: none;
+  box-shadow: 0 5px 0 #5f6563;
   transform: rotate(-8deg);
 }
 .contact-note__tiles img:nth-child(2) {
@@ -661,30 +1004,30 @@
   gap: 0.7rem;
   margin-bottom: 2rem;
   color: var(--color-foreground-soft);
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 .game-detail-back:hover {
   color: var(--color-accent-strong);
 }
 .game-detail-mark {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 .game-detail-copy h1 {
   margin-top: 1rem;
-  font-size: 24px;
+  font-size: 2.25rem;
 }
 .game-detail-hook {
   margin-top: 1.5rem;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
 }
 .game-detail-copy > p {
   margin-top: 1.2rem;
   color: var(--color-foreground-soft);
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 .game-detail-actions {
   margin-top: 2rem;
@@ -723,11 +1066,11 @@
 .game-detail-identity__app strong,
 .game-detail-identity__app span {
   display: block;
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 .game-detail-identity__app span {
   color: var(--color-foreground-soft);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .game-detail-identity dl {
   display: grid;
@@ -738,12 +1081,12 @@
 .game-detail-identity dt {
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   text-transform: uppercase;
 }
 .game-detail-identity dd {
   margin-top: 0.3rem;
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 .game-detail-summary {
   display: grid;
@@ -768,7 +1111,7 @@
   padding: 0.4rem 0.8rem;
   border: 0.5px solid var(--color-border);
   border-radius: var(--radius-card);
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .game-detail-summary__features {
   align-self: center;
@@ -783,10 +1126,10 @@
 .game-detail-summary__features span {
   color: var(--color-accent-strong);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .game-detail-summary__features strong {
-  font-size: 16px;
+  font-size: 1.125rem;
   font-weight: 500;
 }
 .game-detail-faq,
@@ -819,7 +1162,7 @@ summary::-webkit-details-marker {
 summary > span:last-child {
   flex-shrink: 0;
   color: var(--color-accent-strong);
-  font-size: 16px;
+  font-size: 1.125rem;
 }
 details[open] summary > span:last-child {
   transform: rotate(45deg);
@@ -827,7 +1170,7 @@ details[open] summary > span:last-child {
 details p {
   padding: 0 2rem 1.5rem 0;
   color: var(--color-foreground-soft);
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 .related-strip {
   margin-top: 4rem;
@@ -836,7 +1179,7 @@ details p {
 }
 .related-strip__head h2 {
   margin-top: 0.8rem;
-  font-size: 24px;
+  font-size: 2.25rem;
 }
 .related-strip__head p {
   margin-top: 0.8rem;
@@ -871,20 +1214,53 @@ details p {
 }
 .related-card strong {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 1.125rem;
   letter-spacing: -0.03em;
 }
 .related-card span,
 .related-card time {
   margin-top: 0.4rem;
   color: var(--color-muted);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .related-card time {
   margin: 0 0 0.6rem;
 }
-.related-card > svg {
+.related-card > svg,
+.related-card__main > svg {
   flex-shrink: 0;
+}
+.related-card__main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 0;
+  color: inherit;
+}
+.related-card__play {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.8rem;
+  border: 0.5px solid var(--color-border);
+  border-radius: var(--radius-button);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-foreground-soft);
+  transition:
+    color var(--duration) var(--ease-out),
+    border-color var(--duration) var(--ease-out),
+    background var(--duration) var(--ease-out);
+}
+.related-card__play:hover {
+  border-color: var(--color-border-strong);
+  background: var(--color-highlight-soft);
+  color: var(--color-foreground);
 }
 .game-detail-gallery {
   padding-top: 3rem;
@@ -918,7 +1294,7 @@ details p {
 .game-detail-gallery figcaption {
   margin-top: 0.7rem;
   color: var(--color-muted);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .article-hero > div {
   display: flex;
@@ -926,17 +1302,17 @@ details p {
   gap: 1rem;
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   text-transform: uppercase;
 }
 .article-hero h1 {
   margin-top: 1.5rem;
-  font-size: 24px;
+  font-size: 2.25rem;
 }
 .article-hero > p {
   margin-top: 1.5rem;
   color: var(--color-foreground-soft);
-  font-size: 16px;
+  font-size: 1rem;
 }
 .article-image {
   display: flex;
@@ -963,7 +1339,7 @@ details p {
 }
 .article-summary h2 {
   margin-top: 0.6rem;
-  font-size: 16px;
+  font-size: 1.125rem;
 }
 .article-summary ul {
   display: grid;
@@ -981,12 +1357,12 @@ details p {
 }
 .article-section h2 {
   margin-bottom: 1.4rem;
-  font-size: 24px;
+  font-size: 2.25rem;
 }
 .article-section p {
   margin-top: 1rem;
   color: var(--color-foreground-soft);
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.9;
 }
 .article-next {
@@ -1027,20 +1403,20 @@ details p {
   display: block;
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .article-related-card strong {
   display: block;
   margin-top: 0.8rem;
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 1.125rem;
   letter-spacing: -0.04em;
   line-height: 1.3;
 }
 .article-related-card p {
   margin-top: 1rem;
   color: var(--color-foreground-soft);
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 .article-related-card > svg {
   flex-shrink: 0;
@@ -1064,14 +1440,14 @@ details p {
 .legal-layout nav a {
   padding: 0.75rem 0;
   border-bottom: 0.5px solid var(--color-border);
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 .legal-layout nav a:hover {
   color: var(--color-accent-strong);
 }
 .legal-layout nav span {
   color: var(--color-muted);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .legal-copy {
   max-width: 760px;
@@ -1080,7 +1456,7 @@ details p {
   margin-top: 4rem;
 }
 .legal-copy h2 {
-  font-size: 24px;
+  font-size: 2.25rem;
 }
 .legal-copy p {
   margin-top: 1.4rem;
@@ -1106,7 +1482,7 @@ details p {
   text-align: center;
 }
 .error-panel h1 {
-  font-size: 24px;
+  font-size: 2.25rem;
 }
 .error-panel p {
   color: var(--color-foreground-soft);
@@ -1114,13 +1490,13 @@ details p {
 .status-text {
   color: var(--color-accent-strong);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 
 /* A consistent final chapter on every route. */
 .site-footer {
   border-top: 0.5px solid var(--color-border);
-  background: var(--color-foreground);
+  background: var(--color-surface-soft);
   color: #f9f9f8;
 }
 .site-footer__shell {
@@ -1133,7 +1509,7 @@ details p {
   justify-content: space-between;
   gap: 3rem;
   padding-block: 4.5rem;
-  border-bottom: 0.5px solid var(--black-a4);
+  border-bottom: 0.5px solid rgb(249 249 248 / 20%);
 }
 .studio-footer__invitation .studio-kicker {
   color: #b8bcba;
@@ -1141,7 +1517,7 @@ details p {
 .studio-footer__invitation h2 {
   max-width: 16ch;
   margin-top: 1.3rem;
-  font-size: 24px;
+  font-size: 2.25rem;
 }
 .studio-footer__invitation h2 em {
   color: #cbcfcd;
@@ -1155,13 +1531,13 @@ details p {
   padding: 0.8rem 1.2rem;
   border: 0.5px solid #b8bcba;
   border-radius: var(--radius-button);
-  background: #cbcfcd;
-  color: var(--color-foreground);
-  font-size: 12px;
+  background: var(--color-accent);
+  color: var(--color-background);
+  font-size: 0.875rem;
   font-weight: 600;
 }
 .studio-footer__contact:hover {
-  background: #f7f9f8;
+  background: var(--color-accent-hover);
 }
 .studio-footer__middle {
   display: grid;
@@ -1175,7 +1551,7 @@ details p {
   align-items: center;
   gap: 0.75rem;
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: -0.04em;
 }
@@ -1186,7 +1562,7 @@ details p {
 .studio-footer__middle > p {
   max-width: 30ch;
   color: #b8bcba;
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 .site-footer__nav {
   display: grid;
@@ -1197,7 +1573,7 @@ details p {
   display: flex;
   min-height: 36px;
   align-items: center;
-  font-size: 12px;
+  font-size: 0.875rem;
 }
 .site-footer__nav a:hover {
   color: #cbcfcd;
@@ -1208,11 +1584,11 @@ details p {
   align-items: center;
   gap: 2rem;
   padding-block: 1.5rem;
-  border-top: 0.5px solid var(--black-a4);
+  border-top: 0.5px solid rgb(249 249 248 / 20%);
 }
 .site-footer__bottom > p {
   color: #b8bcba;
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .site-footer__social {
   display: flex;
@@ -1223,16 +1599,25 @@ details p {
   width: 44px;
   height: 44px;
   place-items: center;
-  border: 0.5px solid var(--black-a4);
+  border: 0.5px solid rgb(249 249 248 / 25%);
   border-radius: 50%;
 }
 .site-footer__social a:hover {
-  background: var(--black-a2);
+  background: rgb(249 249 248 / 10%);
 }
 
 /* The same breakpoints apply to every page and component. */
 @media (max-width: 1050px) {
   .site-header__brand-tag {
+    display: none;
+  }
+  .studio-hero__copy {
+    padding-right: 1.5rem;
+  }
+  .studio-hero__stage {
+    min-height: 560px;
+  }
+  .studio-hero__scroll {
     display: none;
   }
   .studio-story,
@@ -1248,9 +1633,31 @@ details p {
   }
 }
 @media (max-width: 900px) {
+  .studio-hero__grid {
+    grid-template-columns: 1fr;
+  }
+  .studio-hero__copy {
+    padding: 3.5rem 0;
+  }
+  .studio-hero h1 {
+    font-size: clamp(4rem, 12vw, 6.5rem);
+  }
+  .studio-hero__stage {
+    min-height: 530px;
+    border-top: 0.5px solid var(--color-border);
+  }
+  .studio-hero__selectors {
+    width: 100%;
+  }
+  .studio-hero__selectors button {
+    flex: 1;
+  }
   .studio-game-row__image {
     min-height: 350px;
     padding: 1.5rem;
+  }
+  .studio-principles__inner {
+    gap: 2rem;
   }
   .studio-footer__middle {
     grid-template-columns: 1fr 1fr;
@@ -1265,7 +1672,7 @@ details p {
 }
 @media (max-width: 700px) {
   h1 {
-    font-size: 24px;
+    font-size: 2.25rem;
   }
   .page-intro {
     padding: 1.5rem 0 2.5rem;
@@ -1278,14 +1685,90 @@ details p {
   }
   .page-intro__description {
     margin-top: 1.3rem;
-    font-size: 16px;
+    font-size: 1rem;
   }
   .studio-section-heading {
     align-items: start;
     flex-direction: column;
     gap: 1rem;
   }
+  .studio-hero__topline span:nth-child(2) {
+    display: none;
+  }
+  .studio-hero__topline {
+    font-size: 0.75rem;
+  }
+  .studio-hero__copy {
+    padding: 3rem 0;
+  }
+  .studio-hero h1 {
+    font-size: clamp(3.5rem, 14vw, 5rem);
+  }
+  .studio-hero__intro {
+    font-size: 1rem;
+  }
+  .studio-hero__actions {
+    gap: 0.8rem;
+  }
+  .studio-hero__actions .studio-action {
+    font-size: 0.875rem;
+    padding-inline: 0.85rem;
+  }
+  .studio-hero__actions .studio-text-link {
+    font-size: 0.875rem;
+  }
+  .studio-hero__stage {
+    min-height: 460px;
+    margin-inline: calc(var(--site-gutter) * -1);
+    border-inline: 0;
+  }
+  .studio-hero__stage-label {
+    top: 1.2rem;
+    left: var(--site-gutter);
+  }
+  /* At 390px the stage is only 440px tall, so an absolutely positioned bottom
+     bar would sit on the key art and swallow the title. Stack the stage
+     instead: artwork flexes into the space above, the bar keeps its own row. */
+  .studio-hero__stage {
+    display: flex;
+    flex-direction: column;
+  }
+  .studio-hero__poster {
+    position: relative;
+    inset: auto;
+    flex: 1;
+    min-height: 220px;
+    margin: 3.2rem 1.1rem 0;
+    padding: 0;
+  }
+  .studio-hero__stage-bottom {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    padding: 1rem var(--site-gutter) 1.3rem;
+  }
+  .studio-hero__stage-bottom strong {
+    max-width: 24ch;
+    font-size: 1.125rem;
+  }
+  .studio-hero__rail {
+    width: 100%;
+  }
+  .studio-hero__selectors button {
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 0.4rem;
+    min-height: 88px;
+    padding: 0.9rem 0.65rem;
+    font-size: 0.75rem;
+  }
+  .studio-hero__selectors button svg {
+    display: none;
+  }
   .studio-game-row,
+  .studio-principles__inner,
   .studio-story,
   .contact-layout,
   .journal-feature,
@@ -1308,7 +1791,7 @@ details p {
   }
   .studio-game-row h3 {
     max-width: 20ch;
-    font-size: 24px;
+    font-size: 2.25rem;
   }
   .studio-notes__grid,
   .journal-grid,
@@ -1316,6 +1799,9 @@ details p {
   .related-strip__grid,
   .article-related {
     grid-template-columns: 1fr;
+  }
+  .studio-principles h2 {
+    max-width: none;
   }
   .studio-catalog__quicklinks {
     gap: 0.5rem;
@@ -1375,13 +1861,13 @@ details p {
     height: 40px;
   }
   .contact-channels strong {
-    font-size: 12px;
+    font-size: 0.875rem;
   }
   .contact-note {
     padding: 1.5rem;
   }
   .contact-note h2 {
-    font-size: 24px;
+    font-size: 2.25rem;
   }
   .site-page {
     padding-top: 1.5rem;
@@ -1391,7 +1877,7 @@ details p {
     padding: 1.5rem;
   }
   .game-detail-copy h1 {
-    font-size: 24px;
+    font-size: 2.25rem;
   }
   .game-detail-back {
     margin-bottom: 1.5rem;
@@ -1416,16 +1902,16 @@ details p {
     margin-top: 2.5rem;
   }
   .article-hero h1 {
-    font-size: 24px;
+    font-size: 2.25rem;
   }
   .article-section h2 {
-    font-size: 16px;
+    font-size: 1.125rem;
   }
   .article-section p {
-    font-size: 16px;
+    font-size: 1rem;
   }
   .article-next__intro h2 {
-    font-size: 24px;
+    font-size: 2.25rem;
   }
   .legal-layout {
     grid-template-columns: 1fr;
@@ -1435,7 +1921,7 @@ details p {
     position: static;
   }
   .legal-copy h2 {
-    font-size: 24px;
+    font-size: 2.25rem;
   }
   .studio-footer__invitation {
     align-items: start;
@@ -1444,7 +1930,7 @@ details p {
     padding-block: 3.5rem;
   }
   .studio-footer__invitation h2 {
-    font-size: 24px;
+    font-size: 2.25rem;
   }
   .studio-footer__middle {
     grid-template-columns: 1fr;
@@ -1459,242 +1945,5 @@ details p {
     align-items: start;
     flex-direction: column;
     gap: 1rem;
-  }
-}
-
-/* ── The playable board ─────────────────────────────────────
-   The site used to show a 3D display object. It now shows the
-   actual game: a real mahjong board the visitor can play in the
-   browser. The board is the product, so it gets the room.
-
-   The tile faces are the shipped game assets (cut-out PNGs with
-   alpha), so each tile is drawn as an ivory tile face with the
-   real artwork on it — not a coloured rectangle standing in for one. */
-.mahjong {
-  display: flex;
-  flex-direction: column;
-  gap: 1.15rem;
-  flex: 1;
-  min-height: 0;
-}
-.mahjong__stage {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 0;
-}
-.mahjong__board {
-  position: relative;
-  display: grid;
-  place-items: center;
-  flex: 1;
-  min-height: 0;
-  aspect-ratio: 9 / 7;
-  padding: 1.1rem;
-  border-radius: var(--radius-card);
-  background: #1a211e;
-  box-shadow: none;
-  /* The felt is the same green as the game's own board. */
-}
-/* The field holds the tiles at the exact proportions the rules use; the
-   board around it is just the felt they sit on. Its aspect ratio comes from
-   the board's own units, so a tile is always square — a stretched tile would
-   distort the artwork that was cut for a square face. */
-.mahjong__field {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  max-height: 100%;
-  aspect-ratio: var(--mahjong-width) / var(--mahjong-height);
-  margin-inline: auto;
-}
-.mahjong__board::before {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background-image: radial-gradient(circle, var(--black-a1) 1px, transparent 1px);
-  background-size: 22px 22px;
-  content: "";
-  pointer-events: none;
-}
-.mahjong__tile {
-  position: absolute;
-  padding: 0;
-  border: 0;
-  border-radius: var(--radius-button);
-  background: linear-gradient(175deg, #fdfdfc 0%, #f1f0ef 68%, #e2e1de 100%);
-  box-shadow: none;
-  cursor: pointer;
-  transition:
-    transform var(--duration) var(--ease-out),
-    box-shadow var(--duration) var(--ease-out),
-    opacity var(--duration) var(--ease-out),
-    filter var(--duration) var(--ease-out);
-}
-.mahjong__tile img {
-  width: 100%;
-  height: 100%;
-  padding: 12%;
-  object-fit: contain;
-  pointer-events: none;
-}
-/* A covered tile sits back in the felt and loses its shadow edge, so the
-   player can read the board without being told which tiles are free. */
-.mahjong__tile:not(.is-free) {
-  transform: translateY(0.18rem) scale(0.94);
-  box-shadow: none;
-  filter: brightness(0.9) saturate(0.86);
-}
-.mahjong__tile:not(.is-free):hover {
-  filter: brightness(0.96) saturate(0.92);
-}
-.mahjong__tile.is-free:hover {
-  transform: translateY(-0.32rem);
-  box-shadow: none;
-}
-.mahjong__tile.is-free:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-}
-.mahjong__tile.is-held {
-  transform: translateY(-0.4rem) scale(1.03);
-  box-shadow: none;
-}
-.mahjong__tile.is-hinted {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-  animation: none;
-}
-@keyframes mahjong-hint {
-  0%,
-  100% {
-    outline-color: var(--color-accent);
-  }
-  50% {
-    outline-color: var(--black-a5);
-  }
-}
-.mahjong__tile.is-blocked {
-  animation: none;
-}
-@keyframes mahjong-refuse {
-  0%,
-  100% {
-    transform: translateY(0.18rem) scale(0.94);
-  }
-  30% {
-    transform: translateY(0.18rem) scale(0.9) translateX(-0.12rem);
-  }
-  70% {
-    transform: translateY(0.18rem) scale(0.9) translateX(0.12rem);
-  }
-}
-.mahjong__tile.is-matched {
-  animation: none;
-}
-@keyframes mahjong-match {
-  0% {
-    transform: translateY(-0.4rem) scale(1.03);
-    opacity: 1;
-  }
-  55% {
-    transform: translateY(-1.1rem) scale(0.9);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-1.4rem) scale(0.6);
-    opacity: 0;
-  }
-}
-.mahjong__tile.is-gone {
-  opacity: 0;
-  pointer-events: none;
-}
-/* The hand sits beside the board on wide screens and under it on narrow
-   ones, so the held tile is always near the one the player is about to tap. */
-.mahjong__hand {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 0.9rem;
-  padding: 0.55rem 0.85rem;
-  border: 0.5px solid var(--color-border);
-  border-radius: var(--radius-card);
-  background: var(--color-surface);
-}
-.mahjong__hand-label {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-}
-.mahjong__hand-slot {
-  display: grid;
-  width: 3.1rem;
-  height: 3.8rem;
-  place-items: center;
-  border: 0.5px dashed var(--color-border-strong);
-  border-radius: var(--radius-button);
-  background: var(--color-surface-soft);
-}
-.mahjong__hand-slot img {
-  width: 100%;
-  height: 100%;
-  padding: 9%;
-  object-fit: contain;
-}
-.mahjong__hand-empty {
-  color: var(--color-muted);
-  font-size: 12px;
-}
-.mahjong__bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem 1rem;
-}
-.mahjong__status {
-  min-height: 1.4em;
-  margin: 0;
-  color: #868e8b;
-  font-size: 12px;
-}
-.mahjong__actions {
-  display: flex;
-  gap: 0.5rem;
-}
-.mahjong__btn {
-  display: inline-flex;
-  min-height: 40px;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.45rem 0.85rem;
-  border: 0.5px solid var(--color-border-strong);
-  border-radius: var(--radius-button);
-  background: var(--color-surface);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  transition:
-    background var(--duration) var(--ease-out),
-    transform var(--duration) var(--ease-out);
-}
-.mahjong__btn:hover {
-  background: var(--color-highlight);
-  transform: translateY(-1px);
-}
-@media (prefers-reduced-motion: reduce) {
-  .mahjong__tile.is-hinted,
-  .mahjong__tile.is-blocked,
-  .mahjong__tile.is-matched {
-    animation: none;
-  }
-  .mahjong__tile.is-matched {
-    opacity: 0;
   }
 }

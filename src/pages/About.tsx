@@ -1,9 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
 import { PageIntro } from "@/components/common/PageIntro";
-import { StudioCTA } from "@/components/common/StudioCTA";
 import { Seo } from "@/components/seo/Seo";
-import { getGamesByNewest } from "@/data/games";
+import { ALSO_ON_PLAY, getGamesByNewest } from "@/data/games";
 
 const VALUES = [
   {
@@ -105,20 +104,52 @@ export default function About() {
         <p className="studio-kicker">Made by VeryFun Studio</p>
         <div>
           {games.map((game) => (
-            <Link key={game.slug} to={`/games/${game.slug}`}>
-              <img src={game.icon} alt="" width={64} height={64} loading="lazy" />
-              <strong>{game.title}</strong>
-              <ArrowUpRight size={18} />
-            </Link>
+            <div key={game.slug} className="studio-shelf__row">
+              <Link to={`/games/${game.slug}`} className="studio-shelf__main">
+                <img src={game.icon} alt="" width={64} height={64} loading="lazy" />
+                <strong>{game.title}</strong>
+              </Link>
+              <a
+                className="studio-shelf__play"
+                href={game.googlePlayUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Play <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+            </div>
           ))}
         </div>
       </section>
-      <StudioCTA
-        title="Good ideas start with a conversation."
-        description="Player feedback, thoughtful partnerships, or a simple hello — we are listening."
-        to="/contact"
-        label="Get in touch"
-      />
+      <section className="studio-shell studio-shelf" aria-label="Also on Google Play">
+        <p className="studio-kicker">Also on Google Play</p>
+        <div>
+          {ALSO_ON_PLAY.map((app) => (
+            <div key={app.packageId} className="studio-shelf__row">
+              <a
+                className="studio-shelf__main"
+                href={app.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={app.icon} alt="" width={64} height={64} loading="lazy" />
+                <div className="studio-shelf__text">
+                  <strong>{app.title}</strong>
+                  <span>{app.blurb}</span>
+                </div>
+              </a>
+              <a
+                className="studio-shelf__play"
+                href={app.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Play <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Download } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download, Play } from "lucide-react";
 import { Link, useParams } from "react-router";
 import EntityNotFound from "@/components/common/EntityNotFound";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -37,6 +37,10 @@ const GameDetail = () => {
   const heroFacts = [
     { label: "Platform", value: "Android" },
     { label: "Price", value: "Free" },
+    ...(game.store?.rating
+      ? [{ label: "Play rating", value: `${game.store.rating.toFixed(1)} / 5` }]
+      : []),
+    ...(game.store ? [{ label: "Downloads", value: game.store.downloads }] : []),
     { label: "Release", value: releaseLabel },
   ];
   const hasBoardShots = gallery.some((item) => item.kind === "screen");
@@ -202,6 +206,7 @@ const GameDetail = () => {
 
       <motion.section className="game-detail-summary" {...REVEAL}>
         <div className="game-detail-summary__copy">
+          <span className="section-kicker">Game overview</span>
           <h2>How it plays.</h2>
           <p>{game.fullDescription}</p>
           {secondaryFeatures.length > 0 && (
@@ -225,6 +230,7 @@ const GameDetail = () => {
 
       <motion.section className="game-detail-faq" {...REVEAL}>
         <div className="section-heading">
+          <span className="section-kicker">Player guide</span>
           <h2>Questions players ask.</h2>
         </div>
         <div>
@@ -245,18 +251,31 @@ const GameDetail = () => {
           {relatedGames.length > 0 && (
             <>
               <div className="related-strip__head">
+                <span className="section-kicker">Explore the catalog</span>
                 <h2>More boards.</h2>
                 <p>Same catalog, different kind of quiet focus.</p>
               </div>
               <div className="related-strip__grid">
                 {relatedGames.map((item) => (
-                  <Link key={item.slug} to={`/games/${item.slug}`} className="related-card">
-                    <div>
-                      <strong>{item.title}</strong>
-                      <span>{formatGameTags(item)}</span>
-                    </div>
-                    <ArrowRight size={18} />
-                  </Link>
+                  <div key={item.slug} className="related-card">
+                    <Link to={`/games/${item.slug}`} className="related-card__main">
+                      <div>
+                        <strong>{item.title}</strong>
+                        <span>{formatGameTags(item)}</span>
+                      </div>
+                      <ArrowRight size={18} aria-hidden="true" />
+                    </Link>
+                    <a
+                      className="related-card__play"
+                      href={item.googlePlayUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Get ${item.title} on Google Play`}
+                    >
+                      <Play size={17} aria-hidden="true" />
+                      Google Play
+                    </a>
+                  </div>
                 ))}
               </div>
             </>
@@ -265,6 +284,7 @@ const GameDetail = () => {
           {relatedPosts.length > 0 && (
             <>
               <div className="related-strip__head related-strip__head--secondary">
+                <span className="section-kicker">Behind the boards</span>
                 <h2>Studio notes.</h2>
                 <p>How we think about this kind of puzzle.</p>
               </div>

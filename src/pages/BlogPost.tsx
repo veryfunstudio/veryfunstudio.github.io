@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 import { useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import EntityNotFound from "@/components/common/EntityNotFound";
@@ -209,13 +209,25 @@ const BlogPost = () => {
               const full = GAMES.find((g) => g.slug === game.slug);
               if (!full) return null;
               return (
-                <Link key={game.slug} to={`/games/${game.slug}`} className="related-card">
-                  <div>
-                    <strong>{full.title}</strong>
-                    <span>{full.hook}</span>
-                  </div>
-                  <ArrowRight size={18} />
-                </Link>
+                <div key={game.slug} className="related-card">
+                  <Link to={`/games/${game.slug}`} className="related-card__main">
+                    <div>
+                      <strong>{full.title}</strong>
+                      <span>{full.hook}</span>
+                    </div>
+                    <ArrowRight size={18} aria-hidden="true" />
+                  </Link>
+                  <a
+                    className="related-card__play"
+                    href={full.googlePlayUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Get ${full.title} on Google Play`}
+                  >
+                    <Play size={17} aria-hidden="true" />
+                    Google Play
+                  </a>
+                </div>
               );
             })}
           </div>

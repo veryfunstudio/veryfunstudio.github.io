@@ -33,7 +33,9 @@ export function GameFeatureRow({ game, index }: GameFeatureRowProps) {
         </div>
         <div className="studio-game-row__identity">
           <img src={game.icon} alt="" width={56} height={56} loading="lazy" />
-          <span>Free on Android</span>
+          <span>
+            {game.store ? `${game.store.downloads} downloads on Android` : "Free on Android"}
+          </span>
         </div>
         <h3>{game.title}</h3>
         <p className="studio-game-row__hook">{game.hook}</p>

@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
 import { GitHubIcon, GooglePlayIcon, XIcon } from "@/components/common/icons/BrandIcons";
 import { BRAND, BRAND_ASSET_VERSION, GOOGLE_PLAY_DEVELOPER_URL, NAV_ITEMS } from "@/lib/constants";
@@ -8,12 +9,23 @@ export default function Footer() {
   return (
     <footer className="site-footer mt-auto">
       <div className="site-footer__shell">
+        <div className="studio-footer__invitation">
+          <div>
+            <p className="studio-kicker">Keep the good ideas moving</p>
+            <h2>
+              Let’s make room <em>for play.</em>
+            </h2>
+          </div>
+          <Link to="/contact" className="studio-footer__contact">
+            Get in touch <ArrowUpRight size={22} aria-hidden="true" />
+          </Link>
+        </div>
         <div className="studio-footer__middle">
           <Link to="/" className="site-footer__name">
             <img src={`/logo-mark.png?v=${BRAND_ASSET_VERSION}`} alt="" width={48} height={48} />
             <span>VeryFun Studio</span>
           </Link>
-          <p>Puzzle games for a good break.</p>
+          <p>Small puzzle games with a little more heart and a lot more room to breathe.</p>
           <nav className="site-footer__nav" aria-label="Footer navigation">
             {NAV_ITEMS.map((item) => (
               <Link key={item.path} to={item.path}>
@@ -25,7 +37,7 @@ export default function Footer() {
         </div>
         <div className="site-footer__bottom">
           <p>
-            © {currentYear} {BRAND.name}.
+            © {currentYear} {BRAND.name}. Designed for the in-between.
           </p>
           <div className="site-footer__social">
             <a

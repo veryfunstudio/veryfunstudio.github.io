@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { existsSync } from "node:fs";
 import { describe, it } from "node:test";
 import {
+  ALSO_ON_PLAY,
   formatGameTags,
   GAMES,
   getCollageSatellites,
@@ -120,6 +121,30 @@ describe("games catalog integrity", () => {
       }
       const related = getRelatedGames(game, 3);
       assert.ok(!related.some((r) => r.slug === game.slug));
+    }
+  });
+
+  it("ships real store screenshots and store facts that survive on disk", () => {
+    for (const game of GAMES) {
+      assert.ok(
+        (game.gallery ?? []).some((item) => item.kind === "screen" && item.frame === "phone"),
+        `${game.slug} should ship at least one real store screenshot`,
+      );
+      if (game.store?.rating !== undefined) {
+        assert.ok(
+          game.store.rating > 0 && game.store.rating <= 5,
+          `${game.slug} rating out of range`,
+        );
+      }
+      assert.ok(game.store && game.store.downloads.length > 0, `${game.slug} missing downloads`);
+    }
+    for (const app of ALSO_ON_PLAY) {
+      assert.ok(
+        app.url.endsWith(`id=${app.packageId}`),
+        `${app.title} URL does not match packageId`,
+      );
+      assert.ok(existsSync(`public${app.icon}`), `missing icon ${app.icon}`);
+      assert.ok(app.blurb.length > 0, `${app.title} missing blurb`);
     }
   });
 });

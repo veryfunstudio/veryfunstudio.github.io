@@ -1,7 +1,7 @@
-import { ArrowUpRight, Code2, Mail } from "lucide-react";
+import { ArrowUpRight, Code2, Mail, Play } from "lucide-react";
 import { PageIntro } from "@/components/common/PageIntro";
 import { Seo } from "@/components/seo/Seo";
-import { BRAND } from "@/lib/constants";
+import { BRAND, GOOGLE_PLAY_DEVELOPER_URL } from "@/lib/constants";
 
 const CONTACTS = [
   {
@@ -23,6 +23,13 @@ const CONTACTS = [
     value: BRAND.social.xHandle,
     href: BRAND.social.x,
     icon: ArrowUpRight,
+    external: true,
+  },
+  {
+    label: "Our games on Google Play",
+    value: "Veryfun Studio",
+    href: GOOGLE_PLAY_DEVELOPER_URL,
+    icon: Play,
     external: true,
   },
 ];

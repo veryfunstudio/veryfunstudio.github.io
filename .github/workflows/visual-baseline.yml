@@ -33,6 +33,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # compare-visual-baseline.mjs shells out to ImageMagick's `compare`;
+      # ubuntu-latest does not ship it, so without this the compare step
+      # always exits 1 with "ImageMagick not found".
+      - name: Install ImageMagick
+        run: sudo apt-get update && sudo apt-get install -y imagemagick
+
       - name: Build
         run: pnpm build
 
