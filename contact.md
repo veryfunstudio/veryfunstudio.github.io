@@ -5,7 +5,7 @@ Email is the fastest route for player feedback, bug reports, partnership context
 - Email: veryfunstudios@gmail.com
 - GitHub: https://github.com/veryfunstudio
 - X (Twitter): https://x.com/veryfunstudio (@veryfunstudio)
-- Google Play developer page: https://play.google.com/store/apps/developer?id=songxugang
+- Google Play developer page: https://play.google.com/store/apps/developer?id=Veryfun+Studio
 
 ---
 

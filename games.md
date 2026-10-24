@@ -23,4 +23,4 @@ Arrow Out is a free Android logic puzzle game where every tile points in a direc
 ---
 
 - HTML page: https://veryfunstudio.github.io/games
-- Google Play developer page: https://play.google.com/store/apps/developer?id=songxugang
+- Google Play developer page: https://play.google.com/store/apps/developer?id=Veryfun+Studio

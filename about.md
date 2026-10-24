@@ -11,4 +11,4 @@ Design principles:
 - [Games catalog](https://veryfunstudio.github.io/games)
 - [Blog](https://veryfunstudio.github.io/blog)
 - [Contact](https://veryfunstudio.github.io/contact)
-- [Google Play developer page](https://play.google.com/store/apps/developer?id=songxugang)
+- [Google Play developer page](https://play.google.com/store/apps/developer?id=Veryfun+Studio)
