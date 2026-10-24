@@ -1,24 +1,9 @@
 {
   "novaMahjong": [
     {
-      "file": "public/game-assets/nova-mahjong/tile_bamboo_1.png",
-      "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_bamboo_1.png",
-      "sha256": "ca2e73e84ce56332d2e82fd1d13278ff4cd49c1caee70bb9f7d65aa43d56b343"
-    },
-    {
       "file": "public/game-assets/nova-mahjong/tile_bamboo_3.png",
       "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_bamboo_3.png",
       "sha256": "5837d5af781a84c55c34a1a890deda9c31e50e18e4222ddf69087a7a4962f7c0"
-    },
-    {
-      "file": "public/game-assets/nova-mahjong/tile_bamboo_7.png",
-      "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_bamboo_7.png",
-      "sha256": "b998b80ac7a1cad42b4b09d424edca55a96293b3cd3ee642436dc345ea75b588"
-    },
-    {
-      "file": "public/game-assets/nova-mahjong/tile_character_1.png",
-      "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_character_1.png",
-      "sha256": "2774beaf3b019db1ad7098523572b9b977bd71004daa0775461e013c26d9c515"
     },
     {
       "file": "public/game-assets/nova-mahjong/tile_character_5.png",
@@ -26,34 +11,14 @@
       "sha256": "af7d370e733029b892d884e13d21e2912d46990efd48ee2e57e53577ed3a40e2"
     },
     {
-      "file": "public/game-assets/nova-mahjong/tile_character_9.png",
-      "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_character_9.png",
-      "sha256": "da62bfa4a37e6c06d1266c1c83fe56e01c1c2cd1e364f9f4c76f50049d874309"
-    },
-    {
       "file": "public/game-assets/nova-mahjong/tile_dot_6.png",
       "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_dot_6.png",
       "sha256": "3fd9a624a62149c4a4b7b57ee36e57644631397802088d9726cc26ab60acd1b8"
     },
     {
-      "file": "public/game-assets/nova-mahjong/tile_dot_9.png",
-      "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_dot_9.png",
-      "sha256": "b3948ebcd5251a7b9b9382c6f61f9e890d3c48101b0c3fea83b08929e7776802"
-    },
-    {
-      "file": "public/game-assets/nova-mahjong/tile_dragon_green.png",
-      "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_dragon_green.png",
-      "sha256": "c62e11b5883e45afcc72c9fe2be4a99ddb376ab6f08a7054a420dd2b3660cfa2"
-    },
-    {
       "file": "public/game-assets/nova-mahjong/tile_dragon_red.png",
       "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_dragon_red.png",
       "sha256": "6ec200c15153dce41c0144b924f450a9d7b9e758a4df0618ab5fa99e48b1ba7a"
-    },
-    {
-      "file": "public/game-assets/nova-mahjong/tile_dragon_white.png",
-      "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_dragon_white.png",
-      "sha256": "204038a7101e2f29df2aae4f1544eae591021507e37aee831d70af0e20bb3e8a"
     },
     {
       "file": "public/game-assets/nova-mahjong/tile_flower_chrysanthemum.png",
@@ -64,16 +29,6 @@
       "file": "public/game-assets/nova-mahjong/tile_flower_orchid.png",
       "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_flower_orchid.png",
       "sha256": "5d2cc1dfa356d9a4ff90bf1cfb6b81042fb5ea1861197c44ee0923767229e322"
-    },
-    {
-      "file": "public/game-assets/nova-mahjong/tile_flower_plum.png",
-      "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_flower_plum.png",
-      "sha256": "ab7502dfab95b2435c3d1f79e0d6351f5b0235efce0b46334754ba2ff60b6c2e"
-    },
-    {
-      "file": "public/game-assets/nova-mahjong/tile_wind_south.png",
-      "source": "../021_MahjongJourney/H5/assets/Art/MahjongTiles/CompositeCropped/tile_wind_south.png",
-      "sha256": "7733c9a9e07a3638430f02deea1c725c7b1a2d42ddc1f4cc72cce2c95901ca10"
     }
   ],
   "otherTitles": {
