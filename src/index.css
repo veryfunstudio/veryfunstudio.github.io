@@ -1,5 +1,57 @@
 @import "tailwindcss/index.css";
 
+/* Self-hosted type. The site's whole voice depends on these four faces — the
+ * hero is set in Space Grotesk and every label in DM Mono — so they cannot be
+ * left to whatever the visitor happens to have installed. They were declared
+ * but never loaded until now: no @font-face, no CDN link, no font files, which
+ * meant most visitors saw system-ui instead of the design.
+ *
+ * Files live in public/fonts, latin subset only (the copy is English), SIL OFL.
+ * Space Grotesk and DM Sans ship as variable fonts, so one file covers the
+ * whole weight axis. `font-display: swap` keeps first paint immediate. */
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/space-grotesk-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url("/fonts/dm-sans-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "DM Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/dm-mono-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "DM Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/dm-mono-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/instrument-serif-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/instrument-serif-italic.woff2") format("woff2");
+}
+
 /* Palette: Radix Colors.
  *
  * The scales are named for what they are, not for where they sit on a
