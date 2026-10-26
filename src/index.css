@@ -247,6 +247,12 @@ h2[id] {
   background: var(--color-accent-hover);
   color: var(--color-background);
 }
+/* Press feedback: the lift reverses into the surface. Hover moves up, the
+   press settles below the resting line, which reads as physical. */
+.studio-action:active,
+.pill-button:active {
+  transform: translateY(0);
+}
 .studio-text-link {
   display: inline-flex;
   min-height: 44px;

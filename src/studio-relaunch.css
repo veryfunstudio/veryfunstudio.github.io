@@ -363,10 +363,16 @@
   place-items: center;
   border: 0.5px solid var(--color-foreground);
   border-radius: 50%;
-  transition: background var(--duration) var(--ease-out);
+  transition:
+    background var(--duration) var(--ease-out),
+    transform var(--duration) var(--ease-out);
 }
 .studio-hero__stage-bottom a:hover {
   background: var(--color-surface);
+}
+.studio-hero__stage-bottom a:active {
+  background: var(--color-highlight);
+  transform: scale(0.94);
 }
 .studio-hero__stage-actions {
   display: flex;
@@ -409,6 +415,9 @@
 .studio-hero__selectors button:hover,
 .studio-hero__selectors button.is-current {
   background: var(--color-highlight);
+}
+.studio-hero__selectors button:active {
+  background: var(--color-surface-tint);
 }
 .studio-hero__scroll {
   display: flex;
