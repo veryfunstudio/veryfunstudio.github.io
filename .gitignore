@@ -29,3 +29,5 @@ skills-lock.json
 .claude/
 .vercel
 .web-shader-extractor/
+test-results/
+playwright-report/

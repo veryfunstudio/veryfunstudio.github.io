@@ -6,11 +6,12 @@
 import { execFile } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync } from "node:fs";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 
-const baselineDir = new URL("../visual-baseline", import.meta.url).pathname;
+const baselineDir = fileURLToPath(new URL("../visual-baseline", import.meta.url));
 const captureDir = process.env.VFS_CAPTURE_DIR;
 const diffDir = process.env.VFS_DIFF_DIR ?? join(captureDir ?? "", "_diff");
 const threshold = Number(process.env.VFS_RMSE_THRESHOLD ?? "0.03");
@@ -58,6 +59,7 @@ const rmseOf = async (baseline, captured, diff) => {
 };
 
 const basenames = readdirSync(baselineDir).filter((name) => name.endsWith(".png"));
+if (!basenames.length) throw new Error("No PNG baselines found.");
 const failures = [];
 
 for (const name of basenames) {
@@ -68,15 +70,16 @@ for (const name of basenames) {
     continue;
   }
   const metricOutput = await rmseOf(baseline, captured, join(diffDir, name));
-  const match = /\(([\d.]+)\)\s*$/.exec(metricOutput.trim());
+  const match = /\(([\d.eE+-]+)\)\s*$/.exec(metricOutput.trim());
   if (!match) {
     failures.push({ name, rmse: null, reason: `unparsable metric: ${metricOutput.trim()}` });
     continue;
   }
   const rmse = Number(match[1]);
-  const status = rmse <= threshold ? "ok  " : "FAIL";
+  const status = Number.isFinite(rmse) && rmse <= threshold ? "ok  " : "FAIL";
   console.log(`${status} ${name} rmse=${rmse}`);
-  if (rmse > threshold) failures.push({ name, rmse, reason: `rmse ${rmse} > ${threshold}` });
+  if (!Number.isFinite(rmse) || rmse > threshold)
+    failures.push({ name, rmse, reason: `rmse ${rmse} > ${threshold}` });
 }
 
 if (failures.length > 0) {

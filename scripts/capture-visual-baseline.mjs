@@ -7,21 +7,22 @@
 // Tall variants trade viewport realism for reach, pulling below-fold bands
 // into frame since the CLI cannot scroll.
 // Usage: pnpm build && pnpm baseline
-import { execFile, spawn } from "node:child_process";
-import { existsSync, mkdirSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { execFile } from "node:child_process";
+import { once } from "node:events";
+import { existsSync, mkdirSync, mkdtempSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
+import { createVerificationServer } from "./local-verify-server.mjs";
 
 const execFileAsync = promisify(execFile);
 
-const buildDir = new URL("../build/client", import.meta.url).pathname;
+const buildDir = fileURLToPath(new URL("../build/client", import.meta.url));
 // CI sets VFS_BASELINE_OUT to a scratch dir so captures can be diffed
 // against the committed baselines without overwriting them.
 const outDir =
-  process.env.VFS_BASELINE_OUT ?? new URL("../visual-baseline", import.meta.url).pathname;
-const serverScript = new URL("./local-verify-server.mjs", import.meta.url).pathname;
-const harnessPath = join(tmpdir(), "vfs-baseline-harness.html");
+  process.env.VFS_BASELINE_OUT ?? fileURLToPath(new URL("../visual-baseline", import.meta.url));
 
 const CHROME_CANDIDATES = [
   process.env.CHROME_PATH,
@@ -61,24 +62,20 @@ if (!existsSync(buildDir)) {
   process.exit(1);
 }
 mkdirSync(outDir, { recursive: true });
+const scratch = mkdtempSync(join(tmpdir(), "vfs-baseline-"));
+const harnessPath = join(scratch, "harness.html");
 
-const server = spawn(process.execPath, [serverScript], {
-  stdio: ["ignore", "pipe", "inherit"],
-});
-
+const server = createVerificationServer();
 try {
-  await new Promise((resolve, reject) => {
-    server.stdout.on("data", (chunk) => {
-      if (String(chunk).includes("serving on")) resolve();
-    });
-    server.on("exit", (code) => reject(new Error(`verify server exited early (${code})`)));
-  });
+  server.listen(0, "127.0.0.1");
+  await once(server, "listening");
+  const origin = `http://127.0.0.1:${server.address().port}`;
 
   for (const target of TARGETS) {
     const out = `${outDir}/${target.name}.png`;
     writeFileSync(
       harnessPath,
-      `<!doctype html><html><body style="margin:0"><iframe src="http://localhost:4321${target.path}" style="width:${target.width}px;height:${target.height}px;border:0;display:block"></iframe></body></html>`,
+      `<!doctype html><html><body style="margin:0"><iframe src="${origin}${target.path}" style="width:${target.width}px;height:${target.height}px;border:0;display:block"></iframe></body></html>`,
     );
     // Headless CLI screenshots can flake and come out blank (virtual time
     // expiring before the iframe paints). Guard by file size: every real
@@ -114,6 +111,6 @@ try {
     console.log(`captured ${out}`);
   }
 } finally {
-  server.kill();
-  rmSync(harnessPath, { force: true });
+  await new Promise((resolve) => server.close(resolve));
+  rmSync(scratch, { recursive: true, force: true });
 }

@@ -26,6 +26,8 @@ pnpm run build
 pnpm run check
 pnpm og
 pnpm baseline
+pnpm exec playwright install chromium
+pnpm test:e2e  # build + desktop/mobile interaction and no-JS tests
 pnpm run deploy   # local-only fallback; see "Deployment" below
 ```
 
@@ -42,8 +44,8 @@ pnpm run deploy   # local-only fallback; see "Deployment" below
 
 ## Visual system
 
-The entire site uses one studio system: warm ivory surfaces, deep green ink,
-muted green game stages, and a restrained orange accent. Space Grotesk sets
+The entire site uses a dark felt-table system: near-black green surfaces, pale
+readable type, game-specific artwork stages, and a restrained orange accent. Space Grotesk sets
 headings, DM Sans handles reading text, Instrument Serif provides short title
 accents, and DM Mono is reserved for small metadata.
 
@@ -60,26 +62,24 @@ and SHA-256 checksums are recorded in `docs/game-asset-provenance.json`.
 
 ### Interactive home display
 
-`HeroPlayObject.tsx` lazily loads `src/lib/play-object-scene.ts`. Nova Mahjong uses
-six original `CompositeCropped` PNGs copied unchanged from the sibling
-`021_MahjongJourney/H5` game client. Three.js adds depth and lighting around those
-actual faces. Clicking, tapping, or pressing Enter/Space rearranges the display.
+The home page switches between three verified game artworks and links to each
+game's detail page and Google Play listing. `GameLoupe.tsx` magnifies the original
+key art in each catalog row; pointer and touch place the lens, keyboard focus
+opens it, Enter/Space toggles it, and Escape closes it. It is artwork exploration,
+not a playable game or an invented simulation.
 
-Tile Journey and Arrow Out currently use their existing verified key art on a
-3D presentation card. These are labelled **Game artwork**, not gameplay. Replace
-this mode only when verified game-specific source assets are available.
-
-Animation stops after each interaction and while offscreen or the tab is hidden.
-Reduced-motion mode applies changes immediately. Key art remains visible while
-loading and after asset, WebGL, or context failures. GPU resources are disposed
-when navigating away from the home page.
+Mobile navigation contains keyboard focus, returns focus on Escape and releases
+scroll locking when resized to desktop. Prerendered content starts visible even
+without client JavaScript. Fonts are served from `public/fonts/`; their full OFL
+notices are retained beside them. Social-card generation also uses local fonts
+and decoded images, so it no longer needs a font CDN.
 
 ### Visual verification
 
 Run `pnpm run check` for lint, types, existing tests, and production prerendering.
 Review all main routes at 1440px and 390px, including the mobile menu, journal
-links, game FAQs, and missing-resource states. Check actual game texture loading,
-mouse/keyboard/touch interactions, and static fallbacks separately from layout.
+links, game FAQs, and missing-resource states. Check image decoding, mouse/keyboard/touch artwork interactions, and static
+fallbacks separately from layout.
 Update `visual-baseline/` and social cards when the visual system changes.
 
 ## Deployment
@@ -159,3 +159,17 @@ paths still load the app shell.
 
 Keep page copy that feeds these files (`src/data/*`, `src/lib/constants.ts`)
 accurate when editing; the generators are covered by `src/lib/seo-content.test.ts`.
+
+## Verification tooling
+
+`pnpm test` also covers the Pages-style local server, game-asset provenance and
+font licence notices. `pnpm test:e2e` tests a production build: featured art,
+keyboard magnification, mobile menu focus and resizing, FAQs, self-hosted fonts,
+no-JavaScript content and real HTTP 404 recovery. CI uploads browser traces on
+failure. These checks do not open store links or submit contact messages.
+
+`node scripts/local-verify-server.mjs` binds only `127.0.0.1`; `PORT` overrides
+4321. Baseline capture uses an isolated temporary harness and an ephemeral port.
+`VFS_OG_OUT` redirects generated social cards to a review directory, preserving
+committed artwork during generator verification. The only published ads inventory
+is `public/app-ads.txt`.

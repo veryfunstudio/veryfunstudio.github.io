@@ -1,10 +1,11 @@
-// Minimal static server mimicking GitHub Pages: try exact file, then
-// <path>/index.html, then serve 404.html with a real 404 status.
-import { createReadStream, existsSync, statSync } from "node:fs";
+// Static verification server: same route/404 behavior as GitHub Pages, loopback only.
+import { createReadStream } from "node:fs";
+import { lstat, realpath, stat } from "node:fs/promises";
 import { createServer } from "node:http";
-import { extname, join, normalize } from "node:path";
+import { extname, join, resolve, sep } from "node:path";
+import { pipeline } from "node:stream";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
-const root = new URL("../build/client", import.meta.url).pathname;
 const MIME = {
   ".html": "text/html; charset=utf-8",
   ".md": "text/markdown; charset=utf-8",
@@ -16,24 +17,69 @@ const MIME = {
   ".js": "text/javascript",
   ".css": "text/css",
   ".webmanifest": "application/manifest+json",
+  ".woff2": "font/woff2",
+  ".svg": "image/svg+xml",
 };
-
-createServer((req, res) => {
-  const url = decodeURIComponent(new URL(req.url, "http://x").pathname);
-  let file = normalize(join(root, url));
-  if (!file.startsWith(root)) {
-    res.writeHead(403).end();
-    return;
-  }
-  let status = 200;
-  if (!(existsSync(file) && statSync(file).isFile())) {
-    if (existsSync(join(file, "index.html"))) {
-      file = join(file, "index.html");
-    } else {
-      file = join(root, "404.html");
-      status = 404;
+export function createVerificationServer(
+  root = fileURLToPath(new URL("../build/client", import.meta.url)),
+) {
+  root = resolve(root);
+  return createServer(async (req, res) => {
+    const end = (status) => {
+      res.writeHead(status);
+      res.end();
+    };
+    try {
+      if (!["GET", "HEAD"].includes(req.method)) {
+        res.setHeader("Allow", "GET, HEAD");
+        return end(405);
+      }
+      let pathname;
+      try {
+        pathname = decodeURIComponent(new URL(req.url, "http://localhost").pathname);
+      } catch {
+        return end(400);
+      }
+      if (
+        pathname
+          .split("/")
+          .some((part) => part.startsWith(".") || part.includes("\\") || part.includes("\0"))
+      )
+        return end(403);
+      let file = resolve(root, "." + pathname);
+      if (file !== root && !file.startsWith(root + sep)) return end(403);
+      let status = 200;
+      try {
+        if ((await stat(file)).isDirectory()) file = join(file, "index.html");
+        if (!(await stat(file)).isFile()) throw new Error("Not a file");
+      } catch {
+        file = join(root, "404.html");
+        status = 404;
+      }
+      const resolved = await realpath(file),
+        base = await realpath(root);
+      if (!resolved.startsWith(base + sep) || (await lstat(file)).isSymbolicLink()) return end(403);
+      const size = (await stat(file)).size;
+      res.writeHead(status, {
+        "Content-Type": MIME[extname(file)] ?? "application/octet-stream",
+        "Content-Length": size,
+        "X-Content-Type-Options": "nosniff",
+      });
+      if (req.method === "HEAD") return res.end();
+      pipeline(createReadStream(file), res, () => {});
+    } catch {
+      if (res.headersSent) res.destroy();
+      else end(500);
     }
-  }
-  res.writeHead(status, { "content-type": MIME[extname(file)] ?? "application/octet-stream" });
-  createReadStream(file).pipe(res);
-}).listen(4321, () => console.log("serving on http://localhost:4321"));
+  });
+}
+if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.meta.url) {
+  const server = createVerificationServer();
+  server.on("error", (error) => {
+    console.error(error.message);
+    process.exitCode = 1;
+  });
+  server.listen(Number(process.env.PORT ?? 4321), "127.0.0.1", () =>
+    console.log(`serving on http://127.0.0.1:${server.address().port}`),
+  );
+}
