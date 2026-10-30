@@ -1,26 +1,22 @@
 // Generate the 1200×630 social cards from the same visual language as the site.
 // Run `pnpm og` before building when the catalog or the art direction changes.
-import { execFile } from "node:child_process";
-import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
-import { join } from "node:path";
-import { promisify } from "node:util";
+import { mkdirSync, readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { chromium } from "@playwright/test";
 import { GAMES, getNewestGame } from "../src/data/games";
 
-const execFileAsync = promisify(execFile);
-const publicDir = new URL("../public", import.meta.url).pathname;
-const outDir = join(publicDir, "og");
-const chrome = [
-  process.env.CHROME_PATH,
-  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-  "/Applications/Chromium.app/Contents/MacOS/Chromium",
-  "/usr/bin/google-chrome",
-]
-  .filter((path): path is string => Boolean(path))
-  .find(existsSync);
-
-if (!chrome) throw new Error("Chrome not found. Set CHROME_PATH to a Chrome/Chromium binary.");
-mkdirSync(outDir, { recursive: true });
+const publicDir = fileURLToPath(new URL("../public", import.meta.url));
+const outputRoot = process.env.VFS_OG_OUT ?? publicDir;
+const chrome = process.env.CHROME_PATH;
+const browser = await chromium.launch({
+  headless: true,
+  ...(chrome ? { executablePath: chrome } : {}),
+});
+const font = (name: string) =>
+  `data:font/woff2;base64,${readFileSync(join(publicDir, "fonts", name)).toString("base64")}`;
+const art = (name: string) =>
+  `data:image/webp;base64,${readFileSync(join(publicDir, name)).toString("base64")}`;
 
 const escapeHtml = (value: string) =>
   value.replace(
@@ -36,7 +32,9 @@ const escapeHtml = (value: string) =>
   );
 
 const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@600;700&display=swap');
+  @font-face {font-family:'DM Mono';font-weight:500;src:url('${font("dm-mono-500.woff2")}')}
+  @font-face {font-family:'Space Grotesk';font-weight:300 700;src:url('${font("space-grotesk-400.woff2")}')}
+  @font-face {font-family:'Instrument Serif';font-style:italic;src:url('${font("instrument-serif-italic.woff2")}')}
   * { box-sizing: border-box; }
   html, body { width: 1200px; height: 630px; margin: 0; overflow: hidden; }
   body { background: #f7f5ef; color: #203b33; font-family: 'Space Grotesk', Arial, sans-serif; }
@@ -87,55 +85,57 @@ const card = (options: {
 </body></html>`;
 
 async function capture(filename: string, html: string) {
-  const harness = join(tmpdir(), `vfs-og-${filename.replaceAll("/", "-")}-${process.pid}.html`);
-  const output = join(publicDir, filename);
+  const output = join(outputRoot, filename);
+  mkdirSync(dirname(output), { recursive: true });
+  const page = await browser.newPage({
+    viewport: { width: 1200, height: 630 },
+    reducedMotion: "reduce",
+  });
   try {
-    writeFileSync(harness, html);
-    await execFileAsync(chrome!, [
-      "--headless=new",
-      "--disable-gpu",
-      "--hide-scrollbars",
-      "--virtual-time-budget=8000",
-      "--force-prefers-reduced-motion=reduce",
-      "--window-size=1200,630",
-      `--screenshot=${output}`,
-      `file://${harness}`,
-    ]);
-    console.log(`generated public/${filename}`);
+    await page.setContent(html);
+    await page.evaluate(() => document.fonts.ready);
+    await page.evaluate(async () => {
+      await Promise.all([...document.images].map((image) => image.decode()));
+    });
+    await page.screenshot({ path: output });
+    console.log(`generated ${output}`);
   } finally {
-    rmSync(harness, { force: true });
+    await page.close();
   }
 }
-
-const newest = getNewestGame();
-await capture(
-  "og-studio-relaunch.png",
-  card({
-    title: "Make room for play.",
-    description: "Small, satisfying puzzle games for the moments between everything else.",
-    imageFileUrl: `file://${join(publicDir, newest.image)}`,
-    tone: "#e0e9d8",
-    label: "Our games",
-    number: "01",
-    home: true,
-  }),
-);
-
-const tones: Record<string, string> = {
-  "nova-mahjong": "#e0e9d8",
-  "tile-journey": "#eee8ce",
-  "arrow-out": "#eee0d7",
-};
-for (const [index, game] of GAMES.entries()) {
+try {
+  const newest = getNewestGame();
   await capture(
-    `og/${game.slug}.png`,
+    "og-studio-relaunch.png",
     card({
-      title: game.title,
-      description: game.hook,
-      imageFileUrl: `file://${join(publicDir, game.image)}`,
-      tone: tones[game.slug] ?? "#e0e9d8",
-      label: "Game",
-      number: String(index + 1).padStart(2, "0"),
+      title: "Make room for play.",
+      description: "Small, satisfying puzzle games for the moments between everything else.",
+      imageFileUrl: art(newest.image),
+      tone: "#e0e9d8",
+      label: "Our games",
+      number: "01",
+      home: true,
     }),
   );
+
+  const tones: Record<string, string> = {
+    "nova-mahjong": "#e0e9d8",
+    "tile-journey": "#eee8ce",
+    "arrow-out": "#eee0d7",
+  };
+  for (const [index, game] of GAMES.entries()) {
+    await capture(
+      `og/${game.slug}.png`,
+      card({
+        title: game.title,
+        description: game.hook,
+        imageFileUrl: art(game.image),
+        tone: tones[game.slug] ?? "#e0e9d8",
+        label: "Game",
+        number: String(index + 1).padStart(2, "0"),
+      }),
+    );
+  }
+} finally {
+  await browser.close();
 }

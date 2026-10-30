@@ -16,8 +16,10 @@
     "baseline": "node scripts/capture-visual-baseline.mjs",
     "og": "tsx scripts/generate-og-images.ts",
     "typecheck": "react-router typegen && tsc -b",
-    "test": "node --import tsx --test \"src/**/*.test.ts\"",
-    "check": "pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build"
+    "test": "node --import tsx --test \"src/**/*.test.ts\" \"scripts/*.test.mjs\"",
+    "check": "pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build",
+    "test:e2e": "pnpm build && playwright test",
+    "test:e2e:built": "playwright test"
   },
   "dependencies": {
     "@react-router/dev": "^8.5.0",
@@ -35,6 +37,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.6.3",
+    "@playwright/test": "1.64.1",
     "@types/node": "^26.6.5",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",

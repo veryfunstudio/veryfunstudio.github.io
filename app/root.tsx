@@ -15,11 +15,19 @@ import "@/index.css";
 import "@/studio-relaunch.css";
 
 export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
   {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap",
+    rel: "preload",
+    href: "/fonts/space-grotesk-400.woff2",
+    as: "font",
+    type: "font/woff2",
+    crossOrigin: "anonymous",
+  },
+  {
+    rel: "preload",
+    href: "/fonts/dm-sans-400.woff2",
+    as: "font",
+    type: "font/woff2",
+    crossOrigin: "anonymous",
   },
   { rel: "icon", type: "image/png", sizes: "512x512", href: "/favicon.png" },
   { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
@@ -34,7 +42,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#f7f5ef" />
+        <meta name="theme-color" content="#0b0f0e" />
         <Meta />
         <Links />
       </head>

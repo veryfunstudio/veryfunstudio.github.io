@@ -4,8 +4,8 @@
   "description": "Calm mobile puzzle games with readable boards and thoughtful mechanics.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f7f5ef",
-  "theme_color": "#f7f5ef",
+  "background_color": "#0b0f0e",
+  "theme_color": "#0b0f0e",
   "icons": [
     { "src": "/favicon.png?v=20260804-v2", "sizes": "512x512", "type": "image/png" },
     { "src": "/apple-touch-icon.png?v=20260804-v2", "sizes": "180x180", "type": "image/png" }
