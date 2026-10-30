@@ -27,7 +27,7 @@ const EntityNotFound = ({
     <section className="error-stage px-[3.125vw] py-28 lg:py-36">
       <Seo title={title} description={message} path={path} noindex />
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
+        initial={false}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="error-panel"

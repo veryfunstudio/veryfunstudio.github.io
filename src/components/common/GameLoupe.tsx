@@ -89,7 +89,19 @@ export function GameLoupe({ src, alt, naturalWidth, naturalHeight }: Props) {
       className="studio-loupe"
       aria-label={`${alt}. Look closer: move the pointer over the artwork, or focus this to magnify the centre.`}
       onPointerMove={onPointerMove}
-      onPointerLeave={() => setLens(null)}
+      aria-pressed={Boolean(lens)}
+      onClick={(event) => {
+        if (event.detail !== 0) return;
+        const rect = frame.current?.getBoundingClientRect();
+        if (rect)
+          setLens((current) => (current ? null : { x: rect.width / 2, y: rect.height / 2 }));
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Escape") setLens(null);
+      }}
+      onPointerLeave={(event) => {
+        if (event.pointerType !== "touch") setLens(null);
+      }}
       onPointerDown={(event) => place(event.clientX, event.clientY)}
       onFocus={() => {
         const element = frame.current;
