@@ -33,6 +33,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Install pinned capture browser
+        run: pnpm exec playwright install --with-deps chromium
+
       # compare-visual-baseline.mjs shells out to ImageMagick's `compare`;
       # ubuntu-latest does not ship it, so without this the compare step
       # always exits 1 with "ImageMagick not found".
@@ -46,6 +49,12 @@ jobs:
         run: pnpm baseline
         env:
           VFS_BASELINE_OUT: ${{ runner.temp }}/captures
+
+      - name: Upload captured screenshots
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: visual-baseline-captures
+          path: ${{ runner.temp }}/captures
 
       - name: Compare against committed baselines
         if: github.event_name != 'workflow_dispatch' || !inputs.update

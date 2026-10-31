@@ -25,8 +25,8 @@ pnpm run dev
 pnpm run build
 pnpm run check
 pnpm og
-pnpm baseline
 pnpm exec playwright install chromium
+pnpm baseline
 pnpm test:e2e  # build + desktop/mobile interaction and no-JS tests
 pnpm run deploy   # local-only fallback; see "Deployment" below
 ```
@@ -38,7 +38,10 @@ pnpm run deploy   # local-only fallback; see "Deployment" below
 - `pnpm run check`: lint, typecheck, test, and build
 - `pnpm og`: regenerate the home and per-game social cards when the art direction
   or game catalog changes
-- `pnpm baseline`: refresh the desktop and mobile visual references after a build
+- `pnpm baseline`: refresh the desktop and mobile visual references after a build;
+  uses pinned Playwright Chromium and waits for fonts, decoded images and a stable
+  layout. Set `VFS_BASELINE_OUT` to capture into a temporary directory, or
+  `CHROME_PATH` to explicitly use another browser binary.
 - `pnpm run deploy`: build locally and publish `build/client/` to `release`.
   Only useful when CI is unavailable. Day-to-day, prefer pushing to `main`.
 
