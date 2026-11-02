@@ -11,6 +11,7 @@ permissions:
 
 concurrency:
   group: pages-deploy
+  # 部署本身幂等，main 上连续提交时只保留最新一次部署即可。
   cancel-in-progress: true
 
 jobs:
@@ -33,8 +34,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Lint, typecheck, test, and build
-        run: pnpm run check
+      # 只做构建：lint / typecheck / test 由 ci.yml 在同一 commit 上负责，
+      # 原来这里重跑 pnpm run check 等于把整套检查做第二遍。
+      - name: Build
+        run: pnpm run build
 
       - name: Deploy to release
         uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
