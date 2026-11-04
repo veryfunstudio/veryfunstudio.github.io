@@ -99,9 +99,9 @@ Pushing to `main` triggers the **Deploy GitHub Pages** workflow
 GitHub Pages serves `release` at https://veryfunstudio.github.io/. Concurrency is
 limited to one in-flight deploy; newer pushes cancel earlier ones.
 
-Vercel is wired via GitHub integration on the same `main` branch and remains a
-non-canonical verification deployment using the same build command. Both deployments run from
-identical source.
+GitHub Pages is the only deployment target. A Vercel project was wired to this
+repository earlier as a non-canonical verification deployment; it was not in use
+and has been removed along with `vercel.json`.
 
 ## Update dependencies
 
@@ -138,8 +138,8 @@ This bypasses CI by building locally and pushing `build/client/` to `release` di
 The app uses React Router v8 Framework mode with static prerendering
 (`ssr: false` + `prerender`), so every route is pre-rendered to its own
 HTML file under `build/client/` (e.g. `build/client/about/index.html`,
-`build/client/games/nova-mahjong/index.html`). GitHub Pages and Vercel
-serve these directly — no client-side router boot is needed for first
+`build/client/games/nova-mahjong/index.html`). GitHub Pages
+serves these directly — no client-side router boot is needed for first
 paint. `scripts/generate-seo.ts` also copies the SPA fallback
 (`build/client/__spa-fallback.html`) to `build/client/404.html` with a
 `noindex` meta and a static markdown recovery body (links to llms.txt,

@@ -1,9 +1,0 @@
-{
-  "installCommand": "pnpm install --frozen-lockfile",
-  "buildCommand": "react-router build && pnpm exec tsx scripts/generate-seo.ts",
-  "outputDirectory": "build/client",
-  "framework": null,
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [{ "source": "/(.*)", "destination": "/__spa-fallback.html" }]
-}
