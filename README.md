@@ -99,9 +99,7 @@ Pushing to `main` triggers the **Deploy GitHub Pages** workflow
 GitHub Pages serves `release` at https://veryfunstudio.github.io/. Concurrency is
 limited to one in-flight deploy; newer pushes cancel earlier ones.
 
-GitHub Pages is the only deployment target. A Vercel project was wired to this
-repository earlier as a non-canonical verification deployment; it was not in use
-and has been removed along with `vercel.json`.
+GitHub Pages is the only deployment target.
 
 ## Update dependencies
 
