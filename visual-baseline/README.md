@@ -5,9 +5,9 @@ GitHub's Ubuntu runner, using source commit `71e745d`. The capture tool waits fo
 local fonts, decoded images and a stable layout before saving each viewport.
 
 Source run: [41151837875](https://github.com/veryfunstudio/veryfunstudio.github.io/actions/runs/41151837875),
-artifact `visual-baseline-captures`. Its comparison against the previous Chrome
-CLI references is expected to differ: browser rendering and settled animation
-states changed. The captured pages were reviewed before replacing those files.
+artifact `visual-baseline-captures`. Rendering and settled animation states are
+browser- and viewport-specific, so a capture from a different environment is
+expected to differ.
 
 Run the **Visual baseline** workflow with `update=false` to compare fresh Linux
 captures against these references. Prefer that environment for updates; macOS
