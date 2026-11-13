@@ -4,6 +4,7 @@ import { MorphIcon } from "morphicons/react";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
 import { BRAND_ASSET_VERSION, NAV_ITEMS } from "@/lib/constants";
+import { MOTION } from "@/lib/reveal";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -100,7 +101,7 @@ const Header = () => {
                   <motion.span
                     layoutId="site-header-active"
                     className="site-header__nav-active"
-                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: MOTION.duration, ease: MOTION.ease }}
                   />
                 )}
               </Link>
@@ -130,7 +131,7 @@ const Header = () => {
             id="mobile-navigation"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
-            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: MOTION.duration, ease: MOTION.ease }}
             className="site-header__menu relative min-h-[calc(100dvh-4rem)] overflow-hidden border-t border-border-soft bg-background md:hidden"
           >
             <div className="site-header__menu-inner">

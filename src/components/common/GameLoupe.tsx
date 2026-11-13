@@ -1,4 +1,6 @@
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useCallback, useRef, useState } from "react";
+import { MOTION } from "@/lib/reveal";
 
 /**
  * A loupe over the game's own key art.
@@ -32,6 +34,7 @@ const ZOOM = 2.6;
 export function GameLoupe({ src, alt, naturalWidth, naturalHeight }: Props) {
   const frame = useRef<HTMLButtonElement>(null);
   const [lens, setLens] = useState<{ x: number; y: number } | null>(null);
+  const reduceMotion = useReducedMotion();
 
   const place = useCallback((clientX: number, clientY: number) => {
     const element = frame.current;
@@ -112,21 +115,30 @@ export function GameLoupe({ src, alt, naturalWidth, naturalHeight }: Props) {
       onBlur={() => setLens(null)}
     >
       <img src={src} alt={alt} width={1200} height={630} loading="lazy" />
-      {geometry && (
-        <span
-          className="studio-loupe__lens"
-          aria-hidden="true"
-          style={{
-            width: `${geometry.diameter}px`,
-            height: `${geometry.diameter}px`,
-            left: `${geometry.left}px`,
-            top: `${geometry.top}px`,
-            backgroundImage: `url(${src})`,
-            backgroundSize: geometry.backgroundSize,
-            backgroundPosition: geometry.backgroundPosition,
-          }}
-        />
-      )}
+      {/* The lens settles in rather than snapping into place. The key stays
+          fixed so pointer movement only updates geometry, never re-triggers
+          an entrance. Same 250ms curve as the rest of the site. */}
+      <AnimatePresence>
+        {geometry && (
+          <motion.span
+            className="studio-loupe__lens"
+            aria-hidden="true"
+            initial={reduceMotion ? false : { opacity: 0, scale: 0.82 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={reduceMotion ? undefined : { opacity: 0, scale: 0.9 }}
+            transition={{ duration: MOTION.duration, ease: MOTION.ease }}
+            style={{
+              width: `${geometry.diameter}px`,
+              height: `${geometry.diameter}px`,
+              left: `${geometry.left}px`,
+              top: `${geometry.top}px`,
+              backgroundImage: `url(${src})`,
+              backgroundSize: geometry.backgroundSize,
+              backgroundPosition: geometry.backgroundPosition,
+            }}
+          />
+        )}
+      </AnimatePresence>
     </button>
   );
 }

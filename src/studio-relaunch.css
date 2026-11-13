@@ -1500,6 +1500,55 @@ details p {
   color: var(--color-accent-strong);
   font-family: var(--font-mono);
   font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+/* 15.1：缩小版真实窗口线框。中性结构 + 唯一强调色落在路线上。 */
+.error-art {
+  display: block;
+  width: 160px;
+  height: 120px;
+  color: var(--color-border-strong);
+}
+.error-art .ea-win {
+  fill: var(--color-surface);
+  stroke: currentColor;
+  stroke-width: 1;
+}
+.error-art .ea-bar {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+}
+.error-art circle {
+  fill: currentColor;
+}
+.error-art .ea-path {
+  fill: none;
+  stroke: var(--color-accent-strong);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+/* 两条淡化的列表行：这才是一个"没找到内容"的微缩面板，不是空框。 */
+.error-art .ea-row {
+  fill: var(--color-surface-tint);
+}
+/* 中间的缺口与两枚端点：一条走不通的路，不是一条上升的曲线。 */
+.error-art .ea-dot {
+  fill: var(--color-accent-strong);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .error-art .ea-path {
+    stroke-dasharray: 44;
+    animation: error-path-draw 0.9s var(--ease-out) 1 both;
+  }
+  @keyframes error-path-draw {
+    from {
+      stroke-dashoffset: 44;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
 }
 
 /* A consistent final chapter on every route. */

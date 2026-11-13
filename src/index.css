@@ -198,6 +198,32 @@ h2 em {
   font-family: var(--font-serif);
   font-weight: 400;
 }
+
+/* The one italic word in each heading is where the page's voice lives. When
+   a heading first comes into view the ink settles: a hair of letter-spacing
+   and a shade of colour, nothing that reads as an animation. Scroll-driven
+   so it needs no JS and never replays; unsupported browsers keep the static
+   word, and reduced motion below switches it off entirely. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    h1 em,
+    h2 em {
+      animation: ink-settle 0.4s var(--ease-out) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 28%;
+    }
+  }
+}
+@keyframes ink-settle {
+  from {
+    letter-spacing: 0.02em;
+    color: var(--color-accent-strong);
+  }
+  to {
+    letter-spacing: 0;
+    color: var(--color-accent);
+  }
+}
 p {
   text-wrap: pretty;
 }
@@ -250,6 +276,30 @@ h2[id] {
   letter-spacing: 0.08em;
   line-height: 1.5;
   text-transform: uppercase;
+}
+
+/* Section numbers (01 / 02 / 03) get a hairline rule drawn under them as the
+   section arrives, echoing the mono counters in the hero topline. It is a
+   typesetting detail, not a reveal: the text itself never moves. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .studio-section-heading .studio-kicker,
+    .studio-principles .studio-kicker,
+    .studio-notes .studio-kicker {
+      background-image: linear-gradient(var(--color-accent), var(--color-accent));
+      background-repeat: no-repeat;
+      background-position: 0 100%;
+      background-size: 0 1px;
+      animation: rule-draw 0.5s var(--ease-out) both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 32%;
+    }
+  }
+}
+@keyframes rule-draw {
+  to {
+    background-size: 2.5rem 1px;
+  }
 }
 .studio-kicker {
   color: var(--color-foreground-soft);

@@ -1,5 +1,50 @@
 import { expect, test } from "@playwright/test";
 
+test("the loupe lens settles in and out instead of snapping", async ({ browser }) => {
+  const context = await browser.newContext({ reducedMotion: "no-preference" });
+  const page = await context.newPage();
+  await page.goto("/");
+  const loupe = page.locator(".studio-loupe").first();
+  await loupe.scrollIntoViewIfNeeded();
+  const box = await loupe.boundingBox();
+  if (!box) throw new Error("loupe has no box");
+
+  // Mid-entrance the lens is present but not yet fully opaque; at rest it is.
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+  await expect
+    .poll(() =>
+      page
+        .locator(".studio-loupe__lens")
+        .evaluate((node) => Number(getComputedStyle(node).opacity)),
+    )
+    .toBeGreaterThan(0.9);
+
+  // Moving away starts a fade rather than removing the lens on the spot.
+  await page.mouse.move(box.x - 60, box.y - 60);
+  await expect.poll(() => page.locator(".studio-loupe__lens").count(), { timeout: 1000 }).toBe(0);
+  await context.close();
+
+  // Reduced motion keeps the lens instant, with no animation frames.
+  const reduced = await browser.newContext({ reducedMotion: "reduce" });
+  const reducedPage = await reduced.newPage();
+  await reducedPage.goto("/");
+  const reducedLoupe = reducedPage.locator(".studio-loupe").first();
+  await reducedLoupe.scrollIntoViewIfNeeded();
+  const reducedBox = await reducedLoupe.boundingBox();
+  if (!reducedBox) throw new Error("loupe has no box");
+  await reducedPage.mouse.move(
+    reducedBox.x + reducedBox.width / 2,
+    reducedBox.y + reducedBox.height / 2,
+  );
+  await expect(reducedPage.locator(".studio-loupe__lens")).toHaveCSS("opacity", "1");
+  expect(
+    await reducedPage
+      .locator(".studio-loupe__lens")
+      .evaluate((node) => node.getAnimations().length),
+  ).toBe(0);
+  await reduced.close();
+});
+
 test("featured games, magnifier and content navigation stay usable", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
