@@ -6,10 +6,9 @@
  * the font-family aliases and the 18px body base. See DESIGN.md for the
  * full token contract and the rationale for each value.
  *
- * Anything previously defined here (post-it, tape, wobbly, hand-drawn
- * shadows, jiggle, primary/secondary/destructive, chart.*) was removed
- * because it was either unused or conflicted with @theme. Do not
- * re-introduce those keys without updating DESIGN.md in the same change.
+ * Keep this file minimal: spacing, colors, shadows and motion tokens belong
+ * to @theme, and duplicating them here makes the two sources drift. Any new
+ * key must be justified in DESIGN.md in the same change.
  *
  * @type {import('tailwindcss').Config}
  */
