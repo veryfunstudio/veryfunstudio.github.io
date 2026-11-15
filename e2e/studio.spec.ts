@@ -101,14 +101,18 @@ test("mobile menu contains keyboard focus, closes with Escape and resets on desk
   await opener.click();
   await page.setViewportSize({ width: 1000, height: 900 });
   await expect(nav).toHaveCount(0);
-  expect(await page.locator("#main-content").evaluate((node) => node.inert)).toBe(false);
-  expect(await page.locator("body").evaluate((node) => node.style.overflow)).not.toBe("hidden");
+  await expect.poll(() => page.locator("#main-content").evaluate((node) => node.inert)).toBe(false);
+  await expect
+    .poll(() => page.locator("body").evaluate((node) => node.style.overflow))
+    .not.toBe("hidden");
 });
 
 test("all canonical sections and real 404s render without client JavaScript", async ({
   browser,
+  baseURL,
 }) => {
   const context = await browser.newContext({
+    baseURL,
     javaScriptEnabled: false,
     viewport: { width: 390, height: 844 },
   });
@@ -123,11 +127,11 @@ test("all canonical sections and real 404s render without client JavaScript", as
     "/games/nova-mahjong",
     "/blog/why-nova-mahjong-uses-large-clear-tiles",
   ]) {
-    const response = await page.goto("http://127.0.0.1:4321" + route);
+    const response = await page.goto(route);
     expect(response?.status()).toBe(200);
     await expect(page.locator("h1")).toBeVisible();
   }
-  await page.goto("http://127.0.0.1:4321/");
+  await page.goto("/");
   await expect(page.locator("#studio-collection-title")).toBeVisible();
   expect(
     await page
@@ -135,7 +139,7 @@ test("all canonical sections and real 404s render without client JavaScript", as
       .first()
       .evaluate((node) => getComputedStyle(node).opacity),
   ).toBe("1");
-  const missing = await page.goto("http://127.0.0.1:4321/not-a-page");
+  const missing = await page.goto("/not-a-page");
   expect(missing?.status()).toBe(404);
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
   await context.close();
