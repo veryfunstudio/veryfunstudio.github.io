@@ -1,11 +1,9 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { BLOG_POSTS } from "../src/data/blog";
 import {
   agentFriendly404,
   canonicalRoutes,
-  legacyRedirectHtml,
   llmsFullTxt,
   llmsTxt,
   markdownForRoute,
@@ -37,11 +35,6 @@ write("llms-full.txt", llmsFullTxt(today));
 for (const route of canonicalRoutes()) {
   const markdown = markdownForRoute(route.path);
   if (markdown) write(markdownPathFor(route.path), markdown);
-}
-
-// Static redirects for legacy numeric blog URLs (/blog/<id>).
-for (const post of BLOG_POSTS) {
-  write(`blog/${post.id}/index.html`, legacyRedirectHtml(post));
 }
 
 // SPA fallback for GitHub Pages: serve the app shell on unmatched paths so

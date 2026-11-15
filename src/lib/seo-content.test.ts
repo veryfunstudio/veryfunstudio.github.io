@@ -8,7 +8,6 @@ import { AGENT_404_RECOVERY_ID, BRAND, SITE_URL } from "./constants";
 import {
   agentFriendly404,
   canonicalRoutes,
-  legacyRedirectHtml,
   llmsFullTxt,
   llmsTxt,
   markdownForRoute,
@@ -101,18 +100,6 @@ describe("llmsFullTxt", () => {
     for (const post of BLOG_POSTS) {
       assert.ok(txt.includes(`## ${post.title}`));
     }
-  });
-});
-
-describe("legacyRedirectHtml", () => {
-  it("redirects legacy numeric blog URLs to the canonical slug", () => {
-    const post = BLOG_POSTS[0];
-    const html = legacyRedirectHtml(post);
-    const target = `${SITE_URL}${getBlogPath(post)}`;
-    assert.ok(html.includes(`content="0;url=${target}"`));
-    assert.ok(html.includes(`<link rel="canonical" href="${target}">`));
-    assert.ok(html.includes('content="noindex"'));
-    assert.ok(html.includes(`location.replace("${getBlogPath(post)}")`));
   });
 });
 

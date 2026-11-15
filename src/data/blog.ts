@@ -481,22 +481,8 @@ export const BLOG_POSTS: BlogPost[] = [
   },
 ];
 
-export function getBlogPostById(id: number): BlogPost | undefined {
-  return BLOG_POSTS.find((post) => post.id === id);
-}
-
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((post) => post.slug === slug);
-}
-
-/** Resolve by slug, or by numeric id string for legacy URLs. */
-export function getBlogPostByParam(param: string): BlogPost | undefined {
-  const bySlug = getBlogPostBySlug(param);
-  if (bySlug) return bySlug;
-  if (/^\d+$/.test(param)) {
-    return getBlogPostById(Number.parseInt(param, 10));
-  }
-  return undefined;
 }
 
 export function getBlogPath(post: Pick<BlogPost, "slug">): string {

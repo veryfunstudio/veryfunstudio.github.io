@@ -1,12 +1,11 @@
 import { ArrowLeft, ArrowRight, Play } from "lucide-react";
-import { useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import EntityNotFound from "@/components/common/EntityNotFound";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Seo } from "@/components/seo/Seo";
 import {
   getBlogPath,
-  getBlogPostByParam,
+  getBlogPostBySlug,
   getPostsByNewest,
   getRelatedGamesForPost,
 } from "@/data/blog";
@@ -20,18 +19,8 @@ const blogPublisher = ORGANIZATION_REFERENCE;
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
   const param = slug ?? "";
-  const post = getBlogPostByParam(param);
-  const isLegacyId = Boolean(post && param !== post.slug && /^\d+$/.test(param));
-
-  // Client-side redirect for legacy /blog/:id (static HTML redirects also written at build).
-  useEffect(() => {
-    if (post && isLegacyId) {
-      navigate(getBlogPath(post), { replace: true });
-    }
-  }, [post, isLegacyId, navigate]);
-
+  const post = getBlogPostBySlug(param);
   if (!post) {
     return (
       <EntityNotFound
@@ -41,21 +30,6 @@ const BlogPost = () => {
         backTo="/blog"
         backLabel="Back to blog"
       />
-    );
-  }
-
-  if (isLegacyId) {
-    return (
-      <section className="error-stage px-[3.125vw] py-28 lg:py-36">
-        <Seo title={post.title} description={post.excerpt} path={getBlogPath(post)} noindex />
-        <p className="text-center text-muted">
-          Redirecting to{" "}
-          <Link to={getBlogPath(post)} className="underline underline-offset-2">
-            {post.title}
-          </Link>
-          …
-        </p>
-      </section>
     );
   }
 

@@ -159,3 +159,16 @@ test("self-hosted fonts and recovery pages do not rely on Google Fonts", async (
   await page.getByRole("link", { name: "Back to games", exact: true }).click();
   await expect(page).toHaveURL(/\/games$/);
 });
+
+test("blog paths accept canonical slugs and recover from unknown numeric addresses", async ({
+  page,
+}) => {
+  await page.goto("/blog/1");
+  await expect(page.getByRole("heading", { name: "Post not found", exact: true })).toBeVisible();
+  const back = page.getByRole("link", { name: "Back to blog", exact: true });
+  await expect(back).toHaveAttribute("href", "/blog");
+  await back.click();
+  await expect(page).toHaveURL(/\/blog$/);
+  await page.goto("/blog/why-our-puzzles-avoid-timers");
+  await expect(page.locator("article h1")).toBeVisible();
+});

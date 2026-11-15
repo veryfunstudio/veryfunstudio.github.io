@@ -5,8 +5,7 @@ import { MOTION } from "@/lib/reveal";
 /**
  * A loupe over the game's own key art.
  *
- * The collection used to be a poster with a paragraph beside it. A loupe is
- * the oldest way to say "look closer": the artwork is the real shipped key
+ * The loupe magnifies the shipped key
  * art, and moving the pointer over it lifts a lens that magnifies whatever is
  * underneath — the mahjong faces on the board, the flower tiles in the
  * stack, the arrows in the grid.

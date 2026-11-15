@@ -4,8 +4,6 @@ import { describe, it } from "node:test";
 import {
   BLOG_POSTS,
   getBlogPath,
-  getBlogPostById,
-  getBlogPostByParam,
   getBlogPostBySlug,
   getNewestPost,
   getPostsByNewest,
@@ -30,11 +28,9 @@ describe("blog data helpers", () => {
     assert.strictEqual(newest, expected);
   });
 
-  it("getBlogPostById returns the matching post or undefined", () => {
-    const existing = BLOG_POSTS[0];
-    assert.strictEqual(getBlogPostById(existing.id), existing);
-    assert.strictEqual(getBlogPostById(-1), undefined);
-    assert.strictEqual(getBlogPostById(Number.NaN), undefined);
+  it("only canonical slugs resolve to posts", () => {
+    assert.strictEqual(getBlogPostBySlug(String(BLOG_POSTS[0].id)), undefined);
+    assert.strictEqual(getBlogPostBySlug("unknown-post"), undefined);
   });
 });
 
@@ -55,8 +51,6 @@ describe("blog catalog integrity", () => {
       assert.ok(existsSync(`public${post.image}`), `missing image ${post.image}`);
       assert.strictEqual(getBlogPath(post), `/blog/${post.slug}`);
       assert.strictEqual(getBlogPostBySlug(post.slug), post);
-      assert.strictEqual(getBlogPostByParam(post.slug), post);
-      assert.strictEqual(getBlogPostByParam(String(post.id)), post);
     }
   });
 });

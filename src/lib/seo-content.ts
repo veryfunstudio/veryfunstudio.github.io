@@ -189,26 +189,6 @@ ${blogSections}
 `;
 }
 
-/** Static HTML redirect for legacy numeric blog URLs (/blog/<id>). */
-export function legacyRedirectHtml(post: BlogPost) {
-  const target = `${SITE_URL}${getBlogPath(post)}`;
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Redirecting…</title>
-  <meta http-equiv="refresh" content="0;url=${target}">
-  <link rel="canonical" href="${target}">
-  <meta name="robots" content="noindex">
-  <script>location.replace(${JSON.stringify(getBlogPath(post))})</script>
-</head>
-<body>
-  <p>Moved to <a href="${target}">${post.title}</a>.</p>
-</body>
-</html>
-`;
-}
-
 const AGENT_404_MARKDOWN = `# 404 — Page not found
 
 Site: ${SITE_URL}
