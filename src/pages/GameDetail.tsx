@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Download, Play } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router";
 import EntityNotFound from "@/components/common/EntityNotFound";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -14,6 +15,31 @@ import { formatDate } from "@/lib/utils";
 const GameDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const game = getGameBySlug(slug ?? "");
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const [galleryEdges, setGalleryEdges] = useState({ start: true, end: false });
+  const updateGalleryEdges = useCallback(() => {
+    const track = galleryRef.current;
+    if (track) {
+      setGalleryEdges({
+        start: track.scrollLeft <= 1,
+        end: track.scrollLeft + track.clientWidth >= track.scrollWidth - 1,
+      });
+    }
+  }, []);
+  useEffect(() => {
+    if (!game?.slug || !galleryRef.current) return;
+    updateGalleryEdges();
+    const observer = new ResizeObserver(updateGalleryEdges);
+    observer.observe(galleryRef.current);
+    return () => observer.disconnect();
+  }, [game?.slug, updateGalleryEdges]);
+  const moveGallery = (direction: number) => {
+    const track = galleryRef.current;
+    track?.scrollBy({
+      left: direction * track.clientWidth * 0.85,
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+    });
+  };
 
   if (!game) {
     return (
@@ -30,7 +56,7 @@ const GameDetail = () => {
   const primaryTags = formatGameTags(game);
   const primaryFeatures = game.features.slice(0, 4);
   const secondaryFeatures = game.features.slice(4);
-  const gallery = getGameGallery(game);
+  const gallery = getGameGallery(game).filter((shot) => shot.kind === "screen");
   const relatedGames = getRelatedGames(game, 3);
   const relatedPosts = getRelatedPostsForGame(game, 2);
   const releaseLabel = formatDate(game.releaseDate);
@@ -43,7 +69,6 @@ const GameDetail = () => {
     ...(game.store ? [{ label: "Downloads", value: game.store.downloads }] : []),
     { label: "Release", value: releaseLabel },
   ];
-  const hasBoardShots = gallery.some((item) => item.kind === "screen");
 
   return (
     <article className="site-page studio-shell">
@@ -168,7 +193,7 @@ const GameDetail = () => {
         </div>
       </section>
 
-      {hasBoardShots && (
+      {gallery.length > 0 && (
         <motion.section
           className="game-detail-gallery"
           aria-label={`${game.title} gameplay screenshots`}
@@ -177,8 +202,38 @@ const GameDetail = () => {
           <div className="game-detail-gallery__head">
             <h2>Inside the game.</h2>
             <p>Verified gameplay screenshots from the store listing.</p>
+            <p className="game-detail-gallery__hint">
+              {gallery.length} gameplay screens. Use the arrows or swipe to explore.
+            </p>
+            <div className="game-detail-gallery__controls">
+              <button
+                type="button"
+                aria-label="Previous gameplay screenshots"
+                aria-controls="gameplay-gallery"
+                disabled={galleryEdges.start}
+                onClick={() => moveGallery(-1)}
+              >
+                <ArrowLeft size={20} aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                aria-label="Next gameplay screenshots"
+                aria-controls="gameplay-gallery"
+                disabled={galleryEdges.end}
+                onClick={() => moveGallery(1)}
+              >
+                <ArrowRight size={20} aria-hidden="true" />
+              </button>
+            </div>
           </div>
-          <div className="game-detail-gallery__track">
+          <div
+            ref={galleryRef}
+            id="gameplay-gallery"
+            className="game-detail-gallery__track"
+            role="region"
+            aria-label="Gameplay screenshot gallery"
+            onScroll={updateGalleryEdges}
+          >
             {gallery.map((shot) => {
               const frame = shot.frame ?? (shot.kind === "icon" ? "square" : "wide");
               return (
