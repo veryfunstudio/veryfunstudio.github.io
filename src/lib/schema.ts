@@ -19,7 +19,7 @@ export const ORGANIZATION_LOGO = {
   height: 512,
 } as const;
 
-export const ORGANIZATION_SAME_AS = [
+const ORGANIZATION_SAME_AS = [
   BRAND.social.github,
   BRAND.social.x,
   GOOGLE_PLAY_DEVELOPER_URL,

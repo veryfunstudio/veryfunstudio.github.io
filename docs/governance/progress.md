@@ -31,3 +31,4 @@
 
 | 轮 | 内容 | Commit |
 | --- | --- | --- |
+| R1 | 图标库归一 lucide-react：Header 汉堡 Menu↔X 改旋转+淡入过渡（同 011_Cambridge 收口模式），删除 lucide（裸包）+ morphicons 依赖；REVEAL_FADE 死导出删除（为 tactile-card 预建从未被采用）；ORGANIZATION_SAME_AS 去 export（仅内部使用）；依赖 -2 | (本 commit) |
