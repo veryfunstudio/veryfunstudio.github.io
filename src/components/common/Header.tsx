@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide";
-import { MorphIcon } from "morphicons/react";
+import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
 import { BRAND_ASSET_VERSION, NAV_ITEMS } from "@/lib/constants";
@@ -112,13 +111,25 @@ const Header = () => {
         <button
           ref={toggleRef}
           type="button"
-          className="flex min-h-[44px] min-w-[44px] items-center justify-center text-foreground md:hidden"
+          className="relative flex min-h-[44px] min-w-[44px] items-center justify-center text-foreground md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           aria-controls="mobile-navigation"
         >
-          <MorphIcon icon={mobileOpen ? X : Menu} size={20} strokeWidth={2} spring="smooth" />
+          {/* Menu↔X 旋转+淡入过渡，替代 morphicons 路径变形；全站图标统一 lucide-react。 */}
+          <Menu
+            className={`absolute transition duration-200 ${mobileOpen ? "-rotate-90 scale-0 opacity-0" : ""}`}
+            size={20}
+            strokeWidth={2}
+            aria-hidden="true"
+          />
+          <X
+            className={`absolute transition duration-200 ${mobileOpen ? "" : "rotate-90 scale-0 opacity-0"}`}
+            size={20}
+            strokeWidth={2}
+            aria-hidden="true"
+          />
         </button>
       </div>
 
