@@ -27,8 +27,19 @@
   （deploy 脚本 / node --import tsx / entry.server / 动效组件）；
   BrandIcons 内联 SVG 有明释注释（lucide-react 有意不含品牌 logo）。
 
+## 终态（2026-11-28，治理收敛）
+
+- 测试：node:test 44 pass（基线 43 + 1 CSS 守卫契约）；check 全绿；e2e:built 全量绿。
+- 分支 governance/arch-20261128 共 3 个 commit（R0-R2）。
+- 收口：图标库归一 lucide-react（依赖 -2）、REVEAL_FADE 死导出删除、ORGANIZATION_SAME_AS 去 export、
+  CSS 孤儿守卫上线（BEM 动态修饰符以「基名--${」模板模式判定为生成态，固化首轮误报教训）。
+- 勘察排除项维持：index.css 零孤儿，gh-pages/tsx/isbot/framer-motion 均有真实使用。
+
 ## 轮次记录
 
 | 轮 | 内容 | Commit |
 | --- | --- | --- |
-| R1 | 图标库归一 lucide-react：Header 汉堡 Menu↔X 改旋转+淡入过渡（同 011_Cambridge 收口模式），删除 lucide（裸包）+ morphicons 依赖；REVEAL_FADE 死导出删除（为 tactile-card 预建从未被采用）；ORGANIZATION_SAME_AS 去 export（仅内部使用）；依赖 -2 | (本 commit) |
+| R2 | CSS 孤儿守卫：src/css.test.ts（node:test，词边界 + BEM 动态修饰符判定——
+  首轮静态扫描曾把 5 个模板生成的修饰符误报为孤儿，测试把区分规则固化防误报）；
+  独立复审全量 diff；终态回填 | (本 commit) |
+| R1 | 图标库归一 lucide-react：Header 汉堡 Menu↔X 改旋转+淡入过渡（同 011_Cambridge 收口模式），删除 lucide（裸包）+ morphicons 依赖；REVEAL_FADE 死导出删除（为 tactile-card 预建从未被采用）；ORGANIZATION_SAME_AS 去 export（仅内部使用）；依赖 -2 | 489e1f9 |
